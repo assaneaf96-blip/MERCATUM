@@ -453,7 +453,7 @@ export default function ProductDetailPage() {
                       className="buy-now-card-btn"
                       style={{ textAlign: 'center' }}
                     >
-                      Découvrir ce soin <span>→</span>
+                      Acheter maintenant ⚡
                     </Link>
                   </div>
                 </article>

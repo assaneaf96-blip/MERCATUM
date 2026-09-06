@@ -215,7 +215,7 @@ export default function BoutiquePage() {
                       className="buy-now-card-btn"
                       style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
                     >
-                      Découvrir le produit <span>→</span>
+                      Acheter maintenant ⚡
                     </Link>
                     <button
                       className="add-cart-outline-btn"

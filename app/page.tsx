@@ -133,7 +133,7 @@ export default function HomePage() {
           </p>
           <div className="hero-cta-group">
             <Link href="/boutique" className="button dark">
-              Découvrir la Haute Cosmétique <span>→</span>
+              Acheter maintenant <span>→</span>
             </Link>
             {heroFirstProduct && (
               <button
@@ -226,7 +226,7 @@ export default function HomePage() {
                   className="buy-now-card-btn"
                   style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
                 >
-                  Découvrir le produit <span>→</span>
+                  Acheter maintenant ⚡
                 </Link>
                 <button
                   type="button"
@@ -328,7 +328,7 @@ export default function HomePage() {
                   className="buy-now-card-btn"
                   style={{ textAlign: 'center', flex: 1, background: 'var(--foreground)', color: 'var(--background)' }}
                 >
-                  Découvrir <span>→</span>
+                  Acheter maintenant ⚡
                 </Link>
                 <button
                   type="button"
