@@ -15,6 +15,11 @@ import {
   type SiteSettings,
   type NewItem,
 } from '@/lib/store'
+import {
+  fetchProductsFromDb,
+  fetchNouveautesFromDb,
+  fetchSettingsFromDb,
+} from '@/lib/supabaseService'
 
 export default function HomePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -31,9 +36,29 @@ export default function HomePage() {
   const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {
-    setProductsList(getProducts())
+    // 1. Chargement local immédiat
+    const localProducts = getProducts()
+    setProductsList(localProducts)
     setNouveautesList(getNouveautes())
     setSettings(getSiteSettings())
+
+    // 2. Synchronisation en direct depuis Supabase
+    fetchProductsFromDb().then((dbProducts) => {
+      if (dbProducts && dbProducts.length > 0) {
+        const merged = new Map<string, Product>()
+        localProducts.forEach((p) => merged.set(p.id, p))
+        dbProducts.forEach((p) => merged.set(p.id, p))
+        setProductsList(Array.from(merged.values()))
+      }
+    }).catch(() => {})
+
+    fetchNouveautesFromDb().then((dbNouv) => {
+      if (dbNouv && dbNouv.length > 0) setNouveautesList(dbNouv)
+    }).catch(() => {})
+
+    fetchSettingsFromDb().then((dbSettings) => {
+      if (dbSettings) setSettings(dbSettings)
+    }).catch(() => {})
   }, [])
 
   const showToast = (msg: string) => {
