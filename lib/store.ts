@@ -34,12 +34,28 @@ export interface NewItem {
   customLabel?: string
 }
 
+export interface Order {
+  id: string
+  customerName: string
+  customerEmail: string
+  customerPhone: string
+  customerAddress: string
+  productId?: string
+  productName?: string
+  totalPrice: number
+  currency?: string
+  paymentMethod?: string
+  status: 'En attente de virement' | 'Paiement reçu' | 'Expédiée' | 'Livrée' | 'Annulée'
+  createdAt: string
+}
+
 const STORAGE_KEYS = {
   PRODUCTS: 'ml_admin_products',
   DELETED_PRODUCTS: 'ml_admin_deleted_products',
   NOUVEAUTES: 'ml_admin_nouveautes',
   SETTINGS: 'ml_admin_settings',
   AUTH: 'ml_admin_auth',
+  ORDERS: 'ml_admin_orders',
 }
 
 export const DEFAULT_SETTINGS: SiteSettings = {
@@ -176,6 +192,84 @@ export function getSiteSettings(): SiteSettings {
 
 export function saveSiteSettings(settings: SiteSettings): void {
   safeWrite(STORAGE_KEYS.SETTINGS, settings)
+}
+
+// ─────────────────────────────────────────────
+// TABLEAU DE VENTES & COMMANDES
+// ─────────────────────────────────────────────
+
+const DEFAULT_ORDERS: Order[] = [
+  {
+    id: 'ML-849201',
+    customerName: 'Éléonore de Montmirail',
+    customerEmail: 'eleonore.montmirail@gmail.com',
+    customerPhone: '+33 6 12 34 56 78',
+    customerAddress: '14 rue de Rivoli, 75004 Paris',
+    productId: 'creme-supreme-anti-age',
+    productName: 'Crème Suprême Jeunesse Absolue',
+    totalPrice: 125.00,
+    currency: 'EUR',
+    paymentMethod: 'Virement Bancaire',
+    status: 'Paiement reçu',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 4).toISOString(),
+  },
+  {
+    id: 'ML-932145',
+    customerName: 'Camille Laurent',
+    customerEmail: 'camille.laurent@outlook.fr',
+    customerPhone: '+33 7 89 01 23 45',
+    customerAddress: '8 place Bellecour, 69002 Lyon',
+    productId: 'idole-now-lancome',
+    productName: 'Idôle Now — Lancôme Paris',
+    totalPrice: 98.00,
+    currency: 'EUR',
+    paymentMethod: 'Virement Bancaire',
+    status: 'En attente de virement',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+  },
+  {
+    id: 'ML-715309',
+    customerName: 'Alexandre Beaulieu',
+    customerEmail: 'a.beaulieu@free.fr',
+    customerPhone: '+33 6 98 76 54 32',
+    customerAddress: '27 boulevard de la Croisette, 06400 Cannes',
+    productId: 'serum-eclat-botanique',
+    productName: 'Sérum Infusion Régénérant Nuit',
+    totalPrice: 95.00,
+    currency: 'EUR',
+    paymentMethod: 'Virement Bancaire',
+    status: 'Expédiée',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 28).toISOString(),
+  }
+]
+
+export function getOrders(): Order[] {
+  return safeRead<Order[]>(STORAGE_KEYS.ORDERS, DEFAULT_ORDERS)
+}
+
+export function saveOrder(order: Order): void {
+  const orders = getOrders()
+  const idx = orders.findIndex((o) => o.id === order.id)
+  if (idx >= 0) {
+    orders[idx] = order
+  } else {
+    orders.unshift(order)
+  }
+  safeWrite(STORAGE_KEYS.ORDERS, orders)
+}
+
+export function updateOrderStatus(id: string, status: Order['status']): void {
+  const orders = getOrders()
+  const target = orders.find((o) => o.id === id)
+  if (target) {
+    target.status = status
+    safeWrite(STORAGE_KEYS.ORDERS, orders)
+  }
+}
+
+export function deleteOrder(id: string): void {
+  const orders = getOrders().filter((o) => o.id !== id)
+  safeWrite(STORAGE_KEYS.ORDERS, orders)
 }
 
 // ─────────────────────────────────────────────
