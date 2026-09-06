@@ -147,4 +147,30 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewsCount: 87,
   },
+  {
+    id: 'barenia-pleine-fleur-hermes',
+    name: 'Barénia Pleine Fleur Eau de parfum 100 ml',
+    category: 'Bougies & Parfums',
+    type: 'Eau de Parfum · Floral & Sensuel',
+    price: '155,00 €',
+    rawPrice: 155,
+    description: 'Con Barénia Pleine Fleur, Christine Nagel, perfumista de la Maison, reinventa el chipre emblemático de Hermès y firma un eau de parfum floral y sensual, como la caricia de un pétalo. La huella de una mujer radiante y plena. El nombre de la fragancia rinde homenaje al tacto de la flor y, al mismo tiempo, al de los cueros plena flor patrimoniales de la Maison, y su sello de excelencia.',
+    image: '/barenia-pleine-fleur-2.webp',
+    images: [
+      '/barenia-pleine-fleur-2.webp',
+      '/barenia-pleine-fleur-1.webp',
+      '/barenia-pleine-fleur-3.webp',
+      '/barenia-pleine-fleur-4.webp',
+    ],
+    media: [
+      { url: '/barenia-pleine-fleur-2.webp', type: 'image' },
+      { url: '/barenia-pleine-fleur-1.webp', type: 'image' },
+      { url: '/barenia-pleine-fleur-3.webp', type: 'image' },
+      { url: '/barenia-pleine-fleur-4.webp', type: 'image' },
+    ],
+    tag: 'Nouveauté · 155€',
+    rating: 5.0,
+    reviewsCount: 42,
+  },
 ]
+
