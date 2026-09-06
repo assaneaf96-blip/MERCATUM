@@ -12,11 +12,20 @@ import {
   saveNouveautes,
   getSiteSettings,
   saveSiteSettings,
+  getOrders,
+  updateOrderStatus,
+  deleteOrder,
   logoutAdmin,
   changeAdminPassword,
   type SiteSettings,
   type NewItem,
+  type Order,
 } from '@/lib/store'
+import {
+  fetchOrdersFromDb,
+  updateOrderStatusInDb,
+  deleteOrderFromDb,
+} from '@/lib/supabaseService'
 import { type Product, type MediaItem, CATEGORIES } from '@/lib/products'
 
 function slugify(str: string): string {
@@ -47,7 +56,13 @@ function emptyProduct(): Product {
 }
 
 export default function AdminPage() {
-  const [tab, setTab] = useState<'boutique' | 'nouveautes' | 'parametres'>('boutique')
+  const [tab, setTab] = useState<'boutique' | 'nouveautes' | 'parametres' | 'ventes'>('boutique')
+
+  // Orders / Ventes state
+  const [orders, setOrders] = useState<Order[]>([])
+  const [orderSearch, setOrderSearch] = useState('')
+  const [orderStatusFilter, setOrderStatusFilter] = useState('Tous')
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
 
   // Products state
   const [products, setProducts] = useState<Product[]>([])
@@ -104,15 +119,80 @@ export default function AdminPage() {
     setTimeout(() => setToast(null), 3000)
   }
 
-  const reloadData = useCallback(() => {
+  const reloadData = useCallback(async () => {
     setProducts(getProducts())
     setNouveautes(getNouveautes())
     setSettings(getSiteSettings())
+    const localOrders = getOrders()
+    setOrders(localOrders)
+
+    // Tenter de charger les commandes les plus récentes depuis Supabase
+    try {
+      const dbOrders = await fetchOrdersFromDb()
+      if (dbOrders && dbOrders.length > 0) {
+        const mergedMap = new Map<string, Order>()
+        localOrders.forEach((o) => mergedMap.set(o.id, o))
+        dbOrders.forEach((item: any) => {
+          mergedMap.set(item.id, {
+            id: item.id,
+            customerName: item.customerName,
+            customerEmail: item.customerEmail,
+            customerPhone: item.customerPhone,
+            customerAddress: item.customerAddress,
+            productId: item.productId,
+            productName: item.productName,
+            totalPrice: item.totalPrice,
+            currency: item.currency || 'EUR',
+            paymentMethod: item.paymentMethod || 'Virement Bancaire',
+            status: item.status || 'En attente de virement',
+            createdAt: item.createdAt || new Date().toISOString(),
+          })
+        })
+        const finalOrders = Array.from(mergedMap.values()).sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+        setOrders(finalOrders)
+      }
+    } catch {
+      // Garder les commandes locales
+    }
   }, [])
 
   useEffect(() => {
     reloadData()
   }, [reloadData])
+
+  // --- Actions Commandes (Tableau de Vente) ---
+  const handleUpdateOrderStatus = async (id: string, newStatus: Order['status']) => {
+    updateOrderStatus(id, newStatus)
+    setOrders((prev) =>
+      prev.map((o) => (o.id === id ? { ...o, status: newStatus } : o))
+    )
+    if (selectedOrder && selectedOrder.id === id) {
+      setSelectedOrder({ ...selectedOrder, status: newStatus })
+    }
+    showToast(`Statut de la commande mis à jour : ${newStatus}`)
+    try {
+      await updateOrderStatusInDb(id, newStatus)
+    } catch (err) {
+      console.warn('Erreur synchro Supabase statut commande:', err)
+    }
+  }
+
+  const handleDeleteOrder = async (id: string) => {
+    if (!confirm(`Supprimer définitivement la commande ${id} ?`)) return
+    deleteOrder(id)
+    setOrders((prev) => prev.filter((o) => o.id !== id))
+    if (selectedOrder && selectedOrder.id === id) {
+      setSelectedOrder(null)
+    }
+    showToast(`Commande ${id} supprimée.`)
+    try {
+      await deleteOrderFromDb(id)
+    } catch (err) {
+      console.warn('Erreur suppression Supabase:', err)
+    }
+  }
 
   // --- Actions Produits ---
   const handleOpenNewProduct = (autoNouveaute = false) => {
@@ -478,6 +558,23 @@ export default function AdminPage() {
           >
             <span>🛍️</span>
             <span>Boutique ({products.length})</span>
+          </button>
+
+          <button
+            onClick={() => setTab('ventes')}
+            className={`px-4 py-2.5 rounded-lg text-sm font-semibold tracking-wide uppercase transition flex items-center gap-2 relative ${
+              tab === 'ventes'
+                ? 'bg-[#b8c8a6] text-[#1c221d] shadow-sm'
+                : 'text-[#c6d2bd] hover:text-white hover:bg-[#2f3830]'
+            }`}
+          >
+            <span>📈</span>
+            <span>Tableau de Vente ({orders.length})</span>
+            {orders.filter((o) => o.status === 'En attente de virement').length > 0 && (
+              <span className="ml-1 px-1.5 py-0.5 text-[10px] bg-amber-500 text-stone-950 font-black rounded-full animate-pulse">
+                {orders.filter((o) => o.status === 'En attente de virement').length}
+              </span>
+            )}
           </button>
 
           <button
@@ -1226,6 +1323,376 @@ export default function AdminPage() {
                 })}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* ================================================================= */}
+        {/* ONGLET 2: TABLEAU DE VENTE (GESTION DES COMMANDES & STATISTIQUES)  */}
+        {/* ================================================================= */}
+        {tab === 'ventes' && (
+          <div className="space-y-6 animate-fade-in">
+            {/* Header & Statistiques Rapides */}
+            <div className="bg-white p-6 rounded-xl border border-[#d8d3c5] shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h1 className="font-serif text-2xl font-bold text-[#1c221d] flex items-center gap-2">
+                  <span>📈</span> Tableau de Vente
+                </h1>
+                <p className="text-sm text-stone-500 mt-1">
+                  Suivi des commandes en direct, validation des virements bancaires et export de l'activité.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => reloadData()}
+                  className="px-3.5 py-2 text-xs font-bold border border-stone-300 rounded-lg hover:bg-stone-100 text-stone-700 transition flex items-center gap-1.5"
+                >
+                  <span>🔄</span> Actualiser
+                </button>
+              </div>
+            </div>
+
+            {/* Cartes KPI / Indicateurs clés */}
+            {(() => {
+              const totalRevenue = orders
+                .filter((o) => o.status !== 'Annulée')
+                .reduce((acc, o) => acc + (o.totalPrice || 0), 0)
+              const paidRevenue = orders
+                .filter((o) => o.status === 'Paiement reçu' || o.status === 'Expédiée' || o.status === 'Livrée')
+                .reduce((acc, o) => acc + (o.totalPrice || 0), 0)
+              const pendingCount = orders.filter((o) => o.status === 'En attente de virement').length
+              const completedCount = orders.filter(
+                (o) => o.status === 'Paiement reçu' || o.status === 'Expédiée' || o.status === 'Livrée'
+              ).length
+
+              return (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-white p-5 rounded-xl border border-[#d8d3c5] shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-stone-500">Chiffre d'Affaires Validé</div>
+                    <div className="text-2xl font-serif font-black text-[#166534] mt-2">
+                      {paidRevenue.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                    </div>
+                    <div className="text-[11px] text-stone-400 mt-1">
+                      Sur {completedCount} commande(s) réglée(s)
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-xl border border-[#d8d3c5] shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-stone-500">Volume Total Commandé</div>
+                    <div className="text-2xl font-serif font-black text-stone-900 mt-2">
+                      {totalRevenue.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                    </div>
+                    <div className="text-[11px] text-stone-400 mt-1">
+                      {orders.length} commande(s) au total
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-xl border border-amber-200 bg-amber-50/40 shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-amber-800">En Attente Virement</div>
+                    <div className="text-2xl font-serif font-black text-amber-900 mt-2 flex items-center gap-2">
+                      <span>{pendingCount}</span>
+                      {pendingCount > 0 && (
+                        <span className="text-xs font-sans px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 font-bold">
+                          À traiter
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[11px] text-amber-700/80 mt-1">
+                      Vérifier les réceptions de fonds sur votre compte
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-xl border border-[#d8d3c5] shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-stone-500">Panier Moyen</div>
+                    <div className="text-2xl font-serif font-black text-stone-800 mt-2">
+                      {orders.length > 0
+                        ? (totalRevenue / orders.length).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })
+                        : '0,00 €'}
+                    </div>
+                    <div className="text-[11px] text-stone-400 mt-1">Par commande client</div>
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Barre de Recherche et Filtres */}
+            <div className="bg-white p-4 rounded-xl border border-[#d8d3c5] shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
+              <div className="relative w-full md:w-80">
+                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-sm">🔍</span>
+                <input
+                  type="text"
+                  placeholder="Rechercher par client, email, réf..."
+                  value={orderSearch}
+                  onChange={(e) => setOrderSearch(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-500">Statut :</span>
+                {['Tous', 'En attente de virement', 'Paiement reçu', 'Expédiée', 'Livrée', 'Annulée'].map((status) => (
+                  <button
+                    key={status}
+                    type="button"
+                    onClick={() => setOrderStatusFilter(status)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                      orderStatusFilter === status
+                        ? 'bg-[#20251f] text-white shadow-sm'
+                        : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                    }`}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Table des Commandes */}
+            {(() => {
+              const filteredOrders = orders.filter((order) => {
+                const matchStatus = orderStatusFilter === 'Tous' || order.status === orderStatusFilter
+                const query = orderSearch.toLowerCase()
+                const matchSearch =
+                  order.id.toLowerCase().includes(query) ||
+                  order.customerName.toLowerCase().includes(query) ||
+                  order.customerEmail.toLowerCase().includes(query) ||
+                  (order.productName && order.productName.toLowerCase().includes(query)) ||
+                  (order.customerPhone && order.customerPhone.includes(query))
+                return matchStatus && matchSearch
+              })
+
+              if (filteredOrders.length === 0) {
+                return (
+                  <div className="bg-white p-12 rounded-xl border border-[#d8d3c5] text-center">
+                    <div className="text-4xl mb-3">📦</div>
+                    <h3 className="font-serif text-lg font-bold text-stone-800">Aucune commande trouvée</h3>
+                    <p className="text-sm text-stone-500 mt-1 max-w-md mx-auto">
+                      {orderSearch || orderStatusFilter !== 'Tous'
+                        ? 'Aucun résultat ne correspond à vos filtres de recherche.'
+                        : "Les commandes passées sur la boutique apparaîtront ici automatiquement dès qu'un client passera commande."}
+                    </p>
+                  </div>
+                )
+              }
+
+              return (
+                <div className="bg-white rounded-xl border border-[#d8d3c5] shadow-sm overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm border-collapse">
+                      <thead>
+                        <tr className="bg-[#faf9f5] border-b border-[#e5dfd0] text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                          <th className="py-3.5 px-4">Réf. Commande</th>
+                          <th className="py-3.5 px-4">Date</th>
+                          <th className="py-3.5 px-4">Client & Contact</th>
+                          <th className="py-3.5 px-4">Articles / Produit</th>
+                          <th className="py-3.5 px-4 text-right">Montant</th>
+                          <th className="py-3.5 px-4 text-center">Statut du Virement</th>
+                          <th className="py-3.5 px-4 text-center">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-200">
+                        {filteredOrders.map((order) => {
+                          const dateFormatted = new Date(order.createdAt).toLocaleDateString('fr-FR', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })
+
+                          const getBadgeColor = (status: Order['status']) => {
+                            switch (status) {
+                              case 'Paiement reçu':
+                                return 'bg-green-100 text-green-800 border-green-300'
+                              case 'Expédiée':
+                                return 'bg-blue-100 text-blue-800 border-blue-300'
+                              case 'Livrée':
+                                return 'bg-purple-100 text-purple-800 border-purple-300'
+                              case 'Annulée':
+                                return 'bg-red-100 text-red-800 border-red-300'
+                              case 'En attente de virement':
+                              default:
+                                return 'bg-amber-100 text-amber-800 border-amber-300'
+                            }
+                          }
+
+                          return (
+                            <tr key={order.id} className="hover:bg-stone-50 transition">
+                              <td className="py-3.5 px-4 font-mono font-bold text-stone-900">
+                                <span className="bg-stone-100 px-2 py-1 rounded border border-stone-200">
+                                  {order.id}
+                                </span>
+                              </td>
+                              <td className="py-3.5 px-4 text-xs text-stone-500 whitespace-nowrap">
+                                {dateFormatted}
+                              </td>
+                              <td className="py-3.5 px-4">
+                                <div className="font-bold text-stone-900">{order.customerName}</div>
+                                <div className="text-xs text-stone-500">{order.customerEmail}</div>
+                                <div className="text-xs text-stone-400">{order.customerPhone}</div>
+                              </td>
+                              <td className="py-3.5 px-4">
+                                <div className="font-medium text-stone-800 line-clamp-1">
+                                  {order.productName || 'Article Boutique'}
+                                </div>
+                                <div className="text-[11px] text-stone-400">
+                                  {order.customerAddress}
+                                </div>
+                              </td>
+                              <td className="py-3.5 px-4 text-right font-bold text-stone-900 font-serif">
+                                {Number(order.totalPrice || 0).toLocaleString('fr-FR', {
+                                  style: 'currency',
+                                  currency: 'EUR',
+                                })}
+                              </td>
+                              <td className="py-3.5 px-4 text-center">
+                                <select
+                                  value={order.status}
+                                  onChange={(e) =>
+                                    handleUpdateOrderStatus(order.id, e.target.value as Order['status'])
+                                  }
+                                  className={`text-xs font-bold px-2.5 py-1.5 rounded-full border outline-none cursor-pointer ${getBadgeColor(
+                                    order.status
+                                  )}`}
+                                >
+                                  <option value="En attente de virement">⏳ En attente de virement</option>
+                                  <option value="Paiement reçu">✅ Paiement reçu</option>
+                                  <option value="Expédiée">📦 Expédiée</option>
+                                  <option value="Livrée">✨ Livrée</option>
+                                  <option value="Annulée">❌ Annulée</option>
+                                </select>
+                              </td>
+                              <td className="py-3.5 px-4 text-center">
+                                <div className="flex items-center justify-center gap-1.5">
+                                  <button
+                                    type="button"
+                                    onClick={() => setSelectedOrder(order)}
+                                    title="Voir le récapitulatif complet"
+                                    className="p-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-200 rounded transition"
+                                  >
+                                    👁️
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleDeleteOrder(order.id)}
+                                    title="Supprimer la commande"
+                                    className="p-1.5 text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition"
+                                  >
+                                    🗑️
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Modal Détail Commande */}
+            {selectedOrder && (
+              <div
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                onClick={() => setSelectedOrder(null)}
+              >
+                <div
+                  className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-5 border border-stone-300 animate-fade-in"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex justify-between items-center pb-3 border-b border-stone-200">
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-stone-400">
+                        Détail de la commande
+                      </span>
+                      <h3 className="font-serif text-xl font-bold text-stone-900">
+                        {selectedOrder.id}
+                      </h3>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOrder(null)}
+                      className="text-stone-400 hover:text-stone-800 text-lg p-1"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="space-y-4 text-sm">
+                    {/* Infos Client */}
+                    <div className="bg-[#faf9f5] p-3.5 rounded-lg border border-[#e5dfd0]">
+                      <div className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+                        Coordonnées du Client
+                      </div>
+                      <div className="font-bold text-stone-900">{selectedOrder.customerName}</div>
+                      <div className="text-stone-600 text-xs mt-0.5">📧 {selectedOrder.customerEmail}</div>
+                      <div className="text-stone-600 text-xs mt-0.5">📞 {selectedOrder.customerPhone}</div>
+                      <div className="text-stone-600 text-xs mt-0.5">📍 {selectedOrder.customerAddress}</div>
+                    </div>
+
+                    {/* Produit & Paiement */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between py-2 border-b border-stone-100">
+                        <span className="text-stone-500">Article :</span>
+                        <span className="font-semibold text-stone-900">{selectedOrder.productName}</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b border-stone-100">
+                        <span className="text-stone-500">Moyen de règlement :</span>
+                        <span className="font-semibold text-stone-900">{selectedOrder.paymentMethod || 'Virement Bancaire'}</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b border-stone-100">
+                        <span className="text-stone-500">Date de passage :</span>
+                        <span className="text-stone-700">
+                          {new Date(selectedOrder.createdAt).toLocaleString('fr-FR')}
+                        </span>
+                      </div>
+                      <div className="flex justify-between py-2 text-base font-bold">
+                        <span className="text-stone-800 font-serif">Total à encaisser :</span>
+                        <span className="text-[#166534] font-serif text-lg">
+                          {Number(selectedOrder.totalPrice || 0).toLocaleString('fr-FR', {
+                            style: 'currency',
+                            currency: 'EUR',
+                          })}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Statut modifiable */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1.5">
+                        Changer le statut :
+                      </label>
+                      <select
+                        value={selectedOrder.status}
+                        onChange={(e) =>
+                          handleUpdateOrderStatus(selectedOrder.id, e.target.value as Order['status'])
+                        }
+                        className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm bg-white font-semibold outline-none focus:ring-2 focus:ring-[#b8c8a6]"
+                      >
+                        <option value="En attente de virement">⏳ En attente de virement</option>
+                        <option value="Paiement reçu">✅ Paiement reçu (Fonds vérifiés sur compte)</option>
+                        <option value="Expédiée">📦 Expédiée (Colis confié au transporteur)</option>
+                        <option value="Livrée">✨ Livrée au client</option>
+                        <option value="Annulée">❌ Annulée</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-stone-200 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOrder(null)}
+                      className="px-5 py-2 bg-[#20251f] text-white font-bold rounded-lg text-xs uppercase tracking-wider hover:bg-stone-800 transition"
+                    >
+                      Fermer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
