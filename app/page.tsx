@@ -197,44 +197,37 @@ export default function HomePage() {
         <div className="product-grid">
           {featuredProducts.map((product) => (
             <article className="product" key={product.id}>
-              <div className="product-image">
-                <ProductMediaCarousel
-                  media={product.media}
-                  images={product.images}
-                  fallbackImage={product.image}
-                  alt={product.name}
-                  showBadge={product.tag}
-                />
-                <div className="product-overlay-buttons">
-                  <button
-                    className="quick-add"
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    Ajouter au panier +
-                  </button>
-                  <button
-                    className="quick-buy"
-                    onClick={() => handleBuyNow(product)}
-                  >
-                    Acheter maintenant ⚡
-                  </button>
+              <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
+                <div className="product-image">
+                  <ProductMediaCarousel
+                    media={product.media}
+                    images={product.images}
+                    fallbackImage={product.image}
+                    alt={product.name}
+                    showBadge={product.tag}
+                  />
                 </div>
-              </div>
+              </Link>
               <div className="product-meta">
                 <div>
                   <span className="product-category-sub">{product.category}</span>
-                  <h3>{product.name}</h3>
+                  <h3>
+                    <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      {product.name}
+                    </Link>
+                  </h3>
                   <p>{product.type}</p>
                 </div>
                 <strong className="product-price-tag">{product.price}</strong>
               </div>
               <div className="product-card-cta">
-                <button
+                <Link
+                  href={`/produit/${product.id}`}
                   className="buy-now-card-btn"
-                  onClick={() => handleBuyNow(product)}
+                  style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
                 >
-                  Commander — {product.price} ⚡
-                </button>
+                  Découvrir le produit <span>→</span>
+                </Link>
                 <button
                   type="button"
                   className="add-cart-outline-btn"
@@ -310,26 +303,42 @@ export default function HomePage() {
         <div className="journal-grid">
           {noveltyItems.map(({ product, customLabel }) => (
             <article key={product.id}>
-              <ProductMediaCarousel
-                media={product.media}
-                images={product.images}
-                fallbackImage={product.image}
-                alt={product.name}
-                aspectRatio="16 / 11"
-                className="rounded-lg mb-3"
-              />
+              <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
+                <ProductMediaCarousel
+                  media={product.media}
+                  images={product.images}
+                  fallbackImage={product.image}
+                  alt={product.name}
+                  aspectRatio="16 / 11"
+                  className="rounded-lg mb-3"
+                />
+              </Link>
               <p className="eyebrow">{customLabel}</p>
-              <h3>{product.name}</h3>
+              <h3>
+                <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                  {product.name}
+                </Link>
+              </h3>
               <p style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.5rem' }}>
                 {product.type || product.description} · {product.price}
               </p>
-              <button
-                className="buy-now-card-btn"
-                onClick={() => handleBuyNow(product)}
-                style={{ marginTop: '0.5rem' }}
-              >
-                Acheter maintenant — {product.price}
-              </button>
+              <div style={{ display: 'flex', gap: '8px', marginTop: '0.5rem' }}>
+                <Link
+                  href={`/produit/${product.id}`}
+                  className="buy-now-card-btn"
+                  style={{ textAlign: 'center', flex: 1, background: 'var(--foreground)', color: 'var(--background)' }}
+                >
+                  Découvrir <span>→</span>
+                </Link>
+                <button
+                  type="button"
+                  className="add-cart-outline-btn"
+                  onClick={() => handleAddToCart(product)}
+                  style={{ padding: '8px 14px' }}
+                >
+                  Panier +
+                </button>
+              </div>
             </article>
           ))}
         </div>

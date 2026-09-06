@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
+import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
@@ -179,34 +180,26 @@ export default function BoutiquePage() {
             <div className="product-grid">
               {filteredProducts.map((product) => (
                 <article className="product boutique-product-card" key={product.id}>
-                  <div className="product-image">
-                    <ProductMediaCarousel
-                      media={product.media}
-                      images={product.images}
-                      fallbackImage={product.image}
-                      alt={product.name}
-                      showBadge={product.tag}
-                    />
-                    <div className="product-overlay-buttons">
-                      <button
-                        className="quick-add"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        Ajouter au panier +
-                      </button>
-                      <button
-                        className="quick-buy"
-                        onClick={() => handleBuyNow(product)}
-                      >
-                        Acheter maintenant ⚡
-                      </button>
+                  <Link href={`/produit/${product.id}`} className="block relative" style={{ cursor: 'pointer' }}>
+                    <div className="product-image">
+                      <ProductMediaCarousel
+                        media={product.media}
+                        images={product.images}
+                        fallbackImage={product.image}
+                        alt={product.name}
+                        showBadge={product.tag}
+                      />
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="product-meta">
                     <div>
                       <span className="product-category-sub">{product.category}</span>
-                      <h3>{product.name}</h3>
+                      <h3>
+                        <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                          {product.name}
+                        </Link>
+                      </h3>
                       <p className="product-desc">{product.description}</p>
                       <div className="product-rating">
                         <span className="stars">★★★★★</span>
@@ -217,12 +210,13 @@ export default function BoutiquePage() {
                   </div>
 
                   <div className="boutique-card-actions">
-                    <button
+                    <Link
+                      href={`/produit/${product.id}`}
                       className="buy-now-card-btn"
-                      onClick={() => handleBuyNow(product)}
+                      style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
                     >
-                      Commander — {product.price} ⚡
-                    </button>
+                      Découvrir le produit <span>→</span>
+                    </Link>
                     <button
                       className="add-cart-outline-btn"
                       onClick={() => handleAddToCart(product)}

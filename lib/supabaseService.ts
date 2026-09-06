@@ -42,6 +42,38 @@ export async function fetchProductsFromDb(): Promise<Product[] | null> {
   }
 }
 
+export async function fetchProductByIdFromDb(id: string): Promise<Product | null> {
+  if (!isSupabaseConfigured) return null
+  try {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('id', id)
+      .single()
+
+    if (error || !data) return null
+
+    return {
+      id: data.id,
+      name: data.name,
+      category: data.category,
+      type: data.type || '',
+      price: data.price,
+      rawPrice: Number(data.raw_price) || 0,
+      description: data.description || '',
+      image: data.image || '',
+      images: Array.isArray(data.images) ? data.images : [],
+      media: Array.isArray(data.media) ? data.media : [],
+      tag: data.tag || '',
+      rating: Number(data.rating) || 5.0,
+      reviewsCount: Number(data.reviews_count) || 1,
+    }
+  } catch (err) {
+    console.error('Erreur fetchProductByIdFromDb:', err)
+    return null
+  }
+}
+
 export async function saveProductToDb(product: Product): Promise<boolean> {
   try {
     const { error } = await supabase.from('products').upsert({
