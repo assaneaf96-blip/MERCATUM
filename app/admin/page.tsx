@@ -233,36 +233,74 @@ export default function AdminPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // --- Gestion du téléversement de fichiers multiples (Carrousel) ---
+  // --- Gestion du téléversement de photos (Local & Vercel sans serveur requis) ---
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (!files || files.length === 0) return
+    const fileList = e.target.files
+    if (!fileList || fileList.length === 0) return
 
     setUploading(true)
     setUploadError(null)
 
-    const formData = new FormData()
-    for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i])
-    }
-
     try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      })
+      const readFileAsDataUrl = (file: File): Promise<MediaItem> => {
+        return new Promise((resolve, reject) => {
+          const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(file.name)
+          
+          // Pour les images, compresser et redimensionner automatiquement si besoin
+          if (!isVideo) {
+            const img = new Image()
+            const reader = new FileReader()
+            reader.onload = (ev) => {
+              img.onload = () => {
+                const canvas = document.createElement('canvas')
+                let width = img.width
+                let height = img.height
+                const maxDimension = 1200
 
-      if (!res.ok) {
-        throw new Error(`Erreur du serveur (${res.status})`)
+                if (width > maxDimension || height > maxDimension) {
+                  if (width > height) {
+                    height = Math.round((height * maxDimension) / width)
+                    width = maxDimension
+                  } else {
+                    width = Math.round((width * maxDimension) / height)
+                    height = maxDimension
+                  }
+                }
+
+                canvas.width = width
+                canvas.height = height
+                const ctx = canvas.getContext('2d')
+                if (ctx) {
+                  ctx.drawImage(img, 0, 0, width, height)
+                  const compressedUrl = canvas.toDataURL('image/jpeg', 0.85)
+                  resolve({ url: compressedUrl, type: 'image' })
+                  return
+                }
+                resolve({ url: ev.target?.result as string, type: 'image' })
+              }
+              img.onerror = () => {
+                resolve({ url: ev.target?.result as string, type: 'image' })
+              }
+              img.src = ev.target?.result as string
+            }
+            reader.onerror = (error) => reject(error)
+            reader.readAsDataURL(file)
+          } else {
+            // Vidéos
+            const reader = new FileReader()
+            reader.onload = () => {
+              resolve({ url: reader.result as string, type: 'video' })
+            }
+            reader.onerror = (error) => reject(error)
+            reader.readAsDataURL(file)
+          }
+        })
       }
 
-      const data = await res.json()
-      if (data.files && data.files.length > 0) {
-        const newMedia: MediaItem[] = data.files.map((f: any) => ({
-          url: f.url,
-          type: f.type,
-        }))
+      const filesArray = Array.from(fileList)
+      const newMedia: MediaItem[] = await Promise.all(filesArray.map(readFileAsDataUrl))
 
+      if (newMedia.length > 0) {
         const currentMedia = formProduct.media || []
         const updatedMedia = [...currentMedia, ...newMedia]
         const updatedImages = updatedMedia.map((m) => m.url)
@@ -279,11 +317,11 @@ export default function AdminPage() {
           image: finalMainImage,
         })
 
-        showToast(`${newMedia.length} média(s) ajouté(s) au carrousel !`)
+        showToast(`${newMedia.length} photo(s) ajoutée(s) au carrousel !`)
       }
     } catch (err: any) {
-      console.error('Erreur upload:', err)
-      setUploadError("Impossible de téléverser les fichiers. Vérifiez leur taille et réessayez.")
+      console.error('Erreur lecture photo:', err)
+      setUploadError("Impossible de charger la photo. Essayez avec un fichier image standard (JPG, PNG, WebP).")
     } finally {
       setUploading(false)
       if (fileInputRef.current) {
