@@ -25,6 +25,8 @@ import {
   fetchOrdersFromDb,
   updateOrderStatusInDb,
   deleteOrderFromDb,
+  saveProductToDb,
+  deleteProductFromDb,
 } from '@/lib/supabaseService'
 import { type Product, type MediaItem, CATEGORIES } from '@/lib/products'
 
@@ -423,6 +425,9 @@ export default function AdminPage() {
     }
 
     saveProduct(productToSave)
+    saveProductToDb(productToSave).catch((err) =>
+      console.warn('Erreur synchro Supabase produit:', err)
+    )
 
     // Si on a cliqué sur "+ Créer un produit pour les Nouveautés"
     if (addToNouveautesOnSave) {
@@ -447,6 +452,9 @@ export default function AdminPage() {
 
   const handleDeleteProduct = (id: string) => {
     deleteProduct(id)
+    deleteProductFromDb(id).catch((err) =>
+      console.warn('Erreur suppression Supabase produit:', err)
+    )
     const updatedNouveautes = nouveautes.filter((n) => n.productId !== id)
     saveNouveautes(updatedNouveautes)
     setDeleteId(null)
