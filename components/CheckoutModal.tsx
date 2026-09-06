@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { Product } from '@/lib/products'
-import { getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { getSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
+import { createOrderInDb } from '@/lib/supabaseService'
 
 interface CheckoutModalProps {
   product: Product | null
@@ -38,6 +39,34 @@ export default function CheckoutModal({ product, onClose, onSuccess }: CheckoutM
     const ref = `ML-${randomNum}`
     setOrderRef(ref)
     setConfirmed(true)
+
+    // Enregistrer la commande dans le store local & Supabase
+    const newOrder = {
+      id: ref,
+      customerName: fullName,
+      customerEmail: email,
+      customerPhone: phone,
+      customerAddress: address,
+      productId: product.id,
+      productName: `${quantity}x ${product.name}`,
+      totalPrice: product.rawPrice * quantity,
+      currency: 'EUR',
+      paymentMethod: 'Virement Bancaire',
+      status: 'En attente de virement' as const,
+      createdAt: new Date().toISOString(),
+    }
+    saveOrder(newOrder)
+    createOrderInDb({
+      id: ref,
+      customerName: fullName,
+      customerEmail: email,
+      customerPhone: phone,
+      customerAddress: address,
+      productId: product.id,
+      productName: `${quantity}x ${product.name}`,
+      totalPrice: product.rawPrice * quantity,
+    }).catch((err) => console.warn('Erreur Supabase sync order:', err))
+
     onSuccess(product)
 
     // Événements de conversion pour les pixels publicitaires
