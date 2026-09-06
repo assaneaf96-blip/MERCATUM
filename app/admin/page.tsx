@@ -27,6 +27,7 @@ import {
   deleteOrderFromDb,
   saveProductToDb,
   deleteProductFromDb,
+  fetchProductsFromDb,
 } from '@/lib/supabaseService'
 import { type Product, type MediaItem, CATEGORIES } from '@/lib/products'
 
@@ -122,11 +123,25 @@ export default function AdminPage() {
   }
 
   const reloadData = useCallback(async () => {
-    setProducts(getProducts())
+    const localProducts = getProducts()
+    setProducts(localProducts)
     setNouveautes(getNouveautes())
     setSettings(getSiteSettings())
     const localOrders = getOrders()
     setOrders(localOrders)
+
+    // Charger les produits les plus récents depuis Supabase
+    try {
+      const dbProducts = await fetchProductsFromDb()
+      if (dbProducts && dbProducts.length > 0) {
+        const mergedMap = new Map<string, Product>()
+        localProducts.forEach((p) => mergedMap.set(p.id, p))
+        dbProducts.forEach((p) => mergedMap.set(p.id, p))
+        setProducts(Array.from(mergedMap.values()))
+      }
+    } catch {
+      // Garder les produits locaux
+    }
 
     // Tenter de charger les commandes les plus récentes depuis Supabase
     try {

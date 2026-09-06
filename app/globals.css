@@ -144,9 +144,355 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 .footer-col span { color: #8e9589; font-size: 11px; }
 .footer-bottom { grid-column: 1 / -1; border-top: 1px solid #383d35; padding-top: 25px; margin-top: 20px; color: #777d73; font-size: 11px; text-align: center; }
 
+/* Mobile Navigation & Header Enhancements */
+.menu-icon-bars {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 16px;
+  height: 12px;
+}
+.menu-icon-bars .bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.menu-icon-bars .bar-open-1 {
+  transform: translateY(2.8px) rotate(45deg);
+}
+.menu-icon-bars .bar-open-2 {
+  transform: translateY(-2.8px) rotate(-45deg);
+}
+
 @media (max-width: 900px) {
   .values-grid, .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
   .site-footer { grid-template-columns: 1fr; gap: 30px; }
   .boutique-hero h1 { font-size: 42px; }
 }
-@media (max-width: 700px) { .site-header { padding: 18px 20px; }.menu-button { display: block; }.nav { display: none; position: absolute; z-index: 2; top: 62px; left: 0; right: 0; padding: 20px; background: var(--background); flex-direction: column; border-bottom: 1px solid var(--border); }.nav-open { display: flex; }.header-actions button:first-child { display: none; }.header-actions { gap: 0; }.hero { display: flex; flex-direction: column-reverse; }.hero-image { min-height: 440px; }.hero-copy { padding: 65px 24px 75px; }.hero-text { font-size: 14px; }.manifesto { padding: 80px 24px; }.products-section, .journal { padding: 75px 20px; }.section-heading { display: block; }.section-heading .text-link { margin-top: 20px; }.section-heading h2 { font-size: 45px; }.product-grid, .journal-grid, .story { grid-template-columns: 1fr; }.product-image { height: 390px; }.story-image { min-height: 430px; }.story-copy { padding: 75px 24px; }.journal-grid img { height: 330px; } footer { grid-template-columns: 1fr 1fr; padding: 45px 20px 25px; } footer .brand { grid-column: 1 / -1; } }
+
+@media (max-width: 768px) {
+  /* 1. Header & Brand on Mobile: ZERO OVERLAP */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    position: relative;
+  }
+  .menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 11px;
+    letter-spacing: .08em;
+    font-weight: 600;
+  }
+  .brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 21px;
+    letter-spacing: -.03em;
+    z-index: 5;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    z-index: 10;
+  }
+  /* CRITICAL: Hide desktop 'Acheter maintenant' button in mobile header bar */
+  .header-buy-btn {
+    display: none !important;
+  }
+  .header-cart-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: .06em;
+    border-radius: 20px;
+    background: #20251f;
+    color: #f4f0e9;
+    border: none;
+  }
+  
+  /* Mobile Menu Drawer */
+  .nav {
+    display: none;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    z-index: 99;
+    padding: 30px 24px 40px;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    overflow-y: auto;
+  }
+  .nav-open {
+    display: flex;
+  }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .mobile-nav-links .nav-link {
+    font-size: 18px;
+    font-family: Georgia, serif;
+    letter-spacing: -.02em;
+  }
+  .mobile-nav-cta {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .mobile-menu-buy-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    font-size: 11px;
+  }
+
+  /* 2. Hero Section on Mobile: Clean, Prominent & High Converting */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+  .hero-copy {
+    padding: 36px 20px 28px;
+    align-items: flex-start;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: .12em;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.0;
+    margin-bottom: 16px;
+    letter-spacing: -.04em;
+  }
+  .hero-text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: #555953;
+    max-width: 100%;
+  }
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-cta-group .button {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 11px;
+    text-align: center;
+  }
+  .hero-image {
+    min-height: 280px;
+    max-height: 360px;
+    margin: 0 16px 28px;
+    border-radius: 4px;
+  }
+
+  /* 3. Values Section on Mobile */
+  .values-section {
+    padding: 36px 18px;
+  }
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .value-card {
+    padding: 20px 16px;
+    background: #e5ded3;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+  .value-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  /* 4. Manifesto on Mobile */
+  .manifesto {
+    padding: 50px 20px;
+  }
+  .manifesto h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .manifesto > p:not(.eyebrow) {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  /* 5. Products Grid on Mobile */
+  .products-section, .journal {
+    padding: 50px 18px;
+  }
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .section-heading h2 {
+    font-size: clamp(30px, 8vw, 40px);
+    line-height: 1.1;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .product-image {
+    height: 380px;
+    border-radius: 4px;
+  }
+  .product-overlay-buttons {
+    display: none; /* In touch screens, use visible card buttons */
+  }
+  .product-card-cta {
+    margin-top: 14px;
+  }
+  .buy-now-card-btn {
+    padding: 14px 16px;
+    font-size: 11px;
+    letter-spacing: .08em;
+    background: var(--foreground);
+    color: var(--background);
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* 6. Story on Mobile */
+  .story {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+  .story-image {
+    min-height: 280px;
+    max-height: 340px;
+  }
+  .story-copy {
+    padding: 45px 20px;
+  }
+  .story-copy h2 {
+    font-size: 32px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  /* 7. Journal & Testimonials on Mobile */
+  .journal-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .journal-grid article img {
+    height: 260px;
+    margin-bottom: 16px;
+  }
+  .journal-grid h3 {
+    font-size: 22px;
+  }
+  .testimonials-section {
+    padding: 50px 18px;
+  }
+  .testimonial-card {
+    padding: 24px 20px;
+  }
+
+  /* 8. Newsletter & Footer on Mobile */
+  .newsletter {
+    padding: 60px 20px;
+  }
+  .newsletter h2 {
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+  .newsletter form {
+    flex-direction: column;
+    border-bottom: 0;
+    gap: 12px;
+  }
+  .newsletter input {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+  }
+  .newsletter button {
+    background: var(--background);
+    color: var(--foreground);
+    padding: 14px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 45px 20px 25px;
+  }
+
+  /* 9. Boutique Page on Mobile */
+  .boutique-hero {
+    padding: 45px 18px 30px;
+  }
+  .boutique-hero h1 {
+    font-size: 38px;
+  }
+  .boutique-controls-section {
+    padding: 16px 14px;
+  }
+  .search-sort-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .search-box {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .sort-box {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .sort-box select {
+    flex: 1;
+  }
+  .boutique-grid-section {
+    padding: 28px 16px 60px;
+  }
+  .boutique-card-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .boutique-card-actions .button,
+  .boutique-card-actions .add-cart-outline-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+

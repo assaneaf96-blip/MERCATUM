@@ -233,7 +233,14 @@ export default function HomePage() {
                   className="buy-now-card-btn"
                   onClick={() => handleBuyNow(product)}
                 >
-                  Acheter maintenant — {product.price}
+                  Commander — {product.price} ⚡
+                </button>
+                <button
+                  type="button"
+                  className="add-cart-outline-btn"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  Ajouter au panier +
                 </button>
               </div>
             </article>

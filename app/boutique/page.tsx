@@ -221,14 +221,14 @@ export default function BoutiquePage() {
                       className="buy-now-card-btn"
                       onClick={() => handleBuyNow(product)}
                     >
-                      Acheter maintenant — {product.price}
+                      Commander — {product.price} ⚡
                     </button>
                     <button
                       className="add-cart-outline-btn"
                       onClick={() => handleAddToCart(product)}
-                      title="Ajouter au panier"
+                      aria-label="Ajouter au panier"
                     >
-                      🛒
+                      Ajouter au panier +
                     </button>
                   </div>
                 </article>
