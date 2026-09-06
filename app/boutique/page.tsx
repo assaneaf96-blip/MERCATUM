@@ -7,6 +7,7 @@ import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product } from '@/lib/products'
 import { getProducts } from '@/lib/store'
+import { fetchProductsFromDb } from '@/lib/supabaseService'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -18,7 +19,17 @@ export default function BoutiquePage() {
   const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {
-    setProductsList(getProducts())
+    const localProducts = getProducts()
+    setProductsList(localProducts)
+
+    fetchProductsFromDb().then((dbProducts) => {
+      if (dbProducts && dbProducts.length > 0) {
+        const merged = new Map<string, Product>()
+        localProducts.forEach((p) => merged.set(p.id, p))
+        dbProducts.forEach((p) => merged.set(p.id, p))
+        setProductsList(Array.from(merged.values()))
+      }
+    }).catch(() => {})
   }, [])
 
   const categories = useMemo(() => {
