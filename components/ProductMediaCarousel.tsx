@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { MediaItem } from '@/lib/products'
+import { useState, useEffect } from 'react'
+import { MediaItem, isVideoUrl } from '@/lib/products'
 
 interface ProductMediaCarouselProps {
   media?: MediaItem[]
@@ -22,22 +22,49 @@ export default function ProductMediaCarousel({
   aspectRatio = '1 / 1',
   showBadge,
 }: ProductMediaCarouselProps) {
-  // Construire la liste unifiée des éléments médias
+  // Construire la liste unifiée des éléments médias sans doublons
   const items: MediaItem[] = []
+  const seenUrls = new Set<string>()
+
+  const addItem = (url: string, explicitType?: 'image' | 'video') => {
+    if (!url || seenUrls.has(url)) return
+    seenUrls.add(url)
+    const isVideo = explicitType === 'video' || isVideoUrl(url)
+    items.push({ url, type: isVideo ? 'video' : 'image' })
+  }
 
   if (media && media.length > 0) {
-    items.push(...media)
-  } else if (images && images.length > 0) {
-    images.forEach((url) => {
-      const isVideo = /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(url)
-      items.push({ url, type: isVideo ? 'video' : 'image' })
-    })
-  } else if (fallbackImage) {
-    const isVideo = /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(fallbackImage)
-    items.push({ url: fallbackImage, type: isVideo ? 'video' : 'image' })
+    media.forEach((m) => addItem(m.url, m.type))
+  }
+  if (fallbackImage) {
+    addItem(fallbackImage)
+  }
+  if (images && images.length > 0) {
+    images.forEach((img) => addItem(img))
   }
 
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  const hasMultiple = items.length > 1
+
+  const [touchStartX, setTouchStartX] = useState<number | null>(null)
+
+  // Défilement automatique toutes les 3.5 secondes si plus d'une image
+  useEffect(() => {
+    if (!hasMultiple || isPaused) return
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length)
+    }, 3500)
+    return () => clearInterval(interval)
+  }, [hasMultiple, isPaused, items.length])
+
+  // Sécurité pour réinitialiser l'index si la liste des photos change
+  useEffect(() => {
+    if (currentIndex >= items.length && items.length > 0) {
+      setCurrentIndex(0)
+    }
+  }, [items.length, currentIndex])
 
   // Si aucun média
   if (items.length === 0) {
@@ -52,17 +79,20 @@ export default function ProductMediaCarousel({
   }
 
   const currentItem = items[currentIndex] || items[0]
-  const hasMultiple = items.length > 1
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    e.preventDefault()
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+      e.preventDefault()
+    }
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1))
   }
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    e.preventDefault()
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation()
+      e.preventDefault()
+    }
     setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1))
   }
 
@@ -72,10 +102,44 @@ export default function ProductMediaCarousel({
     setCurrentIndex(idx)
   }
 
+  // Gestion tactile mobile (swipe et pause sans blocage)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX)
+    setIsPaused(true)
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX !== null && items.length > 1) {
+      const touchEndX = e.changedTouches[0].clientX
+      const diff = touchStartX - touchEndX
+      if (diff > 35) {
+        handleNext()
+      } else if (diff < -35) {
+        handlePrev()
+      }
+    }
+    setTouchStartX(null)
+    setTimeout(() => setIsPaused(false), 2500)
+  }
+
+  const handleMouseEnter = () => {
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
+      setIsPaused(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    setIsPaused(false)
+  }
+
   return (
     <div
       className={`relative overflow-hidden group bg-[#eadecc] ${className}`}
       style={{ aspectRatio }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Média actuel (Image ou Vidéo) */}
       {currentItem.type === 'video' ? (
@@ -90,7 +154,7 @@ export default function ProductMediaCarousel({
       ) : (
         <img
           src={currentItem.url}
-          alt={`${alt} - vue ${currentIndex + 1}`}
+          alt={`${alt} - vue ${currentIndex + 1} sur ${items.length}`}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           onError={(e) => {
             ;(e.target as HTMLImageElement).src = '/placeholder.svg'
@@ -124,7 +188,7 @@ export default function ProductMediaCarousel({
           </button>
 
           {/* Indicateurs / Puces */}
-          <div className="absolute bottom-2 left-0 right-0 z-10 flex justify-center items-center gap-1.5 pointer-events-none">
+          <div className="absolute bottom-2 left-0 right-0 z-10 flex justify-center items-center gap-1.5 px-2 flex-wrap max-w-[90%] mx-auto pointer-events-none">
             {items.map((item, idx) => (
               <button
                 key={idx}
@@ -140,8 +204,8 @@ export default function ProductMediaCarousel({
             ))}
           </div>
 
-          {/* Compteur discret */}
-          <div className="absolute top-2 right-2 z-10 text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/50 text-white pointer-events-none">
+          {/* Compteur de photos visible et précis */}
+          <div className="absolute top-2 right-2 z-10 text-[11px] font-bold px-2 py-0.5 rounded bg-black/65 text-white pointer-events-none backdrop-blur-sm shadow-sm">
             {currentIndex + 1}/{items.length} {currentItem.type === 'video' ? '🎬' : '📷'}
           </div>
         </>

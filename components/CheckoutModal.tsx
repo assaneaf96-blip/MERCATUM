@@ -1,27 +1,38 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Product } from '@/lib/products'
-import { getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { Product, isVideoUrl } from '@/lib/products'
+import { getSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
+import { createOrderInDb } from '@/lib/supabaseService'
 
 interface CheckoutModalProps {
   product: Product | null
+  initialQuantity?: number
   onClose: () => void
   onSuccess: (product: Product) => void
 }
 
-export default function CheckoutModal({ product, onClose, onSuccess }: CheckoutModalProps) {
+export default function CheckoutModal({
+  product,
+  initialQuantity = 1,
+  onClose,
+  onSuccess,
+}: CheckoutModalProps) {
   const [confirmed, setConfirmed] = useState(false)
-  const [quantity, setQuantity] = useState(1)
-  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
-  const [copied, setCopied] = useState(false)
-  const [orderRef, setOrderRef] = useState('')
-
-  // Form states
+  const [quantity, setQuantity] = useState(initialQuantity)
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
+  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
+  const [copied, setCopied] = useState(false)
+  const [orderRef, setOrderRef] = useState('')
+
+  useEffect(() => {
+    if (initialQuantity) {
+      setQuantity(initialQuantity)
+    }
+  }, [initialQuantity, product])
 
   useEffect(() => {
     setSettings(getSiteSettings())
@@ -38,6 +49,34 @@ export default function CheckoutModal({ product, onClose, onSuccess }: CheckoutM
     const ref = `ML-${randomNum}`
     setOrderRef(ref)
     setConfirmed(true)
+
+    // Enregistrer la commande dans le store local & Supabase
+    const newOrder = {
+      id: ref,
+      customerName: fullName,
+      customerEmail: email,
+      customerPhone: phone,
+      customerAddress: address,
+      productId: product.id,
+      productName: `${quantity}x ${product.name}`,
+      totalPrice: product.rawPrice * quantity,
+      currency: 'EUR',
+      paymentMethod: 'Virement Bancaire',
+      status: 'En attente de virement' as const,
+      createdAt: new Date().toISOString(),
+    }
+    saveOrder(newOrder)
+    createOrderInDb({
+      id: ref,
+      customerName: fullName,
+      customerEmail: email,
+      customerPhone: phone,
+      customerAddress: address,
+      productId: product.id,
+      productName: `${quantity}x ${product.name}`,
+      totalPrice: product.rawPrice * quantity,
+    }).catch((err) => console.warn('Erreur Supabase sync order:', err))
+
     onSuccess(product)
 
     // Événements de conversion pour les pixels publicitaires
@@ -241,13 +280,24 @@ export default function CheckoutModal({ product, onClose, onSuccess }: CheckoutM
             <h3 className="modal-title">Commander cet article</h3>
 
             <div className="modal-product-summary">
-              <img
-                src={product.image}
-                alt={product.name}
-                onError={(e) => {
-                  ;(e.target as HTMLImageElement).src = '/placeholder.svg'
-                }}
-              />
+              {isVideoUrl(product.image) ? (
+                <video
+                  src={product.image}
+                  className="w-16 h-16 rounded object-cover flex-shrink-0"
+                  muted
+                  playsInline
+                  autoPlay
+                  loop
+                />
+              ) : (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  onError={(e) => {
+                    ;(e.target as HTMLImageElement).src = '/placeholder.svg'
+                  }}
+                />
+              )}
               <div className="flex-1">
                 <h4>{product.name}</h4>
                 <p>{product.type}</p>

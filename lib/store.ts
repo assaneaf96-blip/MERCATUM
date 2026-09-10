@@ -34,25 +34,41 @@ export interface NewItem {
   customLabel?: string
 }
 
+export interface Order {
+  id: string
+  customerName: string
+  customerEmail: string
+  customerPhone: string
+  customerAddress: string
+  productId?: string
+  productName?: string
+  totalPrice: number
+  currency?: string
+  paymentMethod?: string
+  status: 'En attente de virement' | 'Paiement reçu' | 'Expédiée' | 'Livrée' | 'Annulée'
+  createdAt: string
+}
+
 const STORAGE_KEYS = {
   PRODUCTS: 'ml_admin_products',
   DELETED_PRODUCTS: 'ml_admin_deleted_products',
   NOUVEAUTES: 'ml_admin_nouveautes',
   SETTINGS: 'ml_admin_settings',
   AUTH: 'ml_admin_auth',
+  ORDERS: 'ml_admin_orders',
 }
 
 export const DEFAULT_SETTINGS: SiteSettings = {
-  siteName: 'Maison Lune',
-  announcement: 'Livraison offerte dès 60 € · Idôle Now 100ml à 100,00 € — Nouveauté exclusive !',
-  heroTitle: 'La Jeunesse, sublimée.',
-  heroSubtitle: "Des soins anti-âge d'exception, formulés avec les actifs botaniques les plus précieux et concentrés. Une efficacité prouvée pour révéler l'éclat et la fermeté de votre peau.",
+  siteName: 'MERCATUM',
+  announcement: 'Art de Vivre & Sanctuaire Intérieur · Livraison offerte dès 150 €',
+  heroTitle: "Le Luxe d'habiter son quotidien.",
+  heroSubtitle: "Un espace raffiné où vivre en harmonie. Des pièces de mobilier et des rituels de soin d'exception conçus pour sublimer votre intérieur et prendre soin de votre corps chaque jour.",
   contactPhone: '+33 1 42 56 12 00',
   contactAddress: '24 avenue Montaigne, 75008 Paris, France',
-  contactEmail: 'contact@maisonlune.fr',
+  contactEmail: 'contact@mercatum.fr',
   contactHours: 'Lundi – Vendredi : 10h – 19h · Samedi : 10h – 17h',
   bankName: 'BNP Paribas Private Banking',
-  bankAccountHolder: 'Maison Lune Paris SAS',
+  bankAccountHolder: 'MERCATUM SAS',
   bankIban: 'FR76 3000 4001 2345 6789 0123 456',
   bankSwift: 'BNPAFR2PXXX',
   bankInstructions: 'Veuillez mentionner votre référence de commande en motif de virement.',
@@ -97,9 +113,31 @@ export function getDeletedProductIds(): string[] {
 export function getProducts(): Product[] {
   const adminProducts = safeRead<Product[]>(STORAGE_KEYS.PRODUCTS, [])
   const deletedIds = new Set(getDeletedProductIds())
-  const adminIds = new Set(adminProducts.map((p) => p.id))
+  
+  // Si DEFAULT_PRODUCTS a plus d'images pour un produit, toujours préserver la liste complète
+  const defaultMap = new Map<string, Product>()
+  DEFAULT_PRODUCTS.forEach((p) => defaultMap.set(p.id, p))
+
+  const enhancedAdmin = adminProducts.map((ap) => {
+    const def = defaultMap.get(ap.id)
+    if (def) {
+      const defImgs = (def.images?.length || 0) + (def.media?.length || 0)
+      const apImgs = (ap.images?.length || 0) + (ap.media?.length || 0)
+      if (defImgs > apImgs) {
+        return {
+          ...ap,
+          images: def.images && def.images.length > 0 ? def.images : ap.images,
+          media: def.media && def.media.length > 0 ? def.media : ap.media,
+          image: def.image || ap.image,
+        }
+      }
+    }
+    return ap
+  })
+
+  const adminIds = new Set(enhancedAdmin.map((p) => p.id))
   const base = DEFAULT_PRODUCTS.filter((p) => !adminIds.has(p.id) && !deletedIds.has(p.id))
-  return [...base, ...adminProducts].filter((p) => !deletedIds.has(p.id))
+  return [...base, ...enhancedAdmin].filter((p) => !deletedIds.has(p.id))
 }
 
 /** Retourne uniquement les produits personnalisés ou modifiés par l'admin */
@@ -121,6 +159,37 @@ export function saveProduct(product: Product): void {
     products.push(product)
   }
   safeWrite(STORAGE_KEYS.PRODUCTS, products)
+}
+
+/** Met à jour plusieurs produits en cache local */
+export function saveProductsBulk(items: Product[]): void {
+  if (!Array.isArray(items) || items.length === 0) return
+  try {
+    const products = getAdminProducts()
+    const map = new Map<string, Product>()
+    products.forEach((p) => map.set(p.id, p))
+    items.forEach((p) => {
+      const existing = map.get(p.id)
+      if (existing) {
+        const existImgs = (existing.images?.length || 0) + (existing.media?.length || 0)
+        const newImgs = (p.images?.length || 0) + (p.media?.length || 0)
+        if (existImgs > newImgs) {
+          map.set(p.id, {
+            ...p,
+            images: existing.images && existing.images.length > 0 ? existing.images : p.images,
+            media: existing.media && existing.media.length > 0 ? existing.media : p.media,
+            image: existing.image || p.image,
+          })
+          return
+        }
+      }
+      map.set(p.id, p)
+    })
+    const list = Array.from(map.values())
+    safeWrite(STORAGE_KEYS.PRODUCTS, list)
+  } catch (err) {
+    console.warn('saveProductsBulk error:', err)
+  }
 }
 
 /** Supprime un produit (qu'il soit par défaut ou créé par l'admin) */
@@ -176,6 +245,84 @@ export function getSiteSettings(): SiteSettings {
 
 export function saveSiteSettings(settings: SiteSettings): void {
   safeWrite(STORAGE_KEYS.SETTINGS, settings)
+}
+
+// ─────────────────────────────────────────────
+// TABLEAU DE VENTES & COMMANDES
+// ─────────────────────────────────────────────
+
+const DEFAULT_ORDERS: Order[] = [
+  {
+    id: 'ML-849201',
+    customerName: 'Éléonore de Montmirail',
+    customerEmail: 'eleonore.montmirail@gmail.com',
+    customerPhone: '+33 6 12 34 56 78',
+    customerAddress: '14 rue de Rivoli, 75004 Paris',
+    productId: 'creme-supreme-anti-age',
+    productName: 'Crème Suprême Jeunesse Absolue',
+    totalPrice: 125.00,
+    currency: 'EUR',
+    paymentMethod: 'Virement Bancaire',
+    status: 'Paiement reçu',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 4).toISOString(),
+  },
+  {
+    id: 'ML-932145',
+    customerName: 'Camille Laurent',
+    customerEmail: 'camille.laurent@outlook.fr',
+    customerPhone: '+33 7 89 01 23 45',
+    customerAddress: '8 place Bellecour, 69002 Lyon',
+    productId: 'idole-now-lancome',
+    productName: 'Idôle Now — Lancôme Paris',
+    totalPrice: 98.00,
+    currency: 'EUR',
+    paymentMethod: 'Virement Bancaire',
+    status: 'En attente de virement',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+  },
+  {
+    id: 'ML-715309',
+    customerName: 'Alexandre Beaulieu',
+    customerEmail: 'a.beaulieu@free.fr',
+    customerPhone: '+33 6 98 76 54 32',
+    customerAddress: '27 boulevard de la Croisette, 06400 Cannes',
+    productId: 'serum-eclat-botanique',
+    productName: 'Sérum Infusion Régénérant Nuit',
+    totalPrice: 95.00,
+    currency: 'EUR',
+    paymentMethod: 'Virement Bancaire',
+    status: 'Expédiée',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 28).toISOString(),
+  }
+]
+
+export function getOrders(): Order[] {
+  return safeRead<Order[]>(STORAGE_KEYS.ORDERS, DEFAULT_ORDERS)
+}
+
+export function saveOrder(order: Order): void {
+  const orders = getOrders()
+  const idx = orders.findIndex((o) => o.id === order.id)
+  if (idx >= 0) {
+    orders[idx] = order
+  } else {
+    orders.unshift(order)
+  }
+  safeWrite(STORAGE_KEYS.ORDERS, orders)
+}
+
+export function updateOrderStatus(id: string, status: Order['status']): void {
+  const orders = getOrders()
+  const target = orders.find((o) => o.id === id)
+  if (target) {
+    target.status = status
+    safeWrite(STORAGE_KEYS.ORDERS, orders)
+  }
+}
+
+export function deleteOrder(id: string): void {
+  const orders = getOrders().filter((o) => o.id !== id)
+  safeWrite(STORAGE_KEYS.ORDERS, orders)
 }
 
 // ─────────────────────────────────────────────

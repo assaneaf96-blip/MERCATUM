@@ -5,8 +5,8 @@ import PixelTracker from '@/components/PixelTracker'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Maison Lune — Le beau, simplement',
-  description: 'Soins, parfums et objets essentiels fabriqués en France avec soin.',
+  title: "MERCATUM — L'Art de Vivre & Sanctuaire Intérieur",
+  description: "Mobilier de créateur, rituels de soin d'exception et art de vivre pour la maison et le corps.",
   generator: 'v0.app',
 }
 

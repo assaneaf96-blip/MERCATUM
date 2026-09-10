@@ -14,24 +14,24 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-brand-block">
-        <Link href="/" className="brand-footer">{settings.siteName || 'Maison Lune'}</Link>
-        <p>Haute Cosmétique Botanique, soins anti-âge d'exception et parfums précieux fabriqués à Paris.</p>
+        <Link href="/" className="brand-footer">{settings.siteName || 'MERCATUM'}</Link>
+        <p>Art de Vivre, mobilier d&apos;exception et rituels de soin pour le corps et la maison. Conçu pour cultiver votre bien-être au quotidien.</p>
       </div>
 
       <div className="footer-col">
         <h4>Navigation</h4>
         <Link href="/">Accueil</Link>
         <Link href="/boutique">La Boutique</Link>
-        <Link href="/#histoire">L'Excellence de Formulation</Link>
+        <Link href="/#histoire">Notre Philosophie</Link>
         <Link href="/#nouveautes">Nouveautés</Link>
       </div>
 
       <div className="footer-col">
         <h4>Engagements</h4>
-        <span>100% Ingrédients d'Origine Naturelle</span>
-        <span>Formulation Artisanale Française</span>
-        <span>Emballages Recyclables & Rechargeables</span>
-        <span>Zéro Cruauté Animale</span>
+        <span>Design Durable &amp; Matières Nobles</span>
+        <span>Rituels de Bien-Être Quotidiens</span>
+        <span>Objets &amp; Formulations d&apos;Exception</span>
+        <span>Expédition Soignée &amp; Service Sur-Mesure</span>
       </div>
 
       <div className="footer-col">
@@ -47,7 +47,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <small>© 2026 {settings.siteName || 'Maison Lune'} · Paris. Tous droits réservés.</small>
+        <small>© 2026 {settings.siteName || 'MERCATUM'}. Tous droits réservés.</small>
       </div>
     </footer>
   )

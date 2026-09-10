@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -61,7 +61,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               Espace Admin
             </h1>
             <p style={{fontSize:'0.75rem',color:'#b8c8a6',letterSpacing:'0.1em',textTransform:'uppercase'}}>
-              Maison Lune Paris
+              MERCATUM Paris
             </p>
           </div>
 

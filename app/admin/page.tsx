@@ -12,12 +12,36 @@ import {
   saveNouveautes,
   getSiteSettings,
   saveSiteSettings,
+  getOrders,
+  updateOrderStatus,
+  deleteOrder,
   logoutAdmin,
   changeAdminPassword,
   type SiteSettings,
   type NewItem,
+  type Order,
 } from '@/lib/store'
-import { type Product, type MediaItem, CATEGORIES } from '@/lib/products'
+import {
+  fetchOrdersFromDb,
+  updateOrderStatusInDb,
+  deleteOrderFromDb,
+  saveProductToDb,
+  saveProductToDbDetailed,
+  deleteProductFromDb,
+  fetchProductsFromDb,
+  fetchNouveautesFromDb,
+  saveNouveautesToDb,
+} from '@/lib/supabaseService'
+import {
+  type Product,
+  type MediaItem,
+  type VolumeOption,
+  CATEGORIES,
+  extractContenance,
+  extractVolumes,
+  getCleanDescription,
+  isVideoUrl,
+} from '@/lib/products'
 
 function slugify(str: string): string {
   return str
@@ -41,13 +65,21 @@ function emptyProduct(): Product {
     images: [],
     media: [],
     tag: '',
+    contenance: '',
+    volumes: [],
     rating: 5.0,
     reviewsCount: 1,
   }
 }
 
 export default function AdminPage() {
-  const [tab, setTab] = useState<'boutique' | 'nouveautes' | 'parametres'>('boutique')
+  const [tab, setTab] = useState<'boutique' | 'nouveautes' | 'parametres' | 'ventes'>('boutique')
+
+  // Orders / Ventes state
+  const [orders, setOrders] = useState<Order[]>([])
+  const [orderSearch, setOrderSearch] = useState('')
+  const [orderStatusFilter, setOrderStatusFilter] = useState('Tous')
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
 
   // Products state
   const [products, setProducts] = useState<Product[]>([])
@@ -59,6 +91,8 @@ export default function AdminPage() {
   const [deleteId, setDeleteId] = useState<string | null>(null)
   const [showResetConfirm, setShowResetConfirm] = useState(false)
   const [addToNouveautesOnSave, setAddToNouveautesOnSave] = useState(false)
+  const [isSavingProduct, setIsSavingProduct] = useState(false)
+  const [isCustomCategory, setIsCustomCategory] = useState(false)
 
   // Upload state
   const [uploading, setUploading] = useState(false)
@@ -72,7 +106,7 @@ export default function AdminPage() {
 
   // Settings state (incluant coordonnées bancaires et pixels)
   const [settings, setSettings] = useState<SiteSettings>({
-    siteName: 'Maison Lune',
+    siteName: 'MERCATUM',
     announcement: '',
     heroTitle: '',
     heroSubtitle: '',
@@ -104,20 +138,111 @@ export default function AdminPage() {
     setTimeout(() => setToast(null), 3000)
   }
 
-  const reloadData = useCallback(() => {
-    setProducts(getProducts())
+  const reloadData = useCallback(async () => {
+    const localProducts = getProducts()
+    setProducts(localProducts)
     setNouveautes(getNouveautes())
     setSettings(getSiteSettings())
+    const localOrders = getOrders()
+    setOrders(localOrders)
+
+    // Charger les produits les plus récents depuis Supabase
+    try {
+      const dbProducts = await fetchProductsFromDb()
+      if (dbProducts && dbProducts.length > 0) {
+        const mergedMap = new Map<string, Product>()
+        localProducts.forEach((p) => mergedMap.set(p.id, p))
+        dbProducts.forEach((p) => mergedMap.set(p.id, p))
+        setProducts(Array.from(mergedMap.values()))
+      }
+    } catch {
+      // Garder les produits locaux
+    }
+
+    // Charger les nouveautés depuis Supabase Cloud
+    try {
+      const dbNouv = await fetchNouveautesFromDb()
+      if (dbNouv && dbNouv.length > 0) {
+        setNouveautes(dbNouv)
+        saveNouveautes(dbNouv)
+      }
+    } catch {
+      // Garder les nouveautés locales
+    }
+
+    // Tenter de charger les commandes les plus récentes depuis Supabase
+    try {
+      const dbOrders = await fetchOrdersFromDb()
+      if (dbOrders && dbOrders.length > 0) {
+        const mergedMap = new Map<string, Order>()
+        localOrders.forEach((o) => mergedMap.set(o.id, o))
+        dbOrders.forEach((item: any) => {
+          mergedMap.set(item.id, {
+            id: item.id,
+            customerName: item.customerName,
+            customerEmail: item.customerEmail,
+            customerPhone: item.customerPhone,
+            customerAddress: item.customerAddress,
+            productId: item.productId,
+            productName: item.productName,
+            totalPrice: item.totalPrice,
+            currency: item.currency || 'EUR',
+            paymentMethod: item.paymentMethod || 'Virement Bancaire',
+            status: item.status || 'En attente de virement',
+            createdAt: item.createdAt || new Date().toISOString(),
+          })
+        })
+        const finalOrders = Array.from(mergedMap.values()).sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+        setOrders(finalOrders)
+      }
+    } catch {
+      // Garder les commandes locales
+    }
   }, [])
 
   useEffect(() => {
     reloadData()
   }, [reloadData])
 
+  // --- Actions Commandes (Tableau de Vente) ---
+  const handleUpdateOrderStatus = async (id: string, newStatus: Order['status']) => {
+    updateOrderStatus(id, newStatus)
+    setOrders((prev) =>
+      prev.map((o) => (o.id === id ? { ...o, status: newStatus } : o))
+    )
+    if (selectedOrder && selectedOrder.id === id) {
+      setSelectedOrder({ ...selectedOrder, status: newStatus })
+    }
+    showToast(`Statut de la commande mis à jour : ${newStatus}`)
+    try {
+      await updateOrderStatusInDb(id, newStatus)
+    } catch (err) {
+      console.warn('Erreur synchro Supabase statut commande:', err)
+    }
+  }
+
+  const handleDeleteOrder = async (id: string) => {
+    if (!confirm(`Supprimer définitivement la commande ${id} ?`)) return
+    deleteOrder(id)
+    setOrders((prev) => prev.filter((o) => o.id !== id))
+    if (selectedOrder && selectedOrder.id === id) {
+      setSelectedOrder(null)
+    }
+    showToast(`Commande ${id} supprimée.`)
+    try {
+      await deleteOrderFromDb(id)
+    } catch (err) {
+      console.warn('Erreur suppression Supabase:', err)
+    }
+  }
+
   // --- Actions Produits ---
   const handleOpenNewProduct = (autoNouveaute = false) => {
     setFormProduct(emptyProduct())
     setIsEditing(false)
+    setIsCustomCategory(false)
     setAddToNouveautesOnSave(autoNouveaute)
     setShowForm(true)
     setShowUrlInput(false)
@@ -133,19 +258,25 @@ export default function AdminPage() {
       : p.images && p.images.length > 0
       ? p.images.map((url) => ({
           url,
-          type: /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(url) ? 'video' : 'image',
+          type: isVideoUrl(url) ? 'video' : 'image',
         }))
       : p.image
-      ? [{ url: p.image, type: /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(p.image) ? 'video' : 'image' }]
+      ? [{ url: p.image, type: isVideoUrl(p.image) ? 'video' : 'image' }]
       : []
 
+    const detectedContenance = p.contenance || extractContenance(p) || ''
+    const detectedVolumes = p.volumes && p.volumes.length > 0 ? p.volumes : extractVolumes(p)
     setFormProduct({
       ...p,
+      contenance: detectedContenance,
+      volumes: detectedVolumes,
+      description: getCleanDescription(p.description),
       media: mediaList,
       images: mediaList.map((m) => m.url),
     })
     setIsEditing(true)
-    setAddToNouveautesOnSave(false)
+    setIsCustomCategory(Boolean(p.category && !CATEGORIES.includes(p.category)))
+    setAddToNouveautesOnSave(nouveautes.some((n) => n.productId === p.id))
     setShowForm(true)
     setShowUrlInput(false)
     setManualUrl('')
@@ -153,36 +284,80 @@ export default function AdminPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // --- Gestion du téléversement de fichiers multiples (Carrousel) ---
+  // --- Gestion du téléversement de photos (Local & Vercel sans serveur requis) ---
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (!files || files.length === 0) return
+    const fileList = e.target.files
+    if (!fileList || fileList.length === 0) return
 
     setUploading(true)
     setUploadError(null)
 
-    const formData = new FormData()
-    for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i])
-    }
-
     try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      })
+      const readFileAsDataUrl = (file: File): Promise<MediaItem> => {
+        return new Promise((resolve, reject) => {
+          const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(file.name)
+          
+          // Pour les images, compresser et redimensionner automatiquement si besoin
+          if (!isVideo) {
+            const img = new Image()
+            const reader = new FileReader()
+            reader.onload = (ev) => {
+              img.onload = () => {
+                const canvas = document.createElement('canvas')
+                let width = img.width
+                let height = img.height
+                const maxDimension = 800
 
-      if (!res.ok) {
-        throw new Error(`Erreur du serveur (${res.status})`)
+                if (width > maxDimension || height > maxDimension) {
+                  if (width > height) {
+                    height = Math.round((height * maxDimension) / width)
+                    width = maxDimension
+                  } else {
+                    width = Math.round((width * maxDimension) / height)
+                    height = maxDimension
+                  }
+                }
+
+                canvas.width = width
+                canvas.height = height
+                const ctx = canvas.getContext('2d')
+                if (ctx) {
+                  ctx.imageSmoothingEnabled = true
+                  ctx.imageSmoothingQuality = 'high'
+                  ctx.drawImage(img, 0, 0, width, height)
+                  // Compression ultra-légère : WebP 0.75 (ou repli JPEG 0.72) pour diviser le poids par 5 sans perte de netteté
+                  let compressedUrl = canvas.toDataURL('image/webp', 0.75)
+                  if (!compressedUrl.startsWith('data:image/webp')) {
+                    compressedUrl = canvas.toDataURL('image/jpeg', 0.72)
+                  }
+                  resolve({ url: compressedUrl, type: 'image' })
+                  return
+                }
+                resolve({ url: ev.target?.result as string, type: 'image' })
+              }
+              img.onerror = () => {
+                resolve({ url: ev.target?.result as string, type: 'image' })
+              }
+              img.src = ev.target?.result as string
+            }
+            reader.onerror = (error) => reject(error)
+            reader.readAsDataURL(file)
+          } else {
+            // Vidéos
+            const reader = new FileReader()
+            reader.onload = () => {
+              resolve({ url: reader.result as string, type: 'video' })
+            }
+            reader.onerror = (error) => reject(error)
+            reader.readAsDataURL(file)
+          }
+        })
       }
 
-      const data = await res.json()
-      if (data.files && data.files.length > 0) {
-        const newMedia: MediaItem[] = data.files.map((f: any) => ({
-          url: f.url,
-          type: f.type,
-        }))
+      const filesArray = Array.from(fileList)
+      const newMedia: MediaItem[] = await Promise.all(filesArray.map(readFileAsDataUrl))
 
+      if (newMedia.length > 0) {
         const currentMedia = formProduct.media || []
         const updatedMedia = [...currentMedia, ...newMedia]
         const updatedImages = updatedMedia.map((m) => m.url)
@@ -199,11 +374,11 @@ export default function AdminPage() {
           image: finalMainImage,
         })
 
-        showToast(`${newMedia.length} média(s) ajouté(s) au carrousel !`)
+        showToast(`${newMedia.length} photo(s) ajoutée(s) au carrousel !`)
       }
     } catch (err: any) {
-      console.error('Erreur upload:', err)
-      setUploadError("Impossible de téléverser les fichiers. Vérifiez leur taille et réessayez.")
+      console.error('Erreur lecture photo:', err)
+      setUploadError("Impossible de charger la photo. Essayez avec un fichier image standard (JPG, PNG, WebP).")
     } finally {
       setUploading(false)
       if (fileInputRef.current) {
@@ -215,7 +390,7 @@ export default function AdminPage() {
   const handleAddManualUrl = () => {
     if (!manualUrl.trim()) return
     const url = manualUrl.trim()
-    const isVideo = /\.(mp4|webm|mov|avi|m4v|ogg)$/i.test(url)
+    const isVideo = isVideoUrl(url)
     const newMediaItem: MediaItem = { url, type: isVideo ? 'video' : 'image' }
 
     const currentMedia = formProduct.media || []
@@ -271,12 +446,57 @@ export default function AdminPage() {
     })
   }
 
-  const handleSaveProduct = (e: React.FormEvent) => {
+  // --- Gestion des Tarifs par Contenance multiples ---
+  const handleAddVolumeRow = () => {
+    const current = formProduct.volumes || []
+    const nextSuggestion =
+      current.length === 0 ? '30 ml' : current.length === 1 ? '50 ml' : '100 ml'
+    const newVolumes: VolumeOption[] = [
+      ...current,
+      {
+        volume: nextSuggestion,
+        rawPrice: formProduct.rawPrice || 0,
+        price: formProduct.price || '0,00 €',
+      },
+    ]
+    setFormProduct({ ...formProduct, volumes: newVolumes })
+  }
+
+  const handleUpdateVolumeRow = (
+    index: number,
+    field: 'volume' | 'rawPrice',
+    value: string
+  ) => {
+    const current = [...(formProduct.volumes || [])]
+    if (!current[index]) return
+
+    if (field === 'volume') {
+      current[index] = { ...current[index], volume: value }
+    } else {
+      const num = parseFloat(value) || 0
+      current[index] = {
+        ...current[index],
+        rawPrice: num,
+        price: `${num.toFixed(2).replace('.', ',')} €`,
+      }
+    }
+    setFormProduct({ ...formProduct, volumes: current })
+  }
+
+  const handleRemoveVolumeRow = (index: number) => {
+    const current = [...(formProduct.volumes || [])]
+    current.splice(index, 1)
+    setFormProduct({ ...formProduct, volumes: current })
+  }
+
+  const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formProduct.name.trim()) {
       alert('Veuillez entrer le nom du produit.')
       return
     }
+
+    setIsSavingProduct(true)
 
     const rawNum = parseFloat(String(formProduct.rawPrice)) || 0
     const priceFormatted = formProduct.price.trim() || `${rawNum.toFixed(2).replace('.', ',')} €`
@@ -292,11 +512,49 @@ export default function AdminPage() {
       mediaList[0]?.url ||
       'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=85'
 
+    const userContenance = formProduct.contenance?.trim() || ''
+    const cleanDesc = getCleanDescription(formProduct.description)
+    let finalDesc = cleanDesc
+
+    if (userContenance) {
+      finalDesc += `\n\n[Contenance: ${userContenance}]`
+    }
+
+    const validVolumes = (formProduct.volumes || []).filter(
+      (v) => v.volume && v.volume.trim() && v.rawPrice > 0
+    )
+
+    if (validVolumes.length > 0) {
+      finalDesc += `\n\n<!--VOLUMES_JSON_START-->${JSON.stringify(validVolumes)}<!--VOLUMES_JSON_END-->`
+      finalDesc += `\n\n[VolumesJSON: ${JSON.stringify(validVolumes)}]`
+    }
+
+    const effectiveCont =
+      userContenance ||
+      (validVolumes.length > 0 ? validVolumes.map((v) => v.volume).join(', ') : '') ||
+      extractContenance({
+        name: formProduct.name,
+        description: cleanDesc,
+        type: formProduct.type,
+      })
+
+    const effectiveRawPrice =
+      rawNum > 0 ? rawNum : validVolumes.length > 0 ? validVolumes[0].rawPrice : 0
+    const effectivePriceFormatted =
+      rawNum > 0
+        ? priceFormatted
+        : validVolumes.length > 0
+        ? validVolumes[0].price
+        : priceFormatted
+
     const productToSave: Product = {
       ...formProduct,
       id: generatedId,
-      price: priceFormatted,
-      rawPrice: rawNum,
+      contenance: effectiveCont,
+      volumes: validVolumes,
+      description: finalDesc,
+      price: effectivePriceFormatted,
+      rawPrice: effectiveRawPrice,
       rating: parseFloat(String(formProduct.rating)) || 5.0,
       reviewsCount: parseInt(String(formProduct.reviewsCount), 10) || 0,
       image: primaryImage,
@@ -304,36 +562,86 @@ export default function AdminPage() {
       media: mediaList,
     }
 
+    // 1. Sauvegarde locale immédiate
     saveProduct(productToSave)
 
-    // Si on a cliqué sur "+ Créer un produit pour les Nouveautés"
+    // 2. Synchronisation Supabase Cloud via passerelle API sécurisée
+    let cloudSynced = false
+    let cloudErrorMsg = ''
+    try {
+      const syncResult = await saveProductToDbDetailed(productToSave)
+      cloudSynced = syncResult.success
+      if (!syncResult.success) {
+        cloudErrorMsg = syncResult.error || 'Erreur inconnue'
+      }
+    } catch (err: any) {
+      console.warn('Erreur synchro Supabase produit:', err)
+      cloudErrorMsg = err?.message || 'Erreur réseau'
+    }
+
+    // Gestion synchronisée de la case Nouveautés
+    let updatedNouvList: NewItem[] = [...nouveautes]
     if (addToNouveautesOnSave) {
-      const exists = nouveautes.some((n) => n.productId === productToSave.id)
+      const exists = updatedNouvList.some((n) => n.productId === productToSave.id)
       if (!exists) {
-        const updatedNouv = [
-          ...nouveautes,
+        updatedNouvList = [
+          ...updatedNouvList,
           { productId: productToSave.id, customLabel: productToSave.tag || productToSave.type || 'Nouveauté' },
         ]
-        saveNouveautes(updatedNouv)
+        setNouveautes(updatedNouvList)
+        saveNouveautes(updatedNouvList)
+        saveNouveautesToDb(updatedNouvList).catch((err) => console.warn('Erreur saveNouveautesToDb:', err))
+      }
+    } else if (isEditing) {
+      // Si l'utilisateur a décoché Nouveautés pour ce produit
+      if (updatedNouvList.some((n) => n.productId === productToSave.id)) {
+        updatedNouvList = updatedNouvList.filter((n) => n.productId !== productToSave.id)
+        setNouveautes(updatedNouvList)
+        saveNouveautes(updatedNouvList)
+        saveNouveautesToDb(updatedNouvList).catch((err) => console.warn('Erreur saveNouveautesToDb:', err))
       }
     }
 
+    setIsSavingProduct(false)
     reloadData()
     setShowForm(false)
-    showToast(
-      isEditing
-        ? `Produit « ${productToSave.name} » modifié avec succès`
-        : `Produit « ${productToSave.name} » ajouté au catalogue !`
-    )
+
+    if (cloudSynced) {
+      showToast(
+        isEditing
+          ? `🟢 Produit « ${productToSave.name} » modifié et synchronisé sur Supabase Cloud !`
+          : `🟢 Produit « ${productToSave.name} » ajouté et synchronisé sur Supabase Cloud !`
+      )
+    } else {
+      showToast(
+        `⚠️ Enregistré en local. Échec Supabase Cloud : ${cloudErrorMsg || 'Vérifiez la connexion'}`
+      )
+    }
   }
 
-  const handleDeleteProduct = (id: string) => {
+  const handleDeleteProduct = async (id: string) => {
     deleteProduct(id)
+    try {
+      const ok = await deleteProductFromDb(id)
+      if (ok) {
+        showToast('🟢 Produit supprimé du catalogue et de Supabase Cloud')
+      } else {
+        showToast('⚠️ Produit supprimé localement (erreur Supabase Cloud)')
+      }
+    } catch (err) {
+      console.warn('Erreur suppression Supabase produit:', err)
+      showToast('Produit supprimé du catalogue local')
+    }
     const updatedNouveautes = nouveautes.filter((n) => n.productId !== id)
+    setNouveautes(updatedNouveautes)
     saveNouveautes(updatedNouveautes)
+    try {
+      await saveNouveautesToDb(updatedNouveautes)
+    } catch (err) {
+      console.warn('Erreur suppression nouveauté Supabase:', err)
+    }
     setDeleteId(null)
     reloadData()
-    showToast('Produit supprimé du catalogue')
   }
 
   const handleResetCatalog = () => {
@@ -344,7 +652,7 @@ export default function AdminPage() {
   }
 
   // --- Actions Nouveautés ---
-  const handleToggleNouveaute = (productId: string) => {
+  const handleToggleNouveaute = async (productId: string) => {
     const exists = nouveautes.some((n) => n.productId === productId)
     let updated: NewItem[]
     if (exists) {
@@ -355,10 +663,19 @@ export default function AdminPage() {
     }
     setNouveautes(updated)
     saveNouveautes(updated)
-    showToast('Sélection des nouveautés mise à jour')
+    try {
+      const ok = await saveNouveautesToDb(updated)
+      if (ok) {
+        showToast('🟢 Nouveautés synchronisées sur le site en direct !')
+      } else {
+        showToast('Nouveautés enregistrées localement')
+      }
+    } catch {
+      showToast('Nouveautés enregistrées localement')
+    }
   }
 
-  const handleMoveNouveaute = (index: number, direction: 'up' | 'down') => {
+  const handleMoveNouveaute = async (index: number, direction: 'up' | 'down') => {
     const targetIndex = direction === 'up' ? index - 1 : index + 1
     if (targetIndex < 0 || targetIndex >= nouveautes.length) return
     const updated = [...nouveautes]
@@ -366,12 +683,23 @@ export default function AdminPage() {
     updated.splice(targetIndex, 0, moved)
     setNouveautes(updated)
     saveNouveautes(updated)
+    try {
+      await saveNouveautesToDb(updated)
+      showToast('Ordre des nouveautés synchronisé')
+    } catch (err) {
+      console.warn('Erreur ordre nouveautes Supabase:', err)
+    }
   }
 
-  const handleUpdateNouveauteLabel = (productId: string, label: string) => {
+  const handleUpdateNouveauteLabel = async (productId: string, label: string) => {
     const updated = nouveautes.map((n) => (n.productId === productId ? { ...n, customLabel: label } : n))
     setNouveautes(updated)
     saveNouveautes(updated)
+    try {
+      await saveNouveautesToDb(updated)
+    } catch (err) {
+      console.warn('Erreur label nouveautes Supabase:', err)
+    }
   }
 
   // --- Actions Paramètres ---
@@ -413,7 +741,9 @@ export default function AdminPage() {
     return matchesCategory && matchesSearch
   })
 
-  const availableCategories = CATEGORIES.filter((c) => c !== 'Tous les produits')
+  const customCategories = Array.from(new Set(products.map((p) => p.category).filter(Boolean)))
+  const allCategories = Array.from(new Set([...CATEGORIES, ...customCategories]))
+  const availableCategories = allCategories.filter((c) => c !== 'Tous les produits')
 
   return (
     <div className="min-h-screen bg-[#f3f0e8] text-[#1c221d] flex flex-col font-sans">
@@ -429,10 +759,10 @@ export default function AdminPage() {
       <header className="bg-[#1c221d] text-[#f4f0e9] sticky top-0 z-40 px-6 py-4 shadow-md flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 text-decoration-none group">
-            <span className="text-xl">🌙</span>
+            <span className="text-xl">✨</span>
             <div>
               <span className="font-serif text-lg tracking-wider font-semibold text-[#f4f0e9] group-hover:text-[#b8c8a6] transition">
-                Maison Lune
+                {settings.siteName || 'MERCATUM'}
               </span>
               <span className="ml-2 text-xs bg-[#b8c8a6] text-[#1c221d] font-bold uppercase px-2 py-0.5 rounded tracking-wider">
                 Admin
@@ -478,6 +808,23 @@ export default function AdminPage() {
           >
             <span>🛍️</span>
             <span>Boutique ({products.length})</span>
+          </button>
+
+          <button
+            onClick={() => setTab('ventes')}
+            className={`px-4 py-2.5 rounded-lg text-sm font-semibold tracking-wide uppercase transition flex items-center gap-2 relative ${
+              tab === 'ventes'
+                ? 'bg-[#b8c8a6] text-[#1c221d] shadow-sm'
+                : 'text-[#c6d2bd] hover:text-white hover:bg-[#2f3830]'
+            }`}
+          >
+            <span>📈</span>
+            <span>Tableau de Vente ({orders.length})</span>
+            {orders.filter((o) => o.status === 'En attente de virement').length > 0 && (
+              <span className="ml-1 px-1.5 py-0.5 text-[10px] bg-amber-500 text-stone-950 font-black rounded-full animate-pulse">
+                {orders.filter((o) => o.status === 'En attente de virement').length}
+              </span>
+            )}
           </button>
 
           <button
@@ -549,20 +896,48 @@ export default function AdminPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">
-                    Catégorie *
-                  </label>
-                  <select
-                    value={formProduct.category}
-                    onChange={(e) => setFormProduct({ ...formProduct, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none bg-white"
-                  >
-                    {availableCategories.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-600">
+                      Catégorie *
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setIsCustomCategory(!isCustomCategory)}
+                      className="text-[11px] text-[#556943] hover:underline font-semibold"
+                    >
+                      {isCustomCategory ? 'Choisir dans la liste' : '+ Nouvelle catégorie'}
+                    </button>
+                  </div>
+                  {isCustomCategory ? (
+                    <input
+                      type="text"
+                      required
+                      value={formProduct.category}
+                      onChange={(e) => setFormProduct({ ...formProduct, category: e.target.value })}
+                      placeholder="ex: Maison & Décoration, Accessoires..."
+                      className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none bg-white"
+                    />
+                  ) : (
+                    <select
+                      value={formProduct.category}
+                      onChange={(e) => {
+                        if (e.target.value === '__custom__') {
+                          setIsCustomCategory(true)
+                          setFormProduct({ ...formProduct, category: '' })
+                        } else {
+                          setFormProduct({ ...formProduct, category: e.target.value })
+                        }
+                      }}
+                      className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none bg-white"
+                    >
+                      {availableCategories.map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                      <option value="__custom__">+ Autre catégorie personnalisée...</option>
+                    </select>
+                  )}
                 </div>
 
                 <div>
@@ -624,6 +999,22 @@ export default function AdminPage() {
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">
+                    Contenance / Format (ex: 50 ml, 100 ml, Coffret)
+                  </label>
+                  <input
+                    type="text"
+                    value={formProduct.contenance || ''}
+                    onChange={(e) => setFormProduct({ ...formProduct, contenance: e.target.value })}
+                    placeholder="Auto-détecté si vide (ex: 50 ml, 100 ml)"
+                    className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                  />
+                  <p className="text-[11px] text-stone-500 mt-0.5">
+                    Laisser vide pour détecter automatiquement depuis le titre ou la description.
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">
                     Note & Nombre d'Avis
                   </label>
                   <div className="flex gap-2">
@@ -648,6 +1039,96 @@ export default function AdminPage() {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* SECTION TARIFS PAR CONTENANCE / DÉCLINAISONS MULTIPLES */}
+              <div className="bg-[#faf8f3] border border-[#d8d3c5] rounded-xl p-4 space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
+                      <span>💧 Tarifs par Contenance / Format (30 ml, 50 ml, 100 ml...)</span>
+                    </label>
+                    <p className="text-xs text-stone-500 mt-0.5">
+                      Ajoutez les différentes tailles disponibles et le prix correspondant à chaque taille. Sur le site, le prix changera automatiquement selon la taille choisie par le client !
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleAddVolumeRow}
+                    className="px-3 py-1.5 text-xs font-bold bg-[#1c221d] text-[#f4f0e9] rounded-lg hover:bg-[#2e3730] transition flex items-center gap-1 w-fit shadow-sm"
+                  >
+                    <span>+</span> Ajouter une contenance & son prix
+                  </button>
+                </div>
+
+                {formProduct.volumes && formProduct.volumes.length > 0 ? (
+                  <div className="space-y-2 pt-1">
+                    {formProduct.volumes.map((volItem, vIdx) => (
+                      <div
+                        key={vIdx}
+                        className="flex items-center gap-3 bg-white p-3 rounded-lg border border-stone-200 shadow-sm"
+                      >
+                        <div className="flex-1">
+                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-0.5">
+                            Contenance / Taille
+                          </label>
+                          <input
+                            type="text"
+                            value={volItem.volume}
+                            onChange={(e) => handleUpdateVolumeRow(vIdx, 'volume', e.target.value)}
+                            placeholder="ex: 30 ml, 50 ml, 100 ml"
+                            className="w-full px-3 py-1.5 border border-stone-300 rounded-lg text-sm font-medium focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-[10px] font-bold text-stone-500 uppercase tracking-wider mb-0.5">
+                            Prix en euros (€)
+                          </label>
+                          <input
+                            type="number"
+                            step="0.01"
+                            value={volItem.rawPrice || ''}
+                            onChange={(e) => handleUpdateVolumeRow(vIdx, 'rawPrice', e.target.value)}
+                            placeholder="ex: 180.00"
+                            className="w-full px-3 py-1.5 border border-stone-300 rounded-lg text-sm font-bold text-[#1c221d] focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                          />
+                        </div>
+                        <div className="pt-4">
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveVolumeRow(vIdx)}
+                            className="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 flex items-center justify-center text-sm font-bold transition"
+                            title="Supprimer ce format"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex items-center justify-between pt-1 px-1 text-xs bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 text-emerald-900 font-medium">
+                      <span className="flex items-center gap-1.5">
+                        <span className="text-emerald-600 font-bold text-sm">✓</span>
+                        <span>
+                          Ces tarifs sont <strong>mémorisés en direct</strong>. Pour finaliser et mettre en ligne, cliquez sur <strong>« Enregistrer »</strong> tout en bas du formulaire.
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-3 bg-white/70 border border-dashed border-stone-300 rounded-lg text-center">
+                    <p className="text-xs text-stone-500">
+                      Aucune déclinaison spécifique ajoutée. Le produit utilise son prix unique standard (
+                      <strong>{formProduct.price || '0,00 €'}</strong>).
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handleAddVolumeRow}
+                      className="mt-2 text-xs text-[#576b46] font-bold hover:underline"
+                    >
+                      + Proposer plusieurs tailles (ex: 30 ml, 50 ml, 100 ml)
+                    </button>
+                  </div>
+                )}
               </div>
 
               {/* SECTION TÉLÉVERSEMENT FICHIERS (IMAGES & VIDÉOS / CARROUSEL) */}
@@ -843,6 +1324,28 @@ export default function AdminPage() {
                 />
               </div>
 
+              {/* OPTION NOUVEAUTÉS ACCUEIL */}
+              <div className="bg-[#f3f7f0] border border-[#b8c8a6] rounded-xl p-3.5 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-xl">✨</span>
+                  <div>
+                    <label htmlFor="addToNouvCheck" className="text-sm font-bold text-[#1c221d] cursor-pointer block">
+                      Afficher ce produit dans la section « Nouveautés » de l'accueil
+                    </label>
+                    <p className="text-xs text-stone-600">
+                      Ce produit apparaîtra immédiatement en direct sur la page d'accueil du site dans la vitrine des nouveautés.
+                    </p>
+                  </div>
+                </div>
+                <input
+                  id="addToNouvCheck"
+                  type="checkbox"
+                  checked={addToNouveautesOnSave}
+                  onChange={(e) => setAddToNouveautesOnSave(e.target.checked)}
+                  className="w-5 h-5 rounded border-stone-300 text-[#1c221d] focus:ring-[#b8c8a6] cursor-pointer"
+                />
+              </div>
+
               <div className="flex justify-end gap-3 pt-2">
                 <button
                   type="button"
@@ -853,10 +1356,19 @@ export default function AdminPage() {
                 </button>
                 <button
                   type="submit"
-                  disabled={uploading}
-                  className="px-6 py-2 bg-[#1c221d] text-[#f4f0e9] font-bold rounded-lg text-sm hover:bg-[#2e3730] transition shadow disabled:opacity-50"
+                  disabled={uploading || isSavingProduct}
+                  className="px-6 py-2 bg-[#1c221d] text-[#f4f0e9] font-bold rounded-lg text-sm hover:bg-[#2e3730] transition shadow disabled:opacity-50 flex items-center gap-2"
                 >
-                  {isEditing ? 'Enregistrer les modifications' : 'Créer et ajouter le produit'}
+                  {isSavingProduct ? (
+                    <>
+                      <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                      <span>Synchronisation Cloud...</span>
+                    </>
+                  ) : isEditing ? (
+                    'Enregistrer les modifications'
+                  ) : (
+                    'Créer et ajouter le produit'
+                  )}
                 </button>
               </div>
             </form>
@@ -961,7 +1473,7 @@ export default function AdminPage() {
                 onChange={(e) => setFilterCategory(e.target.value)}
                 className="px-4 py-2.5 bg-white border border-[#d8d3c5] rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none"
               >
-                {CATEGORIES.map((cat) => (
+                {allCategories.map((cat) => (
                   <option key={cat} value={cat}>
                     {cat}
                   </option>
@@ -997,14 +1509,23 @@ export default function AdminPage() {
                           <tr key={prod.id} className="hover:bg-stone-50 transition">
                             <td className="p-3">
                               <div className="relative w-12 h-12 rounded overflow-hidden border border-stone-200 bg-stone-100">
-                                <img
-                                  src={prod.image}
-                                  alt={prod.name}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    ;(e.target as HTMLImageElement).src = '/placeholder.svg'
-                                  }}
-                                />
+                                {isVideoUrl(prod.image) ? (
+                                  <video
+                                    src={prod.image}
+                                    className="w-full h-full object-cover pointer-events-none"
+                                    muted
+                                    playsInline
+                                  />
+                                ) : (
+                                  <img
+                                    src={prod.image}
+                                    alt={prod.name}
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                      ;(e.target as HTMLImageElement).src = '/placeholder.svg'
+                                    }}
+                                  />
+                                )}
                                 {mediaCount > 1 && (
                                   <span className="absolute bottom-0 right-0 bg-black/75 text-white text-[9px] font-bold px-1 rounded-tl">
                                     {mediaCount}
@@ -1014,7 +1535,14 @@ export default function AdminPage() {
                             </td>
                             <td className="p-3">
                               <div className="font-bold text-stone-900">{prod.name}</div>
-                              <div className="text-xs text-stone-500 line-clamp-1">{prod.type}</div>
+                              <div className="flex items-center gap-2 text-xs text-stone-500 mt-0.5">
+                                {(prod.contenance || extractContenance(prod)) && (
+                                  <span className="font-semibold text-[#576b46] bg-[#b8c8a6]/40 px-1.5 py-0.5 rounded text-[10px]">
+                                    💧 {prod.contenance || extractContenance(prod)}
+                                  </span>
+                                )}
+                                <span className="line-clamp-1">{prod.type}</span>
+                              </div>
                               <span className="text-[10px] text-stone-400 font-mono">ID: {prod.id}</span>
                             </td>
                             <td className="p-3">
@@ -1106,14 +1634,23 @@ export default function AdminPage() {
                         <div className="flex items-center gap-3">
                           <span className="w-6 text-center font-bold text-stone-400 text-sm">{index + 1}</span>
                           <div className="relative w-12 h-12 rounded object-cover border border-stone-200 bg-white overflow-hidden flex-shrink-0">
-                            <img
-                              src={prod.image}
-                              alt={prod.name}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                ;(e.target as HTMLImageElement).src = '/placeholder.svg'
-                              }}
-                            />
+                            {isVideoUrl(prod.image) ? (
+                              <video
+                                src={prod.image}
+                                className="w-full h-full object-cover pointer-events-none"
+                                muted
+                                playsInline
+                              />
+                            ) : (
+                              <img
+                                src={prod.image}
+                                alt={prod.name}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  ;(e.target as HTMLImageElement).src = '/placeholder.svg'
+                                }}
+                              />
+                            )}
                             {mediaCount > 1 && (
                               <span className="absolute bottom-0 right-0 bg-black/75 text-white text-[9px] font-bold px-1 rounded-tl">
                                 {mediaCount}
@@ -1230,6 +1767,376 @@ export default function AdminPage() {
         )}
 
         {/* ================================================================= */}
+        {/* ONGLET 2: TABLEAU DE VENTE (GESTION DES COMMANDES & STATISTIQUES)  */}
+        {/* ================================================================= */}
+        {tab === 'ventes' && (
+          <div className="space-y-6 animate-fade-in">
+            {/* Header & Statistiques Rapides */}
+            <div className="bg-white p-6 rounded-xl border border-[#d8d3c5] shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h1 className="font-serif text-2xl font-bold text-[#1c221d] flex items-center gap-2">
+                  <span>📈</span> Tableau de Vente
+                </h1>
+                <p className="text-sm text-stone-500 mt-1">
+                  Suivi des commandes en direct, validation des virements bancaires et export de l'activité.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => reloadData()}
+                  className="px-3.5 py-2 text-xs font-bold border border-stone-300 rounded-lg hover:bg-stone-100 text-stone-700 transition flex items-center gap-1.5"
+                >
+                  <span>🔄</span> Actualiser
+                </button>
+              </div>
+            </div>
+
+            {/* Cartes KPI / Indicateurs clés */}
+            {(() => {
+              const totalRevenue = orders
+                .filter((o) => o.status !== 'Annulée')
+                .reduce((acc, o) => acc + (o.totalPrice || 0), 0)
+              const paidRevenue = orders
+                .filter((o) => o.status === 'Paiement reçu' || o.status === 'Expédiée' || o.status === 'Livrée')
+                .reduce((acc, o) => acc + (o.totalPrice || 0), 0)
+              const pendingCount = orders.filter((o) => o.status === 'En attente de virement').length
+              const completedCount = orders.filter(
+                (o) => o.status === 'Paiement reçu' || o.status === 'Expédiée' || o.status === 'Livrée'
+              ).length
+
+              return (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-white p-5 rounded-xl border border-[#d8d3c5] shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-stone-500">Chiffre d'Affaires Validé</div>
+                    <div className="text-2xl font-serif font-black text-[#166534] mt-2">
+                      {paidRevenue.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                    </div>
+                    <div className="text-[11px] text-stone-400 mt-1">
+                      Sur {completedCount} commande(s) réglée(s)
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-xl border border-[#d8d3c5] shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-stone-500">Volume Total Commandé</div>
+                    <div className="text-2xl font-serif font-black text-stone-900 mt-2">
+                      {totalRevenue.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                    </div>
+                    <div className="text-[11px] text-stone-400 mt-1">
+                      {orders.length} commande(s) au total
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-xl border border-amber-200 bg-amber-50/40 shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-amber-800">En Attente Virement</div>
+                    <div className="text-2xl font-serif font-black text-amber-900 mt-2 flex items-center gap-2">
+                      <span>{pendingCount}</span>
+                      {pendingCount > 0 && (
+                        <span className="text-xs font-sans px-2 py-0.5 rounded-full bg-amber-200 text-amber-900 font-bold">
+                          À traiter
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[11px] text-amber-700/80 mt-1">
+                      Vérifier les réceptions de fonds sur votre compte
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-xl border border-[#d8d3c5] shadow-sm">
+                    <div className="text-xs font-bold uppercase tracking-wider text-stone-500">Panier Moyen</div>
+                    <div className="text-2xl font-serif font-black text-stone-800 mt-2">
+                      {orders.length > 0
+                        ? (totalRevenue / orders.length).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })
+                        : '0,00 €'}
+                    </div>
+                    <div className="text-[11px] text-stone-400 mt-1">Par commande client</div>
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Barre de Recherche et Filtres */}
+            <div className="bg-white p-4 rounded-xl border border-[#d8d3c5] shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
+              <div className="relative w-full md:w-80">
+                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-sm">🔍</span>
+                <input
+                  type="text"
+                  placeholder="Rechercher par client, email, réf..."
+                  value={orderSearch}
+                  onChange={(e) => setOrderSearch(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-500">Statut :</span>
+                {['Tous', 'En attente de virement', 'Paiement reçu', 'Expédiée', 'Livrée', 'Annulée'].map((status) => (
+                  <button
+                    key={status}
+                    type="button"
+                    onClick={() => setOrderStatusFilter(status)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                      orderStatusFilter === status
+                        ? 'bg-[#20251f] text-white shadow-sm'
+                        : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                    }`}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Table des Commandes */}
+            {(() => {
+              const filteredOrders = orders.filter((order) => {
+                const matchStatus = orderStatusFilter === 'Tous' || order.status === orderStatusFilter
+                const query = orderSearch.toLowerCase()
+                const matchSearch =
+                  order.id.toLowerCase().includes(query) ||
+                  order.customerName.toLowerCase().includes(query) ||
+                  order.customerEmail.toLowerCase().includes(query) ||
+                  (order.productName && order.productName.toLowerCase().includes(query)) ||
+                  (order.customerPhone && order.customerPhone.includes(query))
+                return matchStatus && matchSearch
+              })
+
+              if (filteredOrders.length === 0) {
+                return (
+                  <div className="bg-white p-12 rounded-xl border border-[#d8d3c5] text-center">
+                    <div className="text-4xl mb-3">📦</div>
+                    <h3 className="font-serif text-lg font-bold text-stone-800">Aucune commande trouvée</h3>
+                    <p className="text-sm text-stone-500 mt-1 max-w-md mx-auto">
+                      {orderSearch || orderStatusFilter !== 'Tous'
+                        ? 'Aucun résultat ne correspond à vos filtres de recherche.'
+                        : "Les commandes passées sur la boutique apparaîtront ici automatiquement dès qu'un client passera commande."}
+                    </p>
+                  </div>
+                )
+              }
+
+              return (
+                <div className="bg-white rounded-xl border border-[#d8d3c5] shadow-sm overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm border-collapse">
+                      <thead>
+                        <tr className="bg-[#faf9f5] border-b border-[#e5dfd0] text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                          <th className="py-3.5 px-4">Réf. Commande</th>
+                          <th className="py-3.5 px-4">Date</th>
+                          <th className="py-3.5 px-4">Client & Contact</th>
+                          <th className="py-3.5 px-4">Articles / Produit</th>
+                          <th className="py-3.5 px-4 text-right">Montant</th>
+                          <th className="py-3.5 px-4 text-center">Statut du Virement</th>
+                          <th className="py-3.5 px-4 text-center">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-stone-200">
+                        {filteredOrders.map((order) => {
+                          const dateFormatted = new Date(order.createdAt).toLocaleDateString('fr-FR', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })
+
+                          const getBadgeColor = (status: Order['status']) => {
+                            switch (status) {
+                              case 'Paiement reçu':
+                                return 'bg-green-100 text-green-800 border-green-300'
+                              case 'Expédiée':
+                                return 'bg-blue-100 text-blue-800 border-blue-300'
+                              case 'Livrée':
+                                return 'bg-purple-100 text-purple-800 border-purple-300'
+                              case 'Annulée':
+                                return 'bg-red-100 text-red-800 border-red-300'
+                              case 'En attente de virement':
+                              default:
+                                return 'bg-amber-100 text-amber-800 border-amber-300'
+                            }
+                          }
+
+                          return (
+                            <tr key={order.id} className="hover:bg-stone-50 transition">
+                              <td className="py-3.5 px-4 font-mono font-bold text-stone-900">
+                                <span className="bg-stone-100 px-2 py-1 rounded border border-stone-200">
+                                  {order.id}
+                                </span>
+                              </td>
+                              <td className="py-3.5 px-4 text-xs text-stone-500 whitespace-nowrap">
+                                {dateFormatted}
+                              </td>
+                              <td className="py-3.5 px-4">
+                                <div className="font-bold text-stone-900">{order.customerName}</div>
+                                <div className="text-xs text-stone-500">{order.customerEmail}</div>
+                                <div className="text-xs text-stone-400">{order.customerPhone}</div>
+                              </td>
+                              <td className="py-3.5 px-4">
+                                <div className="font-medium text-stone-800 line-clamp-1">
+                                  {order.productName || 'Article Boutique'}
+                                </div>
+                                <div className="text-[11px] text-stone-400">
+                                  {order.customerAddress}
+                                </div>
+                              </td>
+                              <td className="py-3.5 px-4 text-right font-bold text-stone-900 font-serif">
+                                {Number(order.totalPrice || 0).toLocaleString('fr-FR', {
+                                  style: 'currency',
+                                  currency: 'EUR',
+                                })}
+                              </td>
+                              <td className="py-3.5 px-4 text-center">
+                                <select
+                                  value={order.status}
+                                  onChange={(e) =>
+                                    handleUpdateOrderStatus(order.id, e.target.value as Order['status'])
+                                  }
+                                  className={`text-xs font-bold px-2.5 py-1.5 rounded-full border outline-none cursor-pointer ${getBadgeColor(
+                                    order.status
+                                  )}`}
+                                >
+                                  <option value="En attente de virement">⏳ En attente de virement</option>
+                                  <option value="Paiement reçu">✅ Paiement reçu</option>
+                                  <option value="Expédiée">📦 Expédiée</option>
+                                  <option value="Livrée">✨ Livrée</option>
+                                  <option value="Annulée">❌ Annulée</option>
+                                </select>
+                              </td>
+                              <td className="py-3.5 px-4 text-center">
+                                <div className="flex items-center justify-center gap-1.5">
+                                  <button
+                                    type="button"
+                                    onClick={() => setSelectedOrder(order)}
+                                    title="Voir le récapitulatif complet"
+                                    className="p-1.5 text-stone-600 hover:text-stone-900 hover:bg-stone-200 rounded transition"
+                                  >
+                                    👁️
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleDeleteOrder(order.id)}
+                                    title="Supprimer la commande"
+                                    className="p-1.5 text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition"
+                                  >
+                                    🗑️
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Modal Détail Commande */}
+            {selectedOrder && (
+              <div
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                onClick={() => setSelectedOrder(null)}
+              >
+                <div
+                  className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-5 border border-stone-300 animate-fade-in"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex justify-between items-center pb-3 border-b border-stone-200">
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-stone-400">
+                        Détail de la commande
+                      </span>
+                      <h3 className="font-serif text-xl font-bold text-stone-900">
+                        {selectedOrder.id}
+                      </h3>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOrder(null)}
+                      className="text-stone-400 hover:text-stone-800 text-lg p-1"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="space-y-4 text-sm">
+                    {/* Infos Client */}
+                    <div className="bg-[#faf9f5] p-3.5 rounded-lg border border-[#e5dfd0]">
+                      <div className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+                        Coordonnées du Client
+                      </div>
+                      <div className="font-bold text-stone-900">{selectedOrder.customerName}</div>
+                      <div className="text-stone-600 text-xs mt-0.5">📧 {selectedOrder.customerEmail}</div>
+                      <div className="text-stone-600 text-xs mt-0.5">📞 {selectedOrder.customerPhone}</div>
+                      <div className="text-stone-600 text-xs mt-0.5">📍 {selectedOrder.customerAddress}</div>
+                    </div>
+
+                    {/* Produit & Paiement */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between py-2 border-b border-stone-100">
+                        <span className="text-stone-500">Article :</span>
+                        <span className="font-semibold text-stone-900">{selectedOrder.productName}</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b border-stone-100">
+                        <span className="text-stone-500">Moyen de règlement :</span>
+                        <span className="font-semibold text-stone-900">{selectedOrder.paymentMethod || 'Virement Bancaire'}</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b border-stone-100">
+                        <span className="text-stone-500">Date de passage :</span>
+                        <span className="text-stone-700">
+                          {new Date(selectedOrder.createdAt).toLocaleString('fr-FR')}
+                        </span>
+                      </div>
+                      <div className="flex justify-between py-2 text-base font-bold">
+                        <span className="text-stone-800 font-serif">Total à encaisser :</span>
+                        <span className="text-[#166534] font-serif text-lg">
+                          {Number(selectedOrder.totalPrice || 0).toLocaleString('fr-FR', {
+                            style: 'currency',
+                            currency: 'EUR',
+                          })}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Statut modifiable */}
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1.5">
+                        Changer le statut :
+                      </label>
+                      <select
+                        value={selectedOrder.status}
+                        onChange={(e) =>
+                          handleUpdateOrderStatus(selectedOrder.id, e.target.value as Order['status'])
+                        }
+                        className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm bg-white font-semibold outline-none focus:ring-2 focus:ring-[#b8c8a6]"
+                      >
+                        <option value="En attente de virement">⏳ En attente de virement</option>
+                        <option value="Paiement reçu">✅ Paiement reçu (Fonds vérifiés sur compte)</option>
+                        <option value="Expédiée">📦 Expédiée (Colis confié au transporteur)</option>
+                        <option value="Livrée">✨ Livrée au client</option>
+                        <option value="Annulée">❌ Annulée</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-stone-200 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOrder(null)}
+                      className="px-5 py-2 bg-[#20251f] text-white font-bold rounded-lg text-xs uppercase tracking-wider hover:bg-stone-800 transition"
+                    >
+                      Fermer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ================================================================= */}
         {/* ONGLET 3: PARAMÈTRES, BANQUE & PIXELS                             */}
         {/* ================================================================= */}
         {tab === 'parametres' && (
@@ -1281,7 +2188,7 @@ export default function AdminPage() {
                       required
                       value={settings.bankAccountHolder || ''}
                       onChange={(e) => setSettings({ ...settings, bankAccountHolder: e.target.value })}
-                      placeholder="ex: Maison Lune Paris SAS"
+                      placeholder="ex: MERCATUM SAS"
                       className="w-full px-3 py-2.5 border border-stone-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-[#b8c8a6] outline-none"
                     />
                   </div>

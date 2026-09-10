@@ -1,12 +1,14 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
+import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product } from '@/lib/products'
-import { getProducts } from '@/lib/store'
+import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { fetchProductsFromDb, fetchSettingsFromDb } from '@/lib/supabaseService'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -16,15 +18,70 @@ export default function BoutiquePage() {
   const [cartCount, setCartCount] = useState(0)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
+  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
 
   useEffect(() => {
-    setProductsList(getProducts())
+    // 1. Lire le filtre catégorie passé par l'URL (ex: ?cat=Maison & Décoration)
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const catParam = params.get('cat')
+      if (catParam) {
+        setSelectedCategory(catParam)
+      }
+    }
+
+    const localProducts = getProducts()
+    setProductsList(localProducts)
+    setSettings(getSiteSettings())
+
+    fetchSettingsFromDb().then((s) => {
+      if (s) setSettings(s)
+    }).catch(() => {})
+
+    fetchProductsFromDb().then((dbProducts) => {
+      if (dbProducts && dbProducts.length > 0) {
+        saveProductsBulk(dbProducts)
+        const merged = new Map<string, Product>()
+        dbProducts.forEach((p) => merged.set(p.id, p))
+        localProducts.forEach((p) => {
+          if (!merged.has(p.id)) {
+            merged.set(p.id, p)
+          } else {
+            const existing = merged.get(p.id)!
+            const pCount = (p.images?.length || 0) + (p.media?.length || 0)
+            const existingCount = (existing.images?.length || 0) + (existing.media?.length || 0)
+            if (pCount > existingCount) {
+              merged.set(p.id, {
+                ...existing,
+                image: p.image || existing.image,
+                images: p.images || existing.images,
+                media: p.media || existing.media,
+              })
+            }
+          }
+        })
+        setProductsList(Array.from(merged.values()))
+      }
+    }).catch(() => {})
   }, [])
 
   const categories = useMemo(() => {
-    const customCats = productsList.map((p) => p.category)
-    const set = new Set([...CATEGORIES, ...customCats])
-    return Array.from(set)
+    const all = [
+      ...CATEGORIES,
+      ...productsList.map((p) => p.category).filter(Boolean),
+    ]
+    const unique: string[] = []
+    const seen = new Set<string>()
+    for (const c of all) {
+      const clean = c.trim()
+      if (!clean) continue
+      const lower = clean.toLowerCase()
+      if (!seen.has(lower)) {
+        seen.add(lower)
+        unique.push(clean)
+      }
+    }
+    return unique
   }, [productsList])
 
   const showToast = (msg: string) => {
@@ -46,11 +103,19 @@ export default function BoutiquePage() {
     showToast(`Commande validée pour ${product.name} ! 🎉`)
   }
 
+  const normalizeCat = (cat: string) =>
+    (cat || '')
+      .replace(/&amp;/g, '&')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase()
+
   const filteredProducts = useMemo(() => {
     return productsList
       .filter((p) => {
         const matchCategory =
-          selectedCategory === 'Tous les produits' || p.category === selectedCategory
+          selectedCategory === 'Tous les produits' ||
+          normalizeCat(p.category) === normalizeCat(selectedCategory)
         const matchSearch =
           p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -83,10 +148,10 @@ export default function BoutiquePage() {
       {/* Boutique Header Banner */}
       <section className="boutique-hero">
         <div className="boutique-hero-content">
-          <p className="eyebrow">Le Catalogue Maison Lune</p>
+          <p className="eyebrow">{settings.siteName || 'MERCATUM'} · L&apos;Art de Vivre</p>
           <h1>La Boutique</h1>
           <p className="boutique-subtitle">
-            Explorez notre sélection artisanale de soins botaniques, bougies coulées à la main et objets essentiels. Conçus pour durer et embellir votre quotidien.
+            Objets d&apos;art de vivre, mobilier d&apos;exception et rituels de soin pour le corps. Tout ce qu&apos;il faut pour sublimer votre intérieur et cultiver votre bien-être au quotidien.
           </p>
         </div>
       </section>
@@ -113,7 +178,7 @@ export default function BoutiquePage() {
               <span className="search-icon">🔍</span>
               <input
                 type="text"
-                placeholder="Rechercher un soin, une bougie..."
+                placeholder="Rechercher un soin, un mobilier, un parfum..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -168,34 +233,26 @@ export default function BoutiquePage() {
             <div className="product-grid">
               {filteredProducts.map((product) => (
                 <article className="product boutique-product-card" key={product.id}>
-                  <div className="product-image">
-                    <ProductMediaCarousel
-                      media={product.media}
-                      images={product.images}
-                      fallbackImage={product.image}
-                      alt={product.name}
-                      showBadge={product.tag}
-                    />
-                    <div className="product-overlay-buttons">
-                      <button
-                        className="quick-add"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        Ajouter au panier +
-                      </button>
-                      <button
-                        className="quick-buy"
-                        onClick={() => handleBuyNow(product)}
-                      >
-                        Acheter maintenant ⚡
-                      </button>
+                  <Link href={`/produit/${product.id}`} className="block relative" style={{ cursor: 'pointer' }}>
+                    <div className="product-image">
+                      <ProductMediaCarousel
+                        media={product.media}
+                        images={product.images}
+                        fallbackImage={product.image}
+                        alt={product.name}
+                        showBadge={product.tag}
+                      />
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="product-meta">
                     <div>
                       <span className="product-category-sub">{product.category}</span>
-                      <h3>{product.name}</h3>
+                      <h3>
+                        <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                          {product.name}
+                        </Link>
+                      </h3>
                       <p className="product-desc">{product.description}</p>
                       <div className="product-rating">
                         <span className="stars">★★★★★</span>
@@ -206,18 +263,19 @@ export default function BoutiquePage() {
                   </div>
 
                   <div className="boutique-card-actions">
-                    <button
+                    <Link
+                      href={`/produit/${product.id}`}
                       className="buy-now-card-btn"
-                      onClick={() => handleBuyNow(product)}
+                      style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
                     >
-                      Acheter maintenant — {product.price}
-                    </button>
+                      Acheter maintenant ⚡
+                    </Link>
                     <button
                       className="add-cart-outline-btn"
                       onClick={() => handleAddToCart(product)}
-                      title="Ajouter au panier"
+                      aria-label="Ajouter au panier"
                     >
-                      🛒
+                      Ajouter au panier +
                     </button>
                   </div>
                 </article>
