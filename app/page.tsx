@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
-import { PRODUCTS, CATEGORIES, Product } from '@/lib/products'
+import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription } from '@/lib/products'
 import {
   getProducts,
   getNouveautes,
@@ -239,7 +239,7 @@ function CategorySliderSection({
                         {product.name}
                       </Link>
                     </h3>
-                    <p className="category-card-type-detail">{product.type || product.description}</p>
+                    <p className="category-card-type-detail">{stripImagesFromDescription(product.type || product.description)}</p>
                   </div>
                 </div>
 
@@ -656,7 +656,7 @@ export default function HomePage() {
                 </Link>
               </h3>
               <p style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.5rem' }}>
-                {product.type || product.description} · {product.price}
+                {stripImagesFromDescription(product.type || product.description)} · {product.price}
               </p>
               <div style={{ display: 'flex', gap: '8px', marginTop: '0.5rem' }}>
                 <Link

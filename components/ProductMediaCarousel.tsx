@@ -26,20 +26,22 @@ export default function ProductMediaCarousel({
   const items: MediaItem[] = []
   const seenUrls = new Set<string>()
 
-  const addItem = (url: string, explicitType?: 'image' | 'video') => {
+  const addItem = (item: any, explicitType?: 'image' | 'video') => {
+    if (!item) return
+    const url = typeof item === 'string' ? item.trim() : (item?.url ? String(item.url).trim() : '')
     if (!url || seenUrls.has(url)) return
     seenUrls.add(url)
-    const isVideo = explicitType === 'video' || isVideoUrl(url)
+    const isVideo = explicitType === 'video' || item?.type === 'video' || isVideoUrl(url)
     items.push({ url, type: isVideo ? 'video' : 'image' })
   }
 
-  if (media && media.length > 0) {
-    media.forEach((m) => addItem(m.url, m.type))
+  if (media && Array.isArray(media) && media.length > 0) {
+    media.forEach((m) => addItem(m, typeof m === 'object' ? m?.type : undefined))
   }
   if (fallbackImage) {
     addItem(fallbackImage)
   }
-  if (images && images.length > 0) {
+  if (images && Array.isArray(images) && images.length > 0) {
     images.forEach((img) => addItem(img))
   }
 
@@ -66,12 +68,17 @@ export default function ProductMediaCarousel({
     }
   }, [items.length, currentIndex])
 
+  const containerStyle =
+    aspectRatio && aspectRatio !== 'unset' && aspectRatio !== 'auto'
+      ? { aspectRatio }
+      : { height: '100%' }
+
   // Si aucun média
   if (items.length === 0) {
     return (
       <div
-        className={`relative overflow-hidden bg-stone-100 flex items-center justify-center ${className}`}
-        style={{ aspectRatio }}
+        className={`w-full relative overflow-hidden bg-stone-100 flex items-center justify-center ${className}`}
+        style={containerStyle}
       >
         <img src="/placeholder.svg" alt={alt} className="w-full h-full object-cover" />
       </div>
@@ -134,8 +141,8 @@ export default function ProductMediaCarousel({
 
   return (
     <div
-      className={`relative overflow-hidden group bg-[#eadecc] ${className}`}
-      style={{ aspectRatio }}
+      className={`w-full relative overflow-hidden group bg-[#eadecc] ${className}`}
+      style={containerStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
@@ -157,7 +164,10 @@ export default function ProductMediaCarousel({
           alt={`${alt} - vue ${currentIndex + 1} sur ${items.length}`}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           onError={(e) => {
-            ;(e.target as HTMLImageElement).src = '/placeholder.svg'
+            const target = e.currentTarget
+            if (target && !target.src.endsWith('/placeholder.svg')) {
+              target.src = '/placeholder.svg'
+            }
           }}
         />
       )}

@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
-import { PRODUCTS, CATEGORIES, Product } from '@/lib/products'
+import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription } from '@/lib/products'
 import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 
@@ -255,6 +255,8 @@ export default function BoutiquePage() {
                         images={product.images}
                         fallbackImage={product.image}
                         alt={product.name}
+                        aspectRatio="unset"
+                        className="h-full"
                         showBadge={product.tag}
                       />
                     </div>
@@ -268,7 +270,7 @@ export default function BoutiquePage() {
                           {product.name}
                         </Link>
                       </h3>
-                      <p className="product-desc">{product.description}</p>
+                      <p className="product-desc">{stripImagesFromDescription(product.description)}</p>
                       <div className="product-rating">
                         <span className="stars">★★★★★</span>
                         <span className="rating-num">{product.rating} ({product.reviewsCount})</span>
