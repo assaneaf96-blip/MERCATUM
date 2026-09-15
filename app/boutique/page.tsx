@@ -8,7 +8,7 @@ import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product } from '@/lib/products'
 import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
-import { fetchProductsFromDb, fetchSettingsFromDb } from '@/lib/supabaseService'
+import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -38,31 +38,46 @@ export default function BoutiquePage() {
       if (s) setSettings(s)
     }).catch(() => {})
 
-    fetchProductsFromDb().then((dbProducts) => {
-      if (dbProducts && dbProducts.length > 0) {
-        saveProductsBulk(dbProducts)
-        const merged = new Map<string, Product>()
-        dbProducts.forEach((p) => merged.set(p.id, p))
-        localProducts.forEach((p) => {
-          if (!merged.has(p.id)) {
-            merged.set(p.id, p)
-          } else {
-            const existing = merged.get(p.id)!
-            const pCount = (p.images?.length || 0) + (p.media?.length || 0)
-            const existingCount = (existing.images?.length || 0) + (existing.media?.length || 0)
-            if (pCount > existingCount) {
-              merged.set(p.id, {
-                ...existing,
-                image: p.image || existing.image,
-                images: p.images || existing.images,
-                media: p.media || existing.media,
-              })
+    // 2. Chargement direct depuis Supabase sans délai
+    const loadProducts = () => {
+      fetchProductsFromDb(true).then((dbProducts) => {
+        if (dbProducts && dbProducts.length > 0) {
+          saveProductsBulk(dbProducts)
+          const merged = new Map<string, Product>()
+          dbProducts.forEach((p) => merged.set(p.id, p))
+          const curLocal = getProducts()
+          curLocal.forEach((p) => {
+            if (!merged.has(p.id)) {
+              merged.set(p.id, p)
+            } else {
+              const existing = merged.get(p.id)!
+              const pCount = (p.images?.length || 0) + (p.media?.length || 0)
+              const existingCount = (existing.images?.length || 0) + (existing.media?.length || 0)
+              if (pCount > existingCount) {
+                merged.set(p.id, {
+                  ...existing,
+                  image: p.image || existing.image,
+                  images: p.images || existing.images,
+                  media: p.media || existing.media,
+                })
+              }
             }
-          }
-        })
-        setProductsList(Array.from(merged.values()))
-      }
-    }).catch(() => {})
+          })
+          setProductsList(Array.from(merged.values()))
+        }
+      }).catch(() => {})
+    }
+
+    loadProducts()
+
+    // 3. Écoute Supabase Realtime : intègre tout nouveau produit dès son ajout
+    const unsubscribe = subscribeToProductsChanges(() => {
+      loadProducts()
+    })
+
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   const categories = useMemo(() => {

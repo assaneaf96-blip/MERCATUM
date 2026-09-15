@@ -5,11 +5,17 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 import { extractContenance, extractVolumes, extractColors, isVideoUrl } from '@/lib/products'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
+export const fetchCache = 'force-no-store'
 
-// Cache mémoire en instance serveur pour un temps de réponse en millisecondes
-let cachedProducts: any[] | null = null
-let cacheTimestamp = 0
-const CACHE_TTL_MS = 60 * 1000 // 60 secondes de cache
+const NO_CACHE_HEADERS = {
+  'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+  'Pragma': 'no-cache',
+  'Expires': '0',
+  'Surrogate-Control': 'no-store',
+  'CDN-Cache-Control': 'no-store',
+  'Vercel-CDN-Cache-Control': 'no-store',
+}
 
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
@@ -47,7 +53,7 @@ export async function GET(request: NextRequest) {
   if (!isSupabaseConfigured) {
     return NextResponse.json(
       { success: false, error: 'Supabase non configuré' },
-      { status: 500 }
+      { status: 500, headers: NO_CACHE_HEADERS }
     )
   }
 
@@ -65,63 +71,40 @@ export async function GET(request: NextRequest) {
       if (error || !data) {
         return NextResponse.json(
           { success: false, error: error?.message || 'Produit introuvable' },
-          { status: 404 }
+          { status: 404, headers: NO_CACHE_HEADERS }
         )
       }
 
       return NextResponse.json(
         { success: true, product: formatProduct(data) },
-        {
-          headers: {
-            'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=60',
-          },
-        }
+        { headers: NO_CACHE_HEADERS }
       )
     }
 
-    // Répondre instantanément depuis le cache mémoire serveur si valide (< 60s)
-    if (cachedProducts && Date.now() - cacheTimestamp < CACHE_TTL_MS) {
-      return NextResponse.json(
-        { success: true, products: cachedProducts, cached: true },
-        {
-          headers: {
-            'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
-            'X-Cache-Status': 'HIT',
-          },
-        }
-      )
-    }
-
+    // Récupérer directement depuis Supabase sans aucun délai de cache
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count, created_at')
+      .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count, created_at')
       .order('created_at', { ascending: false })
 
     if (error) {
       return NextResponse.json(
         { success: false, error: error.message },
-        { status: 500 }
+        { status: 500, headers: NO_CACHE_HEADERS }
       )
     }
 
     const products = (data || []).map((item) => formatProduct(item))
-    cachedProducts = products
-    cacheTimestamp = Date.now()
 
     return NextResponse.json(
       { success: true, products },
-      {
-        headers: {
-          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
-          'X-Cache-Status': 'MISS',
-        },
-      }
+      { headers: NO_CACHE_HEADERS }
     )
   } catch (err: any) {
     console.error('Erreur API /api/products GET:', err)
     return NextResponse.json(
       { success: false, error: err?.message || 'Erreur serveur interne' },
-      { status: 500 }
+      { status: 500, headers: NO_CACHE_HEADERS }
     )
   }
 }
@@ -182,13 +165,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Invalider immédiatement le cache mémoire et les pages
-    cachedProducts = null
-    cacheTimestamp = 0
+    // Invalider immédiatement les pages statiques/SSR Next.js
     try {
       revalidatePath('/api/products')
       revalidatePath('/boutique')
       revalidatePath('/')
+      revalidatePath('/admin')
       if (payload.id) {
         revalidatePath(`/produit/${payload.id}`)
       }
@@ -197,12 +179,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       product: data && data.length > 0 ? formatProduct(data[0]) : payload,
-    })
+    }, { headers: NO_CACHE_HEADERS })
   } catch (err: any) {
     console.error('Erreur API /api/products POST:', err)
     return NextResponse.json(
       { success: false, error: err?.message || 'Erreur interne lors de la sauvegarde' },
-      { status: 500 }
+      { status: 500, headers: NO_CACHE_HEADERS }
     )
   }
 }
@@ -211,7 +193,7 @@ export async function DELETE(request: NextRequest) {
   if (!isSupabaseConfigured) {
     return NextResponse.json(
       { success: false, error: 'Supabase non configuré' },
-      { status: 500 }
+      { status: 500, headers: NO_CACHE_HEADERS }
     )
   }
 
@@ -227,7 +209,7 @@ export async function DELETE(request: NextRequest) {
     if (!id) {
       return NextResponse.json(
         { success: false, error: 'ID du produit requis' },
-        { status: 400 }
+        { status: 400, headers: NO_CACHE_HEADERS }
       )
     }
 
@@ -237,26 +219,25 @@ export async function DELETE(request: NextRequest) {
       console.error('Erreur Supabase delete:', error.message)
       return NextResponse.json(
         { success: false, error: error.message },
-        { status: 500 }
+        { status: 500, headers: NO_CACHE_HEADERS }
       )
     }
 
-    // Invalider immédiatement le cache mémoire et les pages
-    cachedProducts = null
-    cacheTimestamp = 0
+    // Invalider immédiatement les pages statiques/SSR Next.js
     try {
       revalidatePath('/api/products')
       revalidatePath('/boutique')
       revalidatePath('/')
+      revalidatePath('/admin')
       revalidatePath(`/produit/${id}`)
     } catch {}
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true }, { headers: NO_CACHE_HEADERS })
   } catch (err: any) {
     console.error('Erreur API /api/products DELETE:', err)
     return NextResponse.json(
       { success: false, error: err?.message || 'Erreur interne lors de la suppression' },
-      { status: 500 }
+      { status: 500, headers: NO_CACHE_HEADERS }
     )
   }
 }

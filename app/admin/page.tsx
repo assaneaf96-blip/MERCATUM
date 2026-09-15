@@ -31,6 +31,7 @@ import {
   fetchProductsFromDb,
   fetchNouveautesFromDb,
   saveNouveautesToDb,
+  subscribeToProductsChanges,
 } from '@/lib/supabaseService'
 import {
   type Product,
@@ -165,7 +166,7 @@ export default function AdminPage() {
 
     // Charger les produits les plus récents depuis Supabase
     try {
-      const dbProducts = await fetchProductsFromDb()
+      const dbProducts = await fetchProductsFromDb(true)
       if (dbProducts && dbProducts.length > 0) {
         const mergedMap = new Map<string, Product>()
         localProducts.forEach((p) => mergedMap.set(p.id, p))
@@ -203,10 +204,10 @@ export default function AdminPage() {
             productId: item.productId,
             productName: item.productName,
             totalPrice: item.totalPrice,
-            currency: item.currency || 'EUR',
-            paymentMethod: item.paymentMethod || 'Virement Bancaire',
-            status: item.status || 'En attente de virement',
-            createdAt: item.createdAt || new Date().toISOString(),
+            currency: item.currency || '€',
+            paymentMethod: item.paymentMethod || 'Virement bancaire',
+            status: item.status,
+            createdAt: item.createdAt,
           })
         })
         const finalOrders = Array.from(mergedMap.values()).sort(
@@ -221,6 +222,12 @@ export default function AdminPage() {
 
   useEffect(() => {
     reloadData()
+    const unsubscribe = subscribeToProductsChanges(() => {
+      reloadData()
+    })
+    return () => {
+      unsubscribe()
+    }
   }, [reloadData])
 
   // --- Actions Commandes (Tableau de Vente) ---

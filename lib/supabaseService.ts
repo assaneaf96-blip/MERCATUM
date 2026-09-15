@@ -6,30 +6,65 @@ import { SiteSettings, NewItem } from './store'
 // 1. GESTION DU CATALOGUE PRODUITS
 // ==========================================
 
-// Cache mémoire client pour navigation instantanée (< 1ms) entre pages
+// Cache mémoire client pour affichage instantané
 let clientCachedProducts: Product[] | null = null
-let clientCacheTimestamp = 0
-const CLIENT_CACHE_TTL = 30 * 1000 // 30 secondes de cache mémoire client
 
 export function invalidateClientProductsCache() {
   clientCachedProducts = null
-  clientCacheTimestamp = 0
+}
+
+/**
+ * Écoute les modifications de produits en temps réel via Supabase Realtime
+ * Dès qu'un produit est inséré, modifié ou supprimé, le callback est exécuté immédiatement.
+ */
+export function subscribeToProductsChanges(onUpdate: (payload?: any) => void): () => void {
+  if (typeof window === 'undefined' || !isSupabaseConfigured) {
+    return () => {}
+  }
+
+  try {
+    const channel = supabase
+      .channel('realtime:products_changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'products' },
+        (payload) => {
+          invalidateClientProductsCache()
+          onUpdate(payload)
+        }
+      )
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          console.log('[Supabase Realtime] Écoute active sur la table products')
+        }
+      })
+
+    return () => {
+      try {
+        supabase.removeChannel(channel)
+      } catch {}
+    }
+  } catch (err) {
+    console.warn('Erreur initialisation Supabase Realtime:', err)
+    return () => {}
+  }
 }
 
 export async function fetchProductsFromDb(forceRefresh = false): Promise<Product[] | null> {
-  // 1. Si exécuté côté navigateur client, passer par l'API serveur interne
-  // Cela évite tout blocage CORS ou certificats SSL locaux
+  // 1. Si exécuté côté navigateur client, passer par l'API serveur interne avec zéro cache
   if (typeof window !== 'undefined') {
-    if (!forceRefresh && clientCachedProducts && Date.now() - clientCacheTimestamp < CLIENT_CACHE_TTL) {
-      return clientCachedProducts
-    }
     try {
-      const res = await fetch('/api/products')
+      const res = await fetch(`/api/products?t=${Date.now()}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store',
+          'Pragma': 'no-cache',
+        },
+      })
       if (res.ok) {
         const json = await res.json()
         if (json.success && Array.isArray(json.products)) {
           clientCachedProducts = json.products
-          clientCacheTimestamp = Date.now()
           return json.products
         }
       }
@@ -43,7 +78,7 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
   try {
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count, created_at')
+      .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count, created_at')
       .order('created_at', { ascending: false })
 
     if (error) {
@@ -58,10 +93,12 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
       const cols = extractColors(item)
       const cont = item.contenance || extractContenance(item)
       const imagesList = Array.isArray(item.images) ? item.images : []
-      const mediaList = imagesList.map((url: string) => ({
-        url,
-        type: isVideoUrl(url) ? 'video' : 'image',
-      }))
+      const mediaList = Array.isArray(item.media) && item.media.length > 0
+        ? item.media
+        : imagesList.map((url: string) => ({
+            url,
+            type: isVideoUrl(url) ? 'video' : 'image',
+          }))
       return {
         id: item.id,
         name: item.name,
@@ -89,10 +126,16 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
 }
 
 export async function fetchProductByIdFromDb(id: string): Promise<Product | null> {
-  // 1. Si côté navigateur, passer par l'API serveur interne
+  // 1. Si côté navigateur, passer par l'API serveur interne avec no-store
   if (typeof window !== 'undefined') {
     try {
-      const res = await fetch(`/api/products?id=${encodeURIComponent(id)}`, { cache: 'no-store' })
+      const res = await fetch(`/api/products?id=${encodeURIComponent(id)}&t=${Date.now()}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store',
+          'Pragma': 'no-cache',
+        },
+      })
       if (res.ok) {
         const json = await res.json()
         if (json.success && json.product) {

@@ -136,7 +136,7 @@ export default function ProductDetailPage() {
     })
 
     // Charger et mettre en cache tous les produits Supabase pour les recommandations
-    fetchProductsFromDb().then((dbList) => {
+    fetchProductsFromDb(true).then((dbList) => {
       if (dbList && dbList.length > 0) {
         saveProductsBulk(dbList)
         const merged = new Map<string, Product>()

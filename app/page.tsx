@@ -21,6 +21,7 @@ import {
   fetchProductsFromDb,
   fetchNouveautesFromDb,
   fetchSettingsFromDb,
+  subscribeToProductsChanges,
 } from '@/lib/supabaseService'
 
 interface CategoryDetails {
@@ -275,38 +276,48 @@ export default function HomePage() {
   const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {
-    // 1. Chargement local immédiat
+    // 1. Chargement local immédiat (0 délai d'affichage)
     const localProducts = getProducts()
     setProductsList(localProducts)
     setNouveautesList(getNouveautes())
     setSettings(getSiteSettings())
 
-    // 2. Synchronisation en direct depuis Supabase
-    fetchProductsFromDb().then((dbProducts) => {
-      if (dbProducts && dbProducts.length > 0) {
-        saveProductsBulk(dbProducts)
-        const merged = new Map<string, Product>()
-        dbProducts.forEach((p) => merged.set(p.id, p))
-        localProducts.forEach((p) => {
-          if (!merged.has(p.id)) {
-            merged.set(p.id, p)
-          } else {
-            const existing = merged.get(p.id)!
-            const pCount = (p.images?.length || 0) + (p.media?.length || 0)
-            const existingCount = (existing.images?.length || 0) + (existing.media?.length || 0)
-            if (pCount > existingCount) {
-              merged.set(p.id, {
-                ...existing,
-                image: p.image || existing.image,
-                images: p.images || existing.images,
-                media: p.media || existing.media,
-              })
+    // 2. Fonction de chargement direct et immédiat depuis Supabase
+    const loadProducts = () => {
+      fetchProductsFromDb(true).then((dbProducts) => {
+        if (dbProducts && dbProducts.length > 0) {
+          saveProductsBulk(dbProducts)
+          const merged = new Map<string, Product>()
+          dbProducts.forEach((p) => merged.set(p.id, p))
+          const curLocal = getProducts()
+          curLocal.forEach((p) => {
+            if (!merged.has(p.id)) {
+              merged.set(p.id, p)
+            } else {
+              const existing = merged.get(p.id)!
+              const pCount = (p.images?.length || 0) + (p.media?.length || 0)
+              const existingCount = (existing.images?.length || 0) + (existing.media?.length || 0)
+              if (pCount > existingCount) {
+                merged.set(p.id, {
+                  ...existing,
+                  image: p.image || existing.image,
+                  images: p.images || existing.images,
+                  media: p.media || existing.media,
+                })
+              }
             }
-          }
-        })
-        setProductsList(Array.from(merged.values()))
-      }
-    }).catch(() => {})
+          })
+          setProductsList(Array.from(merged.values()))
+        }
+      }).catch(() => {})
+    }
+
+    loadProducts()
+
+    // 3. Abonnement Supabase Realtime : intègre instantanément tout produit ajouté/modifié
+    const unsubscribe = subscribeToProductsChanges(() => {
+      loadProducts()
+    })
 
     fetchNouveautesFromDb().then((dbNouv) => {
       if (dbNouv && dbNouv.length > 0) {
@@ -318,6 +329,10 @@ export default function HomePage() {
     fetchSettingsFromDb().then((dbSettings) => {
       if (dbSettings) setSettings(dbSettings)
     }).catch(() => {})
+
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   const showToast = (msg: string) => {
