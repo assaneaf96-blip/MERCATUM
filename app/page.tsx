@@ -34,6 +34,18 @@ interface CategoryDetails {
 }
 
 const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
+  'Belleza & cabello': {
+    eyebrow: 'Haute Technologie Capillaire & Coiffure d\'Exception',
+    title: 'Beauté, Coiffage & Rituels Capillaires d\'Élite',
+    subtitle: "L'art du coiffage professionnel et du soin thermique d'avant-garde.",
+    badge: 'Technologie Thermo-Protectrice & Brillance Ultime',
+    description: 'Des stylers intelligents ghd aux boucleurs et sèche-cheveux multifonctions Shark FlexStyle : sculptez, lissez et sublimez votre chevelure sans compromettre la santé de la fibre capillaire.',
+    arguments: [
+      { icon: '✨', title: 'Technologie HD Motion-Responsive', desc: 'Température constante optimale pour une brillance miroir et zéro dommage thermique.' },
+      { icon: '💨', title: 'Séchage & Coiffage Ultra-Rapide', desc: 'Flux d\'air ionique puissant et embouts de précision pour tous types de cheveux.' },
+      { icon: '👑', title: 'Finition Salons de Prestige', desc: 'Des outils d\'excellence plébiscités par les plus grands stylistes et professionnels.' },
+    ],
+  },
   'Mobilier & Décoration': {
     eyebrow: 'Le Sanctuaire du Foyer · Design & Confort',
     title: 'Mobilier de Créateur & Pièces de Vie',
@@ -403,6 +415,7 @@ export default function HomePage() {
 
   const productsByCategory = useMemo(() => {
     const DISPLAY_CATEGORIES = [
+      'Belleza & cabello',
       'Mobilier & Décoration',
       'Haute Cosmétique & Visage',
       "Parfums d'Exception",
