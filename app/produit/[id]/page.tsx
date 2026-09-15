@@ -7,12 +7,15 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
+import RichDescription from '@/components/RichDescription'
 import {
   PRODUCTS,
   Product,
   VolumeOption,
   extractContenance,
   extractVolumes,
+  extractColors,
+  getColorHex,
   getCleanDescription,
   isVideoUrl,
 } from '@/lib/products'
@@ -29,7 +32,20 @@ export default function ProductDetailPage() {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0)
   const [isGalleryPaused, setIsGalleryPaused] = useState(false)
   const [selectedVolume, setSelectedVolume] = useState<string>('')
+  const [selectedColor, setSelectedColor] = useState<string>('')
   const [quantity, setQuantity] = useState(1)
+
+  const colors = useMemo(() => {
+    return extractColors(product)
+  }, [product])
+
+  useEffect(() => {
+    if (colors.length > 0) {
+      setSelectedColor((prev) => (colors.includes(prev) ? prev : colors[0]))
+    } else {
+      setSelectedColor('')
+    }
+  }, [colors])
 
   const volumes = useMemo(() => {
     return extractVolumes(product)
@@ -160,7 +176,8 @@ export default function ProductDetailPage() {
       : selectedVolume
       ? ` · ${selectedVolume}`
       : ''
-    showToast(`« ${product.name}${volLabel} » (x${quantity}) ajouté au panier !`)
+    const colorLabel = selectedColor ? ` · Teinte: ${selectedColor}` : ''
+    showToast(`« ${product.name}${volLabel}${colorLabel} » (x${quantity}) ajouté au panier !`)
   }
 
   const handleBuyNow = () => {
@@ -174,6 +191,9 @@ export default function ProductDetailPage() {
         cleanName = `${cleanName} · ${selectedVolumeOption.volume}`
       }
     }
+    if (selectedColor) {
+      cleanName = `${cleanName} · ${selectedColor}`
+    }
     const volProduct: Product = selectedVolumeOption
       ? {
           ...product,
@@ -181,6 +201,7 @@ export default function ProductDetailPage() {
           price: selectedVolumeOption.price,
           rawPrice: selectedVolumeOption.rawPrice,
           contenance: selectedVolumeOption.volume,
+          color: selectedColor || product.color,
           type: product.type
             ? `${product.type} · ${selectedVolumeOption.volume}`
             : selectedVolumeOption.volume,
@@ -188,10 +209,16 @@ export default function ProductDetailPage() {
       : selectedVolume
       ? {
           ...product,
+          name: cleanName,
           contenance: selectedVolume,
+          color: selectedColor || product.color,
           type: product.type ? `${product.type} · ${selectedVolume}` : selectedVolume,
         }
-      : product
+      : {
+          ...product,
+          name: cleanName,
+          color: selectedColor || product.color,
+        }
     setBuyingProduct(volProduct)
   }
 
@@ -513,6 +540,40 @@ export default function ProductDetailPage() {
               </div>
             ) : null}
 
+            {/* Nuances & Déclinaisons de teintes */}
+            {colors.length > 0 && (
+              <div className="pdp-volume-selector">
+                <label className="pdp-selector-label">
+                  Nuance / Teinte : <strong>{selectedColor}</strong>
+                </label>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {colors.map((col) => {
+                    const isSelected = selectedColor === col
+                    const hex = getColorHex(col)
+                    return (
+                      <button
+                        key={col}
+                        type="button"
+                        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition shadow-sm ${
+                          isSelected
+                            ? 'bg-[#1c221d] text-white border-[#1c221d] ring-2 ring-[#b8c8a6]/50'
+                            : 'bg-white text-stone-800 border-stone-300 hover:border-stone-500 hover:bg-stone-50'
+                        }`}
+                        onClick={() => setSelectedColor(col)}
+                      >
+                        <span
+                          className="w-3.5 h-3.5 rounded-full border border-black/20 flex-shrink-0 shadow-inner"
+                          style={{ backgroundColor: hex }}
+                        />
+                        <span>{col}</span>
+                        {isSelected && <span className="text-[10px] text-[#b8c8a6] font-bold">✓</span>}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Quantity Selector */}
             <div className="pdp-quantity-row">
               <label className="pdp-selector-label">Quantité :</label>
@@ -599,9 +660,7 @@ export default function ProductDetailPage() {
                 </button>
                 {activeTab === 'desc' && (
                   <div className="pdp-accordion-body">
-                    <p style={{ whiteSpace: 'pre-line', lineHeight: '1.7' }}>
-                      {getCleanDescription(product.description)}
-                    </p>
+                    <RichDescription content={getCleanDescription(product.description)} />
                   </div>
                 )}
               </div>

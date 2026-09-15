@@ -1,5 +1,5 @@
 import { supabase, isSupabaseConfigured } from './supabase'
-import { Product, MediaItem, extractContenance, extractVolumes, isVideoUrl } from './products'
+import { Product, MediaItem, extractContenance, extractVolumes, extractColors, isVideoUrl } from './products'
 import { SiteSettings, NewItem } from './store'
 
 // ==========================================
@@ -55,6 +55,7 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
 
     return data.map((item: any) => {
       const vols = extractVolumes(item)
+      const cols = extractColors(item)
       const cont = item.contenance || extractContenance(item)
       const imagesList = Array.isArray(item.images) ? item.images : []
       const mediaList = imagesList.map((url: string) => ({
@@ -75,6 +76,8 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
         tag: item.tag || '',
         contenance: cont,
         volumes: vols.length > 0 ? vols : undefined,
+        colors: cols.length > 0 ? cols : undefined,
+        color: cols.length > 0 ? cols.join(', ') : undefined,
         rating: Number(item.rating) || 5.0,
         reviewsCount: Number(item.reviews_count) || 1,
       }
@@ -113,6 +116,7 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
     if (error || !data) return null
 
     const vols = extractVolumes(data)
+    const cols = extractColors(data)
     const cont = data.contenance || extractContenance(data)
     return {
       id: data.id,
@@ -128,6 +132,8 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
       tag: data.tag || '',
       contenance: cont,
       volumes: vols.length > 0 ? vols : undefined,
+      colors: cols.length > 0 ? cols : undefined,
+      color: cols.length > 0 ? cols.join(', ') : undefined,
       rating: Number(data.rating) || 5.0,
       reviewsCount: Number(data.reviews_count) || 1,
     }

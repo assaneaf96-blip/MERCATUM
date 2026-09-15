@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback, useRef } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import {
   getProducts,
@@ -39,9 +39,13 @@ import {
   CATEGORIES,
   extractContenance,
   extractVolumes,
+  extractColors,
+  COMMON_COLORS,
+  getColorHex,
   getCleanDescription,
   isVideoUrl,
 } from '@/lib/products'
+import RichDescription from '@/components/RichDescription'
 
 function slugify(str: string): string {
   return str
@@ -67,6 +71,8 @@ function emptyProduct(): Product {
     tag: '',
     contenance: '',
     volumes: [],
+    colors: [],
+    color: '',
     rating: 5.0,
     reviewsCount: 1,
   }
@@ -93,6 +99,15 @@ export default function AdminPage() {
   const [addToNouveautesOnSave, setAddToNouveautesOnSave] = useState(false)
   const [isSavingProduct, setIsSavingProduct] = useState(false)
   const [isCustomCategory, setIsCustomCategory] = useState(false)
+  const [newColorInput, setNewColorInput] = useState('')
+
+  // Photos dans la description du produit
+  const descFileInputRef = useRef<HTMLInputElement>(null)
+  const [descImageUrlInput, setDescImageUrlInput] = useState('')
+  const [descImageAltInput, setDescImageAltInput] = useState('')
+  const [descUploading, setDescUploading] = useState(false)
+  const [showDescPreview, setShowDescPreview] = useState(false)
+  const [showDescUrlModal, setShowDescUrlModal] = useState(false)
 
   // Upload state
   const [uploading, setUploading] = useState(false)
@@ -266,10 +281,13 @@ export default function AdminPage() {
 
     const detectedContenance = p.contenance || extractContenance(p) || ''
     const detectedVolumes = p.volumes && p.volumes.length > 0 ? p.volumes : extractVolumes(p)
+    const detectedColors = p.colors && p.colors.length > 0 ? p.colors : extractColors(p)
     setFormProduct({
       ...p,
       contenance: detectedContenance,
       volumes: detectedVolumes,
+      colors: detectedColors,
+      color: detectedColors.join(', '),
       description: getCleanDescription(p.description),
       media: mediaList,
       images: mediaList.map((m) => m.url),
@@ -489,6 +507,166 @@ export default function AdminPage() {
     setFormProduct({ ...formProduct, volumes: current })
   }
 
+  // --- Gestion des Couleurs / Déclinaisons de teintes ---
+  const handleAddColor = (colorName: string) => {
+    const trimmed = colorName.trim()
+    if (!trimmed) return
+    const current = formProduct.colors || []
+    if (current.some((c) => c.toLowerCase() === trimmed.toLowerCase())) return
+    setFormProduct({ ...formProduct, colors: [...current, trimmed] })
+    setNewColorInput('')
+  }
+
+  const handleToggleColor = (colorName: string) => {
+    const trimmed = colorName.trim()
+    if (!trimmed) return
+    const current = formProduct.colors || []
+    const exists = current.some((c) => c.toLowerCase() === trimmed.toLowerCase())
+    if (exists) {
+      setFormProduct({
+        ...formProduct,
+        colors: current.filter((c) => c.toLowerCase() !== trimmed.toLowerCase()),
+      })
+    } else {
+      setFormProduct({ ...formProduct, colors: [...current, trimmed] })
+    }
+  }
+
+  const handleRemoveColor = (index: number) => {
+    const current = [...(formProduct.colors || [])]
+    current.splice(index, 1)
+    setFormProduct({ ...formProduct, colors: current })
+  }
+
+  // --- Gestion des Photos & Médias dans la Description du Produit ---
+  const handleDescFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setDescUploading(true)
+    try {
+      const reader = new FileReader()
+      reader.onload = (ev) => {
+        const img = new Image()
+        img.onload = () => {
+          const canvas = document.createElement('canvas')
+          let width = img.width
+          let height = img.height
+          const maxDimension = 900
+
+          if (width > maxDimension || height > maxDimension) {
+            if (width > height) {
+              height = Math.round((height * maxDimension) / width)
+              width = maxDimension
+            } else {
+              width = Math.round((width * maxDimension) / height)
+              height = maxDimension
+            }
+          }
+
+          canvas.width = width
+          canvas.height = height
+          const ctx = canvas.getContext('2d')
+          let compressedUrl = ''
+          if (ctx) {
+            ctx.imageSmoothingEnabled = true
+            ctx.imageSmoothingQuality = 'high'
+            ctx.drawImage(img, 0, 0, width, height)
+            compressedUrl = canvas.toDataURL('image/webp', 0.8)
+            if (!compressedUrl.startsWith('data:image/webp')) {
+              compressedUrl = canvas.toDataURL('image/jpeg', 0.75)
+            }
+          } else {
+            compressedUrl = ev.target?.result as string
+          }
+
+          const altText = descImageAltInput.trim() || 'Illustration produit'
+          const mdImg = `\n\n![${altText}](${compressedUrl})\n\n`
+          setFormProduct((prev) => ({
+            ...prev,
+            description: (prev.description || '').trim() + mdImg,
+          }))
+          setDescImageAltInput('')
+          showToast('Photo insérée avec succès dans la description !')
+          setDescUploading(false)
+        }
+        img.onerror = () => {
+          const altText = descImageAltInput.trim() || 'Illustration produit'
+          const mdImg = `\n\n![${altText}](${ev.target?.result as string})\n\n`
+          setFormProduct((prev) => ({
+            ...prev,
+            description: (prev.description || '').trim() + mdImg,
+          }))
+          setDescImageAltInput('')
+          showToast('Photo insérée dans la description !')
+          setDescUploading(false)
+        }
+        img.src = ev.target?.result as string
+      }
+      reader.readAsDataURL(file)
+    } catch (err) {
+      console.error('Erreur chargement photo description:', err)
+      showToast('Impossible de charger la photo pour la description')
+      setDescUploading(false)
+    } finally {
+      if (descFileInputRef.current) descFileInputRef.current.value = ''
+    }
+  }
+
+  const handleAddDescImageUrl = () => {
+    if (!descImageUrlInput.trim()) return
+    const altText = descImageAltInput.trim() || 'Illustration produit'
+    const mdImg = `\n\n![${altText}](${descImageUrlInput.trim()})\n\n`
+    setFormProduct((prev) => ({
+      ...prev,
+      description: (prev.description || '').trim() + mdImg,
+    }))
+    setDescImageUrlInput('')
+    setDescImageAltInput('')
+    setShowDescUrlModal(false)
+    showToast('Photo URL insérée dans la description !')
+  }
+
+  const handleInsertGalleryImageIntoDesc = (imgUrl: string) => {
+    const mdImg = `\n\n![Photo produit](${imgUrl})\n\n`
+    setFormProduct((prev) => ({
+      ...prev,
+      description: (prev.description || '').trim() + mdImg,
+    }))
+    showToast('Photo du carrousel insérée dans la description !')
+  }
+
+  const handleRemoveDescImage = (fullMatch: string) => {
+    setFormProduct((prev) => ({
+      ...prev,
+      description: (prev.description || '').replace(fullMatch, '').trim(),
+    }))
+    showToast('Photo retirée de la description')
+  }
+
+  // Liste des images actuellement insérées dans la description
+  const descEmbeddedImages = useMemo(() => {
+    const list: { fullMatch: string; alt: string; url: string }[] = []
+    const regex = /(!\[(.*?)\]\((.*?)\)|<img[^>]*src=["']([^"']+)["'][^>]*alt=["']?([^"'>]*)["']?[^>]*>)/gi
+    let match: RegExpExecArray | null
+    const content = formProduct.description || ''
+    while ((match = regex.exec(content)) !== null) {
+      if (match[1].startsWith('![')) {
+        list.push({
+          fullMatch: match[0],
+          alt: match[2]?.trim() || '',
+          url: match[3]?.trim() || '',
+        })
+      } else {
+        list.push({
+          fullMatch: match[0],
+          alt: match[5]?.trim() || '',
+          url: match[4]?.trim() || '',
+        })
+      }
+    }
+    return list
+  }, [formProduct.description])
+
   const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formProduct.name.trim()) {
@@ -529,6 +707,12 @@ export default function AdminPage() {
       finalDesc += `\n\n[VolumesJSON: ${JSON.stringify(validVolumes)}]`
     }
 
+    const validColors = (formProduct.colors || []).map((c) => c.trim()).filter(Boolean)
+    if (validColors.length > 0) {
+      finalDesc += `\n\n<!--COLORS_JSON_START-->${JSON.stringify(validColors)}<!--COLORS_JSON_END-->`
+      finalDesc += `\n\n[Couleurs: ${validColors.join(', ')}]`
+    }
+
     const effectiveCont =
       userContenance ||
       (validVolumes.length > 0 ? validVolumes.map((v) => v.volume).join(', ') : '') ||
@@ -552,6 +736,8 @@ export default function AdminPage() {
       id: generatedId,
       contenance: effectiveCont,
       volumes: validVolumes,
+      colors: validColors,
+      color: validColors.join(', '),
       description: finalDesc,
       price: effectivePriceFormatted,
       rawPrice: effectiveRawPrice,
@@ -1131,6 +1317,120 @@ export default function AdminPage() {
                 )}
               </div>
 
+              {/* SECTION COULEURS & NUANCES DU PRODUIT */}
+              <div className="bg-[#faf8f3] border border-[#d8d3c5] rounded-xl p-4 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
+                      <span>🎨 Couleurs & Nuances disponibles</span>
+                    </label>
+                    <p className="text-xs text-stone-500 mt-0.5">
+                      Définissez les coloris, teintes ou finitions disponibles (ex: Noir, Blanc, Doré, Nude...). Le client pourra sélectionner sa nuance directement sur la fiche produit.
+                    </p>
+                  </div>
+                  {formProduct.colors && formProduct.colors.length > 0 && (
+                    <span className="text-xs font-bold text-[#1c221d] bg-[#b8c8a6]/60 px-3 py-1 rounded-full w-fit">
+                      {formProduct.colors.length} couleur(s) définie(s)
+                    </span>
+                  )}
+                </div>
+
+                {/* Couleurs actuellement sélectionnées */}
+                {formProduct.colors && formProduct.colors.length > 0 ? (
+                  <div className="flex flex-wrap gap-2 p-3 bg-white rounded-lg border border-stone-200 shadow-sm">
+                    {formProduct.colors.map((colorName, cIdx) => {
+                      const hex = getColorHex(colorName)
+                      return (
+                        <div
+                          key={cIdx}
+                          className="inline-flex items-center gap-2 pl-2 pr-1.5 py-1 bg-stone-50 border border-stone-300 rounded-full text-xs font-semibold text-stone-800 shadow-sm"
+                        >
+                          <span
+                            className="w-3.5 h-3.5 rounded-full border border-black/20 shadow-inner flex-shrink-0"
+                            style={{ backgroundColor: hex }}
+                          />
+                          <span>{colorName}</span>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveColor(cIdx)}
+                            className="w-4 h-4 rounded-full bg-stone-200 hover:bg-red-100 hover:text-red-700 text-stone-600 flex items-center justify-center text-[10px] font-bold transition ml-0.5"
+                            title={`Supprimer la couleur ${colorName}`}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <div className="p-3 bg-white/70 border border-dashed border-stone-300 rounded-lg text-center">
+                    <p className="text-xs text-stone-500">
+                      Aucune couleur spécifique configurée (produit sans déclinaison de teinte).
+                    </p>
+                  </div>
+                )}
+
+                {/* Palette de couleurs courantes (Ajout rapide en 1 clic) */}
+                <div className="space-y-1.5 pt-1">
+                  <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider block">
+                    Nuancier rapide (cliquez pour ajouter / retirer) :
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {COMMON_COLORS.map((c) => {
+                      const isSelected = (formProduct.colors || []).some(
+                        (col) => col.toLowerCase() === c.name.toLowerCase()
+                      )
+                      return (
+                        <button
+                          key={c.name}
+                          type="button"
+                          onClick={() => handleToggleColor(c.name)}
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition ${
+                            isSelected
+                              ? 'bg-[#1c221d] text-white border-[#1c221d] shadow-sm'
+                              : 'bg-white text-stone-700 border-stone-200 hover:border-stone-400 hover:bg-stone-50'
+                          }`}
+                        >
+                          <span
+                            className="w-3 h-3 rounded-full border border-black/20 flex-shrink-0"
+                            style={{ backgroundColor: c.hex }}
+                          />
+                          <span>{c.name}</span>
+                          {isSelected && <span className="text-[10px] text-[#b8c8a6] font-bold">✓</span>}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                {/* Saisie d'une couleur personnalisée */}
+                <div className="pt-2 border-t border-stone-200 flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
+                  <div className="flex-1 relative">
+                    <input
+                      type="text"
+                      value={newColorInput}
+                      onChange={(e) => setNewColorInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          handleAddColor(newColorInput)
+                        }
+                      }}
+                      placeholder="Ajouter une teinte personnalisée (ex: Bordeaux Velours, Nude 02, Ivoire...)"
+                      className="w-full px-3 py-2 border border-stone-300 rounded-lg text-xs bg-white text-stone-800 placeholder:text-stone-400 focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleAddColor(newColorInput)}
+                    disabled={!newColorInput.trim()}
+                    className="px-4 py-2 text-xs font-bold bg-[#1c221d] text-[#f4f0e9] rounded-lg hover:bg-[#2e3730] disabled:opacity-40 disabled:cursor-not-allowed transition shadow-sm whitespace-nowrap"
+                  >
+                    + Ajouter cette couleur
+                  </button>
+                </div>
+              </div>
+
               {/* SECTION TÉLÉVERSEMENT FICHIERS (IMAGES & VIDÉOS / CARROUSEL) */}
               <div className="bg-[#fbf9f4] border-2 border-dashed border-[#c5beae] rounded-xl p-5 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -1310,18 +1610,210 @@ export default function AdminPage() {
                 )}
               </div>
 
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">
-                  Description du produit *
-                </label>
+              <div className="space-y-3 bg-[#faf8f4] border border-[#d6cfc0] rounded-xl p-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#e5dfd2] pb-2.5">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <label className="block text-xs font-bold uppercase tracking-wider text-[#1c221d]">
+                        Description du produit *
+                      </label>
+                      <span className="text-[11px] bg-[#1c221d]/10 text-[#1c221d] px-2 py-0.5 rounded-full font-semibold">
+                        Texte & Photos
+                      </span>
+                    </div>
+                    <p className="text-xs text-stone-500 mt-0.5">
+                      Rédigez la description et ajoutez des photos pour illustrer les flacons, textures ou rituels au fil du texte.
+                    </p>
+                  </div>
+
+                  {/* Boutons d'action pour insérer des photos */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <input
+                      ref={descFileInputRef}
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleDescFileUpload}
+                      disabled={descUploading}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => descFileInputRef.current?.click()}
+                      disabled={descUploading}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1c221d] text-[#f4f0e9] text-xs font-bold rounded-lg hover:bg-[#2e3730] transition shadow-sm disabled:opacity-50"
+                    >
+                      {descUploading ? (
+                        <>
+                          <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                          <span>Téléversement...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>📷</span>
+                          <span>Ajouter une photo</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setShowDescUrlModal(!showDescUrlModal)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-stone-300 text-stone-700 text-xs font-semibold rounded-lg hover:bg-stone-50 hover:border-stone-400 transition shadow-sm"
+                    >
+                      <span>🔗</span>
+                      <span>Image par URL</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setShowDescPreview(!showDescPreview)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition shadow-sm ${
+                        showDescPreview
+                          ? 'bg-[#b8c8a6]/40 text-[#1c221d] border-[#97ab83]'
+                          : 'bg-white border-stone-300 text-stone-700 hover:bg-stone-50'
+                      }`}
+                    >
+                      <span>👁️</span>
+                      <span>{showDescPreview ? 'Masquer aperçu' : 'Aperçu fiche produit'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Modal / Boîte d'ajout d'image par URL */}
+                {showDescUrlModal && (
+                  <div className="bg-white border border-stone-200 rounded-lg p-3 space-y-2 shadow-sm">
+                    <span className="text-xs font-bold text-stone-700 block">
+                      Insérer une image web dans la description :
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <input
+                        type="url"
+                        value={descImageUrlInput}
+                        onChange={(e) => setDescImageUrlInput(e.target.value)}
+                        placeholder="URL de l'image (https://...)"
+                        className="px-3 py-1.5 text-xs border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                      />
+                      <input
+                        type="text"
+                        value={descImageAltInput}
+                        onChange={(e) => setDescImageAltInput(e.target.value)}
+                        placeholder="Légende optionnelle (ex: Flacon d'exception)"
+                        className="px-3 py-1.5 text-xs border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                      />
+                    </div>
+                    <div className="flex justify-end gap-2 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => setShowDescUrlModal(false)}
+                        className="px-3 py-1 text-xs text-stone-500 hover:text-stone-800"
+                      >
+                        Annuler
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleAddDescImageUrl}
+                        disabled={!descImageUrlInput.trim()}
+                        className="px-4 py-1 bg-[#1c221d] text-white text-xs font-bold rounded-lg hover:bg-[#2e3730] disabled:opacity-40 transition shadow-sm"
+                      >
+                        + Insérer dans le texte
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Insertion rapide depuis les photos du carrousel existantes */}
+                {formProduct.images && formProduct.images.length > 0 && (
+                  <div className="bg-white/80 border border-dashed border-stone-200 rounded-lg p-2.5 flex items-center gap-2 overflow-x-auto">
+                    <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex-shrink-0">
+                      Insérer une photo du carrousel :
+                    </span>
+                    <div className="flex items-center gap-2">
+                      {formProduct.images.map((imgUrl, iIdx) => (
+                        <button
+                          key={iIdx}
+                          type="button"
+                          onClick={() => handleInsertGalleryImageIntoDesc(imgUrl)}
+                          className="relative group w-10 h-10 rounded border border-stone-200 overflow-hidden flex-shrink-0 hover:border-[#1c221d] hover:scale-105 transition"
+                          title="Cliquer pour insérer cette photo dans la description"
+                        >
+                          <img src={imgUrl} alt={`Carrousel ${iIdx}`} className="w-full h-full object-cover" />
+                          <span className="absolute inset-0 bg-black/40 text-white text-[10px] font-bold opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                            +
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Champ texte principal */}
                 <textarea
-                  rows={3}
+                  rows={5}
                   required
                   value={formProduct.description}
                   onChange={(e) => setFormProduct({ ...formProduct, description: e.target.value })}
-                  placeholder="Décrivez les bienfaits, la texture et les actifs précieux..."
-                  className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                  placeholder="Décrivez les bienfaits, la texture et les actifs précieux... Vous pouvez insérer des photos à tout moment grâce aux boutons ci-dessus !"
+                  className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none font-mono text-xs bg-white"
                 />
+
+                {/* Liste des photos détectées dans la description */}
+                {descEmbeddedImages.length > 0 && (
+                  <div className="space-y-1.5 pt-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider">
+                        Photos intégrées dans la description ({descEmbeddedImages.length}) :
+                      </span>
+                      <span className="text-[10px] text-stone-400">
+                        Ces photos apparaîtront avec mise en page élégante dans la fiche produit
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                      {descEmbeddedImages.map((item: { fullMatch: string; alt: string; url: string }, idx: number) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 p-2 bg-white border border-stone-200 rounded-lg shadow-sm"
+                        >
+                          <img
+                            src={item.url}
+                            alt={item.alt || 'Photo description'}
+                            className="w-12 h-12 rounded object-cover border border-stone-200 flex-shrink-0"
+                          />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-semibold text-stone-800 truncate">
+                              {item.alt || 'Photo sans titre'}
+                            </p>
+                            <p className="text-[10px] text-stone-400 truncate">{item.url}</p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveDescImage(item.fullMatch)}
+                            className="text-stone-400 hover:text-red-600 p-1 transition"
+                            title="Supprimer cette photo de la description"
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Aperçu en direct de la fiche produit */}
+                {showDescPreview && (
+                  <div className="mt-3 p-4 bg-white rounded-xl border border-[#b8c8a6] shadow-sm space-y-2">
+                    <div className="flex items-center justify-between border-b border-stone-200 pb-2">
+                      <span className="text-xs font-bold text-[#1c221d] uppercase tracking-wider flex items-center gap-1.5">
+                        <span>👁️</span> Aperçu direct sur la fiche produit publique :
+                      </span>
+                      <span className="text-[10px] text-stone-400 italic">
+                        Mise à jour instantanée
+                      </span>
+                    </div>
+                    <div className="pt-2">
+                      <RichDescription content={getCleanDescription(formProduct.description)} />
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* OPTION NOUVEAUTÉS ACCUEIL */}
@@ -1543,6 +2035,27 @@ export default function AdminPage() {
                                 )}
                                 <span className="line-clamp-1">{prod.type}</span>
                               </div>
+                              {(() => {
+                                const prodColors = prod.colors && prod.colors.length > 0 ? prod.colors : extractColors(prod)
+                                if (prodColors.length === 0) return null
+                                return (
+                                  <div className="flex items-center gap-1.5 mt-1">
+                                    <div className="flex items-center -space-x-1">
+                                      {prodColors.slice(0, 5).map((colName, cIndex) => (
+                                        <span
+                                          key={cIndex}
+                                          className="w-3 h-3 rounded-full border border-white shadow-sm inline-block"
+                                          style={{ backgroundColor: getColorHex(colName) }}
+                                          title={colName}
+                                        />
+                                      ))}
+                                    </div>
+                                    <span className="text-[10px] text-stone-500 font-medium">
+                                      {prodColors.length === 1 ? prodColors[0] : `${prodColors.length} couleurs`}
+                                    </span>
+                                  </div>
+                                )
+                              })()}
                               <span className="text-[10px] text-stone-400 font-mono">ID: {prod.id}</span>
                             </td>
                             <td className="p-3">

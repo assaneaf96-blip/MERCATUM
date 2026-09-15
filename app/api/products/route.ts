@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
-import { extractContenance, extractVolumes, isVideoUrl } from '@/lib/products'
+import { extractContenance, extractVolumes, extractColors, isVideoUrl } from '@/lib/products'
 
 export const dynamic = 'force-dynamic'
 
@@ -13,6 +13,7 @@ const CACHE_TTL_MS = 60 * 1000 // 60 secondes de cache
 
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
+  const cols = extractColors(item)
   const imagesList = Array.isArray(item.images) ? item.images : []
   const mediaList = Array.isArray(item.media) && item.media.length > 0
     ? item.media
@@ -35,6 +36,8 @@ function formatProduct(item: any) {
     tag: item.tag || '',
     contenance: item.contenance || extractContenance(item),
     volumes: vols.length > 0 ? vols : undefined,
+    colors: cols.length > 0 ? cols : undefined,
+    color: cols.length > 0 ? cols.join(', ') : undefined,
     rating: Number(item.rating) || 5.0,
     reviewsCount: Number(item.reviews_count) || 1,
   }
