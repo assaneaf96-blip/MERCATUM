@@ -43,6 +43,7 @@ import {
   COMMON_COLORS,
   getColorHex,
   getCleanDescription,
+  stripImagesFromDescription,
   isVideoUrl,
 } from '@/lib/products'
 import RichDescription from '@/components/RichDescription'
@@ -103,6 +104,7 @@ export default function AdminPage() {
 
   // Photos dans la description du produit
   const descFileInputRef = useRef<HTMLInputElement>(null)
+  const [descPhotos, setDescPhotos] = useState<{ id: string; url: string; alt: string }[]>([])
   const [descImageUrlInput, setDescImageUrlInput] = useState('')
   const [descImageAltInput, setDescImageAltInput] = useState('')
   const [descUploading, setDescUploading] = useState(false)
@@ -256,6 +258,7 @@ export default function AdminPage() {
   // --- Actions Produits ---
   const handleOpenNewProduct = (autoNouveaute = false) => {
     setFormProduct(emptyProduct())
+    setDescPhotos([])
     setIsEditing(false)
     setIsCustomCategory(false)
     setAddToNouveautesOnSave(autoNouveaute)
@@ -279,6 +282,34 @@ export default function AdminPage() {
       ? [{ url: p.image, type: isVideoUrl(p.image) ? 'video' : 'image' }]
       : []
 
+    // Extraire les photos de la description existante
+    const existingDescPhotos: { id: string; url: string; alt: string }[] = []
+    const imgRegex = /(!\[(.*?)\]\((.*?)\)|<img[^>]*src=["']([^"']+)["'][^>]*alt=["']?([^"'>]*)["']?[^>]*>)/gi
+    let imgMatch: RegExpExecArray | null
+    const rawDesc = p.description || ''
+    while ((imgMatch = imgRegex.exec(rawDesc)) !== null) {
+      if (imgMatch[1].startsWith('![')) {
+        const u = imgMatch[3]?.trim()
+        if (u) {
+          existingDescPhotos.push({
+            id: `dp_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+            alt: imgMatch[2]?.trim() || '',
+            url: u,
+          })
+        }
+      } else {
+        const u = imgMatch[4]?.trim()
+        if (u) {
+          existingDescPhotos.push({
+            id: `dp_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+            alt: imgMatch[5]?.trim() || '',
+            url: u,
+          })
+        }
+      }
+    }
+    setDescPhotos(existingDescPhotos)
+
     const detectedContenance = p.contenance || extractContenance(p) || ''
     const detectedVolumes = p.volumes && p.volumes.length > 0 ? p.volumes : extractVolumes(p)
     const detectedColors = p.colors && p.colors.length > 0 ? p.colors : extractColors(p)
@@ -288,7 +319,7 @@ export default function AdminPage() {
       volumes: detectedVolumes,
       colors: detectedColors,
       color: detectedColors.join(', '),
-      description: getCleanDescription(p.description),
+      description: stripImagesFromDescription(p.description),
       media: mediaList,
       images: mediaList.map((m) => m.url),
     })
@@ -580,24 +611,26 @@ export default function AdminPage() {
           }
 
           const altText = descImageAltInput.trim() || 'Illustration produit'
-          const mdImg = `\n\n![${altText}](${compressedUrl})\n\n`
-          setFormProduct((prev) => ({
-            ...prev,
-            description: (prev.description || '').trim() + mdImg,
-          }))
+          const newPhoto = {
+            id: `dp_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+            url: compressedUrl,
+            alt: altText,
+          }
+          setDescPhotos((prev) => [...prev, newPhoto])
           setDescImageAltInput('')
-          showToast('Photo insérée avec succès dans la description !')
+          showToast('Photo ajoutée ! Elle est visible ci-dessous.')
           setDescUploading(false)
         }
         img.onerror = () => {
           const altText = descImageAltInput.trim() || 'Illustration produit'
-          const mdImg = `\n\n![${altText}](${ev.target?.result as string})\n\n`
-          setFormProduct((prev) => ({
-            ...prev,
-            description: (prev.description || '').trim() + mdImg,
-          }))
+          const newPhoto = {
+            id: `dp_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+            url: ev.target?.result as string,
+            alt: altText,
+          }
+          setDescPhotos((prev) => [...prev, newPhoto])
           setDescImageAltInput('')
-          showToast('Photo insérée dans la description !')
+          showToast('Photo ajoutée ! Elle est visible ci-dessous.')
           setDescUploading(false)
         }
         img.src = ev.target?.result as string
@@ -615,57 +648,38 @@ export default function AdminPage() {
   const handleAddDescImageUrl = () => {
     if (!descImageUrlInput.trim()) return
     const altText = descImageAltInput.trim() || 'Illustration produit'
-    const mdImg = `\n\n![${altText}](${descImageUrlInput.trim()})\n\n`
-    setFormProduct((prev) => ({
-      ...prev,
-      description: (prev.description || '').trim() + mdImg,
-    }))
+    const newPhoto = {
+      id: `dp_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+      url: descImageUrlInput.trim(),
+      alt: altText,
+    }
+    setDescPhotos((prev) => [...prev, newPhoto])
     setDescImageUrlInput('')
     setDescImageAltInput('')
     setShowDescUrlModal(false)
-    showToast('Photo URL insérée dans la description !')
+    showToast('Photo ajoutée ! Elle est visible ci-dessous.')
   }
 
   const handleInsertGalleryImageIntoDesc = (imgUrl: string) => {
-    const mdImg = `\n\n![Photo produit](${imgUrl})\n\n`
-    setFormProduct((prev) => ({
-      ...prev,
-      description: (prev.description || '').trim() + mdImg,
-    }))
-    showToast('Photo du carrousel insérée dans la description !')
+    const newPhoto = {
+      id: `dp_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+      url: imgUrl,
+      alt: 'Photo produit',
+    }
+    setDescPhotos((prev) => [...prev, newPhoto])
+    showToast('Photo ajoutée ! Elle est visible ci-dessous.')
   }
 
-  const handleRemoveDescImage = (fullMatch: string) => {
-    setFormProduct((prev) => ({
-      ...prev,
-      description: (prev.description || '').replace(fullMatch, '').trim(),
-    }))
+  const handleRemoveDescPhoto = (id: string) => {
+    setDescPhotos((prev) => prev.filter((p) => p.id !== id))
     showToast('Photo retirée de la description')
   }
 
-  // Liste des images actuellement insérées dans la description
-  const descEmbeddedImages = useMemo(() => {
-    const list: { fullMatch: string; alt: string; url: string }[] = []
-    const regex = /(!\[(.*?)\]\((.*?)\)|<img[^>]*src=["']([^"']+)["'][^>]*alt=["']?([^"'>]*)["']?[^>]*>)/gi
-    let match: RegExpExecArray | null
-    const content = formProduct.description || ''
-    while ((match = regex.exec(content)) !== null) {
-      if (match[1].startsWith('![')) {
-        list.push({
-          fullMatch: match[0],
-          alt: match[2]?.trim() || '',
-          url: match[3]?.trim() || '',
-        })
-      } else {
-        list.push({
-          fullMatch: match[0],
-          alt: match[5]?.trim() || '',
-          url: match[4]?.trim() || '',
-        })
-      }
-    }
-    return list
-  }, [formProduct.description])
+  const handleUpdateDescPhotoAlt = (id: string, newAlt: string) => {
+    setDescPhotos((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, alt: newAlt } : p))
+    )
+  }
 
   const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -691,8 +705,16 @@ export default function AdminPage() {
       'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=85'
 
     const userContenance = formProduct.contenance?.trim() || ''
-    const cleanDesc = getCleanDescription(formProduct.description)
+    const cleanDesc = stripImagesFromDescription(getCleanDescription(formProduct.description))
     let finalDesc = cleanDesc
+
+    if (descPhotos.length > 0) {
+      for (const dp of descPhotos) {
+        if (dp.url) {
+          finalDesc += `\n\n![${dp.alt || 'Illustration produit'}](${dp.url})`
+        }
+      }
+    }
 
     if (userContenance) {
       finalDesc += `\n\n[Contenance: ${userContenance}]`
@@ -1610,195 +1632,220 @@ export default function AdminPage() {
                 )}
               </div>
 
-              <div className="space-y-3 bg-[#faf8f4] border border-[#d6cfc0] rounded-xl p-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#e5dfd2] pb-2.5">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#1c221d]">
-                        Description du produit *
-                      </label>
-                      <span className="text-[11px] bg-[#1c221d]/10 text-[#1c221d] px-2 py-0.5 rounded-full font-semibold">
-                        Texte & Photos
-                      </span>
+              <div className="space-y-4 bg-[#faf8f4] border border-[#d6cfc0] rounded-xl p-5">
+                {/* 1. SECTION PHOTOS VISUELLES DE LA DESCRIPTION */}
+                <div className="space-y-3 pb-4 border-b border-[#e5dfd2]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">📷</span>
+                        <label className="text-sm font-bold uppercase tracking-wider text-[#1c221d]">
+                          Photos de la description
+                        </label>
+                        {descPhotos.length > 0 && (
+                          <span className="text-xs bg-[#1c221d] text-white px-2.5 py-0.5 rounded-full font-bold">
+                            {descPhotos.length} photo(s)
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-stone-500 mt-0.5">
+                        Ajoutez vos photos ici : elles s&apos;affichent directement en images réelles ci-dessous sans aucun code dans votre texte.
+                      </p>
                     </div>
-                    <p className="text-xs text-stone-500 mt-0.5">
-                      Rédigez la description et ajoutez des photos pour illustrer les flacons, textures ou rituels au fil du texte.
-                    </p>
+
+                    {/* Boutons d'ajout de photo */}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <input
+                        ref={descFileInputRef}
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleDescFileUpload}
+                        disabled={descUploading}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => descFileInputRef.current?.click()}
+                        disabled={descUploading}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#1c221d] text-[#f4f0e9] text-xs font-bold rounded-lg hover:bg-[#2e3730] transition shadow disabled:opacity-50"
+                      >
+                        {descUploading ? (
+                          <>
+                            <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                            <span>Chargement...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>📷</span>
+                            <span>+ Ajouter une photo</span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowDescUrlModal(!showDescUrlModal)}
+                        className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-stone-300 text-stone-700 text-xs font-semibold rounded-lg hover:bg-stone-50 hover:border-stone-400 transition shadow-sm"
+                      >
+                        <span>🔗</span>
+                        <span>Par lien URL</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setShowDescPreview(!showDescPreview)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border transition shadow-sm ${
+                          showDescPreview
+                            ? 'bg-[#b8c8a6]/40 text-[#1c221d] border-[#97ab83]'
+                            : 'bg-white border-stone-300 text-stone-700 hover:bg-stone-50'
+                        }`}
+                      >
+                        <span>👁️</span>
+                        <span>{showDescPreview ? 'Masquer aperçu' : 'Aperçu fiche produit'}</span>
+                      </button>
+                    </div>
                   </div>
 
-                  {/* Boutons d'action pour insérer des photos */}
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <input
-                      ref={descFileInputRef}
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleDescFileUpload}
-                      disabled={descUploading}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => descFileInputRef.current?.click()}
-                      disabled={descUploading}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1c221d] text-[#f4f0e9] text-xs font-bold rounded-lg hover:bg-[#2e3730] transition shadow-sm disabled:opacity-50"
-                    >
-                      {descUploading ? (
-                        <>
-                          <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                          <span>Téléversement...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>📷</span>
-                          <span>Ajouter une photo</span>
-                        </>
-                      )}
-                    </button>
+                  {/* Formulaire ajout image par URL */}
+                  {showDescUrlModal && (
+                    <div className="bg-white border border-stone-200 rounded-lg p-3.5 space-y-2.5 shadow-sm">
+                      <span className="text-xs font-bold text-stone-700 block">
+                        Insérer une photo par URL internet :
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input
+                          type="url"
+                          value={descImageUrlInput}
+                          onChange={(e) => setDescImageUrlInput(e.target.value)}
+                          placeholder="Lien de l'image (ex: https://...)"
+                          className="px-3 py-2 text-xs border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                        />
+                        <input
+                          type="text"
+                          value={descImageAltInput}
+                          onChange={(e) => setDescImageAltInput(e.target.value)}
+                          placeholder="Légende optionnelle (ex: Flacon d'exception)"
+                          className="px-3 py-2 text-xs border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                        />
+                      </div>
+                      <div className="flex justify-end gap-2 pt-1">
+                        <button
+                          type="button"
+                          onClick={() => setShowDescUrlModal(false)}
+                          className="px-3 py-1 text-xs text-stone-500 hover:text-stone-800"
+                        >
+                          Annuler
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleAddDescImageUrl}
+                          disabled={!descImageUrlInput.trim()}
+                          className="px-4 py-1.5 bg-[#1c221d] text-white text-xs font-bold rounded-lg hover:bg-[#2e3730] disabled:opacity-40 transition shadow-sm"
+                        >
+                          + Ajouter cette photo
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
-                    <button
-                      type="button"
-                      onClick={() => setShowDescUrlModal(!showDescUrlModal)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-stone-300 text-stone-700 text-xs font-semibold rounded-lg hover:bg-stone-50 hover:border-stone-400 transition shadow-sm"
-                    >
-                      <span>🔗</span>
-                      <span>Image par URL</span>
-                    </button>
+                  {/* Raccourci depuis les photos du carrousel existantes */}
+                  {formProduct.images && formProduct.images.length > 0 && (
+                    <div className="bg-white/90 border border-stone-200 rounded-lg p-2.5 flex items-center gap-2 overflow-x-auto">
+                      <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider flex-shrink-0">
+                        Ajouter depuis le carrousel :
+                      </span>
+                      <div className="flex items-center gap-2">
+                        {formProduct.images.map((imgUrl, iIdx) => (
+                          <button
+                            key={iIdx}
+                            type="button"
+                            onClick={() => handleInsertGalleryImageIntoDesc(imgUrl)}
+                            className="relative group w-11 h-11 rounded-lg border border-stone-200 overflow-hidden flex-shrink-0 hover:border-[#1c221d] hover:scale-105 transition shadow-sm"
+                            title="Cliquer pour ajouter cette photo à la description"
+                          >
+                            <img src={imgUrl} alt={`Photo ${iIdx}`} className="w-full h-full object-cover" />
+                            <span className="absolute inset-0 bg-black/40 text-white text-xs font-bold opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                              +
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-                    <button
-                      type="button"
-                      onClick={() => setShowDescPreview(!showDescPreview)}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition shadow-sm ${
-                        showDescPreview
-                          ? 'bg-[#b8c8a6]/40 text-[#1c221d] border-[#97ab83]'
-                          : 'bg-white border-stone-300 text-stone-700 hover:bg-stone-50'
-                      }`}
-                    >
-                      <span>👁️</span>
-                      <span>{showDescPreview ? 'Masquer aperçu' : 'Aperçu fiche produit'}</span>
-                    </button>
-                  </div>
+                  {/* Galerie visuelle des photos de description */}
+                  {descPhotos.length > 0 ? (
+                    <div className="space-y-2 pt-1">
+                      <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider block">
+                        Photos affichées dans la description ({descPhotos.length}) :
+                      </span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        {descPhotos.map((item) => (
+                          <div
+                            key={item.id}
+                            className="flex items-center gap-3 p-2.5 bg-white border border-stone-200 rounded-xl shadow-sm hover:border-stone-300 transition"
+                          >
+                            <div className="w-16 h-16 rounded-lg overflow-hidden bg-stone-100 border border-stone-200 flex-shrink-0">
+                              <img
+                                src={item.url}
+                                alt={item.alt || 'Photo'}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0 space-y-1">
+                              <input
+                                type="text"
+                                value={item.alt}
+                                onChange={(e) => handleUpdateDescPhotoAlt(item.id, e.target.value)}
+                                placeholder="Légende de la photo..."
+                                className="w-full px-2 py-1 text-xs border border-stone-200 rounded focus:border-stone-400 outline-none"
+                              />
+                              <p className="text-[10px] text-green-700 font-semibold flex items-center gap-1">
+                                <span>✓</span> Prête pour la fiche produit
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveDescPhoto(item.id)}
+                              className="w-7 h-7 rounded-full bg-stone-100 hover:bg-red-100 text-stone-500 hover:text-red-700 flex items-center justify-center text-xs font-bold transition flex-shrink-0"
+                              title="Retirer cette photo"
+                            >
+                              ✕
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-3 bg-white/60 border border-dashed border-stone-300 rounded-lg text-center">
+                      <p className="text-xs text-stone-500">
+                        Aucune photo d&apos;illustration ajoutée pour l&apos;instant. Cliquez sur <strong>« + Ajouter une photo »</strong> ci-dessus pour enrichir la fiche produit.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
-                {/* Modal / Boîte d'ajout d'image par URL */}
-                {showDescUrlModal && (
-                  <div className="bg-white border border-stone-200 rounded-lg p-3 space-y-2 shadow-sm">
-                    <span className="text-xs font-bold text-stone-700 block">
-                      Insérer une image web dans la description :
+                {/* 2. SECTION RÉDACTION DU TEXTE (100% PROPRE, AUCUN CODE) */}
+                <div className="space-y-1.5 pt-1">
+                  <div className="flex items-center justify-between">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#1c221d]">
+                      Texte de la description du produit *
+                    </label>
+                    <span className="text-[11px] text-stone-400">
+                      Rédigez normalement sans aucun code ni écriture technique
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <input
-                        type="url"
-                        value={descImageUrlInput}
-                        onChange={(e) => setDescImageUrlInput(e.target.value)}
-                        placeholder="URL de l'image (https://...)"
-                        className="px-3 py-1.5 text-xs border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#b8c8a6] outline-none"
-                      />
-                      <input
-                        type="text"
-                        value={descImageAltInput}
-                        onChange={(e) => setDescImageAltInput(e.target.value)}
-                        placeholder="Légende optionnelle (ex: Flacon d'exception)"
-                        className="px-3 py-1.5 text-xs border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#b8c8a6] outline-none"
-                      />
-                    </div>
-                    <div className="flex justify-end gap-2 pt-1">
-                      <button
-                        type="button"
-                        onClick={() => setShowDescUrlModal(false)}
-                        className="px-3 py-1 text-xs text-stone-500 hover:text-stone-800"
-                      >
-                        Annuler
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleAddDescImageUrl}
-                        disabled={!descImageUrlInput.trim()}
-                        className="px-4 py-1 bg-[#1c221d] text-white text-xs font-bold rounded-lg hover:bg-[#2e3730] disabled:opacity-40 transition shadow-sm"
-                      >
-                        + Insérer dans le texte
-                      </button>
-                    </div>
                   </div>
-                )}
+                  <textarea
+                    rows={4}
+                    required
+                    value={formProduct.description}
+                    onChange={(e) => setFormProduct({ ...formProduct, description: e.target.value })}
+                    placeholder="Décrivez les bienfaits, la texture, les rituels d'application et les actifs précieux..."
+                    className="w-full px-3.5 py-2.5 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none bg-white text-stone-800 leading-relaxed"
+                  />
+                </div>
 
-                {/* Insertion rapide depuis les photos du carrousel existantes */}
-                {formProduct.images && formProduct.images.length > 0 && (
-                  <div className="bg-white/80 border border-dashed border-stone-200 rounded-lg p-2.5 flex items-center gap-2 overflow-x-auto">
-                    <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider flex-shrink-0">
-                      Insérer une photo du carrousel :
-                    </span>
-                    <div className="flex items-center gap-2">
-                      {formProduct.images.map((imgUrl, iIdx) => (
-                        <button
-                          key={iIdx}
-                          type="button"
-                          onClick={() => handleInsertGalleryImageIntoDesc(imgUrl)}
-                          className="relative group w-10 h-10 rounded border border-stone-200 overflow-hidden flex-shrink-0 hover:border-[#1c221d] hover:scale-105 transition"
-                          title="Cliquer pour insérer cette photo dans la description"
-                        >
-                          <img src={imgUrl} alt={`Carrousel ${iIdx}`} className="w-full h-full object-cover" />
-                          <span className="absolute inset-0 bg-black/40 text-white text-[10px] font-bold opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                            +
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Champ texte principal */}
-                <textarea
-                  rows={5}
-                  required
-                  value={formProduct.description}
-                  onChange={(e) => setFormProduct({ ...formProduct, description: e.target.value })}
-                  placeholder="Décrivez les bienfaits, la texture et les actifs précieux... Vous pouvez insérer des photos à tout moment grâce aux boutons ci-dessus !"
-                  className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none font-mono text-xs bg-white"
-                />
-
-                {/* Liste des photos détectées dans la description */}
-                {descEmbeddedImages.length > 0 && (
-                  <div className="space-y-1.5 pt-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-stone-600 uppercase tracking-wider">
-                        Photos intégrées dans la description ({descEmbeddedImages.length}) :
-                      </span>
-                      <span className="text-[10px] text-stone-400">
-                        Ces photos apparaîtront avec mise en page élégante dans la fiche produit
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-                      {descEmbeddedImages.map((item: { fullMatch: string; alt: string; url: string }, idx: number) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-2 p-2 bg-white border border-stone-200 rounded-lg shadow-sm"
-                        >
-                          <img
-                            src={item.url}
-                            alt={item.alt || 'Photo description'}
-                            className="w-12 h-12 rounded object-cover border border-stone-200 flex-shrink-0"
-                          />
-                          <div className="flex-1 min-w-0">
-                            <p className="text-xs font-semibold text-stone-800 truncate">
-                              {item.alt || 'Photo sans titre'}
-                            </p>
-                            <p className="text-[10px] text-stone-400 truncate">{item.url}</p>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveDescImage(item.fullMatch)}
-                            className="text-stone-400 hover:text-red-600 p-1 transition"
-                            title="Supprimer cette photo de la description"
-                          >
-                            ✕
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Aperçu en direct de la fiche produit */}
+                {/* 3. APERÇU DIRECT DE LA FICHE PRODUIT */}
                 {showDescPreview && (
                   <div className="mt-3 p-4 bg-white rounded-xl border border-[#b8c8a6] shadow-sm space-y-2">
                     <div className="flex items-center justify-between border-b border-stone-200 pb-2">
@@ -1806,11 +1853,21 @@ export default function AdminPage() {
                         <span>👁️</span> Aperçu direct sur la fiche produit publique :
                       </span>
                       <span className="text-[10px] text-stone-400 italic">
-                        Mise à jour instantanée
+                        Texte + photos assemblés automatiquement
                       </span>
                     </div>
                     <div className="pt-2">
-                      <RichDescription content={getCleanDescription(formProduct.description)} />
+                      <RichDescription
+                        content={
+                          formProduct.description +
+                          (descPhotos.length > 0
+                            ? '\n\n' +
+                              descPhotos
+                                .map((dp) => `![${dp.alt || 'Illustration produit'}](${dp.url})`)
+                                .join('\n\n')
+                            : '')
+                        }
+                      />
                     </div>
                   </div>
                 )}
