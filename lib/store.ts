@@ -194,32 +194,11 @@ export function saveProduct(product: Product): void {
   }
 }
 
-/** Met à jour plusieurs produits en cache local */
+/** Met à jour les produits en cache local de manière propre sans conserver d'orphelins */
 export function saveProductsBulk(items: Product[]): void {
   if (!Array.isArray(items) || items.length === 0) return
   try {
-    const products = getAdminProducts()
-    const map = new Map<string, Product>()
-    products.forEach((p) => map.set(p.id, p))
-    items.forEach((p) => {
-      const compacted = compactProductForStorage(p)
-      const existing = map.get(p.id)
-      if (existing) {
-        const existImgs = (existing.images?.length || 0) + (existing.media?.length || 0)
-        const newImgs = (compacted.images?.length || 0) + (compacted.media?.length || 0)
-        if (existImgs > newImgs) {
-          map.set(p.id, {
-            ...compacted,
-            images: existing.images && existing.images.length > 0 ? existing.images : compacted.images,
-            media: existing.media && existing.media.length > 0 ? existing.media : compacted.media,
-            image: existing.image || compacted.image,
-          })
-          return
-        }
-      }
-      map.set(p.id, compacted)
-    })
-    const list = Array.from(map.values())
+    const list = items.map((p) => compactProductForStorage(p))
     safeWrite(STORAGE_KEYS.PRODUCTS, list)
   } catch (err) {
     console.warn('saveProductsBulk error:', err)

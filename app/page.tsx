@@ -300,25 +300,27 @@ export default function HomePage() {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()
-          dbProducts.forEach((p) => merged.set(p.id, p))
-          const curLocal = getProducts()
-          curLocal.forEach((p) => {
-            if (!merged.has(p.id)) {
-              merged.set(p.id, p)
-            } else {
-              const existing = merged.get(p.id)!
+          const defaultMap = new Map<string, Product>()
+          PRODUCTS.forEach((p) => defaultMap.set(p.id, p))
+
+          dbProducts.forEach((p) => {
+            const def = defaultMap.get(p.id)
+            if (def) {
+              const defCount = (def.images?.length || 0) + (def.media?.length || 0)
               const pCount = (p.images?.length || 0) + (p.media?.length || 0)
-              const existingCount = (existing.images?.length || 0) + (existing.media?.length || 0)
-              if (pCount > existingCount) {
+              if (defCount > pCount) {
                 merged.set(p.id, {
-                  ...existing,
-                  image: p.image || existing.image,
-                  images: p.images || existing.images,
-                  media: p.media || existing.media,
+                  ...p,
+                  image: def.image || p.image,
+                  images: def.images && def.images.length > 0 ? def.images : p.images,
+                  media: def.media && def.media.length > 0 ? def.media : p.media,
                 })
+                return
               }
             }
+            merged.set(p.id, p)
           })
+
           setProductsList(Array.from(merged.values()))
         }
       }).catch(() => {})

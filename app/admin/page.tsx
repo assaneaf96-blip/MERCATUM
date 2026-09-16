@@ -168,10 +168,8 @@ export default function AdminPage() {
     try {
       const dbProducts = await fetchProductsFromDb(true)
       if (dbProducts && dbProducts.length > 0) {
-        const mergedMap = new Map<string, Product>()
-        localProducts.forEach((p) => mergedMap.set(p.id, p))
-        dbProducts.forEach((p) => mergedMap.set(p.id, p))
-        setProducts(Array.from(mergedMap.values()))
+        setProducts(dbProducts)
+        saveProductsBulk(dbProducts)
       }
     } catch {
       // Garder les produits locaux
