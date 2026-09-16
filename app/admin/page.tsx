@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {
   getProducts,
   saveProduct,
+  saveProductsBulk,
   deleteProduct,
   isDefaultProduct,
   resetProductsToDefault,
