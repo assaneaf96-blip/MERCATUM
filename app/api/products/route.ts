@@ -72,17 +72,8 @@ export async function GET(request: NextRequest) {
     const id = searchParams.get('id')
 
     if (id) {
-      // 1. Si un ID précis est demandé, essayer d'abord le cache mémoire serveur
-      if (serverCache && serverCache.products) {
-        const cached = serverCache.products.find((p) => p.id === id)
-        if (cached && cached.media && cached.media.length > 0) {
-          return NextResponse.json(
-            { success: true, product: cached },
-            { headers: NO_CACHE_HEADERS }
-          )
-        }
-      }
-
+      // Pour une fiche produit individuelle, on interroge toujours Supabase en direct avec select('*')
+      // afin de charger l'intégralité de la galerie photos / vidéos haute résolution.
       const { data, error } = await supabase
         .from('products')
         .select('*')
@@ -112,11 +103,13 @@ export async function GET(request: NextRequest) {
     }
 
     // 3. Récupération directe Supabase optimisée :
-    // On exclut la colonne media géante (contenant des vidéos 4K base64) de la liste globale
-    // pour garantir un temps de réponse de quelques millisecondes sans jamais de timeout.
+    // On exclut les colonnes lourdes (images[] base64 et media base64) de la liste globale
+    // pour garantir un temps de réponse instantané sans jamais de timeout.
+    // L'image principale (image) est conservée pour les miniatures du catalogue.
+    // Les galeries complètes sont chargées à la demande via ?id=...
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count, created_at')
+      .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count, created_at')
       .order('created_at', { ascending: false })
 
     if (error) {

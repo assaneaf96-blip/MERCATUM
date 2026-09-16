@@ -118,6 +118,18 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '🍃', title: 'Bien-Être au Quotidien', desc: 'Un sanctuaire paisible pour se ressourcer pleinement après chaque journée.' },
     ],
   },
+  'Juego de interior': {
+    eyebrow: 'Loisirs & Convivialité d\'Exception · Art du Jeu',
+    title: 'Billards Convertibles & Tables de Réception',
+    subtitle: 'La double vie d\'un meuble prestigieux : table à manger d\'architecte et billard d\'élite.',
+    badge: 'Design 2-en-1 & Finitions Haute Précision',
+    description: 'Transformez en un instant votre espace de réception : nos tables de billard convertibles allient l\'élégance contemporaine d\'une table de repas conviviale aux sensations et à la précision d\'un véritable billard de compétition.',
+    arguments: [
+      { icon: '🎱', title: 'Transformation Instantanée 2-en-1', desc: 'Plateaux amovibles légers pour passer du dîner gastronomique à la partie de jeu en quelques secondes.' },
+      { icon: '🪵', title: 'Structure Robuste & Matières Nobles', desc: 'Châssis haute stabilité, bois sélectionné et drap haute précision pour un roulement parfait.' },
+      { icon: '🍷', title: 'Convivialité & Réceptions d\'Élite', desc: 'Accueillez confortablement vos convives autour d\'une table au design spectaculaire.' },
+    ],
+  },
 }
 
 function CategorySliderSection({
@@ -424,6 +436,7 @@ export default function HomePage() {
     const DISPLAY_CATEGORIES = [
       'Belleza & cabello',
       'Mobilier & Décoration',
+      'Juego de interior',
       'Haute Cosmétique & Visage',
       "Parfums d'Exception",
       'Plein Air & Évasion',

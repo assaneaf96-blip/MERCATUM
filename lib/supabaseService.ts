@@ -78,7 +78,7 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
   try {
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count, created_at')
+      .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count, created_at')
       .order('created_at', { ascending: false })
 
     if (error) {
@@ -92,11 +92,15 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
       const vols = extractVolumes(item)
       const cols = extractColors(item)
       const cont = item.contenance || extractContenance(item)
-      const imagesList = Array.isArray(item.images) ? item.images : []
-      const mediaList = imagesList.map((url: string) => ({
-        url,
-        type: isVideoUrl(url) ? 'video' : 'image',
-      }))
+      const imagesList = Array.isArray(item.images) && item.images.length > 0
+        ? item.images
+        : (item.image ? [item.image] : [])
+      const mediaList = Array.isArray(item.media) && item.media.length > 0
+        ? item.media
+        : imagesList.map((url: string) => ({
+            url,
+            type: isVideoUrl(url) ? 'video' : 'image',
+          }))
       return {
         id: item.id,
         name: item.name,

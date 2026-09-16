@@ -30,6 +30,7 @@ import {
   saveProductToDbDetailed,
   deleteProductFromDb,
   fetchProductsFromDb,
+  fetchProductByIdFromDb,
   fetchNouveautesFromDb,
   saveNouveautesToDb,
   subscribeToProductsChanges,
@@ -339,6 +340,28 @@ export default function AdminPage() {
     setManualUrl('')
     setUploadError(null)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    // Charger en arrière-plan la fiche complète depuis Supabase (avec toutes les photos / vidéos)
+    if (p.id) {
+      fetchProductByIdFromDb(p.id).then((fullProd) => {
+        if (fullProd && ((fullProd.images && fullProd.images.length > 0) || (fullProd.media && fullProd.media.length > 0))) {
+          const fullMediaList: MediaItem[] = fullProd.media && fullProd.media.length > 0
+            ? [...fullProd.media]
+            : (fullProd.images || []).map((url) => ({
+                url,
+                type: isVideoUrl(url) ? 'video' : 'image',
+              }))
+          setFormProduct((prev) => {
+            if (!prev || prev.id !== p.id) return prev
+            return {
+              ...prev,
+              media: fullMediaList,
+              images: fullMediaList.map((m) => m.url),
+            }
+          })
+        }
+      }).catch(() => {})
+    }
   }
 
   // --- Gestion du téléversement de photos (Local & Vercel sans serveur requis) ---
