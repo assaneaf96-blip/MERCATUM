@@ -99,6 +99,8 @@ export default function AdminPage() {
   const [formProduct, setFormProduct] = useState<Product>(emptyProduct())
   const [deleteId, setDeleteId] = useState<string | null>(null)
   const [showResetConfirm, setShowResetConfirm] = useState(false)
+  const [showLocalDrafts, setShowLocalDrafts] = useState(false)
+  const [localDraftsList, setLocalDraftsList] = useState<any[]>([])
   const [addToNouveautesOnSave, setAddToNouveautesOnSave] = useState(false)
   const [isSavingProduct, setIsSavingProduct] = useState(false)
   const [isCustomCategory, setIsCustomCategory] = useState(false)
@@ -868,6 +870,35 @@ export default function AdminPage() {
     setShowResetConfirm(false)
     reloadData()
     showToast('Catalogue réinitialisé avec les produits par défaut')
+  }
+
+  const handleInspectLocalDrafts = () => {
+    if (typeof window === 'undefined') return
+    try {
+      const raw = localStorage.getItem('ml_admin_products')
+      const parsed = raw ? JSON.parse(raw) : []
+      setLocalDraftsList(Array.isArray(parsed) ? parsed : [])
+      setShowLocalDrafts(!showLocalDrafts)
+    } catch {
+      setLocalDraftsList([])
+      setShowLocalDrafts(!showLocalDrafts)
+    }
+  }
+
+  const handleClearLocalDrafts = () => {
+    if (typeof window === 'undefined') return
+    if (window.confirm('Voulez-vous vider tous les brouillons temporaires locaux stockés dans votre navigateur ?')) {
+      try {
+        localStorage.removeItem('ml_admin_products')
+        localStorage.removeItem('ml_admin_deleted_products')
+        setLocalDraftsList([])
+        setShowLocalDrafts(false)
+        reloadData()
+        showToast('🟢 Brouillons locaux vidés avec succès !')
+      } catch (err) {
+        console.warn('Erreur clear local storage:', err)
+      }
+    }
   }
 
   // --- Actions Nouveautés ---
@@ -2040,6 +2071,84 @@ export default function AdminPage() {
                 ))}
               </select>
             </div>
+
+            {/* Outil d'inspection des brouillons stockés dans le navigateur */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-stone-100/80 border border-stone-300 rounded-xl p-3.5 text-xs">
+              <div className="flex items-center gap-2.5">
+                <span className="text-lg">📦</span>
+                <div>
+                  <span className="font-bold text-stone-900 block">
+                    Brouillons temporaires du navigateur (localStorage)
+                  </span>
+                  <span className="text-stone-500">
+                    Consultez la liste des articles mémorisés dans votre navigateur ou videz-les en 1 clic.
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleInspectLocalDrafts}
+                  className="px-3 py-1.5 bg-white border border-stone-300 hover:bg-stone-50 rounded-lg font-bold text-stone-800 shadow-sm transition"
+                >
+                  {showLocalDrafts ? '▲ Masquer' : '👁️ Voir les brouillons'}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClearLocalDrafts}
+                  className="px-3 py-1.5 bg-red-50 border border-red-200 hover:bg-red-100 text-red-700 rounded-lg font-bold transition"
+                >
+                  🗑️ Vider
+                </button>
+              </div>
+            </div>
+
+            {showLocalDrafts && (
+              <div className="bg-white border-2 border-[#b8c8a6] rounded-xl p-4 shadow-md space-y-3">
+                <div className="flex items-center justify-between border-b pb-2">
+                  <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
+                    <span>📋 Brouillons trouvés en mémoire locale :</span>
+                    <span className="bg-[#1c221d] text-white px-2.5 py-0.5 rounded-full text-xs font-bold">
+                      {localDraftsList.length} produit(s)
+                    </span>
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => setShowLocalDrafts(false)}
+                    className="text-stone-400 hover:text-stone-700 text-sm font-bold"
+                  >
+                    ✕
+                  </button>
+                </div>
+                {localDraftsList.length === 0 ? (
+                  <p className="text-xs text-stone-500 italic py-2">
+                    Aucun brouillon orphelin en mémoire locale. Votre navigateur est 100% synchronisé avec la base !
+                  </p>
+                ) : (
+                  <div className="max-h-60 overflow-y-auto space-y-2 pr-1">
+                    {localDraftsList.map((item, idx) => (
+                      <div
+                        key={item.id || idx}
+                        className="flex items-center justify-between p-2.5 bg-stone-50 border border-stone-200 rounded-lg text-xs"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="font-mono font-bold text-stone-400 text-[11px] w-6">#{idx + 1}</span>
+                          <div>
+                            <div className="font-bold text-stone-900">{item.name || '(Sans nom)'}</div>
+                            <div className="text-stone-500 font-mono text-[10px]">
+                              ID: {item.id} · Catégorie: {item.category || 'Non définie'}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="font-bold text-stone-900">{item.price || '0,00 €'}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Liste des produits (Tableau) */}
             <div className="bg-white rounded-xl border border-[#d8d3c5] shadow-sm overflow-hidden">
