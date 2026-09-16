@@ -70,13 +70,18 @@ export default function BoutiquePage() {
 
     loadProducts()
 
-    // 3. Écoute Supabase Realtime : intègre tout nouveau produit dès son ajout
-    const unsubscribe = subscribeToProductsChanges(() => {
+    // 3. Écoute Supabase Realtime + Événements locaux : intègre tout nouveau produit dès son ajout
+    const handleUpdate = () => {
       loadProducts()
-    })
+    }
+    const unsubscribe = subscribeToProductsChanges(handleUpdate)
+    window.addEventListener('mercatum:products_updated', handleUpdate)
+    window.addEventListener('storage', handleUpdate)
 
     return () => {
       unsubscribe()
+      window.removeEventListener('mercatum:products_updated', handleUpdate)
+      window.removeEventListener('storage', handleUpdate)
     }
   }, [])
 

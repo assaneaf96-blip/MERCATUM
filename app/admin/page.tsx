@@ -702,13 +702,18 @@ export default function AdminPage() {
     const generatedId = formProduct.id.trim() || slugify(formProduct.name) || `prod-${Date.now()}`
 
     const mediaList = formProduct.media || []
-    const imagesList = mediaList.length > 0
-      ? mediaList.map((m) => m.url)
-      : formProduct.image ? [formProduct.image] : []
+    const filteredImages = mediaList
+      .filter((m) => m.type !== 'video' && !isVideoUrl(typeof m === 'string' ? m : m?.url))
+      .map((m) => (typeof m === 'string' ? m : m.url))
+      .filter((url) => !url.startsWith('data:video'))
 
+    const imagesList = filteredImages.length > 0
+      ? filteredImages
+      : formProduct.image && !formProduct.image.startsWith('data:video') ? [formProduct.image] : []
+
+    const firstValidImage = filteredImages[0] || (formProduct.image && !formProduct.image.startsWith('data:video') ? formProduct.image.trim() : '')
     const primaryImage =
-      formProduct.image.trim() ||
-      mediaList[0]?.url ||
+      firstValidImage ||
       'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=85'
 
     const userContenance = formProduct.contenance?.trim() || ''

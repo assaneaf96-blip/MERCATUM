@@ -17,10 +17,20 @@ const NO_CACHE_HEADERS = {
   'Vercel-CDN-Cache-Control': 'no-store',
 }
 
+interface CacheEntry {
+  products: any[]
+  timestamp: number
+}
+
+let serverCache: CacheEntry | null = null
+const CACHE_TTL_MS = 30000 // 30 secondes de cache mémoire serveur ultra-rapide
+
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
   const cols = extractColors(item)
-  const imagesList = Array.isArray(item.images) ? item.images : []
+  const imagesList = Array.isArray(item.images) && item.images.length > 0
+    ? item.images
+    : (item.image ? [item.image] : [])
   const mediaList = Array.isArray(item.media) && item.media.length > 0
     ? item.media
     : imagesList.map((url: string) => ({
@@ -62,6 +72,17 @@ export async function GET(request: NextRequest) {
     const id = searchParams.get('id')
 
     if (id) {
+      // 1. Si un ID précis est demandé, essayer d'abord le cache mémoire serveur
+      if (serverCache && serverCache.products) {
+        const cached = serverCache.products.find((p) => p.id === id)
+        if (cached && cached.media && cached.media.length > 0) {
+          return NextResponse.json(
+            { success: true, product: cached },
+            { headers: NO_CACHE_HEADERS }
+          )
+        }
+      }
+
       const { data, error } = await supabase
         .from('products')
         .select('*')
@@ -81,13 +102,31 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Récupérer directement depuis Supabase sans aucun délai de cache
+    // 2. Pour la liste complète :
+    // Si le cache mémoire serveur est actif et récent, répondre INSTANTANÉMENT (< 1ms)
+    if (serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
+      return NextResponse.json(
+        { success: true, products: serverCache.products, cached: true },
+        { headers: NO_CACHE_HEADERS }
+      )
+    }
+
+    // 3. Récupération directe Supabase optimisée :
+    // On exclut la colonne media géante (contenant des vidéos 4K base64) de la liste globale
+    // pour garantir un temps de réponse de quelques millisecondes sans jamais de timeout.
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count, created_at')
+      .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count, created_at')
       .order('created_at', { ascending: false })
 
     if (error) {
+      // En cas de coupure temporaire Supabase, servir le cache précédent si disponible
+      if (serverCache && serverCache.products.length > 0) {
+        return NextResponse.json(
+          { success: true, products: serverCache.products, stale: true },
+          { headers: NO_CACHE_HEADERS }
+        )
+      }
       return NextResponse.json(
         { success: false, error: error.message },
         { status: 500, headers: NO_CACHE_HEADERS }
@@ -95,6 +134,12 @@ export async function GET(request: NextRequest) {
     }
 
     const products = (data || []).map((item) => formatProduct(item))
+
+    // Mettre à jour le cache serveur
+    serverCache = {
+      products,
+      timestamp: Date.now(),
+    }
 
     return NextResponse.json(
       { success: true, products },
@@ -165,6 +210,22 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const savedFormatted = data && data.length > 0 ? formatProduct(data[0]) : formatProduct(payload)
+
+    // Mettre à jour immédiatement le cache serveur si le catalogue complet y réside,
+    // ou invalider pour forcer un rechargement complet propre au prochain appel
+    if (serverCache && Array.isArray(serverCache.products) && serverCache.products.length > 10) {
+      const idx = serverCache.products.findIndex((p) => p.id === savedFormatted.id)
+      if (idx >= 0) {
+        serverCache.products[idx] = savedFormatted
+      } else {
+        serverCache.products.unshift(savedFormatted)
+      }
+      serverCache.timestamp = Date.now()
+    } else {
+      serverCache = null
+    }
+
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {
       revalidatePath('/api/products')
@@ -178,7 +239,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      product: data && data.length > 0 ? formatProduct(data[0]) : payload,
+      product: savedFormatted,
     }, { headers: NO_CACHE_HEADERS })
   } catch (err: any) {
     console.error('Erreur API /api/products POST:', err)
@@ -221,6 +282,12 @@ export async function DELETE(request: NextRequest) {
         { success: false, error: error.message },
         { status: 500, headers: NO_CACHE_HEADERS }
       )
+    }
+
+    // Retirer immédiatement du cache serveur
+    if (serverCache && Array.isArray(serverCache.products)) {
+      serverCache.products = serverCache.products.filter((p) => p.id !== id)
+      serverCache.timestamp = Date.now()
     }
 
     // Invalider immédiatement les pages statiques/SSR Next.js

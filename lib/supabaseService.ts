@@ -78,7 +78,7 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
   try {
     const { data, error } = await supabase
       .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count, created_at')
+      .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count, created_at')
       .order('created_at', { ascending: false })
 
     if (error) {
@@ -93,12 +93,10 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
       const cols = extractColors(item)
       const cont = item.contenance || extractContenance(item)
       const imagesList = Array.isArray(item.images) ? item.images : []
-      const mediaList = Array.isArray(item.media) && item.media.length > 0
-        ? item.media
-        : imagesList.map((url: string) => ({
-            url,
-            type: isVideoUrl(url) ? 'video' : 'image',
-          }))
+      const mediaList = imagesList.map((url: string) => ({
+        url,
+        type: isVideoUrl(url) ? 'video' : 'image',
+      }))
       return {
         id: item.id,
         name: item.name,
@@ -199,7 +197,14 @@ export async function saveProductToDbDetailed(
       })
       const json = await res.json()
       if (res.ok && json.success) {
-        invalidateClientProductsCache()
+        if (clientCachedProducts) {
+          const idx = clientCachedProducts.findIndex((p) => p.id === product.id)
+          if (idx >= 0) {
+            clientCachedProducts[idx] = { ...clientCachedProducts[idx], ...product }
+          } else {
+            clientCachedProducts.unshift(product)
+          }
+        }
         return { success: true }
       }
       return {
@@ -256,7 +261,9 @@ export async function deleteProductFromDb(id: string): Promise<boolean> {
       if (res.ok) {
         const json = await res.json()
         if (json.success) {
-          invalidateClientProductsCache()
+          if (clientCachedProducts) {
+            clientCachedProducts = clientCachedProducts.filter((p) => p.id !== id)
+          }
           return true
         }
       }

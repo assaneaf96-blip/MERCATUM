@@ -92,12 +92,39 @@ function safeRead<T>(key: string, fallback: T): T {
   }
 }
 
+// Helper pour alléger les produits enregistrés en localStorage
+// Évite impérativement l'erreur QUOTA_EXCEEDED_ERR (5 Mo max par domaine)
+export function compactProductForStorage(product: Product): Product {
+  const isVideo = (url?: string) =>
+    typeof url === 'string' && (url.startsWith('data:video') || url.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i))
+
+  const cleanImage = isVideo(product.image) ? '' : product.image
+  const cleanImages = Array.isArray(product.images)
+    ? product.images.filter((img) => !isVideo(img)).slice(0, 5)
+    : []
+  const cleanMedia = Array.isArray(product.media)
+    ? product.media
+        .filter((m) => {
+          const url = typeof m === 'string' ? m : m?.url
+          return !isVideo(url)
+        })
+        .slice(0, 5)
+    : undefined
+
+  return {
+    ...product,
+    image: cleanImage || (cleanImages[0] || ''),
+    images: cleanImages,
+    media: cleanMedia,
+  }
+}
+
 function safeWrite(key: string, value: unknown): void {
   if (typeof window === 'undefined') return
   try {
     localStorage.setItem(key, JSON.stringify(value))
-  } catch {
-    // ignore quota errors
+  } catch (err) {
+    console.warn('[store] Erreur quota localStorage:', err)
   }
 }
 
@@ -151,14 +178,20 @@ export function saveProduct(product: Product): void {
   const deleted = getDeletedProductIds().filter((id) => id !== product.id)
   safeWrite(STORAGE_KEYS.DELETED_PRODUCTS, deleted)
 
+  const compacted = compactProductForStorage(product)
   const products = getAdminProducts()
   const idx = products.findIndex((p) => p.id === product.id)
   if (idx >= 0) {
-    products[idx] = product
+    products[idx] = compacted
   } else {
-    products.push(product)
+    products.push(compacted)
   }
   safeWrite(STORAGE_KEYS.PRODUCTS, products)
+
+  // Notifier immédiatement toutes les pages/onglets ouverts
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('mercatum:products_updated', { detail: compacted }))
+  }
 }
 
 /** Met à jour plusieurs produits en cache local */
@@ -169,21 +202,22 @@ export function saveProductsBulk(items: Product[]): void {
     const map = new Map<string, Product>()
     products.forEach((p) => map.set(p.id, p))
     items.forEach((p) => {
+      const compacted = compactProductForStorage(p)
       const existing = map.get(p.id)
       if (existing) {
         const existImgs = (existing.images?.length || 0) + (existing.media?.length || 0)
-        const newImgs = (p.images?.length || 0) + (p.media?.length || 0)
+        const newImgs = (compacted.images?.length || 0) + (compacted.media?.length || 0)
         if (existImgs > newImgs) {
           map.set(p.id, {
-            ...p,
-            images: existing.images && existing.images.length > 0 ? existing.images : p.images,
-            media: existing.media && existing.media.length > 0 ? existing.media : p.media,
-            image: existing.image || p.image,
+            ...compacted,
+            images: existing.images && existing.images.length > 0 ? existing.images : compacted.images,
+            media: existing.media && existing.media.length > 0 ? existing.media : compacted.media,
+            image: existing.image || compacted.image,
           })
           return
         }
       }
-      map.set(p.id, p)
+      map.set(p.id, compacted)
     })
     const list = Array.from(map.values())
     safeWrite(STORAGE_KEYS.PRODUCTS, list)
@@ -203,6 +237,11 @@ export function deleteProduct(id: string): void {
   if (!deleted.includes(id)) {
     deleted.push(id)
     safeWrite(STORAGE_KEYS.DELETED_PRODUCTS, deleted)
+  }
+
+  // Notifier immédiatement toutes les pages/onglets ouverts
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('mercatum:products_updated', { detail: { id, deleted: true } }))
   }
 }
 

@@ -326,10 +326,13 @@ export default function HomePage() {
 
     loadProducts()
 
-    // 3. Abonnement Supabase Realtime : intègre instantanément tout produit ajouté/modifié
-    const unsubscribe = subscribeToProductsChanges(() => {
+    // 3. Abonnement Supabase Realtime + Événements locaux : intègre instantanément tout produit ajouté/modifié
+    const handleUpdate = () => {
       loadProducts()
-    })
+    }
+    const unsubscribe = subscribeToProductsChanges(handleUpdate)
+    window.addEventListener('mercatum:products_updated', handleUpdate)
+    window.addEventListener('storage', handleUpdate)
 
     fetchNouveautesFromDb().then((dbNouv) => {
       if (dbNouv && dbNouv.length > 0) {
@@ -344,6 +347,8 @@ export default function HomePage() {
 
     return () => {
       unsubscribe()
+      window.removeEventListener('mercatum:products_updated', handleUpdate)
+      window.removeEventListener('storage', handleUpdate)
     }
   }, [])
 

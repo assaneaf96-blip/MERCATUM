@@ -28,16 +28,31 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
       if (s) setSettings(s)
     }).catch(() => {})
 
-    fetchProductsFromDb()
-      .then((db) => {
-        if (db && db.length > 0) {
-          const merged = new Map<string, Product>()
-          local.forEach((p) => merged.set(p.id, p))
-          db.forEach((p) => merged.set(p.id, p))
-          setProductsList(Array.from(merged.values()))
-        }
-      })
-      .catch(() => {})
+    const loadProducts = () => {
+      const curLocal = getProducts()
+      if (curLocal && curLocal.length > 0) {
+        setProductsList(curLocal)
+      }
+      fetchProductsFromDb()
+        .then((db) => {
+          if (db && db.length > 0) {
+            const merged = new Map<string, Product>()
+            curLocal.forEach((p) => merged.set(p.id, p))
+            db.forEach((p) => merged.set(p.id, p))
+            setProductsList(Array.from(merged.values()))
+          }
+        })
+        .catch(() => {})
+    }
+
+    loadProducts()
+    window.addEventListener('mercatum:products_updated', loadProducts)
+    window.addEventListener('storage', loadProducts)
+
+    return () => {
+      window.removeEventListener('mercatum:products_updated', loadProducts)
+      window.removeEventListener('storage', loadProducts)
+    }
   }, [])
 
   return (
