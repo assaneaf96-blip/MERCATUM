@@ -251,19 +251,123 @@ export default function ProductDetailPage() {
     }
   }, [galleryImages.length, activeImageIndex])
 
-  // Support du balayage tactile (swipe) sur mobile
+  // État du zoom et déplacement panoramique (pan) sur l'image principale
+  const [zoomLevel, setZoomLevel] = useState<number>(1)
+  const [panOffset, setPanOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+
+  // État du mode plein écran (Lightbox)
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const [lightboxZoom, setLightboxZoom] = useState<number>(1)
+  const [lightboxPan, setLightboxPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+  const [lightboxDragging, setLightboxDragging] = useState(false)
+  const [lightboxDragStart, setLightboxDragStart] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+
+  // Réinitialiser le zoom lors du changement d'image
+  useEffect(() => {
+    setZoomLevel(1)
+    setPanOffset({ x: 0, y: 0 })
+    setIsDragging(false)
+  }, [activeImageIndex])
+
+  const handleZoomIn = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
+    setZoomLevel((prev) => Math.min(3.5, Number((prev + 0.5).toFixed(1))))
+  }
+
+  const handleZoomOut = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
+    setZoomLevel((prev) => {
+      const next = Math.max(1, Number((prev - 0.5).toFixed(1)))
+      if (next === 1) setPanOffset({ x: 0, y: 0 })
+      return next
+    })
+  }
+
+  const handleZoomReset = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
+    setZoomLevel(1)
+    setPanOffset({ x: 0, y: 0 })
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoomLevel <= 1) return
+    e.preventDefault()
+    setIsDragging(true)
+    setDragStart({ x: e.clientX - panOffset.x, y: e.clientY - panOffset.y })
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || zoomLevel <= 1) return
+    e.preventDefault()
+    const maxPan = (zoomLevel - 1) * 220
+    const newX = e.clientX - dragStart.x
+    const newY = e.clientY - dragStart.y
+    setPanOffset({
+      x: Math.max(-maxPan, Math.min(maxPan, newX)),
+      y: Math.max(-maxPan, Math.min(maxPan, newY)),
+    })
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  // Clavier pour la lightbox (Échap pour fermer, Flèches pour naviguer)
+  useEffect(() => {
+    if (!isLightboxOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false)
+        setLightboxZoom(1)
+      } else if (e.key === 'ArrowLeft') {
+        setActiveImageIndex((prev) => (prev <= 0 ? galleryImages.length - 1 : prev - 1))
+      } else if (e.key === 'ArrowRight') {
+        setActiveImageIndex((prev) => (prev + 1) % galleryImages.length)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isLightboxOpen, galleryImages.length])
+
+  // Support du balayage tactile (swipe) et zoom sur mobile
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
   const [touchResumeTimeout, setTouchResumeTimeout] = useState<NodeJS.Timeout | null>(null)
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length > 0) {
-      setTouchStartX(e.touches[0].clientX)
+      if (zoomLevel > 1) {
+        setIsDragging(true)
+        setDragStart({
+          x: e.touches[0].clientX - panOffset.x,
+          y: e.touches[0].clientY - panOffset.y,
+        })
+      } else {
+        setTouchStartX(e.touches[0].clientX)
+      }
       setIsGalleryPaused(true)
       if (touchResumeTimeout) clearTimeout(touchResumeTimeout)
     }
   }
 
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (zoomLevel > 1 && isDragging && e.touches.length > 0) {
+      const maxPan = (zoomLevel - 1) * 220
+      const newX = e.touches[0].clientX - dragStart.x
+      const newY = e.touches[0].clientY - dragStart.y
+      setPanOffset({
+        x: Math.max(-maxPan, Math.min(maxPan, newX)),
+        y: Math.max(-maxPan, Math.min(maxPan, newY)),
+      })
+    }
+  }
+
   const handleTouchEnd = (e: React.TouchEvent) => {
+    if (zoomLevel > 1) {
+      setIsDragging(false)
+      return
+    }
     if (touchStartX !== null && e.changedTouches.length > 0) {
       const diff = touchStartX - e.changedTouches[0].clientX
       if (diff > 35) {
@@ -275,21 +379,21 @@ export default function ProductDetailPage() {
       }
     }
     setTouchStartX(null)
-    // Reprise automatique du défilement après 2.5s sur mobile
+    // Reprise automatique du défilement après 2.5s sur mobile si pas de zoom
     const t = setTimeout(() => {
       setIsGalleryPaused(false)
     }, 2500)
     setTouchResumeTimeout(t)
   }
 
-  // Défilement automatique des photos du produit (toutes les 3.5s) si plus d'une photo
+  // Défilement automatique des photos du produit (toutes les 3.5s) si plus d'une photo et pas de zoom
   useEffect(() => {
-    if (galleryImages.length <= 1 || isGalleryPaused) return
+    if (galleryImages.length <= 1 || isGalleryPaused || zoomLevel > 1) return
     const interval = setInterval(() => {
       setActiveImageIndex((prev) => (prev + 1) % galleryImages.length)
     }, 3500)
     return () => clearInterval(interval)
-  }, [galleryImages.length, isGalleryPaused])
+  }, [galleryImages.length, isGalleryPaused, zoomLevel])
 
   const relatedProducts = useMemo(() => {
     return allProducts
@@ -366,7 +470,7 @@ export default function ProductDetailPage() {
           {/* Left Column: Visual Showcase Gallery */}
           <div className="pdp-gallery-col">
             <div
-              className="pdp-main-visual-wrapper group"
+              className={`pdp-main-visual-wrapper group relative ${zoomLevel > 1 ? 'zoomed' : ''}`}
               onMouseEnter={() => {
                 if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
                   setIsGalleryPaused(true)
@@ -374,36 +478,136 @@ export default function ProductDetailPage() {
               }}
               onMouseLeave={() => {
                 if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
-                  setIsGalleryPaused(false)
+                  if (zoomLevel <= 1) setIsGalleryPaused(false)
                 }
+                setIsDragging(false)
               }}
               onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               {product.tag && (
                 <span className="pdp-badge-tag">{product.tag}</span>
               )}
-              {(() => {
-                const currentImg = galleryImages[activeImageIndex] || galleryImages[0] || product.image || '/placeholder.svg'
-                const isVideo = isVideoUrl(currentImg)
-                return isVideo ? (
-                  <video
-                    src={currentImg}
-                    autoPlay
-                    loop
-                    muted
-                    controls
-                    playsInline
-                    className="pdp-main-img"
-                  />
-                ) : (
-                  <img
-                    src={currentImg}
-                    alt={`${product.name} - vue ${activeImageIndex + 1}`}
-                    className="pdp-main-img"
-                  />
-                )
-              })()}
+
+              {/* Conteneur de l'image/vidéo avec support du zoom et pan */}
+              <div
+                className={`w-full h-full flex items-center justify-center overflow-hidden select-none ${
+                  zoomLevel > 1 ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-zoom-in'
+                }`}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onDoubleClick={(e) => {
+                  e.stopPropagation()
+                  if (zoomLevel > 1) {
+                    handleZoomReset()
+                  } else {
+                    handleZoomIn()
+                  }
+                }}
+              >
+                {(() => {
+                  const currentImg = galleryImages[activeImageIndex] || galleryImages[0] || product.image || '/placeholder.svg'
+                  const isVideo = isVideoUrl(currentImg)
+                  return isVideo ? (
+                    <video
+                      src={currentImg}
+                      autoPlay
+                      loop
+                      muted
+                      controls
+                      playsInline
+                      className="pdp-main-img"
+                      style={{
+                        transform: `scale(${zoomLevel}) translate(${panOffset.x / zoomLevel}px, ${panOffset.y / zoomLevel}px)`,
+                        transformOrigin: 'center center',
+                        transition: isDragging ? 'none' : 'transform 0.25s ease-out',
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={currentImg}
+                      alt={`${product.name} - vue ${activeImageIndex + 1}`}
+                      className="pdp-main-img pointer-events-none"
+                      style={{
+                        transform: `scale(${zoomLevel}) translate(${panOffset.x / zoomLevel}px, ${panOffset.y / zoomLevel}px)`,
+                        transformOrigin: 'center center',
+                        transition: isDragging ? 'none' : 'transform 0.25s ease-out',
+                      }}
+                      draggable={false}
+                    />
+                  )
+                })()}
+              </div>
+
+              {/* Barre d'outils Zoom (+ / -) et Plein écran */}
+              <div
+                className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-black/75 backdrop-blur-md text-white px-2.5 py-1.5 rounded-full shadow-2xl border border-white/20"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={handleZoomOut}
+                  disabled={zoomLevel <= 1}
+                  aria-label="Dézoomer (-)"
+                  title="Dézoomer (-)"
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition ${
+                    zoomLevel <= 1
+                      ? 'opacity-30 cursor-not-allowed text-stone-400'
+                      : 'hover:bg-white/20 active:scale-95 text-white'
+                  }`}
+                >
+                  −
+                </button>
+
+                <span className="text-[11px] font-bold tracking-wider px-1 min-w-[38px] text-center select-none text-stone-100">
+                  {Math.round(zoomLevel * 100)}%
+                </span>
+
+                <button
+                  type="button"
+                  onClick={handleZoomIn}
+                  disabled={zoomLevel >= 3.5}
+                  aria-label="Zoomer (+)"
+                  title="Zoomer (+)"
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition ${
+                    zoomLevel >= 3.5
+                      ? 'opacity-30 cursor-not-allowed text-stone-400'
+                      : 'hover:bg-white/20 active:scale-95 text-white'
+                  }`}
+                >
+                  +
+                </button>
+
+                {zoomLevel > 1 && (
+                  <button
+                    type="button"
+                    onClick={handleZoomReset}
+                    aria-label="Réinitialiser le zoom"
+                    title="Réinitialiser le zoom (100%)"
+                    className="w-6 h-6 rounded-full flex items-center justify-center text-xs hover:bg-white/20 text-stone-300 hover:text-white transition ml-0.5"
+                  >
+                    ↺
+                  </button>
+                )}
+
+                <div className="w-[1px] h-3.5 bg-white/25 mx-0.5" />
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsLightboxOpen(true)
+                    setLightboxZoom(1.4)
+                    setLightboxPan({ x: 0, y: 0 })
+                  }}
+                  aria-label="Plein écran"
+                  title="Agrandir en plein écran"
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs hover:bg-white/20 text-white transition"
+                >
+                  ⛶
+                </button>
+              </div>
 
               {/* Navigation flèches et puces si plusieurs photos */}
               {galleryImages.length > 1 && (
@@ -790,6 +994,208 @@ export default function ProductDetailPage() {
         onClose={() => setBuyingProduct(null)}
         onSuccess={handleCheckoutSuccess}
       />
+
+      {/* Modal Lightbox Plein Écran Haute Résolution avec Zoom (+ et -) */}
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 sm:p-6 animate-fade-in"
+          onClick={() => {
+            setIsLightboxOpen(false)
+            setLightboxZoom(1)
+            setLightboxPan({ x: 0, y: 0 })
+          }}
+        >
+          {/* Barre supérieure Lightbox */}
+          <div
+            className="w-full max-w-6xl flex items-center justify-between z-10 text-white pb-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div>
+              <h3 className="font-serif text-base sm:text-lg text-stone-100 font-semibold">{product.name}</h3>
+              <p className="text-xs text-stone-400">
+                Vue {activeImageIndex + 1} sur {galleryImages.length} · MERCATUM Paris
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              {/* Contrôles de zoom dans le plein écran */}
+              <div className="flex items-center gap-1 bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLightboxZoom((prev) => {
+                      const next = Math.max(1, Number((prev - 0.5).toFixed(1)))
+                      if (next === 1) setLightboxPan({ x: 0, y: 0 })
+                      return next
+                    })
+                  }}
+                  disabled={lightboxZoom <= 1}
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                  title="Dézoomer (-)"
+                >
+                  −
+                </button>
+                <span className="text-xs font-bold min-w-[40px] text-center text-stone-200 select-none">
+                  {Math.round(lightboxZoom * 100)}%
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setLightboxZoom((prev) => Math.min(4, Number((prev + 0.5).toFixed(1))))}
+                  disabled={lightboxZoom >= 4}
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition"
+                  title="Zoomer (+)"
+                >
+                  +
+                </button>
+                {lightboxZoom > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLightboxZoom(1)
+                      setLightboxPan({ x: 0, y: 0 })
+                    }}
+                    className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-stone-300 hover:text-white hover:bg-white/20 ml-1 transition"
+                    title="Réinitialiser le zoom"
+                  >
+                    ↺
+                  </button>
+                )}
+              </div>
+
+              {/* Bouton Fermer */}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsLightboxOpen(false)
+                  setLightboxZoom(1)
+                  setLightboxPan({ x: 0, y: 0 })
+                }}
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center text-base transition border border-white/20"
+                aria-label="Fermer le plein écran"
+                title="Fermer (Échap)"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          {/* Contenu visuel plein écran avec support du zoom et pan */}
+          <div
+            className={`relative w-full flex-1 flex items-center justify-center overflow-hidden my-auto select-none ${
+              lightboxZoom > 1 ? (lightboxDragging ? 'cursor-grabbing' : 'cursor-grab') : ''
+            }`}
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={(e) => {
+              if (lightboxZoom <= 1) return
+              setLightboxDragging(true)
+              setLightboxDragStart({ x: e.clientX - lightboxPan.x, y: e.clientY - lightboxPan.y })
+            }}
+            onMouseMove={(e) => {
+              if (!lightboxDragging || lightboxZoom <= 1) return
+              const maxPan = (lightboxZoom - 1) * 350
+              const newX = e.clientX - lightboxDragStart.x
+              const newY = e.clientY - lightboxDragStart.y
+              setLightboxPan({
+                x: Math.max(-maxPan, Math.min(maxPan, newX)),
+                y: Math.max(-maxPan, Math.min(maxPan, newY)),
+              })
+            }}
+            onMouseUp={() => setLightboxDragging(false)}
+          >
+            {(() => {
+              const currentImg = galleryImages[activeImageIndex] || galleryImages[0] || product.image || '/placeholder.svg'
+              const isVideo = isVideoUrl(currentImg)
+              return isVideo ? (
+                <video
+                  src={currentImg}
+                  autoPlay
+                  loop
+                  muted
+                  controls
+                  playsInline
+                  className="max-h-[80vh] max-w-[92vw] object-contain shadow-2xl rounded-lg"
+                  style={{
+                    transform: `scale(${lightboxZoom}) translate(${lightboxPan.x / lightboxZoom}px, ${lightboxPan.y / lightboxZoom}px)`,
+                    transition: lightboxDragging ? 'none' : 'transform 0.2s ease-out',
+                  }}
+                />
+              ) : (
+                <img
+                  src={currentImg}
+                  alt={product.name}
+                  className="max-h-[80vh] max-w-[92vw] object-contain shadow-2xl rounded-lg pointer-events-none"
+                  style={{
+                    transform: `scale(${lightboxZoom}) translate(${lightboxPan.x / lightboxZoom}px, ${lightboxPan.y / lightboxZoom}px)`,
+                    transition: lightboxDragging ? 'none' : 'transform 0.2s ease-out',
+                  }}
+                  draggable={false}
+                />
+              )
+            })()}
+
+            {/* Flèches précédent / suivant dans le plein écran */}
+            {galleryImages.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveImageIndex((prev) => (prev <= 0 ? galleryImages.length - 1 : prev - 1))
+                    setLightboxZoom(1)
+                    setLightboxPan({ x: 0, y: 0 })
+                  }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg border border-white/20 transition shadow-lg backdrop-blur-sm"
+                  aria-label="Image précédente"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveImageIndex((prev) => (prev + 1) % galleryImages.length)
+                    setLightboxZoom(1)
+                    setLightboxPan({ x: 0, y: 0 })
+                  }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg border border-white/20 transition shadow-lg backdrop-blur-sm"
+                  aria-label="Image suivante"
+                >
+                  ›
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Barre inférieure : miniatures */}
+          {galleryImages.length > 1 && (
+            <div
+              className="w-full max-w-2xl flex items-center justify-center gap-2 pt-3 z-10 overflow-x-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {galleryImages.map((imgUrl, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => {
+                    setActiveImageIndex(idx)
+                    setLightboxZoom(1)
+                    setLightboxPan({ x: 0, y: 0 })
+                  }}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded overflow-hidden border-2 transition flex-shrink-0 ${
+                    activeImageIndex === idx ? 'border-white ring-2 ring-white/50 scale-105' : 'border-white/30 opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  {isVideoUrl(imgUrl) ? (
+                    <video src={imgUrl} className="w-full h-full object-cover pointer-events-none" muted playsInline />
+                  ) : (
+                    <img src={imgUrl} alt={`Vue ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </main>
   )
 }

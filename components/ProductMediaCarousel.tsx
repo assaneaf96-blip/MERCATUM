@@ -51,15 +51,38 @@ export default function ProductMediaCarousel({
   const hasMultiple = items.length > 1
 
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
+  const [zoomLevel, setZoomLevel] = useState<number>(1)
 
-  // Défilement automatique toutes les 3.5 secondes si plus d'une image
+  const handleZoomIn = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setZoomLevel((prev) => Math.min(2.5, Number((prev + 0.4).toFixed(1))))
+  }
+
+  const handleZoomOut = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setZoomLevel((prev) => Math.max(1, Number((prev - 0.4).toFixed(1))))
+  }
+
+  const handleZoomReset = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    setZoomLevel(1)
+  }
+
   useEffect(() => {
-    if (!hasMultiple || isPaused) return
+    setZoomLevel(1)
+  }, [currentIndex])
+
+  // Défilement automatique toutes les 3.5 secondes si plus d'une image et pas de zoom actif
+  useEffect(() => {
+    if (!hasMultiple || isPaused || zoomLevel > 1) return
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % items.length)
     }, 3500)
     return () => clearInterval(interval)
-  }, [hasMultiple, isPaused, items.length])
+  }, [hasMultiple, isPaused, zoomLevel, items.length])
 
   // Sécurité pour réinitialiser l'index si la liste des photos change
   useEffect(() => {
@@ -137,6 +160,7 @@ export default function ProductMediaCarousel({
 
   const handleMouseLeave = () => {
     setIsPaused(false)
+    setZoomLevel(1)
   }
 
   return (
@@ -148,7 +172,7 @@ export default function ProductMediaCarousel({
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Média actuel (Image ou Vidéo) */}
+      {/* Média actuel (Image ou Vidéo) avec support du zoom */}
       {currentItem.type === 'video' ? (
         <video
           src={currentItem.url}
@@ -157,12 +181,24 @@ export default function ProductMediaCarousel({
           playsInline
           muted
           loop
+          style={{
+            transform: zoomLevel > 1 ? `scale(${zoomLevel})` : undefined,
+            transformOrigin: 'center center',
+            transition: 'transform 0.25s ease-out',
+          }}
         />
       ) : (
         <img
           src={currentItem.url}
           alt={`${alt} - vue ${currentIndex + 1} sur ${items.length}`}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className={`w-full h-full object-cover transition-transform duration-500 ${
+            zoomLevel > 1 ? '' : 'group-hover:scale-105'
+          }`}
+          style={{
+            transform: zoomLevel > 1 ? `scale(${zoomLevel})` : undefined,
+            transformOrigin: 'center center',
+            transition: 'transform 0.25s ease-out',
+          }}
           onError={(e) => {
             const target = e.currentTarget
             if (target && !target.src.endsWith('/placeholder.svg')) {
@@ -176,6 +212,56 @@ export default function ProductMediaCarousel({
       {showBadge && (
         <span className="product-tag-badge z-10">{showBadge}</span>
       )}
+
+      {/* Boutons Zoom + et - sur le produit */}
+      <div
+        className={`absolute bottom-2.5 left-2.5 z-20 flex items-center gap-1 bg-black/70 backdrop-blur-md text-white px-2 py-1 rounded-full shadow-lg border border-white/20 transition-opacity duration-200 ${
+          zoomLevel > 1 ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}
+        onClick={(e) => {
+          e.stopPropagation()
+          e.preventDefault()
+        }}
+      >
+        <button
+          type="button"
+          onClick={handleZoomOut}
+          disabled={zoomLevel <= 1}
+          aria-label="Dézoomer (-)"
+          title="Dézoomer (-)"
+          className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition ${
+            zoomLevel <= 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/20 active:scale-90 text-white'
+          }`}
+        >
+          −
+        </button>
+        <span className="text-[10px] font-semibold px-0.5 min-w-[28px] text-center select-none text-stone-200">
+          {Math.round(zoomLevel * 100)}%
+        </span>
+        <button
+          type="button"
+          onClick={handleZoomIn}
+          disabled={zoomLevel >= 2.5}
+          aria-label="Zoomer (+)"
+          title="Zoomer (+)"
+          className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition ${
+            zoomLevel >= 2.5 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/20 active:scale-90 text-white'
+          }`}
+        >
+          +
+        </button>
+        {zoomLevel > 1 && (
+          <button
+            type="button"
+            onClick={handleZoomReset}
+            aria-label="Réinitialiser"
+            title="Réinitialiser le zoom"
+            className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] hover:bg-white/25 text-stone-300 hover:text-white ml-0.5"
+          >
+            ↺
+          </button>
+        )}
+      </div>
 
       {/* Flèches de navigation carrousel */}
       {hasMultiple && (

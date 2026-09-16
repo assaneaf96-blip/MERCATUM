@@ -762,11 +762,10 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
 }
 
-.pdp-main-visual-wrapper:hover .pdp-main-img {
-  transform: scale(1.03);
+.pdp-main-visual-wrapper:not(.zoomed):hover .pdp-main-img {
+  transform: scale(1.02);
 }
 
 .pdp-badge-tag {
