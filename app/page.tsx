@@ -130,6 +130,18 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '🍷', title: 'Convivialité & Réceptions d\'Élite', desc: 'Accueillez confortablement vos convives autour d\'une table au design spectaculaire.' },
     ],
   },
+  'Mueble de baño': {
+    eyebrow: 'Sanctuaire d\'Eau & Bien-Être · Espace Bain',
+    title: 'Mobilier de Salle de Bain & Colonnes Design',
+    subtitle: 'L\'alliance du design contemporain et du rangement fonctionnel pour sublimer votre salle d\'eau.',
+    badge: 'Résistance à l\'Humidité & Finitions Soignées',
+    description: 'Meubles sous vasque suspendus, armoires murales et colonnes de rangement haut de gamme en finitions chêne doré, cachemire et laque soignée, conçus pour allier esthétique épurée et durabilité au quotidien.',
+    arguments: [
+      { icon: '🚿', title: 'Matériaux Hydrofuges Haute Durabilité', desc: 'Surfaces et revêtements traités contre l\'humidité, les vapeurs et les éclaboussures.' },
+      { icon: '🪞', title: 'Ergonomie & Rangement Optimisé', desc: 'Tiroirs à fermeture amortie Soft-Close et compartiments spacieux pour un quotidien serein.' },
+      { icon: '✨', title: 'Design Architectural Contemporain', desc: 'Lignes épurées et finitions texturées qui transforment votre salle de bain en véritable suite d\'hôtel.' },
+    ],
+  },
 }
 
 function CategorySliderSection({
@@ -436,6 +448,7 @@ export default function HomePage() {
     const DISPLAY_CATEGORIES = [
       'Belleza & cabello',
       'Mobilier & Décoration',
+      'Mueble de baño',
       'Juego de interior',
       'Haute Cosmétique & Visage',
       "Parfums d'Exception",
