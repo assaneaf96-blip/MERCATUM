@@ -102,6 +102,8 @@ export default function AdminPage() {
   const [showResetConfirm, setShowResetConfirm] = useState(false)
   const [showLocalDrafts, setShowLocalDrafts] = useState(false)
   const [localDraftsList, setLocalDraftsList] = useState<any[]>([])
+  const [isSyncingDrafts, setIsSyncingDrafts] = useState(false)
+  const [syncProgress, setSyncProgress] = useState<string | null>(null)
   const [addToNouveautesOnSave, setAddToNouveautesOnSave] = useState(false)
   const [isSavingProduct, setIsSavingProduct] = useState(false)
   const [isCustomCategory, setIsCustomCategory] = useState(false)
@@ -723,7 +725,18 @@ export default function AdminPage() {
 
     const rawNum = parseFloat(String(formProduct.rawPrice)) || 0
     const priceFormatted = formProduct.price.trim() || `${rawNum.toFixed(2).replace('.', ',')} €`
-    const generatedId = formProduct.id.trim() || slugify(formProduct.name) || `prod-${Date.now()}`
+    let generatedId = (formProduct.id || '').trim()
+    if (!generatedId || !isEditing) {
+      const baseSlug = slugify(formProduct.name) || `prod-${Date.now()}`
+      let candidate = baseSlug
+      let counter = 2
+      // Si nouveau produit, s'assurer que l'ID n'entre jamais en collision avec un produit existant
+      while (products.some((p) => p.id === candidate && (!isEditing || p.id !== formProduct.id))) {
+        candidate = `${baseSlug}-${counter}`
+        counter++
+      }
+      generatedId = isEditing && formProduct.id ? formProduct.id : candidate
+    }
 
     const mediaList = formProduct.media || []
     const filteredImages = mediaList
@@ -905,6 +918,52 @@ export default function AdminPage() {
     } catch {
       setLocalDraftsList([])
       setShowLocalDrafts(!showLocalDrafts)
+    }
+  }
+
+  const handleSyncAllLocalDrafts = async () => {
+    if (typeof window === 'undefined') return
+    try {
+      const raw = localStorage.getItem('ml_admin_products')
+      const localItems: Product[] = raw ? JSON.parse(raw) : []
+      if (!localItems || localItems.length === 0) {
+        showToast('Aucun brouillon local à synchroniser.')
+        return
+      }
+
+      setIsSyncingDrafts(true)
+      let successCount = 0
+      let failCount = 0
+
+      for (let i = 0; i < localItems.length; i++) {
+        const item = localItems[i]
+        setSyncProgress(`Synchronisation ${i + 1}/${localItems.length} : « ${item.name} »...`)
+        try {
+          const res = await saveProductToDbDetailed(item)
+          if (res.success) {
+            successCount++
+          } else {
+            failCount++
+          }
+        } catch {
+          failCount++
+        }
+      }
+
+      setIsSyncingDrafts(false)
+      setSyncProgress(null)
+      await reloadData()
+
+      if (failCount === 0) {
+        showToast(`🟢 ${successCount} produit(s) synchronisé(s) avec succès sur Supabase Cloud !`)
+      } else {
+        showToast(`ℹ️ ${successCount} produit(s) synchronisé(s), ${failCount} échec(s).`)
+      }
+    } catch (err) {
+      setIsSyncingDrafts(false)
+      setSyncProgress(null)
+      console.warn('Erreur synchronisation globale:', err)
+      showToast('Erreur lors de la synchronisation des brouillons.')
     }
   }
 
@@ -2111,6 +2170,15 @@ export default function AdminPage() {
               <div className="flex items-center gap-2">
                 <button
                   type="button"
+                  onClick={handleSyncAllLocalDrafts}
+                  disabled={isSyncingDrafts}
+                  className="px-3.5 py-1.5 bg-[#1c221d] hover:bg-[#2e3730] text-[#f4f0e9] rounded-lg font-bold shadow-sm transition flex items-center gap-1.5 text-xs disabled:opacity-50"
+                  title="Téléverser tous les produits locaux vers Supabase Cloud"
+                >
+                  {isSyncingDrafts ? '⏳ Envoi...' : '☁️ Tout synchroniser vers Supabase'}
+                </button>
+                <button
+                  type="button"
                   onClick={handleInspectLocalDrafts}
                   className="px-3 py-1.5 bg-white border border-stone-300 hover:bg-stone-50 rounded-lg font-bold text-stone-800 shadow-sm transition"
                 >
@@ -2126,6 +2194,13 @@ export default function AdminPage() {
               </div>
             </div>
 
+            {syncProgress && (
+              <div className="p-3 bg-[#b8c8a6]/20 border border-[#8ea07c] text-[#1c221d] rounded-xl text-xs font-bold flex items-center gap-2 animate-pulse">
+                <span>🔄</span>
+                <span>{syncProgress}</span>
+              </div>
+            )}
+
             {showLocalDrafts && (
               <div className="bg-white border-2 border-[#b8c8a6] rounded-xl p-4 shadow-md space-y-3">
                 <div className="flex items-center justify-between border-b pb-2">
@@ -2135,13 +2210,25 @@ export default function AdminPage() {
                       {localDraftsList.length} produit(s)
                     </span>
                   </h3>
-                  <button
-                    type="button"
-                    onClick={() => setShowLocalDrafts(false)}
-                    className="text-stone-400 hover:text-stone-700 text-sm font-bold"
-                  >
-                    ✕
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {localDraftsList.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={handleSyncAllLocalDrafts}
+                        disabled={isSyncingDrafts}
+                        className="px-3 py-1 bg-[#8ea07c] hover:bg-[#728362] text-[#1c221d] rounded-lg font-bold text-xs transition flex items-center gap-1 shadow-sm disabled:opacity-50"
+                      >
+                        {isSyncingDrafts ? '⏳ Envoi...' : '☁️ Tout envoyer vers Supabase'}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setShowLocalDrafts(false)}
+                      className="text-stone-400 hover:text-stone-700 text-sm font-bold"
+                    >
+                      ✕
+                    </button>
+                  </div>
                 </div>
                 {localDraftsList.length === 0 ? (
                   <p className="text-xs text-stone-500 italic py-2">

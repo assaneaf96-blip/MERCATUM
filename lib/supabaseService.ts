@@ -211,10 +211,7 @@ export async function saveProductToDbDetailed(
         }
         return { success: true }
       }
-      return {
-        success: false,
-        error: json.error || `Erreur serveur (${res.status})`,
-      }
+      console.warn(`API proxy /api/products a renvoyé code ${res.status}: ${json.error || 'Erreur'}, bascule directe vers Supabase...`)
     } catch (err: any) {
       console.warn('API proxy /api/products indisponible, tentative Supabase directe:', err)
     }

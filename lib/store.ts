@@ -194,15 +194,26 @@ export function saveProduct(product: Product): void {
   }
 }
 
-/** Met à jour les produits en cache local de manière propre sans conserver d'orphelins */
+/** Met à jour les produits en cache local tout en préservant les créations locales non encore envoyées au Cloud */
 export function saveProductsBulk(items: Product[]): void {
   if (!Array.isArray(items) || items.length === 0) return
   try {
-    const list = items.map((p) => compactProductForStorage(p))
-    safeWrite(STORAGE_KEYS.PRODUCTS, list)
+    const currentLocal = safeRead<Product[]>(STORAGE_KEYS.PRODUCTS, [])
+    const incomingIds = new Set(items.map((p) => p.id))
+    // Conserver les produits locaux créés qui ne sont pas encore présents dans la base distante
+    const unsynced = currentLocal.filter((p) => p && p.id && !incomingIds.has(p.id))
+    const mergedList = [...items, ...unsynced].map((p) => compactProductForStorage(p))
+    safeWrite(STORAGE_KEYS.PRODUCTS, mergedList)
   } catch (err) {
     console.warn('saveProductsBulk error:', err)
   }
+}
+
+/** Retourne les produits en cache local qui ne figurent pas encore dans la base distante */
+export function getUnsyncedLocalProducts(dbProductIds: string[]): Product[] {
+  const currentLocal = safeRead<Product[]>(STORAGE_KEYS.PRODUCTS, [])
+  const dbSet = new Set(dbProductIds)
+  return currentLocal.filter((p) => p && p.id && !dbSet.has(p.id))
 }
 
 /** Supprime un produit (qu'il soit par défaut ou créé par l'admin) */

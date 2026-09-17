@@ -65,6 +65,14 @@ export default function BoutiquePage() {
             merged.set(p.id, p)
           })
 
+          // Intégrer également les créations locales en mémoire pour ne perdre aucun produit
+          const localItems = getProducts()
+          localItems.forEach((lp) => {
+            if (lp && lp.id && !merged.has(lp.id)) {
+              merged.set(lp.id, lp)
+            }
+          })
+
           setProductsList(Array.from(merged.values()))
         }
       }).catch(() => {})
