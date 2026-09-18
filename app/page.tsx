@@ -617,46 +617,6 @@ export default function HomePage() {
             )
           })}
 
-          {/* Barre supérieure : Pilule de catégorie & Compteur */}
-          <div className="hero-slider-top-bar">
-            {currentHeroSlide && (
-              <div className="hero-category-pill">
-                <span className="hero-category-sparkle">✦</span>
-                <span className="hero-category-pill-label">
-                  Catégorie : <strong>{currentHeroSlide.category}</strong>
-                </span>
-                <span className="hero-category-pill-count">
-                  ({currentHeroSlide.count} articles)
-                </span>
-              </div>
-            )}
-            {heroCategorySlides.length > 0 && (
-              <div className="hero-slider-counter">
-                {String((heroSlideIndex % heroCategorySlides.length) + 1).padStart(2, '0')} / {String(heroCategorySlides.length).padStart(2, '0')}
-              </div>
-            )}
-          </div>
-
-          {/* Onglets rapides pour naviguer directement entre les catégories */}
-          <div className="hero-categories-quicknav">
-            <div className="hero-categories-quicknav-track">
-              {heroCategorySlides.map((slide, idx) => {
-                const isActive = idx === (heroSlideIndex % heroCategorySlides.length)
-                return (
-                  <button
-                    key={slide.category}
-                    type="button"
-                    onClick={() => setHeroSlideIndex(idx)}
-                    className={`hero-category-chip ${isActive ? 'active' : ''}`}
-                    title={`Afficher la catégorie ${slide.category}`}
-                  >
-                    {slide.category}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
           {/* Flèches de navigation gauche / droite */}
           {heroCategorySlides.length > 1 && (
             <>
@@ -681,40 +641,19 @@ export default function HomePage() {
             </>
           )}
 
-          {/* Carte descriptive du produit et accès direct à la catégorie */}
+          {/* Légende épurée au bas de la photo pour laisser l'image 100% visible */}
           {currentHeroSlide && (
-            <div className="hero-slide-product-card">
-              <div className="hero-slide-card-header">
-                <span className="hero-slide-cat-badge">✦ Collection · {currentHeroSlide.category}</span>
-                {currentHeroSlide.featuredProduct && (
-                  <span className="hero-slide-prod-price">{currentHeroSlide.featuredProduct.price}</span>
-                )}
-              </div>
-              {currentHeroSlide.featuredProduct && (
-                <h3 className="hero-slide-prod-title">
-                  {currentHeroSlide.featuredProduct.name}
-                </h3>
-              )}
-              <div className="hero-slide-card-footer">
-                <Link
-                  href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
-                  className="hero-slide-explore-link"
-                >
-                  Découvrir {currentHeroSlide.category} ({currentHeroSlide.count} articles) <span>→</span>
-                </Link>
-                {currentHeroSlide.featuredProduct && (
-                  <Link
-                    href={`/produit/${currentHeroSlide.featuredProduct.id}`}
-                    className="hero-slide-view-btn"
-                  >
-                    Voir l&apos;article ↗
-                  </Link>
-                )}
-              </div>
-            </div>
+            <Link
+              href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
+              className="hero-caption"
+              title={`Explorer la catégorie ${currentHeroSlide.category}`}
+              style={{ textDecoration: 'none', cursor: 'pointer' }}
+            >
+              ✦ {currentHeroSlide.category} {currentHeroSlide.featuredProduct ? `· ${currentHeroSlide.featuredProduct.name} (${currentHeroSlide.featuredProduct.price})` : ''} <span>→</span>
+            </Link>
           )}
 
-          {/* Points indicateurs de défilement */}
+          {/* Points indicateurs de défilement discrets */}
           {heroCategorySlides.length > 1 && (
             <div className="hero-slider-dots">
               {heroCategorySlides.map((slide, idx) => (
