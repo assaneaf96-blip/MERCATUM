@@ -570,114 +570,100 @@ export default function HomePage() {
         onOpenCart={() => showToast(`Votre panier contient ${cartCount} article(s)`)}
       />
 
-      {/* Hero Section - Entête immersif avec défilé de chaque catégorie et photos de leurs produits */}
-      <section
-        id="top"
-        className="hero hero-unified-header"
-        onMouseEnter={() => setIsHeroPaused(true)}
-        onMouseLeave={() => setIsHeroPaused(false)}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        {/* Diaporama d'arrière-plan de l'entête : photos des produits de chaque catégorie */}
-        <div className="hero-header-bg-slider" aria-hidden="true">
+      {/* Hero Section */}
+      <section id="top" className="hero">
+        <div className="hero-copy">
+          <p className="eyebrow">Art de Vivre · Sanctuaire du Foyer &amp; Soin de Soi</p>
+          <h1>Le Luxe d&apos;habiter<br /><em>son quotidien.</em></h1>
+          <p className="hero-text">
+            {settings.heroSubtitle || "Un espace raffiné où vivre en harmonie. Des pièces de mobilier et des rituels de soin d'exception conçus pour sublimer votre intérieur et prendre soin de votre corps chaque jour."}
+          </p>
+          <div className="hero-cta-group">
+            <Link href="/boutique" className="button dark">
+              Explorer les collections <span>→</span>
+            </Link>
+            {heroFirstProduct && (
+              <button
+                className="button outline"
+                onClick={() => handleBuyNow(heroFirstProduct)}
+              >
+                Commander {heroFirstProduct.name.split(' ')[0]} ({heroFirstProduct.price}) ⚡
+              </button>
+            )}
+          </div>
+        </div>
+        <div
+          className="hero-image hero-category-carousel"
+          onMouseEnter={() => setIsHeroPaused(true)}
+          onMouseLeave={() => setIsHeroPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {heroCategorySlides.map((slide, idx) => {
             const isActive = idx === (heroSlideIndex % (heroCategorySlides.length || 1))
             return (
               <div
                 key={slide.category}
-                className={`hero-header-bg-slide ${isActive ? 'is-active' : ''}`}
+                className={`hero-category-slide ${isActive ? 'is-active' : ''}`}
+                aria-hidden={!isActive}
               >
                 <img
                   src={slide.image}
-                  alt={slide.category}
+                  alt={`${slide.category} - ${slide.featuredProduct?.name || 'MERCATUM'}`}
                   loading={idx === 0 ? 'eager' : 'lazy'}
                 />
-                <div className="hero-header-bg-overlay" />
+                <div className="hero-slide-overlay" />
               </div>
             )
           })}
-        </div>
 
-        {/* Contenu principal de l'entête : Texte & Carte Produit de la catégorie */}
-        <div className="hero-header-main-content">
-          <div className="hero-copy">
-            <div className="hero-header-badge-pill">
-              <span className="hero-header-badge-sparkle">✦</span>
-              <span>
-                Catégorie en vedette : <strong>{currentHeroSlide?.category}</strong> ({currentHeroSlide?.count} créations)
-              </span>
-            </div>
-            <p className="eyebrow">Art de Vivre · Sanctuaire du Foyer &amp; Soin de Soi</p>
-            <h1>Le Luxe d&apos;habiter<br /><em>son quotidien.</em></h1>
-            <p className="hero-text">
-              {settings.heroSubtitle || "Un espace raffiné où vivre en harmonie. Des pièces de mobilier et des rituels de soin d'exception conçus pour sublimer votre intérieur et prendre soin de votre corps chaque jour."}
-            </p>
-            <div className="hero-cta-group">
-              <Link href="/boutique" className="button dark">
-                Explorer les collections <span>→</span>
-              </Link>
-              {heroFirstProduct && (
-                <button
-                  className="button outline"
-                  onClick={() => handleBuyNow(heroFirstProduct)}
-                >
-                  Commander {heroFirstProduct.name.split(' ')[0]} ({heroFirstProduct.price}) ⚡
-                </button>
-              )}
+          {/* Barre supérieure : Pilule de catégorie & Compteur */}
+          <div className="hero-slider-top-bar">
+            {currentHeroSlide && (
+              <div className="hero-category-pill">
+                <span className="hero-category-sparkle">✦</span>
+                <span className="hero-category-pill-label">
+                  Catégorie : <strong>{currentHeroSlide.category}</strong>
+                </span>
+                <span className="hero-category-pill-count">
+                  ({currentHeroSlide.count} articles)
+                </span>
+              </div>
+            )}
+            {heroCategorySlides.length > 0 && (
+              <div className="hero-slider-counter">
+                {String((heroSlideIndex % heroCategorySlides.length) + 1).padStart(2, '0')} / {String(heroCategorySlides.length).padStart(2, '0')}
+              </div>
+            )}
+          </div>
+
+          {/* Onglets rapides pour naviguer directement entre les catégories */}
+          <div className="hero-categories-quicknav">
+            <div className="hero-categories-quicknav-track">
+              {heroCategorySlides.map((slide, idx) => {
+                const isActive = idx === (heroSlideIndex % heroCategorySlides.length)
+                return (
+                  <button
+                    key={slide.category}
+                    type="button"
+                    onClick={() => setHeroSlideIndex(idx)}
+                    className={`hero-category-chip ${isActive ? 'active' : ''}`}
+                    title={`Afficher la catégorie ${slide.category}`}
+                  >
+                    {slide.category}
+                  </button>
+                )
+              })}
             </div>
           </div>
 
-          {/* Carte visuelle du produit normal de la catégorie en cours */}
-          {currentHeroSlide && (
-            <div className="hero-header-featured-card">
-              <div className="hero-header-card-media">
-                <img
-                  src={currentHeroSlide.image}
-                  alt={`${currentHeroSlide.category} - ${currentHeroSlide.featuredProduct?.name || 'MERCATUM'}`}
-                />
-                <span className="hero-header-card-cat-tag">
-                  ✦ {currentHeroSlide.category}
-                </span>
-                <span className="hero-header-card-counter">
-                  {String((heroSlideIndex % heroCategorySlides.length) + 1).padStart(2, '0')} / {String(heroCategorySlides.length).padStart(2, '0')}
-                </span>
-              </div>
-              <div className="hero-header-card-body">
-                {currentHeroSlide.featuredProduct && (
-                  <>
-                    <h3 className="hero-header-card-title">
-                      {currentHeroSlide.featuredProduct.name}
-                    </h3>
-                    <div className="hero-header-card-row">
-                      <span className="hero-header-card-price">
-                        {currentHeroSlide.featuredProduct.price}
-                      </span>
-                      <Link
-                        href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
-                        className="hero-header-card-btn"
-                      >
-                        Voir la collection <span>→</span>
-                      </Link>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Rail de défilement horizontal de TOUTES les catégories avec leurs photos normales */}
-        <div className="hero-header-categories-rail">
-          <div className="hero-header-rail-top">
-            <span className="hero-header-rail-label">
-              ✦ Défilé des univers &amp; créations MERCATUM
-            </span>
-            <div className="hero-header-rail-arrows">
+          {/* Flèches de navigation gauche / droite */}
+          {heroCategorySlides.length > 1 && (
+            <>
               <button
                 type="button"
+                className="hero-slide-arrow prev"
                 onClick={handlePrevHeroCategory}
-                className="hero-header-arrow-btn"
                 aria-label="Catégorie précédente"
                 title="Catégorie précédente"
               >
@@ -685,38 +671,63 @@ export default function HomePage() {
               </button>
               <button
                 type="button"
+                className="hero-slide-arrow next"
                 onClick={handleNextHeroCategory}
-                className="hero-header-arrow-btn"
                 aria-label="Catégorie suivante"
                 title="Catégorie suivante"
               >
                 ›
               </button>
+            </>
+          )}
+
+          {/* Carte descriptive du produit et accès direct à la catégorie */}
+          {currentHeroSlide && (
+            <div className="hero-slide-product-card">
+              <div className="hero-slide-card-header">
+                <span className="hero-slide-cat-badge">✦ Collection · {currentHeroSlide.category}</span>
+                {currentHeroSlide.featuredProduct && (
+                  <span className="hero-slide-prod-price">{currentHeroSlide.featuredProduct.price}</span>
+                )}
+              </div>
+              {currentHeroSlide.featuredProduct && (
+                <h3 className="hero-slide-prod-title">
+                  {currentHeroSlide.featuredProduct.name}
+                </h3>
+              )}
+              <div className="hero-slide-card-footer">
+                <Link
+                  href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
+                  className="hero-slide-explore-link"
+                >
+                  Découvrir {currentHeroSlide.category} ({currentHeroSlide.count} articles) <span>→</span>
+                </Link>
+                {currentHeroSlide.featuredProduct && (
+                  <Link
+                    href={`/produit/${currentHeroSlide.featuredProduct.id}`}
+                    className="hero-slide-view-btn"
+                  >
+                    Voir l&apos;article ↗
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="hero-header-rail-track">
-            {heroCategorySlides.map((slide, idx) => {
-              const isActive = idx === (heroSlideIndex % heroCategorySlides.length)
-              return (
+          )}
+
+          {/* Points indicateurs de défilement */}
+          {heroCategorySlides.length > 1 && (
+            <div className="hero-slider-dots">
+              {heroCategorySlides.map((slide, idx) => (
                 <button
                   key={slide.category}
                   type="button"
                   onClick={() => setHeroSlideIndex(idx)}
-                  className={`hero-header-category-item ${isActive ? 'is-active' : ''}`}
-                  title={`Basculer vers la catégorie ${slide.category}`}
-                >
-                  <div className="hero-header-item-thumb">
-                    <img src={slide.image} alt={slide.category} loading="lazy" />
-                  </div>
-                  <div className="hero-header-item-text">
-                    <span className="hero-header-item-name">{slide.category}</span>
-                    <span className="hero-header-item-count">{slide.count} pièces</span>
-                  </div>
-                  {isActive && <span className="hero-header-active-dot" />}
-                </button>
-              )
-            })}
-          </div>
+                  className={`hero-slider-dot ${idx === (heroSlideIndex % heroCategorySlides.length) ? 'active' : ''}`}
+                  aria-label={`Aller à la catégorie ${slide.category}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
