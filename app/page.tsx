@@ -495,6 +495,66 @@ export default function HomePage() {
     return groups
   }, [productsList])
 
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0)
+  const [isHeroPaused, setIsHeroPaused] = useState(false)
+  const touchStartXRef = useRef<number | null>(null)
+
+  const heroCategorySlides = useMemo(() => {
+    return productsByCategory.map((group) => {
+      const withImage = group.products.filter(
+        (p) => (p.image && p.image.trim()) || (p.images && p.images.length > 0)
+      )
+      const featured = withImage[0] || group.products[0]
+      const img = featured?.image || featured?.images?.[0] || '/maison-lune-hero.png'
+      return {
+        category: group.category,
+        count: group.products.length,
+        featuredProduct: featured,
+        image: img,
+      }
+    })
+  }, [productsByCategory])
+
+  useEffect(() => {
+    if (heroCategorySlides.length <= 1 || isHeroPaused) return
+    const timer = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % heroCategorySlides.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [heroCategorySlides.length, isHeroPaused])
+
+  const currentHeroSlide = heroCategorySlides.length > 0
+    ? heroCategorySlides[heroSlideIndex % heroCategorySlides.length]
+    : null
+
+  const handlePrevHeroCategory = () => {
+    if (heroCategorySlides.length === 0) return
+    setHeroSlideIndex((prev) => (prev - 1 + heroCategorySlides.length) % heroCategorySlides.length)
+  }
+
+  const handleNextHeroCategory = () => {
+    if (heroCategorySlides.length === 0) return
+    setHeroSlideIndex((prev) => (prev + 1) % heroCategorySlides.length)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX
+    setIsHeroPaused(true)
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current !== null) {
+      const diff = e.changedTouches[0].clientX - touchStartXRef.current
+      if (diff > 45) {
+        handlePrevHeroCategory()
+      } else if (diff < -45) {
+        handleNextHeroCategory()
+      }
+      touchStartXRef.current = null
+    }
+    setIsHeroPaused(false)
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Toast */}
@@ -532,9 +592,142 @@ export default function HomePage() {
             )}
           </div>
         </div>
-        <div className="hero-image">
-          <img src="/maison-lune-hero.png" alt="MERCATUM - Art de Vivre & Sanctuaire Intérieur" />
-          <span className="hero-caption">Mobilier &amp; Rituels de Bien-Être · Dès 100 €</span>
+        <div
+          className="hero-image hero-category-carousel"
+          onMouseEnter={() => setIsHeroPaused(true)}
+          onMouseLeave={() => setIsHeroPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {heroCategorySlides.map((slide, idx) => {
+            const isActive = idx === (heroSlideIndex % (heroCategorySlides.length || 1))
+            return (
+              <div
+                key={slide.category}
+                className={`hero-category-slide ${isActive ? 'is-active' : ''}`}
+                aria-hidden={!isActive}
+              >
+                <img
+                  src={slide.image}
+                  alt={`${slide.category} - ${slide.featuredProduct?.name || 'MERCATUM'}`}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                />
+                <div className="hero-slide-overlay" />
+              </div>
+            )
+          })}
+
+          {/* Barre supérieure : Pilule de catégorie & Compteur */}
+          <div className="hero-slider-top-bar">
+            {currentHeroSlide && (
+              <div className="hero-category-pill">
+                <span className="hero-category-sparkle">✦</span>
+                <span className="hero-category-pill-label">
+                  Catégorie : <strong>{currentHeroSlide.category}</strong>
+                </span>
+                <span className="hero-category-pill-count">
+                  ({currentHeroSlide.count} articles)
+                </span>
+              </div>
+            )}
+            {heroCategorySlides.length > 0 && (
+              <div className="hero-slider-counter">
+                {String((heroSlideIndex % heroCategorySlides.length) + 1).padStart(2, '0')} / {String(heroCategorySlides.length).padStart(2, '0')}
+              </div>
+            )}
+          </div>
+
+          {/* Onglets rapides pour naviguer directement entre les catégories */}
+          <div className="hero-categories-quicknav">
+            <div className="hero-categories-quicknav-track">
+              {heroCategorySlides.map((slide, idx) => {
+                const isActive = idx === (heroSlideIndex % heroCategorySlides.length)
+                return (
+                  <button
+                    key={slide.category}
+                    type="button"
+                    onClick={() => setHeroSlideIndex(idx)}
+                    className={`hero-category-chip ${isActive ? 'active' : ''}`}
+                    title={`Afficher la catégorie ${slide.category}`}
+                  >
+                    {slide.category}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Flèches de navigation gauche / droite */}
+          {heroCategorySlides.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="hero-slide-arrow prev"
+                onClick={handlePrevHeroCategory}
+                aria-label="Catégorie précédente"
+                title="Catégorie précédente"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="hero-slide-arrow next"
+                onClick={handleNextHeroCategory}
+                aria-label="Catégorie suivante"
+                title="Catégorie suivante"
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          {/* Carte descriptive du produit et accès direct à la catégorie */}
+          {currentHeroSlide && (
+            <div className="hero-slide-product-card">
+              <div className="hero-slide-card-header">
+                <span className="hero-slide-cat-badge">✦ Collection · {currentHeroSlide.category}</span>
+                {currentHeroSlide.featuredProduct && (
+                  <span className="hero-slide-prod-price">{currentHeroSlide.featuredProduct.price}</span>
+                )}
+              </div>
+              {currentHeroSlide.featuredProduct && (
+                <h3 className="hero-slide-prod-title">
+                  {currentHeroSlide.featuredProduct.name}
+                </h3>
+              )}
+              <div className="hero-slide-card-footer">
+                <Link
+                  href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
+                  className="hero-slide-explore-link"
+                >
+                  Découvrir {currentHeroSlide.category} ({currentHeroSlide.count} articles) <span>→</span>
+                </Link>
+                {currentHeroSlide.featuredProduct && (
+                  <Link
+                    href={`/produit/${currentHeroSlide.featuredProduct.id}`}
+                    className="hero-slide-view-btn"
+                  >
+                    Voir l&apos;article ↗
+                  </Link>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Points indicateurs de défilement */}
+          {heroCategorySlides.length > 1 && (
+            <div className="hero-slider-dots">
+              {heroCategorySlides.map((slide, idx) => (
+                <button
+                  key={slide.category}
+                  type="button"
+                  onClick={() => setHeroSlideIndex(idx)}
+                  className={`hero-slider-dot ${idx === (heroSlideIndex % heroCategorySlides.length) ? 'active' : ''}`}
+                  aria-label={`Aller à la catégorie ${slide.category}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
