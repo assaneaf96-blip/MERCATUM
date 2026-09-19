@@ -22,6 +22,106 @@ import {
 import { getProducts, saveProduct, saveProductsBulk } from '@/lib/store'
 import { fetchProductByIdFromDb, fetchProductsFromDb } from '@/lib/supabaseService'
 
+function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
+  const cat = (catRaw || '').toLowerCase()
+  const name = (nameRaw || '').toLowerCase()
+
+  // 1. Électroménager (Frigos, lave-linge, fours, plaques)
+  if (
+    cat.includes('frigorif') ||
+    cat.includes('lavadora') ||
+    cat.includes('horno') ||
+    cat.includes('électro') ||
+    name.includes('frigorif') ||
+    name.includes('lavadora') ||
+    name.includes('secadora') ||
+    name.includes('horno') ||
+    name.includes('placa')
+  ) {
+    return {
+      icon: '⚡',
+      title: 'Haute Technologie & Fiabilité Certifiée',
+      desc: 'Performances énergétiques de pointe et garantie constructeur officielle.',
+    }
+  }
+
+  // 2. Chauffage & Art du Feu (Poêles à bois / pellets, cheminées)
+  if (
+    cat.includes('estufa') ||
+    cat.includes('chimenea') ||
+    cat.includes('pellet') ||
+    cat.includes('leña') ||
+    name.includes('estufa') ||
+    name.includes('chimenea') ||
+    name.includes('pellet')
+  ) {
+    return {
+      icon: '🔥',
+      title: 'Haute Efficacité Thermique & Sécurité',
+      desc: 'Rendement énergétique supérieur et conformité aux normes européennes strictes.',
+    }
+  }
+
+  // 3. Mobilier, Meubles TV, Bain, Tables, Jeux d'intérieur
+  if (
+    cat.includes('mobilier') ||
+    cat.includes('mueble') ||
+    cat.includes('décoration') ||
+    cat.includes('juego') ||
+    name.includes('sofa') ||
+    name.includes('table') ||
+    name.includes('meuble') ||
+    name.includes('billard') ||
+    name.includes('vitrina')
+  ) {
+    return {
+      icon: '🏛️',
+      title: 'Mobilier de Créateur & Matières Nobles',
+      desc: 'Structures renforcées, bois et finitions haut de gamme faits pour durer.',
+    }
+  }
+
+  // 4. Plein Air, Jardin, Terrasses, Glamping, Pergolas
+  if (
+    cat.includes('plein air') ||
+    cat.includes('jardin') ||
+    cat.includes('évasion') ||
+    name.includes('toldo') ||
+    name.includes('piscina') ||
+    name.includes('glamping') ||
+    name.includes('tumbona')
+  ) {
+    return {
+      icon: '☀️',
+      title: 'Conception Plein Air & Résistance Intempéries',
+      desc: 'Matériaux traités anti-UV et anticorrosion pour un confort durable sous toutes les saisons.',
+    }
+  }
+
+  // 5. Parfumerie, Cosmétique, Soin du Corps & Capillaire
+  if (
+    cat.includes('parfum') ||
+    cat.includes('cosmétique') ||
+    cat.includes('soin') ||
+    cat.includes('visage') ||
+    cat.includes('cabello') ||
+    cat.includes('belleza')
+  ) {
+    return {
+      icon: '🌿',
+      title: 'Haute Parfumerie & Cosmétique d’Élite',
+      desc: 'Formulations précieuses et actifs d’exception rigoureusement sourcés.',
+    }
+  }
+
+  // 6. Par défaut pour toute création MERCATUM
+  return {
+    icon: '✨',
+    title: 'Sélection & Conception d’Exception',
+    desc: 'Pièces rigoureusement sélectionnées selon les plus hauts standards de durabilité et d’élégance.',
+  }
+}
+
 export default function ProductDetailPage() {
   const params = useParams()
   const router = useRouter()
@@ -841,13 +941,18 @@ export default function ProductDetailPage() {
                   <p>Coordonnées bancaires officielles et confirmation instantanée par email.</p>
                 </div>
               </div>
-              <div className="pdp-badge-item">
-                <span className="pdp-badge-icon">🌿</span>
-                <div>
-                  <strong>Fabrication Haute Parfumerie & Cosmétique</strong>
-                  <p>Conçu et formulé en France avec des matières premières précieuses et durables.</p>
-                </div>
-              </div>
+              {(() => {
+                const badge = getCategoryQualityBadge(product?.category, product?.name)
+                return (
+                  <div className="pdp-badge-item">
+                    <span className="pdp-badge-icon">{badge.icon}</span>
+                    <div>
+                      <strong>{badge.title}</strong>
+                      <p>{badge.desc}</p>
+                    </div>
+                  </div>
+                )
+              })()}
             </div>
 
             {/* Detailed Information Accordions */}
