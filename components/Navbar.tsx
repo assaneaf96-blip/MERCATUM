@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { getSiteSettings, getProducts, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { PRODUCTS, Product } from '@/lib/products'
 import { fetchProductsFromDb, fetchSettingsFromDb } from '@/lib/supabaseService'
@@ -55,11 +55,13 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     }
   }, [])
 
+  const marqueeProducts = useMemo(() => productsList.slice(0, 16), [productsList])
+
   return (
     <>
       <div className="announcement-marquee-wrapper" aria-label="Défilement du catalogue produits">
         <div className="announcement-marquee-track">
-          {[...productsList, ...productsList].map((prod, idx) => (
+          {[...marqueeProducts, ...marqueeProducts].map((prod, idx) => (
             <div key={`${prod.id}-${idx}`} className="announcement-item-wrapper">
               <Link href={`/produit/${prod.id}`} className="announcement-product-chip">
                 {prod.image && (
