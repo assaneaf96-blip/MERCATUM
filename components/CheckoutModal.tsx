@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Product, isVideoUrl } from '@/lib/products'
 import { getSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
 import { createOrderInDb } from '@/lib/supabaseService'
+import { trackPixel } from '@/components/PixelTracker'
 
 interface CheckoutModalProps {
   product: Product | null
@@ -36,7 +37,26 @@ export default function CheckoutModal({
 
   useEffect(() => {
     setSettings(getSiteSettings())
+    fetch('/api/settings')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.success && data.settings) {
+          setSettings(data.settings)
+        }
+      })
+      .catch(() => {})
   }, [])
+
+  useEffect(() => {
+    if (product) {
+      trackPixel('InitiateCheckout', {
+        id: product.id,
+        name: product.name,
+        price: product.rawPrice * quantity,
+        quantity,
+      })
+    }
+  }, [product?.id])
 
   if (!product) return null
 
@@ -81,38 +101,13 @@ export default function CheckoutModal({
 
     // Événements de conversion pour les pixels publicitaires
     const rawTotal = product.rawPrice * quantity
-    if (typeof window !== 'undefined') {
-      try {
-        if (window.fbq) {
-          window.fbq('track', 'Purchase', {
-            value: rawTotal,
-            currency: 'EUR',
-            content_name: product.name,
-            content_ids: [product.id],
-            num_items: quantity,
-          })
-        }
-        if (window.ttq) {
-          window.ttq.track('CompletePayment', {
-            content_id: product.id,
-            content_name: product.name,
-            quantity: quantity,
-            value: rawTotal,
-            currency: 'EUR',
-          })
-        }
-        if (window.gtag) {
-          window.gtag('event', 'purchase', {
-            transaction_id: ref,
-            value: rawTotal,
-            currency: 'EUR',
-            items: [{ item_id: product.id, item_name: product.name, price: product.rawPrice, quantity }],
-          })
-        }
-      } catch {
-        // Ignorer les erreurs de tracking
-      }
-    }
+    trackPixel('Purchase', {
+      id: product.id,
+      name: product.name,
+      price: rawTotal,
+      quantity,
+      orderId: ref,
+    })
   }
 
   const handleCopyIban = () => {

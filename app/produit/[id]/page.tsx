@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import RichDescription from '@/components/RichDescription'
+import { trackPixel } from '@/components/PixelTracker'
 import {
   PRODUCTS,
   Product,
@@ -263,6 +264,16 @@ export default function ProductDetailPage() {
     }).catch(() => {})
   }, [productId])
 
+  useEffect(() => {
+    if (product) {
+      trackPixel('ViewContent', {
+        id: product.id,
+        name: product.name,
+        price: product.rawPrice,
+      })
+    }
+  }, [product?.id])
+
   const showToast = (msg: string) => {
     setToast(msg)
     setTimeout(() => setToast(null), 3000)
@@ -271,6 +282,13 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     if (!product) return
     setCartCount((c) => c + quantity)
+    const effectivePrice = selectedVolumeOption?.rawPrice || product.rawPrice
+    trackPixel('AddToCart', {
+      id: product.id,
+      name: product.name,
+      price: effectivePrice * quantity,
+      quantity,
+    })
     const volLabel = selectedVolumeOption
       ? ` · ${selectedVolumeOption.volume} (${selectedVolumeOption.price})`
       : selectedVolume
@@ -319,6 +337,12 @@ export default function ProductDetailPage() {
           name: cleanName,
           color: selectedColor || product.color,
         }
+    trackPixel('InitiateCheckout', {
+      id: product.id,
+      name: product.name,
+      price: volProduct.rawPrice,
+      quantity: 1,
+    })
     setBuyingProduct(volProduct)
   }
 

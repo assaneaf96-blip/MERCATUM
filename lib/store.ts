@@ -27,6 +27,7 @@ export interface SiteSettings {
   facebookPixelId?: string
   tiktokPixelId?: string
   googleTagId?: string
+  pinterestTagId?: string
   customPixelScript?: string
 }
 
@@ -44,9 +45,9 @@ export interface Order {
   productId?: string
   productName?: string
   totalPrice: number
-  currency?: string
-  paymentMethod?: string
-  status: 'En attente de virement' | 'Paiement reçu' | 'Expédiée' | 'Livrée' | 'Annulée'
+  currency: string
+  paymentMethod: string
+  status: 'En attente de virement' | 'Paiement reçu' | 'Expédiée' | 'Annulée'
   createdAt: string
 }
 
@@ -76,6 +77,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   facebookPixelId: '',
   tiktokPixelId: '',
   googleTagId: '',
+  pinterestTagId: '',
   customPixelScript: '',
 }
 

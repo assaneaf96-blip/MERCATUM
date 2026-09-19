@@ -222,6 +222,18 @@ export default function AdminPage() {
     } catch {
       // Garder les commandes locales
     }
+
+    // Charger les paramètres depuis Supabase Cloud via /api/settings
+    try {
+      const sRes = await fetch('/api/settings')
+      const sData = await sRes.json()
+      if (sData && sData.success && sData.settings) {
+        setSettings(sData.settings)
+        saveSiteSettings(sData.settings)
+      }
+    } catch {
+      // Garder les paramètres locaux
+    }
   }, [])
 
   useEffect(() => {
@@ -1035,10 +1047,26 @@ export default function AdminPage() {
   }
 
   // --- Actions Paramètres ---
-  const handleSaveSettings = (e: React.FormEvent) => {
+  const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault()
     saveSiteSettings(settings)
-    showToast('Paramètres, coordonnées bancaires et pixels enregistrés avec succès !')
+    showToast('Enregistrement en cours...')
+    try {
+      const res = await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings),
+      })
+      const data = await res.json()
+      if (data && data.success) {
+        showToast('🟢 Paramètres, coordonnées et pixels synchronisés sur Supabase Cloud !')
+      } else {
+        showToast('⚠️ Enregistré en local (échec synchro Cloud)')
+      }
+    } catch (err) {
+      console.warn('Erreur sauvegarde settings API:', err)
+      showToast('⚠️ Enregistré en local (erreur réseau Cloud)')
+    }
   }
 
   const handleChangePassword = (e: React.FormEvent) => {
