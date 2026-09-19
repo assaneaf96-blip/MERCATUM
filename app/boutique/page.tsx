@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -20,6 +20,15 @@ export default function BoutiquePage() {
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
+
+  const tabsRef = useRef<HTMLDivElement>(null)
+
+  const scrollTabs = (direction: 'left' | 'right') => {
+    if (tabsRef.current) {
+      const scrollAmount = direction === 'left' ? -260 : 260
+      tabsRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
 
   useEffect(() => {
     // 1. Lire le filtre catégorie passé par l'URL (ex: ?cat=Maison & Décoration)
@@ -183,31 +192,54 @@ export default function BoutiquePage() {
         onOpenCart={() => showToast(`Votre panier contient ${cartCount} article(s)`)}
       />
 
-      {/* Boutique Header Banner */}
+      {/* Boutique Header Banner - Compact & Raffiné */}
       <section className="boutique-hero">
         <div className="boutique-hero-content">
-          <p className="eyebrow">{settings.siteName || 'MERCATUM'} · L&apos;Art de Vivre</p>
+          <div className="boutique-hero-header-line">
+            <span className="eyebrow">{settings.siteName || 'MERCATUM'} · L&apos;Art de Vivre</span>
+            <span className="boutique-count-pill">{productsList.length} pièces d&apos;exception</span>
+          </div>
           <h1>La Boutique</h1>
           <p className="boutique-subtitle">
-            Objets d&apos;art de vivre, mobilier d&apos;exception et rituels de soin pour le corps. Tout ce qu&apos;il faut pour sublimer votre intérieur et cultiver votre bien-être au quotidien.
+            Mobilier de créateur, électroménager d&apos;exception, poêles et rituels de soin pour votre intérieur.
           </p>
         </div>
       </section>
 
-      {/* Controls Bar: Categories, Search, Sort */}
+      {/* Controls Bar: Categories Slider, Search, Sort */}
       <section className="boutique-controls-section">
         <div className="boutique-controls-container">
-          {/* Category Tabs */}
-          <div className="category-tabs">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`category-tab-btn ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Category Horizontal Rail with Nav Arrows */}
+          <div className="category-tabs-wrapper">
+            <button
+              type="button"
+              className="category-tab-scroll-btn left"
+              onClick={() => scrollTabs('left')}
+              title="Catégories précédentes"
+              aria-label="Catégories précédentes"
+            >
+              ‹
+            </button>
+            <div ref={tabsRef} className="category-tabs">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`category-tab-btn ${selectedCategory === cat ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="category-tab-scroll-btn right"
+              onClick={() => scrollTabs('right')}
+              title="Catégories suivantes"
+              aria-label="Catégories suivantes"
+            >
+              ›
+            </button>
           </div>
 
           {/* Search & Sort Row */}
@@ -216,7 +248,7 @@ export default function BoutiquePage() {
               <span className="search-icon">🔍</span>
               <input
                 type="text"
-                placeholder="Rechercher un soin, un mobilier, un parfum..."
+                placeholder="Rechercher parmi nos 360+ articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -225,13 +257,27 @@ export default function BoutiquePage() {
               )}
             </div>
 
+            <div className="category-dropdown-quick">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                aria-label="Filtrer par catégorie"
+              >
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="sort-box">
-              <label>Trier par :</label>
+              <label>Trier :</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
               >
-                <option value="featured">Sélection recommandée</option>
+                <option value="featured">Recommandés</option>
                 <option value="rating">Meilleures notes (★)</option>
                 <option value="price-asc">Prix : croissant</option>
                 <option value="price-desc">Prix : décroissant</option>
