@@ -206,7 +206,6 @@ export default function BoutiquePage() {
         <div className="boutique-hero-content">
           <div className="boutique-hero-header-line">
             <span className="eyebrow">{settings.siteName || 'MERCATUM'} · L&apos;Art de Vivre</span>
-            <span className="boutique-count-pill">{productsList.length} pièces d&apos;exception</span>
           </div>
           <h1>La Boutique</h1>
           <p className="boutique-subtitle">
