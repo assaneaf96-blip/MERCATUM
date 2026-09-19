@@ -504,7 +504,8 @@ export default function HomePage() {
   }, [productsList])
 
   const [heroSlideIndex, setHeroSlideIndex] = useState(0)
-  const [isHeroPaused, setIsHeroPaused] = useState(false)
+  const [isHeroAutoPlaying, setIsHeroAutoPlaying] = useState(false)
+  const [isHeroHovered, setIsHeroHovered] = useState(false)
   const touchStartXRef = useRef<number | null>(null)
 
   const heroCategorySlides = useMemo(() => {
@@ -524,12 +525,12 @@ export default function HomePage() {
   }, [productsByCategory])
 
   useEffect(() => {
-    if (heroCategorySlides.length <= 1 || isHeroPaused) return
+    if (heroCategorySlides.length <= 1 || !isHeroAutoPlaying || isHeroHovered) return
     const timer = setInterval(() => {
       setHeroSlideIndex((prev) => (prev + 1) % heroCategorySlides.length)
     }, 4500)
     return () => clearInterval(timer)
-  }, [heroCategorySlides.length, isHeroPaused])
+  }, [heroCategorySlides.length, isHeroAutoPlaying, isHeroHovered])
 
   const currentHeroSlide = heroCategorySlides.length > 0
     ? heroCategorySlides[heroSlideIndex % heroCategorySlides.length]
@@ -547,7 +548,6 @@ export default function HomePage() {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX
-    setIsHeroPaused(true)
   }
 
   const handleTouchEnd = (e: React.TouchEvent) => {
@@ -560,7 +560,6 @@ export default function HomePage() {
       }
       touchStartXRef.current = null
     }
-    setIsHeroPaused(false)
   }
 
   return (
@@ -602,8 +601,8 @@ export default function HomePage() {
         </div>
         <div
           className="hero-image hero-category-carousel"
-          onMouseEnter={() => setIsHeroPaused(true)}
-          onMouseLeave={() => setIsHeroPaused(false)}
+          onMouseEnter={() => setIsHeroHovered(true)}
+          onMouseLeave={() => setIsHeroHovered(false)}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -625,7 +624,7 @@ export default function HomePage() {
             )
           })}
 
-          {/* Flèches de navigation gauche / droite */}
+          {/* Flèches de navigation gauche / droite & Contrôle manuel */}
           {heroCategorySlides.length > 1 && (
             <>
               <button
@@ -646,6 +645,22 @@ export default function HomePage() {
               >
                 ›
               </button>
+
+              {/* Bouton de contrôle : défilement manuel avec bouton Play/Pause */}
+              <div className="hero-slide-controls-pill">
+                <span className="hero-slide-count">
+                  {(heroSlideIndex % heroCategorySlides.length) + 1} / {heroCategorySlides.length}
+                </span>
+                <button
+                  type="button"
+                  className={`hero-toggle-play-btn ${isHeroAutoPlaying ? 'playing' : ''}`}
+                  onClick={() => setIsHeroAutoPlaying((prev) => !prev)}
+                  aria-label={isHeroAutoPlaying ? 'Arrêter le défilement automatique' : 'Activer le défilement automatique'}
+                  title={isHeroAutoPlaying ? 'Arrêter le défilement' : 'Lancer le défilement automatique'}
+                >
+                  {isHeroAutoPlaying ? '⏸ Arrêter' : '▶ Défiler'}
+                </button>
+              </div>
             </>
           )}
 

@@ -75,14 +75,8 @@ export default function ProductMediaCarousel({
     setZoomLevel(1)
   }, [currentIndex])
 
-  // Défilement automatique toutes les 3.5 secondes si plus d'une image et pas de zoom actif
-  useEffect(() => {
-    if (!hasMultiple || isPaused || zoomLevel > 1) return
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % items.length)
-    }, 3500)
-    return () => clearInterval(interval)
-  }, [hasMultiple, isPaused, zoomLevel, items.length])
+  // Défilement 100% manuel : aucun intervalle automatique pour laisser l'utilisateur inspecter les produits à son rythme
+
 
   // Sécurité pour réinitialiser l'index si la liste des photos change
   useEffect(() => {
@@ -270,7 +264,7 @@ export default function ProductMediaCarousel({
             type="button"
             onClick={handlePrev}
             aria-label="Image précédente"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition shadow-md"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xs opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition shadow-md"
           >
             ‹
           </button>
@@ -278,7 +272,7 @@ export default function ProductMediaCarousel({
             type="button"
             onClick={handleNext}
             aria-label="Image suivante"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition shadow-md"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xs opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition shadow-md"
           >
             ›
           </button>

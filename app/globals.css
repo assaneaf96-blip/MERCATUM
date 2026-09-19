@@ -2007,6 +2007,58 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   background: #c49a45;
 }
 
+/* Pastille de contrôle manuel / bouton défiler */
+.hero-slide-controls-pill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(20, 23, 19, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.hero-slide-count {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #eadecc;
+  user-select: none;
+}
+
+.hero-toggle-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-toggle-play-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.04);
+}
+
+.hero-toggle-play-btn.playing {
+  background: #c49a45;
+  color: #141713;
+  border-color: #c49a45;
+}
+
 /* Responsive smartphone */
 @media (max-width: 768px) {
   .hero-category-carousel {
@@ -2032,6 +2084,20 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   .hero-slide-arrow.next {
     right: 8px;
   }
+  .hero-slide-controls-pill {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .hero-slide-count {
+    font-size: 10px;
+  }
+  .hero-toggle-play-btn {
+    padding: 2px 8px;
+    font-size: 10px;
+  }
 }
+
 
 

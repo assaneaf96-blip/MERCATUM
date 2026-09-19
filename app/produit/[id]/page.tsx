@@ -130,7 +130,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null)
   const [allProducts, setAllProducts] = useState<Product[]>(PRODUCTS)
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0)
-  const [isGalleryPaused, setIsGalleryPaused] = useState(false)
+  const [isGalleryAutoPlay, setIsGalleryAutoPlay] = useState(false)
   const [selectedVolume, setSelectedVolume] = useState<string>('')
   const [selectedColor, setSelectedColor] = useState<string>('')
   const [quantity, setQuantity] = useState(1)
@@ -433,7 +433,6 @@ export default function ProductDetailPage() {
 
   // Support du balayage tactile (swipe) et zoom sur mobile
   const [touchStartX, setTouchStartX] = useState<number | null>(null)
-  const [touchResumeTimeout, setTouchResumeTimeout] = useState<NodeJS.Timeout | null>(null)
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length > 0) {
@@ -446,8 +445,6 @@ export default function ProductDetailPage() {
       } else {
         setTouchStartX(e.touches[0].clientX)
       }
-      setIsGalleryPaused(true)
-      if (touchResumeTimeout) clearTimeout(touchResumeTimeout)
     }
   }
 
@@ -479,21 +476,16 @@ export default function ProductDetailPage() {
       }
     }
     setTouchStartX(null)
-    // Reprise automatique du défilement après 2.5s sur mobile si pas de zoom
-    const t = setTimeout(() => {
-      setIsGalleryPaused(false)
-    }, 2500)
-    setTouchResumeTimeout(t)
   }
 
-  // Défilement automatique des photos du produit (toutes les 3.5s) si plus d'une photo et pas de zoom
+  // Défilement des photos du produit : UNIQUEMENT si activé manuellement via le bouton "▶ Défiler"
   useEffect(() => {
-    if (galleryImages.length <= 1 || isGalleryPaused || zoomLevel > 1) return
+    if (galleryImages.length <= 1 || !isGalleryAutoPlay || zoomLevel > 1) return
     const interval = setInterval(() => {
       setActiveImageIndex((prev) => (prev + 1) % galleryImages.length)
     }, 3500)
     return () => clearInterval(interval)
-  }, [galleryImages.length, isGalleryPaused, zoomLevel])
+  }, [galleryImages.length, isGalleryAutoPlay, zoomLevel])
 
   const relatedProducts = useMemo(() => {
     return allProducts
@@ -571,15 +563,7 @@ export default function ProductDetailPage() {
           <div className="pdp-gallery-col">
             <div
               className={`pdp-main-visual-wrapper group relative ${zoomLevel > 1 ? 'zoomed' : ''}`}
-              onMouseEnter={() => {
-                if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
-                  setIsGalleryPaused(true)
-                }
-              }}
               onMouseLeave={() => {
-                if (typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches) {
-                  if (zoomLevel <= 1) setIsGalleryPaused(false)
-                }
                 setIsDragging(false)
               }}
               onTouchStart={handleTouchStart}
@@ -735,8 +719,19 @@ export default function ProductDetailPage() {
                     ›
                   </button>
 
-                  <div className="absolute top-3 right-3 z-10 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white pointer-events-none shadow-md">
-                    {activeImageIndex + 1}/{galleryImages.length} {isVideoUrl(galleryImages[activeImageIndex] || galleryImages[0]) ? '🎬' : '📷'}
+                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-black/70 backdrop-blur-md text-white px-2.5 py-1 rounded-full shadow-md border border-white/20 text-[11px] font-semibold">
+                    <span>{activeImageIndex + 1}/{galleryImages.length} {isVideoUrl(galleryImages[activeImageIndex] || galleryImages[0]) ? '🎬' : '📷'}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setIsGalleryAutoPlay((prev) => !prev)
+                      }}
+                      title={isGalleryAutoPlay ? "Arrêter le défilement automatique" : "Activer le défilement automatique"}
+                      className={`ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold transition cursor-pointer ${isGalleryAutoPlay ? 'bg-[#c49a45] text-stone-900' : 'bg-white/20 text-white hover:bg-white/30'}`}
+                    >
+                      {isGalleryAutoPlay ? '⏸ Arrêter' : '▶ Défiler'}
+                    </button>
                   </div>
                 </>
               )}
