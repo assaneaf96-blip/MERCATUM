@@ -691,6 +691,25 @@ export default function ProductDetailPage() {
                 >
                   ⛶
                 </button>
+
+                {galleryImages.length > 1 && (
+                  <>
+                    <div className="w-[1px] h-3.5 bg-white/25 mx-0.5" />
+                    <button
+                      type="button"
+                      onClick={() => setIsGalleryAutoPlay((prev) => !prev)}
+                      aria-label={isGalleryAutoPlay ? "Arrêter le défilement" : "Lancer le défilement"}
+                      title={isGalleryAutoPlay ? "Arrêter le diaporama" : "Lancer le diaporama automatique"}
+                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition cursor-pointer ${
+                        isGalleryAutoPlay
+                          ? 'bg-[#c49a45] text-stone-900 shadow'
+                          : 'hover:bg-white/20 text-white'
+                      }`}
+                    >
+                      {isGalleryAutoPlay ? '⏸' : '▶'}
+                    </button>
+                  </>
+                )}
               </div>
 
               {/* Navigation flèches et puces si plusieurs photos */}
@@ -719,19 +738,8 @@ export default function ProductDetailPage() {
                     ›
                   </button>
 
-                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-black/70 backdrop-blur-md text-white px-2.5 py-1 rounded-full shadow-md border border-white/20 text-[11px] font-semibold">
-                    <span>{activeImageIndex + 1}/{galleryImages.length} {isVideoUrl(galleryImages[activeImageIndex] || galleryImages[0]) ? '🎬' : '📷'}</span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        setIsGalleryAutoPlay((prev) => !prev)
-                      }}
-                      title={isGalleryAutoPlay ? "Arrêter le défilement automatique" : "Activer le défilement automatique"}
-                      className={`ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold transition cursor-pointer ${isGalleryAutoPlay ? 'bg-[#c49a45] text-stone-900' : 'bg-white/20 text-white hover:bg-white/30'}`}
-                    >
-                      {isGalleryAutoPlay ? '⏸ Arrêter' : '▶ Défiler'}
-                    </button>
+                  <div className="absolute top-3 right-3 z-10 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white pointer-events-none shadow-md">
+                    {activeImageIndex + 1}/{galleryImages.length} {isVideoUrl(galleryImages[activeImageIndex] || galleryImages[0]) ? '🎬' : '📷'}
                   </div>
                 </>
               )}

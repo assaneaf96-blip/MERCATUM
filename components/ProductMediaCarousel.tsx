@@ -75,10 +75,16 @@ export default function ProductMediaCarousel({
     setZoomLevel(1)
   }, [currentIndex])
 
-  // Défilement 100% manuel : aucun intervalle automatique pour laisser l'utilisateur inspecter les produits à son rythme
+  // Défilement manuel par défaut, avec activation optionnelle via l'icône dans la barre de zoom
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false)
 
-
-  // Sécurité pour réinitialiser l'index si la liste des photos change
+  useEffect(() => {
+    if (!hasMultiple || !isAutoPlaying || zoomLevel > 1) return
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length)
+    }, 3500)
+    return () => clearInterval(interval)
+  }, [hasMultiple, isAutoPlaying, zoomLevel, items.length])
   useEffect(() => {
     if (currentIndex >= items.length && items.length > 0) {
       setCurrentIndex(0)
@@ -254,6 +260,27 @@ export default function ProductMediaCarousel({
           >
             ↺
           </button>
+        )}
+
+        {hasMultiple && (
+          <>
+            <div className="w-[1px] h-3 bg-white/20 mx-0.5" />
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                setIsAutoPlaying((prev) => !prev)
+              }}
+              aria-label={isAutoPlaying ? "Arrêter le défilement" : "Lancer le défilement"}
+              title={isAutoPlaying ? "Arrêter le défilement" : "Lancer le défilement"}
+              className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition ${
+                isAutoPlaying ? 'bg-[#c49a45] text-stone-950 shadow' : 'hover:bg-white/25 text-white'
+              }`}
+            >
+              {isAutoPlaying ? '⏸' : '▶'}
+            </button>
+          </>
         )}
       </div>
 

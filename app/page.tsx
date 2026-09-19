@@ -658,7 +658,7 @@ export default function HomePage() {
                   aria-label={isHeroAutoPlaying ? 'Arrêter le défilement automatique' : 'Activer le défilement automatique'}
                   title={isHeroAutoPlaying ? 'Arrêter le défilement' : 'Lancer le défilement automatique'}
                 >
-                  {isHeroAutoPlaying ? '⏸ Arrêter' : '▶ Défiler'}
+                  {isHeroAutoPlaying ? '⏸' : '▶'}
                 </button>
               </div>
             </>
