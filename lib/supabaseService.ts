@@ -1,6 +1,7 @@
 import { supabase, isSupabaseConfigured } from './supabase'
 import { Product, MediaItem, extractContenance, extractVolumes, extractColors, isVideoUrl } from './products'
 import { SiteSettings, NewItem } from './store'
+import { getClientCachedProducts, setClientCachedProducts, invalidateClientCache } from './clientCache'
 
 // ==========================================
 // 1. GESTION DU CATALOGUE PRODUITS
@@ -11,6 +12,7 @@ let clientCachedProducts: Product[] | null = null
 
 export function invalidateClientProductsCache() {
   clientCachedProducts = null
+  invalidateClientCache()
 }
 
 /**
@@ -51,20 +53,32 @@ export function subscribeToProductsChanges(onUpdate: (payload?: any) => void): (
 }
 
 export async function fetchProductsFromDb(forceRefresh = false): Promise<Product[] | null> {
-  // 1. Si exécuté côté navigateur client, passer par l'API serveur interne avec zéro cache
+  // 1. Si pas de rechargement forcé, vérifier d'abord le cache client instantané (répond en < 10ms)
+  if (!forceRefresh && typeof window !== 'undefined') {
+    if (clientCachedProducts && clientCachedProducts.length > 0) {
+      return clientCachedProducts
+    }
+    const cached = await getClientCachedProducts()
+    if (cached && cached.length > 0) {
+      clientCachedProducts = cached
+      // Lancer une synchronisation silencieuse en tâche de fond pour mettre à jour si nécessaire
+      setTimeout(() => {
+        fetchProductsFromDb(true).catch(() => {})
+      }, 60)
+      return cached
+    }
+  }
+
+  // 2. Si exécuté côté navigateur client, passer par l'API serveur interne optimisée
   if (typeof window !== 'undefined') {
     try {
-      const res = await fetch(`/api/products?t=${Date.now()}`, {
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache, no-store',
-          'Pragma': 'no-cache',
-        },
-      })
+      const url = forceRefresh ? `/api/products?t=${Date.now()}` : '/api/products'
+      const res = await fetch(url)
       if (res.ok) {
         const json = await res.json()
         if (json.success && Array.isArray(json.products)) {
           clientCachedProducts = json.products
+          setClientCachedProducts(json.products).catch(() => {})
           return json.products
         }
       }

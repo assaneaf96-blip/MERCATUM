@@ -23,6 +23,7 @@ import {
   fetchSettingsFromDb,
   subscribeToProductsChanges,
 } from '@/lib/supabaseService'
+import { getClientCachedProducts } from '@/lib/clientCache'
 
 interface CategoryDetails {
   eyebrow: string
@@ -318,9 +319,16 @@ export default function HomePage() {
     setNouveautesList(getNouveautes())
     setSettings(getSiteSettings())
 
-    // 2. Fonction de chargement direct et immédiat depuis Supabase
+    // 1.1 Cache IndexedDB ultra-rapide (< 10ms) pour restaurer tous les produits instantanément
+    getClientCachedProducts().then((cached) => {
+      if (cached && cached.length > 0) {
+        setProductsList(cached)
+      }
+    }).catch(() => {})
+
+    // 2. Fonction de chargement direct et immédiat depuis le cache / Supabase
     const loadProducts = () => {
-      fetchProductsFromDb(true).then((dbProducts) => {
+      fetchProductsFromDb(false).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()

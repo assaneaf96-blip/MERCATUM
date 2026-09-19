@@ -17,13 +17,19 @@ const NO_CACHE_HEADERS = {
   'Vercel-CDN-Cache-Control': 'no-store',
 }
 
+const FAST_CACHE_HEADERS = {
+  'Cache-Control': 'public, max-age=15, stale-while-revalidate=120',
+  'CDN-Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
+  'Vercel-CDN-Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
+}
+
 interface CacheEntry {
   products: any[]
   timestamp: number
 }
 
 let serverCache: CacheEntry | null = null
-const CACHE_TTL_MS = 30000 // 30 secondes de cache mémoire serveur ultra-rapide
+const CACHE_TTL_MS = 120000 // 2 minutes de cache mémoire serveur ultra-rapide
 
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
@@ -98,7 +104,7 @@ export async function GET(request: NextRequest) {
     if (serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
       return NextResponse.json(
         { success: true, products: serverCache.products, cached: true },
-        { headers: NO_CACHE_HEADERS }
+        { headers: FAST_CACHE_HEADERS }
       )
     }
 
@@ -117,7 +123,7 @@ export async function GET(request: NextRequest) {
       if (serverCache && serverCache.products.length > 0) {
         return NextResponse.json(
           { success: true, products: serverCache.products, stale: true },
-          { headers: NO_CACHE_HEADERS }
+          { headers: FAST_CACHE_HEADERS }
         )
       }
       return NextResponse.json(
@@ -136,7 +142,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { success: true, products },
-      { headers: NO_CACHE_HEADERS }
+      { headers: FAST_CACHE_HEADERS }
     )
   } catch (err: any) {
     console.error('Erreur API /api/products GET:', err)

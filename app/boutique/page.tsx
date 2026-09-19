@@ -9,6 +9,7 @@ import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription } from '@/lib/products'
 import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
+import { getClientCachedProducts } from '@/lib/clientCache'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -34,13 +35,20 @@ export default function BoutiquePage() {
     setProductsList(localProducts)
     setSettings(getSiteSettings())
 
+    // Cache IndexedDB ultra-rapide (< 10ms) pour restaurer immédiatement la boutique
+    getClientCachedProducts().then((cached) => {
+      if (cached && cached.length > 0) {
+        setProductsList(cached)
+      }
+    }).catch(() => {})
+
     fetchSettingsFromDb().then((s) => {
       if (s) setSettings(s)
     }).catch(() => {})
 
-    // 2. Chargement direct depuis Supabase sans délai
+    // 2. Chargement direct depuis le cache / Supabase sans blocage
     const loadProducts = () => {
-      fetchProductsFromDb(true).then((dbProducts) => {
+      fetchProductsFromDb(false).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()

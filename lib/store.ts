@@ -2,6 +2,7 @@
 // Gestion de la persistance des données en localStorage pour l'admin Maison Lune
 
 import { Product, PRODUCTS as DEFAULT_PRODUCTS } from './products'
+import { setClientCachedProducts } from './clientCache'
 
 // ─────────────────────────────────────────────
 // TYPES
@@ -187,6 +188,7 @@ export function saveProduct(product: Product): void {
     products.push(compacted)
   }
   safeWrite(STORAGE_KEYS.PRODUCTS, products)
+  setClientCachedProducts(getProducts()).catch(() => {})
 
   // Notifier immédiatement toutes les pages/onglets ouverts
   if (typeof window !== 'undefined') {
@@ -202,8 +204,13 @@ export function saveProductsBulk(items: Product[]): void {
     const incomingIds = new Set(items.map((p) => p.id))
     // Conserver les produits locaux créés qui ne sont pas encore présents dans la base distante
     const unsynced = currentLocal.filter((p) => p && p.id && !incomingIds.has(p.id))
-    const mergedList = [...items, ...unsynced].map((p) => compactProductForStorage(p))
-    safeWrite(STORAGE_KEYS.PRODUCTS, mergedList)
+    const mergedList = [...items, ...unsynced]
+
+    // 1. Sauvegarde instantanée dans IndexedDB sans limite de quota
+    setClientCachedProducts(mergedList).catch(() => {})
+
+    // 2. Sauvegarde allégée en localStorage
+    safeWrite(STORAGE_KEYS.PRODUCTS, mergedList.map((p) => compactProductForStorage(p)))
   } catch (err) {
     console.warn('saveProductsBulk error:', err)
   }
