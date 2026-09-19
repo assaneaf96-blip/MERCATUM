@@ -10,6 +10,7 @@ import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription } from '@/lib
 import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 import { getClientCachedProducts } from '@/lib/clientCache'
+import { searchAndFilterProducts } from '@/lib/searchUtils'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -157,25 +158,33 @@ export default function BoutiquePage() {
       .trim()
       .toLowerCase()
 
-  const filteredProducts = useMemo(() => {
-    return productsList
-      .filter((p) => {
-        const matchCategory =
-          selectedCategory === 'Tous les produits' ||
-          normalizeCat(p.category) === normalizeCat(selectedCategory)
-        const matchSearch =
-          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.type.toLowerCase().includes(searchQuery.toLowerCase())
-        return matchCategory && matchSearch
-      })
-      .sort((a, b) => {
-        if (sortBy === 'price-asc') return a.rawPrice - b.rawPrice
-        if (sortBy === 'price-desc') return b.rawPrice - a.rawPrice
-        if (sortBy === 'rating') return b.rating - a.rating
-        return 0
-      })
+  const { filteredProducts, isSearchedGlobally } = useMemo(() => {
+    const { products, searchedGlobally } = searchAndFilterProducts(
+      productsList,
+      searchQuery,
+      selectedCategory
+    )
+
+    const sorted = [...products].sort((a, b) => {
+      if (sortBy === 'price-asc') return a.rawPrice - b.rawPrice
+      if (sortBy === 'price-desc') return b.rawPrice - a.rawPrice
+      if (sortBy === 'rating') return b.rating - a.rating
+      return 0
+    })
+
+    return { filteredProducts: sorted, isSearchedGlobally: searchedGlobally }
   }, [productsList, selectedCategory, searchQuery, sortBy])
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
+    const elem = document.getElementById('boutique-products-grid')
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col">
@@ -244,18 +253,31 @@ export default function BoutiquePage() {
 
           {/* Search & Sort Row */}
           <div className="search-sort-row">
-            <div className="search-box">
-              <span className="search-icon">🔍</span>
-              <input
-                type="text"
-                placeholder="Rechercher parmi nos 360+ articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button className="clear-search" onClick={() => setSearchQuery('')}>✕</button>
-              )}
-            </div>
+            <form className="search-form" onSubmit={handleSearchSubmit}>
+              <div className="search-box">
+                <span className="search-icon">🔍</span>
+                <input
+                  type="text"
+                  placeholder="Rechercher (poêle, frigo, canapé, crème...)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Rechercher un produit"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    className="clear-search"
+                    onClick={() => setSearchQuery('')}
+                    title="Effacer la saisie"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+              <button type="submit" className="search-submit-btn">
+                Rechercher
+              </button>
+            </form>
 
             <div className="category-dropdown-quick">
               <select
@@ -290,27 +312,60 @@ export default function BoutiquePage() {
       {/* Products Grid */}
       <section className="boutique-grid-section flex-1">
         <div className="boutique-grid-container">
-          <div className="boutique-results-count">
-            <span>{filteredProducts.length} produit(s) trouvé(s)</span>
-            {selectedCategory !== 'Tous les produits' && (
-              <span className="current-filter-badge">
-                Catégorie : <strong>{selectedCategory}</strong>
-                <button onClick={() => setSelectedCategory('Tous les produits')}>✕</button>
-              </span>
-            )}
+          <div id="boutique-products-grid" className="boutique-results-count">
+            <div className="results-count-text">
+              <span><strong>{filteredProducts.length}</strong> produit(s) trouvé(s)</span>
+              {searchQuery.trim() && (
+                <span className="search-query-tag">
+                  pour « <strong>{searchQuery.trim()}</strong> »
+                </span>
+              )}
+            </div>
+
+            <div className="active-filters-group">
+              {isSearchedGlobally && (
+                <span className="global-search-pill" title="Recherche élargie à toute la boutique pour trouver votre article">
+                  🌐 Résultat étendu à toute la boutique
+                </span>
+              )}
+              {selectedCategory !== 'Tous les produits' && !isSearchedGlobally && (
+                <span className="current-filter-badge">
+                  Catégorie : <strong>{selectedCategory}</strong>
+                  <button type="button" onClick={() => setSelectedCategory('Tous les produits')}>✕</button>
+                </span>
+              )}
+              {(searchQuery.trim() || selectedCategory !== 'Tous les produits') && (
+                <button
+                  type="button"
+                  className="clear-search-btn"
+                  onClick={() => {
+                    setSearchQuery('')
+                    setSelectedCategory('Tous les produits')
+                  }}
+                >
+                  Effacer filtres ✕
+                </button>
+              )}
+            </div>
           </div>
 
           {filteredProducts.length === 0 ? (
             <div className="empty-results">
-              <p>Aucun produit ne correspond à votre recherche « {searchQuery} ».</p>
+              <p className="empty-results-title">
+                Aucun produit ne correspond à « <strong>{searchQuery}</strong> ».
+              </p>
+              <p className="empty-results-hint">
+                💡 Essayez avec des termes plus généraux (ex : <em>poêle, frigo, canapé, table, crème, parfum, meuble</em>).
+              </p>
               <button
-                className="button outline"
+                type="button"
+                className="button dark"
                 onClick={() => {
                   setSearchQuery('')
                   setSelectedCategory('Tous les produits')
                 }}
               >
-                Réinitialiser les filtres
+                Voir toute la boutique ({productsList.length} articles)
               </button>
             </div>
           ) : (

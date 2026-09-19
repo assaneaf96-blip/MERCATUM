@@ -369,11 +369,18 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   flex-wrap: wrap;
   width: 100%;
 }
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 480px;
+  min-width: 250px;
+}
 .search-box {
   position: relative;
   flex: 1;
-  max-width: 420px;
-  min-width: 220px;
+  min-width: 0;
 }
 .search-icon {
   position: absolute;
@@ -391,6 +398,11 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   border-radius: 4px;
   font-size: 12px;
   outline: none;
+  transition: border-color .2s;
+}
+.search-box input:focus {
+  border-color: var(--foreground);
+  box-shadow: 0 0 0 1px var(--foreground);
 }
 .clear-search {
   position: absolute;
@@ -402,6 +414,25 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   font-size: 12px;
   cursor: pointer;
   color: var(--muted);
+}
+.search-submit-btn {
+  background: var(--foreground);
+  color: var(--background);
+  border: 1px solid var(--foreground);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .2s ease;
+  flex-shrink: 0;
+}
+.search-submit-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 .category-dropdown-quick select {
   padding: 8px 12px;
@@ -444,28 +475,90 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   justify-content: space-between;
   align-items: center;
   margin-bottom: 14px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  font-size: 12px;
   color: var(--muted);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.results-count-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.results-count-text strong {
+  color: var(--foreground);
+}
+.search-query-tag {
+  color: var(--foreground);
+}
+.active-filters-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.global-search-pill {
+  background: #e6f4ea;
+  color: #137333;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ceead6;
 }
 .current-filter-badge {
   background: #e4ded4;
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .current-filter-badge button {
   background: none;
   border: none;
   font-size: 11px;
   cursor: pointer;
+  color: var(--muted);
 }
-.empty-results { text-align: center; padding: 80px 20px; }
-.empty-results p { font-size: 16px; margin-bottom: 20px; color: #5f625c; }
+.current-filter-badge button:hover {
+  color: #b91c1c;
+}
+.clear-search-btn {
+  background: transparent;
+  border: 1px dashed var(--border);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s;
+}
+.clear-search-btn:hover {
+  border-color: #b91c1c;
+  color: #b91c1c;
+}
+.empty-results {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.empty-results-title {
+  font-size: 17px;
+  margin-bottom: 8px;
+  color: var(--foreground);
+}
+.empty-results-hint {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
 
 .product, .boutique-product-card { display: flex; flex-direction: column; justify-content: space-between; height: 100%; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
 .product-tag-badge { position: absolute; top: 12px; left: 12px; z-index: 2; background: var(--foreground); color: var(--background); padding: 4px 9px; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; border-radius: 2px; }
@@ -860,19 +953,28 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
     font-size: 10px;
   }
   .search-sort-row {
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     gap: 8px;
   }
-  .search-box {
-    flex: 1;
+  .search-form {
+    max-width: 100%;
     min-width: 0;
+    width: 100%;
+  }
+  .search-submit-btn {
+    padding: 8px 12px;
+    font-size: 11px;
   }
   .category-dropdown-quick {
     display: none;
   }
+  .sort-box {
+    justify-content: flex-end;
+    width: 100%;
+  }
   .sort-box label {
-    display: none;
+    display: inline-block;
   }
   .sort-box select {
     padding: 6px 8px;
