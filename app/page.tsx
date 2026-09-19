@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
-import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription } from '@/lib/products'
+import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription, isVideoUrl } from '@/lib/products'
 import {
   getProducts,
   getNouveautes,
@@ -337,20 +337,25 @@ export default function HomePage() {
 
           dbProducts.forEach((p) => {
             const def = defaultMap.get(p.id)
-            if (def) {
-              const defCount = (def.images?.length || 0) + (def.media?.length || 0)
-              const pCount = (p.images?.length || 0) + (p.media?.length || 0)
-              if (defCount > pCount) {
-                merged.set(p.id, {
-                  ...p,
-                  image: def.image || p.image,
-                  images: def.images && def.images.length > 0 ? def.images : p.images,
-                  media: def.media && def.media.length > 0 ? def.media : p.media,
-                })
-                return
-              }
-            }
-            merged.set(p.id, p)
+            const chosenMain = (p.image || def?.image || '').trim()
+            const rawImages = (p.images && p.images.length > 0)
+              ? p.images
+              : (def?.images && def.images.length > 0 ? def.images : (chosenMain ? [chosenMain] : []))
+            const rawMedia = (p.media && p.media.length > 0)
+              ? p.media
+              : (def?.media && def.media.length > 0 ? def.media : rawImages.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const })))
+
+            const orderedImages = chosenMain
+              ? [chosenMain, ...rawImages.filter((u) => u !== chosenMain)]
+              : rawImages
+
+            merged.set(p.id, {
+              ...(def || {}),
+              ...p,
+              image: chosenMain,
+              images: orderedImages,
+              media: rawMedia,
+            })
           })
 
           // Intégrer également les créations locales en mémoire pour ne perdre aucun produit

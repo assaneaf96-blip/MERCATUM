@@ -34,15 +34,45 @@ const CACHE_TTL_MS = 120000 // 2 minutes de cache mémoire serveur ultra-rapide
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
   const cols = extractColors(item)
-  const imagesList = Array.isArray(item.images) && item.images.length > 0
-    ? item.images
-    : (item.image ? [item.image] : [])
-  const mediaList = Array.isArray(item.media) && item.media.length > 0
-    ? item.media
-    : imagesList.map((url: string) => ({
-        url,
-        type: isVideoUrl(url) ? 'video' : 'image',
-      }))
+
+  let rawImages: string[] = []
+  if (Array.isArray(item.images)) {
+    rawImages = item.images.filter(Boolean)
+  } else if (typeof item.images === 'string') {
+    try {
+      const parsed = JSON.parse(item.images)
+      if (Array.isArray(parsed)) rawImages = parsed.filter(Boolean)
+    } catch {}
+  }
+
+  let rawMedia: any[] = []
+  if (Array.isArray(item.media)) {
+    rawMedia = item.media.filter(Boolean)
+  } else if (typeof item.media === 'string') {
+    try {
+      const parsed = JSON.parse(item.media)
+      if (Array.isArray(parsed)) rawMedia = parsed.filter(Boolean)
+    } catch {}
+  }
+
+  const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+
+  const mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+
+  const allImagesSet = new Set<string>()
+  if (mainImage) allImagesSet.add(mainImage)
+  rawImages.forEach((img) => {
+    if (img && typeof img === 'string') allImagesSet.add(img.trim())
+  })
+  mediaUrls.forEach((img) => {
+    if (img && typeof img === 'string') allImagesSet.add(img.trim())
+  })
+
+  const imagesList = Array.from(allImagesSet)
+  const mediaList = imagesList.map((url) => ({
+    url,
+    type: isVideoUrl(url) ? ('video' as const) : ('image' as const),
+  }))
 
   return {
     id: item.id,
@@ -52,7 +82,7 @@ function formatProduct(item: any) {
     price: item.price,
     rawPrice: Number(item.raw_price) || 0,
     description: item.description || '',
-    image: item.image || (imagesList[0] || ''),
+    image: mainImage || (imagesList[0] || ''),
     images: imagesList,
     media: mediaList,
     tag: item.tag || '',
@@ -108,36 +138,39 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase optimisée :
-    // On exclut les colonnes lourdes (images[] base64 et media base64) de la liste globale
-    // pour garantir un temps de réponse instantané sans jamais de timeout.
-    // L'image principale (image) est conservée pour les miniatures du catalogue.
-    // Les galeries complètes sont chargées à la demande via ?id=...
-    const { data, error } = await supabase
-      .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count, created_at')
-      .order('created_at', { ascending: false })
+    // 3. Récupération directe Supabase par lots sécurisés avec images complètes
+    let allData: any[] = []
+    const batchSize = 35
+    for (let i = 0; i < 550; i += batchSize) {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count')
+        .range(i, i + batchSize - 1)
 
-    if (error) {
-      // En cas de coupure temporaire Supabase, servir le cache précédent si disponible
-      if (serverCache && serverCache.products.length > 0) {
-        return NextResponse.json(
-          { success: true, products: serverCache.products, stale: true },
-          { headers: FAST_CACHE_HEADERS }
-        )
+      if (error) {
+        console.warn(`Erreur récupération lot Supabase ${i}:`, error.message)
+        break
       }
+      if (!data || data.length === 0) break
+      allData.push(...data)
+      if (data.length < batchSize) break
+    }
+
+    if (allData.length === 0 && serverCache && serverCache.products.length > 0) {
       return NextResponse.json(
-        { success: false, error: error.message },
-        { status: 500, headers: NO_CACHE_HEADERS }
+        { success: true, products: serverCache.products, stale: true },
+        { headers: FAST_CACHE_HEADERS }
       )
     }
 
-    const products = (data || []).map((item) => formatProduct(item))
+    const products = (allData || []).map((item) => formatProduct(item))
 
     // Mettre à jour le cache serveur
-    serverCache = {
-      products,
-      timestamp: Date.now(),
+    if (products.length > 0) {
+      serverCache = {
+        products,
+        timestamp: Date.now(),
+      }
     }
 
     return NextResponse.json(

@@ -215,17 +215,18 @@ export default function ProductDetailPage() {
       if (dbProduct) {
         setProduct((prev) => {
           if (!prev) return dbProduct
-          const prevImgsCount = (prev.images?.length || 0) + (prev.media?.length || 0)
-          const dbImgsCount = (dbProduct.images?.length || 0) + (dbProduct.media?.length || 0)
-          if (prevImgsCount > dbImgsCount) {
-            return {
-              ...dbProduct,
-              image: prev.image || dbProduct.image,
-              images: prev.images || dbProduct.images,
-              media: prev.media || dbProduct.media,
-            }
+          const mainImg = (dbProduct.image || prev.image || '').trim()
+          const dbImgs = (dbProduct.images && dbProduct.images.length > 0) ? dbProduct.images : (prev.images || [])
+          const ordered = mainImg ? [mainImg, ...dbImgs.filter((u) => u !== mainImg)] : dbImgs
+          return {
+            ...prev,
+            ...dbProduct,
+            image: mainImg,
+            images: ordered,
+            media: (dbProduct.media && dbProduct.media.length > 0)
+              ? dbProduct.media
+              : ordered.map((u) => ({ url: u, type: 'image' as const })),
           }
-          return dbProduct
         })
         saveProduct(dbProduct)
       }

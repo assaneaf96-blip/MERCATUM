@@ -149,15 +149,25 @@ export function getProducts(): Product[] {
   const enhancedAdmin = adminProducts.map((ap) => {
     const def = defaultMap.get(ap.id)
     if (def) {
-      const defImgs = (def.images?.length || 0) + (def.media?.length || 0)
-      const apImgs = (ap.images?.length || 0) + (ap.media?.length || 0)
-      if (defImgs > apImgs) {
-        return {
-          ...ap,
-          images: def.images && def.images.length > 0 ? def.images : ap.images,
-          media: def.media && def.media.length > 0 ? def.media : ap.media,
-          image: def.image || ap.image,
-        }
+      const chosenMain = (ap.image || def.image || '').trim()
+      const apHasImages = (ap.images && ap.images.length > 0) || (ap.media && ap.media.length > 0)
+      const rawImages = apHasImages
+        ? (ap.images && ap.images.length > 0 ? ap.images : (ap.media || []).map((m: any) => typeof m === 'string' ? m : m.url))
+        : (def.images && def.images.length > 0 ? def.images : (chosenMain ? [chosenMain] : []))
+
+      const orderedImages = chosenMain
+        ? [chosenMain, ...rawImages.filter((x) => x !== chosenMain)]
+        : rawImages
+
+      const rawMedia = (ap.media && ap.media.length > 0)
+        ? ap.media
+        : (def.media && def.media.length > 0 ? def.media : orderedImages.map((url) => ({ url, type: 'image' as const })))
+
+      return {
+        ...ap,
+        image: chosenMain,
+        images: orderedImages,
+        media: rawMedia,
       }
     }
     return ap

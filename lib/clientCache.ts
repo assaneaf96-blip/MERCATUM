@@ -4,7 +4,7 @@
 
 import { Product } from './products'
 
-const DB_NAME = 'mercatum_catalog_v2'
+const DB_NAME = 'mercatum_catalog_v5'
 const STORE_NAME = 'products'
 const KEY = 'catalog_items'
 const TIMESTAMP_KEY = 'catalog_timestamp'

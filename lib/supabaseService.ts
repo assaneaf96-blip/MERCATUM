@@ -90,31 +90,62 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
   // 2. Côté serveur ou repli direct Supabase
   if (!isSupabaseConfigured) return null
   try {
-    const { data, error } = await supabase
-      .from('products')
-      .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count, created_at')
-      .order('created_at', { ascending: false })
+    let allData: any[] = []
+    const batchSize = 35
+    for (let i = 0; i < 550; i += batchSize) {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count')
+        .range(i, i + batchSize - 1)
 
-    if (error) {
-      console.warn('Erreur Supabase fetchProducts:', error.message)
-      return null
+      if (error) {
+        console.warn(`Erreur Supabase fetchProducts lot ${i}:`, error.message)
+        break
+      }
+      if (!data || data.length === 0) break
+      allData.push(...data)
+      if (data.length < batchSize) break
     }
 
-    if (!data) return null
+    if (allData.length === 0) return null
 
-    return data.map((item: any) => {
+    return allData.map((item: any) => {
       const vols = extractVolumes(item)
       const cols = extractColors(item)
       const cont = item.contenance || extractContenance(item)
-      const imagesList = Array.isArray(item.images) && item.images.length > 0
-        ? item.images
-        : (item.image ? [item.image] : [])
-      const mediaList = Array.isArray(item.media) && item.media.length > 0
-        ? item.media
-        : imagesList.map((url: string) => ({
-            url,
-            type: isVideoUrl(url) ? 'video' : 'image',
-          }))
+
+      let rawImages: string[] = []
+      if (Array.isArray(item.images)) rawImages = item.images.filter(Boolean)
+      else if (typeof item.images === 'string') {
+        try {
+          const parsed = JSON.parse(item.images)
+          if (Array.isArray(parsed)) rawImages = parsed.filter(Boolean)
+        } catch {}
+      }
+
+      let rawMedia: any[] = []
+      if (Array.isArray(item.media)) rawMedia = item.media.filter(Boolean)
+      else if (typeof item.media === 'string') {
+        try {
+          const parsed = JSON.parse(item.media)
+          if (Array.isArray(parsed)) rawMedia = parsed.filter(Boolean)
+        } catch {}
+      }
+
+      const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+      const mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+
+      const allImagesSet = new Set<string>()
+      if (mainImage) allImagesSet.add(mainImage)
+      rawImages.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
+      mediaUrls.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
+
+      const imagesList = Array.from(allImagesSet)
+      const mediaList: MediaItem[] = imagesList.map((url) => ({
+        url,
+        type: isVideoUrl(url) ? 'video' : 'image',
+      }))
+
       return {
         id: item.id,
         name: item.name,
@@ -123,7 +154,7 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
         price: item.price,
         rawPrice: Number(item.raw_price) || 0,
         description: item.description || '',
-        image: item.image || (imagesList[0] || ''),
+        image: mainImage,
         images: imagesList,
         media: mediaList,
         tag: item.tag || '',
@@ -177,6 +208,38 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
     const vols = extractVolumes(data)
     const cols = extractColors(data)
     const cont = data.contenance || extractContenance(data)
+    let rawImages: string[] = []
+    if (Array.isArray(data.images)) rawImages = data.images.filter(Boolean)
+    else if (typeof data.images === 'string') {
+      try {
+        const parsed = JSON.parse(data.images)
+        if (Array.isArray(parsed)) rawImages = parsed.filter(Boolean)
+      } catch {}
+    }
+
+    let rawMedia: any[] = []
+    if (Array.isArray(data.media)) rawMedia = data.media.filter(Boolean)
+    else if (typeof data.media === 'string') {
+      try {
+        const parsed = JSON.parse(data.media)
+        if (Array.isArray(parsed)) rawMedia = parsed.filter(Boolean)
+      } catch {}
+    }
+
+    const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+    const mainImage = (typeof data.image === 'string' ? data.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+
+    const allImagesSet = new Set<string>()
+    if (mainImage) allImagesSet.add(mainImage)
+    rawImages.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
+    mediaUrls.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
+
+    const imagesList = Array.from(allImagesSet)
+    const mediaList: MediaItem[] = imagesList.map((url) => ({
+      url,
+      type: isVideoUrl(url) ? 'video' : 'image',
+    }))
+
     return {
       id: data.id,
       name: data.name,
@@ -185,9 +248,9 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
       price: data.price,
       rawPrice: Number(data.raw_price) || 0,
       description: data.description || '',
-      image: data.image || '',
-      images: Array.isArray(data.images) ? data.images : [],
-      media: Array.isArray(data.media) ? data.media : [],
+      image: mainImage,
+      images: imagesList,
+      media: mediaList,
       tag: data.tag || '',
       contenance: cont,
       volumes: vols.length > 0 ? vols : undefined,
