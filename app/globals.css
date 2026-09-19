@@ -14,7 +14,8 @@ a { color: inherit; text-decoration: none; }
 .announcement-marquee-wrapper {
   background: var(--foreground);
   color: var(--background);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   position: relative;
   width: 100%;
   height: 44px;
@@ -23,20 +24,20 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   white-space: nowrap;
   user-select: none;
-  mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 30px, black calc(100% - 30px), transparent);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.announcement-marquee-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .announcement-marquee-track {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee-scroll 50s linear infinite;
-  will-change: transform;
-}
-
-.announcement-marquee-track:hover {
-  animation-play-state: paused;
+  animation: none;
 }
 
 @keyframes marquee-scroll {

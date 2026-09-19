@@ -59,9 +59,9 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
 
   return (
     <>
-      <div className="announcement-marquee-wrapper" aria-label="Défilement du catalogue produits">
+      <div className="announcement-marquee-wrapper" aria-label="Catalogue produits">
         <div className="announcement-marquee-track">
-          {[...marqueeProducts, ...marqueeProducts].map((prod, idx) => (
+          {marqueeProducts.map((prod, idx) => (
             <div key={`${prod.id}-${idx}`} className="announcement-item-wrapper">
               <Link href={`/produit/${prod.id}`} className="announcement-product-chip">
                 {prod.image && (

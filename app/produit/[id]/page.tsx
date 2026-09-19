@@ -130,7 +130,6 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null)
   const [allProducts, setAllProducts] = useState<Product[]>(PRODUCTS)
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0)
-  const [isGalleryAutoPlay, setIsGalleryAutoPlay] = useState(false)
   const [selectedVolume, setSelectedVolume] = useState<string>('')
   const [selectedColor, setSelectedColor] = useState<string>('')
   const [quantity, setQuantity] = useState(1)
@@ -478,14 +477,7 @@ export default function ProductDetailPage() {
     setTouchStartX(null)
   }
 
-  // Défilement des photos du produit : UNIQUEMENT si activé manuellement via le bouton "▶ Défiler"
-  useEffect(() => {
-    if (galleryImages.length <= 1 || !isGalleryAutoPlay || zoomLevel > 1) return
-    const interval = setInterval(() => {
-      setActiveImageIndex((prev) => (prev + 1) % galleryImages.length)
-    }, 3500)
-    return () => clearInterval(interval)
-  }, [galleryImages.length, isGalleryAutoPlay, zoomLevel])
+
 
   const relatedProducts = useMemo(() => {
     return allProducts
@@ -692,24 +684,6 @@ export default function ProductDetailPage() {
                   ⛶
                 </button>
 
-                {galleryImages.length > 1 && (
-                  <>
-                    <div className="w-[1px] h-3.5 bg-white/25 mx-0.5" />
-                    <button
-                      type="button"
-                      onClick={() => setIsGalleryAutoPlay((prev) => !prev)}
-                      aria-label={isGalleryAutoPlay ? "Arrêter le défilement" : "Lancer le défilement"}
-                      title={isGalleryAutoPlay ? "Arrêter le diaporama" : "Lancer le diaporama automatique"}
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition cursor-pointer ${
-                        isGalleryAutoPlay
-                          ? 'bg-[#c49a45] text-stone-900 shadow'
-                          : 'hover:bg-white/20 text-white'
-                      }`}
-                    >
-                      {isGalleryAutoPlay ? '⏸' : '▶'}
-                    </button>
-                  </>
-                )}
               </div>
 
               {/* Navigation flèches et puces si plusieurs photos */}
