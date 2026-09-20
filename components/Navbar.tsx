@@ -37,6 +37,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
         .then((db) => {
           if (db && db.length > 0) {
             const merged = new Map<string, Product>()
+            PRODUCTS.forEach((p) => merged.set(p.id, p))
             curLocal.forEach((p) => merged.set(p.id, p))
             db.forEach((p) => merged.set(p.id, p))
             setProductsList(Array.from(merged.values()))

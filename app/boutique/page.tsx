@@ -63,11 +63,12 @@ export default function BoutiquePage() {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()
-          const defaultMap = new Map<string, Product>()
-          PRODUCTS.forEach((p) => defaultMap.set(p.id, p))
+          // 1. Initialiser avec l'ensemble complet des produits par défaut
+          PRODUCTS.forEach((p) => merged.set(p.id, p))
 
+          // 2. Fusionner tous les produits issus de Supabase Cloud
           dbProducts.forEach((p) => {
-            const def = defaultMap.get(p.id)
+            const def = merged.get(p.id)
             const chosenMain = (p.image || def?.image || '').trim()
             const rawImages = (p.images && p.images.length > 0)
               ? p.images
@@ -89,11 +90,12 @@ export default function BoutiquePage() {
             })
           })
 
-          // Intégrer également les créations locales en mémoire pour ne perdre aucun produit
+          // 3. Intégrer également les créations locales récentes
           const localItems = getProducts()
           localItems.forEach((lp) => {
-            if (lp && lp.id && !merged.has(lp.id)) {
-              merged.set(lp.id, lp)
+            if (lp && lp.id) {
+              const def = merged.get(lp.id)
+              merged.set(lp.id, { ...(def || {}), ...lp })
             }
           })
 

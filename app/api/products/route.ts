@@ -23,7 +23,7 @@ interface CacheEntry {
 }
 
 let serverCache: CacheEntry | null = null
-const CACHE_TTL_MS = 2000 // Cache mémoire très court (2 secondes) pour absorber les rafales sans bloquer les ajouts instantanés
+const CACHE_TTL_MS = 600000 // 10 minutes de cache mémoire serveur ultra-rapide (< 1ms), mis à jour en direct lors des ajouts
 
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
@@ -123,24 +123,24 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const isForced = searchParams.has('t') || searchParams.has('refresh')
+    const isForcedDb = searchParams.has('force_db')
 
     // 2. Pour la liste complète :
-    // Si le cache mémoire serveur est actif, récent (< 2s) et non forcé
-    if (!isForced && serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
+    // Si le cache mémoire serveur est actif, répondre INSTANTANÉMENT (< 1ms)
+    if (!isForcedDb && serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
       return NextResponse.json(
         { success: true, products: serverCache.products, cached: true },
         { headers: NO_CACHE_HEADERS }
       )
     }
 
-    // 3. Récupération directe Supabase par lots sécurisés avec images complètes
+    // 3. Récupération directe Supabase par lots rapides de 40 sans la colonne lourde images (charge < 1s)
     let allData: any[] = []
-    const batchSize = 20
-    for (let i = 0; i < 550; i += batchSize) {
+    const batchSize = 40
+    for (let i = 0; i < 600; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count')
+        .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count')
         .range(i, i + batchSize - 1)
 
       if (error) {
@@ -240,8 +240,19 @@ export async function POST(request: NextRequest) {
 
     const savedFormatted = data && data.length > 0 ? formatProduct(data[0]) : formatProduct(payload)
 
-    // Invalider immédiatement le cache mémoire serveur pour que le nouvel ajout soit visible à la seconde près
-    serverCache = null
+    // Mettre à jour immédiatement le cache mémoire serveur pour que le nouvel ajout soit visible à la seconde près
+    if (serverCache && Array.isArray(serverCache.products)) {
+      serverCache.products = [
+        savedFormatted,
+        ...serverCache.products.filter((p) => p.id !== savedFormatted.id),
+      ]
+      serverCache.timestamp = Date.now()
+    } else {
+      serverCache = {
+        products: [savedFormatted],
+        timestamp: Date.now(),
+      }
+    }
 
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {
