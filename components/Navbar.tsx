@@ -59,7 +59,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
 
   return (
     <>
-      <div className="announcement-marquee-wrapper" aria-label="Catalogue produits">
+      <div className="announcement-marquee-wrapper" aria-label="Catálogo de productos">
         <div className="announcement-marquee-track">
           {marqueeProducts.map((prod, idx) => (
             <div key={`${prod.id}-${idx}`} className="announcement-item-wrapper">
@@ -70,6 +70,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                     alt={prod.name}
                     className="announcement-chip-img"
                     loading="lazy"
+                    decoding="async"
                   />
                 )}
                 <span className="announcement-chip-name">{prod.name}</span>
@@ -84,48 +85,48 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
         <button
           className="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label={menuOpen ? 'Cerrar el menú' : 'Abrir el menú'}
         >
           <span className="menu-icon-bars" aria-hidden="true">
             <span className={`bar ${menuOpen ? 'bar-open-1' : ''}`} />
             <span className={`bar ${menuOpen ? 'bar-open-2' : ''}`} />
           </span>
-          <span className="menu-text">{menuOpen ? 'Fermer' : 'Menu'}</span>
+          <span className="menu-text">{menuOpen ? 'Cerrar' : 'Menú'}</span>
         </button>
 
         <Link href="/" className="brand">
           {settings.siteName || 'MERCATUM'}
         </Link>
 
-        <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navigation principale">
+        <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navegación principal">
           <div className="nav-links mobile-nav-links">
             <Link
               href="/"
               className={`nav-link ${pathname === '/' ? 'nav-active' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
-              Accueil
+              Inicio
             </Link>
             <Link
               href="/boutique"
               className={`nav-link ${pathname === '/boutique' ? 'nav-active' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
-              La boutique
+              La Tienda
             </Link>
             <Link
               href="/#histoire"
               className="nav-link"
               onClick={() => setMenuOpen(false)}
             >
-              Notre histoire
+              Nuestra Filosofía
             </Link>
             <Link
               href="/#nouveautes"
               className="nav-link"
               onClick={() => setMenuOpen(false)}
             >
-              Nouveautés
+              Novedades
             </Link>
           </div>
           <div className="mobile-nav-cta">
@@ -134,21 +135,21 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
               className="button dark mobile-menu-buy-btn"
               onClick={() => setMenuOpen(false)}
             >
-              Accéder à la boutique <span>→</span>
+              Acceder a la tienda <span>→</span>
             </Link>
           </div>
         </nav>
 
         <div className="header-actions">
           <Link href="/boutique" className="header-buy-btn">
-            Acheter maintenant
+            Comprar Ahora
           </Link>
           <button
             onClick={onOpenCart}
             className="header-cart-btn"
-            aria-label="Panier"
+            aria-label="Cesta"
           >
-            Panier <span className="cart-badge-pill">({cartCount})</span>
+            Cesta <span className="cart-badge-pill">({cartCount})</span>
           </button>
         </div>
       </header>

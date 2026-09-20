@@ -147,11 +147,11 @@ export default function CheckoutModal({
                 ✓
               </div>
               <h3 style={{ fontFamily: 'Georgia, serif', fontSize: '22px', margin: '0 0 6px', color: '#20251f' }}>
-                Commande Enregistrée !
+                ¡Pedido Registrado con Éxito!
               </h3>
               <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
-                Merci <strong>{fullName || 'Chère Cliente / Cher Client'}</strong>. Votre commande de{' '}
-                <strong>{quantity}x {product.name}</strong> ({totalPrice}) est en attente de virement.
+                Gracias <strong>{fullName || 'Estimado/a Cliente/a'}</strong>. Su pedido de{' '}
+                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está pendiente de transferencia bancaria.
               </p>
             </div>
 
@@ -167,17 +167,17 @@ export default function CheckoutModal({
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>
                 <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 'bold', color: '#20251f' }}>
-                  🏛️ Virement Bancaire
+                  🏛️ Transferencia Bancaria
                 </span>
                 <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#166534', background: '#dcfce7', padding: '2px 8px', borderRadius: '4px' }}>
-                  Montant : {totalPrice}
+                  Importe : {totalPrice}
                 </span>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
                 <div>
                   <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Référence obligatoire à indiquer
+                    Referencia obligatoria a indicar
                   </span>
                   <strong style={{ fontSize: '15px', color: '#991b1b', letterSpacing: '0.05em' }}>
                     {orderRef}
@@ -186,14 +186,14 @@ export default function CheckoutModal({
 
                 <div>
                   <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Bénéficiaire / Titulaire du compte
+                    Beneficiario / Titular de la cuenta
                   </span>
                   <strong style={{ color: '#20251f' }}>{settings.bankAccountHolder}</strong>
                 </div>
 
                 <div>
                   <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Banque
+                    Banco
                   </span>
                   <span style={{ color: '#20251f' }}>{settings.bankName}</span>
                 </div>
@@ -218,7 +218,7 @@ export default function CheckoutModal({
                         transition: '0.2s',
                       }}
                     >
-                      {copied ? '✓ Copié !' : 'Copier l\'IBAN'}
+                      {copied ? '✓ ¡Copiado!' : 'Copiar IBAN'}
                     </button>
                   </div>
                   <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f', letterSpacing: '0.05em', wordBreak: 'break-all' }}>
@@ -228,7 +228,7 @@ export default function CheckoutModal({
 
                 <div>
                   <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Code BIC / SWIFT
+                    Código BIC / SWIFT
                   </span>
                   <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f' }}>
                     {settings.bankSwift}
@@ -256,15 +256,15 @@ export default function CheckoutModal({
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
                 <span style={{ fontSize: '16px' }}>📄</span>
                 <strong style={{ fontSize: '12px', color: '#1e293b' }}>
-                  Comment envoyer votre preuve de paiement ?
+                  ¿Cómo enviar su justificante de pago?
                 </strong>
               </div>
               <p style={{ fontSize: '11px', color: '#475569', margin: '0 0 10px', lineHeight: '1.4' }}>
-                Une fois votre virement effectué, transmettez votre capture d'écran ou reçu bancaire avec votre référence <strong>{orderRef}</strong> :
+                Una vez realizada la transferencia, envíenos su comprobante o captura con su referencia <strong>{orderRef}</strong>:
               </p>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <a
-                  href={`mailto:${settings.contactEmail || 'contact@mercatum.fr'}?subject=${encodeURIComponent(`Reçu de virement - Commande ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-joint mon reçu de virement pour la commande ${orderRef} d'un montant de ${totalPrice}.\n\nNom: ${fullName}\nTéléphone: ${phone}\nAdresse de livraison: ${address}\n\nMerci.`)}`}
+                  href={`mailto:${settings.contactEmail || 'contact@mercatum.fr'}?subject=${encodeURIComponent(`Justificante de transferencia - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el justificante de transferencia bancaria para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${address}\n\nGracias.`)}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -281,11 +281,11 @@ export default function CheckoutModal({
                     minWidth: '160px',
                   }}
                 >
-                  ✉️ Envoyer par e-mail
+                  ✉️ Enviar por correo electrónico
                 </a>
                 {settings.contactPhone && (
                   <a
-                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Bonjour, voici mon reçu de paiement pour la commande ${orderRef} (${fullName} - ${totalPrice}).`)}`}
+                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola, aquí tiene mi comprobante de pago para el pedido ${orderRef} (${fullName} - ${totalPrice}).`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -304,14 +304,14 @@ export default function CheckoutModal({
                       minWidth: '160px',
                     }}
                   >
-                    💬 Envoyer par WhatsApp
+                    💬 Enviar por WhatsApp
                   </a>
                 )}
               </div>
             </div>
 
             <p style={{ fontSize: '11px', color: '#777', textAlign: 'center', margin: '8px 0 0' }}>
-              📦 Votre colis sera préparé et expédié dès validation de votre virement.
+              📦 Su paquete será preparado y enviado inmediatamente tras la validación de su transferencia.
             </p>
 
             <div style={{ textAlign: 'center', paddingTop: '8px' }}>
@@ -332,14 +332,14 @@ export default function CheckoutModal({
                   width: '100%',
                 }}
               >
-                J'ai noté les coordonnées / Fermer
+                He anotado los datos bancarios / Cerrar
               </button>
             </div>
           </div>
         ) : (
           <div>
-            <span className="modal-eyebrow">Paiement par virement bancaire</span>
-            <h3 className="modal-title">Commander cet article</h3>
+            <span className="modal-eyebrow">Pago por transferencia bancaria</span>
+            <h3 className="modal-title">Comprar este artículo</h3>
 
             <div className="modal-product-summary">
               {isVideoUrl(product.image) ? (
@@ -386,50 +386,50 @@ export default function CheckoutModal({
 
             <form onSubmit={handleSubmit} className="modal-form">
               <div className="form-group">
-                <label>Nom et Prénom *</label>
+                <label>Nombre y Apellidos *</label>
                 <input
                   type="text"
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  placeholder="ex: Sophie Laurent"
+                  placeholder="Ej: Carlos García"
                 />
               </div>
 
               <div className="form-group">
-                <label>Adresse email *</label>
+                <label>Correo Electrónico *</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ex: sophie.laurent@gmail.com"
+                  placeholder="Ej: carlos.garcia@gmail.com"
                 />
               </div>
 
               <div className="form-group">
-                <label>Téléphone</label>
+                <label>Teléfono</label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="ex: +33 6 12 34 56 78"
+                  placeholder="Ej: +34 612 34 56 78"
                 />
               </div>
 
               <div className="form-group">
-                <label>Adresse complète de livraison *</label>
+                <label>Dirección completa de envío *</label>
                 <input
                   type="text"
                   required
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Numéro, rue, code postal, ville"
+                  placeholder="Calle, número, código postal, ciudad, provincia"
                 />
               </div>
 
               <div className="form-group">
-                <label>Mode de règlement</label>
+                <label>Método de pago</label>
                 <div
                   style={{
                     background: '#e8e2d6',
@@ -442,16 +442,16 @@ export default function CheckoutModal({
                     fontWeight: 600,
                   }}
                 >
-                  <span>🏛️ Virement Bancaire Sécurisé</span>
+                  <span>🏛️ Transferencia Bancaria Segura</span>
                   <strong>{totalPrice}</strong>
                 </div>
                 <span style={{ fontSize: '10px', color: '#666', marginTop: '4px', display: 'block' }}>
-                  L'IBAN, le BIC et la référence de virement vous seront présentés à l'étape suivante.
+                  El IBAN, el BIC y la referencia de transferencia se le mostrarán en el siguiente paso.
                 </span>
               </div>
 
               <button type="submit" className="button-confirm-buy" style={{ marginTop: '8px' }}>
-                Valider ma commande ({totalPrice}) →
+                Confirmar mi pedido ({totalPrice}) →
               </button>
             </form>
           </div>

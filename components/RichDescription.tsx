@@ -92,7 +92,7 @@ export default function RichDescription({ content, className = '' }: RichDescrip
             >
               <img
                 src={seg.src}
-                alt={seg.alt || 'Illustration produit MERCATUM'}
+                alt={seg.alt || 'Ilustración del producto MERCATUM'}
                 className="w-full h-auto object-cover max-h-[500px] rounded-lg"
                 loading="lazy"
               />

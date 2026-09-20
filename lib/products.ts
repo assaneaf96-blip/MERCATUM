@@ -281,7 +281,7 @@ export function extractColors(p?: {
 }
 
 export const CATEGORIES = [
-  "Tous les produits",
+  "Todos los productos",
   "HORNOS",
   "LAVADORA SECADORA",
   "FRIGORIFIGO",

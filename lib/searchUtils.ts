@@ -132,14 +132,17 @@ export const SEARCH_SYNONYMS: Record<string, string[]> = {
 export function searchAndFilterProducts(
   allProducts: Product[],
   query: string,
-  selectedCategory = 'Tous les produits'
+  selectedCategory = 'Todos los productos'
 ): { products: Product[]; searchedGlobally: boolean } {
   const normQuery = normalizeSearchText(query)
   const words = normQuery ? normQuery.split(' ').filter(Boolean) : []
 
+  const isAllCategories = (cat?: string) =>
+    !cat || cat === 'Todos los productos' || cat === 'Tous les produits'
+
   // Si aucune recherche texte n'est saisie, simple filtre par catégorie
   if (words.length === 0) {
-    if (!selectedCategory || selectedCategory === 'Tous les produits') {
+    if (isAllCategories(selectedCategory)) {
       return { products: allProducts, searchedGlobally: false }
     }
     const normCategory = normalizeSearchText(selectedCategory)
@@ -169,7 +172,7 @@ export function searchAndFilterProducts(
   }
 
   // 1. Si une catégorie est sélectionnée, essayer d'abord dans cette catégorie
-  if (selectedCategory && selectedCategory !== 'Tous les produits') {
+  if (!isAllCategories(selectedCategory)) {
     const normCategory = normalizeSearchText(selectedCategory)
     const categoryProducts = allProducts.filter(
       (p) => normalizeSearchText(p.category) === normCategory

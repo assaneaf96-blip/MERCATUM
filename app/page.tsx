@@ -36,111 +36,171 @@ interface CategoryDetails {
 
 const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
   'Belleza & cabello': {
-    eyebrow: 'Haute Technologie Capillaire & Coiffure d\'Exception',
-    title: 'Beauté, Coiffage & Rituels Capillaires d\'Élite',
-    subtitle: "L'art du coiffage professionnel et du soin thermique d'avant-garde.",
-    badge: 'Technologie Thermo-Protectrice & Brillance Ultime',
-    description: 'Des stylers intelligents ghd aux boucleurs et sèche-cheveux multifonctions Shark FlexStyle : sculptez, lissez et sublimez votre chevelure sans compromettre la santé de la fibre capillaire.',
+    eyebrow: 'Alta Tecnología Capilar & Estilismo de Excepción',
+    title: 'Belleza, Moldeado & Rituales Capilares de Élite',
+    subtitle: "El arte del peinado profesional y del cuidado térmico de vanguardia.",
+    badge: 'Tecnología Termoprotectora & Brillo Absoluto',
+    description: 'Desde moldeadores inteligentes ghd hasta secadores multifunción Shark FlexStyle: esculpa, alise y sublime su cabello sin comprometer la salud de la fibra capilar.',
     arguments: [
-      { icon: '✨', title: 'Technologie HD Motion-Responsive', desc: 'Température constante optimale pour une brillance miroir et zéro dommage thermique.' },
-      { icon: '💨', title: 'Séchage & Coiffage Ultra-Rapide', desc: 'Flux d\'air ionique puissant et embouts de précision pour tous types de cheveux.' },
-      { icon: '👑', title: 'Finition Salons de Prestige', desc: 'Des outils d\'excellence plébiscités par les plus grands stylistes et professionnels.' },
+      { icon: '✨', title: 'Tecnología HD Motion-Responsive', desc: 'Temperatura óptima constante para un brillo espejo y cero daño térmico.' },
+      { icon: '💨', title: 'Secado & Moldeado Ultrarrápido', desc: 'Flujo de aire iónico potente y boquillas de precisión para todo tipo de cabello.' },
+      { icon: '👑', title: 'Acabado de Salón de Prestigio', desc: 'Herramientas de excelencia elogiadas por los mejores estilistas profesionales.' },
     ],
   },
   'Mobilier & Décoration': {
-    eyebrow: 'Le Sanctuaire du Foyer · Design & Confort',
-    title: 'Mobilier de Créateur & Pièces de Vie',
-    subtitle: "L'art d'aménager un intérieur raffiné et des terrasses au confort souverain.",
-    badge: "Design d'Architecte & Matières Durables",
-    description: "Chaque pièce est pensée comme un équilibre parfait entre pureté géométrique, ergonomie bienfaisante et résistance éprouvée. Du sofa de jardin au mobilier de salon, habitez votre quotidien avec grandeur.",
+    eyebrow: 'El Santuario del Hogar · Diseño & Confort',
+    title: 'Mobiliario de Autor & Piezas de Vida',
+    subtitle: "El arte de crear un interior refinado y terrazas de confort soberano.",
+    badge: "Diseño de Arquitecto & Materiales Nobles",
+    description: "Cada pieza está concebida como un equilibrio perfecto entre pureza geométrica, ergonomía reconfortante y resistencia duradera. Del sofá de exterior al mobiliario de salón, habite su espacio con distinción.",
     arguments: [
-      { icon: '🛋️', title: 'Confort Souverain & Assise Haute Densité', desc: 'Coussins généreux et ergonomie étudiée pour une relaxation absolue.' },
-      { icon: '🛡️', title: 'Matériaux Nobles & Traitement Anti-Intempéries', desc: 'Structures renforcées, tissus déperlants et finitions durables.' },
-      { icon: '✨', title: 'Design Intemporel & Harmonieux', desc: 'Des lignes pures qui subliment naturellement vos espaces de vie.' },
+      { icon: '🛋️', title: 'Confort Soberano & Asiento Alta Densidad', desc: 'Cojines generosos y ergonomía estudiada para una relajación absoluta.' },
+      { icon: '🛡️', title: 'Materiales Nobles & Tratamiento Intemperie', desc: 'Estructuras reforzadas, tejidos repelentes al agua y acabados duraderos.' },
+      { icon: '✨', title: 'Diseño Intemporal & Armonioso', desc: 'Líneas puras que realzan con naturalidad sus espacios de vida.' },
     ],
   },
   'Plein Air & Évasion': {
-    eyebrow: 'Sanctuaire Extérieur · Vivre Sous le Ciel',
-    title: "Glamping d'Exception, Pergolas & Abris Extérieurs",
-    subtitle: 'Prolongez le confort de votre intérieur au cœur du jardin et de la nature.',
-    badge: 'Confort 4 Saisons & Protection Totale',
-    description: 'Tentes cloches safari, tonnelles de jardin étanches et auvents rétractables : nos solutions de plein air vous protègent des éléments tout en créant un cadre spectaculaire pour vos réceptions et votre détente.',
+    eyebrow: 'Santuario Exterior · Vivir Bajo el Cielo',
+    title: "Glamping de Excepción, Pérgolas & Refugios Exteriores",
+    subtitle: 'Extienda el confort de su interior en el corazón del jardín y la naturaleza.',
+    badge: 'Confort 4 Estaciones & Protección Total',
+    description: 'Carpas safari bell tent, pérgolas impermeables y toldos retráctiles: nuestras soluciones de exterior le protegen del clima mientras crean un marco espectacular para sus momentos de descanso.',
     arguments: [
-      { icon: '⛺', title: 'Toiles Respirantes & Imperméables 100%', desc: 'Étanchéité renforcée et coutures scellées conçues pour affronter les saisons.' },
-      { icon: '☀️', title: 'Isolation Thermique & Protection UV50+', desc: 'Ombrage optimal et fraîcheur préservée même sous forte exposition solaire.' },
-      { icon: '🛠️', title: 'Structures Renforcées & Stabilité Totale', desc: 'Armatures en acier traité contre la corrosion et ancrages sécurisés.' },
+      { icon: '⛺', title: 'Tejidos Transpirables & 100% Impermeables', desc: 'Estanqueidad reforzada y costuras selladas preparadas para todas las estaciones.' },
+      { icon: '☀️', title: 'Aislamiento Térmico & Protección UV50+', desc: 'Sombra óptima y frescor preservado incluso bajo intensa exposición solar.' },
+      { icon: '🛠️', title: 'Estructuras Reforzadas & Estabilidad Total', desc: 'Armaduras de acero con tratamiento anticorrosión y anclajes seguros.' },
     ],
   },
   'Haute Cosmétique & Visage': {
-    eyebrow: 'Biotechnologie Botanique & Haute Régénération',
-    title: 'Haute Cosmétique & Soins Rajeunissants',
-    subtitle: 'La puissance des actifs purs les plus rares pour illuminer et raffermir la peau.',
-    badge: 'Efficacité Clinique & Actifs Précieux',
-    description: 'Caviar marin, cellules souches végétales, or et peptides biomimétiques : nos formulations concentrées agissent en profondeur pour stimuler le renouvellement cellulaire et lifter visiblement les contours du visage.',
+    eyebrow: 'Biotecnología Botánica & Alta Regeneración',
+    title: 'Alta Cosmética & Cuidados Rejuvenecedores',
+    subtitle: 'El poder de los activos puros más exclusivos para iluminar y reafirmar la piel.',
+    badge: 'Eficacia Clínica & Activos Preciosos',
+    description: 'Caviar marino, células madre vegetales, oro y péptidos biomiméticos: nuestras fórmulas concentradas actúan en profundidad para estimular la renovación celular y redefinir los contornos del rostro.',
     arguments: [
-      { icon: '🔬', title: 'Résultats Visibles Dès 14 Jours', desc: 'Action ciblée sur la fermeté, la réduction des rides et le grain de peau.' },
-      { icon: '💧', title: 'Pénétration Immédiate Sans Effet Gras', desc: 'Textures soyeuses hautement sensorielles qui gorgent la peau d\'hydratation.' },
-      { icon: '💎', title: 'Formulations de Haut Prestige', desc: 'Des créations plébiscitées par les adeptes de soins les plus exigeants.' },
+      { icon: '🔬', title: 'Resultados Visibles en 14 Días', desc: 'Acción enfocada en la firmeza, la atenuación de arrugas y la luminosidad de la piel.' },
+      { icon: '💧', title: 'Absorción Inmediata Sin Efecto Graso', desc: 'Texturas sedosas y sensoriales que colman la piel de hidratación duradera.' },
+      { icon: '💎', title: 'Formulaciones de Alto Prestigio', desc: 'Creaciones aclamadas por los adeptos a los tratamientos más exigentes.' },
     ],
   },
   'Parfums d\'Exception': {
-    eyebrow: 'Haute Parfumerie & Extraits Rares',
-    title: 'Sillages Inoubliables & Nectars Précieux',
-    subtitle: 'Affirmez votre présence avec des extraits et eaux de parfum d\'art.',
-    badge: 'Concentration Pure & Sillage 24h',
-    description: 'Élaborés à partir des matières premières les plus nobles de Grasse et d\'Orient — bois de oud, vanille noire, rose de mai et ambre précieux — nos parfums enveloppent la peau d\'une aura magnétique et sophistiquée.',
+    eyebrow: 'Alta Perfumería & Extractos Exclusivos',
+    title: 'Estelas Inolvidables & Néctares Preciosos',
+    subtitle: 'Afirme su presencia con extractos y aguas de perfume de autor.',
+    badge: 'Concentración Pura & Fijación 24h',
+    description: 'Elaborados a partir de las materias primas más selectas de Grasse y Oriente — madera de oud, vainilla negra, rosa de mayo y ámbar precioso — nuestros perfumes envuelven la piel en un aura sofisticada.',
     arguments: [
-      { icon: '🌸', title: 'Concentrations Hors Normes & Richesse', desc: 'Haute teneur en essences pures pour une diffusion subtile et constante.' },
-      { icon: '⏳', title: 'Tenue Exceptionnelle Tout au Long du Jour', desc: 'Des notes de fond tenaces qui restent délicatement empreintes sur la peau.' },
-      { icon: '👑', title: 'Flacons Sculptures & Écrins d\'Art', desc: 'Des objets précieux pensés pour sublimer votre espace et votre coiffeuse.' },
+      { icon: '🌸', title: 'Concentraciones Extraordinarias', desc: 'Alta proporción de esencias puras para una difusión sutil y constante.' },
+      { icon: '⏳', title: 'Fijación Excepcional Todo el Día', desc: 'Notas de fondo tenaces que permanecen delicadamente en la piel.' },
+      { icon: '👑', title: 'Frascos Escultura & Estuches de Arte', desc: 'Piezas exclusivas pensadas para embellecer su tocador y su espacio.' },
     ],
   },
   'Soins & Rituels du Corps': {
-    eyebrow: 'Bien-Être Holistique & Vitalité',
-    title: 'Rituels Corporels & Spa Technologique',
-    subtitle: 'Prenez soin de votre corps comme du premier sanctuaire qui vous abrite.',
-    badge: 'Technologies Électro-Beauté & Botanique',
-    description: 'Entre photothérapie LED photo-stimulante, boosters de collagène et huiles somptueuses d\'immortelle sauvage, offrez à votre corps l\'attention complète qu\'il mérite pour dénouer les tensions et régénérer les tissus.',
+    eyebrow: 'Bienestar Holístico & Vitalidad',
+    title: 'Rituales Corporales & Spa Tecnológico',
+    subtitle: 'Cuide su cuerpo como el primer santuario que habita.',
+    badge: 'Tecnología Electro-Belleza & Botánica',
+    description: 'Entre fototerapia LED, potenciadores de colágeno y aceites suntuosos, brinde a su cuerpo el cuidado integral que merece para disipar tensiones y revitalizar los tejidos.',
     arguments: [
-      { icon: '💡', title: 'Technologies Électro-Beauté de Pointe', desc: 'Micro-courants et luminothérapie pour tonifier et raffermir la peau.' },
-      { icon: '🌿', title: 'Huiles Végétales Nobles & Nourrissantes', desc: 'Nutrition profonde, toucher soyeux et parfum délicatement apaisant.' },
-      { icon: '🧘', title: 'Récupération & Détente Profonde', desc: 'Un véritable rituel quotidien pour retrouver énergie et sérénité.' },
+      { icon: '💡', title: 'Tecnologías de Vanguardia', desc: 'Microcorrientes y luminoterapia para tonificar y reafirmar la piel.' },
+      { icon: '🌿', title: 'Aceites Botánicos Nobles & Nutritivos', desc: 'Nutrición profunda, tacto aterciopelado y aroma relajante.' },
+      { icon: '🧘', title: 'Recuperación & Bienestar Profundo', desc: 'Un verdadero ritual diario para recuperar energía y serenidad.' },
     ],
   },
   'Maison & Atmosphère': {
-    eyebrow: 'Art de Vivre & Sanctuaire Intérieur',
-    title: 'Ambiance, Décoration & Douceur du Foyer',
-    subtitle: 'Créer une atmosphère enveloppante, chaleureuse et raffinée chez soi.',
-    badge: 'Atmosphère Sereine & Matières Naturelles',
-    description: 'Parfums d\'ambiance, bougies signatures et objets choisis pour instaurer une paix intérieure et transformer chaque pièce de votre maison en havre de sérénité.',
+    eyebrow: 'Arte de Vivir & Santuario Interior',
+    title: 'Ambiente, Decoración & Calidez del Hogar',
+    subtitle: 'Cree una atmósfera envolvente, acogedora y refinada en su hogar.',
+    badge: 'Atmósfera Serena & Materiales Naturales',
+    description: 'Fragancias del hogar, velas aromáticas y objetos seleccionados para aportar paz interior y convertir cada rincón de su casa en un oasis de tranquilidad.',
     arguments: [
-      { icon: '🕯️', title: 'Diffusion Harmonieuse & Équilibrée', desc: 'Senteurs subtiles créées pour éveiller les sens sans saturer l\'espace.' },
-      { icon: '🏡', title: 'Harmonie Visuelle & Sensorielle', desc: 'Des pièces décoratives qui apportent chaleur, lumière et équilibre.' },
-      { icon: '🍃', title: 'Bien-Être au Quotidien', desc: 'Un sanctuaire paisible pour se ressourcer pleinement après chaque journée.' },
+      { icon: '🕯️', title: 'Difusión Armoniosa & Equilibrada', desc: 'Aromas sutiles diseñados para despertar los sentidos sin saturar el espacio.' },
+      { icon: '🏡', title: 'Armonía Visual & Sensorial', desc: 'Piezas decorativas que aportan calidez, luz y serenidad.' },
+      { icon: '🍃', title: 'Bienestar Diario', desc: 'Un santuario pacífico donde renovar energías al final del día.' },
     ],
   },
   'Juego de interior': {
-    eyebrow: 'Loisirs & Convivialité d\'Exception · Art du Jeu',
-    title: 'Billards Convertibles & Tables de Réception',
-    subtitle: 'La double vie d\'un meuble prestigieux : table à manger d\'architecte et billard d\'élite.',
-    badge: 'Design 2-en-1 & Finitions Haute Précision',
-    description: 'Transformez en un instant votre espace de réception : nos tables de billard convertibles allient l\'élégance contemporaine d\'une table de repas conviviale aux sensations et à la précision d\'un véritable billard de compétition.',
+    eyebrow: 'Ocio & Convivencia de Excepción · Arte del Juego',
+    title: 'Billares Convertibles & Mesas de Salón',
+    subtitle: 'La doble vida de un mueble de prestigio: mesa de comedor de autor y billar de élite.',
+    badge: 'Diseño 2 en 1 & Acabados de Alta Precisión',
+    description: 'Transforme en un instante su salón: nuestras mesas de billar convertibles aúnan la elegancia contemporánea de una mesa de comedor con las sensaciones y la precisión de un billar de competición.',
     arguments: [
-      { icon: '🎱', title: 'Transformation Instantanée 2-en-1', desc: 'Plateaux amovibles légers pour passer du dîner gastronomique à la partie de jeu en quelques secondes.' },
-      { icon: '🪵', title: 'Structure Robuste & Matières Nobles', desc: 'Châssis haute stabilité, bois sélectionné et drap haute précision pour un roulement parfait.' },
-      { icon: '🍷', title: 'Convivialité & Réceptions d\'Élite', desc: 'Accueillez confortablement vos convives autour d\'une table au design spectaculaire.' },
+      { icon: '🎱', title: 'Transformación Instantánea 2 en 1', desc: 'Tableros ligeros desmontables para pasar de la cena al juego en segundos.' },
+      { icon: '🪵', title: 'Estructura Robusta & Maderas Nobles', desc: 'Chasis de máxima estabilidad y paño de precisión para un rodaje perfecto.' },
+      { icon: '🍷', title: 'Reuniones de Élite', desc: 'Reciba a sus invitados en torno a una mesa de diseño espectacular.' },
     ],
   },
   'Mueble de baño': {
-    eyebrow: 'Sanctuaire d\'Eau & Bien-Être · Espace Bain',
-    title: 'Mobilier de Salle de Bain & Colonnes Design',
-    subtitle: 'L\'alliance du design contemporain et du rangement fonctionnel pour sublimer votre salle d\'eau.',
-    badge: 'Résistance à l\'Humidité & Finitions Soignées',
-    description: 'Meubles sous vasque suspendus, armoires murales et colonnes de rangement haut de gamme en finitions chêne doré, cachemire et laque soignée, conçus pour allier esthétique épurée et durabilité au quotidien.',
+    eyebrow: 'Santuario de Agua & Bienestar · Espacio Baño',
+    title: 'Mobiliario de Baño & Columnas de Diseño',
+    subtitle: 'La combinación de diseño contemporáneo y almacenaje funcional para su baño.',
+    badge: 'Resistencia a la Humedad & Acabados Cuidados',
+    description: 'Muebles bajo lavabo suspendidos, armarios y columnas de almacenaje de alta gama en acabados roble dorado, cachemira y lacados, diseñados para aunar estética y durabilidad.',
     arguments: [
-      { icon: '🚿', title: 'Matériaux Hydrofuges Haute Durabilité', desc: 'Surfaces et revêtements traités contre l\'humidité, les vapeurs et les éclaboussures.' },
-      { icon: '🪞', title: 'Ergonomie & Rangement Optimisé', desc: 'Tiroirs à fermeture amortie Soft-Close et compartiments spacieux pour un quotidien serein.' },
-      { icon: '✨', title: 'Design Architectural Contemporain', desc: 'Lignes épurées et finitions texturées qui transforment votre salle de bain en véritable suite d\'hôtel.' },
+      { icon: '🚿', title: 'Materiales Hidrófugos de Gran Durabilidad', desc: 'Superficies tratadas contra la humedad, vapores y salpicaduras.' },
+      { icon: '🪞', title: 'Ergonomía & Almacenaje Óptimo', desc: 'Cajones con cierre amortiguado Soft-Close y compartimentos espaciosos.' },
+      { icon: '✨', title: 'Diseño Arquitectónico Moderno', desc: 'Líneas depuradas que convierten su cuarto de baño en una suite de hotel.' },
+    ],
+  },
+  'HORNOS': {
+    eyebrow: 'Cocina de Alta Gama & Precisión Culinaria',
+    title: 'Hornos Multifunción & Pirolíticos',
+    subtitle: 'El rendimiento culinario profesional en el corazón de su cocina.',
+    badge: 'Limpieza Pirolítica & Eficiencia A+',
+    description: 'Hornos de última generación con cocción asistida, calor envolvente y autolimpieza pirolítica para sublimar cada una de sus recetas con la máxima sencillez.',
+    arguments: [
+      { icon: '🔥', title: 'Autolimpieza Pirolítica', desc: 'Eliminación total de grasas y residuos a más de 500 °C con solo pulsar un botón.' },
+      { icon: '⏱️', title: 'Cocción Asistida & Homogénea', desc: 'Distribución térmica perfecta en varios niveles para resultados gourmet.' },
+      { icon: '⚡', title: 'Eficiencia Energética Superior', desc: 'Aislamiento cuádruple cristal para un consumo reducido y seguridad total.' },
+    ],
+  },
+  'HORNO DE PIZZA': {
+    eyebrow: 'Gastronomía al Aire Libre & Tradición Italiana',
+    title: 'Hornos de Pizza Profesionales & Portátiles',
+    subtitle: 'Auténticas pizzas napolitanas cocinadas a la piedra en solo 60 segundos.',
+    badge: 'Cocción a 500 °C en 60 Segundos',
+    description: 'Diseñados para exteriores y jardines, nuestros hornos alcanzan los 500 °C para cocinar masas crujientes e ingredientes tiernos con el auténtico sabor tradicional.',
+    arguments: [
+      { icon: '🍕', title: 'Cocción Ultrarrápida en 60s', desc: 'Calor extremo concentrado sobre piedra refractaria de cordierita.' },
+      { icon: '🔥', title: 'Combustión Óptima a Gas o Pellets', desc: 'Encendido rápido y control milimétrico de la temperatura de cocción.' },
+      { icon: '✨', title: 'Diseño Portátil & Robusto', desc: 'Acero inoxidable premium resistente a la intemperie y fácil de transportar.' },
+    ],
+  },
+  'Colchones': {
+    eyebrow: 'Santuario del Descanso & Salud Vertebral',
+    title: 'Colchones de Alta Gama & Descanso Reparador',
+    subtitle: 'La combinación perfecta de soporte ortopédico y acogida envolvente.',
+    badge: 'Espuma Viscoelástica & Muelle Ensacado',
+    description: 'Materiales transpirables y tecnologías ergonómicas pensadas para aliviar los puntos de presión, alinear la columna y garantizar noches de sueño profundo y reparador.',
+    arguments: [
+      { icon: '🌙', title: 'Alivio de Puntos de Presión', desc: 'Adaptación anatómica que reduce tensiones musculares y articulares.' },
+      { icon: '💨', title: 'Transpirabilidad & Termorregulación', desc: 'Fibras naturales y tejidos transpirables para un descanso fresco todo el año.' },
+      { icon: '🛡️', title: 'Independencia de Lechos', desc: 'Absorción de movimientos para dormir plácidamente en pareja.' },
+    ],
+  },
+  'Chimenea': {
+    eyebrow: 'Calor Confortable & Elegancia del Fuego',
+    title: 'Chimeneas de Interior & Fuego Acogedor',
+    subtitle: 'El encanto del fuego combinado con la vanguardia tecnológica y seguridad.',
+    badge: 'Alto Rendimiento & Confort Térmico',
+    description: 'Cree una atmósfera cálida e inolvidable con chimeneas que aúnan potencia calorífica, diseño atemporal y un confort insuperable.',
+    arguments: [
+      { icon: '🔥', title: 'Calor Radiante & Envolvente', desc: 'Difusión térmica homogénea que calienta rápidamente amplias estancias.' },
+      { icon: '🌿', title: 'Rendimiento Eficiente & Limpio', desc: 'Combustión optimizada para un menor consumo y respeto medioambiental.' },
+      { icon: '✨', title: 'Diseño Focal Espectacular', desc: 'El auténtico corazón visual y acogedor del salón de su hogar.' },
+    ],
+  },
+  'ESTUFA DE LEÑA': {
+    eyebrow: 'Calefacción Sostenible & Auténtica',
+    title: 'Estufas de Leña de Alto Rendimiento',
+    subtitle: 'Calor ecológico, duradero y reconfortante con la belleza del fuego vivo.',
+    badge: 'Hierro Fundido & Doble Combustión',
+    description: 'Fabricadas en fundición de alta resistencia, nuestras estufas garantizan una doble combustión limpia, alto poder calorífico y un ahorro notable de energía.',
+    arguments: [
+      { icon: '🪵', title: 'Doble Combustión Limpia', desc: 'Máximo aprovechamiento de la leña con mínimas emisiones y cenizas.' },
+      { icon: '🔥', title: 'Calor Prolongado & Inercia', desc: 'La fundición retiene y proyecta calor muchas horas tras apagar el fuego.' },
+      { icon: '🏡', title: 'Estilo Rústico & Contemporáneo', desc: 'Aporta carácter y elegancia inconfundible a cualquier estancia.' },
     ],
   },
 }
@@ -166,15 +226,15 @@ function CategorySliderSection({
   }
 
   const defaultDetails: CategoryDetails = {
-    eyebrow: `Collection Signature · ${category}`,
+    eyebrow: `Colección Signature · ${category}`,
     title: category,
-    subtitle: "Une sélection d'exception conçue pour sublimer votre quotidien.",
-    badge: 'Art de Vivre & Qualité Supérieure',
-    description: "Découvrez des créations sélectionnées avec une exigence absolue pour leur durabilité, leur beauté et leur confort d'usage.",
+    subtitle: "Una selección de excepción diseñada para sublimar su día a día.",
+    badge: 'Arte de Vivir & Calidad Superior',
+    description: "Descubra creaciones seleccionadas con una exigencia absoluta en durabilidad, belleza y confort de uso.",
     arguments: [
-      { icon: '✦', title: "Matières & Finitions d'Artisan", desc: 'Une sélection sans compromis pour une élégance durable.' },
-      { icon: '🌿', title: 'Confort & Bien-Être au Quotidien', desc: 'Pensé pour enrichir chaque instant passé chez vous.' },
-      { icon: '📦', title: 'Expédition Soignée & Sécurisée', desc: 'Livraison suivie avec remise contre signature.' },
+      { icon: '✦', title: "Materiales & Acabados de Artesano", desc: 'Una selección sin compromisos para una elegancia duradera.' },
+      { icon: '🌿', title: 'Confort & Bienestar Diario', desc: 'Pensado para enriquecer cada momento en su hogar.' },
+      { icon: '📦', title: 'Envío Cuidadoso & Seguro', desc: 'Entrega asegurada con seguimiento personalizado.' },
     ],
   }
 
@@ -201,15 +261,15 @@ function CategorySliderSection({
               href={`/boutique?cat=${encodeURIComponent(category)}`}
               className="category-explore-btn"
             >
-              Voir tout l&apos;univers ({products.length} articles) <span>→</span>
+              Ver todo el universo ({products.length} artículos) <span>→</span>
             </Link>
-            <div className="category-slider-nav-arrows" aria-label="Défilement des produits">
+            <div className="category-slider-nav-arrows" aria-label="Desplazamiento de productos">
               <button
                 type="button"
                 className="category-nav-arrow"
                 onClick={() => scroll('left')}
-                title="Produits précédents"
-                aria-label="Produits précédents"
+                title="Productos anteriores"
+                aria-label="Productos anteriores"
               >
                 ←
               </button>
@@ -217,8 +277,8 @@ function CategorySliderSection({
                 type="button"
                 className="category-nav-arrow"
                 onClick={() => scroll('right')}
-                title="Produits suivants"
-                aria-label="Produits suivants"
+                title="Productos siguientes"
+                aria-label="Productos siguientes"
               >
                 →
               </button>
@@ -278,14 +338,14 @@ function CategorySliderSection({
                       href={`/produit/${product.id}`}
                       className="category-card-buy-btn"
                     >
-                      Acheter ⚡
+                      Comprar ⚡
                     </Link>
                     <button
                       type="button"
                       className="category-card-cart-btn"
                       onClick={() => onAddToCart(product)}
                     >
-                      Panier +
+                      Cesta +
                     </button>
                   </div>
                 </div>
@@ -310,17 +370,17 @@ function CategorySliderSection({
               >
                 <div style={{ fontSize: '32px', marginBottom: '12px' }}>✦</div>
                 <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#1a1a1a', marginBottom: '8px' }}>
-                  +{products.length - 8} autres articles
+                  +{products.length - 8} artículos más
                 </h4>
                 <p style={{ fontSize: '13px', color: '#666', marginBottom: '20px', lineHeight: '1.4' }}>
-                  Découvrez l&apos;intégralité de la collection {category}
+                  Descubra la colección completa de {category}
                 </p>
                 <Link
                   href={`/boutique?cat=${encodeURIComponent(category)}`}
                   className="button dark"
                   style={{ fontSize: '13px', padding: '10px 20px', borderRadius: '9999px' }}
                 >
-                  Tout explorer →
+                  Explorar todo →
                 </Link>
               </div>
             )}
@@ -439,7 +499,7 @@ export default function HomePage() {
 
   const handleAddToCart = (product: Product) => {
     setCartCount((c) => c + 1)
-    showToast(`« ${product.name} » ajouté au panier !`)
+    showToast(`« ${product.name} » añadido a la cesta !`)
   }
 
   const handleBuyNow = (product: Product) => {
@@ -448,7 +508,7 @@ export default function HomePage() {
 
   const handleCheckoutSuccess = (product: Product) => {
     setCartCount((c) => c + 1)
-    showToast(`Commande validée pour ${product.name} ! 🎉`)
+    showToast(`¡Pedido confirmado para ${product.name}! 🎉`)
   }
 
   const featuredProducts = useMemo(() => {
@@ -462,7 +522,7 @@ export default function HomePage() {
         if (!prod) return null
         return {
           product: prod,
-          customLabel: item.customLabel || prod.tag || prod.type || 'Nouveauté',
+          customLabel: item.customLabel || prod.tag || prod.type || 'Novedad',
         }
       })
       .filter(Boolean) as { product: Product; customLabel: string }[]
@@ -471,7 +531,7 @@ export default function HomePage() {
     if (items.length === 0 && productsList.length > 0) {
       return productsList.slice(0, 2).map((p) => ({
         product: p,
-        customLabel: p.tag || 'Nouveauté',
+        customLabel: p.tag || 'Novedad',
       }))
     }
     return items
@@ -500,13 +560,25 @@ export default function HomePage() {
 
   const productsByCategory = useMemo(() => {
     const DISPLAY_CATEGORIES = [
-      'Belleza & cabello',
-      'Mobilier & Décoration',
+      'HORNOS',
+      'HORNO DE PIZZA',
+      'Chimenea',
+      'ESTUFA DE LEÑA',
+      'ESTUFA DE PELLETS',
+      'Colchones',
       'Mueble de baño',
+      'Mueble TV',
+      'Cuadros y Láminas',
+      'FRIGORIFIGO',
+      'ASPIRADORA DYSON',
+      'LAVADORA SECADORA',
       'Juego de interior',
+      'Belleza & cabello',
+      'Novedades televisores',
+      'Jardin ',
+      'Mobilier & Décoration',
       'Haute Cosmétique & Visage',
       "Parfums d'Exception",
-      'Plein Air & Évasion',
       'Soins & Rituels du Corps',
       'Maison & Atmosphère',
     ]
@@ -612,27 +684,27 @@ export default function HomePage() {
       {/* Shared Navbar */}
       <Navbar
         cartCount={cartCount}
-        onOpenCart={() => showToast(`Votre panier contient ${cartCount} article(s)`)}
+        onOpenCart={() => showToast(`Tu cesta contiene ${cartCount} artículo(s)`)}
       />
 
       {/* Hero Section */}
       <section id="top" className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Art de Vivre · Sanctuaire du Foyer &amp; Soin de Soi</p>
-          <h1>Le Luxe d&apos;habiter<br /><em>son quotidien.</em></h1>
+          <p className="eyebrow">Arte de Vivir · Santuario del Hogar &amp; Cuidado Personal</p>
+          <h1>El Lujo de Habitar<br /><em>su espacio.</em></h1>
           <p className="hero-text">
-            {settings.heroSubtitle || "Un espace raffiné où vivre en harmonie. Des pièces de mobilier et des rituels de soin d'exception conçus pour sublimer votre intérieur et prendre soin de votre corps chaque jour."}
+            {settings.heroSubtitle || "Un espacio refinado donde vivir en armonía. Piezas de mobiliario y artículos seleccionados para sublimar su interior y cuidar de su confort cada día."}
           </p>
           <div className="hero-cta-group">
             <Link href="/boutique" className="button dark">
-              Explorer les collections <span>→</span>
+              Explorar las colecciones <span>→</span>
             </Link>
             {heroFirstProduct && (
               <button
                 className="button outline"
                 onClick={() => handleBuyNow(heroFirstProduct)}
               >
-                Commander {heroFirstProduct.name.split(' ')[0]} ({heroFirstProduct.price}) ⚡
+                Comprar {heroFirstProduct.name.split(' ')[0]} ({heroFirstProduct.price}) ⚡
               </button>
             )}
           </div>
@@ -669,8 +741,8 @@ export default function HomePage() {
                 type="button"
                 className="hero-slide-arrow prev"
                 onClick={handlePrevHeroCategory}
-                aria-label="Catégorie précédente"
-                title="Catégorie précédente"
+                aria-label="Categoría anterior"
+                title="Categoría anterior"
               >
                 ‹
               </button>
@@ -678,8 +750,8 @@ export default function HomePage() {
                 type="button"
                 className="hero-slide-arrow next"
                 onClick={handleNextHeroCategory}
-                aria-label="Catégorie suivante"
-                title="Catégorie suivante"
+                aria-label="Categoría siguiente"
+                title="Categoría siguiente"
               >
                 ›
               </button>
@@ -693,8 +765,8 @@ export default function HomePage() {
                   type="button"
                   className={`hero-toggle-play-btn ${isHeroAutoPlaying ? 'playing' : ''}`}
                   onClick={() => setIsHeroAutoPlaying((prev) => !prev)}
-                  aria-label={isHeroAutoPlaying ? 'Arrêter le défilement automatique' : 'Activer le défilement automatique'}
-                  title={isHeroAutoPlaying ? 'Arrêter le défilement' : 'Lancer le défilement automatique'}
+                  aria-label={isHeroAutoPlaying ? 'Detener el desplazamiento automático' : 'Activar el desplazamiento automático'}
+                  title={isHeroAutoPlaying ? 'Detener el desplazamiento' : 'Iniciar el desplazamiento automático'}
                 >
                   {isHeroAutoPlaying ? '⏸' : '▶'}
                 </button>
@@ -707,7 +779,7 @@ export default function HomePage() {
             <Link
               href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
               className="hero-caption"
-              title={`Explorer la catégorie ${currentHeroSlide.category}`}
+              title={`Explorar la categoría ${currentHeroSlide.category}`}
               style={{ textDecoration: 'none', cursor: 'pointer' }}
             >
               ✦ {currentHeroSlide.category} {currentHeroSlide.featuredProduct ? `· ${currentHeroSlide.featuredProduct.name} (${currentHeroSlide.featuredProduct.price})` : ''} <span>→</span>
@@ -723,7 +795,7 @@ export default function HomePage() {
                   type="button"
                   onClick={() => setHeroSlideIndex(idx)}
                   className={`hero-slider-dot ${idx === (heroSlideIndex % heroCategorySlides.length) ? 'active' : ''}`}
-                  aria-label={`Aller à la catégorie ${slide.category}`}
+                  aria-label={`Ir a la categoría ${slide.category}`}
                 />
               ))}
             </div>
@@ -736,43 +808,43 @@ export default function HomePage() {
         <div className="values-grid">
           <div className="value-card">
             <span className="value-icon">🏡</span>
-            <h3>Le Sanctuaire du Foyer</h3>
-            <p>Du mobilier de créateur aux pièces d&apos;évasion extérieure, façonner un cadre de vie d&apos;un confort et d&apos;une beauté remarquables.</p>
+            <h3>El Santuario del Hogar</h3>
+            <p>Desde muebles de autor hasta equipamiento exterior y descanso de alta gama, diseñamos un espacio vital de confort y belleza extraordinarios.</p>
           </div>
           <div className="value-card">
             <span className="value-icon">🌿</span>
-            <h3>L&apos;Entretien du Corps &amp; de la Peau</h3>
-            <p>Des soins d&apos;exception et rituels sensoriels quotidiens pour revitaliser la peau, apaiser l&apos;esprit et se sentir bien chez soi.</p>
+            <h3>Cuidado y Bienestar Diario</h3>
+            <p>Artículos seleccionados y piezas funcionales para aportar serenidad, calidez y un confort inigualable en el hogar.</p>
           </div>
           <div className="value-card">
             <span className="value-icon">✦</span>
-            <h3>Excellence &amp; Matières Nobles</h3>
-            <p>Design intemporel, actifs purs et confection soignée pour des créations durables pensées pour vous accompagner.</p>
+            <h3>Excelencia y Materiales Nobles</h3>
+            <p>Diseño atemporal, acabados minuciosos y confección cuidada para creaciones duraderas pensadas para acompañarle.</p>
           </div>
         </div>
       </section>
 
       {/* Manifesto */}
       <section className="manifesto">
-        <p className="eyebrow">{settings.siteName || 'MERCATUM'} · L&apos;Équilibre Parfait</p>
-        <h2>L&apos;harmonie entre<br /><em>votre espace et vous-même.</em></h2>
+        <p className="eyebrow">{settings.siteName || 'MERCATUM'} · El Equilibrio Perfecto</p>
+        <h2>La armonía entre<br /><em>su espacio y usted.</em></h2>
         <p>
-          Votre maison est votre refuge, et votre corps est votre premier temple. Chez MERCATUM, nous réconcilions le plaisir d&apos;un aménagement raffiné et l&apos;exigence de rituels de soin quotidiens pour célébrer l&apos;art de vivre dans toute sa plénitude.
+          Su hogar es su refugio y el corazón de su descanso. En MERCATUM aunamos el diseño más refinado con la máxima exigencia de calidad para celebrar el arte de vivir en toda su plenitud.
         </p>
-        <Link className="text-link" href="/boutique">Explorer tous nos univers <span>↗</span></Link>
+        <Link className="text-link" href="/boutique">Explorar todas nuestras colecciones <span>↗</span></Link>
       </section>
 
       {/* Grand Showcase par Catégorie avec Défilement Horizontal & Arguments */}
       <section id="boutique-preview" style={{ paddingTop: '30px' }}>
         <div style={{ padding: '40px 4vw 20px', maxWidth: '1380px', margin: '0 auto', textAlign: 'center' }}>
           <p className="eyebrow" style={{ marginBottom: '12px' }}>
-            L&apos;Art de Vivre · Nos Univers d&apos;Exception
+            El Arte de Vivir · Nuestras Colecciones Exclusivas
           </p>
           <h2 style={{ fontSize: 'clamp(32px, 4.5vw, 54px)', margin: '0 0 16px', lineHeight: 1.05 }}>
-            Tous nos Univers par Catégorie
+            Todos nuestros Universos por Categoría
           </h2>
           <p style={{ maxWidth: '680px', margin: '0 auto 28px', color: '#5f625c', fontSize: '15px', lineHeight: '1.65' }}>
-            Mobilier de créateur, haute cosmétique, parfums d&apos;exception et aménagements de plein air. Faites défiler chaque univers ci-dessous pour découvrir nos pièces maîtresses et leurs arguments d&apos;excellence.
+            Hornos de alta gama, chimeneas, estufas, descanso ortopédico y mobiliario de autor. Deslice cada colección para descubrir nuestras piezas maestras y sus especificaciones técnicas de excelencia.
           </p>
 
           {/* Navigation rapide par ancres */}
@@ -794,7 +866,7 @@ export default function HomePage() {
               className="homepage-cat-btn"
               style={{ background: 'var(--foreground)', color: 'var(--background)', borderColor: 'var(--foreground)' }}
             >
-              Toute la boutique ({productsList.length}) ↗
+              Toda la tienda ({productsList.length}) ↗
             </Link>
           </div>
         </div>
@@ -812,7 +884,7 @@ export default function HomePage() {
 
         <div className="view-all-wrapper" style={{ padding: '60px 20px 20px', textAlign: 'center' }}>
           <Link href="/boutique" className="button dark" style={{ padding: '16px 36px' }}>
-            Accéder à l&apos;ensemble de la boutique ({productsList.length} articles) <span>→</span>
+            Acceder a toda la tienda ({productsList.length} artículos) <span>→</span>
           </Link>
         </div>
       </section>
@@ -820,16 +892,16 @@ export default function HomePage() {
       {/* Atelier / Story Section */}
       <section id="histoire" className="story">
         <div className="story-image">
-          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1100&q=85" alt="Intérieur raffiné et art de vivre" />
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1100&q=85" alt="Interior refinado y arte de vivir" />
         </div>
         <div className="story-copy">
-          <p className="eyebrow">Philosophie &amp; Art de Vivre</p>
-          <h2>Deux univers indissociables,<br /><em>une même quête d&apos;harmonie.</em></h2>
+          <p className="eyebrow">Filosofía &amp; Arte de Vivir</p>
+          <h2>Dos universos inseparables,<br /><em>una misma búsqueda de armonía.</em></h2>
           <p>
-            Prendre soin de son cadre de vie et prendre soin de soi relèvent d&apos;une même attention. Du mobilier de caractère pensé pour durer aux rituels corporels créés pour ressourcer la peau au quotidien, chaque pièce est choisie avec passion pour sublimer chaque instant de votre quotidien.
+            Cuidar de su entorno y de su descanso diario forman parte de una misma dedicación. Desde mobiliario de carácter concebido para perdurar hasta equipamiento técnico pensado para hacer la vida más confortable, cada pieza es seleccionada con pasión para enriquecer su día a día.
           </p>
           <Link className="button outline" href="/boutique">
-            Découvrir l&apos;ensemble de nos collections <span>↗</span>
+            Descubrir todas nuestras colecciones <span>↗</span>
           </Link>
         </div>
       </section>
@@ -838,25 +910,25 @@ export default function HomePage() {
       <section className="testimonials-section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Avis vérifiés de nos clients</p>
-            <h2>L&apos;expérience MERCATUM</h2>
+            <p className="eyebrow">Opiniones verificadas de nuestros clientes</p>
+            <h2>La experiencia MERCATUM</h2>
           </div>
         </div>
         <div className="testimonials-grid">
           <div className="testimonial-card">
             <div className="stars">★★★★★</div>
-            <p>« Le canapé de jardin et les modules d&apos;extérieur ont complètement métamorphosé notre terrasse. Finitions remarquables et confort exceptionnel. »</p>
-            <strong>— Alexandre &amp; Éléonore V., Paris</strong>
+            <p>« El horno pirolítico y el mobiliario han transformado por completo nuestra cocina. Acabados impecables y una atención al cliente de primer nivel. »</p>
+            <strong>— Alejandro &amp; Elena V., Madrid</strong>
           </div>
           <div className="testimonial-card">
             <div className="stars">★★★★★</div>
-            <p>« Les soins Skin Caviar et les rituels visage sont d&apos;une efficacité spectaculaire. Une texture divine qui revitalise immédiatement la peau. »</p>
-            <strong>— Catherine B., Genève</strong>
+            <p>« El conjunto de baño y la estufa superaron con creces nuestras expectativas. Materiales de primera calidad y entrega rápida con seguro. »</p>
+            <strong>— Carmen B., Barcelona</strong>
           </div>
           <div className="testimonial-card">
             <div className="stars">★★★★★</div>
-            <p>« Les parfums d&apos;exception et les pièces d&apos;art de vivre apportent une signature unique à notre intérieur. Un service de livraison parfait. »</p>
-            <strong>— Julien M., Monaco</strong>
+            <p>« Piezas elegantes y robustas que aportan un toque único a nuestro hogar. La tramitación del pedido y la entrega fueron perfectas. »</p>
+            <strong>— Javier M., Valencia</strong>
           </div>
         </div>
       </section>
@@ -865,10 +937,10 @@ export default function HomePage() {
       <section id="nouveautes" className="journal">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Dernières arrivées</p>
-            <h2>Nouveautés</h2>
+            <p className="eyebrow">Últimas llegadas</p>
+            <h2>Novedades</h2>
           </div>
-          <Link className="text-link" href="/boutique">Toutes les nouveautés <span>↗</span></Link>
+          <Link className="text-link" href="/boutique">Todas las novedades <span>↗</span></Link>
         </div>
         <div className="journal-grid">
           {noveltyItems.map(({ product, customLabel }) => (
@@ -898,7 +970,7 @@ export default function HomePage() {
                   className="buy-now-card-btn"
                   style={{ textAlign: 'center', flex: 1, background: 'var(--foreground)', color: 'var(--background)' }}
                 >
-                  Acheter maintenant ⚡
+                  Comprar ahora ⚡
                 </Link>
                 <button
                   type="button"
@@ -906,7 +978,7 @@ export default function HomePage() {
                   onClick={() => handleAddToCart(product)}
                   style={{ padding: '8px 14px' }}
                 >
-                  Panier +
+                  Cesta +
                 </button>
               </div>
             </article>
@@ -916,8 +988,8 @@ export default function HomePage() {
 
       {/* Contact Section (Dynamique via les paramètres Admin) */}
       <section className="newsletter" style={{ background: '#20251f', color: '#f4f0e9' }}>
-        <p className="eyebrow" style={{ color: '#b8c8a6' }}>Nous contacter</p>
-        <h2 style={{ color: '#f4f0e9' }}>{settings.siteName || 'MERCATUM'} Paris</h2>
+        <p className="eyebrow" style={{ color: '#b8c8a6' }}>Contacto</p>
+        <h2 style={{ color: '#f4f0e9' }}>{settings.siteName || 'MERCATUM'} Madrid</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', marginTop: '1.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem' }}>
             <span style={{ fontSize: '1.25rem' }}>📍</span>
@@ -943,17 +1015,17 @@ export default function HomePage() {
 
       {/* Newsletter */}
       <section className="newsletter">
-        <p className="eyebrow">Le Cercle Privilège {settings.siteName || 'MERCATUM'}</p>
-        <h2>Recevez nos inspirations d&apos;art de vivre<br /><em>et invitations exclusives.</em></h2>
+        <p className="eyebrow">El Círculo Privilegiado {settings.siteName || 'MERCATUM'}</p>
+        <h2>Reciba nuestras novedades de diseño<br /><em>e invitaciones exclusivas.</em></h2>
         <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true) }}>
           <input
             type="email"
             required
-            placeholder="Votre adresse email"
+            placeholder="Su dirección de correo electrónico"
             value={newsletter}
             onChange={(e) => setNewsletter(e.target.value)}
           />
-          <button type="submit">{submitted ? 'Bienvenue dans le Club' : "S'inscrire ↗"}</button>
+          <button type="submit">{submitted ? 'Bienvenido al Club' : "Suscribirse ↗"}</button>
         </form>
       </section>
 

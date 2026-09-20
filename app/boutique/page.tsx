@@ -14,7 +14,7 @@ import { searchAndFilterProducts } from '@/lib/searchUtils'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
-  const [selectedCategory, setSelectedCategory] = useState('Tous les produits')
+  const [selectedCategory, setSelectedCategory] = useState('Todos los productos')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured')
   const [visibleCount, setVisibleCount] = useState(24)
@@ -145,7 +145,7 @@ export default function BoutiquePage() {
 
   const handleAddToCart = (product: Product) => {
     setCartCount((c) => c + 1)
-    showToast(`« ${product.name} » ajouté au panier !`)
+    showToast(`« ${product.name} » añadido a la cesta !`)
   }
 
   const handleBuyNow = (product: Product) => {
@@ -154,7 +154,7 @@ export default function BoutiquePage() {
 
   const handleCheckoutSuccess = (product: Product) => {
     setCartCount((c) => c + 1)
-    showToast(`Commande validée pour ${product.name} ! 🎉`)
+    showToast(`¡Pedido confirmado para ${product.name}! 🎉`)
   }
 
   const normalizeCat = (cat: string) =>
@@ -201,10 +201,10 @@ export default function BoutiquePage() {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col">
-      {/* Toast notification */}
+    <main className="min-h-screen flex flex-col bg-background text-foreground">
+      {/* Toast Notification */}
       {toast && (
-        <div className="toast-notification">
+        <div className="toast-notification" role="status" aria-live="polite">
           <span>✓</span> {toast}
         </div>
       )}
@@ -212,18 +212,18 @@ export default function BoutiquePage() {
       {/* Shared Navbar */}
       <Navbar
         cartCount={cartCount}
-        onOpenCart={() => showToast(`Votre panier contient ${cartCount} article(s)`)}
+        onOpenCart={() => showToast(`Su cesta contiene ${cartCount} artículo(s)`)}
       />
 
       {/* Boutique Header Banner - Compact & Raffiné */}
       <section className="boutique-hero">
         <div className="boutique-hero-content">
           <div className="boutique-hero-header-line">
-            <span className="eyebrow">{settings.siteName || 'MERCATUM'} · L&apos;Art de Vivre</span>
+            <span className="eyebrow">{settings.siteName || 'MERCATUM'} · El Arte de Vivir</span>
           </div>
-          <h1>La Boutique</h1>
+          <h1>La Tienda</h1>
           <p className="boutique-subtitle">
-            Mobilier de créateur, électroménager d&apos;exception, poêles et rituels de soin pour votre intérieur.
+            Mobiliario de autor, electrodomésticos de excepción, estufas y rituales de bienestar para su hogar.
           </p>
         </div>
       </section>
@@ -237,8 +237,8 @@ export default function BoutiquePage() {
               type="button"
               className="category-tab-scroll-btn left"
               onClick={() => scrollTabs('left')}
-              title="Catégories précédentes"
-              aria-label="Catégories précédentes"
+              title="Categorías anteriores"
+              aria-label="Categorías anteriores"
             >
               ‹
             </button>
@@ -257,8 +257,8 @@ export default function BoutiquePage() {
               type="button"
               className="category-tab-scroll-btn right"
               onClick={() => scrollTabs('right')}
-              title="Catégories suivantes"
-              aria-label="Catégories suivantes"
+              title="Categorías siguientes"
+              aria-label="Categorías siguientes"
             >
               ›
             </button>
@@ -271,24 +271,24 @@ export default function BoutiquePage() {
                 <span className="search-icon">🔍</span>
                 <input
                   type="text"
-                  placeholder="Rechercher (poêle, frigo, canapé, crème...)"
+                  placeholder="Buscar (estufa, horno, sofá, crema, perfume...)"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  aria-label="Rechercher un produit"
+                  aria-label="Buscar un producto"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     className="clear-search"
                     onClick={() => setSearchQuery('')}
-                    title="Effacer la saisie"
+                    title="Borrar búsqueda"
                   >
                     ✕
                   </button>
                 )}
               </div>
               <button type="submit" className="search-submit-btn">
-                Rechercher
+                Buscar
               </button>
             </form>
 
@@ -296,7 +296,7 @@ export default function BoutiquePage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                aria-label="Filtrer par catégorie"
+                aria-label="Filtrar por categoría"
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>
@@ -307,15 +307,15 @@ export default function BoutiquePage() {
             </div>
 
             <div className="sort-box">
-              <label>Trier :</label>
+              <label>Ordenar por :</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
               >
-                <option value="featured">Recommandés</option>
-                <option value="rating">Meilleures notes (★)</option>
-                <option value="price-asc">Prix : croissant</option>
-                <option value="price-desc">Prix : décroissant</option>
+                <option value="featured">Recomendados</option>
+                <option value="rating">Mejor valorados (★)</option>
+                <option value="price-asc">Precio : menor a mayor</option>
+                <option value="price-desc">Precio : mayor a menor</option>
               </select>
             </div>
           </div>
@@ -327,36 +327,36 @@ export default function BoutiquePage() {
         <div className="boutique-grid-container">
           <div id="boutique-products-grid" className="boutique-results-count">
             <div className="results-count-text">
-              <span><strong>{filteredProducts.length}</strong> produit(s) trouvé(s)</span>
+              <span><strong>{filteredProducts.length}</strong> producto(s) encontrado(s)</span>
               {searchQuery.trim() && (
                 <span className="search-query-tag">
-                  pour « <strong>{searchQuery.trim()}</strong> »
+                  para « <strong>{searchQuery.trim()}</strong> »
                 </span>
               )}
             </div>
 
             <div className="active-filters-group">
               {isSearchedGlobally && (
-                <span className="global-search-pill" title="Recherche élargie à toute la boutique pour trouver votre article">
-                  🌐 Résultat étendu à toute la boutique
+                <span className="global-search-pill" title="Búsqueda ampliada a toda la tienda para encontrar su artículo">
+                  🌐 Resultado ampliado a toda la tienda
                 </span>
               )}
-              {selectedCategory !== 'Tous les produits' && !isSearchedGlobally && (
+              {selectedCategory !== 'Todos los productos' && selectedCategory !== 'Tous les produits' && !isSearchedGlobally && (
                 <span className="current-filter-badge">
-                  Catégorie : <strong>{selectedCategory}</strong>
-                  <button type="button" onClick={() => setSelectedCategory('Tous les produits')}>✕</button>
+                  Categoría : <strong>{selectedCategory}</strong>
+                  <button type="button" onClick={() => setSelectedCategory('Todos los productos')}>✕</button>
                 </span>
               )}
-              {(searchQuery.trim() || selectedCategory !== 'Tous les produits') && (
+              {(searchQuery.trim() || (selectedCategory !== 'Todos los productos' && selectedCategory !== 'Tous les produits')) && (
                 <button
                   type="button"
                   className="clear-search-btn"
                   onClick={() => {
                     setSearchQuery('')
-                    setSelectedCategory('Tous les produits')
+                    setSelectedCategory('Todos los productos')
                   }}
                 >
-                  Effacer filtres ✕
+                  Borrar filtros ✕
                 </button>
               )}
             </div>
@@ -365,20 +365,20 @@ export default function BoutiquePage() {
           {filteredProducts.length === 0 ? (
             <div className="empty-results">
               <p className="empty-results-title">
-                Aucun produit ne correspond à « <strong>{searchQuery}</strong> ».
+                Ningún producto coincide con « <strong>{searchQuery}</strong> ».
               </p>
               <p className="empty-results-hint">
-                💡 Essayez avec des termes plus généraux (ex : <em>poêle, frigo, canapé, table, crème, parfum, meuble</em>).
+                💡 Pruebe con términos más generales (ej : <em>horno, estufa, sofá, mesa, crema, perfume, mueble</em>).
               </p>
               <button
                 type="button"
                 className="button dark"
                 onClick={() => {
                   setSearchQuery('')
-                  setSelectedCategory('Tous les produits')
+                  setSelectedCategory('Todos los productos')
                 }}
               >
-                Voir toute la boutique ({productsList.length} articles)
+                Ver toda la tienda ({productsList.length} artículos)
               </button>
             </div>
           ) : (
@@ -422,14 +422,14 @@ export default function BoutiquePage() {
                       className="buy-now-card-btn"
                       style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
                     >
-                      Acheter maintenant ⚡
+                      Comprar Ahora ⚡
                     </Link>
                     <button
                       className="add-cart-outline-btn"
                       onClick={() => handleAddToCart(product)}
-                      aria-label="Ajouter au panier"
+                      aria-label="Añadir a la cesta"
                     >
-                      Ajouter au panier +
+                      Añadir a la cesta +
                     </button>
                   </div>
                 </article>
@@ -445,7 +445,7 @@ export default function BoutiquePage() {
                 onClick={() => setVisibleCount((prev) => prev + 24)}
                 style={{ padding: '15px 36px', fontSize: '15px', borderRadius: '9999px', cursor: 'pointer' }}
               >
-                Afficher plus de produits ({displayedProducts.length} sur {filteredProducts.length}) ↓
+                Ver más productos ({displayedProducts.length} de {filteredProducts.length}) ↓
               </button>
             </div>
           )}

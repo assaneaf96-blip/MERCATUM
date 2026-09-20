@@ -15,27 +15,27 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-brand-block">
         <Link href="/" className="brand-footer">{settings.siteName || 'MERCATUM'}</Link>
-        <p>Art de Vivre, mobilier d&apos;exception et rituels de soin pour le corps et la maison. Conçu pour cultiver votre bien-être au quotidien.</p>
+        <p>Arte de Vivir, mobiliario de excepción y rituales de bienestar para el cuerpo y el hogar. Diseñado para enriquecer su día a día.</p>
       </div>
 
       <div className="footer-col">
-        <h4>Navigation</h4>
-        <Link href="/">Accueil</Link>
-        <Link href="/boutique">La Boutique</Link>
-        <Link href="/#histoire">Notre Philosophie</Link>
-        <Link href="/#nouveautes">Nouveautés</Link>
+        <h4>Navegación</h4>
+        <Link href="/">Inicio</Link>
+        <Link href="/boutique">La Tienda</Link>
+        <Link href="/#histoire">Nuestra Filosofía</Link>
+        <Link href="/#nouveautes">Novedades</Link>
       </div>
 
       <div className="footer-col">
-        <h4>Engagements</h4>
-        <span>Design Durable &amp; Matières Nobles</span>
-        <span>Rituels de Bien-Être Quotidiens</span>
-        <span>Objets &amp; Formulations d&apos;Exception</span>
-        <span>Expédition Soignée &amp; Service Sur-Mesure</span>
+        <h4>Compromisos</h4>
+        <span>Diseño Duradero &amp; Materiales Nobles</span>
+        <span>Rituales de Bienestar Cotidianos</span>
+        <span>Objetos &amp; Fórmulas de Excepción</span>
+        <span>Envíos Cuidados &amp; Atención a Medida</span>
       </div>
 
       <div className="footer-col">
-        <h4>Contact</h4>
+        <h4>Contacto</h4>
         <span>📍 {settings.contactAddress}</span>
         <a href={`tel:${settings.contactPhone.replace(/\s+/g, '')}`} style={{ color: 'inherit', textDecoration: 'none' }}>
           📞 {settings.contactPhone}
@@ -47,7 +47,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <small>© 2026 {settings.siteName || 'MERCATUM'}. Tous droits réservés.</small>
+        <small>© 2026 {settings.siteName || 'MERCATUM'}. Todos los derechos reservados.</small>
       </div>
     </footer>
   )

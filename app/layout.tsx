@@ -5,8 +5,8 @@ import PixelTracker from '@/components/PixelTracker'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "MERCATUM — L'Art de Vivre & Sanctuaire Intérieur",
-  description: "Mobilier de créateur, rituels de soin d'exception et art de vivre pour la maison et le corps.",
+  title: "MERCATUM — El Arte de Vivir & Santuario Interior",
+  description: "Mobiliario de autor, electrodomésticos de excepción y rituales de bienestar para el hogar y el cuerpo.",
   generator: 'v0.app',
 }
 
@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className="bg-background">
+    <html lang="es" className="bg-background">
       <body className="antialiased">
         <PixelTracker />
         {children}

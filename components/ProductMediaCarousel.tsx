@@ -208,8 +208,8 @@ export default function ProductMediaCarousel({
           type="button"
           onClick={handleZoomOut}
           disabled={zoomLevel <= 1}
-          aria-label="Dézoomer (-)"
-          title="Dézoomer (-)"
+          aria-label="Alejar (-)"
+          title="Alejar (-)"
           className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition ${
             zoomLevel <= 1 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/20 active:scale-90 text-white'
           }`}
@@ -223,8 +223,8 @@ export default function ProductMediaCarousel({
           type="button"
           onClick={handleZoomIn}
           disabled={zoomLevel >= 2.5}
-          aria-label="Zoomer (+)"
-          title="Zoomer (+)"
+          aria-label="Acercar (+)"
+          title="Acercar (+)"
           className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition ${
             zoomLevel >= 2.5 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-white/20 active:scale-90 text-white'
           }`}
@@ -235,8 +235,8 @@ export default function ProductMediaCarousel({
           <button
             type="button"
             onClick={handleZoomReset}
-            aria-label="Réinitialiser"
-            title="Réinitialiser le zoom"
+            aria-label="Restablecer"
+            title="Restablecer zoom"
             className="w-4 h-4 rounded-full flex items-center justify-center text-[10px] hover:bg-white/25 text-stone-300 hover:text-white ml-0.5"
           >
             ↺
@@ -251,7 +251,7 @@ export default function ProductMediaCarousel({
           <button
             type="button"
             onClick={handlePrev}
-            aria-label="Image précédente"
+            aria-label="Imagen anterior"
             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xs opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition shadow-md"
           >
             ‹
@@ -259,7 +259,7 @@ export default function ProductMediaCarousel({
           <button
             type="button"
             onClick={handleNext}
-            aria-label="Image suivante"
+            aria-label="Imagen siguiente"
             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-xs opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition shadow-md"
           >
             ›
@@ -272,7 +272,7 @@ export default function ProductMediaCarousel({
                 key={idx}
                 type="button"
                 onClick={(e) => handleSelect(idx, e)}
-                aria-label={`Aller au média ${idx + 1}`}
+                aria-label={`Ir al archivo ${idx + 1}`}
                 className={`pointer-events-auto rounded-full transition-all ${
                   currentIndex === idx
                     ? 'w-4 h-1.5 bg-white shadow'

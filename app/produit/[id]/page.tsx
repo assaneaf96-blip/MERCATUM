@@ -41,8 +41,8 @@ function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   ) {
     return {
       icon: '⚡',
-      title: 'Haute Technologie & Fiabilité Certifiée',
-      desc: 'Performances énergétiques de pointe et garantie constructeur officielle.',
+      title: 'Alta Tecnología & Fiabilidad Certificada',
+      desc: 'Rendimiento energético de vanguardia y garantía oficial del fabricante.',
     }
   }
 
@@ -58,8 +58,8 @@ function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   ) {
     return {
       icon: '🔥',
-      title: 'Haute Efficacité Thermique & Sécurité',
-      desc: 'Rendement énergétique supérieur et conformité aux normes européennes strictes.',
+      title: 'Alta Eficiencia Térmica & Seguridad',
+      desc: 'Rendimiento energético superior y conformidad con las normas europeas más estrictas.',
     }
   }
 
@@ -77,8 +77,8 @@ function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   ) {
     return {
       icon: '🏛️',
-      title: 'Mobilier de Créateur & Matières Nobles',
-      desc: 'Structures renforcées, bois et finitions haut de gamme faits pour durer.',
+      title: 'Mobiliario de Autor & Materiales Nobles',
+      desc: 'Estructuras reforzadas, maderas y acabados de alta gama hechos para perdurar.',
     }
   }
 
@@ -94,8 +94,8 @@ function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   ) {
     return {
       icon: '☀️',
-      title: 'Conception Plein Air & Résistance Intempéries',
-      desc: 'Matériaux traités anti-UV et anticorrosion pour un confort durable sous toutes les saisons.',
+      title: 'Diseño Exterior & Resistencia Climática',
+      desc: 'Materiales tratados anti-UV y anticorrosión para un confort duradero en todas las estaciones.',
     }
   }
 
@@ -110,16 +110,16 @@ function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   ) {
     return {
       icon: '🌿',
-      title: 'Haute Parfumerie & Cosmétique d’Élite',
-      desc: 'Formulations précieuses et actifs d’exception rigoureusement sourcés.',
+      title: 'Alta Perfumería & Cosmética de Élite',
+      desc: 'Formulaciones selectas y activos extraordinarios rigurosamente obtenidos.',
     }
   }
 
   // 6. Par défaut pour toute création MERCATUM
   return {
     icon: '✨',
-    title: 'Sélection & Conception d’Exception',
-    desc: 'Pièces rigoureusement sélectionnées selon les plus hauts standards de durabilité et d’élégance.',
+    title: 'Selección & Diseño de Excepción',
+    desc: 'Piezas rigurosamente seleccionadas bajo los más altos estándares de durabilidad y elegancia.',
   }
 }
 
@@ -294,8 +294,8 @@ export default function ProductDetailPage() {
       : selectedVolume
       ? ` · ${selectedVolume}`
       : ''
-    const colorLabel = selectedColor ? ` · Teinte: ${selectedColor}` : ''
-    showToast(`« ${product.name}${volLabel}${colorLabel} » (x${quantity}) ajouté au panier !`)
+    const colorLabel = selectedColor ? ` · Tono: ${selectedColor}` : ''
+    showToast(`« ${product.name}${volLabel}${colorLabel} » (x${quantity}) añadido a la cesta !`)
   }
 
   const handleBuyNow = () => {
@@ -348,7 +348,7 @@ export default function ProductDetailPage() {
 
   const handleCheckoutSuccess = (bought: Product) => {
     setCartCount((c) => c + 1)
-    showToast(`Commande validée pour ${bought.name} ! 🎉`)
+    showToast(`¡Pedido confirmado para ${bought.name}! 🎉`)
   }
 
   const galleryImages = useMemo(() => {
@@ -515,7 +515,7 @@ export default function ProductDetailPage() {
       <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-8">
         <div style={{ textAlign: 'center', padding: '60px 20px' }}>
           <p style={{ fontFamily: 'Georgia, serif', fontSize: '20px', letterSpacing: '0.05em' }}>
-            Chargement de votre sélection MERCATUM...
+            Cargando su selección MERCATUM...
           </p>
         </div>
       </main>
@@ -528,13 +528,13 @@ export default function ProductDetailPage() {
         <Navbar cartCount={cartCount} />
         <div style={{ textAlign: 'center', padding: '100px 20px', flex: 1 }}>
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: '32px', marginBottom: '16px' }}>
-            Création introuvable
+            Artículo no disponible
           </h1>
           <p style={{ color: '#666', marginBottom: '24px' }}>
-            Ce soin ou parfum n'est plus disponible ou a été déplacé.
+            Este artículo ya no está disponible o ha sido trasladado.
           </p>
           <Link href="/boutique" className="button dark">
-            Retourner à la boutique <span>→</span>
+            Volver a la tienda <span>→</span>
           </Link>
         </div>
         <Footer />
@@ -554,15 +554,15 @@ export default function ProductDetailPage() {
       {/* Shared Navbar */}
       <Navbar
         cartCount={cartCount}
-        onOpenCart={() => showToast(`Votre panier contient ${cartCount} article(s)`)}
+        onOpenCart={() => showToast(`Tu cesta contiene ${cartCount} artículo(s)`)}
       />
 
       {/* Breadcrumbs */}
-      <nav aria-label="Fil d'Ariane" className="pdp-breadcrumb-nav">
+      <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">
         <div className="pdp-breadcrumb-container">
-          <Link href="/">Accueil</Link>
+          <Link href="/">Inicio</Link>
           <span className="pdp-sep">/</span>
-          <Link href="/boutique">La Boutique</Link>
+          <Link href="/boutique">La Tienda</Link>
           <span className="pdp-sep">/</span>
           <Link href={`/boutique?cat=${encodeURIComponent(product.category)}`} className="pdp-cat-link">
             {product.category}
@@ -651,8 +651,8 @@ export default function ProductDetailPage() {
                   type="button"
                   onClick={handleZoomOut}
                   disabled={zoomLevel <= 1}
-                  aria-label="Dézoomer (-)"
-                  title="Dézoomer (-)"
+                  aria-label="Alejar (-)"
+                  title="Alejar (-)"
                   className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition ${
                     zoomLevel <= 1
                       ? 'opacity-30 cursor-not-allowed text-stone-400'
@@ -670,8 +670,8 @@ export default function ProductDetailPage() {
                   type="button"
                   onClick={handleZoomIn}
                   disabled={zoomLevel >= 3.5}
-                  aria-label="Zoomer (+)"
-                  title="Zoomer (+)"
+                  aria-label="Acercar (+)"
+                  title="Acercar (+)"
                   className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition ${
                     zoomLevel >= 3.5
                       ? 'opacity-30 cursor-not-allowed text-stone-400'
@@ -685,8 +685,8 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     onClick={handleZoomReset}
-                    aria-label="Réinitialiser le zoom"
-                    title="Réinitialiser le zoom (100%)"
+                    aria-label="Restablecer zoom"
+                    title="Restablecer zoom (100%)"
                     className="w-6 h-6 rounded-full flex items-center justify-center text-xs hover:bg-white/20 text-stone-300 hover:text-white transition ml-0.5"
                   >
                     ↺
@@ -702,8 +702,8 @@ export default function ProductDetailPage() {
                     setLightboxZoom(1.4)
                     setLightboxPan({ x: 0, y: 0 })
                   }}
-                  aria-label="Plein écran"
-                  title="Agrandir en plein écran"
+                  aria-label="Pantalla completa"
+                  title="Ampliar a pantalla completa"
                   className="w-7 h-7 rounded-full flex items-center justify-center text-xs hover:bg-white/20 text-white transition"
                 >
                   ⛶
@@ -720,7 +720,7 @@ export default function ProductDetailPage() {
                       e.stopPropagation()
                       setActiveImageIndex((prev) => (prev <= 0 ? galleryImages.length - 1 : prev - 1))
                     }}
-                    aria-label="Photo précédente"
+                    aria-label="Foto anterior"
                     className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-sm shadow-md transition-all opacity-80 hover:opacity-100"
                   >
                     ‹
@@ -731,7 +731,7 @@ export default function ProductDetailPage() {
                       e.stopPropagation()
                       setActiveImageIndex((prev) => (prev + 1) % galleryImages.length)
                     }}
-                    aria-label="Photo suivante"
+                    aria-label="Foto siguiente"
                     className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center text-sm shadow-md transition-all opacity-80 hover:opacity-100"
                   >
                     ›
@@ -755,7 +755,7 @@ export default function ProductDetailPage() {
                       type="button"
                       className={`pdp-thumb-btn relative ${activeImageIndex === idx ? 'active' : ''}`}
                       onClick={() => setActiveImageIndex(idx)}
-                      aria-label={`Afficher le média ${idx + 1}`}
+                      aria-label={`Ver archivo multimedia ${idx + 1}`}
                     >
                       {isThumbVideo ? (
                         <>
@@ -778,7 +778,7 @@ export default function ProductDetailPage() {
           <div className="pdp-info-col">
             <div className="pdp-info-header">
               <span className="pdp-brand-eyebrow">
-                MERCATUM Paris · {product.category}
+                MERCATUM Madrid · {product.category}
               </span>
               <h1 className="pdp-title">{product.name}</h1>
               <p className="pdp-type-sub">{product.type}</p>
@@ -787,7 +787,7 @@ export default function ProductDetailPage() {
               <div className="pdp-rating-row">
                 <span className="pdp-stars">★★★★★</span>
                 <span className="pdp-rating-score">{product.rating}</span>
-                <span className="pdp-reviews-count">({product.reviewsCount} avis clientes vérifiés)</span>
+                <span className="pdp-reviews-count">({product.reviewsCount} opiniones verificadas de clientes)</span>
               </div>
 
               {/* Price */}
@@ -795,10 +795,10 @@ export default function ProductDetailPage() {
                 <span className="pdp-price-tag">{displayedPrice}</span>
                 {selectedVolumeOption && (
                   <span className="text-xs text-[#8ea07c] font-semibold bg-[#b8c8a6]/20 px-2 py-0.5 rounded ml-2">
-                    pour {selectedVolumeOption.volume}
+                    para {selectedVolumeOption.volume}
                   </span>
                 )}
-                <span className="pdp-tax-note">TTC · Livraison express offerte</span>
+                <span className="pdp-tax-note">IVA incl. · Envío express gratuito</span>
               </div>
             </div>
 
@@ -806,7 +806,7 @@ export default function ProductDetailPage() {
             {volumes.length > 0 ? (
               <div className="pdp-volume-selector">
                 <label className="pdp-selector-label">
-                  Contenance : <strong>{selectedVolumeOption?.volume}</strong> —{' '}
+                  Capacidad / Formato : <strong>{selectedVolumeOption?.volume}</strong> —{' '}
                   <span className="text-[#8ea07c] font-bold">{selectedVolumeOption?.price}</span>
                 </label>
                 <div className="pdp-volume-pills">
@@ -829,7 +829,7 @@ export default function ProductDetailPage() {
             ) : contenanceOptions.length > 0 ? (
               <div className="pdp-volume-selector">
                 <label className="pdp-selector-label">
-                  Contenance : <strong>{selectedVolume || contenanceOptions[0]}</strong>
+                  Capacidad / Formato : <strong>{selectedVolume || contenanceOptions[0]}</strong>
                 </label>
                 <div className="pdp-volume-pills">
                   {contenanceOptions.map((vol) => (
@@ -850,7 +850,7 @@ export default function ProductDetailPage() {
             {colors.length > 0 && (
               <div className="pdp-volume-selector">
                 <label className="pdp-selector-label">
-                  Nuance / Teinte : <strong>{selectedColor}</strong>
+                  Tono / Color : <strong>{selectedColor}</strong>
                 </label>
                 <div className="flex flex-wrap gap-2 pt-1">
                   {colors.map((col) => {
@@ -882,12 +882,12 @@ export default function ProductDetailPage() {
 
             {/* Quantity Selector */}
             <div className="pdp-quantity-row">
-              <label className="pdp-selector-label">Quantité :</label>
+              <label className="pdp-selector-label">Cantidad :</label>
               <div className="pdp-quantity-control">
                 <button
                   type="button"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  aria-label="Diminuer la quantité"
+                  aria-label="Disminuir la cantidad"
                 >
                   -
                 </button>
@@ -895,7 +895,7 @@ export default function ProductDetailPage() {
                 <button
                   type="button"
                   onClick={() => setQuantity(quantity + 1)}
-                  aria-label="Augmenter la quantité"
+                  aria-label="Aumentar la cantidad"
                 >
                   +
                 </button>
@@ -909,14 +909,14 @@ export default function ProductDetailPage() {
                 className="pdp-primary-buy-btn"
                 onClick={handleBuyNow}
               >
-                Acheter maintenant — {quantity > 1 ? `${((selectedVolumeOption?.rawPrice || displayedRawPrice) * quantity).toFixed(2).replace('.', ',')} €` : displayedPrice} ⚡
+                Comprar ahora — {quantity > 1 ? `${((selectedVolumeOption?.rawPrice || displayedRawPrice) * quantity).toFixed(2).replace('.', ',')} €` : displayedPrice} ⚡
               </button>
               <button
                 type="button"
                 className="pdp-secondary-cart-btn"
                 onClick={handleAddToCart}
               >
-                Ajouter au panier 🛒
+                Añadir a la cesta 🛒
               </button>
             </div>
 
@@ -925,22 +925,22 @@ export default function ProductDetailPage() {
               <div className="pdp-badge-item">
                 <span className="pdp-badge-icon">🚚</span>
                 <div>
-                  <strong>Livraison Offerte & Suivie</strong>
-                  <p>Colissimo remise contre signature sous 24 à 48 heures ouvrées.</p>
+                  <strong>Envío Gratuito & Asegurado</strong>
+                  <p>Entrega rápida con seguimiento en 24 a 48 horas laborables.</p>
                 </div>
               </div>
               <div className="pdp-badge-item">
                 <span className="pdp-badge-icon">🎁</span>
                 <div>
-                  <strong>Écrin Cadeau d&apos;Exception</strong>
-                  <p>Présenté dans le coffret signature MERCATUM avec certificat d&apos;authenticité.</p>
+                  <strong>Embalaje Premium Protegido</strong>
+                  <p>Preparado con la máxima protección y precinto oficial MERCATUM.</p>
                 </div>
               </div>
               <div className="pdp-badge-item">
                 <span className="pdp-badge-icon">🔒</span>
                 <div>
-                  <strong>Paiement Sécurisé par Virement</strong>
-                  <p>Coordonnées bancaires officielles et confirmation instantanée par email.</p>
+                  <strong>Pago Seguro por Transferencia</strong>
+                  <p>Datos bancarios oficiales y confirmación inmediata por email y WhatsApp.</p>
                 </div>
               </div>
               {(() => {
@@ -966,7 +966,7 @@ export default function ProductDetailPage() {
                   className="pdp-accordion-header"
                   onClick={() => setActiveTab(activeTab === 'desc' ? ('' as any) : 'desc')}
                 >
-                  <span>La Création & Description</span>
+                  <span>La Creación & Descripción</span>
                   <span className="pdp-accordion-arrow">{activeTab === 'desc' ? '−' : '+'}</span>
                 </button>
                 {activeTab === 'desc' && (
@@ -983,13 +983,13 @@ export default function ProductDetailPage() {
                   className="pdp-accordion-header"
                   onClick={() => setActiveTab(activeTab === 'ingredients' ? ('' as any) : 'ingredients')}
                 >
-                  <span>Notes Olfactives & Ingrédients Rares</span>
+                  <span>Notas & Materiales de Excelencia</span>
                   <span className="pdp-accordion-arrow">{activeTab === 'ingredients' ? '−' : '+'}</span>
                 </button>
                 {activeTab === 'ingredients' && (
                   <div className="pdp-accordion-body">
                     <p style={{ lineHeight: '1.7' }}>
-                      <strong>Matières premières d'exception :</strong> Essences pures distillées à Grasse, actifs botaniques sélectionnés à pleine maturité, absolus floraux précieux. Formule sans parabènes, non comédogène et testée sous contrôle dermatologique.
+                      <strong>Calidad & Materiales de Excelencia :</strong> Componentes certificados de alto rendimiento, materiales seleccionados bajo los estándares europeos más exigentes y garantía oficial completa.
                     </p>
                   </div>
                 )}
@@ -1002,13 +1002,13 @@ export default function ProductDetailPage() {
                   className="pdp-accordion-header"
                   onClick={() => setActiveTab(activeTab === 'application' ? ('' as any) : 'application')}
                 >
-                  <span>Rituel & Conseils d'Application</span>
+                  <span>Instrucciones & Consejos de Uso</span>
                   <span className="pdp-accordion-arrow">{activeTab === 'application' ? '−' : '+'}</span>
                 </button>
                 {activeTab === 'application' && (
                   <div className="pdp-accordion-body">
                     <p style={{ lineHeight: '1.7' }}>
-                      Vaporiser généreusement sur les points de pulsation (creux des poignets, cou, décolleté et derrière les oreilles) pour libérer le sillage tout au long de la journée. Pour les soins cosmétiques, appliquer matin et soir sur une peau préalablement nettoyée en massages délicats de l'intérieur vers l'extérieur du visage.
+                      Diseñado para un uso óptimo y seguro desde el primer día. Incluye manual detallado de instrucciones y recomendaciones para un mantenimiento sencillo y máxima durabilidad.
                     </p>
                   </div>
                 )}
@@ -1021,13 +1021,13 @@ export default function ProductDetailPage() {
                   className="pdp-accordion-header"
                   onClick={() => setActiveTab(activeTab === 'livraison' ? ('' as any) : 'livraison')}
                 >
-                  <span>Livraison & Retours sous 30 jours</span>
+                  <span>Envío Asegurado & Devolución en 30 días</span>
                   <span className="pdp-accordion-arrow">{activeTab === 'livraison' ? '−' : '+'}</span>
                 </button>
                 {activeTab === 'livraison' && (
                   <div className="pdp-accordion-body">
                     <p style={{ lineHeight: '1.7' }}>
-                      Toutes les commandes passées avant 14h sont préparées et expédiées le jour même. Vous disposez d'un délai de 30 jours pour nous retourner tout article non ouvert dans son emballage d'origine. Les retours sont simples et pris en charge par notre service client.
+                      Todos los pedidos se procesan y expiden en 24/48h con seguro a todo riesgo. Dispone de un plazo de 30 días para cualquier cambio o devolución asistida por nuestro equipo de atención al cliente en España.
                     </p>
                   </div>
                 )}
@@ -1044,11 +1044,11 @@ export default function ProductDetailPage() {
           <div className="pdp-related-container">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">Harmonie & Rituel</p>
-                <h2>Le Compagnon Idéal</h2>
+                <p className="eyebrow">Selección Exclusiva</p>
+                <h2>Artículos recomendados</h2>
               </div>
               <Link href="/boutique" className="text-link">
-                Explorer tout le catalogue <span>↗</span>
+                Explorar todo el catálogo <span>↗</span>
               </Link>
             </div>
 
@@ -1081,7 +1081,7 @@ export default function ProductDetailPage() {
                       className="buy-now-card-btn"
                       style={{ textAlign: 'center' }}
                     >
-                      Acheter maintenant ⚡
+                      Comprar ahora ⚡
                     </Link>
                   </div>
                 </article>
@@ -1120,7 +1120,7 @@ export default function ProductDetailPage() {
             <div>
               <h3 className="font-serif text-base sm:text-lg text-stone-100 font-semibold">{product.name}</h3>
               <p className="text-xs text-stone-400">
-                Vue {activeImageIndex + 1} sur {galleryImages.length} · MERCATUM Paris
+                Vista {activeImageIndex + 1} de {galleryImages.length} · MERCATUM
               </p>
             </div>
 
@@ -1138,7 +1138,7 @@ export default function ProductDetailPage() {
                   }}
                   disabled={lightboxZoom <= 1}
                   className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition"
-                  title="Dézoomer (-)"
+                  title="Alejar (-)"
                 >
                   −
                 </button>
@@ -1150,7 +1150,7 @@ export default function ProductDetailPage() {
                   onClick={() => setLightboxZoom((prev) => Math.min(4, Number((prev + 0.5).toFixed(1))))}
                   disabled={lightboxZoom >= 4}
                   className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition"
-                  title="Zoomer (+)"
+                  title="Acercar (+)"
                 >
                   +
                 </button>
@@ -1162,7 +1162,7 @@ export default function ProductDetailPage() {
                       setLightboxPan({ x: 0, y: 0 })
                     }}
                     className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-stone-300 hover:text-white hover:bg-white/20 ml-1 transition"
-                    title="Réinitialiser le zoom"
+                    title="Restablecer zoom"
                   >
                     ↺
                   </button>
@@ -1178,8 +1178,8 @@ export default function ProductDetailPage() {
                   setLightboxPan({ x: 0, y: 0 })
                 }}
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center text-base transition border border-white/20"
-                aria-label="Fermer le plein écran"
-                title="Fermer (Échap)"
+                aria-label="Cerrar pantalla completa"
+                title="Cerrar (Esc)"
               >
                 ✕
               </button>
@@ -1252,7 +1252,7 @@ export default function ProductDetailPage() {
                     setLightboxPan({ x: 0, y: 0 })
                   }}
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg border border-white/20 transition shadow-lg backdrop-blur-sm"
-                  aria-label="Image précédente"
+                  aria-label="Imagen anterior"
                 >
                   ‹
                 </button>
@@ -1265,7 +1265,7 @@ export default function ProductDetailPage() {
                     setLightboxPan({ x: 0, y: 0 })
                   }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg border border-white/20 transition shadow-lg backdrop-blur-sm"
-                  aria-label="Image suivante"
+                  aria-label="Imagen siguiente"
                 >
                   ›
                 </button>
@@ -1295,7 +1295,7 @@ export default function ProductDetailPage() {
                   {isVideoUrl(imgUrl) ? (
                     <video src={imgUrl} className="w-full h-full object-cover pointer-events-none" muted playsInline />
                   ) : (
-                    <img src={imgUrl} alt={`Vue ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />
+                    <img src={imgUrl} alt={`Vista ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />
                   )}
                 </button>
               ))}
