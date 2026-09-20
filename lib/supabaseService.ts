@@ -61,10 +61,16 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
     const cached = await getClientCachedProducts()
     if (cached && cached.length > 0) {
       clientCachedProducts = cached
-      // Lancer une synchronisation silencieuse en tâche de fond pour mettre à jour si nécessaire
-      setTimeout(() => {
-        fetchProductsFromDb(true).catch(() => {})
-      }, 60)
+      // Lancer une synchronisation silencieuse en tâche de fond quand le navigateur est inactif
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(() => {
+          fetchProductsFromDb(true).catch(() => {})
+        })
+      } else {
+        setTimeout(() => {
+          fetchProductsFromDb(true).catch(() => {})
+        }, 2500)
+      }
       return cached
     }
   }

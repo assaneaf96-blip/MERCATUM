@@ -242,7 +242,7 @@ function CategorySliderSection({
         {/* Rail de défilement horizontal avec tous les produits */}
         <div className="category-slider-wrapper">
           <div ref={trackRef} className="category-products-track">
-            {products.map((product) => (
+            {products.slice(0, 8).map((product) => (
               <article className="category-product-card" key={product.id}>
                 <div>
                   <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
@@ -291,6 +291,39 @@ function CategorySliderSection({
                 </div>
               </article>
             ))}
+
+            {products.length > 8 && (
+              <div
+                className="category-product-card flex flex-col items-center justify-center text-center p-6 border-dashed"
+                style={{
+                  minWidth: '240px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: 'rgba(255,255,255,0.6)',
+                  borderRadius: '16px',
+                  border: '2px dashed #dcd5c9',
+                  padding: '32px 20px',
+                  textAlign: 'center',
+                }}
+              >
+                <div style={{ fontSize: '32px', marginBottom: '12px' }}>✦</div>
+                <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#1a1a1a', marginBottom: '8px' }}>
+                  +{products.length - 8} autres articles
+                </h4>
+                <p style={{ fontSize: '13px', color: '#666', marginBottom: '20px', lineHeight: '1.4' }}>
+                  Découvrez l&apos;intégralité de la collection {category}
+                </p>
+                <Link
+                  href={`/boutique?cat=${encodeURIComponent(category)}`}
+                  className="button dark"
+                  style={{ fontSize: '13px', padding: '10px 20px', borderRadius: '9999px' }}
+                >
+                  Tout explorer →
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

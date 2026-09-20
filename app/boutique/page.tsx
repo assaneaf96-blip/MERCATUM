@@ -17,6 +17,7 @@ export default function BoutiquePage() {
   const [selectedCategory, setSelectedCategory] = useState('Tous les produits')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured')
+  const [visibleCount, setVisibleCount] = useState(24)
   const [cartCount, setCartCount] = useState(0)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
@@ -179,6 +180,14 @@ export default function BoutiquePage() {
 
     return { filteredProducts: sorted, isSearchedGlobally: searchedGlobally }
   }, [productsList, selectedCategory, searchQuery, sortBy])
+
+  useEffect(() => {
+    setVisibleCount(24)
+  }, [selectedCategory, searchQuery, sortBy])
+
+  const displayedProducts = useMemo(() => {
+    return filteredProducts.slice(0, visibleCount)
+  }, [filteredProducts, visibleCount])
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -374,7 +383,7 @@ export default function BoutiquePage() {
             </div>
           ) : (
             <div className="product-grid">
-              {filteredProducts.map((product) => (
+              {displayedProducts.map((product) => (
                 <article className="product boutique-product-card" key={product.id}>
                   <Link href={`/produit/${product.id}`} className="block relative" style={{ cursor: 'pointer' }}>
                     <div className="product-image">
@@ -425,6 +434,19 @@ export default function BoutiquePage() {
                   </div>
                 </article>
               ))}
+            </div>
+          )}
+
+          {filteredProducts.length > visibleCount && (
+            <div style={{ textAlign: 'center', marginTop: '48px', marginBottom: '32px' }}>
+              <button
+                type="button"
+                className="button dark"
+                onClick={() => setVisibleCount((prev) => prev + 24)}
+                style={{ padding: '15px 36px', fontSize: '15px', borderRadius: '9999px', cursor: 'pointer' }}
+              >
+                Afficher plus de produits ({displayedProducts.length} sur {filteredProducts.length}) ↓
+              </button>
             </div>
           )}
         </div>

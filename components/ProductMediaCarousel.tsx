@@ -170,6 +170,8 @@ export default function ProductMediaCarousel({
         <img
           src={currentItem.url}
           alt={`${alt} - vue ${currentIndex + 1} sur ${items.length}`}
+          loading="lazy"
+          decoding="async"
           className={`w-full h-full object-cover transition-transform duration-500 ${
             zoomLevel > 1 ? '' : 'group-hover:scale-105'
           }`}

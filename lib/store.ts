@@ -221,8 +221,14 @@ export function saveProductsBulk(items: Product[]): void {
     // 1. Sauvegarde instantanée dans IndexedDB sans limite de quota
     setClientCachedProducts(mergedList).catch(() => {})
 
-    // 2. Sauvegarde allégée en localStorage
-    safeWrite(STORAGE_KEYS.PRODUCTS, mergedList.map((p) => compactProductForStorage(p)))
+    // 2. En localStorage, ne stocker que les éventuels produits locaux non synchronisés (pour rester bien sous 50 Ko et éviter les crashs de quota Safari iOS)
+    if (unsynced.length > 0) {
+      safeWrite(STORAGE_KEYS.PRODUCTS, unsynced.map((p) => compactProductForStorage(p)))
+    } else {
+      if (typeof window !== 'undefined') {
+        try { localStorage.removeItem(STORAGE_KEYS.PRODUCTS) } catch {}
+      }
+    }
   } catch (err) {
     console.warn('saveProductsBulk error:', err)
   }
