@@ -134,10 +134,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase par lots rapides de 40 sans la colonne lourde images (charge < 1s)
+    // 3. Récupération directe Supabase par lots rapides de 100 sans la colonne lourde images
     let allData: any[] = []
-    const batchSize = 40
-    for (let i = 0; i < 600; i += batchSize) {
+    const batchSize = 100
+    for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
         .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count')
