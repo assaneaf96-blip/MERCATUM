@@ -47,7 +47,7 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '👑', title: 'Acabado de Salón de Prestigio', desc: 'Herramientas de excelencia elogiadas por los mejores estilistas profesionales.' },
     ],
   },
-  'Mobilier & Décoration': {
+  'Mobiliario & Decoración': {
     eyebrow: 'El Santuario del Hogar · Diseño & Confort',
     title: 'Mobiliario de Autor & Piezas de Vida',
     subtitle: "El arte de crear un interior refinado y terrazas de confort soberano.",
@@ -59,7 +59,19 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '✨', title: 'Diseño Intemporal & Armonioso', desc: 'Líneas puras que realzan con naturalidad sus espacios de vida.' },
     ],
   },
-  'Plein Air & Évasion': {
+  'Mobilier & Décoration': {
+    eyebrow: 'El Santuario del Hogar · Diseño & Confort',
+    title: 'Mobiliario de Autor & Piezas de Vida',
+    subtitle: "El arte de crear un interior refinado y terrazas de confort soberano.",
+    badge: "Diseño de Arquitecto & Materiales Nobles",
+    description: "Cada pieza está concebida como un equilibrio perfecto entre pureza geométrica, ergonomía reconfortante y resistencia duradera.",
+    arguments: [
+      { icon: '🛋️', title: 'Confort Soberano & Asiento Alta Densidad', desc: 'Cojines generosos y ergonomía estudiada para una relajación absoluta.' },
+      { icon: '🛡️', title: 'Materiales Nobles & Tratamiento Intemperie', desc: 'Estructuras reforzadas, tejidos repelentes al agua y acabados duraderos.' },
+      { icon: '✨', title: 'Diseño Intemporal & Armonioso', desc: 'Líneas puras que realzan con naturalidad sus espacios de vida.' },
+    ],
+  },
+  'Aire Libre & Glamping': {
     eyebrow: 'Santuario Exterior · Vivir Bajo el Cielo',
     title: "Glamping de Excepción, Pérgolas & Refugios Exteriores",
     subtitle: 'Extienda el confort de su interior en el corazón del jardín y la naturaleza.',
@@ -71,7 +83,19 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '🛠️', title: 'Estructuras Reforzadas & Estabilidad Total', desc: 'Armaduras de acero con tratamiento anticorrosión y anclajes seguros.' },
     ],
   },
-  'Haute Cosmétique & Visage': {
+  'Plein Air & Évasion': {
+    eyebrow: 'Santuario Exterior · Vivir Bajo el Cielo',
+    title: "Glamping de Excepción, Pérgolas & Refugios Exteriores",
+    subtitle: 'Extienda el confort de su interior en el corazón del jardín y la naturaleza.',
+    badge: 'Confort 4 Estaciones & Protección Total',
+    description: 'Carpas safari bell tent, pérgolas impermeables y toldos retráctiles.',
+    arguments: [
+      { icon: '⛺', title: 'Tejidos Transpirables & 100% Impermeables', desc: 'Estanqueidad reforzada y costuras selladas preparadas para todas las estaciones.' },
+      { icon: '☀️', title: 'Aislamiento Térmico & Protección UV50+', desc: 'Sombra óptima y frescor preservado incluso bajo intensa exposición solar.' },
+      { icon: '🛠️', title: 'Estructuras Reforzadas & Estabilidad Total', desc: 'Armaduras de acero con tratamiento anticorrosión y anclajes seguros.' },
+    ],
+  },
+  'Alta Cosmética & Cuidado Facial': {
     eyebrow: 'Biotecnología Botánica & Alta Regeneración',
     title: 'Alta Cosmética & Cuidados Rejuvenecedores',
     subtitle: 'El poder de los activos puros más exclusivos para iluminar y reafirmar la piel.',
@@ -83,7 +107,19 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '💎', title: 'Formulaciones de Alto Prestigio', desc: 'Creaciones aclamadas por los adeptos a los tratamientos más exigentes.' },
     ],
   },
-  'Parfums d\'Exception': {
+  'Alta Cosmética': {
+    eyebrow: 'Biotecnología Botánica & Alta Regeneración',
+    title: 'Alta Cosmética & Cuidado de Belleza',
+    subtitle: 'El poder de los activos más selectos para realzar su belleza natural.',
+    badge: 'Eficacia Comprobada & Fórmulas Puras',
+    description: 'Selección de artículos de alta gama formulados con activos puros y tratamientos de vanguardia.',
+    arguments: [
+      { icon: '✨', title: 'Resultados Visibles', desc: 'Eficacia garantizada en revitalización y luminosidad.' },
+      { icon: '🌿', title: 'Ingredientes Nobles', desc: 'Fórmulas respetuosas y de máxima pureza.' },
+      { icon: '💎', title: 'Exclusividad & Prestigio', desc: 'Calidad superior en cada aplicación.' },
+    ],
+  },
+  'Perfumes de Autor': {
     eyebrow: 'Alta Perfumería & Extractos Exclusivos',
     title: 'Estelas Inolvidables & Néctares Preciosos',
     subtitle: 'Afirme su presencia con extractos y aguas de perfume de autor.',
@@ -95,7 +131,7 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '👑', title: 'Frascos Escultura & Estuches de Arte', desc: 'Piezas exclusivas pensadas para embellecer su tocador y su espacio.' },
     ],
   },
-  'Soins & Rituels du Corps': {
+  'Cuidado Corporal & Spa': {
     eyebrow: 'Bienestar Holístico & Vitalidad',
     title: 'Rituales Corporales & Spa Tecnológico',
     subtitle: 'Cuide su cuerpo como el primer santuario que habita.',
@@ -107,7 +143,7 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '🧘', title: 'Recuperación & Bienestar Profundo', desc: 'Un verdadero ritual diario para recuperar energía y serenidad.' },
     ],
   },
-  'Maison & Atmosphère': {
+  'Hogar & Confort': {
     eyebrow: 'Arte de Vivir & Santuario Interior',
     title: 'Ambiente, Decoración & Calidez del Hogar',
     subtitle: 'Cree una atmósfera envolvente, acogedora y refinada en su hogar.',
@@ -117,6 +153,30 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '🕯️', title: 'Difusión Armoniosa & Equilibrada', desc: 'Aromas sutiles diseñados para despertar los sentidos sin saturar el espacio.' },
       { icon: '🏡', title: 'Armonía Visual & Sensorial', desc: 'Piezas decorativas que aportan calidez, luz y serenidad.' },
       { icon: '🍃', title: 'Bienestar Diario', desc: 'Un santuario pacífico donde renovar energías al final del día.' },
+    ],
+  },
+  'Jardín & Exterior': {
+    eyebrow: 'Santuario Exterior · Vivir al Aire Libre',
+    title: 'Mobiliario de Jardín & Terrazas de Autor',
+    subtitle: 'El máximo confort y elegancia para disfrutar de sus espacios al aire libre.',
+    badge: 'Resistencia Climática & Confort Premium',
+    description: 'Conjuntos de aluminio, sofás modulares de exterior y piezas resistentes a la intemperie diseñadas para disfrutar del jardín todo el año.',
+    arguments: [
+      { icon: '☀️', title: 'Resistencia a Rayos UV & Lluvia', desc: 'Estructuras de aluminio inoxidable y telas hidrófugas lavables.' },
+      { icon: '🌿', title: 'Confort de Salón en el Jardín', desc: 'Cojines gruesos de alta resiliencia para una relajación total.' },
+      { icon: '🏡', title: 'Diseño Vanguardista', desc: 'Líneas arquitectónicas modernas que realzan cualquier terraza o porche.' },
+    ],
+  },
+  'Velas & Aromas': {
+    eyebrow: 'Alta Perfumería de Interior & Atmósferas',
+    title: 'Velas Aromáticas & Esencias Nobles',
+    subtitle: 'Cree un ambiente sensorial cálido, seductor y acogedor.',
+    badge: 'Cera 100% Vegetal & Esencias Puras',
+    description: 'Velas perfumadas vertidas a mano con ceras botánicas y mechas de algodón puro para una difusión limpia y envolvente.',
+    arguments: [
+      { icon: '🕯️', title: 'Combustión Limpia y Duradera', desc: 'Ceras naturales que queman de manera uniforme sin humos.' },
+      { icon: '🌸', title: 'Esencias Concentradas de Autor', desc: 'Notas de salida, corazón y fondo que perfuman suavemente la estancia.' },
+      { icon: '✨', title: 'Elegancia Visual', desc: 'Vasos lacados y diseño minimalista ideal para regalar o decorar.' },
     ],
   },
   'Juego de interior': {
@@ -568,19 +628,22 @@ export default function HomePage() {
       'Colchones',
       'Mueble de baño',
       'Mueble TV',
+      'Mobiliario & Decoración',
       'Cuadros y Láminas',
       'FRIGORIFIGO',
-      'ASPIRADORA DYSON',
       'LAVADORA SECADORA',
+      'ASPIRADORA DYSON',
       'Juego de interior',
       'Belleza & cabello',
+      'Jardín & Exterior',
       'Novedades televisores',
-      'Jardin ',
-      'Mobilier & Décoration',
-      'Haute Cosmétique & Visage',
-      "Parfums d'Exception",
-      'Soins & Rituels du Corps',
-      'Maison & Atmosphère',
+      'Aire Libre & Glamping',
+      'Alta Cosmética & Cuidado Facial',
+      'Perfumes de Autor',
+      'Cuidado Corporal & Spa',
+      'Hogar & Confort',
+      'Velas & Aromas',
+      'Alta Cosmética',
     ]
     const groups: { category: string; products: Product[] }[] = []
     const seen = new Set<string>()
