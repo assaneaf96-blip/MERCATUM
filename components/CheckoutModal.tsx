@@ -243,8 +243,75 @@ export default function CheckoutModal({
               </div>
             </div>
 
+            {/* Transmission du Justificatif de Virement */}
+            <div
+              style={{
+                background: '#f8fafc',
+                border: '1px solid #cbd5e1',
+                borderRadius: '8px',
+                padding: '12px 14px',
+                textAlign: 'left',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <span style={{ fontSize: '16px' }}>📄</span>
+                <strong style={{ fontSize: '12px', color: '#1e293b' }}>
+                  Comment envoyer votre preuve de paiement ?
+                </strong>
+              </div>
+              <p style={{ fontSize: '11px', color: '#475569', margin: '0 0 10px', lineHeight: '1.4' }}>
+                Une fois votre virement effectué, transmettez votre capture d'écran ou reçu bancaire avec votre référence <strong>{orderRef}</strong> :
+              </p>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <a
+                  href={`mailto:${settings.contactEmail || 'contact@mercatum.fr'}?subject=${encodeURIComponent(`Reçu de virement - Commande ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Bonjour,\n\nVeuillez trouver ci-joint mon reçu de virement pour la commande ${orderRef} d'un montant de ${totalPrice}.\n\nNom: ${fullName}\nTéléphone: ${phone}\nAdresse de livraison: ${address}\n\nMerci.`)}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    background: '#1e293b',
+                    color: '#ffffff',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    fontSize: '11px',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    flex: '1',
+                    minWidth: '160px',
+                  }}
+                >
+                  ✉️ Envoyer par e-mail
+                </a>
+                {settings.contactPhone && (
+                  <a
+                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Bonjour, voici mon reçu de paiement pour la commande ${orderRef} (${fullName} - ${totalPrice}).`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px',
+                      background: '#166534',
+                      color: '#ffffff',
+                      padding: '8px 12px',
+                      borderRadius: '6px',
+                      fontSize: '11px',
+                      fontWeight: 'bold',
+                      textDecoration: 'none',
+                      flex: '1',
+                      minWidth: '160px',
+                    }}
+                  >
+                    💬 Envoyer par WhatsApp
+                  </a>
+                )}
+              </div>
+            </div>
+
             <p style={{ fontSize: '11px', color: '#777', textAlign: 'center', margin: '8px 0 0' }}>
-              📦 Votre colis sera préparé et expédié dès réception des fonds. Un récapitulatif a été noté pour votre adresse de livraison.
+              📦 Votre colis sera préparé et expédié dès validation de votre virement.
             </p>
 
             <div style={{ textAlign: 'center', paddingTop: '8px' }}>
