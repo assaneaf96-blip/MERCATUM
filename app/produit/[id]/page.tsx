@@ -678,6 +678,9 @@ export default function ProductDetailPage() {
                       playsInline
                       className="pdp-main-img"
                       style={{
+                        objectFit: 'contain',
+                        maxWidth: '100%',
+                        maxHeight: '100%',
                         transform: `scale(${zoomLevel}) translate(${panOffset.x / zoomLevel}px, ${panOffset.y / zoomLevel}px)`,
                         transformOrigin: 'center center',
                         transition: isDragging ? 'none' : 'transform 0.25s ease-out',
@@ -689,6 +692,9 @@ export default function ProductDetailPage() {
                       alt={`${product.name} - vue ${activeImageIndex + 1}`}
                       className="pdp-main-img pointer-events-none"
                       style={{
+                        objectFit: 'contain',
+                        maxWidth: '100%',
+                        maxHeight: '100%',
                         transform: `scale(${zoomLevel}) translate(${panOffset.x / zoomLevel}px, ${panOffset.y / zoomLevel}px)`,
                         transformOrigin: 'center center',
                         transition: isDragging ? 'none' : 'transform 0.25s ease-out',
