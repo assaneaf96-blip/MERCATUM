@@ -273,33 +273,33 @@ export default function BoutiquePage() {
         onOpenCart={() => showToast(`Su cesta contiene ${cartCount} artículo(s)`)}
       />
 
-      {/* Boutique Header Banner - Look sombre et épuré "NUESTRAS TIENDAS" (identique à la capture) */}
-      <section className="bg-gradient-to-b from-[#111412] via-[#1a201c] to-[#121613] text-[#f4f0e9] pt-10 pb-9 px-4 text-center border-b border-[#2d362f] shadow-inner relative overflow-hidden">
-        <div className="max-w-3xl mx-auto space-y-3 relative z-10">
+      {/* Boutique Header Banner - Couleur initiale raffinée (#ede7dc) */}
+      <section className="bg-[#ede7dc] text-[#1c221d] pt-8 pb-7 px-4 text-center border-b border-[#d8d0c2] shadow-sm relative overflow-hidden">
+        <div className="max-w-3xl mx-auto space-y-2.5 relative z-10">
           {/* Breadcrumb style Inicio / NUESTRAS TIENDAS */}
-          <nav className="text-xs uppercase tracking-[0.2em] text-[#9eb092] flex items-center justify-center gap-2 mb-2 font-medium">
-            <Link href="/" className="hover:text-white transition underline-offset-4 hover:underline">
+          <nav className="text-xs uppercase tracking-[0.2em] text-[#636c5f] flex items-center justify-center gap-2 mb-1.5 font-medium">
+            <Link href="/" className="hover:text-[#1c221d] transition underline-offset-4 hover:underline">
               Inicio
             </Link>
             <span className="opacity-40">/</span>
-            <span className="text-white font-bold">NUESTRAS TIENDAS</span>
+            <span className="text-[#1c221d] font-bold">NUESTRAS TIENDAS</span>
           </nav>
 
           {/* Eyebrow demandé */}
-          <div className="inline-block px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] tracking-[0.22em] uppercase text-[#d4c3a3]">
+          <div className="inline-block px-3.5 py-1 rounded-full bg-black/5 border border-black/10 text-[11px] tracking-[0.22em] uppercase text-[#444a42] font-semibold">
             {settings.siteName || 'MERCATUM'} · El Arte de Vivir
           </div>
 
           {/* Grand Titre */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-wider text-white font-sans">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-wider text-[#1c221d] font-sans">
             NUESTRAS TIENDAS
           </h1>
-          <p className="text-base sm:text-lg font-serif italic text-[#dbe5d4] -mt-1">
+          <p className="text-base sm:text-lg font-serif italic text-[#4f574d] -mt-1">
             La Tienda
           </p>
 
           {/* Sous-titre officiel maintenu */}
-          <p className="text-xs sm:text-sm text-stone-300 max-w-xl mx-auto leading-relaxed pt-1">
+          <p className="text-xs sm:text-sm text-[#5a6258] max-w-xl mx-auto leading-relaxed pt-0.5">
             Mobiliario de autor, electrodomésticos de excepción, estufas y rituales de bienestar para su hogar.
           </p>
         </div>
