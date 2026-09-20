@@ -600,22 +600,22 @@ export default function ProductDetailPage() {
       {/* Breadcrumbs */}
       <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">
         <div className="pdp-breadcrumb-container">
-          {/* Version mobile compacte et raffinée : retour propre + badge de catégorie */}
-          <div className="flex md:hidden items-center justify-between w-full gap-2">
-            <Link href="/boutique" className="inline-flex items-center gap-1 text-stone-700 hover:text-stone-900 font-semibold text-xs transition flex-shrink-0">
-              <span className="text-sm">‹</span>
+          {/* Version mobile compacte et raffinée */}
+          <div className="pdp-breadcrumb-mobile">
+            <Link href="/boutique" className="pdp-back-link">
+              <span className="pdp-back-arrow">‹</span>
               <span>Volver a La Tienda</span>
             </Link>
             <Link
               href={`/boutique?cat=${encodeURIComponent(product.category)}`}
-              className="text-[10px] font-bold uppercase tracking-wider text-stone-800 bg-stone-200/70 hover:bg-stone-300/80 px-2.5 py-1 rounded-full truncate max-w-[170px] transition"
+              className="pdp-category-tag"
             >
               {product.category}
             </Link>
           </div>
 
           {/* Version Desktop : chemin complet */}
-          <div className="hidden md:flex items-center gap-2 flex-wrap text-xs">
+          <div className="pdp-breadcrumb-desktop">
             <Link href="/">Inicio</Link>
             <span className="pdp-sep">/</span>
             <Link href="/boutique">La Tienda</Link>
@@ -624,7 +624,7 @@ export default function ProductDetailPage() {
               {product.category}
             </Link>
             <span className="pdp-sep">/</span>
-            <span className="pdp-current-item truncate max-w-[420px] inline-block align-bottom">{product.name}</span>
+            <span className="pdp-current-item">{product.name}</span>
           </div>
         </div>
       </nav>

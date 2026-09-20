@@ -118,64 +118,26 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
   ]
 
   const marqueeItems = useMemo(() => {
-    const featured = productsList.slice(0, 8)
-    const items: Array<
-      | { type: 'promo'; icon: string; badge: string; text: string; highlight?: string; link: string }
-      | { type: 'product'; id: string; name: string; price: string; image?: string }
-    > = []
-
-    const maxLen = Math.max(PROMO_ARGUMENTS.length, featured.length)
-    for (let i = 0; i < maxLen; i++) {
-      if (PROMO_ARGUMENTS[i]) {
-        items.push({ type: 'promo', ...PROMO_ARGUMENTS[i] })
-      }
-      if (featured[i]) {
-        items.push({
-          type: 'product',
-          id: featured[i].id,
-          name: featured[i].name,
-          price: featured[i].price,
-          image: featured[i].image,
-        })
-      }
-    }
-    // Duplicate the array for a smooth infinite continuous marquee loop
-    return [...items, ...items]
-  }, [productsList])
+    // Répéter les arguments promotionnels pour un défilement infini et continu
+    return [...PROMO_ARGUMENTS, ...PROMO_ARGUMENTS]
+  }, [])
 
   return (
     <>
-      <div className="announcement-marquee-wrapper" aria-label="Promociones y catálogo en oferta">
+      <div className="announcement-marquee-wrapper" aria-label="Promociones y garantías">
         <div className="announcement-marquee-track">
           {marqueeItems.map((item, idx) => (
-            <div key={`${item.type}-${idx}`} className="announcement-item-wrapper">
-              {item.type === 'promo' ? (
-                <Link href={item.link} className="announcement-promo-chip" title="Ver ofertas en tienda">
-                  <span className="announcement-promo-badge">
-                    <span aria-hidden="true">{item.icon}</span>
-                    <span>{item.badge}</span>
-                  </span>
-                  <span className="announcement-promo-text">{item.text}</span>
-                  {item.highlight && (
-                    <span className="announcement-promo-highlight">{item.highlight}</span>
-                  )}
-                </Link>
-              ) : (
-                <Link href={`/produit/${item.id}`} className="announcement-product-chip" title={item.name}>
-                  <span className="announcement-chip-badge">OFERTA</span>
-                  {item.image && (
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="announcement-chip-img"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  )}
-                  <span className="announcement-chip-name">{item.name}</span>
-                  <span className="announcement-chip-price">{item.price}</span>
-                </Link>
-              )}
+            <div key={`promo-${idx}`} className="announcement-item-wrapper">
+              <Link href={item.link} className="announcement-promo-chip" title="Ver ofertas en tienda">
+                <span className="announcement-promo-badge">
+                  <span aria-hidden="true">{item.icon}</span>
+                  <span>{item.badge}</span>
+                </span>
+                <span className="announcement-promo-text">{item.text}</span>
+                {item.highlight && (
+                  <span className="announcement-promo-highlight">{item.highlight}</span>
+                )}
+              </Link>
               <span className="announcement-separator">✦</span>
             </div>
           ))}
