@@ -630,11 +630,11 @@ export default function ProductDetailPage() {
       </nav>
 
       {/* Main Product Showcase Section */}
-      <section className="pdp-main-section">
-        <div className="pdp-container">
+      <section className="pdp-main-section w-full max-w-full overflow-hidden">
+        <div className="pdp-container w-full max-w-full min-w-0">
           
           {/* Left Column: Visual Showcase Gallery */}
-          <div className="pdp-gallery-col">
+          <div className="pdp-gallery-col w-full max-w-full min-w-0">
             <div
               className={`pdp-main-visual-wrapper group relative ${zoomLevel > 1 ? 'zoomed' : ''}`}
               onMouseLeave={() => {
@@ -809,7 +809,7 @@ export default function ProductDetailPage() {
 
             {/* Thumbnails Row */}
             {galleryImages.length > 1 && (
-              <div className="pdp-thumbnails-strip">
+              <div className="pdp-thumbnails-strip w-full max-w-full min-w-0">
                 {galleryImages.map((imgUrl, idx) => {
                   const isThumbVideo = isVideoUrl(imgUrl)
                   return (

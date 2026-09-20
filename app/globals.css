@@ -1165,9 +1165,11 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 50px;
   align-items: start;
+  width: 100%;
+  min-width: 0;
 }
 
 /* Gallery Column */
@@ -1177,6 +1179,9 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .pdp-main-visual-wrapper {
@@ -1227,8 +1232,13 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   display: flex;
   gap: 12px;
   overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding-bottom: 6px;
   scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 
 .pdp-thumb-btn {
@@ -1546,11 +1556,17 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 
 @media (max-width: 900px) {
   .pdp-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 32px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
   .pdp-gallery-col {
     position: static;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 }
 
@@ -1599,23 +1615,47 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   .pdp-gallery-col {
     position: relative !important;
     top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
   .pdp-main-section {
     padding: 20px 16px 45px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: clip;
   }
   .pdp-main-visual-wrapper {
     aspect-ratio: 1 / 1;
     border-radius: 6px;
     background: #ffffff;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
   }
   .pdp-main-img {
     object-fit: contain !important;
     padding: 10px;
     box-sizing: border-box;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+  .pdp-thumbnails-strip {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
   }
   .pdp-thumb-btn {
     width: 64px;
     height: 64px;
+    flex-shrink: 0;
   }
   .pdp-trust-badges {
     padding: 16px 14px;
