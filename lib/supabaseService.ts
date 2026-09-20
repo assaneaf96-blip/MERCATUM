@@ -52,34 +52,18 @@ export function subscribeToProductsChanges(onUpdate: (payload?: any) => void): (
   }
 }
 
-export async function fetchProductsFromDb(forceRefresh = false): Promise<Product[] | null> {
-  // 1. Si pas de rechargement forcé, vérifier d'abord le cache client instantané (répond en < 10ms)
-  if (!forceRefresh && typeof window !== 'undefined') {
-    if (clientCachedProducts && clientCachedProducts.length > 0) {
-      return clientCachedProducts
-    }
-    const cached = await getClientCachedProducts()
-    if (cached && cached.length > 0) {
-      clientCachedProducts = cached
-      // Lancer une synchronisation silencieuse en tâche de fond quand le navigateur est inactif
-      if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(() => {
-          fetchProductsFromDb(true).catch(() => {})
-        })
-      } else {
-        setTimeout(() => {
-          fetchProductsFromDb(true).catch(() => {})
-        }, 2500)
-      }
-      return cached
-    }
-  }
-
-  // 2. Si exécuté côté navigateur client, passer par l'API serveur interne optimisée
+export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[] | null> {
+  // 1. Si exécuté côté navigateur client, interroger l'API avec contournement immédiat de cache
   if (typeof window !== 'undefined') {
     try {
-      const url = forceRefresh ? `/api/products?t=${Date.now()}` : '/api/products'
-      const res = await fetch(url)
+      const url = `/api/products?t=${Date.now()}`
+      const res = await fetch(url, {
+        cache: 'no-store',
+        headers: {
+          'Pragma': 'no-cache',
+          'Cache-Control': 'no-cache',
+        },
+      })
       if (res.ok) {
         const json = await res.json()
         if (json.success && Array.isArray(json.products)) {
@@ -90,6 +74,15 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
       }
     } catch (err) {
       console.warn('API proxy /api/products indisponible, bascule directe Supabase:', err)
+    }
+
+    // Si l'API échoue temporairement, repli sur le cache mémoire ou IndexedDB
+    if (clientCachedProducts && clientCachedProducts.length > 0) {
+      return clientCachedProducts
+    }
+    const cached = await getClientCachedProducts().catch(() => null)
+    if (cached && cached.length > 0) {
+      return cached
     }
   }
 

@@ -17,19 +17,13 @@ const NO_CACHE_HEADERS = {
   'Vercel-CDN-Cache-Control': 'no-store',
 }
 
-const FAST_CACHE_HEADERS = {
-  'Cache-Control': 'public, max-age=15, stale-while-revalidate=120',
-  'CDN-Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
-  'Vercel-CDN-Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
-}
-
 interface CacheEntry {
   products: any[]
   timestamp: number
 }
 
 let serverCache: CacheEntry | null = null
-const CACHE_TTL_MS = 120000 // 2 minutes de cache mémoire serveur ultra-rapide
+const CACHE_TTL_MS = 2000 // Cache mémoire très court (2 secondes) pour absorber les rafales sans bloquer les ajouts instantanés
 
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
@@ -129,12 +123,14 @@ export async function GET(request: NextRequest) {
       )
     }
 
+    const isForced = searchParams.has('t') || searchParams.has('refresh')
+
     // 2. Pour la liste complète :
-    // Si le cache mémoire serveur est actif et récent, répondre INSTANTANÉMENT (< 1ms)
-    if (serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
+    // Si le cache mémoire serveur est actif, récent (< 2s) et non forcé
+    if (!isForced && serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
       return NextResponse.json(
         { success: true, products: serverCache.products, cached: true },
-        { headers: FAST_CACHE_HEADERS }
+        { headers: NO_CACHE_HEADERS }
       )
     }
 
@@ -159,7 +155,7 @@ export async function GET(request: NextRequest) {
     if (allData.length === 0 && serverCache && serverCache.products.length > 0) {
       return NextResponse.json(
         { success: true, products: serverCache.products, stale: true },
-        { headers: FAST_CACHE_HEADERS }
+        { headers: NO_CACHE_HEADERS }
       )
     }
 
@@ -175,7 +171,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { success: true, products },
-      { headers: FAST_CACHE_HEADERS }
+      { headers: NO_CACHE_HEADERS }
     )
   } catch (err: any) {
     console.error('Erreur API /api/products GET:', err)
@@ -244,19 +240,8 @@ export async function POST(request: NextRequest) {
 
     const savedFormatted = data && data.length > 0 ? formatProduct(data[0]) : formatProduct(payload)
 
-    // Mettre à jour immédiatement le cache serveur si le catalogue complet y réside,
-    // ou invalider pour forcer un rechargement complet propre au prochain appel
-    if (serverCache && Array.isArray(serverCache.products) && serverCache.products.length > 10) {
-      const idx = serverCache.products.findIndex((p) => p.id === savedFormatted.id)
-      if (idx >= 0) {
-        serverCache.products[idx] = savedFormatted
-      } else {
-        serverCache.products.unshift(savedFormatted)
-      }
-      serverCache.timestamp = Date.now()
-    } else {
-      serverCache = null
-    }
+    // Invalider immédiatement le cache mémoire serveur pour que le nouvel ajout soit visible à la seconde près
+    serverCache = null
 
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {

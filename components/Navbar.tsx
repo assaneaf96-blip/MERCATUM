@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react'
 import { getSiteSettings, getProducts, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { PRODUCTS, Product } from '@/lib/products'
-import { fetchProductsFromDb, fetchSettingsFromDb } from '@/lib/supabaseService'
+import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 
 interface NavbarProps {
   cartCount: number
@@ -33,7 +33,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
       if (curLocal && curLocal.length > 0) {
         setProductsList(curLocal)
       }
-      fetchProductsFromDb()
+      fetchProductsFromDb(true)
         .then((db) => {
           if (db && db.length > 0) {
             const merged = new Map<string, Product>()
@@ -46,10 +46,12 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     }
 
     loadProducts()
+    const unsubscribe = subscribeToProductsChanges(loadProducts)
     window.addEventListener('mercatum:products_updated', loadProducts)
     window.addEventListener('storage', loadProducts)
 
     return () => {
+      unsubscribe()
       window.removeEventListener('mercatum:products_updated', loadProducts)
       window.removeEventListener('storage', loadProducts)
     }

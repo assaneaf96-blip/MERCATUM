@@ -481,7 +481,7 @@ export default function HomePage() {
 
     // 2. Fonction de chargement direct et immédiat depuis le cache / Supabase
     const loadProducts = () => {
-      fetchProductsFromDb(false).then((dbProducts) => {
+      fetchProductsFromDb(true).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()

@@ -34,6 +34,7 @@ import {
   fetchNouveautesFromDb,
   saveNouveautesToDb,
   subscribeToProductsChanges,
+  invalidateClientProductsCache,
 } from '@/lib/supabaseService'
 import {
   type Product,
@@ -872,6 +873,10 @@ export default function AdminPage() {
     }
 
     setIsSavingProduct(false)
+    invalidateClientProductsCache()
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('mercatum:products_updated', { detail: productToSave }))
+    }
     reloadData()
     setShowForm(false)
 
@@ -890,6 +895,10 @@ export default function AdminPage() {
 
   const handleDeleteProduct = async (id: string) => {
     deleteProduct(id)
+    invalidateClientProductsCache()
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('mercatum:products_updated', { detail: { id, deleted: true } }))
+    }
     try {
       const ok = await deleteProductFromDb(id)
       if (ok) {
