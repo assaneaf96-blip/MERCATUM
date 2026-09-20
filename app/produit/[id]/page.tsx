@@ -22,6 +22,7 @@ import {
 } from '@/lib/products'
 import { getProducts, saveProduct, saveProductsBulk } from '@/lib/store'
 import { fetchProductByIdFromDb, fetchProductsFromDb } from '@/lib/supabaseService'
+import { getClientCachedProducts } from '@/lib/clientCache'
 
 function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   const cat = (catRaw || '').toLowerCase()
@@ -197,6 +198,11 @@ export default function ProductDetailPage() {
   useEffect(() => {
     if (!productId) return
 
+    // Forcer le défilement tout en haut de l'écran immédiatement (0, 0)
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    }
+
     // 1. Chercher dans les produits locaux ou le catalogue up-to-date
     const localList = getProducts()
     setAllProducts(localList)
@@ -207,6 +213,17 @@ export default function ProductDetailPage() {
       setActiveImageIndex(0)
       setLoading(false)
     } else {
+      // Vérifier le cache IndexedDB instantané avant d'afficher un écran de chargement
+      getClientCachedProducts().then((cached) => {
+        if (cached && cached.length > 0) {
+          const foundCached = cached.find((p) => p.id === productId)
+          if (foundCached) {
+            setProduct(foundCached)
+            setActiveImageIndex(0)
+            setLoading(false)
+          }
+        }
+      }).catch(() => {})
       setProduct(null)
       setLoading(true)
     }
@@ -512,12 +529,35 @@ export default function ProductDetailPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-8">
-        <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-          <p style={{ fontFamily: 'Georgia, serif', fontSize: '20px', letterSpacing: '0.05em' }}>
-            Cargando su selección MERCATUM...
-          </p>
-        </div>
+      <main className="min-h-screen bg-background text-foreground flex flex-col">
+        <Navbar cartCount={cartCount} />
+        <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">
+          <div className="pdp-breadcrumb-container flex items-center justify-between">
+            <Link href="/boutique" className="text-xs text-stone-600 font-semibold hover:text-stone-900 transition flex items-center gap-1">
+              <span>‹</span>
+              <span>Volver a La Tienda</span>
+            </Link>
+            <span className="text-[10.5px] uppercase font-bold tracking-widest text-stone-400 animate-pulse">
+              Cargando artículo...
+            </span>
+          </div>
+        </nav>
+        <section className="pdp-main-section flex-1 py-8 px-4 max-w-7xl mx-auto w-full">
+          <div className="pdp-container">
+            <div className="pdp-gallery-col">
+              <div className="pdp-main-visual-wrapper bg-[#fffcf7] animate-pulse rounded-xl flex items-center justify-center border border-stone-200 aspect-square">
+                <span className="text-stone-400 font-serif italic text-sm">MERCATUM · El Arte de Vivir</span>
+              </div>
+            </div>
+            <div className="pdp-info-col space-y-4 pt-4">
+              <div className="h-4 w-32 bg-stone-200/80 rounded animate-pulse" />
+              <div className="h-8 w-3/4 bg-stone-200/80 rounded animate-pulse" />
+              <div className="h-6 w-28 bg-stone-200/80 rounded animate-pulse" />
+              <div className="h-28 w-full bg-stone-200/60 rounded-xl animate-pulse mt-6" />
+            </div>
+          </div>
+        </section>
+        <Footer />
       </main>
     )
   }
@@ -560,15 +600,32 @@ export default function ProductDetailPage() {
       {/* Breadcrumbs */}
       <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">
         <div className="pdp-breadcrumb-container">
-          <Link href="/">Inicio</Link>
-          <span className="pdp-sep">/</span>
-          <Link href="/boutique">La Tienda</Link>
-          <span className="pdp-sep">/</span>
-          <Link href={`/boutique?cat=${encodeURIComponent(product.category)}`} className="pdp-cat-link">
-            {product.category}
-          </Link>
-          <span className="pdp-sep">/</span>
-          <span className="pdp-current-item">{product.name}</span>
+          {/* Version mobile compacte et raffinée : retour propre + badge de catégorie */}
+          <div className="flex md:hidden items-center justify-between w-full gap-2">
+            <Link href="/boutique" className="inline-flex items-center gap-1 text-stone-700 hover:text-stone-900 font-semibold text-xs transition flex-shrink-0">
+              <span className="text-sm">‹</span>
+              <span>Volver a La Tienda</span>
+            </Link>
+            <Link
+              href={`/boutique?cat=${encodeURIComponent(product.category)}`}
+              className="text-[10px] font-bold uppercase tracking-wider text-stone-800 bg-stone-200/70 hover:bg-stone-300/80 px-2.5 py-1 rounded-full truncate max-w-[170px] transition"
+            >
+              {product.category}
+            </Link>
+          </div>
+
+          {/* Version Desktop : chemin complet */}
+          <div className="hidden md:flex items-center gap-2 flex-wrap text-xs">
+            <Link href="/">Inicio</Link>
+            <span className="pdp-sep">/</span>
+            <Link href="/boutique">La Tienda</Link>
+            <span className="pdp-sep">/</span>
+            <Link href={`/boutique?cat=${encodeURIComponent(product.category)}`} className="pdp-cat-link">
+              {product.category}
+            </Link>
+            <span className="pdp-sep">/</span>
+            <span className="pdp-current-item truncate max-w-[420px] inline-block align-bottom">{product.name}</span>
+          </div>
         </div>
       </nav>
 

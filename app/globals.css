@@ -1537,7 +1537,11 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 
 @media (max-width: 768px) {
   .pdp-breadcrumb-nav {
-    padding: 12px 16px;
+    padding: 10px 16px;
+  }
+  .pdp-gallery-col {
+    position: relative !important;
+    top: auto !important;
   }
   .pdp-main-section {
     padding: 20px 16px 45px;
