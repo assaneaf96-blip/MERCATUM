@@ -59,16 +59,28 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
       { icon: '✨', title: 'Diseño Intemporal & Armonioso', desc: 'Líneas puras que realzan con naturalidad sus espacios de vida.' },
     ],
   },
-  'Mobilier & Décoration': {
-    eyebrow: 'El Santuario del Hogar · Diseño & Confort',
-    title: 'Mobiliario de Autor & Piezas de Vida',
-    subtitle: "El arte de crear un interior refinado y terrazas de confort soberano.",
-    badge: "Diseño de Arquitecto & Materiales Nobles",
-    description: "Cada pieza está concebida como un equilibrio perfecto entre pureza geométrica, ergonomía reconfortante y resistencia duradera.",
+  'Hogar & Ambiente': {
+    eyebrow: 'Arte de Vivir & Santuario Interior',
+    title: 'Ambiente, Decoración & Calidez del Hogar',
+    subtitle: 'Cree una atmósfera envolvente, acogedora y refinada en su hogar.',
+    badge: 'Atmósfera Serena & Materiales Naturales',
+    description: 'Fragancias del hogar, velas aromáticas y objetos seleccionados para aportar paz interior y convertir cada rincón de su casa en un oasis de tranquilidad.',
     arguments: [
-      { icon: '🛋️', title: 'Confort Soberano & Asiento Alta Densidad', desc: 'Cojines generosos y ergonomía estudiada para una relajación absoluta.' },
-      { icon: '🛡️', title: 'Materiales Nobles & Tratamiento Intemperie', desc: 'Estructuras reforzadas, tejidos repelentes al agua y acabados duraderos.' },
-      { icon: '✨', title: 'Diseño Intemporal & Armonioso', desc: 'Líneas puras que realzan con naturalidad sus espacios de vida.' },
+      { icon: '🕯️', title: 'Difusión Armoniosa & Equilibrada', desc: 'Aromas sutiles diseñados para despertar los sentidos sin saturar el espacio.' },
+      { icon: '🏡', title: 'Armonía Visual & Sensorial', desc: 'Piezas decorativas que aportan calidez, luz y serenidad.' },
+      { icon: '🍃', title: 'Bienestar Diario', desc: 'Un santuario pacífico donde renovar energías al final del día.' },
+    ],
+  },
+  'Cuidado & Rituales Corporales': {
+    eyebrow: 'Bienestar Holístico & Vitalidad',
+    title: 'Rituales Corporales & Spa Tecnológico',
+    subtitle: 'Cuide su cuerpo como el primer santuario que habita.',
+    badge: 'Tecnología Electro-Belleza & Botánica',
+    description: 'Entre fototerapia LED, potenciadores de colágeno y aceites suntuosos, brinde a su cuerpo el cuidado integral que merece para disipar tensiones y revitalizar los tejidos.',
+    arguments: [
+      { icon: '💡', title: 'Tecnologías de Vanguardia', desc: 'Microcorrientes y luminoterapia para tonificar y reafirmar la piel.' },
+      { icon: '🌿', title: 'Aceites Botánicos Nobles & Nutritivos', desc: 'Nutrición profunda, tacto aterciopelado y aroma relajante.' },
+      { icon: '🧘', title: 'Recuperación & Bienestar Profundo', desc: 'Un verdadero ritual diario para recuperar energía y serenidad.' },
     ],
   },
   'Aire Libre & Glamping': {
@@ -77,18 +89,6 @@ const CATEGORY_ARGUMENTS: Record<string, CategoryDetails> = {
     subtitle: 'Extienda el confort de su interior en el corazón del jardín y la naturaleza.',
     badge: 'Confort 4 Estaciones & Protección Total',
     description: 'Carpas safari bell tent, pérgolas impermeables y toldos retráctiles: nuestras soluciones de exterior le protegen del clima mientras crean un marco espectacular para sus momentos de descanso.',
-    arguments: [
-      { icon: '⛺', title: 'Tejidos Transpirables & 100% Impermeables', desc: 'Estanqueidad reforzada y costuras selladas preparadas para todas las estaciones.' },
-      { icon: '☀️', title: 'Aislamiento Térmico & Protección UV50+', desc: 'Sombra óptima y frescor preservado incluso bajo intensa exposición solar.' },
-      { icon: '🛠️', title: 'Estructuras Reforzadas & Estabilidad Total', desc: 'Armaduras de acero con tratamiento anticorrosión y anclajes seguros.' },
-    ],
-  },
-  'Plein Air & Évasion': {
-    eyebrow: 'Santuario Exterior · Vivir Bajo el Cielo',
-    title: "Glamping de Excepción, Pérgolas & Refugios Exteriores",
-    subtitle: 'Extienda el confort de su interior en el corazón del jardín y la naturaleza.',
-    badge: 'Confort 4 Estaciones & Protección Total',
-    description: 'Carpas safari bell tent, pérgolas impermeables y toldos retráctiles.',
     arguments: [
       { icon: '⛺', title: 'Tejidos Transpirables & 100% Impermeables', desc: 'Estanqueidad reforzada y costuras selladas preparadas para todas las estaciones.' },
       { icon: '☀️', title: 'Aislamiento Térmico & Protección UV50+', desc: 'Sombra óptima y frescor preservado incluso bajo intensa exposición solar.' },

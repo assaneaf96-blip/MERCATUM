@@ -3115,7 +3115,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "conjunto-de-jardin-de-aluminio-para-4-personas-moorea-goodhome",
     "name": "Conjunto de jardín de aluminio para 4 personas Moorea GoodHome",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Conjunto de jardín de aluminio para 4 personas Moorea GoodHome",
     "price": "205,00 €",
     "rawPrice": 205,
@@ -3172,7 +3172,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "conjunto-de-ratan-sintetico-4-personas-elos-goodhome",
     "name": "Conjunto de ratán sintético 4 personas Elos GoodHome",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Conjunto de ratán sintético 4 personas Elos GoodHome",
     "price": "299,99 €",
     "rawPrice": 299.99,
@@ -3224,7 +3224,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tectake-2-tumbonas-de-aluminio-y-polirratan-ajustables-y-mesa-auxiliar",
     "name": "Tectake 2 tumbonas de aluminio y polirratán ajustables y mesa auxiliar",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Tectake 2 tumbonas de aluminio y polirratán ajustables y mesa auxiliar",
     "price": "230,00 €",
     "rawPrice": 230,
@@ -3276,8 +3276,8 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tectake-conjunto-modular-ratan-acero-resistente-cojines-suaves-natural",
     "name": "Tectake conjunto modular ratán acero resistente cojines suaves, natural",
-    "category": "Jardin ",
-    "type": "Jardin ",
+    "category": "Jardín & Exterior",
+    "type": "Jardín & Exterior",
     "price": "305,00 €",
     "rawPrice": 305,
     "description": "Conjunto jardin con polyrattan UV-resistente - conjunto de ratán Catania\n¿Quieres disfrutar de la comodidad de tu sofá mientras sientes el sol y la brisa fresca? El conjunto de ratán Catania te permite crear un segundo salón al aire libre en tu terraza. Este conjunto de jardín, compuesto por muebles de ratán de alta calidad, es ideal para reuniones sociales o para relajarte con un buen libro.\nMuebles de jardín robustos y cómodos\nEl conjunto de ratán Catania destaca por su construcción robusta. El armazón de acero resistente garantiza estabilidad y durabilidad, mientras que el tejido de polyrattan UV-resistente asegura que tus muebles de jardín se mantengan en perfecto estado a pesar de la exposición al sol y la lluvia. Además, los cojines y almohadones son extremadamente cómodos, con un grosor de 9 cm en los asientos y 12 cm en los respaldos para ofrecerte el máximo confort.\nMueble ratan versátil y funcional\nUna de las grandes ventajas del conjunto de ratán Catania es su versatilidad. Compuesto por tres sofás independientes, puedes organizar los elementos según tus necesidades y el espacio disponible. Cada sofá viene con cojines separados, permitiendo diferentes configuraciones para que 5 o 6 personas puedan sentarse cómodamente a charlar o relajarse. Los cojines también son resistentes al agua y sus fundas, fáciles de lavar, se pueden quitar gracias a los prácticos cierres de cremallera.\nMesa de jardín con diseño atractivo\nEl conjunto incluye una mesa que no solo es funcional, sino también elegante. Con unas dimensiones de aproximadamente 129,5 x 64,5 x 67 cm, la mesa ofrece un amplio espacio para comida, bebidas o juegos de mesa. Su superficie de listones con apariencia de madera le da un toque sofisticado y moderno. Además, la mesa cuenta con una práctica repisa inferior para guardar revistas, libros u otros accesorios.\nDetalles pensados para el exterior\nLos pies de la mesa están diseñados para proteger superficies más delicadas y son ajustables en altura (unos 1,2 cm), lo que permite nivelar el mueble en terrenos irregulares. Este detalle hace que el conjunto de ratán Catania sea perfecto para cualquier tipo de jardín o terraza, proporcionando tanto estilo como funcionalidad.\nEn resumen, el conjunto de ratán Catania es la opción ideal para quienes buscan muebles de jardín que combinen comodidad, durabilidad y estilo. Transforma tu espacio exterior en un oasis de relajación y disfruta del aire libre con elegancia y confort.\nDetalles técnicos:\nSofá/Sofá esquinero\nDimensiones totales de cada parte del sofá (ancho x fondo x alto): aprox. 120 x 65 x 73 cm\nDimensiones de los cojines del asiento (ancho x fondo x alto): aprox. 112 x 56 x 9 cm\nDimensiones de los cojines del respaldo (ancho x fondo x alto): aprox. 56 x 12 x 49 cm\nAltura del asiento (con cojín): aprox. 41 cm\nAltura del respaldo: aprox. 40,5 cm\nAltura del reposabrazos sobre el suelo: aprox. 55 - 58,5 cm\nCapacidad de carga por cada sección del sofá: 200 kg\nPeso de cada sección sencilla del sofá (con cojín): aprox. 13,4 kg\nPeso de la sección de esquina del sofá (con cojín): aprox. 13,3 kg\nMaterial: acero con revestimiento en polvo, polietileno, 100 % poliéster, espuma\nMesa\nDimensiones totales (largo x ancho x alto): aprox. 129,5 x 64,5 x 67 cm\nDimensiones de las lamas (largo x ancho x alto): aprox. 124,5 x 9,5 x 1,5 cm\nEstante inferior (largo x ancho): aprox. 92,5 x 26 cm\nAjuste de los pies de plástico: aprox. 1,2 cm\nCapacidad de carga: 45 kg\nPeso: aprox. 17,2 kg\nMaterial: acero con revestimiento en polvo, polietileno\nComponentes del envío:\n2 sofás sencillos\n1 sofá esquinero\n3 cojines de asiento\n7 cojines de respaldo\n1 mesa\nMaterial de montaje\nManual de montaje",
@@ -3402,7 +3402,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "mesa-de-comedor-convertible-electrica-con-bateria-extensible-hasta-80-x-170cm-color-blanco-poro-patas-metal-grafito-muebles-celso",
     "name": "Mesa de comedor convertible eléctrica con batería. Extensible hasta 80 x 170cm. Color BLANCO PORO, patas metal grafito MUEBLES CELSO",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Mesa de comedor convertible eléctrica con batería. Extensible hasta 80 x 170cm. Color BLANCO PORO, patas metal grafito MUEBLES CELSO",
     "price": "507,00 €",
     "rawPrice": 507,
@@ -3459,8 +3459,8 @@ export const PRODUCTS: Product[] = [
   {
     "id": "mesa-de-comedor-convertible-electrica-con-bateria-extensible-hasta-80-x-170cm-color-roble-amazonas-patas-grafito",
     "name": "Mesa de comedor convertible eléctrica con batería. Extensible hasta 80 x 170cm. Color roble amazonas, patas grafito",
-    "category": "Mobilier & Décoration",
-    "type": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
+    "type": "Mobiliario & Decoración",
     "price": "455,00 €",
     "rawPrice": 455,
     "description": "Práctica mesa de centro convertible en mesa de comedor, elevable y extensible. Eléctrica y con batería incorporada. \nAltura ajustable desde 46cm hasta 80cm. \nMedidas cerrada: 80 x 120\nMedidas abierta: 80 x 170\nAcabado en tablero melamínico de alta calidad en color roble amazonas. También disponible en blanco (https://www.miravia.es/p/i1370191563196000.html?spm=a2a4n.apps_product_list.tablerow_table_online_product_4.d_pdp_miravia.36d24edfURcBod\n. Patas metálica color gratifo.\nPRODUCTO FABRICADO EN ESPAÑA!!! \ndeal para espacios reducidos donde solo puede haber una mesa. Incluye ruedas para desplazamiento longitudinal.\nDisponemos de muebles de TV, vitrinas y aparador a juego!!!\nAquí puedes ver como se eleva de forma automática la mesa: https://youtube.com/shorts/7kJsovsMO3Y \nIMPORTANTE: Este artículo se envía paletizado para evitar daños durante el transporte por lo que la entrega es a pie de calle",
@@ -4570,7 +4570,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cajonera-para-joyas-con-6-cajones-blanco-78x120x40cm",
     "name": "Cajonera para joyas con 6 cajones blanco 78x120x40cm",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Cajonera para joyas con 6 cajones blanco 78x120x40cm",
     "price": "210,00 €",
     "rawPrice": 210,
@@ -7103,7 +7103,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "vitrina-con-iluminacion-led-y-2-puertas-de-cristal-estantes-ajustables-negra",
     "name": "Vitrina con iluminación LED y 2 puertas de cristal - Estantes ajustables - Negra",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Vitrina con iluminación LED y 2 puertas de cristal - Estantes ajustables - Negra",
     "price": "245,00 €",
     "rawPrice": 245,
@@ -7170,7 +7170,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "nataniel",
     "name": "NATANIEL",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Vitrina 2 puertas y 4 estantes con luces LED - Negro y dorado - NATANIEL",
     "price": "229,00 €",
     "rawPrice": 229,
@@ -7207,7 +7207,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "marsoria",
     "name": "MARSORIA",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Vitrina con almacenamiento y LEDs - Natural y negro - MARSORIA",
     "price": "499,00 €",
     "rawPrice": 499,
@@ -7269,7 +7269,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "ovila",
     "name": "OVILA",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Vitrina de 2 puertas con LED en MDF y vidrio ahumado - Negro y Natural - OVILA",
     "price": "269,00 €",
     "rawPrice": 269,
@@ -7306,7 +7306,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sayera-2",
     "name": "SAYERA",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Vitrina 2 puertas con LEDs en MDF y vidrio ahumado - Alt. 166 cm - Natural claro y Negro - SAYERA",
     "price": "429,00 €",
     "rawPrice": 429,
@@ -7474,7 +7474,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "zalo",
     "name": "ZALO",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Sillón colgante de resina trenzada - Natural claro con cojín negro - ZALO de MYLIA",
     "price": "209,00 €",
     "rawPrice": 209,
@@ -7521,7 +7521,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cayambe",
     "name": "CAYAMBE",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Sillón colgante de 2 plazas de resina trenzada - Gris con cojines blancos - CAYAMBE",
     "price": "255,00 €",
     "rawPrice": 255,
@@ -7568,7 +7568,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "juego-de-comedor-de-jardin-plegable-5-piezas-bambu-con-cojines",
     "name": "Juego de comedor de jardín plegable 5 piezas bambú con cojines",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Juego de comedor de jardín plegable 5 piezas bambú con cojines",
     "price": "240,00 €",
     "rawPrice": 240,
@@ -7635,7 +7635,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "yoha",
     "name": "YOHA ",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Comedor de jardín de metal: mesa redonda extensible L.150/200 cm y 4 sillones apilables - Topo - YOHA de MYLIA",
     "price": "785,00 €",
     "rawPrice": 785,
@@ -7722,7 +7722,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tumbona-silla-de-playa-cama-de-jardin-mueble-de-exterior-para-patio-con-cojin-madera-maciza-de-acacia-02-0012360",
     "name": "Tumbona silla de playa cama de jardín mueble de exterior para patio con cojín madera maciza de acacia 02_0012360",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Tumbona silla de playa cama de jardín mueble de exterior para patio con cojín madera maciza de acacia 02_0012360",
     "price": "211,00 €",
     "rawPrice": 211,
@@ -7784,7 +7784,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tulum",
     "name": "TULUM",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Tumbona doble de teca con colchón - Natural claro y blanco - TULUM de MYLIA",
     "price": "780,00 €",
     "rawPrice": 780,
@@ -7831,7 +7831,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-ropero-blanco-210-x-217-2-x-65-cm",
     "name": "Armario Ropero, Blanco, 210 x 217,2 x 65 cm",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario Ropero, Blanco, 210 x 217,2 x 65 cm",
     "price": "958,00 €",
     "rawPrice": 958,
@@ -7883,7 +7883,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-de-2-puertas-correderas-con-espejo-205-cm-blanco-coleccion-bahia",
     "name": "Armario de 2 puertas correderas con espejo 205 cm - blanco - Colección BAHIA",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario de 2 puertas correderas con espejo 205 cm - blanco - Colección BAHIA",
     "price": "399,99 €",
     "rawPrice": 399.99,
@@ -7915,7 +7915,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-pequeno-1-puerta-2-cajones-june-blanco-y-madera",
     "name": "Armario pequeño 1 puerta 2 cajones June Blanco y Madera",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario pequeño 1 puerta 2 cajones June Blanco y Madera",
     "price": "301,00 €",
     "rawPrice": 301,
@@ -7947,7 +7947,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-ropero-blanco-105-x-217-2-x-65-cm",
     "name": "Armario Ropero, Blanco, 105 x 217,2 x 65 cm",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario Ropero, Blanco, 105 x 217,2 x 65 cm",
     "price": "799,99 €",
     "rawPrice": 799.99,
@@ -7999,7 +7999,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-ropero-blanco-255-x-217-2-x-65-cm",
     "name": "Armario Ropero, Blanco, 255 x 217,2 x 65 cm",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario Ropero, Blanco, 255 x 217,2 x 65 cm",
     "price": "1159,99 €",
     "rawPrice": 1159.99,
@@ -8051,7 +8051,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-olden-madera-maciza-de-pino-marron-76-5x53x172-cm",
     "name": "Armario OLDEN madera maciza de pino marrón 76,5x53x172 cm",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario OLDEN madera maciza de pino marrón 76,5x53x172 cm",
     "price": "259,00 €",
     "rawPrice": 259,
@@ -8108,7 +8108,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-en-madera-de-mango-folia",
     "name": "Armario en madera de mango Folia",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario en madera de mango Folia",
     "price": "869,00 €",
     "rawPrice": 869,
@@ -8145,7 +8145,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-en-madera-de-mango-remick",
     "name": "Armario en madera de mango Remick",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario en madera de mango Remick",
     "price": "501,00 €",
     "rawPrice": 501,
@@ -8187,7 +8187,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "armario-de-madera-de-mango-gavin",
     "name": "Armario de madera de mango Gavin",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Armario de madera de mango Gavin",
     "price": "615,00 €",
     "rawPrice": 615,
@@ -8229,7 +8229,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-esquinero-marron-piel-riso",
     "name": "Sofá esquinero - marrón piel - RISO",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá esquinero - marrón piel - RISO",
     "price": "3678,00 €",
     "rawPrice": 3678,
@@ -8266,7 +8266,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-esquinero-marron-terciopelo-etico",
     "name": "Sofá esquinero - marrón terciopelo - ETICO",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá esquinero - marrón terciopelo - ETICO",
     "price": "4505,00 €",
     "rawPrice": 4505,
@@ -8303,7 +8303,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "fusion-sofa",
     "name": "Fusion Sofá",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": " Fusion Sofá esquinero con asientos desmontables en tela suave antimanchas 260 cm Derecho Marrón",
     "price": "2059,00 €",
     "rawPrice": 2059,
@@ -8350,7 +8350,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "toledo",
     "name": "TOLEDO",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá rinconera reversible chesterfield TOLEDO de microfibra envejecida - Marrón",
     "price": "609,00 €",
     "rawPrice": 609,
@@ -8402,7 +8402,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-de-teca-de-2-plazas-bali",
     "name": "Sofá de teca de 2 plazas BALI",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Cojines de asiento y respaldo de polialgodón, relleno de espuma de poliuretano de 22 kg/m³.",
     "price": "287,00 €",
     "rawPrice": 287,
@@ -8434,7 +8434,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cortacesped-inalambrico-alpina-al-3020-li-30-cm-bateria-20v-4ah-recogedor-30l-ligero-y-compacto",
     "name": "Cortacésped inalámbrico Alpina AL 3020 Li 30 cm, batería 20V 4Ah, recogedor 30L, ligero y compacto",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Cortacésped inalámbrico Alpina AL 3020 Li 30 cm, batería 20V 4Ah, recogedor 30L, ligero y compacto",
     "price": "185,00 €",
     "rawPrice": 185,
@@ -8456,7 +8456,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cortacesped-robot-bosch-indego-s-500-cesped-perfecto-sin-esfuerzo",
     "name": "Cortacésped robot BOSCH Indego S+ 500 - Césped perfecto sin esfuerzo",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Cortacésped robot BOSCH Indego S+ 500 - Césped perfecto sin esfuerzo",
     "price": "599,99 €",
     "rawPrice": 599.99,
@@ -8498,7 +8498,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cortacesped-inalambrico-metabo-rm-36-18-ltx-bl-46-cm-motor-brushless-7-alturas-de-corte-bolsa-55-l-autotractor-18-v",
     "name": "Cortacésped inalámbrico Metabo RM 36-18 LTX BL 46 cm, motor brushless, 7 alturas de corte, bolsa 55 L, autotractor, 18 V",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Cortacésped inalámbrico Metabo RM 36-18 LTX BL 46 cm, motor brushless, 7 alturas de corte, bolsa 55 L, autotractor, 18 V",
     "price": "499,99 €",
     "rawPrice": 499.99,
@@ -8540,7 +8540,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "bosch-pack-18v-easymower-easygrasscut-bateria-cargador-set-de-mantenimiento-de-cesped",
     "name": "Bosch Pack 18V EasyMower + EasyGrassCut + Batería + Cargador - Set de Mantenimiento de Césped",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Bosch Pack 18V EasyMower + EasyGrassCut + Batería + Cargador - Set de Mantenimiento de Césped",
     "price": "375,00 €",
     "rawPrice": 375,
@@ -8592,7 +8592,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cortacesped-de-empuje-ryobi-18v-brushless-40-cm-con-bateria-5ah-recogida-y-mulching-manillar-plegable",
     "name": "Cortacésped de empuje RYOBI 18V Brushless Ø40 cm con batería 5Ah, recogida y mulching, manillar plegable",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Cortacésped de empuje RYOBI 18V Brushless Ø40 cm con batería 5Ah, recogida y mulching, manillar plegable",
     "price": "459,99 €",
     "rawPrice": 459.99,
@@ -8634,7 +8634,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cortacesped-inalambrico-fieldmann-20v-corte-de-43-cm-altura-ajustable-hasta-75-mm-sin-bateria-ni-cargador",
     "name": "Cortacésped inalámbrico Fieldmann 20V - Corte de 43 cm, altura ajustable hasta 75 mm, sin batería ni cargador",
-    "category": "Haute Cosmétique",
+    "category": "Alta Cosmética",
     "type": "Cortacésped inalámbrico Fieldmann 20V - Corte de 43 cm, altura ajustable hasta 75 mm, sin batería ni cargador",
     "price": "285,00 €",
     "rawPrice": 285,
@@ -8671,7 +8671,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "cortacesped-inalambrico-ryobi-18v-3-en-1-mulching-30-cm-con-bateria-de-litio-2ah-y-cargador",
     "name": "Cortacésped inalámbrico RYOBI 18V 3 en 1 Mulching 30 cm con batería de litio 2Ah y cargador",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Cortacésped inalámbrico RYOBI 18V 3 en 1 Mulching 30 cm con batería de litio 2Ah y cargador",
     "price": "205,00 €",
     "rawPrice": 205,
@@ -8723,7 +8723,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "gardena",
     "name": "GARDENA",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "GARDENA - Cortacésped helicoidal 400 Classic",
     "price": "201,00 €",
     "rawPrice": 201,
@@ -8765,7 +8765,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "grami",
     "name": "GRAMI",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Peinador aspirador eléctrico para césped artificial - GRAMI",
     "price": "155,00 €",
     "rawPrice": 155,
@@ -8812,7 +8812,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "parasol-lateral-de-jardin",
     "name": "Parasol Lateral de jardín ",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Parasol Lateral de jardín Alu \"Sun 4\" – Rectangular – 3 x 4 m – Gris + funda protectora",
     "price": "205,00 €",
     "rawPrice": 205,
@@ -8864,7 +8864,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "whiteheaven",
     "name": "WHITEHEAVEN",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Conjunto de jardín de resina trenzada natural oscuro: sofá, 2 sillones y mesa de centro - WHITEHEAVEN de MYLIA",
     "price": "1269,00 €",
     "rawPrice": 1269,
@@ -8961,7 +8961,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "caja-de-jardin",
     "name": "Caja de jardin ",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caja de almacenaje de jardín con bolsa teca maciza 150x50x55 cm",
     "price": "250,00 €",
     "rawPrice": 250,
@@ -9023,7 +9023,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "caseta-de-jardin",
     "name": "Caseta de jardín",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caseta de jardín de resina \"Texas\" - 5,23 m² - kit de anclaje incluido - Antracita",
     "price": "570,00 €",
     "rawPrice": 570,
@@ -9060,7 +9060,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "anteva",
     "name": "ANTEVA",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caseta de jardín de resina a un agua beige y gris 6,5 m² con suelo - grosor 22 mm - ANTEVA",
     "price": "980,99 €",
     "rawPrice": 980.99,
@@ -9112,7 +9112,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "nerio",
     "name": "NERIO",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caseta de jardín de resina gris antracita NERIO - 2,12m²",
     "price": "289,99 €",
     "rawPrice": 289.99,
@@ -9164,7 +9164,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "jardinera-elevada",
     "name": "Jardinera elevada ",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Jardinera elevada para plantas y flores 100 x 40 x 72 cm madera de teca reciclada y acero 02_0000897",
     "price": "205,00 €",
     "rawPrice": 205,
@@ -9216,7 +9216,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "jardinera",
     "name": "Jardinera",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Jardinera acero corten 578x50x69 cm",
     "price": "200,00 €",
     "rawPrice": 200,
@@ -9268,7 +9268,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tanque-de-agua-succebuy-para-barras-de-techo-de-30l",
     "name": "Tanque de Agua SucceBuy para Barras de Techo de 30L",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Tanque de Agua SucceBuy para Barras de Techo de 30L, Tanque Multi-Distribuidor de Aluminio con Antisalpicaduras, Ranura en T",
     "price": "225,00 €",
     "rawPrice": 225,
@@ -9335,7 +9335,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tanque-de-agua-de-techo-succebuy-de-17l",
     "name": "Tanque de Agua de Techo SucceBuy de 17L",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Tanque de Agua de Techo SucceBuy de 17L, Tanque Multi-Distribuidor de Aluminio para Exteriores con Paneles Antisalpicaduras y Ranura en T",
     "price": "185,00 €",
     "rawPrice": 185,
@@ -9402,7 +9402,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "lery",
     "name": "LERY",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caseta de jardín de acero galvanizado gris LERY - 10,5m²",
     "price": "359,00 €",
     "rawPrice": 359,
@@ -9454,7 +9454,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "nebula",
     "name": "NEBULA",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Estudio de jardín de madera composite de 26 m² - Grosor 28 mm - Gris antracita - NEBULA",
     "price": "3870,00 €",
     "rawPrice": 3870,
@@ -9521,7 +9521,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "arboria",
     "name": "ARBORIA",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Estudio de jardín de madera 24,4 m² - Grosor 40 mm - ARBORIA",
     "price": "3550,00 €",
     "rawPrice": 3550,
@@ -9578,7 +9578,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "canopia",
     "name": "CANOPIA",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Estudio de jardín de madera 15,3 m² - Grosor 28 mm - CANOPIA",
     "price": "2290,00 €",
     "rawPrice": 2290,
@@ -9630,7 +9630,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sylvana",
     "name": "SYLVANA",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Estudio de jardín de madera 14,74 m² - Grosor 45 mm - SYLVANA",
     "price": "4005,00 €",
     "rawPrice": 4005,
@@ -9692,7 +9692,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "hazelton",
     "name": "HAZELTON",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caseta de jardín de madera de composite 28 mm - paredes reversibles - gris antracita o natural oscuro - 17,25 m² - HAZELTON",
     "price": "2999,99 €",
     "rawPrice": 2999.99,
@@ -9749,7 +9749,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "coralio",
     "name": "CORALIO",
-    "category": "Jardin ",
+    "category": "Jardín & Exterior",
     "type": "Caseta de jardín de madera tratada en autoclave y techo plano - 13 m² - espesor de 28 mm - CORALIO",
     "price": "1370,00 €",
     "rawPrice": 1370,
@@ -12416,7 +12416,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "recibidor-de-madera-negro",
     "name": "Recibidor de madera negro",
-    "category": "Maison & Atmosphère",
+    "category": "Hogar & Ambiente",
     "type": "Consola de entrada de diseño – Mesa auxiliar minimalista",
     "price": "255,00 €",
     "rawPrice": 255,
@@ -12458,7 +12458,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "recibidor-de-madera-y-metal",
     "name": "Recibidor de madera y métal ",
-    "category": "Maison & Atmosphère",
+    "category": "Hogar & Ambiente",
     "type": "Recibidor de madera y metal acabado envejecido negro",
     "price": "307,00 €",
     "rawPrice": 307,
@@ -12500,7 +12500,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "lesona",
     "name": "LESONA",
-    "category": "Maison & Atmosphère",
+    "category": "Hogar & Ambiente",
     "type": "Consola de MDF - Burdeos lacado - LESONA",
     "price": "209,00 €",
     "rawPrice": 209,
@@ -12546,7 +12546,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "un-sofa-minimalista-retro-de-petalos",
     "name": "Un sofá minimalista retro de pétalos ",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Un sofá minimalista retro de pétalos para el hogar, sala de estar, sofá esquinero de tela mate simple",
     "price": "869,00 €",
     "rawPrice": 869,
@@ -12588,7 +12588,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "lampara-de-pared-geometrica-led",
     "name": "Lámpara de pared geométrica Led",
-    "category": "Maison & Atmosphère",
+    "category": "Hogar & Ambiente",
     "type": "Lámpara de pared geométrica Led, candelabro montado cuadrado de diseño italiano para sala de estar, restaurante, decoración de pared de fondo, luz de camino de pasillo",
     "price": "170,00 €",
     "rawPrice": 170,
@@ -12610,7 +12610,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "luz-de-pared-moderna",
     "name": "Luz de pared Moderna ",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Luz de pared moderna, nuevo estilo chino, decoración LED, pintura, Mural, lámpara para sala de estar, estudio, dormitorio principal, sofá, fondo, hogar",
     "price": "185,00 €",
     "rawPrice": 185,
@@ -12657,7 +12657,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-modelo-temps",
     "name": "Sofa Modelo Temps",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Medidas: 321 cm largo x 215 cm ancho x 92 alto Sofá tres pl",
     "price": "2205,00 €",
     "rawPrice": 2205,
@@ -12704,7 +12704,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "guyii-sofa-modular",
     "name": "Guyii Sofá modular",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Guyii Sofá modular beige oversize moderno 2/3/4/5 plazas con cojines diseño ergonómico cómodo agradable para salón y apartamentos materiales de alta calidad aspecto elegante",
     "price": "717,00 €",
     "rawPrice": 717,
@@ -12786,7 +12786,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "silla-de-acampada-plegable",
     "name": "Silla de acampada plegable",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Silla de acampada plegable para adultos, set de 4, hasta 200 kg de carga, ligera y portátil, Con bolsa enfriadora, soporte para bebidas y bolsa lateral, perfecta para acampar, pescar, jardín, Playa y balcón",
     "price": "150,00 €",
     "rawPrice": 150,
@@ -12828,7 +12828,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sperone",
     "name": "SPERONE",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Gran sofá rinconera panorámico de pana verde SPERONE",
     "price": "1540,00 €",
     "rawPrice": 1540,
@@ -12880,7 +12880,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "jutini",
     "name": "JUTINI",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá rinconera modular XXL en tela bouclé blanco roto - JUTINI",
     "price": "1200,00 €",
     "rawPrice": 1200,
@@ -12937,7 +12937,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-relax-escape-electrico-modelo-napoli",
     "name": "Sofá Relax Escape eléctrico modelo Napoli",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "La elegancia del confort, la dulzura de un momento solo para ti.",
     "price": "859,00 €",
     "rawPrice": 859,
@@ -12979,7 +12979,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-chaiselongue",
     "name": "Sofá Chaiselongue ",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá esquinero convertible: Elegancia, comodidad y lujo, todo en un solo sofá. ✨",
     "price": "799,00 €",
     "rawPrice": 799,
@@ -13011,7 +13011,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofas-esquineros-convertibles",
     "name": "Sofás esquineros convertibles",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá esquinero convertible HAVEN con almacenaje en tela beige - Esquina izquierda",
     "price": "1025,00 €",
     "rawPrice": 1025,
@@ -13113,7 +13113,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofas-relajantes",
     "name": "Sofás relajantes",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá esquinero reclinable eléctrico ALPES en terciopelo jaspeado color topo - Esquina derecha",
     "price": "999,00 €",
     "rawPrice": 999,
@@ -13185,7 +13185,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofas-panoramicos",
     "name": "Sofás panorámicos",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá cama y panorámico OLIVER con compartimento de almacenamiento en tela beige - Esquina derecha",
     "price": "1205,00 €",
     "rawPrice": 1205,
@@ -13267,7 +13267,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofas-chesterfield",
     "name": "sofás Chesterfield",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá esquinero reversible CARMEN Chesterfield capitoné en terciopelo",
     "price": "1299,99 €",
     "rawPrice": 1299,
@@ -13309,7 +13309,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofas-de-esquina-fijos",
     "name": "Sofás de esquina fijos",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá rinconera de terciopelo jaspeado topo RAMIRO",
     "price": "1070,00 €",
     "rawPrice": 1070,
@@ -13616,7 +13616,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "svenja-walberg-edition-essentielle",
     "name": "Svenja Walberg Coffret essentiel",
-    "category": "Soins & Rituels du Corps",
+    "category": "Cuidado & Rituales Corporales",
     "type": "Svenja Walberg - Kit facial completo Glass Skin & Glow – 3x mascarillas Glassskin, 7x mascarillas Glowysideup, sérum de ácido hialurónico, fórmula profesional para el rostro y crema suprema rosa – set de spa en casa profesional para una piel radiante, lis",
     "price": "200,00 €",
     "rawPrice": 200,
@@ -13638,7 +13638,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "svenja-walberg",
     "name": "Svenja Walberg ",
-    "category": "Soins & Rituels du Corps",
+    "category": "Cuidado & Rituales Corporales",
     "type": "Gama completa de productos faciales y de belleza para pestañas y cejas: hidratación, luminosidad, antienvejecimiento y realce de la mirada.",
     "price": "305,00 €",
     "rawPrice": 305,
@@ -13660,7 +13660,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "jarron-de-vidrio",
     "name": "Jarrón de Vidrio",
-    "category": "Maison & Atmosphère",
+    "category": "Hogar & Ambiente",
     "type": "Jarrón de Vidrio Verde Vintage Francés, Adorno Contemporáneo Minimalista para Bar, Dormitorio, Comedor, Estudio, Hotel, Decoración de Mesa",
     "price": "180,00 €",
     "rawPrice": 180,
@@ -13692,7 +13692,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "jarron-de-marmol",
     "name": "Jarrón de Mármol ",
-    "category": "Maison & Atmosphère",
+    "category": "Hogar & Ambiente",
     "type": "Jarrón de Mármol de Lujo Minimalista Vintage, Adorno Decorativo para Bar, Tienda, Dormitorio, Comedor, Estudio, Hotel, Decoración de Mesa",
     "price": "160,00 €",
     "rawPrice": 160,
@@ -13729,7 +13729,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-esquinero",
     "name": "Sofá Esquinero",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá Esquinero en Forma de L de Cuero Eléctrico de Tres Plazas, Moderno y de Lujo",
     "price": "906,00 €",
     "rawPrice": 906,
@@ -13771,7 +13771,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sillon-reclinable-electrico-con-calefaccion",
     "name": "Sillón Reclinable Eléctrico con Calefacción",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sillón Reclinable Eléctrico con Calefacción, Puertos de Carga USB-A y USB-C para Dormitorio, Sala de Estar, Estudio - Blanco",
     "price": "475,00 €",
     "rawPrice": 475,
@@ -13813,7 +13813,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-seccional-curvo-moderno",
     "name": "Sofá seccional curvo moderno",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá seccional curvo moderno, 3 - Sofá Sitzer, Bequem y elegante lote Wohnzimmer, apartamento, decoración del hogar, montaje Einfache",
     "price": "625,00 €",
     "rawPrice": 625,
@@ -13850,7 +13850,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-de-esquina",
     "name": "Sofá de Esquina ",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Anajqaqia Sofá de Esquina en Forma de L, Sofá de 3 Plazas con Otomana y Cojines, Sin Ensamblar, Juego de Sofás para Sala de Estar o Dormitorio, Gris Oscuro",
     "price": "450,00 €",
     "rawPrice": 450,
@@ -13897,7 +13897,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-cala",
     "name": "SOFÁ CALA",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "El Sofá Cala es un diseño exclusivo creado para Trends Home, pensado para ofrecer el máximo confort con un estilo atemporal y elegante. Su estructura limpia, líneas rectas y funda de acabado suave lo convierten en una pieza versátil que se adapta a cualquier espacio contemporáneo. La cubierta no rígida con la que cuenta Cala hace que tenga un aspecto más natural, aportando calidez y serenidad al ambiente, mientras que su generosa profundidad invita al descanso y a compartir momentos en familia o con amigos.  Está disponible en tres tamaños distintos: 240 cm y 220 cm, ambos incluyen 3 cojines de respaldo, y la versión de 200 cm que incluye 2 cojines de respaldo. Estos cojines están rellenos de fibra de poliéster y pluma lavada y esterilizada. Todos los modelos cuentan con una base mullida y respaldo acolchado para ofrecer una experiencia de descanso superior. Ideal para quienes valoran el diseño, la funcionalidad y los detalles hechos a medida.",
     "price": "1850,00 €",
     "rawPrice": 1850,
@@ -13943,7 +13943,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-front",
     "name": "SOFÁ FRONT",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá Front de la firma española Joquer. Este sofá atemporal, diseñado por Mario Ruiz, destaca por sus formas rectilíneas y geométricas limpias que se expresan con un equilibrio de proporciones entre los reposabrazos, el asiento y el respaldo. El bastidor de madera recubierto de espuma de poliuretano flexible en frío y fibra de poliéster y patas metálicas recubiertas en pintura poliéster en polvo acabado manganeso con topes de LDPE, le aportan robusted. Los asientos realizados en distintas densidades de espuma de poliuretano, acolchados en la superficie con fibra, unido a los cojines de respaldo rellenos de fibra de poliéster siliconada aseguran gran confort. Además, este sofá con tapicería desenfundable. Un modelo versátil y cómodo que permite crear soluciones para cualquier espacio.  * Disponibles más medidas, tapizados y altura del respaldo, consultar en tienda.",
     "price": "2100,00 €",
     "rawPrice": 2100,
@@ -13975,7 +13975,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-cama-cubed-roble",
     "name": "SOFÁ CAMA CUBED ROBLE",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá cama Cubbed con diseño de estilo nórdico de la firma Innovation Living. Disponible en 3 medidas distintas y en 3 tapizados. Compacto y elegante; el relleno de Cubbed está diseñado para ofrecer uniformidad y suavidad. El confort que ofrece hace que sea ideal para ser utilizado como sofá durante el día y como cama en la noche.  Medidas 160cm:  Sofá: 168x98x79 cm. Cama: 200x160x38 cm. Medidas 140cm:  Sofá: 148x98x79 cm. Cama: 200x140x38 cm. Medidas 90cm:  Sofá: 98x98x79 cm. Cama: 200x90x38 cm. *Más tapizados disponibles, consultar en tienda.",
     "price": "1050,00 €",
     "rawPrice": 1050,
@@ -14022,7 +14022,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "malmo",
     "name": "Malmö",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Mueble de Salón de Diseño, Organizador de Zapatos, Estante de Almacenamiento para Sala de Estar, Réplica Moderna, Archivadores Postmodernos, Muebles de Salón",
     "price": "314,00 €",
     "rawPrice": 314,
@@ -14064,7 +14064,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "mid-century",
     "name": "Mid-Century",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sillón de Madera Maciza de Estilo Mid-Century, Sillón Retro de Cuero para Sala de Estar Pequeña, Balcón o Lectura",
     "price": "385,00 €",
     "rawPrice": 385,
@@ -14106,7 +14106,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sillon-minimalista-italiano",
     "name": "Sillón Minimalista Italiano",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sillón Minimalista Italiano de Madera de Nogal Negro Norteamericano, Sillón Moderno y Sencillo de Tela, Sillón Individual de Relajación",
     "price": "655,00 €",
     "rawPrice": 655,
@@ -14163,7 +14163,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "evasion",
     "name": "EVASION",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Tienda de techo para coche (tienda de campaña para techo de coche)",
     "price": "2430,00 €",
     "rawPrice": 2430,
@@ -14230,7 +14230,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "gaonala",
     "name": "Gaonala",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Tienda de campaña Gaonala 8 Personas",
     "price": "305,00 €",
     "rawPrice": 305,
@@ -14277,7 +14277,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "quechua",
     "name": "Quechua",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Tienda de campaña Quechua 6 Personas Airseconds 6.3 F&B",
     "price": "1100,00 €",
     "rawPrice": 1100,
@@ -14324,7 +14324,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "protector-solar-antiedad-sunleya-spf-30",
     "name": "Protector solar antiedad Sunleÿa SPF 30",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Ritual Sunleÿa Soin Solaire Anti-Edad SPF30 Ritual Sunleÿa Soin Solaire Anti-Âge SPF30 Protege y repara tu piel del sol con Sunleÿa Soin Solaire Anti-Âge SPF30.",
     "price": "205,00 €",
     "rawPrice": 205,
@@ -14371,7 +14371,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "hydra-global-serum-offer",
     "name": "Hydra-Global Serum offer",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Para una piel fresca y radiante, aplica Hydra-Global Serum para una hidratación intensa, seguido del Botanical Eye and Lip Contour Balm en el contorno de ojos y labios, y después Hydra-Global. Para un aporte de luminosidad inmediato, utiliza Express Flower Gel.",
     "price": "210,00 €",
     "rawPrice": 210,
@@ -14413,7 +14413,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sisleya-le-teint-n-0c-vainilla",
     "name": "Sisleÿa Le Teint N°0C Vainilla",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Base de maquillaje antiedad. Iluminadora - alisadora - redensificante",
     "price": "159,00 €",
     "rawPrice": 159,
@@ -14450,7 +14450,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sisleya-integral-50-ml",
     "name": "Sisleÿa Intégral 50 ml",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Tratamiento facial antiedad de día y de noche",
     "price": "415,00 €",
     "rawPrice": 415,
@@ -14497,7 +14497,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "augustinus-bader-the-rich-cream",
     "name": "AUGUSTINUS BADER The Rich Cream ",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Crema hidratante facial de lujo",
     "price": "440,00 €",
     "rawPrice": 440,
@@ -14559,7 +14559,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tribesigns",
     "name": "Tribesigns",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Tribesigns Mesa consola moderna de mediados de siglo de 43,3 pulgadas para entrada, mesa decorativa de entrada de pasillo en forma de C de madera para sala de estar",
     "price": "155,00 €",
     "rawPrice": 155,
@@ -14600,7 +14600,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sofa-de-jardin-de-3-plazas-con-toldo-plegable-gris",
     "name": "Sofá de jardín de 3 plazas con toldo plegable – Gris",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Sofá de jardín gris con estructura metálica, cojines cómodos y toldo plegable. Ideal para acondicionar una terraza, un balcón o una zona de descanso al aire libre.",
     "price": "305,00 €",
     "rawPrice": 305,
@@ -14647,7 +14647,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "silla-de-salon-impermeable",
     "name": "Silla de salón impermeable",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "Silla de salón impermeable con cojín de algodón, muebles de salón reclinables ajustables de aluminio resistente al óxido junto a la piscina",
     "price": "240,00 €",
     "rawPrice": 240,
@@ -14688,7 +14688,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "conjunto-de-muebles-de-jardin-de-6-piezas-sp-berner",
     "name": "Conjunto de muebles de jardín de 6 piezas – SP-Berner",
-    "category": "Mobilier & Décoration",
+    "category": "Mobiliario & Decoración",
     "type": "SP Berner - Set Muebles de Salon Exterior - Conjunto Muebles Jardin Exterior 5 Plazas - Modelo Manhattan | Fabricado en España con Materiales Reciclados - Color Grafito",
     "price": "215,00 €",
     "rawPrice": 215,
@@ -14750,7 +14750,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "robust-sichert",
     "name": "ROBUST SICHERT",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Caseta de jardín de metal de 6x4 pies con techo puntiagudo en color marrón-negro, adecuada para uso en exteriores. El cobertizo cuenta con un marco de suelo integrado. Superficie: 1,95 m²",
     "price": "215,00 €",
     "rawPrice": 215,
@@ -14792,7 +14792,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "outsunny-cenador-para-jardin",
     "name": "Outsunny Cenador para Jardín",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Outsunny Cenador para Jardín 3x3,6 m con Doble Techo Paredes de Malla",
     "price": "255,00 €",
     "rawPrice": 255,
@@ -14834,7 +14834,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "vevor",
     "name": "VEVOR",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "SucceBuy-tienda para techo de concha dura, con escalera telescópica, colchón grueso, impermeable, resistente al viento, para camioneta Jeep Van",
     "price": "999,00 €",
     "rawPrice": 999,
@@ -14901,7 +14901,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "toldo-lateral",
     "name": "Toldo Lateral",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Toldo Lateral para Autocaravana, Impermeable, Resistente a la Intemperie, Equipo de Camping, Altura Ajustable, Toldo Extensible para Techo de SUV, Camper Van, para Camping, Senderismo, Playa, Picnic al Aire Libre",
     "price": "200,00 €",
     "rawPrice": 200,
@@ -14958,7 +14958,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "casa-de-campana-inflable-grande",
     "name": "Casa de Campaña Inflable Grande",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Carpa Inflable para 4 Personas, Impermeable, Resistente a los Rayos UV, Casa de Campaña Inflable, Refugio Portátil para Aventuras al Aire Libre",
     "price": "503,00 €",
     "rawPrice": 503,
@@ -15004,7 +15004,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tienda-de-glamping-familiar-estilo-safari",
     "name": "Tienda de glamping familiar – Estilo safari",
-    "category": "Plein Air & Évasion",
+    "category": "Aire Libre & Glamping",
     "type": "Tiendas de safari y alojamientos al aire libre / Lujo natural",
     "price": "600,00 €",
     "rawPrice": 600,
@@ -15046,7 +15046,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "loewe-solo-ella-elixir",
     "name": "Loewe, SOLO ELLA ELIXIR",
-    "category": "Bougies & Parfums",
+    "category": "Velas & Aromas",
     "type": "Perfume suave para mujer",
     "price": "130,00 €",
     "rawPrice": 130,
@@ -15087,7 +15087,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "tom-ford-oud-wood-50-ml",
     "name": "Tom Ford Oud Wood 50 ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Oud Wood – Eau de Parfum/ es una fragancia amaderada, ideal para perfumar el cuerpo y dejar una estela elegante.",
     "price": "225,00 €",
     "rawPrice": 225,
@@ -15123,7 +15123,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "baccarat-rouge-540-extrait-200-ml",
     "name": "Baccarat Rouge 540 Extrait 200 ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Una fragancia excepcional con notas ambarinas y amaderadas. Perfume / Fragancia — Extracto de perfume",
     "price": "550,00 €",
     "rawPrice": 550,
@@ -15159,7 +15159,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "parfums-de-marly-delina-exclusif-75ml",
     "name": "Parfums de Marly Delina Exclusif 75ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Eau de Parfum ideal para clientas que buscan una fragancia femenina exclusiva, elegante y reconocible.",
     "price": "285,00 €",
     "rawPrice": 285,
@@ -15185,7 +15185,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "sisley-supremya-la-nuit-le-grand-baume-50-ml",
     "name": "Sisley Supremÿa La Nuit Le Grand Baume 50 ml",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Excepcional tratamiento nocturno antiedad",
     "price": "405,00 €",
     "rawPrice": 405,
@@ -15216,7 +15216,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "la-mer-the-concentrate-50-ml",
     "name": "La Mer The Concentrate 50 ml",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Sérum facial concentrado, tratamiento reparador y calmante de primera calidad.",
     "price": "355,00 €",
     "rawPrice": 355,
@@ -15257,7 +15257,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "la-crema-cle-de-peau-beaute-en-50-ml",
     "name": "La Crema — Clé de Peau Beauté, en 50 ml.",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Crema facial antiedad intensiva",
     "price": "705,00 €",
     "rawPrice": 705,
@@ -15298,7 +15298,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "miss-dior-eau-de-parfum-en-100-ml",
     "name": "Miss Dior Eau de Parfum en 100 ml",
-    "category": "Bougies & Parfums",
+    "category": "Velas & Aromas",
     "type": "PERFUME PARA MUJER — EAU DE PARFUM Floral • Vainilla • Sensual",
     "price": "170,00 €",
     "rawPrice": 170,
@@ -15334,7 +15334,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "chanel-le-lift-creme-rides-50-ml",
     "name": "CHANEL LE LIFT CRÈME – Rides 50 ml",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "TRATAMIENTO REAFIRMANTE Y TENSIFICANTE",
     "price": "160,00 €",
     "rawPrice": 160,
@@ -15370,7 +15370,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "hermes-plein-air",
     "name": "Hermès Plein Air – Herramientas de Maquillaje Personalizadas",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Set de Maquillage de Luxe",
     "price": "205,00 €",
     "rawPrice": 205,
@@ -15407,7 +15407,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "xerjoff-alexandria-ii",
     "name": "Xerjoff Alexandria II – Parfum 50 ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Parfum de Luxe · Oriental & Boisé Ambré",
     "price": "275,00 €",
     "rawPrice": 275,
@@ -15439,7 +15439,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "xerjoff-1861-naxos",
     "name": "Xerjoff 1861 Naxos – Eau de Parfum 100 ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Eau de Parfum · Aromatique, Épicée & Gourmande",
     "price": "160,00 €",
     "rawPrice": 160,
@@ -15471,7 +15471,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "diamond-luz",
     "name": "DIAMOND LUZ — Gama Aclarante",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Gamme Complète Corps & Visage · Éclat & Anti-Taches",
     "price": "200,00 €",
     "rawPrice": 200,
@@ -15508,7 +15508,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "age-r-booster-pro",
     "name": "AGE-R BOOSTER PRO",
-    "category": "Soins & Rituels du Corps",
+    "category": "Cuidado & Rituales Corporales",
     "type": "Dispositif K-Beauty 7-en-1 · Éclat Verre & Anti-Âge",
     "price": "158,00 €",
     "rawPrice": 158,
@@ -15550,7 +15550,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "mascara-luz-led",
     "name": "Máscara de Luz LED Photothérapie",
-    "category": "Soins & Rituels du Corps",
+    "category": "Cuidado & Rituales Corporales",
     "type": "Technologie iQLED · Luminothérapie & Fermeté",
     "price": "259,99 €",
     "rawPrice": 259.99,
@@ -15592,7 +15592,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "barenia-pleine-fleur-hermes",
     "name": "Barénia Pleine Fleur Eau de parfum 100 ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Eau de Parfum · Floral & Sensuel",
     "price": "155,00 €",
     "rawPrice": 155,
@@ -15629,7 +15629,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "idole-now-lancome",
     "name": "Idôle Now — Eau de Parfum 100ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Eau de Parfum Intense · Floral & Solaire",
     "price": "100,00 €",
     "rawPrice": 100,
@@ -15651,7 +15651,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "extrait-parfum-grasse",
     "name": "Extrait de Parfum Absolu de Grasse 50ml",
-    "category": "Parfums d'Exception",
+    "category": "Perfumes de Autor",
     "type": "Haute Parfumerie · Jasmin, Néroli & Santal",
     "price": "210,00 €",
     "rawPrice": 210,
@@ -15673,7 +15673,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "coffret-prestige-supreme",
     "name": "Grand Coffret Rituel Prestige Anti-Âge",
-    "category": "Soins & Rituels du Corps",
+    "category": "Cuidado & Rituales Corporales",
     "type": "Crème Suprême + Sérum Élixir + Gua Sha en Quartz Rose",
     "price": "340,00 €",
     "rawPrice": 340,
@@ -15695,7 +15695,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "huile-immortelle-sauvage",
     "name": "Huile Somptueuse d'Immortelle Sauvage",
-    "category": "Soins & Rituels du Corps",
+    "category": "Cuidado & Rituales Corporales",
     "type": "Huile précieuse 100% pure de première pression",
     "price": "175,00 €",
     "rawPrice": 175,
@@ -15717,7 +15717,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "masque-nuit-regenerant",
     "name": "Masque Baume de Nuit Régénérant",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Masque nuit réparateur à l'huile d'argan précieuse",
     "price": "165,00 €",
     "rawPrice": 165,
@@ -15739,7 +15739,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "concentre-yeux-lift",
     "name": "Concentré Yeux & Lèvres Lift Intense",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Soin regard haute précision anti-cernes & anti-poches",
     "price": "155,00 €",
     "rawPrice": 155,
@@ -15761,7 +15761,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "emulsion-or-caviar",
     "name": "La Prairie White Caviar Light Infusion Cream .50 ml",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Crema facial hidratante e iluminadora.",
     "price": "559,00 €",
     "rawPrice": 559,
@@ -15793,7 +15793,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "serum-elixir-cellulaire",
     "name": "ORCHIDÉE IMPÉRIALE GOLD NOBILE ",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Crema facial regeneradora e iluminadora",
     "price": "615,00 €",
     "rawPrice": 615,
@@ -15825,7 +15825,7 @@ export const PRODUCTS: Product[] = [
   {
     "id": "creme-supreme-anti-age",
     "name": "Skin Caviar Luxe Cream de La Prairie ",
-    "category": "Haute Cosmétique & Visage",
+    "category": "Alta Cosmética & Cuidado Facial",
     "type": "Crema facial reafirmante y nutritiva antiedad.",
     "price": "888,99 €",
     "rawPrice": 888,
