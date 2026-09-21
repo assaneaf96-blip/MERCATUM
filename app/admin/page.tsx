@@ -45,6 +45,7 @@ import {
   extractVolumes,
   extractColors,
   extractColorImages,
+  formatColorEs,
   COMMON_COLORS,
   getColorHex,
   getCleanDescription,
@@ -1662,7 +1663,7 @@ export default function AdminPage() {
                                   style={{ backgroundColor: hex }}
                                 />
                                 <span className="text-xs font-bold text-stone-900 truncate">
-                                  {colorName}
+                                  {colorName} <span className="text-[11px] font-normal text-stone-500">({formatColorEs(colorName)})</span>
                                 </span>
                               </div>
 
@@ -1836,7 +1837,7 @@ export default function AdminPage() {
                             className="w-3 h-3 rounded-full border border-black/20 flex-shrink-0"
                             style={{ backgroundColor: c.hex }}
                           />
-                          <span>{c.name}</span>
+                          <span>{c.name} <span className="opacity-60 text-[10px]">({formatColorEs(c.name)})</span></span>
                           {isSelected && <span className="text-[10px] text-[#b8c8a6] font-bold">✓</span>}
                         </button>
                       )

@@ -17,6 +17,7 @@ import {
   extractVolumes,
   extractColors,
   extractColorImages,
+  formatColorEs,
   getColorHex,
   getCleanDescription,
   isVideoUrl,
@@ -316,7 +317,7 @@ export default function ProductDetailPage() {
       : selectedVolume
       ? ` · ${selectedVolume}`
       : ''
-    const colorLabel = selectedColor ? ` · Tono: ${selectedColor}` : ''
+    const colorLabel = selectedColor ? ` · Tono: ${formatColorEs(selectedColor)}` : ''
     showToast(`« ${product.name}${volLabel}${colorLabel} » (x${quantity}) añadido a la cesta !`)
   }
 
@@ -332,7 +333,7 @@ export default function ProductDetailPage() {
       }
     }
     if (selectedColor) {
-      cleanName = `${cleanName} · ${selectedColor}`
+      cleanName = `${cleanName} · ${formatColorEs(selectedColor)}`
     }
     const volProduct: Product = selectedVolumeOption
       ? {
@@ -341,7 +342,7 @@ export default function ProductDetailPage() {
           price: selectedVolumeOption.price,
           rawPrice: selectedVolumeOption.rawPrice,
           contenance: selectedVolumeOption.volume,
-          color: selectedColor || product.color,
+          color: formatColorEs(selectedColor) || product.color,
           type: product.type
             ? `${product.type} · ${selectedVolumeOption.volume}`
             : selectedVolumeOption.volume,
@@ -351,13 +352,13 @@ export default function ProductDetailPage() {
           ...product,
           name: cleanName,
           contenance: selectedVolume,
-          color: selectedColor || product.color,
+          color: formatColorEs(selectedColor) || product.color,
           type: product.type ? `${product.type} · ${selectedVolume}` : selectedVolume,
         }
       : {
           ...product,
           name: cleanName,
-          color: selectedColor || product.color,
+          color: formatColorEs(selectedColor) || product.color,
         }
     trackPixel('InitiateCheckout', {
       id: product.id,
@@ -403,10 +404,15 @@ export default function ProductDetailPage() {
     if (!galleryImages || galleryImages.length === 0) return
 
     // 1. Image précisément associée à cette couleur (Option B)
+    const colEs = formatColorEs(col)
     const directUrl =
       colorImages[col] ||
+      colorImages[colEs] ||
       colorImages[col.toLowerCase()] ||
-      Object.entries(colorImages).find(([k]) => k.toLowerCase() === col.toLowerCase())?.[1]
+      colorImages[colEs.toLowerCase()] ||
+      Object.entries(colorImages).find(
+        ([k]) => k.toLowerCase() === col.toLowerCase() || k.toLowerCase() === colEs.toLowerCase()
+      )?.[1]
 
     if (directUrl) {
       const idx = galleryImages.findIndex(
@@ -420,15 +426,17 @@ export default function ProductDetailPage() {
 
     // 2. Détection intelligente par nom de la couleur dans l'URL de l'image
     const cleanColName = col.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim()
-    if (cleanColName && cleanColName.length >= 3) {
-      const keywordIdx = galleryImages.findIndex((img) => {
-        const imgLower = img.toLowerCase()
-        return imgLower.includes(cleanColName)
-      })
-      if (keywordIdx >= 0) {
-        setActiveImageIndex(keywordIdx)
-        return
-      }
+    const cleanColEs = colEs.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim()
+    const keywordIdx = galleryImages.findIndex((img) => {
+      const imgLower = img.toLowerCase()
+      return (
+        (cleanColName.length >= 3 && imgLower.includes(cleanColName)) ||
+        (cleanColEs.length >= 3 && imgLower.includes(cleanColEs))
+      )
+    })
+    if (keywordIdx >= 0) {
+      setActiveImageIndex(keywordIdx)
+      return
     }
 
     // 3. Fallback automatique par ordre si le produit a plusieurs couleurs et plusieurs photos
@@ -959,7 +967,7 @@ export default function ProductDetailPage() {
             {colors.length > 0 && (
               <div className="pdp-volume-selector">
                 <label className="pdp-selector-label">
-                  Tono / Color : <strong>{selectedColor}</strong>
+                  Tono / Color : <strong>{formatColorEs(selectedColor)}</strong>
                 </label>
                 <div className="flex flex-wrap gap-2 pt-1">
                   {colors.map((col) => {
@@ -980,7 +988,7 @@ export default function ProductDetailPage() {
                           className="w-3.5 h-3.5 rounded-full border border-black/20 flex-shrink-0 shadow-inner"
                           style={{ backgroundColor: hex }}
                         />
-                        <span>{col}</span>
+                        <span>{formatColorEs(col)}</span>
                         {isSelected && <span className="text-[10px] text-[#b8c8a6] font-bold">✓</span>}
                       </button>
                     )

@@ -219,6 +219,131 @@ export const COMMON_COLORS: { name: string; hex: string }[] = [
   { name: 'Terracotta', hex: '#c86446' },
 ]
 
+export const COLOR_TRANSLATIONS_ES: Record<string, string> = {
+  'noir': 'Negro',
+  'blanc': 'Blanco',
+  'doré': 'Dorado',
+  'dore': 'Dorado',
+  'doré / or': 'Dorado / Oro',
+  'dore / or': 'Dorado / Oro',
+  'or': 'Oro',
+  'argent': 'Plateado / Plata',
+  'argenté': 'Plateado',
+  'argente': 'Plateado',
+  'beige': 'Beige',
+  'beige / nude': 'Beige / Nude',
+  'nude': 'Nude',
+  'rose': 'Rosa',
+  'rose poudré': 'Rosa Empolvado',
+  'rose poudre': 'Rosa Empolvado',
+  'rouge': 'Rojo',
+  'rouge écarlate': 'Rojo Escarlata',
+  'rouge ecarlate': 'Rojo Escarlata',
+  'bordeaux': 'Burdeos',
+  'bleu': 'Azul',
+  'bleu nuit': 'Azul Noche',
+  'bleu marine': 'Azul Marino',
+  'bleu ciel': 'Azul Cielo',
+  'vert': 'Verde',
+  'verte': 'Verde',
+  'vert émeraude': 'Verde Esmeralda',
+  'vert emeraude': 'Verde Esmeralda',
+  'vert olive': 'Verde Oliva',
+  'vert olive / kaki': 'Verde Oliva / Caqui',
+  'kaki': 'Caqui',
+  'marron': 'Marrón',
+  'marron / cuir': 'Marrón / Cuero',
+  'cuir': 'Cuero',
+  'brun': 'Marrón',
+  'brun chocolat': 'Marrón Chocolate',
+  'gris': 'Gris',
+  'gris anthracite': 'Gris Antracita',
+  'gris perle': 'Gris Perla',
+  'gris argent perle': 'Gris Plata Perla',
+  'bronze': 'Bronce',
+  'terracotta': 'Terracota',
+  'ivoire': 'Marfil',
+  'ecru': 'Blanco Roto / Crudo',
+  'écru': 'Blanco Roto / Crudo',
+  'beige clair / écru': 'Beige Claro / Crudo',
+  'beige clair / ecru': 'Beige Claro / Crudo',
+  'beige rosé / nude': 'Beige Rosado / Nude',
+  'beige rose / nude': 'Beige Rosado / Nude',
+  'noir titane': 'Negro Titanio',
+  'jaune': 'Amarillo',
+  'orange': 'Naranja',
+  'violet': 'Violeta',
+  'pourpre': 'Púrpura',
+}
+
+/**
+ * Traduit automatiquement un nom de couleur français vers l'espagnol pour les visiteurs de la boutique.
+ * Conserve les couleurs déjà rédigées en espagnol intactes.
+ */
+export function formatColorEs(colorName: string): string {
+  if (!colorName) return ''
+  const trimmed = colorName.trim()
+  const lower = trimmed.toLowerCase()
+
+  // 1. Correspondance directe dans le dictionnaire
+  if (COLOR_TRANSLATIONS_ES[lower]) {
+    return COLOR_TRANSLATIONS_ES[lower]
+  }
+
+  // 2. Nettoyage de préfixes (ex: emojis "🤎 Beige rosé / Nude")
+  const cleanLower = lower.replace(/^[^a-z0-9à-ÿ]+/i, '').trim()
+  if (COLOR_TRANSLATIONS_ES[cleanLower]) {
+    return COLOR_TRANSLATIONS_ES[cleanLower]
+  }
+
+  // 3. Remplacements par mots-clés courants
+  let translated = trimmed
+  const wordReplacements: [RegExp, string][] = [
+    [/\bnoir\b/gi, 'Negro'],
+    [/\bblanc\b/gi, 'Blanco'],
+    [/\bblanche\b/gi, 'Blanco'],
+    [/\bdoré\b/gi, 'Dorado'],
+    [/\bdore\b/gi, 'Dorado'],
+    [/\bargent\b/gi, 'Plata'],
+    [/\bargenté\b/gi, 'Plateado'],
+    [/\brouge\b/gi, 'Rojo'],
+    [/\bbleu\b/gi, 'Azul'],
+    [/\bvert\b/gi, 'Verde'],
+    [/\bverte\b/gi, 'Verde'],
+    [/\bmarron\b/gi, 'Marrón'],
+    [/\bcuir\b/gi, 'Cuero'],
+    [/\bbrun\b/gi, 'Marrón'],
+    [/\banthracite\b/gi, 'Antracita'],
+    [/\bclair\b/gi, 'Claro'],
+    [/\bfoncé\b/gi, 'Oscuro'],
+    [/\bnuit\b/gi, 'Noche'],
+    [/\bmarine\b/gi, 'Marino'],
+    [/\bperle\b/gi, 'Perla'],
+    [/\bémeraude\b/gi, 'Esmeralda'],
+    [/\bécarlate\b/gi, 'Escarlata'],
+    [/\bpoudré\b/gi, 'Empolvado'],
+    [/\bpoudre\b/gi, 'Empolvado'],
+    [/\bjaune\b/gi, 'Amarillo'],
+    [/\borange\b/gi, 'Naranja'],
+    [/\bviolet\b/gi, 'Violeta'],
+    [/\bchocolat\b/gi, 'Chocolate'],
+    [/\bivoire\b/gi, 'Marfil'],
+    [/\bécru\b/gi, 'Crudo'],
+    [/\becru\b/gi, 'Crudo'],
+    [/\brosé\b/gi, 'Rosado'],
+    [/\brose\b/gi, 'Rosa'],
+  ]
+
+  for (const [pattern, replacement] of wordReplacements) {
+    if (pattern.test(translated)) {
+      translated = translated.replace(pattern, replacement)
+    }
+  }
+
+  // Première lettre en majuscule
+  return translated.charAt(0).toUpperCase() + translated.slice(1)
+}
+
 export function getColorHex(colorName: string): string {
   if (!colorName) return '#cccccc'
   const trimmed = colorName.trim()
@@ -234,20 +359,23 @@ export function getColorHex(colorName: string): string {
     }
   }
 
-  if (lower.includes('noir') || lower.includes('black')) return '#1c1c1c'
-  if (lower.includes('blanc') || lower.includes('white')) return '#ffffff'
-  if (lower.includes('or') || lower.includes('gold') || lower.includes('dor')) return '#d4af37'
-  if (lower.includes('argent') || lower.includes('silver')) return '#c0c0c0'
-  if (lower.includes('rose') || lower.includes('pink')) return '#f472b6'
-  if (lower.includes('rouge') || lower.includes('red')) return '#dc2626'
-  if (lower.includes('bleu') || lower.includes('blue')) return '#2563eb'
-  if (lower.includes('vert') || lower.includes('green')) return '#16a34a'
-  if (lower.includes('beige') || lower.includes('nude') || lower.includes('creme') || lower.includes('crème')) return '#e8dcce'
-  if (lower.includes('marron') || lower.includes('brown') || lower.includes('cuir')) return '#78350f'
+  if (lower.includes('noir') || lower.includes('black') || lower.includes('negro')) return '#1c1c1c'
+  if (lower.includes('blanc') || lower.includes('white') || lower.includes('blanco')) return '#ffffff'
+  if (lower.includes('or') || lower.includes('gold') || lower.includes('dor') || lower.includes('dorado')) return '#d4af37'
+  if (lower.includes('argent') || lower.includes('silver') || lower.includes('plata') || lower.includes('plateado')) return '#c0c0c0'
+  if (lower.includes('rose') || lower.includes('pink') || lower.includes('rosa')) return '#f472b6'
+  if (lower.includes('rouge') || lower.includes('red') || lower.includes('rojo')) return '#dc2626'
+  if (lower.includes('bleu') || lower.includes('blue') || lower.includes('azul')) return '#2563eb'
+  if (lower.includes('vert') || lower.includes('green') || lower.includes('verde')) return '#16a34a'
+  if (lower.includes('beige') || lower.includes('nude') || lower.includes('creme') || lower.includes('crème') || lower.includes('crudo')) return '#e8dcce'
+  if (lower.includes('marron') || lower.includes('marrón') || lower.includes('brown') || lower.includes('cuir') || lower.includes('cuero')) return '#78350f'
   if (lower.includes('gris') || lower.includes('grey') || lower.includes('gray')) return '#6b7280'
-  if (lower.includes('violet') || lower.includes('purple')) return '#7c3aed'
-  if (lower.includes('jaune') || lower.includes('yellow')) return '#facc15'
-  if (lower.includes('orange')) return '#ea580c'
+  if (lower.includes('violet') || lower.includes('purple') || lower.includes('morado')) return '#7c3aed'
+  if (lower.includes('jaune') || lower.includes('yellow') || lower.includes('amarillo')) return '#facc15'
+  if (lower.includes('orange') || lower.includes('naranja')) return '#ea580c'
+  if (lower.includes('terracotta') || lower.includes('terracota')) return '#c86446'
+  if (lower.includes('bordeaux') || lower.includes('burdeos')) return '#7f1d1d'
+  if (lower.includes('bronze') || lower.includes('bronce')) return '#cd7f32'
 
   return '#b8c8a6'
 }
