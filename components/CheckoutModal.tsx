@@ -123,7 +123,12 @@ export default function CheckoutModal({
       <div
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
-        style={{ maxWidth: confirmed ? '520px' : '460px' }}
+        style={{
+          maxWidth: confirmed ? '520px' : '460px',
+          maxHeight: '92dvh',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch',
+        }}
       >
         <button className="modal-close" onClick={onClose} aria-label="Fermer">✕</button>
 
@@ -346,7 +351,7 @@ export default function CheckoutModal({
               📦 Su paquete será preparado y enviado inmediatamente tras la validación de su transferencia.
             </p>
 
-            <div style={{ textAlign: 'center', paddingTop: '8px' }}>
+            <div style={{ textAlign: 'center', paddingTop: '12px', paddingBottom: '18px' }}>
               <button
                 type="button"
                 onClick={onClose}
@@ -354,14 +359,15 @@ export default function CheckoutModal({
                   background: '#20251f',
                   color: '#f4f0e9',
                   border: 'none',
-                  borderRadius: '4px',
-                  padding: '10px 24px',
-                  fontSize: '12px',
+                  borderRadius: '6px',
+                  padding: '12px 24px',
+                  fontSize: '12.5px',
                   fontWeight: 'bold',
                   textTransform: 'uppercase',
                   letterSpacing: '0.1em',
                   cursor: 'pointer',
                   width: '100%',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                 }}
               >
                 He anotado los datos bancarios / Cerrar
