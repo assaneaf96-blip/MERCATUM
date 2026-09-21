@@ -580,7 +580,7 @@ export default function CheckoutModal({
                     fontWeight: 600,
                   }}
                 >
-                  <span>⚡ Transferencia Bancaria Inmediata</span>
+                  <span>🔒 Transferencia Inmediata 100% Segura</span>
                   <strong>{totalPrice}</strong>
                 </div>
 
@@ -594,11 +594,11 @@ export default function CheckoutModal({
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#b45309', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
-                    <span>⚠️</span>
-                    <span>Modalidad requerida : Transferencia Inmediata</span>
+                    <span>🛡️</span>
+                    <span>Pago Seguro Oficial : Transferencia Inmediata</span>
                   </div>
                   <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
-                    Para procesar y despachar su pedido en 24/48h sin esperas, deberá seleccionar la opción de <strong>Transferencia Inmediata</strong> al realizar el pago desde su app bancaria. El IBAN, BIC y número de referencia se le facilitarán en la siguiente pantalla.
+                    Operación directa banco a banco con máxima protección y cifrado oficial. Para procesar y enviar su pedido en 24/48h sin esperas, seleccione la opción de <strong>Transferencia Inmediata</strong> al pagar desde su banca online. El IBAN y los datos se facilitan a continuación.
                   </span>
                 </div>
               </div>
