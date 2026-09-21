@@ -1026,9 +1026,12 @@ export default function HomePage() {
                   {product.name}
                 </Link>
               </h3>
-              <p style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.5rem' }}>
-                {stripImagesFromDescription(product.type || product.description)} · {product.price}
+              <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.35rem' }}>
+                {stripImagesFromDescription(product.type || product.description)}
               </p>
+              <div style={{ marginBottom: '0.6rem' }}>
+                <strong className="product-price-tag">{product.price}</strong>
+              </div>
               <div style={{ display: 'flex', gap: '8px', marginTop: '0.5rem' }}>
                 <Link
                   href={`/produit/${product.id}`}
