@@ -456,6 +456,26 @@ export async function createOrderInDb(order: OrderPayload): Promise<boolean> {
   }
 }
 
+export async function markOrderPaymentConfirmedInDb(orderId: string): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('orders')
+      .update({
+        status: 'Pago confirmado por cliente',
+      })
+      .eq('id', orderId)
+
+    if (error) {
+      console.warn('Erreur Supabase markOrderPaymentConfirmed:', error.message)
+      return false
+    }
+    return true
+  } catch (err) {
+    console.warn('Erreur markOrderPaymentConfirmedInDb:', err)
+    return false
+  }
+}
+
 export async function fetchOrdersFromDb(): Promise<any[] | null> {
   try {
     const { data, error } = await supabase

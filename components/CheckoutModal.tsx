@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Product, isVideoUrl } from '@/lib/products'
 import { getSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
-import { createOrderInDb } from '@/lib/supabaseService'
+import { createOrderInDb, markOrderPaymentConfirmedInDb } from '@/lib/supabaseService'
 import { trackPixel } from '@/components/PixelTracker'
 
 interface CheckoutModalProps {
@@ -20,6 +20,7 @@ export default function CheckoutModal({
   onSuccess,
 }: CheckoutModalProps) {
   const [confirmed, setConfirmed] = useState(false)
+  const [paymentDeclared, setPaymentDeclared] = useState(false)
   const [quantity, setQuantity] = useState(initialQuantity)
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -28,6 +29,13 @@ export default function CheckoutModal({
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
   const [copied, setCopied] = useState(false)
   const [orderRef, setOrderRef] = useState('')
+
+  const handleConfirmPaymentMade = () => {
+    setPaymentDeclared(true)
+    if (orderRef) {
+      markOrderPaymentConfirmedInDb(orderRef).catch((err) => console.warn('Supabase status update error:', err))
+    }
+  }
 
   useEffect(() => {
     if (initialQuantity) {
@@ -351,28 +359,120 @@ export default function CheckoutModal({
               📦 Su paquete será preparado y enviado inmediatamente tras la validación de su transferencia.
             </p>
 
-            <div style={{ textAlign: 'center', paddingTop: '12px', paddingBottom: '18px' }}>
-              <button
-                type="button"
-                onClick={onClose}
+            {paymentDeclared ? (
+              <div
                 style={{
-                  background: '#20251f',
-                  color: '#f4f0e9',
-                  border: 'none',
-                  borderRadius: '6px',
-                  padding: '12px 24px',
-                  fontSize: '12.5px',
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  cursor: 'pointer',
-                  width: '100%',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                  background: '#f0fdf4',
+                  border: '1.5px solid #22c55e',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  textAlign: 'center',
+                  marginTop: '12px',
+                  marginBottom: '16px',
+                  boxShadow: '0 4px 12px rgba(34, 197, 94, 0.15)',
+                  animation: 'modalPop 0.25s ease-out',
                 }}
               >
-                He anotado los datos bancarios / Cerrar
-              </button>
-            </div>
+                <div style={{ fontSize: '30px', marginBottom: '6px' }}>🎉</div>
+                <strong style={{ fontSize: '15px', color: '#14532d', display: 'block', marginBottom: '6px' }}>
+                  ¡Transferencia Notificada con Éxito!
+                </strong>
+                <p style={{ fontSize: '12px', color: '#166534', margin: '0 0 12px', lineHeight: '1.5' }}>
+                  Hemos registrado su confirmación para el pedido <strong>{orderRef}</strong>. Nuestro equipo verificará la acreditación bancaria y procederemos al embalaje y envío express de su pedido.
+                </p>
+
+                {settings.contactPhone && (
+                  <a
+                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola, acabo de realizar la transferencia para mi pedido ${orderRef} (${fullName} - ${totalPrice}). Adjunto el comprobante bancario.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      background: '#166534',
+                      color: '#ffffff',
+                      padding: '10px 16px',
+                      borderRadius: '6px',
+                      fontSize: '12px',
+                      fontWeight: 'bold',
+                      textDecoration: 'none',
+                      width: '100%',
+                      marginBottom: '10px',
+                      boxShadow: '0 2px 6px rgba(22, 101, 52, 0.25)',
+                    }}
+                  >
+                    💬 Enviar justificante por WhatsApp ahora
+                  </a>
+                )}
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  style={{
+                    background: '#20251f',
+                    color: '#f4f0e9',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '10px 20px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    cursor: 'pointer',
+                    width: '100%',
+                  }}
+                >
+                  Entendido / Finalizar y Cerrar
+                </button>
+              </div>
+            ) : (
+              <div style={{ textAlign: 'center', paddingTop: '12px', paddingBottom: '18px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <button
+                  type="button"
+                  onClick={handleConfirmPaymentMade}
+                  style={{
+                    background: '#166534',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '14px 20px',
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    cursor: 'pointer',
+                    width: '100%',
+                    boxShadow: '0 4px 14px rgba(22, 101, 52, 0.35)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  <span style={{ fontSize: '16px' }}>✓</span>
+                  <span>Confirmo que he realizado el pago</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  style={{
+                    background: 'transparent',
+                    color: '#666',
+                    border: 'none',
+                    fontSize: '11px',
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                    padding: '4px',
+                  }}
+                >
+                  Cerrar y pagar más tarde
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <div>
