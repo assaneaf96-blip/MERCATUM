@@ -73,7 +73,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   bankAccountHolder: 'MERCATUM',
   bankIban: 'ES91 2100 0418 4502 0005 1332',
   bankSwift: 'BSCHESMMXXX',
-  bankInstructions: 'Por favor, indique su referencia de pedido como concepto de la transferencia bancaria.',
+  bankInstructions: 'Por favor, seleccione obligatoriamente "Transferencia Inmediata" en su banca online e indique la referencia de su pedido como concepto.',
   facebookPixelId: '',
   tiktokPixelId: '',
   googleTagId: '',

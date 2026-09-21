@@ -151,8 +151,31 @@ export default function CheckoutModal({
               </h3>
               <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
                 Gracias <strong>{fullName || 'Estimado/a Cliente/a'}</strong>. Su pedido de{' '}
-                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está pendiente de transferencia bancaria.
+                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está pendiente de transferencia bancaria inmediata.
               </p>
+            </div>
+
+            {/* Alerta Transferencia Inmediata Requerida */}
+            <div
+              style={{
+                background: '#fef2f2',
+                border: '1.5px solid #ef4444',
+                borderRadius: '8px',
+                padding: '12px 14px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
+              }}
+            >
+              <span style={{ fontSize: '22px', lineHeight: 1 }}>⚡</span>
+              <div>
+                <strong style={{ fontSize: '12.5px', color: '#991b1b', display: 'block', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  Aviso Importante: Transferencia Inmediata Requerida
+                </strong>
+                <p style={{ margin: '3px 0 0', fontSize: '11.5px', color: '#7f1d1d', lineHeight: '1.45' }}>
+                  Al emitir el pago desde su app bancaria o banca online, seleccione la opción <strong>&quot;Transferencia Inmediata&quot;</strong>. Así recibiremos los fondos en segundos y su pedido será preparado y enviado hoy mismo en 24/48h.
+                </p>
+              </div>
             </div>
 
             {/* Encadré Coordonnées Bancaires */}
@@ -167,7 +190,7 @@ export default function CheckoutModal({
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>
                 <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 'bold', color: '#20251f' }}>
-                  🏛️ Transferencia Bancaria
+                  ⚡ Transferencia Inmediata
                 </span>
                 <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#166534', background: '#dcfce7', padding: '2px 8px', borderRadius: '4px' }}>
                   Importe : {totalPrice}
@@ -175,6 +198,15 @@ export default function CheckoutModal({
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
+                <div style={{ background: '#f0fdf4', padding: '8px 10px', borderRadius: '4px', borderLeft: '3px solid #166534' }}>
+                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#166534', display: 'block', fontWeight: 700 }}>
+                    Modalidad obligatoria
+                  </span>
+                  <strong style={{ fontSize: '12.5px', color: '#14532d' }}>
+                    ⚡ Transferencia Inmediata (Acreditación al instante)
+                  </strong>
+                </div>
+
                 <div>
                   <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
                     Referencia obligatoria a indicar
@@ -338,7 +370,7 @@ export default function CheckoutModal({
           </div>
         ) : (
           <div>
-            <span className="modal-eyebrow">Pago por transferencia bancaria</span>
+            <span className="modal-eyebrow">Pago por transferencia bancaria inmediata</span>
             <h3 className="modal-title">Comprar este artículo</h3>
 
             <div className="modal-product-summary">
@@ -442,12 +474,27 @@ export default function CheckoutModal({
                     fontWeight: 600,
                   }}
                 >
-                  <span>🏛️ Transferencia Bancaria Segura</span>
+                  <span>⚡ Transferencia Bancaria Inmediata</span>
                   <strong>{totalPrice}</strong>
                 </div>
-                <span style={{ fontSize: '10px', color: '#666', marginTop: '4px', display: 'block' }}>
-                  El IBAN, el BIC y la referencia de transferencia se le mostrarán en el siguiente paso.
-                </span>
+
+                <div
+                  style={{
+                    background: '#fffbeb',
+                    border: '1px solid #fde68a',
+                    borderRadius: '6px',
+                    padding: '9px 12px',
+                    marginTop: '6px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#b45309', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
+                    <span>⚠️</span>
+                    <span>Modalidad requerida : Transferencia Inmediata</span>
+                  </div>
+                  <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
+                    Para procesar y despachar su pedido en 24/48h sin esperas, deberá seleccionar la opción de <strong>Transferencia Inmediata</strong> al realizar el pago desde su app bancaria. El IBAN, BIC y número de referencia se le facilitarán en la siguiente pantalla.
+                  </span>
+                </div>
               </div>
 
               <button type="submit" className="button-confirm-buy" style={{ marginTop: '8px' }}>

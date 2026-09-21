@@ -1000,10 +1000,10 @@ export default function ProductDetailPage() {
                 </div>
               </div>
               <div className="pdp-badge-item">
-                <span className="pdp-badge-icon">🔒</span>
+                <span className="pdp-badge-icon">⚡</span>
                 <div>
-                  <strong>Pago Seguro por Transferencia</strong>
-                  <p>Datos bancarios oficiales y confirmación inmediata por email y WhatsApp.</p>
+                  <strong>Transferencia Bancaria Inmediata</strong>
+                  <p>Confirmación en tiempo real para preparación y expedición express en 24/48h.</p>
                 </div>
               </div>
               {(() => {
