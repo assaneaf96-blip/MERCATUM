@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
-import { extractContenance, extractVolumes, extractColors, isVideoUrl } from '@/lib/products'
+import { extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from '@/lib/products'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -28,6 +28,7 @@ const CACHE_TTL_MS = 600000 // 10 minutes de cache mémoire serveur ultra-rapide
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
   const cols = extractColors(item)
+  const colImgs = extractColorImages(item)
 
   let rawImages: string[] = []
   if (Array.isArray(item.images)) {
@@ -84,6 +85,7 @@ function formatProduct(item: any) {
     volumes: vols.length > 0 ? vols : undefined,
     colors: cols.length > 0 ? cols : undefined,
     color: cols.length > 0 ? cols.join(', ') : undefined,
+    colorImages: Object.keys(colImgs).length > 0 ? colImgs : undefined,
     rating: Number(item.rating) || 5.0,
     reviewsCount: Number(item.reviews_count) || 1,
   }

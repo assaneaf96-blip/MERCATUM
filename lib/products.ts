@@ -25,6 +25,7 @@ export interface Product {
   volumes?: VolumeOption[]
   colors?: string[]
   color?: string
+  colorImages?: Record<string, string>
   rating: number
   reviewsCount: number
 }
@@ -180,8 +181,10 @@ export function getCleanDescription(desc: string = ''): string {
   return desc
     .replace(/<!--VOLUMES_JSON_START-->[\s\S]*?<!--VOLUMES_JSON_END-->/g, '')
     .replace(/<!--COLORS_JSON_START-->[\s\S]*?<!--COLORS_JSON_END-->/g, '')
+    .replace(/<!--COLOR_IMAGES_JSON_START-->[\s\S]*?<!--COLOR_IMAGES_JSON_END-->/g, '')
     .replace(/\n*\[Contenance:[^\]]+\]/gi, '')
     .replace(/\n*\[(?:Couleurs?|Colors?):[^\]]+\]/gi, '')
+    .replace(/\n*\[(?:ColorImages|CouleurImages)(?:JSON)?:\s*\{[\s\S]*?\}\]/gi, '')
     .replace(/\n*\[Volumes(?:JSON)?:\s*\[[\s\S]*?\]\]/gi, '')
     .replace(/\n*\[Volumes:[^\]]+\]/gi, '')
     .replace(/\n*\[VolumesJSON:[^\]]+\]/gi, '')
@@ -278,6 +281,40 @@ export function extractColors(p?: {
   }
 
   return []
+}
+
+export function extractColorImages(p?: {
+  colorImages?: Record<string, string>
+  description?: string
+  colors?: string[]
+  images?: string[]
+} | null): Record<string, string> {
+  if (!p) return {}
+  if (p.colorImages && typeof p.colorImages === 'object' && Object.keys(p.colorImages).length > 0) {
+    return p.colorImages
+  }
+
+  const commentMatch = (p.description || '').match(/<!--COLOR_IMAGES_JSON_START-->([\s\S]*?)<!--COLOR_IMAGES_JSON_END-->/)
+  if (commentMatch) {
+    try {
+      const parsed = JSON.parse(commentMatch[1].trim())
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        return parsed
+      }
+    } catch {}
+  }
+
+  const markerMatch = (p.description || '').match(/\[(?:ColorImages|CouleurImages)(?:JSON)?:\s*(\{[\s\S]*?\})\s*\]/i)
+  if (markerMatch) {
+    try {
+      const parsed = JSON.parse(markerMatch[1].trim())
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        return parsed
+      }
+    } catch {}
+  }
+
+  return {}
 }
 
 export const CATEGORIES = [

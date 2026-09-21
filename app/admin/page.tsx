@@ -44,6 +44,7 @@ import {
   extractContenance,
   extractVolumes,
   extractColors,
+  extractColorImages,
   COMMON_COLORS,
   getColorHex,
   getCleanDescription,
@@ -78,6 +79,7 @@ function emptyProduct(): Product {
     volumes: [],
     colors: [],
     color: '',
+    colorImages: {},
     rating: 5.0,
     reviewsCount: 1,
   }
@@ -109,6 +111,8 @@ export default function AdminPage() {
   const [isSavingProduct, setIsSavingProduct] = useState(false)
   const [isCustomCategory, setIsCustomCategory] = useState(false)
   const [newColorInput, setNewColorInput] = useState('')
+  const [pickingColorImageFor, setPickingColorImageFor] = useState<string | null>(null)
+  const [manualColorImageUrl, setManualColorImageUrl] = useState('')
 
   // Photos dans la description du produit
   const descFileInputRef = useRef<HTMLInputElement>(null)
@@ -337,12 +341,14 @@ export default function AdminPage() {
     const detectedContenance = p.contenance || extractContenance(p) || ''
     const detectedVolumes = p.volumes && p.volumes.length > 0 ? p.volumes : extractVolumes(p)
     const detectedColors = p.colors && p.colors.length > 0 ? p.colors : extractColors(p)
+    const detectedColorImages = p.colorImages || extractColorImages(p) || {}
     setFormProduct({
       ...p,
       contenance: detectedContenance,
       volumes: detectedVolumes,
       colors: detectedColors,
       color: detectedColors.join(', '),
+      colorImages: detectedColorImages,
       description: stripImagesFromDescription(p.description),
       media: mediaList,
       images: mediaList.map((m) => m.url),
@@ -584,6 +590,24 @@ export default function AdminPage() {
     setFormProduct({ ...formProduct, volumes: current })
   }
 
+  const availableGalleryPhotos = useMemo(() => {
+    const list: string[] = []
+    if (formProduct.image && formProduct.image !== '/placeholder.svg' && !list.includes(formProduct.image)) {
+      list.push(formProduct.image)
+    }
+    if (formProduct.images && formProduct.images.length > 0) {
+      formProduct.images.forEach((u) => {
+        if (u && typeof u === 'string' && !list.includes(u.trim())) list.push(u.trim())
+      })
+    }
+    if (formProduct.media && formProduct.media.length > 0) {
+      formProduct.media.forEach((m) => {
+        if (m?.url && typeof m.url === 'string' && !list.includes(m.url.trim())) list.push(m.url.trim())
+      })
+    }
+    return list
+  }, [formProduct.image, formProduct.images, formProduct.media])
+
   // --- Gestion des Couleurs / Déclinaisons de teintes ---
   const handleAddColor = (colorName: string) => {
     const trimmed = colorName.trim()
@@ -600,9 +624,16 @@ export default function AdminPage() {
     const current = formProduct.colors || []
     const exists = current.some((c) => c.toLowerCase() === trimmed.toLowerCase())
     if (exists) {
+      const updatedColors = current.filter((c) => c.toLowerCase() !== trimmed.toLowerCase())
+      const updatedColorImages = { ...(formProduct.colorImages || {}) }
+      delete updatedColorImages[colorName]
+      Object.keys(updatedColorImages).forEach((k) => {
+        if (k.toLowerCase() === trimmed.toLowerCase()) delete updatedColorImages[k]
+      })
       setFormProduct({
         ...formProduct,
-        colors: current.filter((c) => c.toLowerCase() !== trimmed.toLowerCase()),
+        colors: updatedColors,
+        colorImages: updatedColorImages,
       })
     } else {
       setFormProduct({ ...formProduct, colors: [...current, trimmed] })
@@ -611,8 +642,58 @@ export default function AdminPage() {
 
   const handleRemoveColor = (index: number) => {
     const current = [...(formProduct.colors || [])]
+    const removedColor = current[index]
     current.splice(index, 1)
-    setFormProduct({ ...formProduct, colors: current })
+    const updatedColorImages = { ...(formProduct.colorImages || {}) }
+    if (removedColor) {
+      delete updatedColorImages[removedColor]
+      Object.keys(updatedColorImages).forEach((k) => {
+        if (k.toLowerCase() === removedColor.toLowerCase()) delete updatedColorImages[k]
+      })
+    }
+    setFormProduct({ ...formProduct, colors: current, colorImages: updatedColorImages })
+  }
+
+  const handleAssignColorImage = (colorName: string, imageUrl: string) => {
+    const currentImgs = { ...(formProduct.colorImages || {}) }
+    if (imageUrl && imageUrl.trim()) {
+      currentImgs[colorName] = imageUrl.trim()
+      showToast(`Photo associée à la couleur "${colorName}" !`)
+    } else {
+      delete currentImgs[colorName]
+      Object.keys(currentImgs).forEach((k) => {
+        if (k.toLowerCase() === colorName.toLowerCase()) delete currentImgs[k]
+      })
+      showToast(`Photo détachée de la couleur "${colorName}".`)
+    }
+    setFormProduct({ ...formProduct, colorImages: currentImgs })
+    setPickingColorImageFor(null)
+    setManualColorImageUrl('')
+  }
+
+  const handleAutoAssignColorImagesByOrder = () => {
+    const colors = formProduct.colors || []
+    if (colors.length === 0) {
+      showToast('Ajoutez d\'abord au moins une couleur.')
+      return
+    }
+
+    if (availableGalleryPhotos.length === 0) {
+      showToast('Aucune photo dans le carrousel. Téléversez d\'abord vos photos ci-dessous.')
+      return
+    }
+
+    const newColorImages: Record<string, string> = { ...(formProduct.colorImages || {}) }
+    let assigned = 0
+    colors.forEach((col, idx) => {
+      if (availableGalleryPhotos[idx]) {
+        newColorImages[col] = availableGalleryPhotos[idx]
+        assigned++
+      }
+    })
+
+    setFormProduct({ ...formProduct, colorImages: newColorImages })
+    showToast(`⚡ ${assigned} photo(s) liée(s) avec succès selon l'ordre des couleurs !`)
   }
 
   // --- Gestion des Photos & Médias dans la Description du Produit ---
@@ -797,6 +878,19 @@ export default function AdminPage() {
       finalDesc += `\n\n[Couleurs: ${validColors.join(', ')}]`
     }
 
+    const validColorImages: Record<string, string> = {}
+    if (formProduct.colorImages && typeof formProduct.colorImages === 'object') {
+      Object.entries(formProduct.colorImages).forEach(([cName, imgUrl]) => {
+        if (validColors.some((c) => c.toLowerCase() === cName.toLowerCase()) && imgUrl && typeof imgUrl === 'string' && imgUrl.trim()) {
+          validColorImages[cName] = imgUrl.trim()
+        }
+      })
+    }
+    if (Object.keys(validColorImages).length > 0) {
+      finalDesc += `\n\n<!--COLOR_IMAGES_JSON_START-->${JSON.stringify(validColorImages)}<!--COLOR_IMAGES_JSON_END-->`
+      finalDesc += `\n\n[ColorImagesJSON: ${JSON.stringify(validColorImages)}]`
+    }
+
     const effectiveCont =
       userContenance ||
       (validVolumes.length > 0 ? validVolumes.map((v) => v.volume).join(', ') : '') ||
@@ -822,6 +916,7 @@ export default function AdminPage() {
       volumes: validVolumes,
       colors: validColors,
       color: validColors.join(', '),
+      colorImages: Object.keys(validColorImages).length > 0 ? validColorImages : undefined,
       description: finalDesc,
       price: effectivePriceFormatted,
       rawPrice: effectiveRawPrice,
@@ -1508,42 +1603,205 @@ export default function AdminPage() {
                       <span>🎨 Couleurs & Nuances disponibles</span>
                     </label>
                     <p className="text-xs text-stone-500 mt-0.5">
-                      Définissez les coloris, teintes ou finitions disponibles (ex: Noir, Blanc, Doré, Nude...). Le client pourra sélectionner sa nuance directement sur la fiche produit.
+                      Définissez les coloris, teintes ou finitions disponibles (ex: Noir, Blanc, Doré, Nude...). Le client pourra sélectionner sa nuance directement sur la fiche produit, et <strong>la photo basculera automatiquement sur la bonne couleur</strong> !
                     </p>
                   </div>
-                  {formProduct.colors && formProduct.colors.length > 0 && (
-                    <span className="text-xs font-bold text-[#1c221d] bg-[#b8c8a6]/60 px-3 py-1 rounded-full w-fit">
-                      {formProduct.colors.length} couleur(s) définie(s)
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {formProduct.colors && formProduct.colors.length > 0 && availableGalleryPhotos.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={handleAutoAssignColorImagesByOrder}
+                        title="Associe la Photo 1 à la Couleur 1, Photo 2 à la Couleur 2, etc."
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#2e3730] hover:bg-[#1c221d] text-white shadow-sm transition"
+                      >
+                        <span>⚡ Lier par ordre des photos</span>
+                      </button>
+                    )}
+                    {formProduct.colors && formProduct.colors.length > 0 && (
+                      <span className="text-xs font-bold text-[#1c221d] bg-[#b8c8a6]/60 px-3 py-1 rounded-full w-fit">
+                        {formProduct.colors.length} couleur(s)
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Couleurs actuellement sélectionnées */}
+                {/* Couleurs actuellement sélectionnées avec association visuelle de photo */}
                 {formProduct.colors && formProduct.colors.length > 0 ? (
-                  <div className="flex flex-wrap gap-2 p-3 bg-white rounded-lg border border-stone-200 shadow-sm">
-                    {formProduct.colors.map((colorName, cIdx) => {
-                      const hex = getColorHex(colorName)
-                      return (
-                        <div
-                          key={cIdx}
-                          className="inline-flex items-center gap-2 pl-2 pr-1.5 py-1 bg-stone-50 border border-stone-300 rounded-full text-xs font-semibold text-stone-800 shadow-sm"
-                        >
-                          <span
-                            className="w-3.5 h-3.5 rounded-full border border-black/20 shadow-inner flex-shrink-0"
-                            style={{ backgroundColor: hex }}
-                          />
-                          <span>{colorName}</span>
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveColor(cIdx)}
-                            className="w-4 h-4 rounded-full bg-stone-200 hover:bg-red-100 hover:text-red-700 text-stone-600 flex items-center justify-center text-[10px] font-bold transition ml-0.5"
-                            title={`Supprimer la couleur ${colorName}`}
+                  <div className="space-y-2 p-3 bg-white rounded-lg border border-stone-200 shadow-sm">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 flex items-center justify-between pb-1 border-b border-stone-100">
+                      <span>Nuances sélectionnées ({formProduct.colors.length})</span>
+                      <span className="text-stone-400 font-normal lowercase">
+                        cliquez sur l'appareil photo pour choisir l'image correspondante
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
+                      {formProduct.colors.map((colorName, cIdx) => {
+                        const hex = getColorHex(colorName)
+                        const assignedImg =
+                          formProduct.colorImages?.[colorName] ||
+                          formProduct.colorImages?.[colorName.toLowerCase()] ||
+                          Object.entries(formProduct.colorImages || {}).find(
+                            ([k]) => k.toLowerCase() === colorName.toLowerCase()
+                          )?.[1]
+                        const isPickingThis = pickingColorImageFor === colorName
+
+                        return (
+                          <div
+                            key={cIdx}
+                            className={`flex flex-col p-2.5 rounded-lg border transition ${
+                              assignedImg
+                                ? 'bg-emerald-50/40 border-emerald-300/80 shadow-xs'
+                                : 'bg-stone-50 border-stone-200'
+                            }`}
                           >
-                            ✕
-                          </button>
-                        </div>
-                      )
-                    })}
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-2 min-w-0">
+                                <span
+                                  className="w-4 h-4 rounded-full border border-black/20 shadow-inner flex-shrink-0"
+                                  style={{ backgroundColor: hex }}
+                                />
+                                <span className="text-xs font-bold text-stone-900 truncate">
+                                  {colorName}
+                                </span>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => handleRemoveColor(cIdx)}
+                                className="w-5 h-5 rounded-full bg-stone-200 hover:bg-red-100 hover:text-red-700 text-stone-600 flex items-center justify-center text-[10px] font-bold transition flex-shrink-0"
+                                title={`Supprimer la couleur ${colorName}`}
+                              >
+                                ✕
+                              </button>
+                            </div>
+
+                            {/* Bloc Photo Associée */}
+                            <div className="mt-2 pt-2 border-t border-stone-200/60 flex items-center justify-between gap-2">
+                              {assignedImg ? (
+                                <div className="flex items-center gap-2 min-w-0 w-full">
+                                  <img
+                                    src={assignedImg}
+                                    alt={colorName}
+                                    className="w-9 h-9 rounded object-cover border border-stone-300 flex-shrink-0 bg-white shadow-xs"
+                                  />
+                                  <div className="min-w-0 flex-1">
+                                    <span className="text-[10px] font-bold text-emerald-800 flex items-center gap-1 block">
+                                      <span>✓ Photo liée</span>
+                                    </span>
+                                    <div className="flex items-center gap-1.5 pt-0.5">
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          setPickingColorImageFor(isPickingThis ? null : colorName)
+                                        }
+                                        className="text-[10px] text-stone-600 hover:text-stone-900 underline font-medium"
+                                      >
+                                        Changer
+                                      </button>
+                                      <span className="text-[10px] text-stone-400">·</span>
+                                      <button
+                                        type="button"
+                                        onClick={() => handleAssignColorImage(colorName, '')}
+                                        className="text-[10px] text-red-600 hover:text-red-800 underline font-medium"
+                                      >
+                                        Détacher
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setPickingColorImageFor(isPickingThis ? null : colorName)
+                                  }
+                                  className="w-full flex items-center justify-center gap-1.5 py-1.5 px-2 bg-white hover:bg-stone-100 text-stone-700 border border-dashed border-stone-300 rounded text-[11px] font-semibold transition"
+                                >
+                                  <span>📷</span>
+                                  <span>Associer une photo</span>
+                                </button>
+                              )}
+                            </div>
+
+                            {/* Picker Inline si cliqué */}
+                            {isPickingThis && (
+                              <div className="mt-2.5 p-2.5 bg-white border border-stone-300 rounded-lg shadow-md space-y-2">
+                                <div className="flex items-center justify-between text-[11px] font-bold text-stone-800">
+                                  <span>Photos du carrousel :</span>
+                                  <button
+                                    type="button"
+                                    onClick={() => setPickingColorImageFor(null)}
+                                    className="text-stone-400 hover:text-stone-700 text-xs font-bold"
+                                  >
+                                    ✕
+                                  </button>
+                                </div>
+
+                                {availableGalleryPhotos.length > 0 ? (
+                                  <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 bg-stone-50 rounded border border-stone-200">
+                                    {availableGalleryPhotos.map((pUrl, pIdx) => {
+                                      const isSelected = assignedImg === pUrl
+                                      return (
+                                        <button
+                                          key={pIdx}
+                                          type="button"
+                                          onClick={() => handleAssignColorImage(colorName, pUrl)}
+                                          className={`relative aspect-square rounded overflow-hidden border-2 transition ${
+                                            isSelected
+                                              ? 'border-emerald-600 ring-2 ring-emerald-400/50 scale-95'
+                                              : 'border-transparent hover:border-stone-400'
+                                          }`}
+                                          title={`Associer la photo ${pIdx + 1}`}
+                                        >
+                                          <img
+                                            src={pUrl}
+                                            alt=""
+                                            className="w-full h-full object-cover"
+                                          />
+                                          {isSelected && (
+                                            <span className="absolute inset-0 bg-emerald-700/40 flex items-center justify-center text-white text-xs font-bold">
+                                              ✓
+                                            </span>
+                                          )}
+                                        </button>
+                                      )
+                                    })}
+                                  </div>
+                                ) : (
+                                  <p className="text-[10.5px] text-stone-500 italic">
+                                    Aucune photo dans le carrousel pour l'instant. Téléversez d'abord vos photos dans la section photos ci-dessous ou saisissez une URL directe.
+                                  </p>
+                                )}
+
+                                {/* Saisie URL manuelle */}
+                                <div className="flex items-center gap-1 pt-1 border-t border-stone-200">
+                                  <input
+                                    type="text"
+                                    placeholder="https://... URL directe d'une photo"
+                                    value={manualColorImageUrl}
+                                    onChange={(e) => setManualColorImageUrl(e.target.value)}
+                                    className="flex-1 px-2 py-1 text-[11px] border border-stone-300 rounded bg-white text-stone-800"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      if (manualColorImageUrl.trim()) {
+                                        handleAssignColorImage(colorName, manualColorImageUrl.trim())
+                                      }
+                                    }}
+                                    disabled={!manualColorImageUrl.trim()}
+                                    className="px-2 py-1 text-[11px] font-bold bg-[#1c221d] text-white rounded disabled:opacity-40"
+                                  >
+                                    Lier
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
                 ) : (
                   <div className="p-3 bg-white/70 border border-dashed border-stone-300 rounded-lg text-center">

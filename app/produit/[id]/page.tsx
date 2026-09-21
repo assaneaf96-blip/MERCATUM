@@ -16,6 +16,7 @@ import {
   extractContenance,
   extractVolumes,
   extractColors,
+  extractColorImages,
   getColorHex,
   getCleanDescription,
   isVideoUrl,
@@ -138,6 +139,10 @@ export default function ProductDetailPage() {
 
   const colors = useMemo(() => {
     return extractColors(product)
+  }, [product])
+
+  const colorImages = useMemo(() => {
+    return extractColorImages(product)
   }, [product])
 
   useEffect(() => {
@@ -391,6 +396,47 @@ export default function ProductDetailPage() {
       setActiveImageIndex(0)
     }
   }, [galleryImages.length, activeImageIndex])
+
+  const handleSelectColor = (col: string) => {
+    setSelectedColor(col)
+
+    if (!galleryImages || galleryImages.length === 0) return
+
+    // 1. Image précisément associée à cette couleur (Option B)
+    const directUrl =
+      colorImages[col] ||
+      colorImages[col.toLowerCase()] ||
+      Object.entries(colorImages).find(([k]) => k.toLowerCase() === col.toLowerCase())?.[1]
+
+    if (directUrl) {
+      const idx = galleryImages.findIndex(
+        (img) => img === directUrl || img.includes(directUrl) || directUrl.includes(img)
+      )
+      if (idx >= 0) {
+        setActiveImageIndex(idx)
+        return
+      }
+    }
+
+    // 2. Détection intelligente par nom de la couleur dans l'URL de l'image
+    const cleanColName = col.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim()
+    if (cleanColName && cleanColName.length >= 3) {
+      const keywordIdx = galleryImages.findIndex((img) => {
+        const imgLower = img.toLowerCase()
+        return imgLower.includes(cleanColName)
+      })
+      if (keywordIdx >= 0) {
+        setActiveImageIndex(keywordIdx)
+        return
+      }
+    }
+
+    // 3. Fallback automatique par ordre si le produit a plusieurs couleurs et plusieurs photos
+    const colIdx = colors.indexOf(col)
+    if (colIdx >= 0 && colIdx < galleryImages.length && galleryImages.length > 1) {
+      setActiveImageIndex(colIdx)
+    }
+  }
 
   // État du zoom et déplacement panoramique (pan) sur l'image principale
   const [zoomLevel, setZoomLevel] = useState<number>(1)
@@ -928,7 +974,7 @@ export default function ProductDetailPage() {
                             ? 'bg-[#1c221d] text-white border-[#1c221d] ring-2 ring-[#b8c8a6]/50'
                             : 'bg-white text-stone-800 border-stone-300 hover:border-stone-500 hover:bg-stone-50'
                         }`}
-                        onClick={() => setSelectedColor(col)}
+                        onClick={() => handleSelectColor(col)}
                       >
                         <span
                           className="w-3.5 h-3.5 rounded-full border border-black/20 flex-shrink-0 shadow-inner"

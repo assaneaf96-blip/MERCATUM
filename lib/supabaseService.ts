@@ -1,5 +1,5 @@
 import { supabase, isSupabaseConfigured } from './supabase'
-import { Product, MediaItem, extractContenance, extractVolumes, extractColors, isVideoUrl } from './products'
+import { Product, MediaItem, extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from './products'
 import { SiteSettings, NewItem } from './store'
 import { getClientCachedProducts, setClientCachedProducts, invalidateClientCache } from './clientCache'
 
@@ -111,6 +111,7 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
     return allData.map((item: any) => {
       const vols = extractVolumes(item)
       const cols = extractColors(item)
+      const colImgs = extractColorImages(item)
       const cont = item.contenance || extractContenance(item)
 
       let rawImages: string[] = []
@@ -161,6 +162,7 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
         volumes: vols.length > 0 ? vols : undefined,
         colors: cols.length > 0 ? cols : undefined,
         color: cols.length > 0 ? cols.join(', ') : undefined,
+        colorImages: Object.keys(colImgs).length > 0 ? colImgs : undefined,
         rating: Number(item.rating) || 5.0,
         reviewsCount: Number(item.reviews_count) || 1,
       }
@@ -206,6 +208,7 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
 
     const vols = extractVolumes(data)
     const cols = extractColors(data)
+    const colImgs = extractColorImages(data)
     const cont = data.contenance || extractContenance(data)
     let rawImages: string[] = []
     if (Array.isArray(data.images)) rawImages = data.images.filter(Boolean)
@@ -255,6 +258,7 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
       volumes: vols.length > 0 ? vols : undefined,
       colors: cols.length > 0 ? cols : undefined,
       color: cols.length > 0 ? cols.join(', ') : undefined,
+      colorImages: Object.keys(colImgs).length > 0 ? colImgs : undefined,
       rating: Number(data.rating) || 5.0,
       reviewsCount: Number(data.reviews_count) || 1,
     }
