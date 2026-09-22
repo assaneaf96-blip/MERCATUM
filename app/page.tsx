@@ -24,7 +24,7 @@ import {
   subscribeToProductsChanges,
 } from '@/lib/supabaseService'
 import { addToCart } from '@/lib/cart'
-import { getClientCachedProducts } from '@/lib/clientCache'
+import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
 
 interface CategoryDetails {
   eyebrow: string
@@ -363,7 +363,7 @@ function CategorySliderSection({
         {/* Rail de défilement horizontal avec tous les produits */}
         <div className="category-slider-wrapper">
           <div ref={trackRef} className="category-products-track">
-            {products.slice(0, 8).map((product) => (
+            {products.map((product) => (
               <article className="category-product-card" key={product.id}>
                 <div>
                   <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
@@ -453,7 +453,13 @@ function CategorySliderSection({
 }
 
 export default function HomePage() {
-  const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
+  const [productsList, setProductsList] = useState<Product[]>(() => {
+    if (typeof window !== 'undefined') {
+      const cached = getSyncCachedProducts()
+      if (cached && cached.length > 0) return cached
+    }
+    return PRODUCTS
+  })
   const [nouveautesList, setNouveautesList] = useState<NewItem[]>([
     { productId: 'idole-now-lancome', customLabel: 'Parfumerie · Nouveau' },
     { productId: 'creme-supreme-anti-age', customLabel: 'Soins Anti-Âge · N°1 des Ventes' },

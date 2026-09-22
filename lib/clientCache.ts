@@ -70,6 +70,31 @@ export async function getClientCachedProducts(): Promise<Product[] | null> {
   }
 }
 
+const SYNC_CACHE_KEY = 'mercatum_sync_catalog'
+
+export function getSyncCachedProducts(): Product[] | null {
+  if (typeof window === 'undefined') return null
+  if (memoryCache && memoryCache.length > 0) return memoryCache
+  try {
+    const raw = sessionStorage.getItem(SYNC_CACHE_KEY)
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        memoryCache = parsed
+        return parsed
+      }
+    }
+  } catch {}
+  return null
+}
+
+export function setSyncCachedProducts(products: Product[]): void {
+  if (typeof window === 'undefined' || !Array.isArray(products) || products.length === 0) return
+  try {
+    sessionStorage.setItem(SYNC_CACHE_KEY, JSON.stringify(products))
+  } catch {}
+}
+
 /**
  * Enregistre les produits dans IndexedDB et en mémoire RAM.
  * Ne souffre pas de la limite de 5 Mo du localStorage (IndexedDB supporte des centaines de Mo).
@@ -77,6 +102,7 @@ export async function getClientCachedProducts(): Promise<Product[] | null> {
 export async function setClientCachedProducts(products: Product[]): Promise<void> {
   if (!Array.isArray(products) || products.length === 0) return
   memoryCache = products
+  setSyncCachedProducts(products)
 
   if (typeof window === 'undefined') return
 
@@ -99,6 +125,9 @@ export async function setClientCachedProducts(products: Product[]): Promise<void
 export function invalidateClientCache(): void {
   memoryCache = null
   if (typeof window === 'undefined') return
+  try {
+    sessionStorage.removeItem(SYNC_CACHE_KEY)
+  } catch {}
   openDB().then((db) => {
     if (!db) return
     try {
@@ -107,3 +136,4 @@ export function invalidateClientCache(): void {
     } catch {}
   })
 }
+

@@ -24,7 +24,7 @@ import {
 } from '@/lib/products'
 import { getProducts, saveProduct, saveProductsBulk } from '@/lib/store'
 import { fetchProductByIdFromDb, fetchProductsFromDb } from '@/lib/supabaseService'
-import { getClientCachedProducts } from '@/lib/clientCache'
+import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
 import { addToCart } from '@/lib/cart'
 
 function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
@@ -210,10 +210,12 @@ export default function ProductDetailPage() {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
 
-    // 1. Chercher dans les produits locaux ou le catalogue up-to-date
+    // 1. Chercher dans les produits locaux ou le catalogue synchrone
+    const syncCached = getSyncCachedProducts()
     const localList = getProducts()
-    setAllProducts(localList)
-    const foundLocal = localList.find((p) => p.id === productId) || PRODUCTS.find((p) => p.id === productId)
+    const combinedList = syncCached && syncCached.length > 0 ? syncCached : localList
+    setAllProducts(combinedList)
+    const foundLocal = combinedList.find((p) => p.id === productId) || PRODUCTS.find((p) => p.id === productId)
 
     if (foundLocal) {
       setProduct(foundLocal)

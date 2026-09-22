@@ -9,17 +9,22 @@ import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription, isVideoUrl } from '@/lib/products'
 import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
-import { getClientCachedProducts } from '@/lib/clientCache'
+import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
 import { searchAndFilterProducts } from '@/lib/searchUtils'
 import { addToCart } from '@/lib/cart'
 
 export default function BoutiquePage() {
-  const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
+  const [productsList, setProductsList] = useState<Product[]>(() => {
+    if (typeof window !== 'undefined') {
+      const cached = getSyncCachedProducts()
+      if (cached && cached.length > 0) return cached
+    }
+    return PRODUCTS
+  })
   const [selectedCategory, setSelectedCategory] = useState('Todos los productos')
   const [viewMode, setViewMode] = useState<'tiendas' | 'products'>('tiendas')
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured')
-  const [visibleCount, setVisibleCount] = useState(24)
   const [cartCount, setCartCount] = useState(0)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
@@ -212,13 +217,7 @@ export default function BoutiquePage() {
     return { filteredProducts: sorted, isSearchedGlobally: searchedGlobally }
   }, [productsList, selectedCategory, searchQuery, sortBy])
 
-  useEffect(() => {
-    setVisibleCount(24)
-  }, [selectedCategory, searchQuery, sortBy])
-
-  const displayedProducts = useMemo(() => {
-    return filteredProducts.slice(0, visibleCount)
-  }, [filteredProducts, visibleCount])
+  const displayedProducts = filteredProducts
 
   // Quand l'utilisateur fait une recherche textuelle, basculer vers les produits
   const handleSearchChange = (val: string) => {
@@ -618,19 +617,7 @@ export default function BoutiquePage() {
             </div>
           )}
 
-          {/* Bouton Voir plus de produits */}
-          {filteredProducts.length > visibleCount && (
-            <div style={{ textAlign: 'center', marginTop: '48px', marginBottom: '32px' }}>
-              <button
-                type="button"
-                className="button dark"
-                onClick={() => setVisibleCount((prev) => prev + 24)}
-                style={{ padding: '15px 36px', fontSize: '15px', borderRadius: '9999px', cursor: 'pointer' }}
-              >
-                Ver más productos ({displayedProducts.length} de {filteredProducts.length}) ↓
-              </button>
-            </div>
-          )}
+
         </section>
       )}
 

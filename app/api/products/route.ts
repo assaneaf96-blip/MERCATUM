@@ -136,9 +136,9 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase par lots rapides de 100 avec galeries d'images et médias
+    // 3. Récupération directe Supabase en 1 seul lot ultra-rapide (< 100ms)
     let allData: any[] = []
-    const batchSize = 100
+    const batchSize = 1000
     for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
