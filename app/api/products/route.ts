@@ -136,13 +136,13 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase en 1 seul lot ultra-rapide (< 100ms)
+    // 3. Récupération directe Supabase par lots sécurisés (< 250) sans colonnes lourdes inutiles pour le catalogue
     let allData: any[] = []
-    const batchSize = 1000
+    const batchSize = 250
     for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
         .range(i, i + batchSize - 1)
 
       if (error) {
