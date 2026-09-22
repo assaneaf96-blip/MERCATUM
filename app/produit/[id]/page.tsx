@@ -25,6 +25,7 @@ import {
 import { getProducts, saveProduct, saveProductsBulk } from '@/lib/store'
 import { fetchProductByIdFromDb, fetchProductsFromDb } from '@/lib/supabaseService'
 import { getClientCachedProducts } from '@/lib/clientCache'
+import { addToCart } from '@/lib/cart'
 
 function getCategoryQualityBadge(catRaw = '', nameRaw = '') {
   const cat = (catRaw || '').toLowerCase()
@@ -304,7 +305,20 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (!product) return
-    setCartCount((c) => c + quantity)
+    const volProduct: Product = selectedVolumeOption
+      ? {
+          ...product,
+          price: selectedVolumeOption.price,
+          rawPrice: selectedVolumeOption.rawPrice,
+          contenance: selectedVolumeOption.volume,
+        }
+      : product
+
+    addToCart(volProduct, quantity, {
+      color: selectedColor ? formatColorEs(selectedColor) : product.color,
+      volume: selectedVolumeOption?.volume || selectedVolume || product.contenance,
+    })
+
     const effectivePrice = selectedVolumeOption?.rawPrice || product.rawPrice
     trackPixel('AddToCart', {
       id: product.id,
@@ -584,7 +598,7 @@ export default function ProductDetailPage() {
   if (loading) {
     return (
       <main className="min-h-screen bg-background text-foreground flex flex-col">
-        <Navbar cartCount={cartCount} />
+        <Navbar />
         <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">
           <div className="pdp-breadcrumb-container flex items-center justify-between">
             <Link href="/boutique" className="text-xs text-stone-600 font-semibold hover:text-stone-900 transition flex items-center gap-1">
@@ -619,7 +633,7 @@ export default function ProductDetailPage() {
   if (!product) {
     return (
       <main className="min-h-screen bg-background text-foreground flex flex-col">
-        <Navbar cartCount={cartCount} />
+        <Navbar />
         <div style={{ textAlign: 'center', padding: '100px 20px', flex: 1 }}>
           <h1 style={{ fontFamily: 'Georgia, serif', fontSize: '32px', marginBottom: '16px' }}>
             Artículo no disponible
@@ -646,10 +660,7 @@ export default function ProductDetailPage() {
       )}
 
       {/* Shared Navbar */}
-      <Navbar
-        cartCount={cartCount}
-        onOpenCart={() => showToast(`Tu cesta contiene ${cartCount} artículo(s)`)}
-      />
+      <Navbar />
 
       {/* Breadcrumbs */}
       <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">

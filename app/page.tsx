@@ -23,6 +23,7 @@ import {
   fetchSettingsFromDb,
   subscribeToProductsChanges,
 } from '@/lib/supabaseService'
+import { addToCart } from '@/lib/cart'
 import { getClientCachedProducts } from '@/lib/clientCache'
 
 interface CategoryDetails {
@@ -560,7 +561,7 @@ export default function HomePage() {
   }
 
   const handleAddToCart = (product: Product) => {
-    setCartCount((c) => c + 1)
+    addToCart(product, 1)
     showToast(`« ${product.name} » añadido a la cesta !`)
   }
 
@@ -747,10 +748,7 @@ export default function HomePage() {
       )}
 
       {/* Shared Navbar */}
-      <Navbar
-        cartCount={cartCount}
-        onOpenCart={() => showToast(`Tu cesta contiene ${cartCount} artículo(s)`)}
-      />
+      <Navbar />
 
       {/* Hero Section */}
       <section id="top" className="hero">

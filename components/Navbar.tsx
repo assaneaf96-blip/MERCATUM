@@ -1,14 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react'
 import { getSiteSettings, getProducts, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { PRODUCTS, Product } from '@/lib/products'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
+import { getCartCount, clearCart } from '@/lib/cart'
+import CartModal from '@/components/CartModal'
+import CheckoutModal from '@/components/CheckoutModal'
 
 interface NavbarProps {
-  cartCount: number
+  cartCount?: number
   onOpenCart?: () => void
 }
 
@@ -16,9 +19,18 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
+  const [internalCartCount, setInternalCartCount] = useState<number>(0)
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [checkoutProduct, setCheckoutProduct] = useState<Product | null>(null)
   const pathname = usePathname()
+  const router = useRouter()
+
+  const refreshCartCount = () => {
+    setInternalCartCount(getCartCount())
+  }
 
   useEffect(() => {
+    refreshCartCount()
     const local = getProducts()
     if (local && local.length > 0) {
       setProductsList(local)
@@ -50,13 +62,51 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     const unsubscribe = subscribeToProductsChanges(loadProducts)
     window.addEventListener('mercatum:products_updated', loadProducts)
     window.addEventListener('storage', loadProducts)
+    window.addEventListener('mercatum:cart_updated', refreshCartCount)
+    window.addEventListener('storage', refreshCartCount)
+
+    const handleOpenCartEvent = () => {
+      setIsCartOpen(true)
+    }
+    window.addEventListener('mercatum:open_cart', handleOpenCartEvent)
 
     return () => {
       unsubscribe()
       window.removeEventListener('mercatum:products_updated', loadProducts)
       window.removeEventListener('storage', loadProducts)
+      window.removeEventListener('mercatum:cart_updated', refreshCartCount)
+      window.removeEventListener('storage', refreshCartCount)
+      window.removeEventListener('mercatum:open_cart', handleOpenCartEvent)
     }
   }, [])
+
+  const displayCartCount = typeof cartCount === 'number'
+    ? Math.max(cartCount, internalCartCount)
+    : internalCartCount
+
+  const handleCartClick = () => {
+    setIsCartOpen(true)
+    if (onOpenCart) {
+      onOpenCart()
+    }
+  }
+
+  const handleBuyNowClick = () => {
+    if (displayCartCount > 0) {
+      setIsCartOpen(true)
+    } else {
+      if (pathname === '/boutique') {
+        const grid = document.getElementById('boutique-products-grid') || document.getElementById('tiendas-selection')
+        if (grid) {
+          grid.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else {
+          window.scrollTo({ top: 400, behavior: 'smooth' })
+        }
+      } else {
+        router.push('/boutique')
+      }
+    }
+  }
 
   const PROMO_ARGUMENTS = [
     {
@@ -118,7 +168,6 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
   ]
 
   const marqueeItems = useMemo(() => {
-    // Répéter les arguments promotionnels pour un défilement infini et continu
     return [...PROMO_ARGUMENTS, ...PROMO_ARGUMENTS]
   }, [])
 
@@ -192,32 +241,65 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
             </Link>
           </div>
           <div className="mobile-nav-cta">
-            <Link
-              href="/boutique"
-              className="button dark mobile-menu-buy-btn"
-              onClick={() => setMenuOpen(false)}
+            <button
+              type="button"
+              className="button dark mobile-menu-buy-btn w-full"
+              onClick={() => {
+                setMenuOpen(false)
+                handleBuyNowClick()
+              }}
+              style={{ cursor: 'pointer', textAlign: 'center' }}
             >
-              Acceder a la tienda <span>→</span>
-            </Link>
+              Comprar Ahora / Tienda <span>→</span>
+            </button>
           </div>
         </nav>
 
         <div className="header-actions">
-          <Link href="/boutique" className="header-buy-btn">
-            Comprar Ahora
-          </Link>
           <button
-            onClick={onOpenCart}
+            type="button"
+            onClick={handleBuyNowClick}
+            className="header-buy-btn"
+            style={{ cursor: 'pointer', border: 'none' }}
+          >
+            Comprar Ahora
+          </button>
+          <button
+            type="button"
+            onClick={handleCartClick}
             className="header-cart-btn"
             aria-label="Cesta"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
           >
             <span style={{ fontSize: '13px', lineHeight: 1 }}>🛒</span>
             <span>Cesta</span>
-            <span className="cart-badge-pill">({cartCount})</span>
+            <span className="cart-badge-pill">({displayCartCount})</span>
           </button>
         </div>
       </header>
+
+      {/* Slide-in Cart Drawer */}
+      <CartModal
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        onCheckout={(consolidated) => {
+          setIsCartOpen(false)
+          setCheckoutProduct(consolidated)
+        }}
+      />
+
+      {/* Bank Transfer Checkout Modal when triggered from Cart */}
+      {checkoutProduct && (
+        <CheckoutModal
+          product={checkoutProduct}
+          initialQuantity={1}
+          onClose={() => setCheckoutProduct(null)}
+          onSuccess={() => {
+            clearCart()
+            setCheckoutProduct(null)
+          }}
+        />
+      )}
     </>
   )
 }

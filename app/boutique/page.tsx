@@ -11,6 +11,7 @@ import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type 
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 import { getClientCachedProducts } from '@/lib/clientCache'
 import { searchAndFilterProducts } from '@/lib/searchUtils'
+import { addToCart } from '@/lib/cart'
 
 export default function BoutiquePage() {
   const [productsList, setProductsList] = useState<Product[]>(PRODUCTS)
@@ -180,7 +181,7 @@ export default function BoutiquePage() {
   }
 
   const handleAddToCart = (product: Product) => {
-    setCartCount((c) => c + 1)
+    addToCart(product, 1)
     showToast(`« ${product.name} » añadido a la cesta !`)
   }
 
@@ -268,10 +269,7 @@ export default function BoutiquePage() {
       )}
 
       {/* Shared Navbar */}
-      <Navbar
-        cartCount={cartCount}
-        onOpenCart={() => showToast(`Su cesta contiene ${cartCount} artículo(s)`)}
-      />
+      <Navbar />
 
       {/* Boutique Header Banner - Couleur initiale raffinée (#ede7dc) */}
       <section className="bg-[#ede7dc] text-[#1c221d] pt-8 pb-7 px-4 text-center border-b border-[#d8d0c2] shadow-sm relative overflow-hidden">
