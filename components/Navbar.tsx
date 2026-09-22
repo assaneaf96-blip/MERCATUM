@@ -210,8 +210,11 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
             onClick={onOpenCart}
             className="header-cart-btn"
             aria-label="Cesta"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            Cesta <span className="cart-badge-pill">({cartCount})</span>
+            <span style={{ fontSize: '13px', lineHeight: 1 }}>🛒</span>
+            <span>Cesta</span>
+            <span className="cart-badge-pill">({cartCount})</span>
           </button>
         </div>
       </header>

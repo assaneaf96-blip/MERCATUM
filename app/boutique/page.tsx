@@ -612,7 +612,7 @@ export default function BoutiquePage() {
                       onClick={() => handleAddToCart(product)}
                       aria-label="Añadir a la cesta"
                     >
-                      Añadir a la cesta +
+                      🛒 Añadir a la cesta +
                     </button>
                   </div>
                 </article>

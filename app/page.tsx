@@ -405,7 +405,7 @@ function CategorySliderSection({
                       className="category-card-cart-btn"
                       onClick={() => onAddToCart(product)}
                     >
-                      Cesta +
+                      🛒 Cesta +
                     </button>
                   </div>
                 </div>
@@ -1046,7 +1046,7 @@ export default function HomePage() {
                   onClick={() => handleAddToCart(product)}
                   style={{ padding: '8px 14px' }}
                 >
-                  Cesta +
+                  🛒 Cesta +
                 </button>
               </div>
             </article>
