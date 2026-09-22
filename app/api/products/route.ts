@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
-import { extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from '@/lib/products'
+import { PRODUCTS, extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from '@/lib/products'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -154,14 +154,16 @@ export async function GET(request: NextRequest) {
       if (data.length < batchSize) break
     }
 
-    if (allData.length === 0 && serverCache && serverCache.products.length > 0) {
-      return NextResponse.json(
-        { success: true, products: serverCache.products, stale: true },
-        { headers: NO_CACHE_HEADERS }
-      )
-    }
+    let products = (allData || []).map((item) => formatProduct(item))
 
-    const products = (allData || []).map((item) => formatProduct(item))
+    if (products.length === 0) {
+      if (serverCache && serverCache.products.length > 0) {
+        products = serverCache.products
+      } else {
+        products = PRODUCTS
+        seedDefaultProductsToSupabase().catch(() => {})
+      }
+    }
 
     // Mettre à jour le cache serveur
     if (products.length > 0) {
@@ -184,6 +186,41 @@ export async function GET(request: NextRequest) {
   }
 }
 
+let isSeeding = false
+
+async function seedDefaultProductsToSupabase() {
+  if (!isSupabaseConfigured || isSeeding) return
+  isSeeding = true
+  try {
+    const batchSize = 50
+    for (let i = 0; i < PRODUCTS.length; i += batchSize) {
+      const chunk = PRODUCTS.slice(i, i + batchSize).map((p) => ({
+        id: String(p.id),
+        name: String(p.name),
+        category: p.category || 'MERCATUM',
+        type: p.type || '',
+        price: p.price || '0 €',
+        raw_price: Number(p.rawPrice) || 0,
+        description: p.description || '',
+        image: p.image || '',
+        images: p.images || [],
+        media: p.media || [],
+        tag: p.tag || '',
+        rating: Number(p.rating) || 5.0,
+        reviews_count: Number(p.reviewsCount) || 1,
+      }))
+      const { error } = await supabase.from('products').upsert(chunk, { onConflict: 'id' })
+      if (error) {
+        console.warn(`[Supabase Seeding] Erreur lot ${i}:`, error.message)
+      }
+    }
+  } catch (err) {
+    console.warn('[Supabase Seeding] Erreur:', err)
+  } finally {
+    isSeeding = false
+  }
+}
+
 export async function POST(request: NextRequest) {
   if (!isSupabaseConfigured) {
     return NextResponse.json(
@@ -193,6 +230,12 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const url = new URL(request.url)
+    if (url.searchParams.get('action') === 'seed') {
+      await seedDefaultProductsToSupabase()
+      return NextResponse.json({ success: true, count: PRODUCTS.length })
+    }
+
     const body = await request.json()
     if (!body || !body.id || !body.name) {
       return NextResponse.json(
