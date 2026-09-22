@@ -475,14 +475,16 @@ export default function HomePage() {
   useEffect(() => {
     // 1. Chargement local immédiat (0 délai d'affichage)
     const localProducts = getProducts()
-    setProductsList(localProducts)
+    if (localProducts && localProducts.length > PRODUCTS.length) {
+      setProductsList((prev) => (localProducts.length > prev.length ? localProducts : prev))
+    }
     setNouveautesList(getNouveautes())
     setSettings(getSiteSettings())
 
     // 1.1 Cache IndexedDB ultra-rapide (< 10ms) pour restaurer tous les produits instantanément
     getClientCachedProducts().then((cached) => {
       if (cached && cached.length > 0) {
-        setProductsList(cached)
+        setProductsList((prev) => (cached.length >= prev.length ? cached : prev))
       }
     }).catch(() => {})
 

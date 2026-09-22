@@ -91,7 +91,19 @@ export function getSyncCachedProducts(): Product[] | null {
 export function setSyncCachedProducts(products: Product[]): void {
   if (typeof window === 'undefined' || !Array.isArray(products) || products.length === 0) return
   try {
-    sessionStorage.setItem(SYNC_CACHE_KEY, JSON.stringify(products))
+    const json = JSON.stringify(products)
+    // Le quota habituel de sessionStorage est de 5 Mo. Si la taille est sous 4 Mo, sauvegarder directement.
+    if (json.length < 4000000) {
+      sessionStorage.setItem(SYNC_CACHE_KEY, json)
+      return
+    }
+    // Si la taille dépasse 4 Mo (à cause d'images base64 volumineuses), alléger les images volumineuses
+    // pour que la liste complète de tous les 660+ produits soit instantanément disponible au rafraîchissement
+    const light = products.map((p) => {
+      const isHeavy = typeof p.image === 'string' && p.image.length > 5000
+      return isHeavy ? { ...p, image: '' } : p
+    })
+    sessionStorage.setItem(SYNC_CACHE_KEY, JSON.stringify(light))
   } catch {}
 }
 

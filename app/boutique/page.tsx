@@ -51,13 +51,15 @@ export default function BoutiquePage() {
     }
 
     const localProducts = getProducts()
-    setProductsList(localProducts)
+    if (localProducts && localProducts.length > PRODUCTS.length) {
+      setProductsList((prev) => (localProducts.length > prev.length ? localProducts : prev))
+    }
     setSettings(getSiteSettings())
 
     // Cache IndexedDB ultra-rapide (< 10ms) pour restaurer immédiatement la boutique
     getClientCachedProducts().then((cached) => {
       if (cached && cached.length > 0) {
-        setProductsList(cached)
+        setProductsList((prev) => (cached.length >= prev.length ? cached : prev))
       }
     }).catch(() => {})
 
