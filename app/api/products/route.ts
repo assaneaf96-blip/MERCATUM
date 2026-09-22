@@ -136,13 +136,13 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase par lots rapides de 100 sans la colonne lourde images
+    // 3. Récupération directe Supabase par lots rapides de 100 avec galeries d'images et médias
     let allData: any[] = []
     const batchSize = 100
     for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, description, image, tag, rating, reviews_count')
+        .select('id, name, category, type, price, raw_price, description, image, images, media, tag, rating, reviews_count')
         .range(i, i + batchSize - 1)
 
       if (error) {
