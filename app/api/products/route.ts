@@ -148,13 +148,13 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase par lots sécurisés (< 250) sans colonnes lourdes inutiles pour le catalogue
+    // 3. Récupération directe Supabase par lots rapides de 100 pour charger la totalité des 681+ produits sans timeout
     let allData: any[] = []
-    const batchSize = 250
+    const batchSize = 100
     for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image, images, media, description')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
         .range(i, i + batchSize - 1)
 
       if (error) {

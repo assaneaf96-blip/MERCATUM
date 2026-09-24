@@ -90,7 +90,7 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
   if (!isSupabaseConfigured) return null
   try {
     let allData: any[] = []
-    const batchSize = 250
+    const batchSize = 100
     for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
