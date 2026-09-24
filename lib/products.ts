@@ -363,5 +363,65 @@ export const CATEGORIES = [
   "Alta Cosmética"
 ]
 
+export function isVideoUrl(url: string): boolean {
+  if (!url) return false
+  const lower = url.toLowerCase()
+  return (
+    lower.endsWith('.mp4') ||
+    lower.endsWith('.webm') ||
+    lower.endsWith('.ogg') ||
+    lower.endsWith('.mov') ||
+    lower.includes('/video/') ||
+    lower.startsWith('data:video/')
+  )
+}
+
+export interface VolumeOptionParsed { volume: string; price: string; rawPrice: number }
+
+export function extractVolumes(p?: {
+  volumes?: VolumeOption[]
+  description?: string
+} | null): VolumeOptionParsed[] {
+  if (!p) return []
+
+  if (p.volumes && Array.isArray(p.volumes) && p.volumes.length > 0) {
+    return p.volumes.map((v) => ({
+      volume: v.label || '',
+      price: v.price || '',
+      rawPrice: v.rawPrice || 0,
+    }))
+  }
+
+  const commentMatch = (p.description || '').match(/<!--VOLUMES_JSON_START-->([\s\S]*?)<!--VOLUMES_JSON_END-->/)
+  if (commentMatch) {
+    try {
+      const parsed = JSON.parse(commentMatch[1].trim())
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed.map((v: any) => ({
+          volume: String(v.volume || v.label || '').trim(),
+          price: String(v.price || '').trim(),
+          rawPrice: Number(v.rawPrice || v.raw_price || 0),
+        }))
+      }
+    } catch {}
+  }
+
+  const markerMatch = (p.description || '').match(/\[VolumesJSON:\s*(\[[\s\S]*?\])\s*\]/i)
+  if (markerMatch) {
+    try {
+      const parsed = JSON.parse(markerMatch[1].trim())
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed.map((v: any) => ({
+          volume: String(v.volume || v.label || '').trim(),
+          price: String(v.price || '').trim(),
+          rawPrice: Number(v.rawPrice || v.raw_price || 0),
+        }))
+      }
+    } catch {}
+  }
+
+  return []
+}
 
 export const PRODUCTS: Product[] = [];
+
