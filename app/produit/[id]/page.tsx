@@ -215,10 +215,29 @@ export default function ProductDetailPage() {
     const localList = getProducts()
     const combinedList = syncCached && syncCached.length > 0 ? syncCached : localList
     setAllProducts(combinedList)
-    const foundLocal = combinedList.find((p) => p.id === productId) || PRODUCTS.find((p) => p.id === productId)
+    const defProduct = PRODUCTS.find((p) => p.id === productId)
+    const foundInList = combinedList.find((p) => p.id === productId)
+    const foundInitial = foundInList || defProduct
 
-    if (foundLocal) {
-      setProduct(foundLocal)
+    if (foundInitial) {
+      const mainImg = (foundInitial.image || defProduct?.image || '').trim()
+      const defImgs = Array.isArray(defProduct?.images) ? defProduct.images.filter(Boolean) : []
+      const foundImgs = Array.isArray(foundInitial.images) ? foundInitial.images.filter(Boolean) : []
+      // TOUJOURS préserver et fusionner l'intégralité des images dès la première milliseconde
+      const mergedImgs = Array.from(new Set([mainImg, ...foundImgs, ...defImgs].filter(Boolean)))
+      const defMedia = Array.isArray(defProduct?.media) ? defProduct.media.filter(Boolean) : []
+      const foundMedia = Array.isArray(foundInitial.media) ? foundInitial.media.filter(Boolean) : []
+      const mergedMedia = foundMedia.length > 1
+        ? foundMedia
+        : (defMedia.length > 1 ? defMedia : mergedImgs.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const })))
+
+      setProduct({
+        ...(defProduct || {}),
+        ...foundInitial,
+        image: mainImg,
+        images: mergedImgs,
+        media: mergedMedia,
+      })
       setActiveImageIndex(0)
       setLoading(false)
     } else {
@@ -237,22 +256,32 @@ export default function ProductDetailPage() {
       setLoading(true)
     }
 
-    // 2. Synchronisation en arrière-plan depuis Supabase (met à jour le cache local pour toujours)
+    // 2. Synchronisation en arrière-plan depuis Supabase (charge la totalité absolue des médias HD)
     fetchProductByIdFromDb(productId).then((dbProduct) => {
       if (dbProduct) {
         setProduct((prev) => {
           if (!prev) return dbProduct
-          const mainImg = (dbProduct.image || prev.image || '').trim()
-          const dbImgs = (dbProduct.images && dbProduct.images.length > 0) ? dbProduct.images : (prev.images || [])
-          const ordered = mainImg ? [mainImg, ...dbImgs.filter((u) => u !== mainImg)] : dbImgs
+          const mainImg = (dbProduct.image || prev.image || defProduct?.image || '').trim()
+          const dbImgs = (dbProduct.images && dbProduct.images.length > 0) ? dbProduct.images : []
+          const prevImgs = (prev.images && prev.images.length > 0) ? prev.images : []
+          const defImgs = defProduct?.images || []
+          // Ne jamais perdre la moindre image : fusionner toutes les sources
+          const allImgs = Array.from(new Set([mainImg, ...dbImgs, ...prevImgs, ...defImgs].filter(Boolean)))
+
+          const dbMedia = (dbProduct.media && dbProduct.media.length > 0) ? dbProduct.media : []
+          const prevMedia = (prev.media && prev.media.length > 0) ? prev.media : []
+          const defMedia = defProduct?.media || []
+          const mergedMedia = dbMedia.length > 1
+            ? dbMedia
+            : (prevMedia.length > 1 ? prevMedia : (defMedia.length > 1 ? defMedia : allImgs.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const }))))
+
           return {
+            ...(defProduct || {}),
             ...prev,
             ...dbProduct,
             image: mainImg,
-            images: ordered,
-            media: (dbProduct.media && dbProduct.media.length > 0)
-              ? dbProduct.media
-              : ordered.map((u) => ({ url: u, type: 'image' as const })),
+            images: allImgs,
+            media: mergedMedia,
           }
         })
         saveProduct(dbProduct)

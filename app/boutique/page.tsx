@@ -80,15 +80,20 @@ export default function BoutiquePage() {
           dbProducts.forEach((p) => {
             const def = merged.get(p.id)
             const chosenMain = (p.image || def?.image || '').trim()
-            const rawImages = (p.images && p.images.length > 0)
-              ? p.images
-              : (def?.images && def.images.length > 0 ? def.images : (chosenMain ? [chosenMain] : []))
-            const rawMedia = (p.media && p.media.length > 0)
-              ? p.media
-              : (def?.media && def.media.length > 0 ? def.media : rawImages.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const })))
+            const pImgs = Array.isArray(p.images) ? p.images.filter(Boolean) : []
+            const defImgs = Array.isArray(def?.images) ? def.images.filter(Boolean) : []
+            const rawImages = pImgs.length > 1
+              ? pImgs
+              : (defImgs.length > 0 ? defImgs : (pImgs.length > 0 ? pImgs : (chosenMain ? [chosenMain] : [])))
+
+            const pMedia = Array.isArray(p.media) ? p.media.filter(Boolean) : []
+            const defMedia = Array.isArray(def?.media) ? def.media.filter(Boolean) : []
+            const rawMedia = pMedia.length > 1
+              ? pMedia
+              : (defMedia.length > 0 ? defMedia : rawImages.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const })))
 
             const orderedImages = chosenMain
-              ? [chosenMain, ...rawImages.filter((u) => u !== chosenMain)]
+              ? Array.from(new Set([chosenMain, ...rawImages]))
               : rawImages
 
             merged.set(p.id, {
