@@ -89,21 +89,27 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
   // 2. Côté serveur ou repli direct Supabase
   if (!isSupabaseConfigured) return null
   try {
-    let allData: any[] = []
     const batchSize = 100
-    for (let i = 0; i < 5000; i += batchSize) {
-      const { data, error } = await supabase
-        .from('products')
-        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
-        .range(i, i + batchSize - 1)
+    const ranges: { from: number; to: number }[] = []
+    for (let i = 0; i < 800; i += batchSize) {
+      ranges.push({ from: i, to: i + batchSize - 1 })
+    }
 
-      if (error) {
-        console.warn(`Erreur Supabase fetchProducts lot ${i}:`, error.message)
-        break
+    const responses = await Promise.all(
+      ranges.map((r) =>
+        supabase
+          .from('products')
+          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
+          .order('id', { ascending: true })
+          .range(r.from, r.to)
+      )
+    )
+
+    let allData: any[] = []
+    for (const res of responses) {
+      if (res.data && res.data.length > 0) {
+        allData.push(...res.data)
       }
-      if (!data || data.length === 0) break
-      allData.push(...data)
-      if (data.length < batchSize) break
     }
 
     if (allData.length === 0) return null
@@ -133,12 +139,25 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
       }
 
       const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
-      const mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+      let mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+      if (mainImage && mainImage.startsWith('data:')) {
+        mainImage = `/api/product-image?id=${encodeURIComponent(item.id)}`
+      }
 
       const allImagesSet = new Set<string>()
       if (mainImage) allImagesSet.add(mainImage)
-      rawImages.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
-      mediaUrls.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
+      rawImages.forEach((u) => {
+        if (u && typeof u === 'string') {
+          const trimmed = u.trim()
+          allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : trimmed)
+        }
+      })
+      mediaUrls.forEach((u) => {
+        if (u && typeof u === 'string') {
+          const trimmed = u.trim()
+          allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : trimmed)
+        }
+      })
 
       const imagesList = Array.from(allImagesSet)
       const mediaList: MediaItem[] = imagesList.map((url) => ({

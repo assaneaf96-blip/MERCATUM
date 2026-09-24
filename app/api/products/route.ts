@@ -64,15 +64,24 @@ function formatProduct(item: any) {
 
   const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
 
-  const mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '')
+  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '')
+  if (rawMain && rawMain.startsWith('data:')) {
+    rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}`
+  }
 
   const allImagesSet = new Set<string>()
-  if (mainImage) allImagesSet.add(mainImage)
+  if (rawMain) allImagesSet.add(rawMain)
   rawImages.forEach((img) => {
-    if (img && typeof img === 'string') allImagesSet.add(img.trim())
+    if (img && typeof img === 'string') {
+      const u = img.trim()
+      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : u)
+    }
   })
   mediaUrls.forEach((img) => {
-    if (img && typeof img === 'string') allImagesSet.add(img.trim())
+    if (img && typeof img === 'string') {
+      const u = img.trim()
+      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : u)
+    }
   })
 
   const imagesList = Array.from(allImagesSet)
@@ -89,7 +98,7 @@ function formatProduct(item: any) {
     price: item.price,
     rawPrice: Number(item.raw_price) || 0,
     description: item.description || '',
-    image: mainImage || (imagesList[0] || ''),
+    image: rawMain || (imagesList[0] || ''),
     images: imagesList,
     media: mediaList,
     tag: item.tag || '',
@@ -148,22 +157,28 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // 3. Récupération directe Supabase par lots rapides de 100 pour charger la totalité des 681+ produits sans timeout
-    let allData: any[] = []
+    // 3. Récupération directe Supabase par lots parallèles rapides de 100 pour charger la totalité des 681+ produits sans timeout
     const batchSize = 100
-    for (let i = 0; i < 5000; i += batchSize) {
-      const { data, error } = await supabase
-        .from('products')
-        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
-        .range(i, i + batchSize - 1)
+    const ranges: { from: number; to: number }[] = []
+    for (let i = 0; i < 800; i += batchSize) {
+      ranges.push({ from: i, to: i + batchSize - 1 })
+    }
 
-      if (error) {
-        console.warn(`Erreur récupération lot Supabase ${i}:`, error.message)
-        break
+    const responses = await Promise.all(
+      ranges.map((r) =>
+        supabase
+          .from('products')
+          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
+          .order('id', { ascending: true })
+          .range(r.from, r.to)
+      )
+    )
+
+    let allData: any[] = []
+    for (const res of responses) {
+      if (res.data && res.data.length > 0) {
+        allData.push(...res.data)
       }
-      if (!data || data.length === 0) break
-      allData.push(...data)
-      if (data.length < batchSize) break
     }
 
     let products = (allData || []).map((item) => formatProduct(item))
