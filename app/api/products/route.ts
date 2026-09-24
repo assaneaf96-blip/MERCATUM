@@ -66,21 +66,21 @@ function formatProduct(item: any) {
 
   let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}`
   if (rawMain && rawMain.startsWith('data:')) {
-    rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}`
+    rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
   }
 
   const allImagesSet = new Set<string>()
   if (rawMain) allImagesSet.add(rawMain)
-  rawImages.forEach((img) => {
+  rawImages.forEach((img, idx) => {
     if (img && typeof img === 'string') {
       const u = img.trim()
-      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : u)
+      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : u)
     }
   })
-  mediaUrls.forEach((img) => {
+  mediaUrls.forEach((img, idx) => {
     if (img && typeof img === 'string') {
       const u = img.trim()
-      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : u)
+      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : u)
     }
   })
 

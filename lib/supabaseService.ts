@@ -141,21 +141,21 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
       const defProduct = PRODUCTS.find((p) => p.id === item.id)
       let mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}`
       if (mainImage && mainImage.startsWith('data:')) {
-        mainImage = `/api/product-image?id=${encodeURIComponent(item.id)}`
+        mainImage = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
       }
 
       const allImagesSet = new Set<string>()
       if (mainImage) allImagesSet.add(mainImage)
-      rawImages.forEach((u) => {
+      rawImages.forEach((u, idx) => {
         if (u && typeof u === 'string') {
           const trimmed = u.trim()
-          allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : trimmed)
+          allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : trimmed)
         }
       })
-      mediaUrls.forEach((u) => {
+      mediaUrls.forEach((u, idx) => {
         if (u && typeof u === 'string') {
           const trimmed = u.trim()
-          allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}` : trimmed)
+          allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : trimmed)
         }
       })
 

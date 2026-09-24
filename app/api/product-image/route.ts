@@ -7,6 +7,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id')
+    const index = parseInt(searchParams.get('index') || '0', 10)
 
     if (!id) {
       return NextResponse.redirect(new URL('/placeholder.svg', request.url))
@@ -14,22 +15,41 @@ export async function GET(request: NextRequest) {
 
     const { data, error } = await supabase
       .from('products')
-      .select('image')
+      .select('image, images, media')
       .eq('id', id)
       .single()
 
-    if (error || !data || !data.image) {
+    if (error || !data) {
       return NextResponse.redirect(new URL('/placeholder.svg', request.url))
     }
 
-    const raw = String(data.image).trim()
+    let rawImages: string[] = []
+    if (Array.isArray(data.images) && data.images.length > 0) {
+      rawImages = data.images.filter(Boolean)
+    } else if (typeof data.images === 'string') {
+      try {
+        const parsed = JSON.parse(data.images)
+        if (Array.isArray(parsed)) rawImages = parsed.filter(Boolean)
+      } catch {}
+    }
+
+    if (rawImages.length === 0 && Array.isArray(data.media) && data.media.length > 0) {
+      rawImages = data.media.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+    }
+
+    let raw = ''
+    if (rawImages.length > 0) {
+      raw = String(rawImages[index] || rawImages[0] || data.image || '').trim()
+    } else {
+      raw = String(data.image || '').trim()
+    }
 
     // 1. Si c'est une URL directe (http:// ou https://)
     if (raw.startsWith('http://') || raw.startsWith('https://')) {
       return NextResponse.redirect(raw)
     }
 
-    // 2. Si c'est un chemin relatif (/images/...)
+    // 2. Si c'est un chemin relatif (/images/... ou /uploads/...)
     if (raw.startsWith('/')) {
       return NextResponse.redirect(new URL(raw, request.url))
     }
