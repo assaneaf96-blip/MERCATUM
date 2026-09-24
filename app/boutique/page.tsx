@@ -220,7 +220,7 @@ export default function BoutiquePage() {
     const sorted = [...products].sort((a, b) => {
       if (sortBy === 'price-asc') return a.rawPrice - b.rawPrice
       if (sortBy === 'price-desc') return b.rawPrice - a.rawPrice
-      if (sortBy === 'rating') return b.rating - a.rating
+      if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0)
       return 0
     })
 

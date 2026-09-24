@@ -47,7 +47,7 @@ export interface Order {
   totalPrice: number
   currency: string
   paymentMethod: string
-  status: 'En attente de virement' | 'Paiement reçu' | 'Expédiée' | 'Annulée'
+  status: 'En attente de virement' | 'Paiement reçu' | 'Expédiée' | 'Livrée' | 'Annulée'
   createdAt: string
 }
 

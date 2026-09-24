@@ -1232,8 +1232,8 @@ export default function AdminPage() {
     const matchesCategory = filterCategory === 'Tous les produits' || p.category === filterCategory
     const matchesSearch =
       p.name.toLowerCase().includes(searchProduct.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchProduct.toLowerCase()) ||
-      p.type.toLowerCase().includes(searchProduct.toLowerCase())
+      (p.description || '').toLowerCase().includes(searchProduct.toLowerCase()) ||
+      (p.type || '').toLowerCase().includes(searchProduct.toLowerCase())
     return matchesCategory && matchesSearch
   })
 
