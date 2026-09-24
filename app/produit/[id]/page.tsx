@@ -132,7 +132,10 @@ export default function ProductDetailPage() {
   const router = useRouter()
   const productId = Array.isArray(params?.id) ? params.id[0] : (params?.id as string)
 
-  const [product, setProduct] = useState<Product | null>(null)
+  const [product, setProduct] = useState<Product | null>(() => {
+    if (!productId) return null
+    return PRODUCTS.find((p) => p.id === productId) || null
+  })
   const [allProducts, setAllProducts] = useState<Product[]>(PRODUCTS)
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0)
   const [selectedVolume, setSelectedVolume] = useState<string>('')
@@ -200,7 +203,10 @@ export default function ProductDetailPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState<boolean>(() => {
+    if (!productId) return true
+    return !PRODUCTS.some((p) => p.id === productId)
+  })
 
   useEffect(() => {
     if (!productId) return
