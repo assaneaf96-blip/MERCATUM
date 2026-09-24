@@ -1,5 +1,5 @@
 import { supabase, isSupabaseConfigured } from './supabase'
-import { Product, MediaItem, extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from './products'
+import { PRODUCTS, Product, MediaItem, extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from './products'
 import { SiteSettings, NewItem } from './store'
 import { getClientCachedProducts, setClientCachedProducts, invalidateClientCache } from './clientCache'
 
@@ -99,7 +99,7 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
       ranges.map((r) =>
         supabase
           .from('products')
-          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
+          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
           .order('id', { ascending: true })
           .range(r.from, r.to)
       )
@@ -138,8 +138,8 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
         } catch {}
       }
 
-      const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
-      let mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+      const defProduct = PRODUCTS.find((p) => p.id === item.id)
+      let mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}`
       if (mainImage && mainImage.startsWith('data:')) {
         mainImage = `/api/product-image?id=${encodeURIComponent(item.id)}`
       }

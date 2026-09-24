@@ -64,7 +64,7 @@ function formatProduct(item: any) {
 
   const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
 
-  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '')
+  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}`
   if (rawMain && rawMain.startsWith('data:')) {
     rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}`
   }
@@ -168,7 +168,7 @@ export async function GET(request: NextRequest) {
       ranges.map((r) =>
         supabase
           .from('products')
-          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
+          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
           .order('id', { ascending: true })
           .range(r.from, r.to)
       )
