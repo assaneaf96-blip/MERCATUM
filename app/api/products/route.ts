@@ -154,7 +154,7 @@ export async function GET(request: NextRequest) {
     for (let i = 0; i < 5000; i += batchSize) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image, images, media, description')
         .range(i, i + batchSize - 1)
 
       if (error) {

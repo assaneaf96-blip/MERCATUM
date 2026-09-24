@@ -3542,10 +3542,9 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
     "images": [
       "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
-      "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
-      "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
-      "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
-      "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg"
+      "/uploads/tv_roble_240.jpg",
+      "/uploads/rf2532_front.jpg",
+      "/uploads/tv_garda_angle.jpg"
     ],
     "media": [
       {
@@ -3553,19 +3552,15 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
+        "url": "/uploads/tv_roble_240.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
+        "url": "/uploads/rf2532_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/soportes-de-tv-de-lujo-para-exhibicion-organi.jpg",
+        "url": "/uploads/tv_garda_angle.jpg",
         "type": "image"
       }
     ],
@@ -3584,9 +3579,9 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
     "images": [
       "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
-      "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
-      "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
-      "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg"
+      "/uploads/tv_garda_front.jpg",
+      "/uploads/tv_garda_angle.jpg",
+      "/uploads/tv_blanco_open.jpg"
     ],
     "media": [
       {
@@ -3594,15 +3589,15 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
+        "url": "/uploads/tv_garda_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
+        "url": "/uploads/tv_garda_angle.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-de-tv-montado-blanco-combinado-con-rob.jpg",
+        "url": "/uploads/tv_blanco_open.jpg",
         "type": "image"
       }
     ],
@@ -4493,9 +4488,9 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
     "images": [
       "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
-      "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
-      "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
-      "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg"
+      "/uploads/rf2532_front.jpg",
+      "/uploads/tv_blanco_front.jpg",
+      "/uploads/tv_blanco_open.jpg"
     ],
     "media": [
       {
@@ -4503,15 +4498,15 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
+        "url": "/uploads/rf2532_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
+        "url": "/uploads/tv_blanco_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/modulo-tv-con-hueco-para-almacenar-sus-dispos.jpg",
+        "url": "/uploads/tv_blanco_open.jpg",
         "type": "image"
       }
     ],
@@ -4530,9 +4525,9 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
     "images": [
       "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
-      "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
-      "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
-      "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg"
+      "/uploads/rf2532_front.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_2.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_4.jpg"
     ],
     "media": [
       {
@@ -4540,15 +4535,15 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
+        "url": "/uploads/rf2532_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_2.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_4.jpg",
         "type": "image"
       }
     ],
@@ -4564,17 +4559,17 @@ export const PRODUCTS: Product[] =
     "price": "625,00 €",
     "rawPrice": 625,
     "description": "Módulo Tv con hueco para almacenar sus dispositivos electrónicos y puerta abatible. Medidas del Módulo: 102cm. de Ancho, 45cm. de Alto, 35cm. de Profundidad. Color roble y negro con veteado de madera de tacto poroso de alta calidad. Módulo Tv con puerta, gran capacidad de almacenaje. Medidas del Módulo: 51cm. de Ancho, 45cm. de Alto, 35cm. de Profundidad. Color roble y negro con veteado de madera de tacto poroso de alta calidad. Estantería decorativa. Medidas: 110cm. de Ancho, 186cm. de Alto, 25cm. de Profundidad. Color roble y negro con veteado de madera de tacto poroso de alta calidad. Paneles de listones de madera, panel pared 3D. Contiene dos paneles de 107x70 cm. Chimenea Eléctrica LED. Medidas: 107cm. de Ancho, 32cm. de Alto. Efecto de fuego 3D increíblemente realista. Sin riesgos de quemaduras ya que no incorpora ninguna fuente de calor. Potencia: 34w. Incluye mando a distancia y 3 niveles de intensidad. La chimenea eléctrica funciona conectada a la electricidad. El mando a distancia requiere pilas, que no están incluidas.",
-    "image": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
+    "image": "/uploads/rf2540_fireplace.jpg",
     "images": [
+      "/uploads/rf2540_fireplace.jpg",
       "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
-      "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
-      "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
-      "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
-      "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg"
+      "/uploads/rf2532_front.jpg",
+      "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_5.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
+        "url": "/uploads/rf2540_fireplace.jpg",
         "type": "image"
       },
       {
@@ -4582,15 +4577,15 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
+        "url": "/uploads/rf2532_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
+        "url": "/uploads/muebles-de-salon-para-tv-260x35x186cm-roble-y.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_5.jpg",
         "type": "image"
       }
     ],
@@ -4606,17 +4601,16 @@ export const PRODUCTS: Product[] =
     "price": "249,50 €",
     "rawPrice": 249.5,
     "description": "3XE LIVING presenta un mueble de TV de pared suspendido en tono beige cashmere, con acabado mate que aporta una estética contemporánea y serena al salón. Su diseño rectangular, con paneles enrasados y dos puertas con juntas verticales, permite organizar el espacio para el televisor y el equipamiento hi-fi, manteniendo una imagen limpia. El mueble está fabricado en tablero de partículas de madera con panel laminado y una apariencia mate, con una estructura de 16 mm tanto en el cuerpo como en las zonas frontales.\nCon unas dimensiones de 200 x 32 x 34 cm (ancho x fondo x alto), incorpora 1 balda y un compartimento de almacenamiento a nivel único, pensado para guardar consolas, mandos o accesorios. Se suministra en kit y embalado en plano para facilitar el montaje, por lo que requiere ensamblaje. Para un uso seguro, se recomienda fijarlo firmemente a la pared: los elementos de anclaje (tornillos y tacos) no se incluyen. Para minimizar el riesgo de arañazos durante el montaje, trabaja sobre una superficie blanda.",
-    "image": "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
+    "image": "/uploads/tv_cashmere_front.jpg",
     "images": [
+      "/uploads/tv_cashmere_front.jpg",
       "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
-      "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
-      "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
-      "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
-      "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg"
+      "/uploads/tv_garda_open.jpg",
+      "/uploads/tv_garda_detail.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
+        "url": "/uploads/tv_cashmere_front.jpg",
         "type": "image"
       },
       {
@@ -4624,15 +4618,11 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
+        "url": "/uploads/tv_garda_open.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-pared-beige-cashmere-200-x-32-x-34-.jpg",
+        "url": "/uploads/tv_garda_detail.jpg",
         "type": "image"
       }
     ],
@@ -4651,10 +4641,9 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
     "images": [
       "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
-      "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
-      "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
-      "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
-      "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg"
+      "/uploads/tv_cashmere_front.jpg",
+      "/uploads/tv_blanco_angle.jpg",
+      "/uploads/tv_blanco_open.jpg"
     ],
     "media": [
       {
@@ -4662,19 +4651,15 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
+        "url": "/uploads/tv_cashmere_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
+        "url": "/uploads/tv_blanco_angle.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-beige-cachemira-mate-154-x-39-x-56-.jpg",
+        "url": "/uploads/tv_blanco_open.jpg",
         "type": "image"
       }
     ],
@@ -4690,16 +4675,16 @@ export const PRODUCTS: Product[] =
     "price": "200,00 €",
     "rawPrice": 200,
     "description": "Este mueble para TV está pensado para un salón moderno y ofrece una solución funcional para organizar el espacio.\nFabricado en aglomerado con acabado en efecto mármol, presenta una superficie lisa y de fácil cuidado.\nDispone de 3 cajones, gestión de cables y una capacidad de carga de 30 kg.\nCon unas dimensiones de 200×40×42 cm, es adecuado para televisores de hasta 90 pulgadas.\nMueble para TV con diseño moderno para el salón\nEfecto mármol en la superficie de la mesa\n3 cajones para guardar accesorios y objetos\nGestión de cables con un orificio trasero\nCapacidad de carga de hasta 30 kg\nApto para televisores de hasta 90 pulgadas\nSuperficie lisa y de fácil cuidado\nSobre el producto\nTipo de producto: Mueble para TV\nMaterial: Tablero de partículas\nColor: Negro\nAcabado: Efecto mármol\nDimensiones: 200×40×42 cm\nCantidad de cajones: 3\nGestión de cables: 1 orificio trasero\nCapacidad de carga: 30 kg\nUso previsto: Para televisores de hasta 90 pulgadas\nQué incluye\n1 x Mueble para TV\nAspectos a tener en cuenta\nEl producto se envía en 2 paquetes",
-    "image": "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
+    "image": "/uploads/tv_marmol_front.jpg",
     "images": [
+      "/uploads/tv_marmol_front.jpg",
       "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
-      "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
-      "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
-      "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg"
+      "/uploads/tv_blanco_night.jpg",
+      "/uploads/tv_garda_detail.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
+        "url": "/uploads/tv_marmol_front.jpg",
         "type": "image"
       },
       {
@@ -4707,11 +4692,11 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
+        "url": "/uploads/tv_blanco_night.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-efecto-marmol-negro-3-cajones-cable.jpg",
+        "url": "/uploads/tv_garda_detail.jpg",
         "type": "image"
       }
     ],
@@ -4727,17 +4712,16 @@ export const PRODUCTS: Product[] =
     "price": "355,00 €",
     "rawPrice": 355,
     "description": "El aparador para televisor Sloughia 05 en color beige crea un rincón de entretenimiento cálido y actual, con un diseño limpio que encaja con facilidad en el salón. Su estructura está pensada para mantener el equipo multimedia ordenado: cuenta con dos compartimentos con puertas abatibles, que al abrirse dejan a la vista dos estantes interiores para organizar con discreción dispositivos, cajas y accesorios. En la zona trasera del espacio abierto dispone de un recorte rectangular con panel interior negro que ayuda a gestionar los cables, dejando la parte visible más despejada y armoniosa. Además, combina fachadas frontales de MDF de 18 mm con el cuerpo en paneles de partículas laminados E05 de 16 mm, aportando una base sólida para el uso diario. Las puertas presentan una textura acanalada y vertical, con asas a juego, mientras que las patas metálicas doradas inclinadas elevan el conjunto y aportan un toque refinado. La protección de cantos y la ferretería certificada contribuyen a una instalación estable y a una mayor resistencia frente al desgaste.",
-    "image": "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
+    "image": "/uploads/tv_cashmere_front.jpg",
     "images": [
+      "/uploads/tv_cashmere_front.jpg",
       "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
-      "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
-      "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
-      "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
-      "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg"
+      "/uploads/tv_garda_open.jpg",
+      "/uploads/tv_blanco_angle.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
+        "url": "/uploads/tv_cashmere_front.jpg",
         "type": "image"
       },
       {
@@ -4745,15 +4729,11 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
+        "url": "/uploads/tv_garda_open.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-largo-2-puertas-abatibles-beige-200.jpg",
+        "url": "/uploads/tv_blanco_angle.jpg",
         "type": "image"
       }
     ],
@@ -4769,29 +4749,29 @@ export const PRODUCTS: Product[] =
     "price": "410,00 €",
     "rawPrice": 410,
     "description": "Patas metálicas de estilo Industrial. Medidas: 12cm. de Alto, 8cm. De Ancho, 33cm. De Profundidad, color Negro. Modulo Chimenea Led. Medidas del Módulo: 107cm. de Ancho, 45cm. de Altura, 35cm. de Profundidad, color cemento. Módulo Tv con puerta, gran capacidad de almacenaje. Medidas del Módulo: 80cm. de Ancho, 45cm. de Alto, 35cm. de Profundidad. Color cemento mate y negro con veteado de madera de tacto poroso de alta calidad. Chimenea Eléctrica LED. Medidas: 107cm. de Ancho, 32cm. de Alto. Efecto de fuego 3D increíblemente realista. Sin riesgos de quemaduras ya que no incorpora ninguna fuente de calor. Potencia: 34w. Incluye mando a distancia y 3 niveles de intensidad. La chimenea eléctrica funciona conectada a la electricidad. El mando a distancia requiere pilas, que no están incluidas.",
-    "image": "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
+    "image": "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
     "images": [
-      "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_6.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_2.jpg",
+      "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
       "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_6.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_2.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-267x35x57cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
         "type": "image"
       },
       {
@@ -4811,39 +4791,29 @@ export const PRODUCTS: Product[] =
     "price": "399,00 €",
     "rawPrice": 399,
     "description": "Módulo TV con hueco . Medidas del Módulo: 109cm. de Ancho, 50cm. de Alto, 35 cm. de Profundidad. Color beige Módulo Tv con puertas abatibles y gran capacidad de almacenaje. Bisagras con cierre soft. Tiradores de aluminio. Medidas del Módulo: 103 cm. de Ancho, 50cm. de Alto, 35cm. de Profundidad. Color beige Chimenea Eléctrica LED. Medidas: 107cm. de Ancho, 32cm. de Alto. Efecto de fuego 3D increíblemente realista. Sin riesgos de quemaduras ya que no incorpora ninguna fuente de calor. Potencia: 34w. Incluye mando a distancia y 3 niveles de intensidad. La chimenea eléctrica funciona conectada a la electricidad. El mando a distancia requiere pilas, que no están incluidas.",
-    "image": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
+    "image": "/uploads/mueble-tv-television-chimenea-electrica-led.jpg",
     "images": [
-      "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-      "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_3.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_4.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_5.jpg",
       "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_3.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_4.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-212x35x50cm-chimenea-electrica-xxl-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_5.jpg",
         "type": "image"
       },
       {
@@ -4863,34 +4833,29 @@ export const PRODUCTS: Product[] =
     "price": "500,00 €",
     "rawPrice": 500,
     "description": "Módulo Tv con puertas abatibles y gran capacidad de almacenaje. Bisagras con cierre soft. Medidas del Módulo: 104cm. de Ancho, 50cm. de Alto, 37cm. de Profundidad. Color blanco mate y roble claro con veteado de madera de tacto poroso de alta calidad. Módulo Tv con hueco y puerta abatible. Bisagras con cierre soft. Medidas del Módulo: 104cm. de Ancho, 50cm. de Alto, 37cm. de Profundidad. Color blanco y roble claro con veteado de madera de tacto poroso de alta calidad. Interruptor tactil oculto. Luz led blanco neutro, con regulador de intensidad Chimenea Eléctrica LED. Medidas: 102cm. de Ancho, 21cm. de Alto. Efecto de fuego 3D increíblemente realista. Sin riesgos de quemaduras ya que no incorpora ninguna fuente de calor. Potencia: 34w. Incluye mando a distancia y 3 niveles de intensidad. La chimenea eléctrica funciona conectada a la electricidad. El mando a distancia requiere pilas, que no están incluidas.",
-    "image": "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
+    "image": "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
     "images": [
-      "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
-      "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
-      "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
-      "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
-      "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
+      "/uploads/mueble-tv-television-chimenea-electrica-led_6.jpg",
+      "/uploads/rf2540_fireplace.jpg",
+      "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
       "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led_6.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
+        "url": "/uploads/rf2540_fireplace.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-310x37x50cm-chimenea-electrica-led-.jpg",
+        "url": "/uploads/muebles-para-tv-260x35x186cm-roble-y-negro-ch.jpg",
         "type": "image"
       },
       {
@@ -6853,16 +6818,16 @@ export const PRODUCTS: Product[] =
     "price": "269,00 €",
     "rawPrice": 269,
     "description": "Mueble TV Suspendido Loft Artisan Cómoda RTV 240 cm Mueble Suspendido 2 x TV ENJOY\nDos muebles modernos en color roble artisan, que ofrecen en total cuatro compartimentos cerrados espaciosos. Los muebles se colocan uno al lado del otro para formar un único mueble largo con un diseño muy elegante. Están equipados con puertas abatibles con bloqueo de caída (ajustable). Esto garantiza un fácil acceso al interior. La combinación de estos dos muebles ofrece una gran capacidad de almacenamiento.\n\nDisponible en diferentes colores :\n\nBlanco\nGrafito\nRoble artisan\nEl mueble también está disponible en versión de pie (ver otros productos del vendedor).\n\nFABRICACIÓN\n\nProducto polaco fabricado con materiales de alta calidad\nCuerpo – tablero laminado de 16 mm\nFachadas – tablero laminado de 16 mm\nApertura práctica de las fachadas sin tiradores\nBisagras metálicas robustas con amortiguador\nEmbalaje cuidadoso\nFácil montaje\nNOTA :\n\nEl conjunto está compuesto por dos muebles de 120 cm colocados uno al lado del otro.\n\nDIMENSIONES\n\nAncho : 2 x 120 cm, es decir 240 cm en total\nAltura : 30 cm\nProfundidad : 35 cm\nCOLOR\n\nFachadas : roble artisan mate\nCuerpo : roble artisan mate\nOBSERVACIONES\n\nCarga máxima soportada por un mueble : 28 kg\nMuebles enviados en paquetes para montaje en casa\nInstrucciones y todos los elementos necesarios incluidos.\nMANTENIMIENTO\n\nRecomendamos limpiar regularmente los muebles con un paño limpio y ligeramente húmedo. Evite el uso de productos químicos, salvo los destinados específicamente al cuidado de muebles.\nCompruebe regularmente el apriete de las fijaciones (ajustar si es necesario).\nNO DUDE EN consultar también otros productos de la colección ENJOY !\n\n\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Paneles y derivados de la madera\nTipo de tablero:  Melamina\nAcabado:  Mate\n4 puertas\nTipo de almacenaje:  Armario\nDiseño de tipo:  Para fijar a la pared (suspendido)\nCarga máxima soportada:  14 kg\nNecesita montaje\nDimensiones\nLargo:  240 cm\nAltura:  30 cm\nProfundidad:  35 cm\n\n<!--COLORS_JSON_START-->[\"Gris\",\"Blanc\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Gris, Blanc]",
-    "image": "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
+    "image": "/uploads/tv_roble_240.jpg",
     "images": [
+      "/uploads/tv_roble_240.jpg",
       "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
-      "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
-      "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
-      "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg"
+      "/uploads/tv_garda_open.jpg",
+      "/uploads/tv_garda_detail.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
+        "url": "/uploads/tv_roble_240.jpg",
         "type": "image"
       },
       {
@@ -6870,11 +6835,11 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
+        "url": "/uploads/tv_garda_open.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-suspendido-con-4-puertas-cuerpo-rob.jpg",
+        "url": "/uploads/tv_garda_detail.jpg",
         "type": "image"
       }
     ],
@@ -6890,54 +6855,29 @@ export const PRODUCTS: Product[] =
     "price": "211,00 €",
     "rawPrice": 211,
     "description": "Superficie brillante\nSumérgete en la elegancia sencilla de nuestro mueble para TV en blanco y negro. El cuerpo blanco brillante aporta un acento claro y moderno, mientras que las patas de apoyo negras crean un contraste fascinante.\nAmplio espacio de almacenamiento; Con unas generosas dimensiones (190 * 45 * 35 cm), el gabinete ofrece mucho espacio para sus dispositivos electrónicos de entretenimiento. Tres puertas y dos cajones garantizan un aspecto limpio y un espacio de almacenamiento práctico.\nDiseño de bloques de color\nla inteligente combinación de blanco y negro le da al mueble de TV no sólo armonía visual, sino también una estética contemporánea. Un mueble que convence tanto por su diseño como por su funcionalidad. Líneas claras Las líneas claras y el diseño sencillo hacen de este mueble para la televisión un atractivo atemporal. El acabado brillante y los estables elementos negros le dan un toque moderno.\nDiseño detallado\nEl diseño interior del producto también es muy refinado\nEn la puerta se encuentra un estante para que sus objetos puedan guardarse Se puede guardar ordenadamente en la puerta.\nEspecificaciones\n\nDimensiones totales: 190 L x 35 W x 45H(cm)\nCarga del producto: 50kg\nPeso/VL: 46,5g/41,05kg\nColor: blanco y negro\nMaterial: partícula tablero\nAlto brillo: Sí\nOtras herramientas necesarias: Sí\nNúmero de bultos: 2\nOrigen: PRC\nObservaciones\n\n※ Este producto se dividirá en 2 paquetes para su entrega. Es posible que no lleguen al mismo tiempo. Espere pacientemente. en cuanto sea posible.",
-    "image": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
+    "image": "/uploads/tv_blanco_front.jpg",
     "images": [
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-      "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
+      "/uploads/tv_blanco_front.jpg",
+      "/uploads/tv_blanco_angle.jpg",
+      "/uploads/tv_blanco_open.jpg",
+      "/uploads/tv_blanco_night.jpg",
       "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
+        "url": "/uploads/tv_blanco_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
+        "url": "/uploads/tv_blanco_angle.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
+        "url": "/uploads/tv_blanco_open.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-blanco-y-moderno-190x35x45-cm-3-pue.jpg",
+        "url": "/uploads/tv_blanco_night.jpg",
         "type": "image"
       },
       {
@@ -6957,54 +6897,29 @@ export const PRODUCTS: Product[] =
     "price": "205,00 €",
     "rawPrice": 205,
     "description": "Mueble TV GARDA: Estilo moderno y funcional, dimensiones del mueble cerrado 210x35x30 cm, carga máxima 30 kg.\n\nDiseño moderno bicolor blanco brillante y roble, adaptable tanto para el montaje en pared como para la colocación en el suelo con patas, lo que ofrece libertad de personalización y adaptación al entorno según tus necesidades de espacio y estilo.\n\n\nAmplio espacio de almacenamiento con 2 puertas abatibles y 1 estante central para una organización muy funcional.\n\n\nFácil de montar gracias a unas instrucciones claras e intuitivas.\n\n\nEcosostenible, mueble fabricado a partir de madera reciclada y con un embalaje completamente de cartón.\n\n\nDirectamente del fabricante, orgullosamente diseñado y fabricado en Italia, sinónimo de calidad y diseño vanguardista.\n\n\nNuestro servicio de atención al cliente se encuentra en Italia, dentro de nuestra planta de producción. Nuestro equipo habla español. Puedes ponerte en contacto con nosotros por mensaje para preguntar sobre los productos, solicitar piezas de repuesto o recibir ayuda durante el montaje del mueble.\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Madera\nTipo de tablero:  Melamina\nGrosor de la madera:  16 mm\nAcabado:  Lacado\n2 puertas\nTipo de almacenaje:  Cajones, Estantería\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Bosques gestionados de forma sostenible\nNecesita montaje\nDimensiones\nLargo:  210 cm\nAltura:  30 cm\nProfundidad:  35 cm",
-    "image": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
+    "image": "/uploads/tv_garda_front.jpg",
     "images": [
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-      "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
+      "/uploads/tv_garda_front.jpg",
+      "/uploads/tv_garda_angle.jpg",
+      "/uploads/tv_garda_open.jpg",
+      "/uploads/tv_garda_detail.jpg",
       "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
+        "url": "/uploads/tv_garda_front.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
+        "url": "/uploads/tv_garda_angle.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
+        "url": "/uploads/tv_garda_open.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/mueble-tv-garda-con-2-puertas-y-1-estante-cen.jpg",
+        "url": "/uploads/tv_garda_detail.jpg",
         "type": "image"
       },
       {

@@ -430,27 +430,43 @@ export default function ProductDetailPage() {
     if (!product) return []
     const def = PRODUCTS.find((p) => p.id === product.id)
     const list: string[] = []
-    if (product.image) list.push(product.image)
+    const addImg = (img?: string) => {
+      if (!img || typeof img !== 'string') return
+      const trimmed = img.trim()
+      if (trimmed && !isVideoUrl(trimmed) && !list.includes(trimmed)) {
+        list.push(trimmed)
+      }
+    }
+
+    if (product.image) addImg(product.image)
     if (product.images && product.images.length > 0) {
-      product.images.forEach((img) => {
-        if (img && !list.includes(img)) list.push(img)
-      })
+      product.images.forEach(addImg)
     }
     if (def?.images && def.images.length > 0) {
-      def.images.forEach((img) => {
-        if (img && !list.includes(img)) list.push(img)
-      })
+      def.images.forEach(addImg)
     }
     if (product.media && product.media.length > 0) {
       product.media.forEach((m) => {
-        if (m && m.url && !list.includes(m.url)) list.push(m.url)
+        if (m && m.url && m.type !== 'video') addImg(m.url)
       })
     }
     if (def?.media && def.media.length > 0) {
       def.media.forEach((m) => {
-        if (m && m.url && !list.includes(m.url)) list.push(m.url)
+        if (m && m.url && m.type !== 'video') addImg(m.url)
       })
     }
+
+    // Extraire également toutes les photos intégrées dans la description
+    const descText = product.description || def?.description || ''
+    if (descText) {
+      const imgRegex = /(!\[(.*?)\]\((.*?)\)|<img[^>]*src=["']([^"']+)["'][^>]*>)/gi
+      let match: RegExpExecArray | null
+      while ((match = imgRegex.exec(descText)) !== null) {
+        const u = match[3]?.trim() || match[4]?.trim()
+        if (u) addImg(u)
+      }
+    }
+
     return list.length > 0 ? list : ['/placeholder.svg']
   }, [product])
 
