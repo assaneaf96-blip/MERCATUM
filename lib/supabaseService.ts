@@ -139,7 +139,7 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
       }
 
       const defProduct = PRODUCTS.find((p) => p.id === item.id)
-      let mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}`
+      let mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
       if (mainImage && mainImage.startsWith('data:')) {
         mainImage = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
       }
@@ -248,12 +248,25 @@ export async function fetchProductByIdFromDb(id: string): Promise<Product | null
     }
 
     const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
-    const mainImage = (typeof data.image === 'string' ? data.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+    let mainImage = (typeof data.image === 'string' ? data.image.trim() : '') || rawImages[0] || mediaUrls[0] || `/api/product-image?id=${encodeURIComponent(data.id)}&index=0`
+    if (mainImage && mainImage.startsWith('data:')) {
+      mainImage = `/api/product-image?id=${encodeURIComponent(data.id)}&index=0`
+    }
 
     const allImagesSet = new Set<string>()
     if (mainImage) allImagesSet.add(mainImage)
-    rawImages.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
-    mediaUrls.forEach((u) => { if (u && typeof u === 'string') allImagesSet.add(u.trim()) })
+    rawImages.forEach((u, idx) => {
+      if (u && typeof u === 'string') {
+        const trimmed = u.trim()
+        allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(data.id)}&index=${idx}` : trimmed)
+      }
+    })
+    mediaUrls.forEach((u, idx) => {
+      if (u && typeof u === 'string') {
+        const trimmed = u.trim()
+        allImagesSet.add(trimmed.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(data.id)}&index=${idx}` : trimmed)
+      }
+    })
 
     const imagesList = Array.from(allImagesSet)
     const mediaList: MediaItem[] = imagesList.map((url) => ({

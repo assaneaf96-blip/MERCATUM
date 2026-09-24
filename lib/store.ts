@@ -103,7 +103,7 @@ export function compactProductForStorage(product: Product): Product {
 
   const cleanImage = isVideo(product.image) ? '' : product.image
   const cleanImages = Array.isArray(product.images)
-    ? product.images.filter((img) => !isVideo(img)).slice(0, 5)
+    ? product.images.filter((img) => !isVideo(img)).slice(0, 30)
     : []
   const cleanMedia = Array.isArray(product.media)
     ? product.media
@@ -111,7 +111,7 @@ export function compactProductForStorage(product: Product): Product {
           const url = typeof m === 'string' ? m : m?.url
           return !isVideo(url)
         })
-        .slice(0, 5)
+        .slice(0, 30)
     : undefined
 
   return {

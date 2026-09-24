@@ -64,7 +64,7 @@ function formatProduct(item: any) {
 
   const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
 
-  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}`
+  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
   if (rawMain && rawMain.startsWith('data:')) {
     rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
   }

@@ -271,15 +271,17 @@ export default function ProductDetailPage() {
           const dbImgs = (dbProduct.images && dbProduct.images.length > 0) ? dbProduct.images : []
           const prevImgs = (prev.images && prev.images.length > 0) ? prev.images : []
           const defImgs = defProduct?.images || []
-          // Ne jamais perdre la moindre image : fusionner toutes les sources
-          const allImgs = Array.from(new Set([mainImg, ...dbImgs, ...prevImgs, ...defImgs].filter(Boolean)))
+          // La base de données Supabase Cloud est la source de vérité absolue pour la galerie
+          const allImgs = (dbImgs && dbImgs.length > 0)
+            ? dbImgs
+            : Array.from(new Set([mainImg, ...prevImgs, ...defImgs].filter(Boolean)))
 
           const dbMedia = (dbProduct.media && dbProduct.media.length > 0) ? dbProduct.media : []
           const prevMedia = (prev.media && prev.media.length > 0) ? prev.media : []
           const defMedia = defProduct?.media || []
-          const mergedMedia = dbMedia.length > 1
+          const mergedMedia = dbMedia.length > 0
             ? dbMedia
-            : (prevMedia.length > 1 ? prevMedia : (defMedia.length > 1 ? defMedia : allImgs.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const }))))
+            : (prevMedia.length > 0 ? prevMedia : (defMedia.length > 0 ? defMedia : allImgs.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const }))))
 
           const mergedProduct = {
             ...(defProduct || {}),
@@ -441,16 +443,15 @@ export default function ProductDetailPage() {
     if (product.image) addImg(product.image)
     if (product.images && product.images.length > 0) {
       product.images.forEach(addImg)
-    }
-    if (def?.images && def.images.length > 0) {
+    } else if (def?.images && def.images.length > 0) {
       def.images.forEach(addImg)
     }
+
     if (product.media && product.media.length > 0) {
       product.media.forEach((m) => {
         if (m && m.url && m.type !== 'video') addImg(m.url)
       })
-    }
-    if (def?.media && def.media.length > 0) {
+    } else if (def?.media && def.media.length > 0) {
       def.media.forEach((m) => {
         if (m && m.url && m.type !== 'video') addImg(m.url)
       })
