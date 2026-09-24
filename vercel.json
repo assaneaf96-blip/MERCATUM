@@ -3,7 +3,8 @@
   "installCommand": "npm install",
   "build": {
     "env": {
-      "NEXT_TELEMETRY_DISABLED": "1"
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "VERCEL_BYPASS_FALLBACK_OVERSIZED_ERROR": "1"
     }
   }
 }
