@@ -473,7 +473,7 @@ export const CATEGORIES = [
   "Alta Cosmética"
 ]
 
-export const PRODUCTS: Product[] = 
+export const PRODUCTS: Product[] =
 [
   {
     "id": "horno-pirolitico-multifuncion-cooke-lewis",
@@ -3719,11 +3719,31 @@ export const PRODUCTS: Product[] =
     "description": "Estufa de pellet burdeos 9,7kW Canadian\nDisfruta de un ambiente cálido y acogedor en tu hogar con la estufa de pellet burdeos Canadian, diseñada para ofrecer eficiencia y estilo.\nCon una potencia de 9,7 kW, esta estufa garantiza una calefacción óptima para espacios medianos, proporcionando confort durante los días más fríos.\nSu elegante acabado en color burdeos aporta un toque de distinción y calidez a cualquier estancia, integrándose fácilmente en diversos estilos de decoración.\nFabricada por Stove Canadian, esta estufa combina calidad y tecnología para maximizar el rendimiento y minimizar el consumo de combustible.\nAdemás, su tamaño compacto facilita su instalación en diferentes espacios sin renunciar a una gran capacidad de calefacción.\nCaracterísticas:\nPotencia de 9,7 kW para calefacción eficiente\nColor burdeos elegante y moderno\nDimensiones: 102 cm de alto, 49,4 cm de ancho\nDiseño compacto y funcional\nMarca reconocida: Stove Canadian\nConsumo optimizado para mayor ahorro\nIdeal para espacios medianos\nAcabado de alta calidad\nFácil instalación y mantenimiento",
     "image": "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg",
     "images": [
-      "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg"
+      "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg",
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3742,7 +3762,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
     "images": [
       "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
-      "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -3750,7 +3773,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3769,7 +3804,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg",
     "images": [
       "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg",
-      "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -3777,7 +3815,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3838,9 +3888,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
     "images": [
       "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
-      "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
-      "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
-      "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -3848,15 +3899,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3875,11 +3930,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
     "images": [
       "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -3887,23 +3941,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3922,11 +3972,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
     "images": [
       "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -3934,23 +3983,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3969,12 +4014,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
     "images": [
       "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -3982,27 +4025,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4021,11 +4056,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
     "images": [
       "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4033,23 +4067,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4068,8 +4098,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
     "images": [
       "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
-      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
-      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4077,11 +4109,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4099,8 +4139,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
     "images": [
       "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
-      "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
-      "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4108,11 +4150,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4131,9 +4181,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
     "images": [
       "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
-      "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
-      "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
-      "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4141,15 +4192,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4168,8 +4223,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
     "images": [
       "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
-      "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
-      "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4177,11 +4234,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4200,7 +4265,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
     "images": [
       "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
-      "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4208,7 +4276,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4227,8 +4307,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
     "images": [
       "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
-      "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
-      "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4236,11 +4318,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4259,10 +4349,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
     "images": [
       "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
-      "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
-      "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
-      "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
-      "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4270,19 +4360,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4301,11 +4391,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
     "images": [
       "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4313,23 +4402,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4348,7 +4433,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg",
     "images": [
       "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg",
-      "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4356,7 +4444,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4375,10 +4475,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
     "images": [
       "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
-      "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
-      "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
-      "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
-      "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4386,19 +4486,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4417,9 +4517,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
     "images": [
       "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
-      "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
-      "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
-      "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4427,15 +4528,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4454,8 +4559,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
     "images": [
       "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
-      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
-      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4463,11 +4570,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4486,10 +4601,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
     "images": [
       "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
-      "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
-      "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
-      "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
-      "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4497,19 +4612,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4528,11 +4643,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
     "images": [
       "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4540,23 +4654,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4575,8 +4685,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
     "images": [
       "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
-      "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
-      "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4584,11 +4696,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4607,11 +4727,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
     "images": [
       "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4619,23 +4738,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4654,7 +4769,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg",
     "images": [
       "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg",
-      "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4662,7 +4780,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4680,11 +4810,31 @@ export const PRODUCTS: Product[] =
     "description": "Para beneficiarse de la garantía de 2 años del fabricante, las operaciones de instalación, conexión al circuito eléctrico, comprobación del funcionamiento, mantenimiento y posibles reparaciones deben ser realizadas por un profesional cualificado. ¡El mantenimiento anual es obligatorio! Si no se cumplen estas condiciones, no se aceptará ninguna reclamación en garantía.\n\n¡ATENCIÓN!\nEs imprescindible comprobar el buen estado del paquete en el momento de la entrega, tanto por fuera como por dentro.\nEstufa de pellets Anita 12 kW Negro Sannover + Kit de instalación completo\nKit de conexión Ø 80/125 que incluye:\n1 tubo flexible para la conexión de la entrada de aire\n+ 1 TE 90° con conexión F\n+ 6 abrazaderas de unión\n+ 1 TE derivación M\n+ 1 abrazadera mural plana regulable\n+ 1 conducto de 0,5 metros\n+ 1 conducto de 1 metro\n+ 2 rosetas de acabado\n+ 1 salida horizontal regulable\n+ Anita 12 kW\nUna estufa de pellets eficiente y económica\nAnita es una estufa de pellets compacta y elegante, con una excelente relación calidad-precio. Bajo consumo con 27 horas de autonomía, calienta hasta 280 m3.\nDoble combustión, aire ventilado, fácil mantenimiento, programable, sonda ambiente integrada, crisol amplio, muy silenciosa, salida de humos por la parte trasera. Esta estufa de pellets tiene una potencia nominal de 10,6 kW, que es la potencia obtenida en las mejores condiciones de uso de la estufa. La potencia máxima de 12 kW se mide durante el pico de calor de la estufa. Como la mayoría de las estufas de pellets, el rendimiento se expresa en potencia máxima.\nSu estufa de pellets debe ser instalada por un profesional cualificado y sometida a un mantenimiento anual.\nCaracterísticas:\n\nDiámetro de salida: 80 mm\nClase energética de calefacción: A+\nPotencia máxima: 12 kW\nPotencia nominal: 10,6 kW\nRendimiento: 87 %\nVolumen de calefacción: 280 m3\nCapacidad del depósito de pellets: 30 kg\nAutonomía: 27 h\nAl/An/Pr: 1042 x 534 x 585 mm\nPeso: 136 kg\n\n\nPiezas de repuesto disponibles durante 10 años.",
     "image": "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg"
+      "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg",
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4703,8 +4853,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
     "images": [
       "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
-      "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
-      "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4712,11 +4864,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4735,7 +4895,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg",
     "images": [
       "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg",
-      "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4743,7 +4906,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4762,8 +4937,10 @@ export const PRODUCTS: Product[] =
     "image": "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
     "images": [
       "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
-      "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
-      "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg"
+      "/uploads/pellet-stove-detail-llama.jpg",
+      "/uploads/pellet-stove-detail-display.jpg",
+      "/uploads/pellet-stove-detail-tolva.jpg",
+      "/uploads/pellet-stove-detail-instalacion.jpg"
     ],
     "media": [
       {
@@ -4771,11 +4948,19 @@ export const PRODUCTS: Product[] =
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
+        "url": "/uploads/pellet-stove-detail-llama.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
+        "url": "/uploads/pellet-stove-detail-display.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-tolva.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
