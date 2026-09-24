@@ -4927,29 +4927,34 @@ export const PRODUCTS: Product[] =
     "price": "405,00 €",
     "rawPrice": 405,
     "description": "La serie BEQUIA tiene un diseño funcional y minimalista.\n- Fácil de instalar, el mueble viene 100% montado de fábrica\n- Diseñado y fabricado en España\n- Garantía 5 años para daños y piezas de repuesto.\n- Certificado PEFC, que garantiza una explotación sostenible de los recursos forestales. Embalaje libre de plásticos.\nEl conjunto está formado por mueble, lavabo y encimera.\nMueble suspendido: BEQUIA 120 cm fondo 45 cm:\n- Cuatro cajones con cierre con freno amortiguado para un cierre suave.\n- Interiores: acabado Gris Onix defácil limpieza.\n- Tirador tipo uñero integrado en el frente del mueble, en la parte superior de cada uno de los cajones para mayor ergonomía.\n- Frente y laterales fabricados en tablero de partículas laminado de 1'6 cm (clase E-1) con cantos en PVC (con cola PUR) muy resistentes a la humedad.\n- Colores disponibles en este serie: Blanco mate, negro mate y madera Roble.\n- Dimensiones: 120 x 54 x 45 cm (2 muebles de 60 cm de ancho)\nEncimera:\n- Resistente a la humedad.\n- Fabricada en tablero de partículas laminado de 1'6 cm (clase E-1) con cantos en PVC (con cola PUR)\n- Mismo acabado del mueble\nLavabos (2 uds)\n- Fabricado en porcelana blanca, con grifo encastrado en el lavabo.\n- Máxima resistencia al desgaste\n- Color blanco puro para siempre.\n- Dimensiones: 36 x 36 x 14 cm.\nNo incluye grifo, sifón ni espejo.\nColumna vendida por separado.\nAtención: el tono del color puede diferir debido a dos motivos 1) en función de la cantidad luz y 2) de la calibración del contraste de su pantalla.",
-    "image": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
+    "image": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_1.jpg",
     "images": [
-      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
-      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
-      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
-      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
+      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_1.jpg",
+      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_2.jpg",
+      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_3.jpg",
+      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_4.jpg",
+      "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_5.jpg",
       "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg"
     ],
     "media": [
       {
-        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
+        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
+        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_2.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
+        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_3.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc.jpg",
+        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_4.jpg",
+        "type": "image"
+      },
+      {
+        "url": "/uploads/mueble-bano-bequia-120-cm-roble-2-lavabos-enc_5.jpg",
         "type": "image"
       },
       {
