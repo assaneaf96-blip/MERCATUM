@@ -269,14 +269,17 @@ export default function ProductDetailPage() {
           if (!prev) return dbProduct
           const mainImg = (dbProduct.image || prev.image || defProduct?.image || '').trim()
           const dbImgs = (dbProduct.images && dbProduct.images.length > 0) ? dbProduct.images : []
+          const dbMedia = (dbProduct.media && dbProduct.media.length > 0) ? dbProduct.media : []
+          const dbMediaUrls = dbMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+          const authoritativeDbImgs = dbMediaUrls.length > dbImgs.length ? dbMediaUrls : dbImgs
+
           const prevImgs = (prev.images && prev.images.length > 0) ? prev.images : []
           const defImgs = defProduct?.images || []
           // La base de données Supabase Cloud est la source de vérité absolue pour la galerie
-          const allImgs = (dbImgs && dbImgs.length > 0)
-            ? dbImgs
+          const allImgs = (authoritativeDbImgs && authoritativeDbImgs.length > 0)
+            ? authoritativeDbImgs
             : Array.from(new Set([mainImg, ...prevImgs, ...defImgs].filter(Boolean)))
 
-          const dbMedia = (dbProduct.media && dbProduct.media.length > 0) ? dbProduct.media : []
           const prevMedia = (prev.media && prev.media.length > 0) ? prev.media : []
           const defMedia = defProduct?.media || []
           const mergedMedia = dbMedia.length > 0

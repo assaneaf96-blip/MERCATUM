@@ -64,20 +64,18 @@ function formatProduct(item: any) {
 
   const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
 
-  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
+  // Si media contient plus de photos que images (ex: 6 photos téléversées dans media vs 1 dans images),
+  // on utilise immédiatement media comme galerie principale de référence
+  const authoritativeList = mediaUrls.length > rawImages.length ? mediaUrls : rawImages
+
+  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || authoritativeList[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
   if (rawMain && rawMain.startsWith('data:')) {
     rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
   }
 
   const allImagesSet = new Set<string>()
   if (rawMain) allImagesSet.add(rawMain)
-  rawImages.forEach((img, idx) => {
-    if (img && typeof img === 'string') {
-      const u = img.trim()
-      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : u)
-    }
-  })
-  mediaUrls.forEach((img, idx) => {
+  authoritativeList.forEach((img, idx) => {
     if (img && typeof img === 'string') {
       const u = img.trim()
       allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : u)
@@ -272,9 +270,9 @@ export async function POST(request: NextRequest) {
     }
 
     const mediaList = Array.isArray(body.media) ? body.media : []
-    const imagesList = Array.isArray(body.images) && body.images.length > 0
-      ? body.images
-      : mediaList.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+    const mediaUrls = mediaList.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+    const rawImagesList = Array.isArray(body.images) ? body.images.filter(Boolean) : []
+    const imagesList = mediaUrls.length >= rawImagesList.length ? mediaUrls : rawImagesList
 
     const primaryImage =
       (typeof body.image === 'string' && body.image.trim()) ||

@@ -33,8 +33,20 @@ export async function GET(request: NextRequest) {
       } catch {}
     }
 
-    if (rawImages.length === 0 && Array.isArray(data.media) && data.media.length > 0) {
-      rawImages = data.media.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+    let rawMedia: string[] = []
+    if (Array.isArray(data.media) && data.media.length > 0) {
+      rawMedia = data.media.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+    } else if (typeof data.media === 'string') {
+      try {
+        const parsed = JSON.parse(data.media)
+        if (Array.isArray(parsed)) {
+          rawMedia = parsed.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+        }
+      } catch {}
+    }
+
+    if (rawMedia.length > rawImages.length) {
+      rawImages = rawMedia
     }
 
     let raw = ''

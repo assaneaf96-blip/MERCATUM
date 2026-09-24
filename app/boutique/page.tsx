@@ -81,12 +81,15 @@ export default function BoutiquePage() {
             const def = merged.get(p.id)
             const chosenMain = (p.image || def?.image || '').trim()
             const pImgs = Array.isArray(p.images) ? p.images.filter(Boolean) : []
-            const defImgs = Array.isArray(def?.images) ? def.images.filter(Boolean) : []
-            const rawImages = pImgs.length > 1
-              ? pImgs
-              : (defImgs.length > 0 ? defImgs : (pImgs.length > 0 ? pImgs : (chosenMain ? [chosenMain] : [])))
-
             const pMedia = Array.isArray(p.media) ? p.media.filter(Boolean) : []
+            const pMediaUrls = pMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
+            const authoritativePImgs = pMediaUrls.length > pImgs.length ? pMediaUrls : pImgs
+
+            const defImgs = Array.isArray(def?.images) ? def.images.filter(Boolean) : []
+            const rawImages = authoritativePImgs.length > 1
+              ? authoritativePImgs
+              : (defImgs.length > 0 ? defImgs : (authoritativePImgs.length > 0 ? authoritativePImgs : (chosenMain ? [chosenMain] : [])))
+
             const defMedia = Array.isArray(def?.media) ? def.media.filter(Boolean) : []
             const rawMedia = pMedia.length > 1
               ? pMedia
