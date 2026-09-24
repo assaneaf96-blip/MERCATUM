@@ -166,7 +166,7 @@ export async function GET(request: NextRequest) {
       ranges.map((r) =>
         supabase
           .from('products')
-          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
+          .select('id, name, category, type, price, raw_price, description, image, images, tag, rating, reviews_count')
           .order('id', { ascending: true })
           .range(r.from, r.to)
       )
@@ -185,7 +185,7 @@ export async function GET(request: NextRequest) {
       if (serverCache && serverCache.products.length > 0) {
         products = serverCache.products
       } else {
-        products = PRODUCTS
+        products = PRODUCTS.map((p) => formatProduct({ ...p, raw_price: p.rawPrice, reviews_count: p.reviewsCount, images: p.images || [], media: p.media || [] }))
         seedDefaultProductsToSupabase().catch(() => {})
       }
     }
