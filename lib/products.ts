@@ -473,7 +473,8 @@ export const CATEGORIES = [
   "Alta Cosmética"
 ]
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS: Product[] = 
+[
   {
     "id": "horno-pirolitico-multifuncion-cooke-lewis",
     "name": "Horno pirolítico multifunción Cooke & Lewis",
@@ -484,12 +485,17 @@ export const PRODUCTS: Product[] = [
     "description": "Horno pirolítico multifunción conectable Cooke & Lewis.\nFunciones: 11. Cuenta con 10 funciones diferentes para adaptarse a tus necesidades de cocción. También incluye un ajuste \"pirolítico\" para seleccionar el modo \"limpieza automática\" del horno.\nParrilla completa con ventilador y 5 niveles para bandeja.\nControles frontales de funcionamiento: utiliza los controles de perilla para seleccionar la función del horno, y la pantalla LED junto con los controles de pulsador para ajustar el programador.\nTemperatura de funcionamiento: 50-350 °C\nAmperaje: 16 A\nTensión: 220-240 V\nLongitud del cable: 1,3 m\nAcabado: espejo con efecto acero inoxidable.\nAntes de proceder a la limpieza pirolítica, retira todas las rejillas y accesorios. Una vez que el horno se haya enfriado, utiliza una bayeta húmeda bien escurrida para eliminar cualquier resto dentro del horno. Vuelve a colocar todos los accesorios antes de utilizarlo.",
     "image": "/uploads/horno-pirolitico-multifuncion-cooke-lewis.jpg",
     "images": [
+      "/uploads/horno-pirolitico-multifuncion-cooke-lewis.jpg",
       "/uploads/horno-pirolitico-multifuncion-cooke-lewis_1.jpg",
       "/uploads/horno-pirolitico-multifuncion-cooke-lewis_2.jpg",
       "/uploads/horno-pirolitico-multifuncion-cooke-lewis_3.jpg",
       "/uploads/horno-pirolitico-multifuncion-cooke-lewis_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/horno-pirolitico-multifuncion-cooke-lewis.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/horno-pirolitico-multifuncion-cooke-lewis_1.jpg",
         "type": "image"
@@ -522,8 +528,8 @@ export const PRODUCTS: Product[] = [
     "image": "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook.jpg",
     "images": [
       "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook.jpg",
-      "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook.jpg",
-      "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook.jpg"
+      "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook_1.jpg",
+      "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook_2.jpg"
     ],
     "media": [
       {
@@ -531,11 +537,11 @@ export const PRODUCTS: Product[] = [
         "type": "image"
       },
       {
-        "url": "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook.jpg",
+        "url": "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook.jpg",
+        "url": "/uploads/pack-horno-y-placa-de-induccion-4-fuegos-cook_2.jpg",
         "type": "image"
       }
     ],
@@ -554,9 +560,9 @@ export const PRODUCTS: Product[] = [
     "image": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
     "images": [
       "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
-      "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
-      "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
-      "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg"
+      "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis_1.jpg",
+      "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis_2.jpg",
+      "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis_3.jpg"
     ],
     "media": [
       {
@@ -564,15 +570,15 @@ export const PRODUCTS: Product[] = [
         "type": "image"
       },
       {
-        "url": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
+        "url": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
+        "url": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis_2.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis.jpg",
+        "url": "/uploads/placa-de-gas-y-horno-multifuncion-cooke-lewis_3.jpg",
         "type": "image"
       }
     ],
@@ -591,14 +597,14 @@ export const PRODUCTS: Product[] = [
     "image": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
     "images": [
       "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
-      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg"
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_1.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_2.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_3.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_4.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_5.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_6.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_7.jpg",
+      "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_8.jpg"
     ],
     "media": [
       {
@@ -606,35 +612,35 @@ export const PRODUCTS: Product[] = [
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_2.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_3.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_4.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_5.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_6.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_7.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke.jpg",
+        "url": "/uploads/pack-placa-vitroceramica-horno-estatico-cooke_8.jpg",
         "type": "image"
       }
     ],
@@ -652,12 +658,17 @@ export const PRODUCTS: Product[] = [
     "description": "Este horno estático es perfecto para tus necesidades diarias en la cocina. Ofrece 5 funciones principales, incluida una parrilla ideal para cocinar de forma más saludable.\nEl horno está diseñado para calentarse rápidamente, garantizando un uso eficiente, mientras que su sistema de protección evita el sobrecalentamiento.\nAdemás, cuenta con un frontal de cristal extraíble que facilita la limpieza, asegurando comodidad y practicidad en el mantenimiento.",
     "image": "/uploads/horno-estatico-acero-inoxidable.jpg",
     "images": [
+      "/uploads/horno-estatico-acero-inoxidable.jpg",
       "/uploads/horno-estatico-acero-inoxidable_1.jpg",
       "/uploads/horno-estatico-acero-inoxidable_2.jpg",
       "/uploads/horno-estatico-acero-inoxidable_3.jpg",
       "/uploads/horno-estatico-acero-inoxidable_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/horno-estatico-acero-inoxidable.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/horno-estatico-acero-inoxidable_1.jpg",
         "type": "image"
@@ -1457,6 +1468,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descripción de la Nevera LG GSBC40PYPE\nLa nevera LG GSBC40PYPE combina diseño y funcionalidad en un aparato independiente con 664 L de capacidad total. Su sistema multi-flujo de aire y la función Super Cool en el frigorífico de 423 L permiten una conservación óptima de los alimentos. Además, su congelador lateral de 241 L asegura un rendimiento excepcional, alcanzando una capacidad de congelación de hasta 12 kg en 24 horas.\nQué te gustará de la Nevera LG GSBC40PYPE\nAmplia capacidad que facilita la organización de tus alimentos.\nFuncionamiento silencioso gracias a su nivel de ruido de 36 dB.\nTecnología de refrigeración dinámica que mejora la circulación de aire.\nComodidad en el uso diario con su panel de control touch y pantalla LED integrada.\nMateriales de alta calidad que aumentan la durabilidad del producto.\nFicha técnica\nCaracterística\tEspecificaciones\nTipo de instalación\tIndependiente\nDiseño de producto\tPuerta americana\nColor del producto\tPlata\nCapacidad neta total\t664 L\nCapacidad frigorífico\t423 L\nCapacidad congelador\t241 L\nClase climática\tT\nClase de emisión de ruido\tC\nNivel de ruido\t36 dB\nTecnología de refrigeración\tDinámico (con ventilador)\nMaterial de estantes\tVidrio templado/Plástico\nBisagra para puerta\tIzquierda/derecha\nLongitud del cable\t1,9 m\nFunción Door-in-Door\tNo\nDispensador de agua\tNo\nDispensador de cubitos\tNo\nAnálisis técnico de la Nevera LG GSBC40PYPE\nLa LG GSBC40PYPE es una nevera diseñada para ofrecer una solución de almacenamiento eficiente y estilizada para el hogar. Con su capacidad total de 664 L, incluye un frigorífico de 423 L y un congelador lateral de 241 L, proporcionando un espacio suficiente para una familia grande. Su diseño de puerta americana no solo es atractivo, sino que también facilita el acceso a los alimentos. El sistema de refrigeración dinámica asegura que el aire frío se distribuya de manera uniforme, evitando puntos calientes que pueden afectar la frescura de los productos.\nLa temperatura del frigorífico, que se mantiene entre 1-7 °C, se puede ajustar gracias a un intuitivo panel de control táctil y el visualizador LED interior, proporcionando al usuario un control completo sobre la temperatura de sus alimentos a un vistazo. Además, la función Super Cool es ideal para situaciones donde se requiere una rápida disminución de la temperatura, como en la compra de productos frescos. Su diseño también incluye estantes de vidrio templado, que son más resistentes y fáciles de limpiar.\nEn términos de performance, la capacidad de congelación de hasta 12 kg en 24 horas hace de este equipo una opción excelente para quienes necesitan almacenar grandes cantidades de alimentos congelados. Las bisagras de puerta de diseño fijo y la ubicación de bisagra intercambiable permiten una mayor flexibilidad en la instalación, adaptándose a diferentes configuraciones de cocina. El nivel de ruido de 36 dB asegura un funcionamiento silencioso, lo cual es crucial en ambientes domésticos donde el ruido debe ser minimizado.",
     "image": "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox.jpg",
     "images": [
+      "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox.jpg",
       "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox_1.jpg",
       "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox_2.jpg",
       "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox_3.jpg",
@@ -1464,6 +1476,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/americano-lg-gsbc40pype-179-x-91-cm-inox_1.jpg",
         "type": "image"
@@ -1714,6 +1730,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descripción del Frigorífico Bosch Serie 4 KSV36FIEP\nEl frigorífico independiente Bosch Serie 4 KSV36FIEP de 346 L en color blanco es la solución perfecta para quienes buscan combinación de estética y funcionalidad. Con tecnología Inverter, ofrece una regulación óptima de la temperatura, asegurando eficiencia energética y durabilidad. Su sistema de conservación VitaFresh permite ajustar la humedad, manteniendo frutas y verduras frescas durante más tiempo. Además, su diseño inteligente incluye estantes de vidrio de seguridad, una práctica zona easyAccess y un bajo nivel de ruido para un funcionamiento silencioso y eficiente.\nQué te gustará del Frigorífico Bosch Serie 4 KSV36FIEP\nEl sistema VitaFresh conserva frutas y verduras por más tiempo.\nLa tecnología Inverter asegura un consumo energético optimizado.\nLos estantes de vidrio de seguridad ofrecen resistencia y fácil limpieza.\nLa zona easyAccess permite acceder rápidamente a todo el contenido del frigorífico.\nSu diseño silencioso (39 dB) adicionado a su eficiencia hace de este modelo una gran elección.\nFicha técnica\nCaracterística\tEspecificaciones\nCapacidad neta\t346 L\nClase climática\tST-T\nNivel de ruido\t39 dB\nNúmero de compartimentos\t7\nCompartimento para verduras\t1\nTipo de lámpara\tLED\nPuertas reversibles\tSí\nConsumo de energía anual\t116 kWh\nClase de eficiencia de energía\tE\nDimensiones\tAncho: 600 mm\nAnálisis técnico del Frigorífico Bosch Serie 4 KSV36FIEP\nEl frigorífico Bosch Serie 4 KSV36FIEP es un aparato diseñado para ofrecer no solo capacidad, sino también versatilidad y conservación eficiente de los alimentos. Con su tecnología Inverter, este modelo ajusta de manera continua la temperatura interna en función de las condiciones externas, lo que no solo mejora el rendimiento energético, sino que también prolonga la vida útil del dispositivo. El funcionamiento silencioso del compresor, con un nivel de ruido de sólo 39 dB, permite que se integre sin dificultad en cualquier ambiente del hogar sin causar molestias.\nUn aspecto a resaltar es el sistema de conservación VitaFresh, que incluye un regulador de humedad en el cajón para frutas y verduras. Esto asegura que estos alimentos se mantengan frescos y con todas sus propiedades, ahorrando así en desperdicio y mejorando la sostenibilidad del hogar. Además, este frigorífico cuenta con estantes de vidrio templado, que no solo son fáciles de limpiar, sino que también ofrecen gran resistencia, permitiendo el almacenamiento de productos pesados sin temor a roturas.\nLa función Super Cool permite que la temperatura interior disminuya rápidamente al introducir nuevos alimentos, garantizando que estos se mantengan en condiciones óptimas y evitando aumentos de temperatura. Es ideal para quienes realizan compras grandes y a menudo necesitan refrigerar alimentos ya cocinados o que han estado a temperatura ambiente previamente. Por otro lado, la zona easyAccess es un gran acierto en términos de diseño, ya que facilita el acceso al contenido del frigorífico incluso con una carga considerable, evitando la pérdida de tiempo buscando productos que podrían estar difíciles de alcanzar.\nEn términos de eficiencia, su clasificación energética de Clase E y un consumo de energía de 116 kWh anuales, permiten que el usuario mantenga un control sobre el gasto, mientras se beneficia de un refrigerador que no compromete la calidad. La iluminación LED no solo proporciona un excelente nivel de visibilidad, sino que también reduce el consumo eléctrico, convirtiendo a esta unidad en una opción económica y práctica.",
     "image": "/uploads/frigorifico-1p-bosch-ksv36fiep.jpg",
     "images": [
+      "/uploads/frigorifico-1p-bosch-ksv36fiep.jpg",
       "/uploads/frigorifico-1p-bosch-ksv36fiep_1.jpg",
       "/uploads/frigorifico-1p-bosch-ksv36fiep_2.jpg",
       "/uploads/frigorifico-1p-bosch-ksv36fiep_3.jpg",
@@ -1721,6 +1738,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/frigorifico-1p-bosch-ksv36fiep_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/frigorifico-1p-bosch-ksv36fiep.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/frigorifico-1p-bosch-ksv36fiep_1.jpg",
         "type": "image"
@@ -2009,10 +2030,15 @@ export const PRODUCTS: Product[] = [
     "description": "Tipo de instalación Libre Instalación - Tipo de frío Total No Frost - Color Inox - Clase de eficiencia energética E - Capacidad total 391 Litros - Capacidad refrigerador 244 Litros - Capacidad congelador 147 Litros - Tipo de control LED / Exterior - Conducto de aire múltiple SI - Enfriamiento rápido SI - Congelación rápida SI - Control temperatura Dual - Control de humedad SI - Motor Inverter - Display Exterior - Modo vacaciones SI - Equipamiento Frigorífico - Número de estanterías 3 - Número de cajones 1 - Número de balcones puerta frigorífico 3 por Puerta - Botellero NO - Recipiente para huevos - - Iluminación LED Equipamiento Congelador - Número de cajones 2 - Número de balcones puerta congelador - - Fabricador hielo NO - Cubitera - Dimensiones - Ancho (mm) 703 - Alto (mm) 1780 - Fondo (mm) 686 - Fondo sin puerta (mm) 600 - Fondo + puerta abierta (mm) 940 - Ancho + puerta abierta (mm) 1170",
     "image": "/uploads/frigorifico-americano-midea-merf402fie02.jpg",
     "images": [
+      "/uploads/frigorifico-americano-midea-merf402fie02.jpg",
       "/uploads/frigorifico-americano-midea-merf402fie02_1.jpg",
       "/uploads/frigorifico-americano-midea-merf402fie02_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/frigorifico-americano-midea-merf402fie02.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/frigorifico-americano-midea-merf402fie02_1.jpg",
         "type": "image"
@@ -2036,10 +2062,15 @@ export const PRODUCTS: Product[] = [
     "description": "tipo Con puertas batientes (Lado a Lado) color Acero inoxidable nivel de ruido, dB 35 conservación en frío autónoma, h 15 volumen total, litros 634 volumen útil total, l 604 volumen útil de la cámara frigorífica, l 384 volumen útil del compartimento congelador, l 220 número de cámaras 2 numero de puertas 2 pantalla a color Sí dirección de apertura de la puerta Puertas giratorias puertas reversibles (Sí No) No espacio libre de puerta cero Sí ubicación del congelador Izquierda material de cubierta exterior Acero inoxidable posibilidad de cambiar el panel frontal No Paneles frontales reemplazables incluidos No características de la manija de la puerta oculto longitud del cable de alimentación, m 1.4 mostrar Sí ubicación de visualización Externo Especificaciones refrigerante 600€ Capacidad de congelación, kg-día. 12 sistema de descongelación del congelador Sin escarcha sistema de descongelación del refrigerador Sin escarcha mín. temperatura del congelador, °C -24 Máx. temperatura del congelador, °C -dieciséis mín. temperatura del frigorífico, °C 2 Máx. temperatura del frigorífico, °C 8 compresor inversor Sí Relleno interno zona de frescura Sí huevera Sí Forma para hielo Sí sostenedor de botella No volumen de la zona de frescura, l material del estante vidrio colado estante plegable No número de estantes en el compartimento frigorífico 4 número de cajones en el compartimento frigorífico 2 número de cajones, estantes abiertos en el congelador Número de estantes en la puerta del compartimento frigorífico. 4 número de estantes en la puerta del congelador 4 tipo de zona de frescura Seco ajuste manual en la zona de frescura Sí iluminación del congelador Sí Funciones adicionales supercongelar Sí súper enfriamiento Sí \"Modo vacaciones Sí bloqueo infantil Sí protección antibacteriana Platino fresco pantalla de temperatura Sí indicación de fallo de energía No indicación de puerta abierta Sonido control Control desde un teléfono inteligente (aplicación MSmartHome) asistente de voz No dispensador de agua No maquina de hielo No además Botellero, flujo de aire múltiple, refrigeración de metal",
     "image": "/uploads/frigorifico-multipuerta-midea-mdrs791mie46.jpg",
     "images": [
+      "/uploads/frigorifico-multipuerta-midea-mdrs791mie46.jpg",
       "/uploads/frigorifico-multipuerta-midea-mdrs791mie46_1.jpg",
       "/uploads/frigorifico-multipuerta-midea-mdrs791mie46_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/frigorifico-multipuerta-midea-mdrs791mie46.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/frigorifico-multipuerta-midea-mdrs791mie46_1.jpg",
         "type": "image"
@@ -2524,11 +2555,16 @@ export const PRODUCTS: Product[] = [
     "description": "Clase de eficiencia energética A++ dentro del rango A+++ (más eficiente) a D (menos eficiente).\nDispensador exterior de agua, cubitos y hielo picado\nTecnología No Frost\nPantalla TouchControl integrada en la puerta\nControl electrónico e independiente de la temperatura\nRefrigeración \"Súper\" con desconexión automática\nCongelación \"Súper\" con desconexión automática\nAlarma óptica y acústica de puerta abierta\nIluminación interior LED\n2 cajones MultiBox con raíles - transparentes y con base ondulada, ideales para almacenar frutas y verduras\nConsumo de energía: 343 kWh/año\nCapacidad bruta/útil total: 598/531 litros\nCapacidad de congelación: 13 kg/24 horas\nPotencia sonora: 42 dB(A) re 1 pW\nTirador de aluminio exterior\nPuerta en acero inox antihuellas\nDimensiones del aparato (alto x ancho x fondo sin tirador): 178.7 x 90.8 x 70.7 cm\n\nFICHA TÉCNICA:\n\nTipo de construcción: Independiente\nTipo de control: Electrónica\nControl e indicadores: Alarma puerta abierta, Display temperatura refrig., Indicador temp. congelacion, Interruptor supercongelación, Interruptor superrefrigeracion\nColor principal del producto: Acero inoxidable antihuellas\nPanelado de puerta: No posible\nPotencia de conexión: 240 W\nIntensidad corriente eléctrica: 10 A\nTensión: 220-240 V\nFrecuencia: 50-60 Hz\nCertificaciones de homologacion: CE\nNúmero de compresores: 1\nLongitud del cable de alimentación eléctrica: 170 cm\nTipo de clavija: Schuko con conexión a tierra\nCapacidad total neta de la unidad: 531 l\nCapacidad Bruta del Frigorífico: 378 l\nCapacidad bruta del congelador: 220 l\nCapacidad en 0,75 l (botellas de vino)\nNúmero de sistemas de refrigeración independientes: 1\nFondo con puerta abierta a 90 grados: 1171 mm\nBisagra de la puerta: Izquierda y derecha\nPatas regulables: Sí- solo frontales\nAltura del producto: 1787 mm\nAnchura del producto: 908 mm\nFondo del producto: 707 mm\nAltura del producto embalado: 1897 mm\nAnchura del producto embalado: 982 mm\nFondo del producto embalado: 780 mm\nPeso neto: 120.990 kg\nPeso bruto: 131.0 kg\nCapacidad total bruta de la unidad: 598 l\nClasificación de eficiencia energética - NUEVA (2010/30/EU): A++\nClasificación por estrellas: 4\nConsumo anual de energía - NUEVA (2010/30/EC): 343.00 kWh/annum\nCategoría UE de modelo de aparato de refrigeración doméstico (2010/30/UE): 7\nCapacidad neta del congelador - NUEVA (2010/30/EC): 165 l\nCapacidad de congelación - NUEVA (2010/30/EC): 13 kg/24h\nCapacidad neta del frigorífico - NUEVA (2010/30/EC): 366 l\nClase climática: SN-T\nSistema anti-escarcha: Total\nTiempo de elevación de la temperatura: 8 h\nTemperatura ambiente mínima: 10 °C\nTemperatura ambiente máxima: 43 °C\nNivel de contaminación acústica: 42 dB(A) re 1 pW\nSeñal de aviso / Funcionamiento incorrecto: Sin señal\nSección del frigorífico del proceso de descongelación: Automático\nSección del congelador del proceso de descongelación: Automático\nInterruptor de refrigeración rápida: Si\nFunción de congelación rápida: Si\nIndicador de frigorífico de puerta abierta: Si\nCongelador con temperatura regulable: Si\nSección del congelador con sistema de drenaje de agua derretida: No\nVentilador interior de sección de frigorífico: No\nNúmero de cajones de congelación: 2\nNúmero de paneles para congelación\nFabricación de hielo automática mecánica: Si\nEstantes para botellas: Si\nPuerta bloqueable: No\nNúmero de estantes en el compartimento frigorífico: 5\nNúmero de estantes regulables en el compartimento frigorífico\nMaterial de los estantes: Cristal\nSección de termómetro del frigorífico: Digital\nSección de termómetro del congelador: Digital\nEquipo de humidificación: false\nInterruptor de luz interior: No\nTemperatura regulable: Si",
     "image": "/uploads/frigorifico-americano-bosch-kag93aiep.jpg",
     "images": [
+      "/uploads/frigorifico-americano-bosch-kag93aiep.jpg",
       "/uploads/frigorifico-americano-bosch-kag93aiep_1.jpg",
       "/uploads/frigorifico-americano-bosch-kag93aiep_2.jpg",
       "/uploads/frigorifico-americano-bosch-kag93aiep_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/frigorifico-americano-bosch-kag93aiep.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/frigorifico-americano-bosch-kag93aiep_1.jpg",
         "type": "image"
@@ -2593,11 +2629,16 @@ export const PRODUCTS: Product[] = [
     "description": "Tipo Multi Puerta Color Gris Capacidad neta total 515 L Capacidad neta del refrigerador 345 L Capacidad neta del congelador 170 L Consumo de energía 307 kWh/año Clase de eficiencia energética E Clasificación climática SN/N/ST/T Nivel sonoro 38 dB(A) / Clase C Tensión / Frecuencia 220-240 V / 50 Hz Tipo de control Electrónico / Exterior Sistema de refrigeración Total No Frost Capacidad de congelación (24 h) 13 kg Autonomía sin electricidad 7 horas Rango de temperatura del congelador -16°C a -24°C Cambio de sentido de puertas No Peso neto 112 kg Dimensiones (Al x An x F) 1910 x 833 x 600 mm Ancho (A) 833 mm Alto (B) 1910 mm Fondo con puerta (C) 600 mm Fondo sin puerta 540 mm Fondo con puerta abierta (E) 930 mm Ancho con puerta abierta (D) 1280 mm Fondo con tirador 600 mm",
     "image": "/uploads/midea-mdrm706bie70-frigorifico-americano.jpg",
     "images": [
+      "/uploads/midea-mdrm706bie70-frigorifico-americano.jpg",
       "/uploads/midea-mdrm706bie70-frigorifico-americano_1.jpg",
       "/uploads/midea-mdrm706bie70-frigorifico-americano_2.jpg",
       "/uploads/midea-mdrm706bie70-frigorifico-americano_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/midea-mdrm706bie70-frigorifico-americano.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/midea-mdrm706bie70-frigorifico-americano_1.jpg",
         "type": "image"
@@ -2788,6 +2829,7 @@ export const PRODUCTS: Product[] = [
     "description": "Gran capacidad de almacenaje, de 310 l.\nIncluye una huevera y una bandeja para hielo.\nTecnología de flujo de aire para lograr una refrigeración uniforme de los alimentos\nIluminación LED\nPantalla de temperatura digital.\nOpción de puerta reversible.\nEstantes de altura ajustable.\nEl producto debe colocarse sobre un suelo plano y firme para que el refrigerante se asiente, y debe permanecer en su ubicación definitiva durante al menos tres horas antes de encenderlo. Hay que mantenerlo a una distancia adecuada de la pared, según las instrucciones.",
     "image": "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis.jpg",
     "images": [
+      "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis.jpg",
       "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis_1.jpg",
       "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis_2.jpg",
       "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis_3.jpg",
@@ -2798,6 +2840,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/frigorifico-55x177-3cm-blanco-cooke-lewis_1.jpg",
         "type": "image"
@@ -3749,12 +3795,17 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de pellets ventilada y estanca OLLA AU de 7 kW, fabricada en Italia y acabada en color corten. Proporciona entre 3,1 y 7,6 kW de potencia útil y puede calentar hasta 165 m³, equivalentes de forma orientativa a 66 m². Incorpora brasero con limpieza automática mecánica, cristal Night View, función Silent, mando PAm y WiFi integrado.\nFicha técnica completa\nMarca: .\nModelo: OLLA AU 7.\nFabricación: Italia.\nCombustible: pellets.\nColor: corten.\nTipo: estufa de pellets ventilada y estanca.\nCanalizable: no.\nEstanca: sí.\nPotencia térmica introducida: de 3,3 a 8,2 kW.\nPotencia térmica útil: de 3,1 a 7,6 kW.\nRendimiento: 94% a potencia mínima y 93% a potencia máxima.\nVolumen calefactable: hasta 165 m³.\nSuperficie calefactable orientativa: hasta 66 m² con techos de 2,5 m.\nCapacidad de la tolva: 16 kg.\nConsumo de pellets: de 0,68 a 1,50 kg/h.\nTiro mínimo de la chimenea: 12 Pa.\nSalida de humos: posterior.\nDiámetro de salida de humos: 80 mm.\nDiámetro de entrada de aire: 50 mm.\nConsumo eléctrico nominal: 53 W.\nConsumo eléctrico durante el encendido: 281 W.\nDimensiones: 49 cm de ancho, 56 cm de fondo y 110 cm de alto.\nPeso: 100 kg.\nClase energética: A+.\nBrasero: sistema patentado de limpieza automática mecánica.\nCámarali>Brasero: sistema patentado de de combustión: estanca y revestida completamente de vermiculita.\nEncendido: resistencia de cuarzo.\nCristal: Night View con aire de limpieza dedicado.\nModulación de potencia: sí.\nModo silencio: sí, función Silent.\nProgramación: diaria y semanal.\nMando a distancia: PAm con sonda de temperatura ambiente incluido.\nWiFi: WiFi U-in incluido, compatible con APP-O BIOEN.\nCertificación ambiental italiana: 5 estrellas.\nEquivalencia Flamme Verte: 7 estrellas.\nNormativa: EcoDesign 2022 y EN 16510-2-6.\nInstalación\nLa entrada de aire exterior y la conexión a la chimenea deben ser realizadas por un profesional cualificado conforme al manual del fabricante.\n\n<!--COLORS_JSON_START-->[\"Blanc\",\"Marron / Cuir\",\"Noir\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Blanc, Marron / Cuir, Noir]",
     "image": "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten.jpg",
     "images": [
+      "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten.jpg",
       "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten_1.jpg",
       "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten_2.jpg",
       "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten_3.jpg",
       "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-de-pellets-olla-au-de-7-kw-corten_1.jpg",
         "type": "image"
@@ -4789,6 +4840,7 @@ export const PRODUCTS: Product[] = [
     "description": "Este mueble de TV está fabricado en madera de fresno patinado en blanco, lo que le da un aspecto elegante y contemporáneo. Su diseño combina el color blanco con la belleza natural de la madera de fresno, creando un contraste armonioso y atractivo. En la parte frontal del mueble destaca un patrón hexagonal decorativo que le añade un toque de originalidad y sofisticación. Cuenta con un compartimento destinado a dispositivos electrónicos como reproductores de DVD o consolas de videojuegos, permitiendo mantenerlos organizados y a mano. Los tiradores de las puertas y cajones son de madera en color blanco, siguiendo la misma línea estética del mueble y garantizando una fácil apertura y cierre. Este mueble de TV es perfecto para cualquier sala de estar o salón, aportando funcionalidad y estilo a la decoración del hogar. Mdf chapado en madera de fresno: mdf chapado en madera de fresno. frentes de puerta con decoración hexagonal. espacio para aparatos electrónicos. asas de madera. encalado y acabado rústico envejecido. limpieza fácil (simple lavado rápido con un paño húmedo, no utilizar limpiadores fuertes).",
     "image": "/uploads/mueble-tv-fresno-blanco-140x40x50cm.jpg",
     "images": [
+      "/uploads/mueble-tv-fresno-blanco-140x40x50cm.jpg",
       "/uploads/mueble-tv-fresno-blanco-140x40x50cm_1.jpg",
       "/uploads/mueble-tv-fresno-blanco-140x40x50cm_2.jpg",
       "/uploads/mueble-tv-fresno-blanco-140x40x50cm_3.jpg",
@@ -4796,6 +4848,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-tv-fresno-blanco-140x40x50cm_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-tv-fresno-blanco-140x40x50cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-tv-fresno-blanco-140x40x50cm_1.jpg",
         "type": "image"
@@ -5251,6 +5307,7 @@ export const PRODUCTS: Product[] = [
     "description": "Módulo Tv con puertas abatibles y gran capacidad de almacenaje. Bisagras con cierre soft. Medidas del Módulo: 104cm. de Ancho, 50cm. de Alto, 37cm. de Profundidad. Color roble y negro con veteado de madera de tacto poroso de alta calidad. Módulo TV con hueco y puerta abatible. Bisagras con cierre soft. Medidas del Módulo: 104cm. de Ancho, 50cm. de Alto, 37cm. de Profundidad. Color roble y negro con veteado de madera de tacto poroso de alta calidad. Chimenea Eléctrica LED. Medidas: 102cm. de Ancho, 21cm. de Alto. Efecto de fuego 3D increíblemente realista. Sin riesgos de quemaduras ya que no incorpora ninguna fuente de calor. Potencia: 34w. Incluye mando a distancia y 3 niveles de intensidad. La chimenea eléctrica funciona conectada a la electricidad. El mando a distancia requiere pilas, que no están incluidas. Interruptor tactil oculto. Luz led blanco neutro, con regulador de intensidad.",
     "image": "/uploads/mueble-tv-television-chimenea-electrica-led.jpg",
     "images": [
+      "/uploads/mueble-tv-television-chimenea-electrica-led.jpg",
       "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
       "/uploads/mueble-tv-television-chimenea-electrica-led_2.jpg",
       "/uploads/mueble-tv-television-chimenea-electrica-led_3.jpg",
@@ -5259,6 +5316,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-tv-television-chimenea-electrica-led_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-tv-television-chimenea-electrica-led.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-tv-television-chimenea-electrica-led_1.jpg",
         "type": "image"
@@ -5340,6 +5401,7 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de leña perfectamente proporcionada. El modelo Milano de Juan Panadero, de diseño sencillo, se adapta perfectamente a cualquier tipo de interior, su gran ventanal te ofrecerá la mejor visión del espectáculo que ofrecen las llamas. CARACTERÍSTICAS. Dimensiones Al x An x P 805 x 610 x 420 mm. Potencia 11 kW. Rendimiento 85 %. Eficiencia energética A+. Eco design. Combustible de madera. Triple combustión. Peso 77 kilos. Troncos de 50 cm. Salida de humos horizontal de 150 mm. Color gris antracita Volumen de calefacción 320 m3.",
     "image": "/uploads/estufa-de-lena-modelo-milano-11-kw.jpg",
     "images": [
+      "/uploads/estufa-de-lena-modelo-milano-11-kw.jpg",
       "/uploads/estufa-de-lena-modelo-milano-11-kw_1.jpg",
       "/uploads/estufa-de-lena-modelo-milano-11-kw_2.jpg",
       "/uploads/estufa-de-lena-modelo-milano-11-kw_3.jpg",
@@ -5347,6 +5409,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/estufa-de-lena-modelo-milano-11-kw_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-de-lena-modelo-milano-11-kw.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-de-lena-modelo-milano-11-kw_1.jpg",
         "type": "image"
@@ -5382,6 +5448,7 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de leña Fénix 7,2 kW Panadero EcoDesign\nLa estufa de leña Fénix de Panadero de gran formato ofrece una visión panorámica del fuego, combinando diseño elegante y alta eficiencia para crear un ambiente cálido y acogedor en tu hogar.\nCon una potencia de 7,2 kW y salida de humos de 150-153 mm, esta estufa proporciona un rendimiento superior y un calor uniforme en estancias amplias.\nFabricada bajo la normativa EcoDesign, permite ahorrar hasta un 40% en leña y ceniza, reduce emisiones de CO y prolonga la vida útil del equipo, convirtiéndola en una opción ecológica y sostenible.\nIncorpora un práctico leñero en la parte inferior para un cómodo almacenaje de la leña, garantizando que siempre esté a mano y ordenada.\nConstruida en hierro fundido, destaca por su robustez, alta resistencia al calor y gran inercia térmica, lo que permite que el calor perdure mucho tiempo tras apagar la estufa.\nCaracterísticas:\nMarca: Panadero\nModelo: Fénix\nPotencia: 7,2 kW\nSalida de humos: 150-153 mm\nVisión panorámica del fuego\nLeñero en la parte inferior\nFabricada en hierro fundido con alta inercia térmica\nEcoDesign\nClasificación energética: A\nAhorro de hasta un 40% en leña y ceniza\nBajas emisiones de CO\nCombustible: biomasa (leña)",
     "image": "/uploads/estufa-de-lena-fenix-7-2kw-panadero.jpg",
     "images": [
+      "/uploads/estufa-de-lena-fenix-7-2kw-panadero.jpg",
       "/uploads/estufa-de-lena-fenix-7-2kw-panadero_1.jpg",
       "/uploads/estufa-de-lena-fenix-7-2kw-panadero_2.jpg",
       "/uploads/estufa-de-lena-fenix-7-2kw-panadero_3.jpg",
@@ -5392,6 +5459,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/estufa-de-lena-fenix-7-2kw-panadero_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-de-lena-fenix-7-2kw-panadero.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-de-lena-fenix-7-2kw-panadero_1.jpg",
         "type": "image"
@@ -5439,6 +5510,7 @@ export const PRODUCTS: Product[] = [
     "description": "Características técnicas: - Dimensiones (Alto x Ancho x Fondo): 116,5 cm x 74 cm x 42 cm - Potencia: 11 kW - Rendimiento energético: 76 % - Certificación Eco Design A+ - Sistema de triple combustión para una mayor eficiencia - Peso: 105 kg - Longitud máxima de troncos: 60 cm - Salida de humos: 150 mm vertical - Cristal frontal de dimensiones 520 x 370 mm con sistema cristal limpio - Acabado en color gris antracita - Volumen calefactable recomendado: hasta 320 m³ - Cumple normativa CE UNE EN-13229 El Modelo Alpes es una estufa de leña que combina eficiencia, diseño y respeto medioambiental. Ideal para espacios amplios, ofrece una combustión optimizada gracias a su triple sistema, asegurando un calor constante y limpio. Su acabado en gris antracita aporta un toque moderno y elegante a cualquier estancia.",
     "image": "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3.jpg",
     "images": [
+      "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3.jpg",
       "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3_1.jpg",
       "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3_2.jpg",
       "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3_3.jpg",
@@ -5447,6 +5519,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-de-lena-modelo-alpes-11-kw-76-320-m3_1.jpg",
         "type": "image"
@@ -5700,10 +5776,15 @@ export const PRODUCTS: Product[] = [
     "description": "Inserto para estufa de leña - W9 (9,8 kW) ECO\n\n• Energía 9,8 kW\n• Eficiencia térmica 66%\n• Capacidad de calefacción 98 m² / 245 m³\n• Material Hierro fundido\n• Peso 89 kilogramos\n• Combustible Se recomienda madera dura sazonada con humedad ≤20%\n• Ancho 680 mm Alto 490 (520) mm Profundidad 405 mm\n• Dimensiones del vidrio principal: L / H / L 504/317/4 mm\n• Diámetro del conducto de humos 180 mm\n• Largo máximo de baúles 48 cm\n• Puerta izquierda\n• MADE IN EU ¡Excelente calidad! Producto certificado.\n\nInserto para Estufa de Leña - W9 (9,8 KW) ECO\n\nEl inserto está equipado con:\n• una compuerta que regula el tiro de la chimenea\n• deflector de vermiculita que aumenta la eficiencia ampliando el recorrido de los gases de escape\n• una placa incandescente que protege el cuerpo de la chimenea de la combustión\n• una valla decorativa que protege la madera de la caída\n• regulación del suministro de aire a través del cenicero\n• Radiadores densamente dispuestos, aumentando el área a través de la cual se transfiere el calor al ambiente circundante\n\nLa chimenea insertable EKO W9 de 9,8 kW no está diseñada para una combustión continua, solo puede instalarse como fuente de energía adicional.",
     "image": "/uploads/inserto-para-estufa-de-lena-w9-9-8-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w9-9-8-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w9-9-8-kw-eco_1.jpg",
       "/uploads/inserto-para-estufa-de-lena-w9-9-8-kw-eco_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w9-9-8-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w9-9-8-kw-eco_1.jpg",
         "type": "image"
@@ -5727,10 +5808,15 @@ export const PRODUCTS: Product[] = [
     "description": "Inserto para estufa de leña - W8 (17,5 kW) ECO\n\n• Energía 17,5 kW\n• Eficiencia térmica 71,5%\n• Capacidad de calefacción 175m² / 438m³\n• Material Hierro fundido\n• Peso 213 kilogramos\n• Combustible Se recomienda madera dura sazonada con humedad ≤20%\n• Ancho 795 mm Alto 620 (935) mm Profundidad 480 mm\n• Dimensiones del vidrio principal: L / H / L 695/460/4 mm\n• Diámetro del conducto de humos 200 mm\n• Largo máximo de baúles 60 cm\n• Superficie mínima de las rejillas de entrada/salida 875/1313 cm²\n• Puerta izquierda\n• MADE IN EU ¡Excelente calidad! Producto certificado.\n\nInserto para Estufa de Leña - W8 (17,5 kW) ECO\n\nEl inserto está equipado con:\n• una compuerta que regula el tiro de la chimenea\n• deflector de vermiculita que aumenta la eficiencia ampliando el recorrido de los gases de escape\n• regulación del suministro de aire a través del cenicero\n• posibilidad de suministrar aire a la cámara de combustión desde el exterior\n• Radiadores densamente dispuestos, lo que aumenta el área a través de la cual se transfiere el calor al ambiente circundante.\n• una valla decorativa que protege la madera contra caídas\n• vidrio limpio - barrera de aire - el suministro de aire fresco desde el exterior, dirigido al vidrio, evita la acumulación excesiva de hollín\n• un sistema de postcombustión de los gases de escape que aumenta la potencia térmica del inserto y lo hace ecológico",
     "image": "/uploads/inserto-para-estufa-de-lena-w8-17-5-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w8-17-5-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w8-17-5-kw-eco_1.jpg",
       "/uploads/inserto-para-estufa-de-lena-w8-17-5-kw-eco_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w8-17-5-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w8-17-5-kw-eco_1.jpg",
         "type": "image"
@@ -5754,10 +5840,15 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de leña - W16 (13,5 kW) ECO\n\n• Energía 13,5 kW\n• Eficiencia térmica 77%\n• Capacidad de calefacción 135m² / 337m³\n• Material Hierro fundido\n• Peso 125 kilogramos\n• Combustible Se recomienda madera dura sazonada con humedad ≤20%\n• Ancho 740 mm Alto 435 (640) mm Profundidad 425 mm\n• Dimensiones del vidrio principal: L / H / L 722 / 370 / 4 mm\n• Diámetro del conducto de humos 180 mm\n• Largo máximo de baúles 60 cm\n• Superficie mínima de las rejillas de entrada/salida 675/1013 cm²\n• MADE IN EU ¡Excelente calidad! Producto certificado.\n\nInserto para Estufa de Leña - W16 (13,5 KW) ECO\n\nEl inserto está equipado con:\n• sistema de postcombustión de los gases de escape que aumenta la potencia térmica del inserto\n• SMART CLEAN - sistema de limpieza de cristales\n• posibilidad de suministrar aire a la cámara de combustión desde el exterior (es necesario adquirir un orificio de hierro fundido y el set SMART CLEAN) directamente al cristal, lo que evita la acumulación excesiva de hollín\n• una compuerta que regula el tiro de la chimenea\n• deflector de vermiculita que aumenta la eficiencia ampliando el recorrido de los gases de escape • una placa calefactora adicional protege la parte trasera de la chimenea de quemaduras\n• una valla decorativa que protege la madera de la caída\n• regulación del suministro de aire a través del cenicero\n• Radiadores densamente dispuestos, aumentando el área a través de la cual el calor se transfiere al ambiente circundante\n• vidrio resistente al calor\n\n¡DISEÑO MODERNO! Acabados cromados, cristales serigrafiados.",
     "image": "/uploads/inserto-para-estufa-de-lena-w16-13-5-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w16-13-5-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w16-13-5-kw-eco_1.jpg",
       "/uploads/inserto-para-estufa-de-lena-w16-13-5-kw-eco_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w16-13-5-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w16-13-5-kw-eco_1.jpg",
         "type": "image"
@@ -5781,10 +5872,15 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de leña - W15 (9,4 kW) ECO\n\n• Energía 9,4 kW\n• Eficiencia térmica 63,7%\n• Capacidad de calefacción 94m² / 235m³\n• Material Hierro fundido\n• Peso 78 kilogramos\n• Combustible Se recomienda madera dura sazonada con humedad ≤20%\n• Ancho 620 mm Alto 365 (475) mm Profundidad 370 mm\n• Dimensiones del vidrio principal: L / H / W 550 / 270 / 4mm\n• Diámetro del conducto de humos 180 mm\n• Longitud máxima de troncos 50 cm\n• Superficie mínima de las rejillas de entrada/salida 470/705 cm²\n• MADE IN EU ¡Excelente calidad! Producto certificado.\n\nEstufa de Leña Insertable - W15 (9,4 KW) ECO\n\nEl inserto está equipado con:\n• sistema de postcombustión de los gases de escape que aumenta la potencia térmica del inserto • SMART CLEAN - sistema de limpieza de cristales\n• posibilidad de suministrar aire a la cámara de combustión desde el exterior (es necesario adquirir un orificio de hierro fundido y el set SMART CLEAN) directamente al cristal, lo que evita la acumulación excesiva de hollín\n• una compuerta que regula el tiro de la chimenea\n• deflector de vermiculita que aumenta la eficiencia ampliando el recorrido de los gases de escape • una placa calefactora adicional protege la parte trasera de la chimenea de quemaduras\n• una valla decorativa que protege la madera de la caída\n• regulación del suministro de aire a través del cenicero\n• Radiadores densamente dispuestos, aumentando el área a través de la cual el calor se transfiere al ambiente circundante\n• vidrio resistente al calor\n\n¡DISEÑO MODERNO! Acabados cromados, cristales serigrafiados.",
     "image": "/uploads/inserto-para-estufa-de-lena-w15-9-4-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w15-9-4-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w15-9-4-kw-eco_1.jpg",
       "/uploads/inserto-para-estufa-de-lena-w15-9-4-kw-eco_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w15-9-4-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w15-9-4-kw-eco_1.jpg",
         "type": "image"
@@ -5808,9 +5904,14 @@ export const PRODUCTS: Product[] = [
     "description": "Inserto para estufa de leña - W17 (16,1 kW) ECO\n\n\nEnergía 16,1 kW\nEficiencia térmica 71,2 %\nCapacidad de calefacción 161 m² / 403 m³\nMaterial Hierro fundido\nPeso 154 kilogramos\nCombustible Se recomienda madera dura curada con una humedad ≤20 %\nAncho 660 mm Alto 515 (770) mm Profundidad 500 mm\nDimensiones del vidrio principal: L / H / L 583,5 / 394 / 4 mm\nDiámetro del conducto de humos 200 mm\nLongitud máxima de los troncos55 cm\nÁrea mínima de las rejillas de entrada/salida 805/1208 cm²\nHECHO EN UE ¡Excelente calidad! Producto certificado.\n\nProducido íntegramente en Europa\nEl inserto EKO WR está equipado con:\n\n\n• sistema de limpieza de cristales  - el suministro de aire fresco desde el exterior, dirigido al cristal, evita la acumulación excesiva de hollín - es necesario adquirir una entrada de aire y un tubo espiro\n\n< br>\n• Sistema de postcombustión de gases de escape: aumenta la potencia térmica del inserto y lo hace ecológico\n\n\n• una compuerta que regula el tiro de la chimenea \n\n\n• deflector de vermiculita\n\n\n•regulación del suministro de aire a través del cenicero\n\n\n• posibilidad de suministrar aire a la cámara de combustión desde el exterior\n\n\n• una valla decorativa que protege la madera de la caída\n\n\n• Radiadores densamente dispuestos, aumentando el área a través de la cual se transfiere el calor al ambiente circundante",
     "image": "/uploads/inserto-para-estufa-de-lena-w17-16-1-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w17-16-1-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w17-16-1-kw-eco_1.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w17-16-1-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w17-16-1-kw-eco_1.jpg",
         "type": "image"
@@ -5857,11 +5958,16 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de leña - W16 (16,3 KW) ECO\n\n• Energía 16,3 kW\n• Eficiencia térmica 80,4%\n• Capacidad de calefacción 163m² / 407m³\n• Material Hierro fundido\n• Peso 202 kilogramos\n• Combustible Se recomienda madera dura sazonada con humedad ≤20%\n• Ancho 876 mm Alto 518 (770) mm Profundidad 200 mm\n• Dimensiones del vidrio principal: L / H / L 859/441/4 mm\n• Diámetro del conducto de humos 200 mm\n• Largo máximo de baúles 70 cm\n• Superficie mínima de las rejillas de entrada/salida 815/1223 cm²\n• MADE IN EU ¡Excelente calidad! Producto certificado.\n\nInserto para Estufa de Leña - W16 (16,3 KW) ECO\n\nEl inserto está equipado con:\n• sistema de limpieza de vidrio - el suministro de aire fresco desde el exterior, dirigido al vidrio, evita la acumulación excesiva de hollín - es necesario adquirir una brida de hierro fundido y un juego SMART CLEAN\n• sistema de postcombustión de gases de escape: aumenta la potencia térmica del inserto\n• posibilidad de suministrar aire a la cámara de combustión desde el exterior (es necesario adquirir un orificio de hierro fundido y el set SMART CLEAN) directamente al cristal, lo que evita la acumulación excesiva de hollín\n• una compuerta que regula el tiro de la chimenea\n• deflector de vermiculita que aumenta la eficiencia ampliando el recorrido de los gases de escape • regulación del suministro de aire a través del cenicero\n• posibilidad de suministrar aire a la cámara de combustión desde el exterior (la entrada de aire no está incluida en la alimentación del inserto)\n• una valla decorativa que protege la madera de la caída\n• Radiadores densamente dispuestos, aumentando el área a través de la cual se transfiere el calor al ambiente circundante\n\nChimenea exclusiva perfecta para grandes espacios\n\n¡DISEÑO MODERNO! Acabados cromados, cristales serigrafiados.",
     "image": "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco_1.jpg",
       "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco_2.jpg",
       "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w16-16-3-kw-eco_1.jpg",
         "type": "image"
@@ -5889,10 +5995,15 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa Chimenea de Leña - Vatra XL 50x50 ECO\n\n·Potencia de calefacción 6,2 - 10,9 kW\n·Potencia nominal 8,4 kW\n·Eficiencia 81,8%\n·Superficie de calefacción 84m²/210m³\n·Material Acero\n·Peso 173 kg\n·Ancho 602 mm Alto 1226 mm Largo 419 mm\n·Dimensiones del cristal principal: 459x460x4 mm\n·Diámetro de la chimenea 150 mm\n·Diámetro del tubo de suministro de aire desde el exterior 80 mm\n·Apertura de la puerta lado derecho/izquierdo\n·Sistema de limpieza de cristales\n·Doble combustión\n·Conexión a la chimenea arriba/trasera\n·Longitud máxima de los troncos 450 mm\n·Cumplimiento de los estándares Ecoprojekt (Ecodiseño)\n·Clase energética  A+\n·Período de garantía 60 meses\n·HECHO EN UE ¡Excelente calidad! Producto certificado.\nProducido íntegramente en Europa\n\n\nLa chimenea estufa Vatra ECO es una moderna estufa de acero, producida utilizando tecnologías europeas avanzadas y materiales certificados.\n\nLa estufa tiene un diseño moderno y minimalista que encajará fácilmente en cualquier interior.\n\nLa gama de modelos de estufas Vatra Black incluye estufas y chimeneas de acero revestidas con arcilla refractaria negra. Esta es una solución interesante porque la arcilla refractaria negra tiene numerosas ventajas:\n\n·Calidad. La arcilla refractaria negra de 35 mm de espesor no se quema a altas temperaturas de combustión en el horno, no se descascarilla ni se desmorona con el tiempo.\n·Seguridad. La pintura utilizada en su producción no produce humo y no emite olores desagradables durante la combustión.\n·Estética. La arcilla refractaria negra con el diseño original luce espectacular, agrega profundidad y enriquece el interior, tanto durante la combustión como sin fuego.\n·Cuidado. La arcilla refractaria negra no deja ver la suciedad ni el hollín, por lo que la estufa siempre tendrá un aspecto limpio.\n\nVentajas de la termochimenea Vatra ECO\n\n·materiales de alta calidad certificados en la UE\n·Vidrio Robax súper resistente\n·pintura ecológica y resistente al calor\n·acero de baja aleación\n·Chimenea europea en barro refractario de 35 mm de espesor con diseño de autor\n·perfil de puerta ultrarresistente patentado\n·estructura estable y rígida que no se deforma y no está expuesta a altas temperaturas\n·sellado de cuerdas \n·alta potencia y eficiencia del horno\n·diseño eficaz de eliminación de humo\n·doble deflector\n·posibilidad de conectar el suministro de aire tanto desde la parte trasera del horno como desde abajo\n·posibilidad de conexión en la parte superior o trasera de la chimenea\n·fácil instalación y mantenimiento\n·diseño universal",
     "image": "/uploads/estufa-chimenea-de-lena-vatra-xl-50x50-eco.jpg",
     "images": [
+      "/uploads/estufa-chimenea-de-lena-vatra-xl-50x50-eco.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-xl-50x50-eco_1.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-xl-50x50-eco_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-chimenea-de-lena-vatra-xl-50x50-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-chimenea-de-lena-vatra-xl-50x50-eco_1.jpg",
         "type": "image"
@@ -5916,11 +6027,16 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa chimenea de leña - Vatra L 40x50 ECO\n\n·Rango de potencia de calefacción 5,0 - 8,9 kW\n·Potencia nominal 6,6 kW\n·Eficiencia 82,5%\n·Superficie de calefacción 66m²/165m³\n·Material Acero\n·Peso 151 kg\n·Ancho 500 mm Alto 1226 mm Largo 419 mm\n·Dimensiones del cristal principal: 357x460x4 mm\n·Diámetro de la chimenea 150 mm\n·Diámetro del tubo de suministro de aire desde el exterior 80 mm\n·Abrir la puerta derecha/izquierda\n·Sistema de limpieza de cristales\n·Doble combustión\n·Conexión a la chimenea arriba/trasera\n·Longitud máxima de los troncos 450 mm\n·Cumplimiento de los estándares Ecoprojekt (Ecodiseño)\n·Clase energética  A+\n·Período de garantía 60 meses\n·HECHO EN UE ¡Excelente calidad! Producto certificado.\n\nProducido íntegramente en Europa\n\n\nLa chimenea estufa Vatra ECO es una moderna estufa de acero, producida utilizando tecnologías europeas avanzadas y materiales certificados.\n\nLa estufa tiene un diseño moderno y minimalista que encajará fácilmente en cualquier interior.\n\n\nVentajas de la termochimenea Vatra ECO\n\n\n-Materiales de alta calidad certificados en la UE\n-Vidrio Robax super resistente\n-Pintura ecológica y resistente al calor\n-acero de baja aleación\n-Chimenea europea en arcilla refractaria de 35 mm de espesor con diseño de diseño\nPerfil de puerta ultrarresistente patentado\n-Estructura estable y rígida que no se deforma y no está expuesta a altas temperaturas\n-sellado de cuerdas \n-horno de alta potencia y eficiencia\n-diseño eficaz de eliminación de humo\n-doble deflector\n-posibilidad de conectar el suministro de aire tanto desde la parte trasera del horno como desde abajo\n-posibilidad de conexión en la parte superior o trasera de la chimenea\n-fácil instalación y mantenimiento\n-diseño universal",
     "image": "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco.jpg",
     "images": [
+      "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco_1.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco_2.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-chimenea-de-lena-vatra-l-40x50-eco_1.jpg",
         "type": "image"
@@ -5948,6 +6064,7 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa Chimenea de Leña - Vatra XXL 60x50 ECO\n\n·Rango de potencia de calefacción 7,3 - 13,0 kW\n·Potencia nominal 10,2 kW\n·Eficiencia 81,2%\n·Superficie de calefacción 100m²/250m³\n·Material Acero\n·Peso 198 kg\n·Ancho 703 mm Alto 1226 mm Largo 419 mm\n·Dimensiones del cristal principal: 560x460x4 mm\n·Diámetro de la chimenea 150 mm\n·Diámetro del tubo de suministro de aire desde el exterior 100 mm\n·Apertura de la puerta lado derecho/izquierdo\n·Sistema de limpieza de cristales\n·Doble combustión\n·Conexión a la chimenea arriba/trasera\n·Longitud máxima de troncos 500 mm\n·Cumplimiento de los estándares Ecoprojekt (Ecodiseño)\n·Clase energética A+\n·Periodo de garantía 60 meses\n·HECHO EN UE ¡Excelente calidad! Producto certificado.\nProducido íntegramente en Europa\n\n\nLa chimenea estufa Vatra ECO es una moderna estufa de acero, producida utilizando tecnologías europeas avanzadas y materiales certificados.\n\nLa estufa tiene un diseño moderno y minimalista que encajará fácilmente en cualquier interior.\n\nLa gama de modelos de estufas Vatra Black incluye estufas y chimeneas de acero revestidas con arcilla refractaria negra. Esta es una solución interesante porque la arcilla refractaria negra tiene numerosas ventajas:\n\n·Calidad. La arcilla refractaria negra de cuerpo entero de 35 mm de espesor no se quema a altas temperaturas de combustión en el horno, no se descascarilla ni se desmorona con el tiempo.\n·Seguridad. La pintura utilizada en su producción no produce humo y no emite olores desagradables durante la combustión.\n·Estética. La arcilla refractaria negra con el diseño original luce espectacular, agrega profundidad y enriquece el interior, tanto durante la combustión como sin fuego.\n·Cuidado. La arcilla refractaria negra no deja ver la suciedad ni el hollín, por lo que la estufa siempre tendrá un aspecto limpio.\n\nVentajas de la termochimenea Vatra ECO\n\n·materiales de alta calidad certificados en la UE\n·Vidrio Robax súper resistente\n·pintura ecológica y resistente al calor\n·acero de baja aleación\n·Chimenea europea en barro refractario de 35 mm de espesor con diseño de autor\n·perfil de puerta ultrarresistente patentado\n·estructura estable y rígida que no se deforma y no está expuesta a altas temperaturas\n·sellado de cuerdas \n·alta potencia y eficiencia del horno\n·diseño eficaz de eliminación de humo\n·doble deflector\n·posibilidad de conectar el suministro de aire tanto desde la parte trasera del horno como desde abajo\n·posibilidad de conexión en la parte superior o trasera de la chimenea\n·fácil instalación y mantenimiento\n·diseño universal",
     "image": "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco.jpg",
     "images": [
+      "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco_1.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco_2.jpg",
       "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco_3.jpg",
@@ -5955,6 +6072,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-chimenea-de-lena-vatra-xxl-60x50-eco_1.jpg",
         "type": "image"
@@ -5990,6 +6111,7 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa de leña - W6 (10,1 kW) ECO\n\n• Energía 10,1 kW\n• Eficiencia térmica 74,6%\n• Capacidad de calefacción 100m² / 250m³\n• Material Hierro fundido\n• Peso 95 kilogramos\n• Combustible Se recomienda madera dura sazonada con humedad ≤20%\n• Ancho 685 mm Alto 515 (615) mm Profundidad 380 mm\n• Dimensiones del vidrio principal: L / H / L 490 / 350 / 4 mm\n• Diámetro del conducto de humos 180 mm\n• Largo máximo de baúles 47 cm\n• Superficie mínima de las rejillas de entrada/salida 505/758 cm²\n• Puerta izquierda\n• MADE IN EU ¡Excelente calidad! Producto certificado.\n\nInserto para Estufa de Leña - W6 (10,1 KW) ECO\n\nLa chimenea de aire ECO W6 (10,1 kW) es una chimenea moderna que funciona según el principio de convección. Una chimenea de leña no solo se convertirá en una decoración interior, sino que también calentará toda la casa y proporcionará una temperatura confortable en la estación fría.\n\nVentajas de la chimenea insertable ECO W6 (10,1 kW):\n• una compuerta que regula el tiro de la chimenea\n• deflector de vermiculita que aumenta la eficiencia ampliando el recorrido de los gases de escape\n• placa incandescente que protege el cuerpo de la chimenea de la combustión\n• una valla decorativa que protege la madera de la caída\n• regulación del suministro de aire a través del cenicero\n• Radiadores densamente dispuestos que aumentan el área a través de la cual se transfiere el calor al entorno\n• cumplimiento de las normas de ecodiseño para chimeneas de leña\n\nLos insertos para chimeneas de hierro fundido tienen una ventaja significativa en el material del que están fabricados. Hablamos de la fundición vermicular, que ha revolucionado el mercado de las chimeneas.\n\nVentajas de la fundición vermicular en chimeneas de leña\n\nLa fundición vermicular es un material elaborado a base de fundición gris ordinaria, con aditivos químicos que cambian su estructura, mejoran la resistencia y la plasticidad y aumentan la resistencia. A continuación se muestra una tabla comparativa de la composición de elementos químicos en fundición gris y vermicular.\n\nFundición gris\nEl azufre y el fósforo son elementos nocivos en la estructura del hierro fundido.\n\nFundición vermicular\nAzufre y fósforo: en cantidades más pequeñas se añade magnesio, lo que cambia la estructura del hierro fundido.\n\nLos insertos para chimeneas de fundición vermicular tienen una conductividad térmica superior al 30%, una mayor eficiencia y un consumo de leña reducido en un 30%.\nLas chimeneas de fundición vermicular son más resistentes a los cambios de temperatura.\n\n⇒ MÁS FUERTE\nEl uso de fundición vermicular nos ha permitido aumentar la potencia del inserto de chimenea manteniendo las mismas dimensiones en aproximadamente un 30%.\n\n⇒ MÁS EFICIENTE\nLas chimeneas modernas se caracterizan por una mayor conductividad térmica y un tiempo de calentamiento más corto (aproximadamente un 30%).\n\n⇒ MENOR CONSUMO DE COMBUSTIBLE\nGracias a la mayor eficiencia de la chimenea, el requerimiento de leña se reduce aproximadamente un 30%, permitiendo ahorrar en el uso de la chimenea.\n\n⇒ MÁS ECOLÓGICO\nGracias a la menor demanda de madera se reducen las emisiones de dióxido de carbono y sustancias resinosas, lo que ayuda a mejorar la calidad del aire.\n\nLa chimenea insertable ECO W6 (10,1 kW) es una chimenea moderna y ecológica que cumple con los estándares de Ecodiseño. Gracias al uso de fundición vermicular, tiene un índice aceptable de emisión de sustancias nocivas a la atmósfera durante la combustión de la madera.\n\nEl ecodiseño es una directiva del Parlamento Europeo sobre los requisitos energéticos y las emisiones de los aparatos de calefacción (chimeneas de ecodiseño 2022).\nSu objetivo es\n• aumentar el uso de energías renovables en la UE\n• reducir el consumo de energía\n• reducir las emisiones de gases de efecto invernadero\n\nLos parámetros especificados en Ecoprojet para inserts de chimeneas y estufas de leña incluyen:\n• Eficiencia energética estacional de no menos del 65%\n• Emisión de productos de combustión a potencia nominal (calculada como 13% de oxígeno)\n• Partículas sólidas no más de 40 mg/Nm3\n• Compuestos de gases orgánicos no superiores a 120 mg/Nm3\n• Monóxido de carbono no superior a 1500 mg/Nm3\n• Óxido de nitrógeno no superior a 200 mg/Nm3",
     "image": "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco.jpg",
     "images": [
+      "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco.jpg",
       "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco_1.jpg",
       "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco_2.jpg",
       "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco_3.jpg",
@@ -5997,6 +6119,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/inserto-para-estufa-de-lena-w6-10-1-kw-eco_1.jpg",
         "type": "image"
@@ -6032,11 +6158,16 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa independiente de hierro fundido - P9 (8 kW) ECO\n\n• Energía 8 kW\n• Eficiencia térmica 78,1%\n• Capacidad de calefacción 80m²/200m³\n• Material Hierro fundido\n• Peso 79 kilogramos\n• Combustible Se recomienda madera dura sazonada con una humedad ≤20%\n• Ancho 475 mm Alto 834 mm Profundidad 384 mm\n• Dimensiones de la ventana: L / H / L 172 / 163 / 4 mm\n• Diámetro del conducto de humos 120 mm\n• Longitud máxima de troncos 30 cm\n• MADE IN EU ¡excelente calidad! Producto certificado.\n\nEstufa Independiente de Hierro Fundido P9 (8 KW) ECO",
     "image": "/uploads/estufa-de-lena-independiente-p9-8-kw-eco.jpg",
     "images": [
+      "/uploads/estufa-de-lena-independiente-p9-8-kw-eco.jpg",
       "/uploads/estufa-de-lena-independiente-p9-8-kw-eco_1.jpg",
       "/uploads/estufa-de-lena-independiente-p9-8-kw-eco_2.jpg",
       "/uploads/estufa-de-lena-independiente-p9-8-kw-eco_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-de-lena-independiente-p9-8-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-de-lena-independiente-p9-8-kw-eco_1.jpg",
         "type": "image"
@@ -6145,11 +6276,16 @@ export const PRODUCTS: Product[] = [
     "description": "Estufa independiente de hierro fundido - P7 (9,3 KW) ECO\n\n• Energía 9,3 kW\n• Eficiencia térmica 65,9%\n• Capacidad de calefacción 93m² / 233m³\n• Material Hierro fundido\n• Peso 120 kilogramos\n• Combustible Se recomienda madera dura sazonada con una humedad ≤20%\n• Ancho 574 mm Alto 662 (695) mm Profundidad 474 mm\n• Dimensiones de la ventana: L / H / L 268 / 196 / 4 mm\n• Diámetro del conducto de humos 150 mm\n• Longitud máxima de troncos 40 cm\n• MADE IN EU ¡excelente calidad! Producto certificado.\n\nEstufa Independiente de Hierro Fundido P7 (9,3 KW) ECO\n\nVariante de chimenea - P7 9,3 kWECO\nMaterial hierro fundido gris\nEnergía9,3 kW\nSuperficie de calefacción 93 m2\nCapacidad de calefacción 233 m3\n\nVariante de chimenea - P7 9,3kW ECOWR\nMaterial fundición vermicular\nEnergía 12,2 kW\nSuperficie de calefacción 122 m2\nCapacidad de calefacción 305 m3\n\nVariante de chimenea - P7 9,3kW ECOWR+P\nMaterial fundición vermicular + revestimiento\nEnergía 12,7 kW\nSuperficie de calefacción 127 m2\nCapacidad de calefacción317 m3",
     "image": "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco.jpg",
     "images": [
+      "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco.jpg",
       "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco_1.jpg",
       "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco_2.jpg",
       "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/estufa-de-lena-independiente-p7-9-3-kw-eco_1.jpg",
         "type": "image"
@@ -6777,11 +6913,16 @@ export const PRODUCTS: Product[] = [
     "description": "La chimenea eléctrica Lynea es la combinación perfecta de elegancia y modernidad. Con su diseño minimalista de chimenea de pared, añadirá un toque de calidez y sofisticación a cualquier espacio. Disfruta del ambiente acogedor que proporciona su llama simulada, que se puede ajustar a tu gusto con solo presionar un botón. Ya sea para relajarte en casa después de un largo día o para impresionar a tus invitados en una reunión, la chimenea eléctrica Lynea será el centro de atención de tu hogar. Eleva tu experiencia de confort y estilo con este increíble E-fireplace.\n---\n\nDatos técnicos:\n\nColores:\nNegro\n\nDimensiones:\n100 x 80 x 73 cm (AnxAlxPr)\n\nCable eléctrico:\n1,7 m\n\nMaterial:\nMDF\n\nMaterial Adicional:\nMetal\n\nPeso Neto (Sin Embalaje):\n35.5 kg\n\nPeso Bruto (Incl. Embalaje):\n40.7 kg\n\n\n\n---\n\nALCANCE DE ENTREGA: chimenea eléctrica, marco de chimenea, cable de alimentación de 1,76 m con enchufe UE, instrucciones de instalación, material de instalación",
     "image": "/uploads/chimenea-electrica-negro-100x73x80-lynea.jpg",
     "images": [
+      "/uploads/chimenea-electrica-negro-100x73x80-lynea.jpg",
       "/uploads/chimenea-electrica-negro-100x73x80-lynea_1.jpg",
       "/uploads/chimenea-electrica-negro-100x73x80-lynea_2.jpg",
       "/uploads/chimenea-electrica-negro-100x73x80-lynea_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/chimenea-electrica-negro-100x73x80-lynea.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/chimenea-electrica-negro-100x73x80-lynea_1.jpg",
         "type": "image"
@@ -7013,11 +7154,16 @@ export const PRODUCTS: Product[] = [
     "description": "¡Crea una atmósfera cálida y con personalidad gracias a la elegante chimenea VESUVIA!\n¿Buscas una fusión perfecta entre funcionalidad moderna y ambiente acogedor en tu espacio? ¡Opta por la chimenea eléctrica VESUVIA! Las cautivadoras llamas bailarinas te transportarán a un acogedor refugio de confort, donde lo contemporáneo se encuentra con una atmósfera acogedora.",
     "image": "/uploads/chimenea-electrica-vesuvia.jpg",
     "images": [
+      "/uploads/chimenea-electrica-vesuvia.jpg",
       "/uploads/chimenea-electrica-vesuvia_1.jpg",
       "/uploads/chimenea-electrica-vesuvia_2.jpg",
       "/uploads/chimenea-electrica-vesuvia_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/chimenea-electrica-vesuvia.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/chimenea-electrica-vesuvia_1.jpg",
         "type": "image"
@@ -7342,12 +7488,17 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nRobustez de la base de metal\nLuces LED integradas\nNicho decorativo y práctico\nFabricado en Europa\n\n¡La colección NATANIEL es perfecta si buscas un toque moderno y actual!\nLa colección NATANIEL es sinónimo de simplicidad y estilo. Sus asas redondeadas le dan un toque distintivo, garantizando además una apertura cómoda. Con amplios espacios de almacenamiento y luces LED integradas, esta vitrina no solo organiza, sino que también añade un toque refinado a tu interior.\n\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Melamina, Cristal templado\nGrosor del cristal:  3 mm\nMaterial (Patas):  Metal\nAcabado:  Melaminado\nCon leds\nColores de los LEDs:  Blanco\n2 puertas\nPuerta batiente\nTipo de almacenaje:  4 compartimentos\nDiseño de tipo:  Sobre suelo\nGama:  Good for Planet, Espacio pro\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nCarga máxima soportada:  20 kg\nNecesita montaje\nPeso máx. soportado por los estantes de vidrio:  3 kg\nPeso máx. soportado por los estantes de panel:  5 kg\nDimensiones\nLargo:  106.6 cm\nAltura:  187.6 cm\nProfundidad:  40 cm",
     "image": "/uploads/nataniel.jpg",
     "images": [
+      "/uploads/nataniel.jpg",
       "/uploads/nataniel_1.jpg",
       "/uploads/nataniel_2.jpg",
       "/uploads/nataniel_3.jpg",
       "/uploads/nataniel_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/nataniel.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/nataniel_1.jpg",
         "type": "image"
@@ -7379,6 +7530,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Organiza y realza tu espacio vital con la vitrina MARSORIA!\nRealza tu espacio vital con la vitrina MARSORIA, diseñada para organizar la vida cotidiana mientras exhibe tus objetos decorativos con carácter.\n\nConcebida como un mueble de almacenamiento completo, la vitrina MARSORIA se distingue por su volumen amplio e imponente, que afirma su presencia en la habitación. Esta generosidad de formato contribuye plenamente a su inspiración industrial, a la vez que proporciona una gran capacidad de almacenamiento. Las puertas de cristal templado resistente permiten exhibir vajilla, libros u objetos decorativos de manera visible, protegiéndolos al mismo tiempo. Los cajones y compartimentos cerrados completan el conjunto acogiendo los elementos que deseas mantener fuera de la vista, para preservar un interior ordenado.\n\nLa iluminación LED integrada, de color blanco, resalta los volúmenes interiores y destaca los objetos expuestos. Mejora la visibilidad y aporta un confort visual agradable, especialmente al final del día. La estructura combina superficies de madera con líneas negras marcadas, creando un contraste equilibrado entre autenticidad y sobriedad. Este diálogo entre material y estructura afirma el estilo industrial del mueble.\n\nFácil de integrar en un salón o comedor, la vitrina MARSORIA acompaña la organización diaria a la vez que ofrece un soporte adaptado para exhibir y valorizar tus objetos. Encuentra naturalmente su lugar en un interior que busca un almacenamiento elegante y funcional.\n\n\nCaracteristicas\nColor (tono):  Color natural claro, Negro\nMaterial (precisión):  Mdf, Melamina, Cristal templado\nGrosor del cristal:  4 mm\nAcabado:  Melaminado\nCon leds\nColores de los LEDs:  Blanco\n6 puertas\nPuerta batiente\nTipo de almacenaje:  3 cajones, 9 compartimentos\nCajón deslizante\nDiseño de tipo:  Sobre suelo\nGama:  Good for Planet, Espacio pro\nProducto exclusivo\nCriterios de ecorresponsabilidad:  Estructura procedente de bosques gestionados de forma sostenible, Fabricado en Europa\nNecesita montaje\nDimensiones\nLargo:  172.5 cm\nAltura:  217.8 cm\nProfundidad:  39.6 cm",
     "image": "/uploads/marsoria.jpg",
     "images": [
+      "/uploads/marsoria.jpg",
       "/uploads/marsoria_1.jpg",
       "/uploads/marsoria_2.jpg",
       "/uploads/marsoria_3.jpg",
@@ -7390,6 +7542,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/marsoria_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/marsoria.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/marsoria_1.jpg",
         "type": "image"
@@ -7441,12 +7597,17 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nFrente rayado ultra moderno\nLuces LED integradas\nSistema de apertura push to open\nFabricado en Europa\n\nCrea una atmósfera cálida y acogedora en tu casa con la colección OVILA!\nDiseño contemporáneo, acabados en efecto madera. LEDs integrados... ¡Aporta un toque moderno a tu salón con el vitrina OVILA! Y no solo eso, hay un gran espacio de almacenamiento tras sus 2 puertas para guardar tus cosas con mucho estilo.\n\n\n\nCaracteristicas\nColor (tono):  Color natural claro, Negro\nMaterial (precisión):  Mdf, Melamina, Cristal templado\nAcabado:  Ahumado, Acanalado, Melaminado\nCon leds\nColores de los LEDs:  Blanco\nTipo de control:  Interruptor\nTipo de conexión:  Toma eléctrica\n2 puertas\nPuerta batiente\nMecanismo de apertura (puerta):  Push to open\nTipo de almacenaje:  6 compartimentos\nDiseño de tipo:  Sobre suelo\nGama:  Good for Planet, Espacio pro\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nCarga máxima soportada:  10 kg\nNecesita montaje\nPotencia de los LED:  4,47 W\nPeso máximo soportado por las medidas internas:  3 kg (arriba y en el medio), 5 kg (abajo)\nDimensiones\nLargo:  103.5 cm\nAltura:  125.5 cm\nProfundidad:  39 cm\nDimensiones internas:  L49,3 x P33,2/34,5 x H33,2/32,7 cm",
     "image": "/uploads/ovila.jpg",
     "images": [
+      "/uploads/ovila.jpg",
       "/uploads/ovila_1.jpg",
       "/uploads/ovila_2.jpg",
       "/uploads/ovila_3.jpg",
       "/uploads/ovila_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/ovila.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/ovila_1.jpg",
         "type": "image"
@@ -7478,12 +7639,17 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nFrente rayado ultra moderno\nSistema de apertura push to open\nFabricado en Europa\nVidrio templado ahumado resistente\n\n\n¡Dale carácter a tu interior con la colección SAYERA!\nDiseñada para decorar tus espacios con carácter, la colección SAYERA juega con el contraste de materiales y colores, realzado por una iluminación integrada discreta.\n\nLa vitrina SAYERA se inscribe en esta identidad con una fachada que combina la profundidad del negro con el aspecto cálido del efecto madera; las ranuras aportan relieve al conjunto sin recargarlo. La puerta de vidrio templado introduce una transparencia ligeramente velada que permite percibir el contenido expuesto a la vez que difunde suavemente la luz de los LEDs, para una presentación discreta y elegante.\n\nGracias al sistema push-to-open, mantén una estética depurada sin tiradores visibles y accede al interior con una simple presión. Disponible en varios tamaños, permite adaptarse a tus necesidades de almacenamiento y a las limitaciones de tu espacio.\n\nPara conservar su aspecto con el paso del tiempo, un paño suave ligeramente húmedo es suficiente para las superficies y el vidrio ahumado, evitando los productos abrasivos.\n\nCaracteristicas\nColor (tono):  Color natural claro, Negro\nMaterial (precisión):  Mdf, Melamina, Cristal templado\nMaterial (Patas):  Metal\nAcabado:  Mate, Ahumado, Acanalado, Melaminado\nCon leds\nColores de los LEDs:  Blanco\nTipo de control:  Interruptor\nTipo de conexión:  Toma eléctrica\n2 puertas\nPuerta batiente\nMecanismo de apertura (puerta):  Push to open\nDiseño de tipo:  Sobre suelo\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nCarga máxima soportada:  30 kg\nNecesita montaje\nMontaje reversible:  Sí\nCarga máxima soportada por los estantes y el cajón:  3 kg\nPotencia de los LEDs:  12 V\nDimensiones\nLargo:  107 cm\nAltura:  166 cm\nProfundidad:  39 cm",
     "image": "/uploads/sayera-2.jpg",
     "images": [
+      "/uploads/sayera-2.jpg",
       "/uploads/sayera-2_1.jpg",
       "/uploads/sayera-2_2.jpg",
       "/uploads/sayera-2_3.jpg",
       "/uploads/sayera-2_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sayera-2.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sayera-2_1.jpg",
         "type": "image"
@@ -7515,12 +7681,17 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nFrente rayado ultra moderno\nOrificio para cables integrado para mayor practicidad\nSistema de apertura push to open\nFabricado en Europa\nVidrio templado ahumado resistente\n\n\n¡Dale carácter a tu interior con la colección SAYERA!\nDiseñada para decorar tus espacios con carácter, la colección SAYERA juega con el contraste de materiales y colores, realzado por una iluminación integrada discreta.\n\nel mueble TV SAYERA se inscribe en esta identidad con una fachada que combina la profundidad del negro con el aspecto cálido del efecto madera; las ranuras de las dos puertas aportan relieve al conjunto sin recargarlo. El tablero de vidrio templado ofrece una superficie a la vez elegante y resistente para colocar tus dispositivos u objetos decorativos.\n\nLa iluminación LED en los estantes acompaña tus veladas de relax con suavidad, una vez creado el ambiente íntimo. El pasacables integrado permite mantener los cables organizados y la parte trasera del mueble ordenada, incluso con varios dispositivos conectados. Gracias al sistema push-to-open, conserva una fachada limpia sin tirador visible y accede al almacenamiento con una simple presión.\n\nPara mantener su aspecto con el tiempo, un paño suave ligeramente húmedo es suficiente para las superficies y el vidrio ahumado, evitando los productos abrasivos.",
     "image": "/uploads/sayera.jpg",
     "images": [
+      "/uploads/sayera.jpg",
       "/uploads/sayera_1.jpg",
       "/uploads/sayera_2.jpg",
       "/uploads/sayera_3.jpg",
       "/uploads/sayera_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sayera.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sayera_1.jpg",
         "type": "image"
@@ -7552,6 +7723,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Crea un espacio moderno y luminoso en tu salón con el mueble TV DEVIKA!\nUn tablero con efecto mármol blanco que contrasta con la parte frontal, unas prácticas luces LED, un diseño moderno y elegante... ¡Aporta un toque distinguido a tu salón gracias al mueble TV DEVIKA!\n\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Blanco, Color natural claro\nMaterial (precisión):  Mdf, Melamina\nAcabado:  Melaminado, Efecto mármol\nOpción (mueble):  Pasacables\nCon leds\nColores de los LEDs:  Blanco\nTipo de control:  Interruptor\nTipo de conexión:  Toma eléctrica\nPuerta batiente\nTipo de almacenaje:  2 cajones, 2 compartimentos\nCajón deslizante soft close\nDiseño de tipo:  Sobre suelo\nGama:  Corner Prestigio, Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nCarga máxima soportada:  24 kg\nNecesita montaje\nPeso máx. soportado por la estantería:  5 kg\nPeso máx. soportado por los cajones:  2 kg\nPotencia de LEDs:  15 W\nDimensiones\nLargo:  190 cm\nAltura:  44 cm\nProfundidad:  40 cm\nEstantería:  Ancho 60,8 x Prof. 30,6 cm\nCajones:  Ancho 58 x Prof. 29,5 x Alt. 12,5 cm\nDetalles\nFabricado en Europa\nFabricado en Europa\n\nMdf: Compuesto de fibras de madera comprimidas, el MDF es estético y resistente, perfecto para interiores.",
     "image": "/uploads/devika.jpg",
     "images": [
+      "/uploads/devika.jpg",
       "/uploads/devika_1.jpg",
       "/uploads/devika_2.jpg",
       "/uploads/devika_3.jpg",
@@ -7560,6 +7732,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/devika_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/devika.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/devika_1.jpg",
         "type": "image"
@@ -7599,6 +7775,7 @@ export const PRODUCTS: Product[] = [
     "description": "Tamaño: 240 cm. Profundidad: 40 centímetros. Dimensiones: 2,4 x 0,4 x 0,55 metros (largo x ancho x alto).\nAcerca de este artículo\nMUEBLE DE TV DE ESTILO MEDIO SIGLO: Una estética orgánica, líneas puras y un perfil elegante que aportan un encantador estilo del siglo XX a tu sala de estar. Moderniza la decoración de tu hogar con este mueble de TV de diseño retro y perfil bajo.\n\nCENTRO DE ENTRETENIMIENTO: Perfecto para la sala de estar, el dormitorio y el salón. Esta consola multimedia permite una fácil instalación de los equipos de entretenimiento y admite televisores de hasta 80 pulgadas.\n\nMateriales de primera calidad y duraderos: El panel está fabricado en tablero de fibra, con una superficie revestida con chapa de madera natural que presenta un fascinante veteado irregular, aportando un toque de encanto y elegancia a este centro de entretenimiento. Las puertas de listones son de madera maciza de fresno. La estructura interna es compacta, robusta y duradera. El mueble de TV no se deformará ni se deteriorará fácilmente con el uso prolongado.\nAmplio espacio de almacenamiento: Las 4 puertas cuentan con 4 armarios, con 6 compartimentos para guardar tus equipos multimedia y accesorios bien organizados.\n\nFácil de montar y conectar: ​​El mueble para TV incluye todos los accesorios necesarios, además de un manual de instalación para un montaje sencillo. La superficie es fácil de mantener: basta con secarla con una gasa húmeda y secarla con una gasa propia.\n\n\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Metal\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  240 cm\nAltura:  55 cm\nProfundidad:  40 cm",
     "image": "/uploads/mueble-de-tv-moderno-de-75.jpg",
     "images": [
+      "/uploads/mueble-de-tv-moderno-de-75.jpg",
       "/uploads/mueble-de-tv-moderno-de-75_1.jpg",
       "/uploads/mueble-de-tv-moderno-de-75_2.jpg",
       "/uploads/mueble-de-tv-moderno-de-75_3.jpg",
@@ -7607,6 +7784,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-tv-moderno-de-75_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-tv-moderno-de-75.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-tv-moderno-de-75_1.jpg",
         "type": "image"
@@ -7646,6 +7827,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Crea un rincón de descanso exterior con el sillón colgante ZALO de MYLIA!\n¡Disfruta plenamente de los momentos de descanso al aire libre con el sillón colgante ZALO de MYLIA! \n\nEste sillón colgante combina una base de metal estable con una cesta de resina trenzada, materiales resistentes y fáciles de mantener. Su forma redondeada invita a relajarse cómodamente, ya sea para leer, descansar o disfrutar de un momento de tranquilidad en una terraza o en un jardín.\n\nEl cojín incluido refuerza la comodidad diaria. Resistente al agua y con tratamiento anti-UV, soporta la humedad así como la exposición al sol. Con funda extraíble y lavable a máquina, permite conservar una comodidad limpia y agradable a lo largo de las estaciones.\n\nFácil de instalar y de mover, el sillón colgante ZALO de MYLIA se adapta a la organización del espacio y acompaña los usos regulares, tanto en exterior como en interior, sin limitaciones.\n\nPara el mantenimiento, limpia la base de metal y la resina trenzada con un paño suave ligeramente húmedo. Se recomienda proteger o guardar el cojín durante condiciones climáticas adversas para preservar duraderamente sus propiedades.\n\nEl sillón colgante ZALO de MYLIA permite crear fácilmente un rincón de descanso cómodo y duradero, ideal para disfrutar plenamente de los momentos de relajación.",
     "image": "/uploads/zalo.jpg",
     "images": [
+      "/uploads/zalo.jpg",
       "/uploads/zalo_1.jpg",
       "/uploads/zalo_2.jpg",
       "/uploads/zalo_3.jpg",
@@ -7654,6 +7836,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/zalo_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/zalo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/zalo_1.jpg",
         "type": "image"
@@ -7693,6 +7879,7 @@ export const PRODUCTS: Product[] = [
     "description": "Caracteristicas\nTratamiento de protección:  Resistente al agua\nColor (tono):  Gris\nMaterial (precisión):  Resina\nGrosor de resina:  4.2 mm\nEstructura:  Metal\nAcabado:  Trenzado\nNúmero de plazas:  2 plazas\nDesenfundable:  Sí\nCon patas\nUso:  Exterior\nGama:  Espacio pro\nCarga máxima soportada:  150 kg\nNecesita montaje\nDimensiones\nLargo:  120 cm\nAltura:  200 cm\nProfundidad:  120 cm\nAltura del asiento:  29 cm\nProfundidad del asiento:  75 cm\nDetalles\nResina: Resistente a las inclemencias del tiempo y a los rayos UV, la resina sintética combina durabilidad, ligereza y fácil mantenimiento.\n\nTrenzada: La resina trenzada tiene la ventaja de ser no porosa, lo que evitará que la suciedad se incruste en las fibras. Por lo tanto, los muebles de resina trenzada prácticamente no requieren mantenimiento y son altamente resistentes (al sol, al agua de mar y al agua de la piscina). Sin embargo, no es inmune al polvo. Limpia simplemente con una esponja y agua jabonosa o usa un chorro de alta presión. Usar otros productos de limpieza podrían alterar la belleza de tus muebles de jardín.",
     "image": "/uploads/cayambe.jpg",
     "images": [
+      "/uploads/cayambe.jpg",
       "/uploads/cayambe_1.jpg",
       "/uploads/cayambe_2.jpg",
       "/uploads/cayambe_3.jpg",
@@ -7701,6 +7888,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/cayambe_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/cayambe.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/cayambe_1.jpg",
         "type": "image"
@@ -7807,6 +7998,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nResistencia y ligereza del aluminio\nProducto extensible\nApilable para una fácil organización\nSillas apilables\nMesa extensible\n\n¡Disfruta plenamente de tu verano con el comedor de jardín YOHA de MYLIA!\n¡Disfruta de reuniones memorables con el comedor de jardín YOHA de MYLIA! Su mesa redonda extensible, con patas cruzadas, se adapta a cualquier número de comensales, mientras que las sillas apilables de textileno y aluminio aseguran comodidad y durabilidad. Ideal para compartir buenos momentos al aire libre.\n\n\nCaracteristicas & Dimensiones\nCaracterísticas comunes\nTratamiento de protección:  Resistente al agua\nColor (tono):  Topo\nGrosor del metal:  1.2 mm\nAcabado:  Mate\nUso:  Exterior\n1 x Mesa jardín YOHA\nCaracteristicas\nMaterial (precisión):  Aluminio\nNúmero de plazas:  4 plazas, 6 plazas\n1 extensión\nGama:  Espacio pro, Prácticos\nCarga máxima soportada:  75 kg\nNecesita montaje\nExtensible:  Sí\nDimensiones\nLargo:  204 cm\nAltura:  75 cm\nProfundidad:  150 cm\nDiámetro (cm):  150 cm\n4 x Silla de jardín MACILA\nCaracteristicas\nMaterial (precisión):  Textileno, Aluminio\nEstructura:  Metal\nCon reposabrazos\nGama:  Espacio pro\nCarga máxima soportada:  130 kg\nEntregado montado\nApilable:  Sí\nDimensiones\nLargo:  57 cm\nAltura:  89 cm\nProfundidad:  60 cm\nAltura del asiento:  45 cm\nProfundidad del asiento:  47 cm\nAltura respaldo:  44 cm\nDetalles\nAluminio: Este material ofrece robustez y ligereza para una larga durabilidad y mínimo mantenimiento. También es muy resistente a las inclemencias del tiempo.\n\nEntregado montado: Los muebles entregados montados son una garantía de calidad y solidez.",
     "image": "/uploads/yoha.jpg",
     "images": [
+      "/uploads/yoha.jpg",
       "/uploads/yoha_1.jpg",
       "/uploads/yoha_2.jpg",
       "/uploads/yoha_3.jpg",
@@ -7816,13 +8008,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/yoha_7.jpg",
       "/uploads/yoha_8.jpg",
       "/uploads/yoha_9.jpg",
-      "/uploads/yoha_10.jpg",
-      "/uploads/yoha_11.jpg",
-      "/uploads/yoha_12.jpg",
-      "/uploads/yoha_13.jpg",
-      "/uploads/yoha_14.jpg"
+      "/uploads/yoha_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/yoha.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/yoha_1.jpg",
         "type": "image"
@@ -7861,22 +8053,6 @@ export const PRODUCTS: Product[] = [
       },
       {
         "url": "/uploads/yoha_10.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/yoha_11.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/yoha_12.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/yoha_13.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/yoha_14.jpg",
         "type": "image"
       }
     ],
@@ -7956,6 +8132,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nEstilo exótico en ramas de teca\nResistente\nColchoneta desenfundable y lavable en lavadora\n\n\n¡Convierte tu jardín en un espacio de relax con la tumbona TULUM!\nDale un toque exótico a tus días de relax con la tumbona TULUM. Fabricada con auténticas ramas de teca, combina estilo natural y comodidad. Es perfecta para disfrutar de un cóctel a la sombra o relajarte bajo el sol en total tranquilidad. ¡Un imprescindible para tus momentos de descanso!\n\nCaracteristicas & Dimensiones\nCaracteristicas\nTratamiento de protección:  Resistente al agua, Resistente a los rayos UV\nColor (tono):  Color natural claro\nMaterial (precisión):  Teca\nGrosor de la madera:  60 mm\nDesenfundable:  Sí\nRelleno del asiento:  Espuma de poliuretano\nDensidad asiento:  25 kg/m³\nCon colchón\nUso:  Exterior\nGama:  Los efímeros\nCarga máxima soportada:  225 kg\nEntregado montado\n1 cojín con funda extraíble y lavable a mano incluido\nDimensiones\nLargo:  215 cm\nAltura:  46 cm\nProfundidad:  180 cm\nAltura del asiento:  46 cm\nGrosor del cojín:  8 cm\nDetalles\nTeca: Esta madera preciosa e imputrescible de Indonesia destaca por su fino grano y resistencia natural, siendo la más buscada del mundo.\n\nEntregado montado: Los muebles entregados montados son una garantía de calidad y solidez.",
     "image": "/uploads/tulum.jpg",
     "images": [
+      "/uploads/tulum.jpg",
       "/uploads/tulum_1.jpg",
       "/uploads/tulum_2.jpg",
       "/uploads/tulum_3.jpg",
@@ -7964,6 +8141,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/tulum_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/tulum.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/tulum_1.jpg",
         "type": "image"
@@ -8003,6 +8184,7 @@ export const PRODUCTS: Product[] = [
     "description": "Armario de 210 cm en color blanco – estilo y funcionalidad para años.\n\nEl armario en color blanco es una solución práctica para el dormitorio, el recibidor o el vestidor. Su forma sencilla y el tono suave de los frentes combinan con interiores modernos, escandinavos y clásicos.\n\nLa ropa, la ropa de cama y los accesorios tienen aquí su sitio, por lo que mantener el orden diario resulta rápido y cómodo.\n\nCaracterísticas principales del producto:\n\n4 puertas que permiten un acceso cómodo al interior.\n6 estantes amplios para ropa doblada, ropa de cama y accesorios.\n2 barras para ropa colgada – camisas, vestidos y chaquetas sin arrugas.\nTiradores cómodos en color plateado que resaltan el estilo moderno.\nCuerpo y frentes de tablero laminado de 16 mm de grosor.\nSuperficie resistente al uso diario y fácil de limpiar.\nDimensiones\n\nancho 210, fondo 65, alto 217 (en cm).\n\nUna buena opción para quienes valoran la sencillez y la elegancia. El tono suave de los frentes aporta calidez al interior. El armario ayuda a controlar el desorden diario. Un mueble para años de uso diario. La construcción sólida garantiza estabilidad. Montaje sencillo paso a paso. Diseño atemporal. Una elección práctica.\n\nInformación adicional:\n\nEl mueble está diseñado para el montaje por el cliente. Incluye instrucciones claras y un juego completo de herrajes certificados. Entrega por mensajería o transporte en palé, hasta el bordillo – el transportista no sube los paquetes al domicilio. Otros muebles de esta serie están disponibles en ofertas separadas.\n\nRecomendamos fijar el mueble a la pared. Debido a los distintos tipos de pared, los anclajes de pared no están incluidos.\n\nEl color del producto puede variar según la configuración del monitor.\n\nRecuerda: el armario no es de madera maciza, sino de tablero de muebles.",
     "image": "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm.jpg",
     "images": [
+      "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm.jpg",
       "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm_1.jpg",
       "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm_2.jpg",
       "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm_3.jpg",
@@ -8012,6 +8194,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-ropero-blanco-210-x-217-2-x-65-cm_1.jpg",
         "type": "image"
@@ -8119,6 +8305,7 @@ export const PRODUCTS: Product[] = [
     "description": "Amplio armario de 105 cm – orden y elegancia en tu hogar.\n\nEl armario en color blanco es una solución práctica para el dormitorio, el recibidor o el vestidor. Su forma sencilla y el tono suave de los frentes combinan con interiores modernos, escandinavos y clásicos.\n\nLa ropa, la ropa de cama y los accesorios tienen aquí su sitio, por lo que mantener el orden diario resulta rápido y cómodo.\n\nCaracterísticas principales del producto:\n\n2 puertas que permiten un acceso cómodo al interior.\n3 estantes amplios para ropa doblada, ropa de cama y accesorios.\n1 barra para ropa colgada – camisas, vestidos y chaquetas sin arrugas.\nTiradores cómodos en color plateado que resaltan el estilo moderno.\nCuerpo y frentes de tablero laminado de 16 mm de grosor.\nSuperficie resistente al uso diario y fácil de limpiar.\nDimensiones\n\nancho 105, fondo 65, alto 217 (en cm).\n\nUna buena opción para quienes valoran la sencillez y la elegancia. El tono suave de los frentes aporta calidez al interior. El armario ayuda a controlar el desorden diario. Un mueble para años de uso diario. La construcción sólida garantiza estabilidad. Montaje sencillo paso a paso. Diseño atemporal. Una elección práctica. Orden y armonía.\n\nInformación adicional:\n\nEl mueble está diseñado para el montaje por el cliente. Incluye instrucciones claras y un juego completo de herrajes certificados. Entrega por mensajería o transporte en palé, hasta el bordillo – el transportista no sube los paquetes al domicilio. Otros muebles de esta serie están disponibles en ofertas separadas.\n\nRecomendamos fijar el mueble a la pared. Debido a los distintos tipos de pared, los anclajes de pared no están incluidos.\n\nEl color del producto puede variar según la configuración del monitor.\n\nRecuerda: el armario no es de madera maciza, sino de tablero de muebles.\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Paneles y derivados de la madera\n2 puertas\nPuerta batiente\nCon espejo\nDiseño de tipo:  Sobre suelo\nNecesita montaje\nDimensiones\nLargo:  65 cm\nAltura:  217.2 cm\nProfundidad:  105 cm",
     "image": "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm.jpg",
     "images": [
+      "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm.jpg",
       "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm_1.jpg",
       "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm_2.jpg",
       "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm_3.jpg",
@@ -8128,6 +8315,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-ropero-blanco-105-x-217-2-x-65-cm_1.jpg",
         "type": "image"
@@ -8171,6 +8362,7 @@ export const PRODUCTS: Product[] = [
     "description": "Armario de 255 cm – mucho espacio para la ropa y orden diario en casa.\n\nEl armario en color blanco es una solución práctica para el dormitorio, el recibidor o el vestidor. Su forma sencilla y el tono suave de los frentes combinan con interiores modernos, escandinavos y clásicos.\n\nLa ropa, la ropa de cama y los accesorios tienen aquí su sitio, por lo que mantener el orden diario resulta rápido y cómodo.\n\nCaracterísticas principales del producto:\n\n5 puertas que permiten un acceso cómodo al interior.\n9 estantes amplios para ropa doblada, ropa de cama y accesorios.\n3 barras para ropa colgada – camisas, vestidos y chaquetas sin arrugas.\nTiradores cómodos en color plateado que resaltan el estilo moderno.\nCuerpo y frentes de tablero laminado de 16 mm de grosor.\nSuperficie resistente al uso diario y fácil de limpiar.\nDimensiones\n\nancho 255, fondo 65, alto 217 (en cm).\n\nUna buena opción para quienes valoran la sencillez y la elegancia. El tono suave de los frentes aporta calidez al interior. El armario ayuda a controlar el desorden diario. Un mueble para años de uso diario. La construcción sólida garantiza estabilidad. Montaje sencillo paso a paso. Diseño atemporal. Una elección práctica.\n\nInformación adicional:\n\nEl mueble está diseñado para el montaje por el cliente. Incluye instrucciones claras y un juego completo de herrajes certificados. Entrega por mensajería o transporte en palé, hasta el bordillo – el transportista no sube los paquetes al domicilio. Otros muebles de esta serie están disponibles en ofertas separadas.\n\nRecomendamos fijar el mueble a la pared. Debido a los distintos tipos de pared, los anclajes de pared no están incluidos.\n\nEl color del producto puede variar según la configuración del monitor.\n\nRecuerda: el armario no es de madera maciza, sino de tablero de muebles.\n\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Paneles y derivados de la madera\n5 puertas\nPuerta batiente\nCon espejo\nDiseño de tipo:  Sobre suelo\nNecesita montaje\nDimensiones\nLargo:  65 cm\nAltura:  217.2 cm\nProfundidad:  255 cm",
     "image": "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm.jpg",
     "images": [
+      "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm.jpg",
       "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm_1.jpg",
       "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm_2.jpg",
       "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm_3.jpg",
@@ -8180,6 +8372,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-ropero-blanco-255-x-217-2-x-65-cm_1.jpg",
         "type": "image"
@@ -8280,12 +8476,17 @@ export const PRODUCTS: Product[] = [
     "description": "Armario en madera de mango - colección Folia. Diseño elegante, tiradores esculpidos y patas de compás. Dos puertas ocultan un gran espacio almacenaje. Ideal para un dormitorio, un salón o un escritorio. Estilo natural y acabados cuidados.\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Madera\nEntregado montado\nDimensiones\nLargo:  130 cm\nAltura:  171 cm\nProfundidad:  45 cm",
     "image": "/uploads/armario-en-madera-de-mango-folia.jpg",
     "images": [
+      "/uploads/armario-en-madera-de-mango-folia.jpg",
       "/uploads/armario-en-madera-de-mango-folia_1.jpg",
       "/uploads/armario-en-madera-de-mango-folia_2.jpg",
       "/uploads/armario-en-madera-de-mango-folia_3.jpg",
       "/uploads/armario-en-madera-de-mango-folia_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-en-madera-de-mango-folia.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-en-madera-de-mango-folia_1.jpg",
         "type": "image"
@@ -8317,6 +8518,7 @@ export const PRODUCTS: Product[] = [
     "description": "Armario en madera de mango con puerta maciza y 2 cajones. Diseño sobrio y elegante, ideal para un dormitorio o un comedor de estilo auténtico o clásico.\n\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Madera\nEntregado montado\nDimensiones\nLargo:  69 cm\nAltura:  180 cm\nProfundidad:  35 cm",
     "image": "/uploads/armario-en-madera-de-mango-remick.jpg",
     "images": [
+      "/uploads/armario-en-madera-de-mango-remick.jpg",
       "/uploads/armario-en-madera-de-mango-remick_1.jpg",
       "/uploads/armario-en-madera-de-mango-remick_2.jpg",
       "/uploads/armario-en-madera-de-mango-remick_3.jpg",
@@ -8324,6 +8526,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-en-madera-de-mango-remick_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-en-madera-de-mango-remick.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-en-madera-de-mango-remick_1.jpg",
         "type": "image"
@@ -8359,6 +8565,7 @@ export const PRODUCTS: Product[] = [
     "description": "Armario de madera de mango con puertas talladas y patas de metal negro. Diseño moderno y acogedor, gran espacio de almacenamiento para ropa, vajilla u objetos cotidianos.\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Madera\nEntregado montado (excepto patas y/o asas)\nDimensiones\nLargo:  90 cm\nAltura:  160 cm\nProfundidad:  40 cm",
     "image": "/uploads/armario-de-madera-de-mango-gavin.jpg",
     "images": [
+      "/uploads/armario-de-madera-de-mango-gavin.jpg",
       "/uploads/armario-de-madera-de-mango-gavin_1.jpg",
       "/uploads/armario-de-madera-de-mango-gavin_2.jpg",
       "/uploads/armario-de-madera-de-mango-gavin_3.jpg",
@@ -8366,6 +8573,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-de-madera-de-mango-gavin_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-de-madera-de-mango-gavin.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-de-madera-de-mango-gavin_1.jpg",
         "type": "image"
@@ -8401,12 +8612,17 @@ export const PRODUCTS: Product[] = [
     "description": "Este gran sofá rinconero le ofrece espacio para usted y todos sus seres queridos. RISO está tapizado en su totalidad en suave piel de alta calidad, por lo que puede colocarse en cualquier lugar de la habitación. Los reposacabezas abatibles proporcionan un agradable apoyo para la cabeza y la zona cervical al sentarse y tumbarse. El sofá de 2 plazas puede ampliarse mediante un motor, lo que aumenta aún más la superficie para sentarse. La suspensión de muelles ondulados del sofá contribuye a un alto nivel de comodidad al sentarse. Con este sofá, no sólo está comprando un mueble, está comprando comodidad con estilo y espacio. detalles adicionales: * Revestimiento integral de cuero anilina de poros abiertos * Estructura de madera maciza encolada * Asiento con suspensión de muelle ondulado * Cojines respaldo de espuma * Todos los reposacabezas se pueden ajustar con una carraca * Variante para los pies: plástico * Sillón largo a la derecha * SIN adornos\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Piel\nTipo de piel:  Piel\nEstructura:  Madera\nTipo de ángulo:  Ángulo derecho\nNúmero de plazas:  4 plazas\nRelleno del asiento:  Espuma de poliuretano\nRelleno del respaldo:  Espuma de poliuretano\nCarga máxima soportada:  130 kg\nEntregado montado (excepto patas y/o asas)\nDimensiones\nLargo:  263 cm\nAltura:  81 cm\nProfundidad:  240 cm\nAltura del asiento:  45 cm\nProfundidad del asiento:  58 cm",
     "image": "/uploads/sofa-esquinero-marron-piel-riso.jpg",
     "images": [
+      "/uploads/sofa-esquinero-marron-piel-riso.jpg",
       "/uploads/sofa-esquinero-marron-piel-riso_1.jpg",
       "/uploads/sofa-esquinero-marron-piel-riso_2.jpg",
       "/uploads/sofa-esquinero-marron-piel-riso_3.jpg",
       "/uploads/sofa-esquinero-marron-piel-riso_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-esquinero-marron-piel-riso.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-esquinero-marron-piel-riso_1.jpg",
         "type": "image"
@@ -8438,12 +8654,17 @@ export const PRODUCTS: Product[] = [
     "description": "El Sofá en forma de U KAWOLA ETICO impresiona por sus líneas claras en el diseño y la elección del tejido lo hace destacar de una manera muy elegante. El elegante color del sofá llama inmediatamente la atención. Otro punto a destacar es el tamaño de este modelo, ya que realmente hay espacio para todos sus seres queridos. El acolchado especial de los cojines del respaldo y del asiento, compuesto por una mezcla de silicona, gránulos y plumas, y los grandes Cojines respaldo garantizan el confort. Dependiendo de la posición del sillón, el sofá rinconero ETICO dispone de una zona de descanso ampliada. El Puf a juego y los respectivos módulos grandes del sofá pueden colocarse e intercambiarse con flexibilidad, de modo que siempre hay nuevas variaciones y posibilidades para cada día. Detalles adicionales: *Sofá en forma de U *Seat and back cushions are upholstered with a multi-layered mixture of feathers, silicone and foam granules *Flexible design of the individual modules *WITHOUT headrests and WITHOUT decorative cushions\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Terciopelo\nEstructura:  Madera\nTipo de ángulo:  Ángulo izquierdo\nNúmero de plazas:  4 plazas\nCon reposabrazos\nCarga máxima soportada:  130 kg\nEntregado montado (excepto patas y/o asas)\nDimensiones\nLargo:  513 cm\nAltura:  83 cm\nProfundidad:  330 cm\nAltura del asiento:  48 cm\nProfundidad del asiento:  100 cm",
     "image": "/uploads/sofa-esquinero-marron-terciopelo-etico.jpg",
     "images": [
+      "/uploads/sofa-esquinero-marron-terciopelo-etico.jpg",
       "/uploads/sofa-esquinero-marron-terciopelo-etico_1.jpg",
       "/uploads/sofa-esquinero-marron-terciopelo-etico_2.jpg",
       "/uploads/sofa-esquinero-marron-terciopelo-etico_3.jpg",
       "/uploads/sofa-esquinero-marron-terciopelo-etico_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-esquinero-marron-terciopelo-etico.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-esquinero-marron-terciopelo-etico_1.jpg",
         "type": "image"
@@ -8475,6 +8696,7 @@ export const PRODUCTS: Product[] = [
     "description": "Sofá esquinero de diseño moderno con reposacabezas reclinables en tela extraíble, impermeable y COMPLETAMENTE DESENFUNDABLE, con patas de acero cromado de 15 cm de altura, equipado con 2 asientos deslizantes extensibles y una cómoda chaise longue. Los cómodos asientos de doble densidad y los reposacabezas ajustables se combinan con el innovador sistema deslizante de los asientos, que hace que el sofá sea práctico y capaz de adaptarse a la profundidad deseada. De esta manera, obtendrás un sofá más profundo, ideal para habitaciones poco profundas o para quienes necesitan estirarse completamente. Los reposacabezas reclinables con 30 niveles de inclinación son perfectos para adaptarse a cualquier posición cómoda de asiento, acentuada también por los cojines del respaldo que, gracias a su forma ergonómica, ofrecen una postura y un soporte perfectos para la zona lumbar. Sofá 100% fabricado en Italia.\n\n\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Poliéster\nNúmero de plazas:  4 plazas\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nDimensiones\nLargo:  260 cm\nAltura:  73 cm\nProfundidad:  102 cm",
     "image": "/uploads/fusion-sofa.jpg",
     "images": [
+      "/uploads/fusion-sofa.jpg",
       "/uploads/fusion-sofa_1.jpg",
       "/uploads/fusion-sofa_2.jpg",
       "/uploads/fusion-sofa_3.jpg",
@@ -8483,6 +8705,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/fusion-sofa_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/fusion-sofa.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/fusion-sofa_1.jpg",
         "type": "image"
@@ -8522,6 +8748,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nCojines adicionales\nÁngulo reversible\nCojines del asiento desenfundables\nDiseño icónico\n\nTOLEDO\n¿Estás buscando la pieza central para tu salón? Descubre el sofá rinconera de microfibra envejecida TOLEDO. El tapizado de microfibra envejecida añade un toque de autenticidad a este sofá. Este acabado envejecido realza el vintage del Chesterfield, a la vez que ofrece una textura suave y agradable al tacto. Transforma tu sala en un espacio elegante y confortable con este mueble que combina lo mejor del diseño clásico y los materiales modernos.\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  30 % Algodón, 70 % Poliéster, Microfibra\nMaterial (Patas):  Madera\nEstructura:  Madera\nAcabado:  Capitoné, Envejecido\nComodidad del asiento:  Firmeza media\nTipo de modelo:  Chesterfield\nTipo de ángulo:  Ángulo derecho, Ángulo izquierdo, Ángulo reversible\nNúmero de plazas:  4 plazas\nDesenfundable:  Sí\nRelleno del asiento:  Espuma de poliuretano\nDensidad asiento:  25 kg/m³\nSuspensión del asiento:  Cintas elásticas entrelazadas., Muelles helicoidales\nRelleno del respaldo:  Espuma de poliuretano\nDensidad respaldo:  25 kg/m³\nSuspensión del respaldo:  Cintas elásticas entrelazadas.\nCon reposabrazos\nGama:  Espacio pro\nCarga máxima soportada:  480 kg\nNecesita montaje\nEquipamiento incluido (asiento):  Cojines\n2 cojines decorativos de regalo\nDimensiones\nLargo:  228 cm\nAltura:  72 cm\nProfundidad:  163 cm\nAltura de las patas:  8 cm\nAltura del asiento:  45 cm\nProfundidad del asiento:  62 cm\nDetalles\nMicrofibra: Este tejido sedoso y flexible tiene un tacto melocotón. La microfibra es resistente y repele líquidos sin absorberlos.\n\nPoliéster: El poliéster, fibra sintética más usada, es resistente, fácil de cuidar (lavable) y mantiene su forma con ligeras arrugas.\n\nFirmeza media: Compromiso ideal entre confort inmediato y buen soporte, el asiento de firmeza media satisfará las expectativas de todo tipo de usuarios, siendo perfecto, por ejemplo, para una familia.\n\nChesterfield: Emblema de la elegancia británica, el estilo chesterfield se destaca por su capitoné marcado y brazos y respaldo a la misma altura.\n\nÁngulo derecho: Para un sofá esquinero, posicionarse mirando hacia el sofá: esquina derecha = chaise longue a la derecha. Para chaise longue sola: esquina derecha = reposabrazos a la derecha.\n\nÁngulo izquierdo: Para un sofá esquinero, posicionarse mirando hacia el sofá: esquina izquierda = chaise longue a la izquierda. Para una chaise longue sola: esquina izquierda = reposabrazos a la izquierda.",
     "image": "/uploads/toledo.jpg",
     "images": [
+      "/uploads/toledo.jpg",
       "/uploads/toledo_1.jpg",
       "/uploads/toledo_2.jpg",
       "/uploads/toledo_3.jpg",
@@ -8531,6 +8758,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/toledo_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/toledo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/toledo_1.jpg",
         "type": "image"
@@ -8574,11 +8805,16 @@ export const PRODUCTS: Product[] = [
     "description": "Regálate un momento de relax con este sofá de dos plazas de diseño exótico, creado para realzar tu espacio. Con sus líneas depuradas y su sólida estructura de teca, combina a la perfección estética y robustez. \n\nDimensiones: 150 cm de ancho x 83 cm de alto x 90 cm de profundidad.\n\nLimpieza en seco únicamente.",
     "image": "/uploads/sofa-de-teca-de-2-plazas-bali.jpg",
     "images": [
+      "/uploads/sofa-de-teca-de-2-plazas-bali.jpg",
       "/uploads/sofa-de-teca-de-2-plazas-bali_1.jpg",
       "/uploads/sofa-de-teca-de-2-plazas-bali_2.jpg",
       "/uploads/sofa-de-teca-de-2-plazas-bali_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-de-teca-de-2-plazas-bali.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-de-teca-de-2-plazas-bali_1.jpg",
         "type": "image"
@@ -8629,10 +8865,10 @@ export const PRODUCTS: Product[] = [
     "image": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
     "images": [
       "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
-      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
-      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
-      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
-      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg"
+      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_1.jpg",
+      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_2.jpg",
+      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_3.jpg",
+      "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_4.jpg"
     ],
     "media": [
       {
@@ -8640,19 +8876,19 @@ export const PRODUCTS: Product[] = [
         "type": "image"
       },
       {
-        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
+        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_1.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
+        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_2.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
+        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_3.jpg",
         "type": "image"
       },
       {
-        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p.jpg",
+        "url": "/uploads/cortacesped-robot-bosch-indego-s-500-cesped-p_4.jpg",
         "type": "image"
       }
     ],
@@ -8895,6 +9131,7 @@ export const PRODUCTS: Product[] = [
     "description": "Cortacésped manual Gardena, el modelo perfecto para usuarios domésticos de jardines pequeños. 400 Classic funciona de la siguiente forma: a medida que se empuja, el cilindro de corte y la cuchilla inferior se mueven (sin contacto), similares a unas tijeras y cortan la hierba que queda levantada. Su cilindro de corte endurecido y antiadherente está fabricado en acero de alta calidad y la cuchilla garantiza un trabajo limpio y preciso. Este cortacésped está equipado con grandes ruedas que facilitan el agarre y manillar plegable.",
     "image": "/uploads/gardena.jpg",
     "images": [
+      "/uploads/gardena.jpg",
       "/uploads/gardena_1.jpg",
       "/uploads/gardena_2.jpg",
       "/uploads/gardena_3.jpg",
@@ -8902,6 +9139,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/gardena_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/gardena.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/gardena_1.jpg",
         "type": "image"
@@ -8937,6 +9178,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nLigero y fácil de usar gracias a la autopropulsión\nCepilla el césped artificial y recoge los residuos en una sola pasada\nPotente motor y cesta de recogida integrada\n\n\n¡Equípate con el peinador aspirador eléctrico GRAMI para conservar tu césped artificial en un estado impecable!\n¿Quieres cuidar de tu césped artificial fácilmente? El cepillo aspirador motorizado GRAMI es lo que necesitas: ligero y duradero, tiene una barredora/cepillo y un recolector para limpiar y peinar tu césped de una sola vez.\n\nInstrucciones de uso:\n\nNo lo uses en condiciones de humedad o sobre suelo mojado. Te aconsejamos leer las instrucciones que vienen con tu cepillo GRAMI para usarlo de manera adecuada.\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Negro, Verde\nMaterial (precisión):  Polipropileno, Aluminio, Acero\nCon motor\nConsumo de energía (vatios):  1600 W\nCon o sin cable:  Con cable\nSe enchufa a la corriente\nInterruptor de seguridad\nBarredora/cepillo eléctrico integrado\nMotor Hyundai integrado\nPotencia del motor:  1600 W\nColector integrado\nCapacidad del colector:  45 L\nAnchura de trabajo:  38,5 cm\n5 profundidades de trabajo:  de 6 a 12 mm\n3 alturas de manillar:  de 94 a 110 cm\nResistente al óxido y la corrosión\nPeso neto:  12,8 kg\nDimensiones\nLargo:  59.5 cm\nAltura:  34.5 cm\nProfundidad:  45 cm\nLargo del cable:  42 cm\nDetalles\nAcero: Material robusto, duradero y resistente a impactos. El acero pulido ofrece suavidad; el cepillado, un toque de diseño.\n\nAluminio: Este material ofrece robustez y ligereza para una larga durabilidad y mínimo mantenimiento. También es muy resistente a las inclemencias del tiempo.",
     "image": "/uploads/grami.jpg",
     "images": [
+      "/uploads/grami.jpg",
       "/uploads/grami_1.jpg",
       "/uploads/grami_2.jpg",
       "/uploads/grami_3.jpg",
@@ -8945,6 +9187,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/grami_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/grami.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/grami_1.jpg",
         "type": "image"
@@ -8984,6 +9230,7 @@ export const PRODUCTS: Product[] = [
     "description": "Parasol Lateral de jardín – estructura 100% aluminio – 3 x 4 m – Gris – Tela de Poliéster 250 gr/m² + funda protectora Funda protectora - dimensiones de la funda: 50 x 280 cm – para un parasol cerrado con dimensiones de 50 X 30 X 280 cm – Tela de poliéster de densidad de 160 g/m² - cordón para cerrar – contra agua – resistente a rayos UV - Protección UV30+Parasol Lateral de jardín – estructura 100% aluminio – 3 x 4 m – Gris – Tela de Poliéster 250 gr/m² + funda protectora .Descripción: Sombrilla de jardín Sun 4 + Funda protectora\nColor: Gris\nTela: Gris\nMástil: Gris\nVarillas: Gris\nTela: Poliéster - densidad 200 gr/m2\nMateria: 8\nBase: Aluminio\nMedidas: 300 x 400 x 300 cm\nLargo: 3 x 4 x 4 m - Cerrado: 1 x 1 x 2.7 m\nPeso: 23 kg\nTamaño: 3 x 4 m\nTela: 3 x 4 m\nMástil: 53 x 77 mm - Altura: 260cm\nVarillas: 8 varillas - espesor 1mm\nBase: 100 x 100 x 6 cm (En cruz) (lastre no incluido)\nVentajas del producto: Rotación 360°, inclinable y plegable Repelente al agua Anti-UV Anticorrosión Ventilación superior Funda protectora incluida\nBase: No incluidos (Lastres de lester: 100 kg de peso\nTipo de mástil: Deportado\nEmbalaje: 2 Bultos: - 2,68 x 0,395 x 0,16 m, 26,2 kg - 0,3 x 0,3 x 0,1 m, 0,5 kg\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Gris\nCon patas\nInclinable\nUso:  Exterior\nDimensiones\nLargo:  300 cm\nAltura:  300 cm\nProfundidad:  400 cm\n\n<!--COLORS_JSON_START-->[\"Gris Anthracite\",\"Beige\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Gris Anthracite, Beige]",
     "image": "/uploads/parasol-lateral-de-jardin.jpg",
     "images": [
+      "/uploads/parasol-lateral-de-jardin.jpg",
       "/uploads/parasol-lateral-de-jardin_1.jpg",
       "/uploads/parasol-lateral-de-jardin_2.jpg",
       "/uploads/parasol-lateral-de-jardin_3.jpg",
@@ -8993,6 +9240,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/parasol-lateral-de-jardin_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/parasol-lateral-de-jardin.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/parasol-lateral-de-jardin_1.jpg",
         "type": "image"
@@ -9036,6 +9287,7 @@ export const PRODUCTS: Product[] = [
     "description": "Caracteristicas & Dimensiones\nCaracterísticas comunes\nColor (tono):  Color natural oscuro\nGrosor de resina:  3 mm\nEstructura:  Metal\nAcabado:  Trenzado\nUso:  Exterior\nGama:  Espacio pro\nEntregado montado\n2 x Sillón de jardín WHITEHEAVEN\nCaracteristicas\nMaterial (precisión):  Resina\nNúmero de plazas:  2 plazas\nRelleno del asiento:  Espuma de poliuretano\nDensidad asiento:  22 kg/m³\nCarga máxima soportada:  120 kg\nCojines resistentes al agua, desenfundables y lavables a mano\nDimensiones\nLargo:  101 cm\nAltura:  66 cm\nProfundidad:  107 cm\nAltura del asiento:  33 cm\nProfundidad del asiento:  63 cm\nDimensiones de los cojines del asiento:  D. 63 x H. 6 cm\n1 x Sofá de jardín WHITEHEAVEN\nCaracteristicas\nMaterial (precisión):  Resina\nNúmero de plazas:  3 plazas\nRelleno del asiento:  Espuma de poliuretano\nDensidad asiento:  22 kg/m³\nCarga máxima soportada:  240 kg\nCojines resistentes al agua, desenfundables y lavables a mano\nDimensiones\nLargo:  201 cm\nAltura:  66 cm\nProfundidad:  101 cm\nAltura del asiento:  33 cm\nProfundidad del asiento:  63 cm\nDimensiones cojines de asiento:  L. 158 x P. 63 x H. 6 cm\n1 x Mesa de centro para jardín WHITEHEAVEN\nCaracteristicas\nMaterial (precisión):  Cristal templado, Resina\nGrosor del cristal:  5 mm\nNúmero de plazas:  1 plaza\nDimensiones\nLargo:  92 cm\nAltura:  35 cm\nProfundidad:  92 cm\nDetalles\nResina: Resistente a las inclemencias del tiempo y a los rayos UV, la resina sintética combina durabilidad, ligereza y fácil mantenimiento.\n\nTrenzada: La resina trenzada tiene la ventaja de ser no porosa, lo que evitará que la suciedad se incruste en las fibras. Por lo tanto, los muebles de resina trenzada prácticamente no requieren mantenimiento y son altamente resistentes (al sol, al agua de mar y al agua de la piscina). Sin embargo, no es inmune al polvo. Limpia simplemente con una esponja y agua jabonosa o usa un chorro de alta presión. Usar otros productos de limpieza podrían alterar la belleza de tus muebles de jardín.\n\nEntregado montado: Los muebles entregados montados son una garantía de calidad y solidez.\n\n<!--COLORS_JSON_START-->[\"Blanc\",\"Gris Anthracite\",\"Argent\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Blanc, Gris Anthracite, Argent]",
     "image": "/uploads/whiteheaven.jpg",
     "images": [
+      "/uploads/whiteheaven.jpg",
       "/uploads/whiteheaven_1.jpg",
       "/uploads/whiteheaven_2.jpg",
       "/uploads/whiteheaven_3.jpg",
@@ -9045,15 +9297,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/whiteheaven_7.jpg",
       "/uploads/whiteheaven_8.jpg",
       "/uploads/whiteheaven_9.jpg",
-      "/uploads/whiteheaven_10.jpg",
-      "/uploads/whiteheaven_11.jpg",
-      "/uploads/whiteheaven_12.jpg",
-      "/uploads/whiteheaven_13.jpg",
-      "/uploads/whiteheaven_14.jpg",
-      "/uploads/whiteheaven_15.jpg",
-      "/uploads/whiteheaven_16.jpg"
+      "/uploads/whiteheaven_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/whiteheaven.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/whiteheaven_1.jpg",
         "type": "image"
@@ -9093,30 +9343,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/whiteheaven_10.jpg",
         "type": "image"
-      },
-      {
-        "url": "/uploads/whiteheaven_11.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/whiteheaven_12.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/whiteheaven_13.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/whiteheaven_14.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/whiteheaven_15.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/whiteheaven_16.jpg",
-        "type": "image"
       }
     ],
     "tag": "oferta limitada",
@@ -9133,6 +9359,7 @@ export const PRODUCTS: Product[] = [
     "description": "Esta caja de almacenaje de madera para jardín posee un diseño especial de listones e irradia un encanto rústico. Está destinada a ser un gran aporte para la casa, tanto dentro como fuera.\n\n \n\nMadera de teca maciza: La madera de teca maciza es un hermoso material natural. Ha sido secada al horno y después lijada finamente para darle un aspecto muy suave. La madera de teca es conocida por su excepcional fuerza y resistencia a la intemperie.\nAcabado de base acuosa: Se le ha aplicado un bonito acabado para dar un color cálido al cajón de almacenaje para exterior.\nAmplio espacio de almacenaje: El baúl para herramientas ofrece un amplio espacio para tener a mano y bien organizados diversos artículos del hogar o del jardín.\nBolsa de PE: La caja para mantas tiene una bolsa de PE cosida. Gracias al forro resistente al agua, el contenido del interior del baúl estará siempre seco.\n \n\nInformación útil:\n\nPara facilitar al máximo el montaje, cada producto se entrega con un manual.\n \n\nNota:\n\nPara asegurarte de que tus muebles de exterior se mantengan hermosos, recomendamos protegerlos con una funda impermeable.\nMaterial: Madera maciza de teca con acabado al agua\nDimensiones: 150 x 50 x 55 cm (ancho x profundo x alto)\nDimensiones interiores: 140,5 x 41 x 47 cm (ancho x profundo x alto)\nCuenta con una bolsa de PE cosida con cremallera\nAdecuado para uso en el interior y exterior",
     "image": "/uploads/caja-de-jardin.jpg",
     "images": [
+      "/uploads/caja-de-jardin.jpg",
       "/uploads/caja-de-jardin_1.jpg",
       "/uploads/caja-de-jardin_2.jpg",
       "/uploads/caja-de-jardin_3.jpg",
@@ -9144,6 +9371,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/caja-de-jardin_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/caja-de-jardin.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/caja-de-jardin_1.jpg",
         "type": "image"
@@ -9195,12 +9426,17 @@ export const PRODUCTS: Product[] = [
     "description": "Caseta de jardín de resina \"TexasEl cobertizo de jardín Texas está fabricado para resistir la degradación causada por el entorno natural en el que se utiliza. Fabricado para su uso en exteriores, su estructura está totalmente protegida contra los rayos ultravioleta del sol para que conserve su color original el mayor tiempo posible. Una vez montado, podrás utilizarlo para guardar tus herramientas de bricolaje, el cortacésped o cualquier otro artículo de jardinería.Además, puedes guardar algunos muebles de jardín bajo una funda protectora. No dudes en guardar tus pertenencias a cubierto, sobre todo en caso de lluvia.La caseta de jardín le ofrece un espacio de almacenamiento ideal y seguro en su jardín.Cobertizo de jardín de resina \"Texas\" - 5,23 m² - 278 x 188 x 225 cm - Gris - Estructura: resina (paneles), acero (marco) - 2 puertas (dimensiones: 120 x 183 cm) - 2 respiraderos - Anclajes interiores - 4 barras de refuerzo - 1 cimiento .Descripción: Caseta de jardín resina Texas - 5,23 m² (5.23 sq ft)\nColor: Antracita\nEstructura: Resina (paneles), Acero (armadura)\nTipo de techo: Pendientes\nVentanas: 2 conductos de aire\nDimensiones de la caseta: 278 x 188 x 225 cm\nDimensiones exteriores: 268 x 175 x 225 cm\nDimensiones interiores: 265,4 x 172,4 x 179 cm\nEspesor de la pared: 12 mm - Techo: 12 mm\nDimensiones de la puerta: 2 puertas - Dimensiones: 120 x 183 cm\nPeso: 76,6 kg\nKit de anclaje: Anclajes internos\nVentajas del producto: Anti-UV Antióxido, Anti-UV Antióxido\nAccesorios incluidos: 1 fundamento\nResistencia al viento: 20 m/s\nPeso maximo soportado: 60kg/m²\nEmbalaje: 3 bultos : - 1,915 x 0,95 x 0,145 m, 32 kg - 1,195 x 1,02 x 0,15 m, 23,5 kg - 1,97 x 0,29 x 0,235 m, 35,3 kg\n\nCaracteristicas\nColor (tono):  Gris antracita\nMaterial (precisión):  Resina\nGrosor del plástico:  12 mm\nGrosor de resina:  12 mm\nSuperficie (m²):  2 m²\nTipo de puerta:  Puerta doble\nPeso máximo soportado por el techo:  60 kg/m²\nSin suelo\nNecesita montaje\nDimensiones\nLargo:  112 cm\nAltura:  199 cm\nProfundidad:  176 cm\nLargo de la puerta:  120 cm\nAltura de la puerta:  183 cm\nLongitud total:  125 cm\nAltura total:  225 cm\nProfundidad total:  184 cm",
     "image": "/uploads/caseta-de-jardin.jpg",
     "images": [
+      "/uploads/caseta-de-jardin.jpg",
       "/uploads/caseta-de-jardin_1.jpg",
       "/uploads/caseta-de-jardin_2.jpg",
       "/uploads/caseta-de-jardin_3.jpg",
       "/uploads/caseta-de-jardin_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/caseta-de-jardin.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/caseta-de-jardin_1.jpg",
         "type": "image"
@@ -9232,6 +9468,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nPuerta doble que facilita el acceso\nCerradura con llave incluida para una seguridad reforzada\nRejilla de ventilación para una mejor renovación del aire\nSuelo incluido para un espacio de almacenamiento más cómodo\n\nCrea un espacio de almacenamiento luminoso y bien organizado en tu jardín con la caseta ANTEVA.\nOrganiza tu espacio exterior con la caseta de jardín con tejado inclinado ANTEVA. Este modelo de resina con un grosor de 22mm ofrece una solución de almacenamiento robusta y duradera para proteger tus herramientas de jardinería, bicicletas o equipos de exterior durante todo el año. Su silueta contemporánea, caracterizada por un moderno techo plano, se integra discretamente en tu terreno, optimizando cada metro cuadrado de tu jardín.\n\nLas ventanas, con su aporte de luz natural, permiten localizar tus pertenencias a primera vista. La organización interior gana en eficacia con las estanterías y ganchos incluidos, mientras que el suelo integrado protege tus objetos de la humedad directa del terreno. Para garantizar una estabilidad fiable frente a las intemperies, este equipamiento viene con un kit de anclaje completo. Para conservar el aspecto y la calidad del producto a largo plazo, simplemente limpia las paredes con un paño húmedo y evita el uso de disolventes o productos abrasivos.\n\nLa caseta de jardín con tejado inclinado ANTEVA simplifica tu día a día agrupando todos tus herramientas de bricolaje o de ocio en un lugar ordenado y seguro. Su estructura resistente y sus funcionalidades prácticas favorecen un entorno exterior despejado, facilitando así el mantenimiento de tus espacios exteriores. Redescubre el placer de un jardín cuidado donde cada objeto encuentra su lugar de forma evidente.\n\nDescubre el potencial de tu exterior gracias a una solución de almacenamiento que combina utilidad concreta y aspecto moderno.\n\nCaracteristicas\nColor (tono):  Beige, Gris\nMaterial (precisión):  Resina\nGrosor de resina:  22 mm\nSuperficie (m²):  5.54 m²\nSuperficie total (m²):  6.5 m²\nTipo de puerta:  Puerta doble\nTipo de techo:  Una caída\nPeso máximo soportado por el techo:  120 kg/m²\nTipo de almacenaje:  Estantería\nNúmero de ventanas:  5\nCon suelo de calidad\nEquipamiento incluido:  Kit de anclaje, Cerradura de llave, Rejilla de aireación\nGama:  Los efímeros\nNecesita montaje\nEspesor del techo:  36 mm\nDimensiones\nLargo:  237 cm\nAltura:  230 cm\nProfundidad:  237 cm\nLargo de la puerta:  151 cm\nAltura de la puerta:  180 cm\nLongitud total:  254 cm\nAltura total:  230 cm\nProfundidad total:  254 cm\nDetalles\nResina: Resistente a las inclemencias del tiempo y a los rayos UV, la resina sintética combina durabilidad, ligereza y fácil mantenimiento.",
     "image": "/uploads/anteva.jpg",
     "images": [
+      "/uploads/anteva.jpg",
       "/uploads/anteva_1.jpg",
       "/uploads/anteva_2.jpg",
       "/uploads/anteva_3.jpg",
@@ -9241,6 +9478,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/anteva_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/anteva.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/anteva_1.jpg",
         "type": "image"
@@ -9284,6 +9525,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nRejilla de ventilación para una mejor renovación del aire\nEspacio suficiente para almacenar productos, herramientas, muebles...\nFácil de instalar y estanco\nTecho inclinado para un mejor drenaje del agua\n\nSe monta fácil y rápidamente. Caseta de jardín NERIO de 2.12m² de resina gris. Resistente a las inclemencias del tiempo. ¡Disfruta de un jardín perfectamente ordenado gracias a la caseta de jardín NERIO\nInsensible a la oxidación y resistente a las inclemencias del tiempo... ¡Esta elegante y discreta caseta de jardín de resina NEIRO te ayudará a tener tus herramientas a buen recaudo y perfectamente protegidas de la humedad!\n\nColor (tono):  Gris antracita, Gris claro\nMaterial (precisión):  Polipropileno, Resina\nGrosor de resina:  12 mm\nSuperficie (m²):  1.75 m²\nSuperficie total (m²):  2.09 m²\n1 puerta\nTipo de puerta:  Puerta simple\nTipo de techo:  Una caída\nPeso máximo soportado por el techo:  90 kg/m²\nSin suelo\nEquipamiento incluido:  Kit de anclaje, Rejilla de aireación\nNecesita montaje\nEspesor del techo:  12 mm\nEquipamiento:  ventana\nLegislación:  Caseta < 5m²: no es necesaria ninguna declaración\nDimensiones\nLargo:  180 cm\nAltura:  175 cm\nProfundidad:  97 cm\nLargo de la puerta:  75 cm\nAltura de la puerta:  172 cm\nLongitud total:  192 cm\nAltura total:  194 cm\nProfundidad total:  109 cm\nDetalles\nResina: Resistente a las inclemencias del tiempo y a los rayos UV, la resina sintética combina durabilidad, ligereza y fácil mantenimiento.",
     "image": "/uploads/nerio.jpg",
     "images": [
+      "/uploads/nerio.jpg",
       "/uploads/nerio_1.jpg",
       "/uploads/nerio_2.jpg",
       "/uploads/nerio_3.jpg",
@@ -9293,6 +9535,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/nerio_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/nerio.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/nerio_1.jpg",
         "type": "image"
@@ -9336,6 +9582,7 @@ export const PRODUCTS: Product[] = [
     "description": "Esta jardinera elevada de madera tiene capacidad para una cantidad considerable de plantas o flores y será un complemento elegante para su sala de estar jardín balcón o patio. Hecha de teca reciclada esta jardinera es muy resistente y duradera. La hermosa veta de la madera hace que cada pieza sea única y ligeramente diferente a las demás. Cuatro patas de madera mejoran la estabilidad. La base de la jardinera está equipada con un soporte de acero que se puede colocar a dos niveles diferentes lo que le permite elegir la altura que mejor se adapte a sus macetas.\n\nAdemás es fácil de montar.\n\nNota importante: Los colores varían de una pieza a otra lo que hace que cada una sea única. La entrega es aleatoria.\n\nEspecificaciones\n\nMaterial: Teca reciclada acero\n\nDimensiones: 100 x 40 x 72 cm (largo x ancho x alto)\n\nCon estante de acero (2 alturas opcionales)",
     "image": "/uploads/jardinera-elevada.jpg",
     "images": [
+      "/uploads/jardinera-elevada.jpg",
       "/uploads/jardinera-elevada_1.jpg",
       "/uploads/jardinera-elevada_2.jpg",
       "/uploads/jardinera-elevada_3.jpg",
@@ -9345,6 +9592,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/jardinera-elevada_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/jardinera-elevada.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/jardinera-elevada_1.jpg",
         "type": "image"
@@ -9388,6 +9639,7 @@ export const PRODUCTS: Product[] = [
     "description": "Clicnbuy le ofrece : Esta jardinera será una excelente opción para que los entusiastas del bricolaje decoren jardines, balcones o patios. Material duradero: Acero corten, también conocido como acero resistente a la intemperie. Este es anticorrosivo por su propia naturaleza. Desarrolla una capa protectora oxidada contra la corrosión cuando se expone por primera vez a las condiciones atmosféricas. Por lo tanto, no es necesario pintarlo. Esto puede ayudarte a ahorrar en costes de mantenimiento y reparación. El distintivo color marrón del acero corten seguramente llamará la atención. Finalmente, el acero corten es excepcionalmente duradero y resistirá la prueba del tiempo.Amplio espacio: La jardinera arroate es lo suficientemente profunda y ancha para contener una gran cantidad de tierra y brinda un amplio espacio para plantas, verduras, hierbas y flores.Soporte adicional: Los soportes interiores de la jardinera garantizan su solidez y estabilidad.Plegado de borde seguro: El borde de la jardinera tiene un diseño de borde plegado, por lo que no quedan expuestos bordes afilados peligrosos.Función decorativa: La maceta sirve para tus plantas o flores favoritas, por lo que es ideal como decoración para la casa. Información útil:Cuando recibas este producto, aún no estará oxidado y tendrá un color metálico normal, pero se oxidará con el tiempo. Puedes acelerar el proceso de oxidación pulverizándolo con agua jabonosa y agua salada. Para que no se te manche la ropa, evita el contacto con la capa de óxido en desarrollo.\n\nColor: Oxidado\nMaterial: Acero corten\nDimensiones: 578 x 50 x 69 cm (largo x ancho x alto)\nRequiere montaje: Sí\n\n<!--COLORS_JSON_START-->[\"Bronze\",\"Gris Anthracite\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Bronze, Gris Anthracite]",
     "image": "/uploads/jardinera.jpg",
     "images": [
+      "/uploads/jardinera.jpg",
       "/uploads/jardinera_1.jpg",
       "/uploads/jardinera_2.jpg",
       "/uploads/jardinera_3.jpg",
@@ -9397,6 +9649,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/jardinera_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/jardinera.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/jardinera_1.jpg",
         "type": "image"
@@ -9507,6 +9763,7 @@ export const PRODUCTS: Product[] = [
     "description": "Tanque de agua para exteriores de primera calidad\nMejora tus aventuras al aire libre\n\nEste tanque de agua para portaequipajes de aluminio duradero y de gran capacidad reduce la necesidad de recargas frecuentes. Se puede usar para ducharse, enjuagarse y limpiar. Es adecuado para diversas actividades, como todoterrenos, campamentos, viajes y emergencias, y proporciona una fuente de agua confiable.\n\nTanque de agua para exteriores de alta capacidad, presurizado, versátil y duradero\n Características clave\nControl de presión seguro: puede presurizar fácilmente con una bomba de aire o manual. La válvula de alivio combinada y el puerto de llenado mantienen la presión segura y evitan la sobrepresión. Montaje versátil: el diseño de ranura en T permite una instalación segura en portaequipajes, barras antivuelco, baúles o barras transversales. Las placas de montaje para ambos garantizan la estabilidad. Boquillas multiusos: este tanque de agua para portaequipajes viene con cabezal de ducha y boquillas rociadoras. Una manguera telescópica de 4 m permite una limpieza amplia y de larga distancia. El extensor de grifo con ángulos ajustables ofrece una ducha al aire libre. Tanque que absorbe el calor: el tanque de agua negro totalmente de aluminio absorbe el calor solar y tiene una etiqueta de temperatura para un fácil monitoreo. Con una capacidad de 4.5 gal/17 L, es ideal para varios usos como duchas y lavado de autos. Construcción estable: dos paneles resistentes a los impactos dentro del tanque evitan el impacto del movimiento y las salpicaduras. El aluminio soldado con precisión a prueba de óxido es perfecto para condiciones al aire libre.\n\n Instalación de ducha al aire libre\nEl tanque de agua del portaequipaje tiene una etiqueta de temperatura y una extensión de grifo para duchas al aire libre con manos libres, lo que mejora la comodidad al aire libre.\n\n  \n\nGuardabarros estables\nDos paneles de protección contra salpicaduras incorporados estabilizan el agua, minimizando el movimiento durante el movimiento del vehículo o los giros para un centro de gravedad estable y una conducción segura.\n\n  \n\nCómoda extensión de manguera\nEste depósito de agua está conectado a dos cabezales rociadores mediante una manguera de PE duradera y extensible de 4 m. Permite una limpieza sin esfuerzo a larga distancia y de amplio alcance sin necesidad de mover el vehículo..\n\n  \n\nUso versátil\nEste tanque de agua es perfecto para vehículos todoterreno, campistas y viajeros. Es compatible con diversas actividades, como duchas al aire libre, purificación de equipos y limpieza.\n\n  \n\nInstalación sin complicaciones\nEl diseño con ranura en T se adapta a una gama más amplia de configuraciones. Dos placas de montaje garantizan una instalación segura en barras transversales o portaequipajes.\n\n  \n\nPresurización simple\nAntes de presurizar, verifique la válvula de alivio de presión automática. La presión del tanque disminuye con el uso de agua; vuelva a presurizar según sea necesario.\n\n \n\nEspecificación\nCapacidad del tanque: 17 L / 4,5 gal Dimensiones del producto: 1095 x 190 x 135 mm / 43,1 x 7,5 x 5,3 pulgadas Peso neto: 9,6 kg / 21,2 libras (incluye todos los accesorios) Número de modelo: YK-SX-20L\n  \n\n \n\nContenido del Paquete Incluido\n1 x Tanque de agua 1 x Junta de silicona Ø20 x 2 mm 1 x Junta de silicona Ø20 x 2,5 mm 1 x Junta de silicona Ø20 x 3,5 mm 1 x Manguera telescópica 1 x Sello de plástico 1 x Sello de plástico galvanizado 1 x Boquilla rociadora 1 x Boquilla de cabezal de ducha 1 x Juego de adaptadores de conexión rápida (macho y hembra) 1 x Clip de soporte de boquilla 1 x Válvula de presurización 1 x Válvula de alivio de presión 1 x Manual del usuario 1 x Extensor de grifo 1 x Cinta de PTFE 2 x Placa de montaje de portaequipaje 2 x Placa de montaje de travesaño 2 x Válvula de ángulo 4 x Pernos en T M8 × 45 4 x Pernos en T M8 × 65 8 x Arandelas de metal 8 x Tuercas de seguridad M8",
     "image": "/uploads/tanque-de-agua-de-techo-succebuy-de-17l.jpg",
     "images": [
+      "/uploads/tanque-de-agua-de-techo-succebuy-de-17l.jpg",
       "/uploads/tanque-de-agua-de-techo-succebuy-de-17l_1.jpg",
       "/uploads/tanque-de-agua-de-techo-succebuy-de-17l_2.jpg",
       "/uploads/tanque-de-agua-de-techo-succebuy-de-17l_3.jpg",
@@ -9519,6 +9776,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/tanque-de-agua-de-techo-succebuy-de-17l_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/tanque-de-agua-de-techo-succebuy-de-17l.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/tanque-de-agua-de-techo-succebuy-de-17l_1.jpg",
         "type": "image"
@@ -9574,6 +9835,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nDoble función gracias al compartimento para leña\nGran capacidad de almacenamiento\nDiseño moderno\n\n¡La caseta de jardín LERY es ideal para proteger tus herramientas, bicicletas y mubles de jardín de las inclemencias del tiempo!\nLa caseta de jardín LERY es ideal para proteger tus herramientas, bicicletas y mubles de jardín de las inclemencias del tiempo. Fácil de montar y duradero, es perfecto para organizar tu espacio de manera práctica y estética.\n\n\nCaracteristicas\nColor (tono):  Gris antracita\nMaterial (precisión):  Acero\nGrosor del metal:  0.25 mm\nAcabado:  Galvanizado\nSuperficie (m²):  9.4 m²\nSuperficie total (m²):  10.29 m²\nTipo de puerta:  Puerta doble\nTipo de techo:  Doble caída\nPeso máximo soportado por el techo:  30 kg/m²\nTipo de almacenaje:  Estantes\nSin suelo\nEquipamiento incluido:  Rejilla de aireación\nNecesita montaje\nLegislación:  Caseta < 20m²: sólo necesita una declaración previa de obras\nLa caseta para leña no es modular\nDimensiones\nLargo:  313 cm\nAltura:  154 cm\nProfundidad:  302 cm\nLargo de la puerta:  94 cm\nAltura de la puerta:  154 cm\nLongitud total:  330 cm\nAltura total:  178 cm\nProfundidad total:  312 cm\nMedidas del espacio para guardar la madera:  Ancho 314 x Alt. 154 x Prof. 94 cm\nDetalles\nAcero: Material robusto, duradero y resistente a impactos. El acero pulido ofrece suavidad; el cepillado, un toque de diseño.",
     "image": "/uploads/lery.jpg",
     "images": [
+      "/uploads/lery.jpg",
       "/uploads/lery_1.jpg",
       "/uploads/lery_2.jpg",
       "/uploads/lery_3.jpg",
@@ -9583,6 +9845,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/lery_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/lery.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/lery_1.jpg",
         "type": "image"
@@ -9626,6 +9892,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nPuerta doble que facilita el acceso\nCerradura con llave incluida para una seguridad reforzada\nDoble acristalamiento para un mejor aislamiento\nLuminosidad optimizada: 2 amplias ventanas\nRejillas de ventilación incluidas\n\nCrea un espacio adicional en tu jardín con el estudio de jardín NEBULA.\nEl estudio de jardín NEBULA destaca por su estructura de madera composite WPC con acabado mate, que le aporta un diseño moderno y elegante. Este material combina la estética de la madera con una excelente resistencia a las inclemencias del tiempo, la humedad y los rayos UV, con un mantenimiento mínimo.\n\nLa doble puerta batiente y las dos ventanas de doble acristalamiento ofrecen una magnífica iluminación natural a la vez que mejoran el aislamiento térmico. El acristalamiento en vidrio templado refuerza la seguridad y la resistencia del conjunto, convirtiendo el estudio en un espacio cómodo para instalar una oficina, un taller o una sala de ocio. La cerradura con llave, entregada con tres juegos de llaves, permite asegurar el espacio fácilmente y dar acceso a varios miembros del hogar.\n\nEl tejado facilita la evacuación del agua de lluvia y viene acompañado de un canalón de aluminio incluido, diseñado para canalizar el agua de escorrentía sin necesidad de instalación adicional. Las rejillas de ventilación garantizan una renovación eficaz del aire para un confort óptimo en el día a día.\n\nPara una estabilidad óptima, se recomienda anclar el estudio sobre una cimentación durante la instalación.\n\nPara preservar el aspecto y la calidad del producto a largo plazo, basta con limpiarlo con una manguera y un detergente suave; puede utilizarse un cepillo duro sin riesgo de dañar el composite.\n\nEl estudio NEBULA ofrece así un espacio adicional funcional y fácil de mantener, listo para adaptarse a nuevos usos en el jardín.\n\nCaracteristicas\nColor (tono):  Gris antracita\nMaterial (precisión):  Cristal templado, Compuesto\nGrosor del cristal:  16 mm\nGrosor del compuesto:  28 mm\nAcabado:  Mate\nSuperficie (m²):  19.3 m²\nSuperficie total (m²):  26.1 m²\nTipo de puerta:  Puerta doble\nTipo de techo:  Doble caída\nPeso máximo soportado por el techo:  100 kg/m²\nSin suelo\nEquipamiento incluido:  Salida de aire, Canalón, Cerradura de llave\nNúmero de juegos de llaves:  3\nNecesita montaje\nMaterial del canalón:  aluminio\nVentanas y doble puerta con doble acristalamiento\nDimensiones\nLargo:  498.8 cm\nAltura:  291.4 cm\nProfundidad:  387 cm\nLargo de la puerta:  148.5 cm\nAltura de la puerta:  201 cm\nLongitud total:  579.6 cm\nAltura total:  309.1 cm\nProfundidad total:  451 cm\nDetalles\nCristal templado: Vidrio cinco veces más resistente que el tradicional. Destaca por su durabilidad y fácil mantenimiento.",
     "image": "/uploads/nebula.jpg",
     "images": [
+      "/uploads/nebula.jpg",
       "/uploads/nebula_1.jpg",
       "/uploads/nebula_2.jpg",
       "/uploads/nebula_3.jpg",
@@ -9638,6 +9905,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/nebula_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/nebula.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/nebula_1.jpg",
         "type": "image"
@@ -9693,6 +9964,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nCerradura con llave incluida para una seguridad reforzada\nFabricado en Europa\nDoble acristalamiento para un mejor aislamiento\n\n¡Transforma tu jardín en un espacio de trabajo o de relax con el estudio de jardín ARBORIA!\n¿Deseas disfrutar de un espacio funcional adicional en tu exterior? ARBORIA es ideal para acondicionar: una oficina, un estudio, un gimnasio o incluso para recibir invitados. Fabricado en madera de abeto, combina comodidad, funcionalidad y estética natural. Sus grandes aberturas y su diseño favorecen una hermosa luminosidad y optimizan el espacio, integrándose con elegancia en tu exterior.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Abeto, Cristal templado\nGrosor del cristal:  4 mm\nGrosor de la madera:  40 mm\nSuperficie (m²):  16.5 m²\nSuperficie total (m²):  24.4 m²\nTipo de puerta:  Puerta doble\nTipo de techo:  Una caída\nPeso máximo soportado por el techo:  100 kg/m²\nSin suelo\nEquipamiento incluido:  Cerradura de llave\nNúmero de juegos de llaves:  2\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nEspesor del techo:  18 mm\nDimensiones\nLargo:  454 cm\nAltura:  198 cm\nProfundidad:  364 cm\nLargo de la puerta:  148 cm\nLongitud total:  504 cm\nAltura total:  260 cm\nProfundidad total:  485 cm",
     "image": "/uploads/arboria.jpg",
     "images": [
+      "/uploads/arboria.jpg",
       "/uploads/arboria_1.jpg",
       "/uploads/arboria_2.jpg",
       "/uploads/arboria_3.jpg",
@@ -9703,6 +9975,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/arboria_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/arboria.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/arboria_1.jpg",
         "type": "image"
@@ -9750,6 +10026,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nMadera de pino resistente y duradera\nCerradura con llave incluida para una seguridad reforzada\nPuerta acristalada corredera de vidrio templado\n\n¡Para crear o trabajar al aire libre en un espacio práctico y luminoso, elige CANOPIA!\n¿Buscas una oficina o un estudio de jardín funcional y agradable? ¡Nuestro estudio/oficina de madera CANOPIA será perfecto! Te ofrecerá un espacio ideal para el teletrabajo, un taller creativo, un rincón de lectura o incluso un gimnasio en casa. Fabricado en abeto natural claro sostenible, combina comodidad, estética y respeto por el medio ambiente. Su diseño moderno y sus prácticas puertas correderas optimizan el espacio mientras se integran armoniosamente en tu jardín.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Pino, Cristal templado\nGrosor del cristal:  4 mm\nGrosor de la madera:  28 mm\nSuperficie total (m²):  15.3 m²\nTipo de techo:  Una caída\nPeso máximo soportado por el techo:  120 kg/m²\nSin suelo\nEquipamiento incluido:  Cerradura de llave\nNúmero de juegos de llaves:  2\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nEspesor del techo:  15 mm\nDimensiones\nLargo:  354 cm\nAltura:  232 cm\nProfundidad:  360 cm\nLongitud total:  384 cm\nAltura total:  253 cm\nProfundidad total:  399 cm\nSuperficie:  12.76 m²\nLongitud puerta:  270 cm\nAltura puerta:  215 cm\nDetalles\nFabricado en Europa\nFabricado en Europa\n\nCristal templado: Vidrio cinco veces más resistente que el tradicional. Destaca por su durabilidad y fácil mantenimiento.\n\nPino: Denso y duradero, el pino tiene pocos o ningún nudo. Naturalmente resistente a la descomposición y plagas, ideal para uso exterior.",
     "image": "/uploads/canopia.jpg",
     "images": [
+      "/uploads/canopia.jpg",
       "/uploads/canopia_1.jpg",
       "/uploads/canopia_2.jpg",
       "/uploads/canopia_3.jpg",
@@ -9759,6 +10036,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/canopia_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/canopia.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/canopia_1.jpg",
         "type": "image"
@@ -9802,6 +10083,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nCerradura con llave incluida para una seguridad reforzada\nFabricado en Europa\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Abeto, Cristal templado\nGrosor del cristal:  4 mm\nGrosor de la madera:  45 mm\nSuperficie (m²):  12.64 m²\nSuperficie total (m²):  14.74 m²\nTipo de techo:  Una caída\nPeso máximo soportado por el techo:  140 kg/m²\nSin suelo\nEquipamiento incluido:  Cerradura de llave\nNúmero de juegos de llaves:  2\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nEspesor del techo:  18 mm\nDimensiones\nLargo:  351 cm\nAltura:  262 cm\nProfundidad:  360 cm\nLongitud total:  379 cm\nProfundidad total:  389 cm\nLongitud puerta:  283 cm\nAltura puerta:  215 cm\nDetalles\nFabricado en Europa\nFabricado en Europa\n\nCristal templado: Vidrio cinco veces más resistente que el tradicional. Destaca por su durabilidad y fácil mantenimiento.\n\nAbeto: Madera ligera, suave y elástica, el abeto es valorado por su grano fino y maleabilidad.",
     "image": "/uploads/sylvana.jpg",
     "images": [
+      "/uploads/sylvana.jpg",
       "/uploads/sylvana_1.jpg",
       "/uploads/sylvana_2.jpg",
       "/uploads/sylvana_3.jpg",
@@ -9813,6 +10095,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sylvana_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sylvana.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sylvana_1.jpg",
         "type": "image"
@@ -9864,6 +10150,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nPuerta doble que facilita el acceso\nCerradura con llave incluida para una seguridad reforzada\nRejilla de ventilación para una mejor renovación del aire\nParedes reversibles\n\n\nOptimiza tus espacios exteriores con la caseta de madera compuesta HAZELTON, diseñada para organizar y proteger tus equipos o herramientas de jardín con eficacia. Desde su instalación, responde a las necesidades diarias ofreciendo una solución práctica, estable y duradera.\n\nSu estructura de madera compuesta asegura una buena resistencia a los usos exteriores facilitando a la vez el mantenimiento. Las paredes de la caseta HAZELTON 17,2 m² son reversibles y permiten adaptar la apariencia según tus preferencias: una cara en color natural oscuro y la otra en gris antracita, para colocar en el interior o exterior. Esta modularidad visual ayuda a integrar la caseta de manera coherente con el entorno existente.\n\nLa puerta doble acristalada de vidrio templado, con acabado ahumado, favorece la entrada de luz limitando a la vez la visibilidad directa del contenido. Hace que el acceso sea más cómodo y mejora el uso diario, especialmente para almacenar herramientas, equipos o mobiliario de exterior. El techo en pendiente facilita el desagüe de agua, mientras que la capacidad de carga de 200 kg/m² garantiza una estructura fiable frente a las condiciones climáticas.\n\nPensada para un uso duradero, la caseta de madera compuesta HAZELTON está equipada con un canalón y una rejilla de ventilación incluidos, contribuyendo a una mejor gestión de la humedad y a la preservación de los elementos almacenados. Acompaña la organización de los exteriores con un enfoque funcional, estético y duradero.\n\n\nCaracteristicas\nColor (tono):  Color natural oscuro, Gris antracita\nMaterial (precisión):  Contrachapado, Cristal templado, Compuesto\nGrosor del cristal:  5 mm\nGrosor del compuesto:  28 mm\nAcabado:  Acanalado\nSuperficie (m²):  14 m²\nSuperficie total (m²):  17.25 m²\nTipo de puerta:  Puerta doble\nTipo de techo:  Una caída\nPeso máximo soportado por el techo:  200 kg/m²\nSin suelo\nEquipamiento incluido:  Cerradura de llave, Pomo, Rejilla de aireación, Clave de seguridad\nNecesita montaje\nEspesor del techo:  15 mm\nDimensiones\nLargo:  494 cm\nAltura:  227 cm\nProfundidad:  284 cm\nLargo de la puerta:  150 cm\nAltura de la puerta:  198 cm\nLongitud total:  534 cm\nAltura total:  246 cm\nProfundidad total:  323 cm\nDetalles\nCristal templado: Vidrio cinco veces más resistente que el tradicional. Destaca por su durabilidad y fácil mantenimiento.\n\n<!--COLORS_JSON_START-->[\"Gris\",\"Bronze\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Gris, Bronze]",
     "image": "/uploads/hazelton.jpg",
     "images": [
+      "/uploads/hazelton.jpg",
       "/uploads/hazelton_1.jpg",
       "/uploads/hazelton_2.jpg",
       "/uploads/hazelton_3.jpg",
@@ -9874,6 +10161,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/hazelton_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/hazelton.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/hazelton_1.jpg",
         "type": "image"
@@ -9921,6 +10212,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nPuerta doble que facilita el acceso\nCerradura con llave incluida para una seguridad reforzada\nGran espacio de almacenamiento\nMadera tratada con autoclave de clase 3 para una mayor resistencia a los elementos\nSe sale y se entra fácilmente gracias a una puerta doble batiente\n\n\n\n¡Apuesta por el espacio y la resistencia del cobertizo de jardín de madera CORALIO!\nNecesitas espacio adicional de almacenamiento en tu jardín? La caseta de jardín CORALIO es la solución ideal. Cuenta con una amplia superficie para guardar todas tus herramientas o incluso crear tu propio taller de bricolaje.\n\nAdemás, su madera tratada con autoclave de clase 3 la hace más duradera y resistente a las inclemencias del tiempo, a los insectos y a los hongos.\n\n\n\nCaracteristicas\nColor (tono):  Color natural oscuro\nMaterial (precisión):  Pino, Cristal, Madera maciza\nGrosor del cristal:  4 mm\nGrosor de la madera:  28 mm\nSuperficie (m²):  11.56 m²\nSuperficie total (m²):  13.1 m²\n2 puertas\nTipo de puerta:  Puerta doble\nTipo de techo:  Una caída\nSin suelo\nEquipamiento incluido:  Pomo, Cerradura de llave\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Bosques gestionados de forma sostenible, Fabricado en Europa\nNecesita montaje\nEspesor del techo:  12 mm\nProceso de tratamiento:  Autoclave/Remojo\nLegislación:  caseta de < 20m²: basta con una declaración previa de obras\nGrosor de la madera:  28 mm\nTipo de techo:  plano\nDimensiones\nLargo:  388 cm\nAltura:  185.3 cm\nProfundidad:  298 cm\nLargo de la puerta:  160 cm\nAltura de la puerta:  182.5 cm\nLongitud total:  391.2 cm\nAltura total:  207.5 cm\nProfundidad total:  335.9 cm\nSuperficie interior:  10 m²\nDetalles\nFabricado en Europa\nFabricado en Europa\n\nMadera maciza: Sólido y resistente, el mueble de madera maciza tiene un encanto único por las propiedades y matices de cada árbol.\n\nPino: Denso y duradero, el pino tiene pocos o ningún nudo. Naturalmente resistente a la descomposición y plagas, ideal para uso exterior.\n\nBosques gestionados de forma sostenible: El uso de madera de bosques gestionados de manera sostenible combate la deforestación y preserva suelos y biodiversidad.",
     "image": "/uploads/coralio.jpg",
     "images": [
+      "/uploads/coralio.jpg",
       "/uploads/coralio_1.jpg",
       "/uploads/coralio_2.jpg",
       "/uploads/coralio_3.jpg",
@@ -9929,6 +10221,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/coralio_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/coralio.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/coralio_1.jpg",
         "type": "image"
@@ -9968,6 +10264,7 @@ export const PRODUCTS: Product[] = [
     "description": "Características principales:\n\nOptimización del espacio/Fácil montaje/Puerta reversible/Libera espacio/Tirador metálico\n\nMob In presenta el mueble de lavabo esquinero KODA. Este mueble de lavabo esquinero es ideal para espacios pequeños, combinando elegancia y practicidad. Fabricado en MDF con acabado melaminizado roble mate, aporta un toque moderno y natural a su estancia. Suspendido para optimizar el espacio, este mueble ofrece un práctico sistema de almacenamiento cerrado con una puerta grabada con 5 líneas de 2 mm y un tirador de aluminio, similar al modelo AVA. La puerta reversible, equipada con bisagras de zinc de cierre suave, ofrece un uso flexible y cómodo. El lavabo de resina polystone ALD, idéntico al modelo Skino, combina robustez y estilo para un punto de agua funcional y elegante.\n\nGrifo mezclador TAP con caño bajo cromadoEl grifo TAP es un grifo mezclador especialmente diseñado para lavabos, con un caño bajo de 12,3 cm y un acabado cromado brillante. Fabricado en cobre, combina solidez y estética. Equipado con un aireador de ABS para ahorrar agua y un cartucho cerámico para una precisión duradera, este grifo es perfecto para el uso diario. Incluye mangueras flexibles de 35 cm (3/8\") para una fácil instalación. Su tirador ergonómico de aleación de zinc garantiza una comodidad óptima. El desagüe se vende por separado.\n\nMueble de baño CLEOEl mueble de baño CLEO, con su ingenioso diseño esquinero, es ideal para maximizar el almacenamiento en espacios reducidos. Fabricado en tablero de partículas revestido de melamina (PPM) con acabado en roble, combina a la perfección con los muebles de baño y lavabos de la gama KODA. Su espacio de almacenamiento se optimiza gracias a un estante ajustable de 4 niveles, que permite guardar los productos de forma organizada. La puerta reversible, con asa superior e inferior, se cierra con un sistema magnético, lo que garantiza un uso sencillo y discreto. Perfecto para colocar sobre el mueble de baño o el lavabo, el mueb",
     "image": "/uploads/conjunto-de-lavabo.jpg",
     "images": [
+      "/uploads/conjunto-de-lavabo.jpg",
       "/uploads/conjunto-de-lavabo_1.jpg",
       "/uploads/conjunto-de-lavabo_2.jpg",
       "/uploads/conjunto-de-lavabo_3.jpg",
@@ -9980,6 +10277,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/conjunto-de-lavabo_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/conjunto-de-lavabo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/conjunto-de-lavabo_1.jpg",
         "type": "image"
@@ -10035,6 +10336,7 @@ export const PRODUCTS: Product[] = [
     "description": "Puntos fuertes:\n\nOptimización del espacio/Fácil montaje/Puerta reversible/Libera espacio/Tirador metálico\n\nMob In presenta el mueble de lavabo esquinero KODA. Con su acabado en MDF melamínico con decoración roble mate, es ideal para espacios pequeños, combinando modernidad y calidez. Su diseño suspendido optimiza el espacio a la vez que aporta un toque de elegancia contemporánea a su baño. El mueble de almacenaje cerrado está equipado con una puerta grabada con 5 líneas de 2 mm, con un tirador de aluminio que recuerda al modelo JAVA, ofreciendo un estilo refinado. La puerta reversible está fijada sobre bisagras de zinc con cierre suave, lo que garantiza un funcionamiento silencioso. Esta unidad incluye un lavabo de resina polystone ALD, idéntico al modelo Skino, reconocido por su robustez y elegante diseño.\n\nGrifo mezclador TAP con caño bajo cromadoEl grifo TAP es un grifo mezclador especialmente diseñado para lavabos, con un caño bajo de 12,3 cm de altura y un refinado acabado cromado. Fabricado en cobre, cuenta con un aireador de ABS para un flujo de agua óptimo y un cartucho cerámico para mayor durabilidad y precisión. Incluye mangueras flexibles de 35 cm y 3/8\". Su mango ergonómico de aleación de zinc facilita el ajuste del agua fría y caliente. El desagüe se vende por separado.\n\nLa gama de lavabos de esquina KODA es ideal para quienes buscan una solución práctica y moderna. Diseñados para maximizar el espacio en baños pequeños, cada pieza combina diseño contemporáneo y funcionalidad. Con sus líneas limpias y materiales de calidad, KODA ahorra espacio sin sacrificar el estilo, a la vez que añade un toque de elegancia a su hogar. Puede comprar el mueble y el lavabo por separado o completarlos con un grifo y/o un espejo.\n\nInformación:\n\nContenido del paquete: mueble + lavabo + grifo\n\nDesagüe y sifón no incluidos\n\nRequiere automontaje\n\nMaterial: Tablero de fibra de densidad media (MDF)\n\nTodos nuestros lavabos tienen un grifo",
     "image": "/uploads/mueble-de-lavabo-koda.jpg",
     "images": [
+      "/uploads/mueble-de-lavabo-koda.jpg",
       "/uploads/mueble-de-lavabo-koda_1.jpg",
       "/uploads/mueble-de-lavabo-koda_2.jpg",
       "/uploads/mueble-de-lavabo-koda_3.jpg",
@@ -10045,6 +10347,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-lavabo-koda_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-lavabo-koda.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-lavabo-koda_1.jpg",
         "type": "image"
@@ -10092,6 +10398,7 @@ export const PRODUCTS: Product[] = [
     "description": "Puntos fuertes :\n\nRoble macizo natural envejecido /Vasque negra de cerámica mate/Grifo negro mate de latón/Espejo OAKY de roble\n\nMueble de lavabo TOM: Un ahorro de espacio con un diseño auténtico El mueble de lavabo TOM, diseñado en roble macizo natural envejecido, aporta un toque cálido y refinado a su baño. Su superficie de trabajo, impermeabilizada con un barniz de poliuretano, garantiza una excelente resistencia a la humedad. Este mueble compacto cuenta con dos estanterías interiores, ofreciendo un espacio de almacenamiento práctico. Su portarrollos de metal negro, reposicionable a la izquierda o a la derecha, complementa su aspecto elegante. Gracias a su sistema de apertura push, el acceso al almacenamiento es fluido y sin esfuerzo.\n\nVasque MAUD en cerámica negra: Un contraste moderno y refinado La vasque MAUD, en cerámica negra mate, combina diseño contemporáneo y resistencia. Su revestimiento liso facilita el mantenimiento, asegurando una higiene óptima. Su color negro profundo crea un contraste elegante con la madera del mueble TOM, añadiendo un toque de modernidad a su espacio. Con un diámetro de 26 cm y una altura de 12 cm, es ideal para el uso diario.\n\nGrifo ROB negro mate: Modernidad y rendimiento El grifo ROB, fabricado en latón con acabado negro mate, está diseñado para las vasques independientes. Su pico alto y su diseño minimalista aseguran una experiencia de uso cómoda. Equipado con un cartucho cerámico Wanhai de 35 mm y un aireador de neopreno, permite gestionar el flujo de agua de manera eficiente, reduciendo el consumo. Su kit de fijación en media luna garantiza una instalación rápida y sencilla.\n\nEspejo OAKY de roble: Un estilo natural y luminoso El espejo OAKY, con su forma de guijarro orgánico, suaviza el espacio y aporta una atmósfera relajante. Fabricado en chapa de roble FSC, se integra perfectamente en una decoración natural o moderna. Su sistema de fijación superior e inferior asegura una instalación estable y segura.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nAcabado:  Mate\nCon lavabo\nGriferia incluida:  Sí\nTipo de grifería:  Grifo monomando mecánico\nDiseño de tipo:  Sobre suelo\nNecesita montaje\nDimensiones\nLargo:  30 cm\nAltura:  78 cm\nProfundidad:  40 cm",
     "image": "/uploads/conjunto-mueble-lavabo.jpg",
     "images": [
+      "/uploads/conjunto-mueble-lavabo.jpg",
       "/uploads/conjunto-mueble-lavabo_1.jpg",
       "/uploads/conjunto-mueble-lavabo_2.jpg",
       "/uploads/conjunto-mueble-lavabo_3.jpg",
@@ -10104,6 +10411,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/conjunto-mueble-lavabo_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/conjunto-mueble-lavabo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/conjunto-mueble-lavabo_1.jpg",
         "type": "image"
@@ -10159,6 +10470,7 @@ export const PRODUCTS: Product[] = [
     "description": "Puntos fuertes:\n\nRoble macizo natural envejecido/Lavabo de cerámica blanca/Almacenaje optimizado/Espejo ovalado de diseño\n\nMueble lavabo TOM: Un diseño compacto y funcionalEl mueble lavabo TOM (30 x 78 x 40 cm) es la solución ideal para optimizar el espacio en baños pequeños y aseos. Fabricado en roble macizo natural envejecido, combina robustez y un encanto atemporal. Su superficie está protegida con un barniz de poliuretano para una mayor resistencia a la humedad. Integra dos estantes de almacenamiento, un portarrollos de metal negro reposicionable (izquierda o derecha) y un sistema de apertura push para un uso fluido y sin manijas.\n\nLavabo bol blanco: Elegancia y facilidad de mantenimientoEl lavabo bol blanco (⌀26 x H12 cm) de cerámica de alta calidad aporta un toque sofisticado a tu espacio. Resistente a la humedad y a las bacterias, es perfectamente adecuado para el uso diario. Su diseño limpio y atemporal se adapta fácilmente a diferentes estilos de decoración.\n\nEspejo PEPPER 40x70 cm: Un toque de refinamientoCon su forma ovalada ultra moderna, el espejo PEPPER realza tu baño. Su marco delgado, disponible en roble natural, negro o blanco, aporta un toque elegante y contemporáneo. Su formato vertical permite agrandar visualmente la habitación mientras maximiza la luminosidad.\n\nUn conjunto armonioso y prácticoLa combinación del mueble TOM, el lavabo blanco, el grifo ROB y el espejo PEPPER crea un conjunto funcional y de diseño, perfecto para espacios pequeños. Cada elemento está diseñado para combinar estética, durabilidad y practicidad, ofreciendo una experiencia de uso óptima a diario.\n\nLa colección de lavabos TOM fue pensada para combinar estilo, practicidad y durabilidad, incluso en los espacios más pequeños. Fabricada en roble macizo natural envejecido, cada pieza presenta un diseño auténtico y acogedor, ideal para dar carácter a tus WC o pequeños baños. Con su portarrollos de metal negro, reposicionable a la izquierda\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nAcabado:  Mate\nCon lavabo\nGriferia incluida:  No\nTipo de grifería:  Grifo monomando mecánico\nDiseño de tipo:  Sobre suelo\nNecesita montaje\nDimensiones\nLargo:  30 cm\nAltura:  78 cm\nProfundidad:  40 cm",
     "image": "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom.jpg",
     "images": [
+      "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom.jpg",
       "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom_1.jpg",
       "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom_2.jpg",
       "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom_3.jpg",
@@ -10170,6 +10482,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/conjunto-mueble-lavabo-lavabo-espejo-tom_1.jpg",
         "type": "image"
@@ -10221,6 +10537,7 @@ export const PRODUCTS: Product[] = [
     "description": "Características destacadas:\n\nLavamanos con lavabo de resina sintética blanca/Lavabo con grifería y rebosadero/Sistema de bisagras de cierre suave/Almacenamiento lateral abierto/Producto entregado montado (puerta para fijar)/Grifo y espejo incluidos\n\nMob In presenta el lavamanos HAMPTON: la combinación de estilo y ahorro de espacio.Diseñado para espacios pequeños como inodoros o baños compactos, el lavamanos HAMPTON combina diseño contemporáneo y funcionalidad. Su elegante lavabo de resina sintética aporta un toque moderno y elegante a su baño. Fabricado en MDF, ofrece un discreto espacio de almacenamiento cerrado y dos estantes laterales abiertos, perfectos para sus accesorios de uso diario. Un toallero integrado completa este espacio elegante y práctico. Disponible en tres colores sobrios: blanco, gris o negro, el mueble HAMPTON se integra fácilmente en cualquier decoración. Su tamaño compacto y su práctico almacenamiento lo convierten en una opción estética, funcional y fácil de usar para el día a día.\n\nGrifo mezclador TAP: diseño cromado y facilidad de usoEl grifo cromado TAP, especialmente diseñado para lavabos, combina estética moderna con un gran rendimiento. Mezclador de agua caliente/fría, equipado con un aireador ABS y un cartucho cerámico que garantiza un flujo suave y económico. Su estructura de cobre con acabado cromado lo hace duradero y de fácil mantenimiento. El mango ergonómico de aleación de zinc garantiza un agarre cómodo, mientras que las mangueras flexibles de 3/8\" (longitud 35 cm) garantizan una instalación rápida y sencilla.\n\nEspejo SIMONA con estante: práctico y elegante El espejo rectangular SIMONA (40 x 70 cm) incluye un estante blanco integrado para un look tan práctico como elegante. Su estructura metálica blanca se adapta a todos los estilos, desde los más clásicos hasta los más contemporáneos. El estante ofrece un almacenamiento funcional para tus objetos esenciales, con una capacidad de hasta 3 kg. Fácil de fijar a la pared, este \n\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Paneles y derivados de la madera\nAcabado:  Satinado\nCon lavabo\nGriferia incluida:  Sí\nTipo de grifería:  Grifo monomando mecánico\nDiseño de tipo:  Para fijar a la pared (suspendido)\nNecesita montaje\nDimensiones\nLargo:  41.5 cm\nAltura:  53 cm\nProfundidad:  23.5 cm",
     "image": "/uploads/conjunto-de-lavabo-hampton.jpg",
     "images": [
+      "/uploads/conjunto-de-lavabo-hampton.jpg",
       "/uploads/conjunto-de-lavabo-hampton_1.jpg",
       "/uploads/conjunto-de-lavabo-hampton_2.jpg",
       "/uploads/conjunto-de-lavabo-hampton_3.jpg",
@@ -10230,6 +10547,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/conjunto-de-lavabo-hampton_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/conjunto-de-lavabo-hampton.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/conjunto-de-lavabo-hampton_1.jpg",
         "type": "image"
@@ -10273,6 +10594,7 @@ export const PRODUCTS: Product[] = [
     "description": "Dependiendo de la disponibilidad del producto en nuestros almacenes, podemos enviar este lote en dos envíos separados.\n\nCaracterísticas destacadas del producto:\n\nLavabo y puerta reversibles izquierda/derecha\n\nSistema de bisagras de cierre suave\n\nCuenta con el sello FSC® C138476, que garantiza una gestión forestal responsable\n\nMob In presenta el conjunto de lavabo ATOLL y su espejo. Fabricado en tablero de fibra de densidad media (MDF), con compartimentos de almacenaje abiertos y cerrados, facilitará la organización diaria de su baño. Está equipado con un lavabo reversible de resina sintética. Esto significa que puede elegir colocar la grifería a la izquierda o a la derecha.\n\nEl espejo de baño SIMONA está equipado con un estante de almacenaje para que pueda colocar sus productos y acceder a ellos rápidamente. Es práctico y fácil de usar a diario. El peso máximo soportado por el estante es de 3 kg.\n\nLa gama ATOLL, gracias a su sistema de almacenamiento abierto y cerrado, es perfecta para facilitar el almacenamiento diario de su inodoro o baño pequeño. Puede elegir entre un lavabo blanco o negro. También puede elegir el mueble con el lavabo solo, o combinarlo con un grifo y/o un espejo. Esta gama, diseñada con toda la colección de muebles de baño ATOLL, aportará un ambiente único y uniforme a todos sus baños.\n\nInformación:\n\nContenido del paquete: mueble + lavabo + espejo\n\nRequiere automontaje\n\nMaterial: Tablero de fibra de densidad media (MDF)\n\nTodos nuestros muebles de lavabo están diseñados con el espacio adecuado para el paso y la conexión de la grifería\n\nDimensiones:\n\nMueble: Ancho: 40,5 cm Alto: 83 cm Fondo: 23 cm\n\nLavabo: Ancho: 41,5 cm Alto: 5 cm Fondo: 23,5 cm\n\nEspejo: Ancho: 40 cm Alto: 70 cm Fondo: 10 cm\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Paneles y derivados de la madera\nCon lavabo\nGriferia incluida:  No\nTipo de grifería:  Grifo monomando mecánico\nDiseño de tipo:  Sobre suelo\nNecesita montaje\nDimensiones\nLargo:  41.5 cm\nAltura:  88 cm\nProfundidad:  23.5 cm",
     "image": "/uploads/mueble-lavabo-atoll.jpg",
     "images": [
+      "/uploads/mueble-lavabo-atoll.jpg",
       "/uploads/mueble-lavabo-atoll_1.jpg",
       "/uploads/mueble-lavabo-atoll_2.jpg",
       "/uploads/mueble-lavabo-atoll_3.jpg",
@@ -10280,6 +10602,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-lavabo-atoll_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-lavabo-atoll.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-lavabo-atoll_1.jpg",
         "type": "image"
@@ -10315,11 +10641,16 @@ export const PRODUCTS: Product[] = [
     "description": "Mueble lavamanos 40cm 1 puerta Gaia Madera y Negro\n\nColección :\nGaia\n\nFabricación :\nFabricación europea\n\nMateriales :\nTableros de melamina y MDF de 16 mm\n70% de madera certificada FSC procedente de gestión forestal sostenible\nLavamanos de cerámica\nTiradores de PVC\n\nColor :\nMadera imitación roble y Negro\n\nEl color del producto en la foto puede variar según los ajustes de su pantalla (contraste, brillo).\n\nCaracterísticas :\nMueble bajo lavabo: Mueble suspendido\n1 puerta con apertura reversible (izquierda o derecha)\nSistema de cierre silencioso\nLavamanos a encastrar incluido\nFijación a la pared: tornillos y tacos incluidos\nLe recomendamos adaptar las fijaciones a la superficie.\n\nOtra información :\nGrifería no incluida\nVálvula de desagüe libre no incluida\nSifón no incluido\n\nPeso :\nMueble bajo: 17 kg\nLavabo: 6 kg\n\nDimensiones :\nMueble bajo: 40 x 22 x 57 cm\nLavabo: 41 x 22 x 9 cm\n\nLas dimensiones indicadas pueden variar algunos milímetros\n\nConsejos de instalación :\nEste mueble está diseñado para una instalación con tomas de agua desde la pared\nPara un montaje óptimo, se recomienda encarecidamente el uso de un sifón compacto, e incluso puede ser obligatorio según la colección, para garantizar el correcto cierre de los cajones y evitar interferencias con la fontanería.\n\nConsejos de mantenimiento :\nAsegurar una ventilación suficiente y el correcto funcionamiento de la VMC\nSellar los bordes expuestos al agua con silicona\nNo exponer el interior de los muebles a la humedad (agua, vapor de agua)\n\nInstrucciones de seguridad :\nFije firmemente el mueble a la pared\nRespete las cargas máximas recomendadas indicadas en las instrucciones\nMantenga el cuarto de baño bien ventilado.\n\nNormas de seguridad :\nEN 14688, que garantiza la seguridad y el rendimiento de los lavabos y muebles de baño en entornos húmedos.\n\nEmbalaje :\nProducto entregado para montar, con instrucciones de montaje incluidas.\n\nProducto garantizado :\n24 meses\n\nNúmero total de cajas :\n2\n\nPeso y dimensiones de cajas :\n17 kg / 62 x 48 x 13 cm\n6 kg / 42 x 24 x 11 cm\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Paneles y derivados de la madera\nTipo de tablero:  Mdf\nCon lavabo\nGriferia incluida:  No\nDiseño de tipo:  Sobre suelo\nNecesita montaje\nDimensiones\nLargo:  40 cm\nAltura:  66 cm\nProfundidad:  22 cm",
     "image": "/uploads/mueble-lavamanos-40cm.jpg",
     "images": [
+      "/uploads/mueble-lavamanos-40cm.jpg",
       "/uploads/mueble-lavamanos-40cm_1.jpg",
       "/uploads/mueble-lavamanos-40cm_2.jpg",
       "/uploads/mueble-lavamanos-40cm_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-lavamanos-40cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-lavamanos-40cm_1.jpg",
         "type": "image"
@@ -10347,6 +10678,7 @@ export const PRODUCTS: Product[] = [
     "description": "Limpio, funcional e innegablemente elegante, el mueble de baño Névia de 140 cm, fabricado en teca maciza, cautiva con su diseño minimalista, ideal para realzar baños contemporáneos. Su estructura abierta ofrece un equilibrio perfecto entre ligereza visual y robustez. Elaborado artesanalmente con madera de teca , reconocida por su resistencia natural a la humedad, este mueble destaca como una opción duradera y estéticamente atractiva.\n\nCon unas dimensiones de 140 cm de largo , 50 cm de profundidad y 82 cm de alto , Névia ofrece un amplio y bien organizado espacio de almacenamiento. Cuenta con dos grandes cajones con tiradores de madera tallada, ideales para guardar toallas, artículos de aseo o artículos de uso diario. El nicho abierto en la parte superior , complementado con una balda de cristal , permite exhibir objetos decorativos o tener los artículos de aseo al alcance de la mano.\n\nVersátil y elegante, este mueble de baño de teca puede albergar uno o dos lavabos, según sus necesidades. Se integra armoniosamente en todo tipo de interiores, desde los más clásicos hasta los más contemporáneos.\n\nNévia encarna toda la maestría en la elaboración de muebles a medida de madera maciza : líneas depuradas, acabados impecables y madera noble. Una opción ideal para quienes buscan muebles funcionales, elegantes y duraderos.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nNombre de la madera:  Teca\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  140 cm\nAltura:  82 cm\nProfundidad:  50 cm",
     "image": "/uploads/nevia-armario-de-bano.jpg",
     "images": [
+      "/uploads/nevia-armario-de-bano.jpg",
       "/uploads/nevia-armario-de-bano_1.jpg",
       "/uploads/nevia-armario-de-bano_2.jpg",
       "/uploads/nevia-armario-de-bano_3.jpg",
@@ -10354,6 +10686,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/nevia-armario-de-bano_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/nevia-armario-de-bano.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/nevia-armario-de-bano_1.jpg",
         "type": "image"
@@ -10389,6 +10725,7 @@ export const PRODUCTS: Product[] = [
     "description": "El práctico mueble de baño de madera ORMA de dos puertas aporta un toque de calidez natural a tu baño. Fabricado en madera maciza de teca, este mueble combina robustez y estética, ofreciendo una excelente resistencia a la humedad y añadiendo un encanto atemporal a tu estancia.\n\nCon sus generosas dimensiones (140 cm de largo, 50 cm de profundidad y 78 cm de alto), es ideal para amueblar espacios amplios. Este mueble de baño , con dos puertas funcionales, ofrece un amplio espacio de almacenamiento para tus accesorios y artículos de aseo, manteniendo un diseño limpio y moderno.\n\nEste mueble de baño de madera es la opción perfecta para crear un ambiente natural y elegante. Su cálida madera y su meticuloso acabado se integran a la perfección con cualquier estilo de decoración, aportando un toque refinado y funcional a tu espacio.\nDescubre también los demás tocadores de la misma colección .\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nNombre de la madera:  Teca\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  140 cm\nAltura:  78 cm\nProfundidad:  50 cm",
     "image": "/uploads/orma-armario-de-bano-de-madera.jpg",
     "images": [
+      "/uploads/orma-armario-de-bano-de-madera.jpg",
       "/uploads/orma-armario-de-bano-de-madera_1.jpg",
       "/uploads/orma-armario-de-bano-de-madera_2.jpg",
       "/uploads/orma-armario-de-bano-de-madera_3.jpg",
@@ -10401,6 +10738,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/orma-armario-de-bano-de-madera_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/orma-armario-de-bano-de-madera.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/orma-armario-de-bano-de-madera_1.jpg",
         "type": "image"
@@ -10456,6 +10797,7 @@ export const PRODUCTS: Product[] = [
     "description": "Si necesitas más espacio en tu cuarto de baño, este mueble bajo lavabo de 140 cm es ideal.\n\nTiene tres compartimentos grandes y dos profundidades, perfectos para guardar toallas, productos o cualquier cosa que quieras tener a mano.\n\nEl acabado natural de la madera le da un toque acogedor y queda genial en cualquier estilo de cuarto de baño.\n\nCaracterísticas:\n\n\n\nmaterial: teca\n\ncolor: natural\n\naltura: 80 cm\n\nancho: 140 cm\n\nprofundidad: 50 cm\n\npeso: 57 kg\n\ngarantía: 5 años\n\nmontaje: patas para ensamblar\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nTipo de madera:  Teca\nGriferia incluida:  No\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  140 cm\nAltura:  80 cm\nProfundidad:  50 cm",
     "image": "/uploads/mueble-de-lavabo-de-teca-maciza.jpg",
     "images": [
+      "/uploads/mueble-de-lavabo-de-teca-maciza.jpg",
       "/uploads/mueble-de-lavabo-de-teca-maciza_1.jpg",
       "/uploads/mueble-de-lavabo-de-teca-maciza_2.jpg",
       "/uploads/mueble-de-lavabo-de-teca-maciza_3.jpg",
@@ -10465,6 +10807,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-lavabo-de-teca-maciza_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-lavabo-de-teca-maciza.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-lavabo-de-teca-maciza_1.jpg",
         "type": "image"
@@ -10508,6 +10854,7 @@ export const PRODUCTS: Product[] = [
     "description": "Para un cuarto de baño que combine elegancia natural y modernidad, descubra nuestro mueble de lavabo de teca maciza y rejilla de 145 cm con tres puertas de rejilla. Es la opción perfecta para un elegante espacio de descanso diario Características: Material: Teca - Color: Natural - Altura: 79 cm - Anchura: 145 cm - Profundidad: 50 cm - Peso: 46 kg - Garantía: 5 años - Montaje: Se entrega montado. Entrega: Entrega con cita previa, de lunes a viernes, en la puerta o en la planta baja de su domicilio. ¿Quiénes somos? Berah Getah es mobiliario con vida. Estarán junto a usted durante muchos años. Fabricados a mano con maderas nobles cuya renovación está garantizada. Se trata de muebles que son auténticos tesoros, tras los que se halla un equipo comprometido de artesanos apasionados y diseñadores inspirados, a los que une la búsqueda de la belleza y la calidad.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nTipo de madera:  Teca\nGriferia incluida:  No\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  145 cm\nAltura:  79 cm\nProfundidad:  50 cm",
     "image": "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla.jpg",
     "images": [
+      "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla.jpg",
       "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla_1.jpg",
       "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla_2.jpg",
       "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla_3.jpg",
@@ -10516,6 +10863,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-bano-de-teca-maciza-y-rejilla_1.jpg",
         "type": "image"
@@ -10555,6 +10906,7 @@ export const PRODUCTS: Product[] = [
     "description": "Elija un mueble de baño de teca en bruto y lleve la nobleza de la teca a su hogar. Este mueble de lavabo tiene 2 estantes para toallas y cestas de almacenamiento. Su color claro y natural le confiere un aspecto totalmente auténtico. Sus patas negras añaden un estilo moderno. Características: Material: Teca - Color: Natural - Altura: 76 cm - Longitud: 150 cm - Profundidad: 55 cm - Peso: 35 kg - Peso máximo soportado: 60 kg - Garantía: 2 años - Montaje: Se entrega montado. Entrega: Entrega con cita previa de lunes a sábado, con una franja horaria de 2 horas. El transportista se pondrá en contacto con usted para concertar la entrega. Entrega en Francia metropolitana (excepto Córcega) en un plazo máximo de 7 a 9 días laborables a partir del envío. Entrega en la habitación de su elección, hasta la 4.ª planta. Al recibir su pedido, debe firmar el albarán de entrega únicamente después de verificar su pedido en presencia del repartidor. En caso de que su pedido presente daños o no sea conforme, debe expresar reservas completas y precisas (\" a reserva de desembalaje \" carece de valor jurídico) o rechazar la entrega. Solo en Francia. ¿Quiénes somos? Berah Getah es mobiliario con vida. Estarán junto a usted durante muchos años. Fabricados a mano con maderas nobles cuya renovación está garantizada. Se trata de muebles que son auténticos tesoros, tras los que se halla un equipo comprometido de artesanos apasionados y diseñadores inspirados, a los que une la búsqueda de la belleza y la calidad.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nTipo de madera:  Teca\nGriferia incluida:  No\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  150 cm\nAltura:  76 cm\nProfundidad:  55 cm",
     "image": "/uploads/mueble-de-lavabo-160-cm.jpg",
     "images": [
+      "/uploads/mueble-de-lavabo-160-cm.jpg",
       "/uploads/mueble-de-lavabo-160-cm_1.jpg",
       "/uploads/mueble-de-lavabo-160-cm_2.jpg",
       "/uploads/mueble-de-lavabo-160-cm_3.jpg",
@@ -10563,6 +10915,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-lavabo-160-cm_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-lavabo-160-cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-lavabo-160-cm_1.jpg",
         "type": "image"
@@ -10602,6 +10958,7 @@ export const PRODUCTS: Product[] = [
     "description": "Aporta elegancia y estilo a tu baño con el magnífico mueble de baño Savanna de teca maciza con puertas de lamas. Este mueble distintivo te impresionará. Sus llamativas puertas correderas dobles de lamas se abren para revelar un estante central, perfecto para guardar todos tus artículos de aseo (toallas, maquillaje, etc.). Su estilo elegante y atemporal lo convierte en un complemento encantador para cualquier baño. El cálido tono de la madera de teca maciza garantiza su durabilidad, ya que este tipo de madera es naturalmente resistente a la humedad. Ideal para organizar tu baño, sus cinco cajones de diferentes tamaños y tiradores de metal bronce contribuyen a su carácter único. Dile adiós a las batallas matutinas por el espacio en el baño con su generosa longitud de 140 cm. Dos personas pueden prepararse cómodamente; solo necesitas encontrar unos bonitos lavabos para colocar encima.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nNombre de la madera:  Teca\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  140 cm\nAltura:  80 cm\nProfundidad:  50 cm",
     "image": "/uploads/savanna-mueble-de-bano.jpg",
     "images": [
+      "/uploads/savanna-mueble-de-bano.jpg",
       "/uploads/savanna-mueble-de-bano_1.jpg",
       "/uploads/savanna-mueble-de-bano_2.jpg",
       "/uploads/savanna-mueble-de-bano_3.jpg",
@@ -10609,6 +10966,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/savanna-mueble-de-bano_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/savanna-mueble-de-bano.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/savanna-mueble-de-bano_1.jpg",
         "type": "image"
@@ -10644,6 +11005,7 @@ export const PRODUCTS: Product[] = [
     "description": "¿Qué podría ser más placentero que ducharse en un espacio cálido y práctico? El confort óptimo le espera con este tocador de baño SAHARA en teca maciza con rejilla y mármol terrazo beige. Con una generosa longitud de 145 cm, este magnífico tocador de baño ofrece un almacenamiento amplio y funcional. Con seis cajones, este tocador añadirá un toque de elegancia a su baño, ¡a la vez que proporciona mayor orden y organización! La popularidad perdurable de los muebles de teca en los baños se debe en gran parte a su excepcional durabilidad. Más allá de sus bellas líneas decorativas, este tipo de mueble posee propiedades específicas que lo protegen de diversas plagas y la putrefacción. ¡Este tocador de baño Java es una pieza verdaderamente única! La combinación de materiales lo convierte en un tocador de baño excepcional. ¿Prefiere muebles de baño de mármol terrazo?\n\nCaracteristicas\nColor (tono):  Beige\nMaterial (precisión):  Madera\nTipo de madera:  Teca\nNombre de la madera:  Teca\nNombre científico de la madera:  Tectona grandis\nTipo de almacenaje:  Cajones\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  145 cm\nAltura:  80 cm\nProfundidad:  50 cm",
     "image": "/uploads/sahara-mueble-de-bano.jpg",
     "images": [
+      "/uploads/sahara-mueble-de-bano.jpg",
       "/uploads/sahara-mueble-de-bano_1.jpg",
       "/uploads/sahara-mueble-de-bano_2.jpg",
       "/uploads/sahara-mueble-de-bano_3.jpg",
@@ -10651,6 +11013,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sahara-mueble-de-bano_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sahara-mueble-de-bano.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sahara-mueble-de-bano_1.jpg",
         "type": "image"
@@ -10686,6 +11052,7 @@ export const PRODUCTS: Product[] = [
     "description": "Este mueble de baño fabricado en teca maciza sin tratar se distingue por su aspecto sencillo y elegante. Se convertirá en la pieza central de su cuarto de baño. Este mueble es ideal para 2 lavabos. Presenta mucho espacio de almacenamiento: dos armarios con dos puertas batientes cada uno y tres estantes inferiores. Características: Material: Teca sin tratar - Color: Natural - Altura: 75 cm - Longitud: 160 cm - Anchura: 50 cm - Peso: 65 kg - Peso máximo soportado: 40-80 kg - Garantía: 2 años - Particularidad: 2 puertas y 3 compartimentos - Montaje: Se entrega montado. Entrega: Entrega con cita previa, de lunes a viernes, en la puerta o en la planta baja de su domicilio. ¿Quiénes somos? Berah Getah es mobiliario con vida. Estarán junto a usted durante muchos años. Fabricados a mano con maderas nobles cuya renovación está garantizada. Se trata de muebles que son auténticos tesoros, tras los que se halla un equipo comprometido de artesanos apasionados y diseñadores inspirados, a los que une la búsqueda de la belleza y la calidad.\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera\nTipo de madera:  Teca\nGriferia incluida:  No\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  160 cm\nAltura:  75 cm\nProfundidad:  50 cm",
     "image": "/uploads/mueble-de-lavabo.jpg",
     "images": [
+      "/uploads/mueble-de-lavabo.jpg",
       "/uploads/mueble-de-lavabo_1.jpg",
       "/uploads/mueble-de-lavabo_2.jpg",
       "/uploads/mueble-de-lavabo_3.jpg",
@@ -10693,6 +11060,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-lavabo_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-lavabo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-lavabo_1.jpg",
         "type": "image"
@@ -10728,6 +11099,7 @@ export const PRODUCTS: Product[] = [
     "description": "Mejora el espacio con este mueble de baño con lavabo Sella de 81 cm con patas, diseñado para mantener el orden sin renunciar al estilo. Incorpora 2 puertas correderas de deslizamiento suave, ideales para facilitar el acceso en baños más ajustados, junto a un estante interior regulable que permite adaptar el almacenamiento para toallas, secador o accesorios. Su diseño de sobre encimera ofrece una superficie práctica para los básicos del día a día. Fabricado en melamina, está pensado para un uso cotidiano cómodo. El acabado en blanco y roble cambrian aporta luminosidad y un toque cálido. Incluye lavabo cerámico redondo negro, que añade un contraste moderno. Mueble de baño con lavabo 80 cm, funcional y versátil para aprovechar mejor el espacio. Medidas: Mueble lavabo: Ancho 81 cm Alto 94 cm Profundo 50 cm Lavabo: Alto 13 Diámetro 42 cm Balda interior: Alto 11.5 cm Profundo 5 cm Altura patas: 8 cm Diámetro del grifo compatible (no incluido): 3.5 cm Nota: no se incluye espejo, grifería, sifón, tuberías, el resto de muebles ni los objetos decorativos de las imágenes. Se trata de mobiliario con kit de montaje, que incluye manual de instrucciones y tornillería.No se garantizan envíos a Menorca, Ibiza y Formentera. Las entregas se realizan a pie de calle\nCaracteristicas\nColor (tono):  Color natural claro, Blanco\nMaterial (precisión):  Madera\nNecesita montaje\nDimensiones\nLargo:  81 cm\nAltura:  94 cm\nProfundidad:  50 cm",
     "image": "/uploads/mueble-de-bano.jpg",
     "images": [
+      "/uploads/mueble-de-bano.jpg",
       "/uploads/mueble-de-bano_1.jpg",
       "/uploads/mueble-de-bano_2.jpg",
       "/uploads/mueble-de-bano_3.jpg",
@@ -10736,6 +11108,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-bano_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-bano.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-bano_1.jpg",
         "type": "image"
@@ -10775,6 +11151,7 @@ export const PRODUCTS: Product[] = [
     "description": "Organiza tu baño con este mueble de baño con lavabo Toscana de 61 cm con patas, diseñado para optimizar el espacio sin renunciar al estilo. Incorpora cajón superior y puerta inferior con guías metálicas de cierre progresivo, facilitando el almacenamiento de productos de higiene y manteniendo el orden diario. Sus patas de ABS de 9 cm aportan estabilidad y permiten una limpieza más cómoda, mientras que los tiradores negros refuerzan su diseño contemporáneo. Fabricado en melamina, destaca por su tapa de gran grosor y molduras decorativas que aportan personalidad. El acabado en blanco soft y roble cambrian se adapta a distintos estilos de baño. Incluye lavabo cerámico redondo en color negro, ideal para aportar un toque moderno. Mueble de baño con lavabo 60 cm, funcional, compacto y práctico para el día a día. Medidas: Mueble de baño: Ancho 61 cm Alto 80 cm Profundo 47 cm Lavabo Cilíndrico: Diámetro 36 cm Alto 13 cm Nota: Grifería, sifón, válvula, elementos decorativos y columnas de baño no incluidos. Se trata de mobiliario con kit de montaje, que incluye manual de instrucciones y tornillería.No se garantizan envíos a Menorca, Ibiza y Formentera. Las entregas se realizan a pie de calle\nCaracteristicas\nColor (tono):  Color natural claro, Blanco\nMaterial (precisión):  Madera\nNecesita montaje\nDimensiones\nLargo:  61 cm\nAltura:  80 cm\nProfundidad:  47 cm",
     "image": "/uploads/mueble-bano-toscana-2-cajones.jpg",
     "images": [
+      "/uploads/mueble-bano-toscana-2-cajones.jpg",
       "/uploads/mueble-bano-toscana-2-cajones_1.jpg",
       "/uploads/mueble-bano-toscana-2-cajones_2.jpg",
       "/uploads/mueble-bano-toscana-2-cajones_3.jpg",
@@ -10783,6 +11160,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-bano-toscana-2-cajones_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-bano-toscana-2-cajones.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-bano-toscana-2-cajones_1.jpg",
         "type": "image"
@@ -10822,6 +11203,7 @@ export const PRODUCTS: Product[] = [
     "description": "Dale espacio a tu baño con este mueble de baño con lavabo Támesis de 100 cm con patas, diseñado para mejorar el orden y la funcionalidad en el día a día. Combina 2 estantes abiertos, ideales para productos de uso frecuente, con 1 cajón con guías metálicas y 1 puerta lateral con estante interior, ofreciendo almacenamiento versátil para accesorios y toallas. Fabricado en melamina, es una opción práctica para el uso cotidiano. El acabado en blanco y roble gold aporta luminosidad y calidez, mientras que las patas negras elevan el mueble, facilitando la limpieza y reforzando su estilo moderno. Incluye lavabo cerámico ovalado negro, que añade contraste y personalidad. Mueble de baño con lavabo 100 cm, funcional, moderno y pensado para maximizar el almacenamiento. Medidas: Mueble de baño total: Ancho 100 cm Alto 95.5 cm Profundo 51 cm Lavabo: Alto 14 cm Ancho 46 cm Profundo 32 cm Interior de los cajones: Ancho 39.5 cm Alto 27.5 cm Profundo 38'5 cm Altura de las patas: 14 cm Diámetro del grifo compatible (no incluido): 3.5 cm Nota: no se incluye espejo, grifería, sifón, tuberías, el resto de muebles ni los objetos decorativos de las imágenes. Se trata de mobiliario con kit de montaje, que incluye manual de instrucciones y tornillería.No se garantizan envíos a Menorca, Ibiza y Formentera. Las entregas se realizan a pie de calle\nCaracteristicas\nColor (tono):  Color natural claro, Blanco\nMaterial (precisión):  Madera\nNecesita montaje\nDimensiones\nLargo:  100 cm\nAltura:  51 cm\nProfundidad:  96 cm",
     "image": "/uploads/mueble-de-bano-con-patas.jpg",
     "images": [
+      "/uploads/mueble-de-bano-con-patas.jpg",
       "/uploads/mueble-de-bano-con-patas_1.jpg",
       "/uploads/mueble-de-bano-con-patas_2.jpg",
       "/uploads/mueble-de-bano-con-patas_3.jpg",
@@ -10829,6 +11211,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-bano-con-patas_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-bano-con-patas.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-bano-con-patas_1.jpg",
         "type": "image"
@@ -10864,6 +11250,7 @@ export const PRODUCTS: Product[] = [
     "description": "Un mueble de baño suspendido es la solución ideal para aprovechar un espacio que habitualmente queda sin uso. Estos estantes están diseñados para almacenar cosméticos o toallas personales. Hermosos colores garantizan una decoración de baño elegante. Garantiza la durabilidad y solidez del mueble, además de conservar su apariencia estética.\nDimensiones de los muebles: Ancho: 35 cm Altura: 136 cm\nProfundidad: 27 cm\nEl mueble de baño encaja bien en muchos baños. Gracias a este práctico mueble, será más fácil crear un baño acogedor y funcional.\nLos muebles de baño están fabricados con paneles laminados, destinados al automontaje: se entregan en la dirección indicada por el cliente acompañados de instrucciones de montaje claras y legibles y de un conjunto de accesorios certificados necesarios para el montaje.\n\nContenido de un paquete de muebles:\n1 x Mueble de baño\n1 x Accesorios necesarios para el montaje\n1 x Instrucciones de automontaje\nVentaja: Las puertas del gabinete pueden abrirse hacia la derecha o hacia la izquierda, dependiendo de cómo estén instaladas las bisagras.\n\nEl producto se entrega por mensajería o transportista en un solo paquete. No montar muebles dañados. Si un artículo llega dañado, comuníquese con nosotros y lo reemplazaremos a nuestro cargo. Reemplazamos artículos individuales, no todo el conjunto de muebles de baño.\n\nAcabado frontal: Panel de MDF Espesor de la placa frontal: 16 mm\nMaterial del cuerpo: tablero laminado\n\nEspesor de la placa de la carrocería: 16 mm\nMangos: 3 colores: dorado, negro, plata. Estos tres colores están disponibles en el paquete. Depende de usted elegir la solución que mejor se adapte a usted.\n\nTambién ofrecemos juegos de baño en diferentes configuraciones. Oferta válida solo para muebles, excluyendo otros electrodomésticos.\n\nPor razones de seguridad, fije firmemente los muebles a la pared.\n\nTenga en cuenta que debido a los diferentes tipos de paredes, el paquete no incluye los tornillos necesarios para montar el gabinete en la pared.\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Paneles y derivados de la madera\nPaís de origen de la madera:  Polonia\nGrosor de la madera:  16 mm\nTipo de almacenaje:  Estantes\nDiseño de tipo:  Para fijar a la pared (suspendido)\nNecesita montaje\nDimensiones\nLargo:  35 cm\nAltura:  136 cm\nProfundidad:  27 cm",
     "image": "/uploads/mueble-de-bano-blanco.jpg",
     "images": [
+      "/uploads/mueble-de-bano-blanco.jpg",
       "/uploads/mueble-de-bano-blanco_1.jpg",
       "/uploads/mueble-de-bano-blanco_2.jpg",
       "/uploads/mueble-de-bano-blanco_3.jpg",
@@ -10875,6 +11262,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-bano-blanco_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-bano-blanco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-bano-blanco_1.jpg",
         "type": "image"
@@ -10926,6 +11317,7 @@ export const PRODUCTS: Product[] = [
     "description": "Columna de almacenamiento suspendida para baño ELEGANCE 139 cm – diseño moderno y funcionalidad en color roble craft dorado\n¿Busca un mueble elegante y práctico para su baño? La columna de almacenamiento suspendida de 139 cm de altura de la colección ELEGANCE en clásico color roble craft dorado es la solución ideal que combina estética con gran capacidad de almacenamiento. Gracias a su elegante frente estriado y su construcción sólida, no solo será un elemento decorativo, sino también funcional en su baño.\n\n¿Por qué elegir esta columna suspendida de la colección ELEGANCE?\nColor roble craft dorado universal – se adapta a cualquier estilo de baño, desde moderno hasta clásico.\nFrentes ovalados estriados de MDF – aportan un carácter único al mueble y una textura sutil que disimula pequeñas manchas.\nAltura práctica de 139 cm – ofrece mucho espacio para cosméticos, productos de limpieza y toallas.\nIncluye dos tipos de tiradores – negros y dorados, que puede adaptar a la decoración de su baño.\nMateriales duraderos y resistentes – cuerpo de tablero laminado de 16 mm, frentes y laterales de MDF de alta calidad, y bordes ABS resistentes a la humedad y daños, lo que prolonga la vida útil del mueble.\nVariantes de color disponibles en la colección ELEGANCE\nOfrecemos este modelo en cuatro atractivas opciones de color, para que pueda adaptar el mueble perfectamente a su interior:\n\nBlanco (clásico y universal)\nNegro (moderno y elegante)\nRoble craft dorado (toque cálido y natural)\nGris mate (minimalista y con estilo)\nEn otras ofertas de la colección ELEGANCE también encontrará muebles para lavabos y otros muebles que le permitirán crear un conjunto de baño coherente y funcional.\n\nDimensiones y datos técnicos\nAncho: 35,5 cm\nAltura: 139 cm\nProfundidad: 31,5 cm\nColores:\nCuerpo: roble craft dorado\nFrente y lateral: roble craft dorado\nInterior del frente: roble craft dorado\nTiradores: negro y dorado (incluidos)\nMateriales:\nCuerpo: tablero laminado de 16 mm\nFrente: MDF de 16 mm, estriado\nLateral: MDF de 16 mm, estriado\nCantos superior e inferior: MDF de 16 mm\nParte trasera: HDF de 3 mm\nBordes: ABS de 0,5 mm\nTiradores: plástico\nLa elección ideal para un baño moderno\nEsta columna suspendida de la colección ELEGANCE es el mueble perfecto para optimizar el espacio en su baño y, al mismo tiempo, embellecer el interior gracias a su diseño minimalista en color roble craft dorado. Los materiales robustos garantizan una larga durabilidad, y la posibilidad de elegir entre diferentes colores y tiradores facilita adaptarlo a sus necesidades y estilo.\n\n¡Pida hoy mismo y transforme su baño con un mueble funcional y elegante de la colección ELEGANCE!\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Paneles y derivados de la madera\nNombre científico de la madera:  Tableros de partículas\nPaís de origen de la madera:  Europa\nTipo de tablero:  Mdf\nTipo de plástico:  ABS\nAcabado:  Laminado\nTipo de almacenaje:  Cajones\nDiseño de tipo:  Para fijar a la pared (suspendido)\nNecesita montaje\nDimensiones\nLargo:  35.5 cm\nAltura:  139 cm\nProfundidad:  31.5 cm\n\n<!--COLORS_JSON_START-->[\"Noir\",\"Blanc\",\"Beige\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir, Blanc, Beige]",
     "image": "/uploads/armario-alto-de-bano-31-5-35-5-139-cm.jpg",
     "images": [
+      "/uploads/armario-alto-de-bano-31-5-35-5-139-cm.jpg",
       "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_1.jpg",
       "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_2.jpg",
       "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_3.jpg",
@@ -10935,10 +11327,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_7.jpg",
       "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_8.jpg",
       "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_9.jpg",
-      "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_10.jpg",
-      "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_11.jpg"
+      "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-alto-de-bano-31-5-35-5-139-cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_1.jpg",
         "type": "image"
@@ -10978,10 +11373,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_10.jpg",
         "type": "image"
-      },
-      {
-        "url": "/uploads/armario-alto-de-bano-31-5-35-5-139-cm_11.jpg",
-        "type": "image"
       }
     ],
     "tag": "Oferta ",
@@ -10998,6 +11389,7 @@ export const PRODUCTS: Product[] = [
     "description": "Mueble de baño VENA 80 cm blanco con frente estriado\nRenueva tu baño con este elegante mueble colgante de 80 cm. Fabricado por un fabricante polaco con materiales de alta calidad, combina durabilidad y estilo moderno. Ideal para estilos escandinavo, minimalista e industrial.\n\nVentajas de la colección VENA\n✨ Diseño moderno y minimalista que encaja en cualquier baño\n📦 Cajones espaciosos para mantener todo organizado\n💧 Resistente a la humedad y al uso diario\n🛠️ Montaje fácil con instrucciones incluidas\n⚡ Entrega rápida\nCaracterísticas técnicas\nDimensiones: 80 x 57 x 46 cm\nMaterial: Frentes MDF 16 mm, cuerpo laminado 16 mm, fondo de cajones HDF 3 mm, bordes ABS 0,5 mm\nColores: Blanco mate con interior gris claro\nAsas: Integradas en el frente\nMontaje: Autoinstalable con instrucciones\nInformación adicional\n🛡️ Garantía: 24 meses\n🎨 Colores disponibles: blanco, negro, roble dorado, cashmere\n🔧 Fabricante polaco de muebles de baño\nOpciones de tamaño\n✅ Mueble bajo lavabo 60 cm\n✅ Mueble bajo lavabo 80 cm\n✅ Columna alta para almacenamiento\n✅ Estante lateral 20 cm\nVENA: comodidad y estilo en tu baño\nEste mueble combina elegancia, practicidad y durabilidad. Mantiene el baño ordenado y cómodo, mientras que sus asas integradas aportan un toque moderno y funcionalidad diaria. Perfecto para todo tipo de decoraciones modernas.\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Paneles y derivados de la madera\nNombre científico de la madera:  Tableros de partículas\nPaís de origen de la madera:  Europa\nTipo de tablero:  Mdf\nTipo de plástico:  ABS\nAcabado:  Laminado\nTipo de almacenaje:  Cajones\nDiseño de tipo:  Para fijar a la pared (suspendido)\nNecesita montaje\nDimensiones\nLargo:  80 cm\nAltura:  57 cm\nProfundidad:  46 cm",
     "image": "/uploads/mueble-de-bano-vena.jpg",
     "images": [
+      "/uploads/mueble-de-bano-vena.jpg",
       "/uploads/mueble-de-bano-vena_1.jpg",
       "/uploads/mueble-de-bano-vena_2.jpg",
       "/uploads/mueble-de-bano-vena_3.jpg",
@@ -11009,6 +11401,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-bano-vena_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-bano-vena.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-bano-vena_1.jpg",
         "type": "image"
@@ -11060,6 +11456,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Apuesta por los acabados naturales de la colección PENEBEL!\n¿Quieres crear una atmósfera agradable y relajante en el cuarto de baño? ¡Sucumbe al encanto del mueble de estilo balinés PENEBEL! Ha sido fabricado con madera de acacia, un material noble que combina sin problemas con todo tipo de interiores. Además, este mueble tiene una gran capacidad de almacenamiento y dos estantes tan prácticos como decorativos que le aportarán un toque de personalidad 100% a tu cuarto de baño.\n\nCaracteristicas\nColor (tono):  Color natural oscuro\nMaterial (precisión):  Acacia\nGriferia incluida:  No\n2 puertas\nPuerta batiente\nTipo de almacenaje:  1 compartimento\nNecesita montaje\nDimensiones\nLargo:  130 cm\nAltura:  40 cm\nProfundidad:  50 cm\nDetalles\nAcacia: Apreciado por su durabilidad y tonos dorados, la acacia combina estética y resistencia, siendo una opción ecológica sin tratamiento intensivo.",
     "image": "/uploads/penebel.jpg",
     "images": [
+      "/uploads/penebel.jpg",
       "/uploads/penebel_1.jpg",
       "/uploads/penebel_2.jpg",
       "/uploads/penebel_3.jpg",
@@ -11068,6 +11465,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/penebel_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/penebel.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/penebel_1.jpg",
         "type": "image"
@@ -11107,6 +11508,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descripción\n- Acabado de alto brillo\n- Sistema de cierre suave\n- Para montaje en pared\n- 2 cajones\n- Incl. recorte para sifón\n- Material de fijación incluido\n- Lavabo, grifo, desagüe y sifón no están incluidos en el suministro\n\n- Este tocador no sólo impresiona por su moderno diseño, sino que también ofrece mucho espacio de almacenamiento útil para el secador de pelo, el cepillo de dientes o la toalla. No ocupa mucho espacio y también dispone de un hueco sifónico.\n- Gracias al práctico sistema de cierre suave, los cajones se cierran sin problemas. Con este mueble de lavabo, aprovechará de forma óptima el espacio debajo del lavabo y creará espacio de almacenamiento adicional.\n\nDimensiones aprox. (AlxAnxPr):\nTotal: 54x89x46 cm\nAncho del tirador: 25,5 cm\nAltura del cajón: 24 cm\nDimensiones interiores del cajón: 8x81x34cm\n\nMaterial:\nMadera contrachapada de 16 mm, acabado lacado de alto brillo\n\n¿A usted también le cuesta levantarse por las mañanas y empezar el día con motivación? Entonces, ¿qué tal un nuevo cambio en tu cuarto de baño? Con este moderno tocador, no podrás esperar a entrar en el baño y refrescarte por las mañanas.\n\nYa sea el secador, el cepillo de dientes, la toalla, el champú o el jabón: el mueble bajo lavabo ofrece mucho espacio de almacenamiento para las cosas que hay que encontrar rápidamente por la mañana. El diseño fresco y moderno de este mueble tiene un aura positiva, por lo que es ideal para el clima ambiental de su cuarto de baño.\n\n<!--COLORS_JSON_START-->[\"Noir\",\"Blanc\",\"Gris\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir, Blanc, Gris]",
     "image": "/uploads/lavabo-premium-mcw-d16.jpg",
     "images": [
+      "/uploads/lavabo-premium-mcw-d16.jpg",
       "/uploads/lavabo-premium-mcw-d16_1.jpg",
       "/uploads/lavabo-premium-mcw-d16_2.jpg",
       "/uploads/lavabo-premium-mcw-d16_3.jpg",
@@ -11118,6 +11520,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/lavabo-premium-mcw-d16_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/lavabo-premium-mcw-d16.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/lavabo-premium-mcw-d16_1.jpg",
         "type": "image"
@@ -11169,6 +11575,7 @@ export const PRODUCTS: Product[] = [
     "description": "El armario para fregadero Anita es una pieza bellamente elaborada, con una construcción de pino macizo que desprende calidez y durabilidad. Cuenta con dos elegantes puertas, adornadas con pomos de madera auténtica que añaden un toque de encanto rústico. Este mueble es perfecto para almacenar y organizar sus artículos de baño, a la vez que realza el atractivo estético de su espacio. Disponible en distintos colores.\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Madera\nCon lavabo\nGriferia incluida:  No\nDiseño de tipo:  Sobre suelo\nDimensiones\nLargo:  100 cm\nAltura:  85 cm\nProfundidad:  60 cm",
     "image": "/uploads/anita-armario.jpg",
     "images": [
+      "/uploads/anita-armario.jpg",
       "/uploads/anita-armario_1.jpg",
       "/uploads/anita-armario_2.jpg",
       "/uploads/anita-armario_3.jpg",
@@ -11177,6 +11584,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/anita-armario_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/anita-armario.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/anita-armario_1.jpg",
         "type": "image"
@@ -11216,6 +11627,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Aporta un toque elegante a tu cuarto de baño con este práctico mueble de baño KELIZA!\n¿Quieres darle un toque especial a tu baño? El mueble KELIZA es justo lo que necesitas. Combina belleza, elegancia y practicidad, gracias a su sistema de apertura push and pull y sus amplios cajones. Su diseño se adapta fácilmente a cualquier baño. Además, su acabado estriado y detalles dorados aportarán un aire de lujo a tu espacio de relax. ¡Con KELIZA, cada día en tu baño será una experiencia de confort y estilo!\n\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Mdf\nAcabado:  Acanalado\nGriferia incluida:  No\nTipo de almacenaje:  4 cajones\nCajón deslizante push to open\nGama:  Good for Planet, Espacio pro\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nDimensiones\nLargo:  120 cm\nAltura:  54 cm\nProfundidad:  47 cm",
     "image": "/uploads/keliza.jpg",
     "images": [
+      "/uploads/keliza.jpg",
       "/uploads/keliza_1.jpg",
       "/uploads/keliza_2.jpg",
       "/uploads/keliza_3.jpg",
@@ -11223,6 +11635,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/keliza_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/keliza.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/keliza_1.jpg",
         "type": "image"
@@ -11258,12 +11674,17 @@ export const PRODUCTS: Product[] = [
     "description": "MADELA... ¡Un mueble de baño práctico y con estilo!\n¿Buscas un baño moderno y funcional? ¡Elige el mueble de baño MADELA! Su moderno frontal bicolor estriado y sus dos cajones de cierre suave lo convierten en un imprescindible del diseño industrial. Práctico y elegante, le da un toque industrial a tu interior.\n\nCaracteristicas\nSifón ahorrador de espacio:  Sí\nColor (tono):  Color natural claro, Negro\nMaterial (precisión):  Mdf\nAcabado:  Acanalado\nGriferia incluida:  No\nNúmero de muebles:  1\nTipo de almacenaje:  4 cajones\nCajón deslizante soft close\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Bosques gestionados de forma sostenible, Fabricado en Europa\nNecesita montaje\nEquipamiento incluido:  Pomo\nDimensiones\nLargo:  120 cm\nAltura:  57 cm\nProfundidad:  46 cm",
     "image": "/uploads/madela.jpg",
     "images": [
+      "/uploads/madela.jpg",
       "/uploads/madela_1.jpg",
       "/uploads/madela_2.jpg",
       "/uploads/madela_3.jpg",
       "/uploads/madela_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/madela.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/madela_1.jpg",
         "type": "image"
@@ -11295,6 +11716,7 @@ export const PRODUCTS: Product[] = [
     "description": "Un mueble de baño suspendido es la solución ideal para aprovechar el espacio que normalmente no se utiliza. Estos estantes se utilizan para guardar cosméticos o toallas. Sus colores vivos garantizan una decoración elegante. Además, garantizan la durabilidad y estabilidad del mueble, manteniendo su estética.\n\nEl mueble de baño se integra a la perfección en muchos baños. Este práctico mueble facilita la creación de un baño acogedor y funcional. Este mueble de estilo moderno satisfará las expectativas de quienes aprecian la simplicidad y la elegancia.\n\nEl mueble de baño está fabricado con paneles laminados. Requiere montaje: La entrega se realizará en la dirección indicada por el cliente, junto con instrucciones de montaje claras y legibles y un juego de accesorios certificados necesarios para el montaje.\n\nContenido de un mueble:\n\n1 mueble\n1 accesorio necesario para el montaje\n1 manual de montaje\nEl mueble tiene dos cajones. El envío se realiza por mensajería o transportista en dos paquetes.\n\nPor razones de seguridad, fije el armario a la pared lo más firmemente posible.\n\nSuperficie frontal: Tablero MDF,\n\nGrosor del panel frontal: 16 mm,\n\nMaterial del cuerpo: Tablero laminado,\n\nGrosor del panel del cuerpo: 16 mm.\n\nTiradores: Plástico dorado o negro. Ambos colores de tiradores están incluidos en el paquete. Los elementos frontales son de MDF.\n\nDimensiones del armario: Ancho: 120,4 cm, Alto: 51,7 cm, Fondo: 41,5 cm\n\nTambién ofrecemos juegos de baño en diferentes configuraciones.\n\nNo monte muebles dañados. Si un artículo llega dañado, por favor, contáctenos. Lo reemplazaremos por uno nuevo.\n\nLos artículos dañados durante el montaje no son objeto de reclamación.\n\n¡ATENCIÓN! Debido a los diferentes tipos de pared, los accesorios de montaje NO están incluidos.\nEl fregadero no está incluido en el set: debe adquirirse por separado, según sus necesidades.\n\nCaracteristicas\nColor (tono):  Naranja\nMaterial (precisión):  Paneles y derivados de la madera\nPaís de origen de la madera:  Polonia\nGrosor de la madera:  16 mm\nTipo de almacenaje:  Cajones\nDiseño de tipo:  Para fijar a la pared (suspendido)\nNecesita montaje\nDimensiones\nLargo:  120 cm\nAltura:  51.7 cm\nProfundidad:  41.5 cm",
     "image": "/uploads/mueble-de-bano-roble-craft-dorado.jpg",
     "images": [
+      "/uploads/mueble-de-bano-roble-craft-dorado.jpg",
       "/uploads/mueble-de-bano-roble-craft-dorado_1.jpg",
       "/uploads/mueble-de-bano-roble-craft-dorado_2.jpg",
       "/uploads/mueble-de-bano-roble-craft-dorado_3.jpg",
@@ -11303,6 +11725,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-de-bano-roble-craft-dorado_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-de-bano-roble-craft-dorado.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-de-bano-roble-craft-dorado_1.jpg",
         "type": "image"
@@ -11342,6 +11768,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Enamórate de nuestros muebles JIMENA, estéticos y funcionales, que amueblarán tu baño con distinción!\nEl práctico y moderno mueble de baño JIMENA te facilitará la vida y aportará un indiscutible toque de distinción a tu cuarto de baño.\n\nOpcional: con o sin espejo.\n\nCaracterísticas del conjunto\n\nMueble\n\nUn mueble bajo de 2 cajones y 2 puertas\nColor: roble\nMaterial: aglomerado\nPuerta con cierre Soft Close\nCuenta con un corte especialmente diseñado para el sifón\nMedidas del mueble: Ancho 150 x Prof. 46 x Alt. 50 cm\nLavabos\n\n2 lavabos rectangulares\nColor: blanco\nMaterial: cerámica\nMedidas: Ancho 40.5 x Prof. 40,5 x Alt. 15 cm\nPeso: 10 kg\nEspejos (opcionales):\n\n2 espejos\nMedidas del espejo: Ancho 60 x 50 cm\nGrifería y sifón no incluidos.\n\nLa marca SHOWER&DESIGN, especialista en cuartos de baño,, pone a tu disposición productos de diseño moderno de alta gama al mejor precio. SHOWER&DESIGN se distingue por su búsqueda constante de la satisfacción de sus clientes y por la calidad y la estética de sus productos, que son diseñados para adecuarse a las nuevas tendencias del mercado.\n\nGarantía de las piezas: 2 años para la estructura.\n\nViene con instrucciones de instalación detalladas.\nEl plazo de entrega de este producto se te indicará en tu cesta de la compra.",
     "image": "/uploads/jimena.jpg",
     "images": [
+      "/uploads/jimena.jpg",
       "/uploads/jimena_1.jpg",
       "/uploads/jimena_2.jpg",
       "/uploads/jimena_3.jpg",
@@ -11349,6 +11776,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/jimena_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/jimena.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/jimena_1.jpg",
         "type": "image"
@@ -11384,12 +11815,17 @@ export const PRODUCTS: Product[] = [
     "description": "Lo que lo hace único\nMadera de teca muy resistente\nNicho decorativo y práctico\nEntregado completamente montado\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Teca\nGriferia incluida:  No\nNúmero de muebles:  1\nTipo de almacenaje:  1 cajón, 1, 1 compartimento\nCajón deslizante\nDiseño de tipo:  Sobre suelo\nEntregado montado\nDimensiones\nLargo:  90 cm\nAltura:  75 cm\nProfundidad:  50 cm",
     "image": "/uploads/ketapang.jpg",
     "images": [
+      "/uploads/ketapang.jpg",
       "/uploads/ketapang_1.jpg",
       "/uploads/ketapang_2.jpg",
       "/uploads/ketapang_3.jpg",
       "/uploads/ketapang_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/ketapang.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/ketapang_1.jpg",
         "type": "image"
@@ -11421,6 +11857,7 @@ export const PRODUCTS: Product[] = [
     "description": "Tenemos el placer de presentarles una colección única de muebles de baño modernos que combina un diseño elegante, funcionalidad y alta calidad de fabricación. Se trata de una propuesta creada para aquellas personas que buscan soluciones elegantes y prácticas para el baño contemporáneo.\n\nLos muebles han sido diseñados para integrarse armoniosamente en las tendencias actuales de interiorismo. La sutil y muy moderna gama de colores en tonos cachemira aporta ligereza, elegancia y un carácter atemporal a la decoración. El tono delicado y cálido combina perfectamente con azulejos claros, madera natural y accesorios dorados, creando un espacio coherente y acogedor.\n\nLos cuerpos de los armarios están fabricados con tableros laminados de alta calidad de 16 mm de grosor, lo que garantiza su durabilidad y resistencia al uso diario. Los frentes están fabricados con tableros MDF sólidos de 18 mm de grosor, lo que garantiza su estabilidad y un acabado estético del más alto nivel. El conjunto se completa con elegantes tiradores metálicos en color dorado, que resaltan el carácter lujoso de los muebles y aportan un sutil toque decorativo.\n\nLa colección ha sido diseñada para ofrecer la máxima comodidad de uso. Todas las puertas y cajones están equipados con un sistema de cierre silencioso, gracias al cual se cierran de forma suave y silenciosa, lo que aumenta la comodidad de uso diario de los muebles. Una solución práctica adicional es el recorte especial para el sifón en el cajón superior, que permite un uso óptimo del espacio sin perder funcionalidad.\n\nLa característica más distintiva de esta serie es su forma moderna y de diseño, que llama la atención y da al cuarto de baño un carácter único. Los muebles tienen llamativos frentes con ranuras verticales que crean un sutil juego de luces y sombras, añadiendo profundidad y elegancia a la estructura. Otro elemento característico son los laterales redondeados de los armarios, cubiertos con el mismo patrón ranurado, lo que hace que la estructura del mueble tenga un aspecto muy armonioso y moderno desde todos los ángulos.\n\nEs precisamente la combinación de frentes ranurados, laterales redondeados y elegantes tiradores dorados lo que hace que estos muebles destaquen entre las colecciones clásicas de baño, aportando al interior un toque de lujo y ligereza de diseño.\n\nLa colección es la elección perfecta para quienes desean crear un cuarto de baño moderno, elegante y funcional, en el que el diseño va de la mano con la comodidad del uso diario.\n\nColores del armario:\nColores del cuerpo: Cachemira\n\nColor de los frentes: cachemira\n\nColor de la encimera: cachemira\n\n__________________________\n\nDimensiones totales:\n➡️ Ancho: 120 cm\n\n⬆️ Altura: 50 cm\n\n↗️ Profundidad: 41,5 cm\n\n______________________________________\n\nFabricación y funcionalidad:\n✅ Frentes fabricados con tablero MDF de alta calidad de 18 mm\n\n✅ Cuerpo fabricado con tablero laminado de alta calidad de 16 mm\n\n✅ Diseño moderno\n\n✅ Tiradores metálicos en color dorado\n\n✅ Función de cierre silencioso\n\n✅ Colgadores ajustables \n\n✅ Cajones con extracción total\n\n✅ kit de montaje incluido\n\n✅ Muebles colgantes para montar uno mismo\n\n___________________________________________\n\nForma moderna y de diseño\nUn elemento característico son los laterales redondeados de los armarios, cubiertos con un patrón acanalado, gracias al cual el mueble presenta un aspecto muy armonioso y moderno desde todos los ángulos.\n\n___________________________________________\n\nTirador metálico dorado\nFabricado con material de alta calidad, resalta los estrías verticales y añade aún más estilo y carácter a los armarios. \n\nArmonioso y moderno desde todos los ángulos.\n\n___________________________________________\n\nMateriales de alta calidad\nLa colección no solo combina un diseño atemporal y funcionalidad, sino que también garantiza una fabricación sólida. El uso de materiales duraderos garantiza la resistencia a la humedad y al uso diario, lo que es fundamental en las exigentes condiciones del cuarto de baño.\n\n___________________________________________\n\nCalidad polaca en la que puedes confiar\nNuestros muebles se fabrican en Polonia, en una fábrica de confianza para la que la calidad, la precisión y la atención artesanal a cada detalle son lo más importante. Es una elección perfecta para quienes valoran la solidez, la durabilidad y el apoyo a la producción local.\n\n___________________________________________\n\nEn nuestra oferta encontrará más productos y conjuntos listos para usar de esta serie.\n\n¡Le invitamos a comprar\n\n\n\n\nCaracteristicas\nColor (tono):  Beige\nMaterial (precisión):  Paneles y derivados de la madera\nAcabado:  Mate\nGriferia incluida:  No\nDiseño de tipo:  Para fijar a la pared (suspendido)\nNecesita montaje\nDimensiones\nLargo:  120 cm\nAltura:  50 cm\nProfundidad:  41.5 cm",
     "image": "/uploads/armario-de-cachemira.jpg",
     "images": [
+      "/uploads/armario-de-cachemira.jpg",
       "/uploads/armario-de-cachemira_1.jpg",
       "/uploads/armario-de-cachemira_2.jpg",
       "/uploads/armario-de-cachemira_3.jpg",
@@ -11433,6 +11870,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/armario-de-cachemira_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/armario-de-cachemira.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/armario-de-cachemira_1.jpg",
         "type": "image"
@@ -11488,6 +11929,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Déjate conquistar por la elegancia del mueble de baño ZARENO!\nEmbellece tu baño con el mueble de lavabo simple ZARENO, una creación diseñada para ofrecerte almacenamiento mientras proporciona comodidad de uso diario.\n\nEstá fabricado en roble macizo, reconocido por su solidez y durabilidad. Su acabado natural claro realza las vetas de la madera y facilita su integración en cualquier baño. Diseñado como un mueble con patas, se instala fácilmente y es ideal para amueblar la habitación sin excesivas restricciones técnicas. Sus tiradores de metal dorado aportan un contraste medido con la madera, asegurando un agarre cómodo.\n\nPensado para simplificar los gestos cotidianos, el ZARENO dispone de 3 cajones equipados con sistema de cierre suave. La apertura y el cierre se realizan sin ruido ni golpes, una ventaja apreciable tanto en las rutinas matutinas como al final del día. En el interior, un estante ajustable, que puede colocarse en tres alturas diferentes, ofrece una modularidad práctica para almacenar productos de baño, ropa o accesorios.\n\nSegún tus necesidades, este mueble también puede adquirirse con un lavabo, para formar un conjunto listo para usar.\n\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Roble\nGrosor de la madera:  20 mm\nAcabado:  Liso\nGriferia incluida:  No\nTipo de almacenaje:  3 cajones, 1\nCajón deslizante soft close\nDiseño de tipo:  Sobre suelo\nEntregado montado (excepto patas y/o asas)\nTiradores de metal dorado\nDimensiones\nLargo:  93 cm\nAltura:  80.5 cm\nProfundidad:  50 cm\nDetalles\nRoble: El roble, madera densa y duradera, es famoso por su solidez y resistencia a cambios de temperatura. Su vida útil es de varios siglos",
     "image": "/uploads/zareno.jpg",
     "images": [
+      "/uploads/zareno.jpg",
       "/uploads/zareno_1.jpg",
       "/uploads/zareno_2.jpg",
       "/uploads/zareno_3.jpg",
@@ -11496,6 +11938,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/zareno_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/zareno.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/zareno_1.jpg",
         "type": "image"
@@ -11535,6 +11981,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Con el mueble CAVIZO, opta por un baño natural y acogedor!\nAporta un toque funcional y cálido a tu baño con el mueble de baño CAVIZO, diseñado para acompañar los gestos cotidianos con simplicidad. Su color natural realza la madera y lo hace fácil de integrar en cualquier decoración interior. \n\nFabricado en roble macizo, su estructura es densa y resistente, adaptada a un uso frecuente. Este material asegura una buena estabilidad del mueble y limita las deformaciones con el paso del tiempo. También permite una mayor longevidad: el mueble conserva sus cualidades funcionales a lo largo de los años y puede mantenerse o renovarse más fácilmente si es necesario. \n\nEl cajón integrado aloja los accesorios que deseas mantener guardados, mientras que el nicho decorativo queda accesible para los objetos de uso regular. Esta organización permite un orden óptimo sin multiplicar los compartimentos. \n\n\nEl modelo CAVIZO se ofrece con diferentes lavabos opcionales, dando la libertad de componer un conjunto adaptado a tus necesidades y gustos.\n\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Madera maciza\nGrosor de la madera:  20 mm\nAcabado:  Liso\nGriferia incluida:  No\nTipo de almacenaje:  2 cajones, 1 compartimento\nCajón deslizante\nDiseño de tipo:  Sobre suelo\nEntregado montado\nDimensiones\nLargo:  110 cm\nAltura:  78 cm\nProfundidad:  50 cm\nDetalles\nMadera maciza: Sólido y resistente, el mueble de madera maciza tiene un encanto único por las propiedades y matices de cada árbol.\n\nEntregado montado: Los muebles entregados montados son una garantía de calidad y solidez.",
     "image": "/uploads/cavizo.jpg",
     "images": [
+      "/uploads/cavizo.jpg",
       "/uploads/cavizo_1.jpg",
       "/uploads/cavizo_2.jpg",
       "/uploads/cavizo_3.jpg",
@@ -11544,6 +11991,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/cavizo_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/cavizo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/cavizo_1.jpg",
         "type": "image"
@@ -11587,6 +12038,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Embellece tu baño con el mueble RINAREL!\n¿Deseas añadir un toque de originalidad a tu baño? ¡Opta por el mueble RINAREL! Su frente ondulado único y sus tiradores dorados aportan un toque refinado, mientras que sus cajones con cierre soft close ofrecen un almacenaje práctico y silencioso. Se integrará perfectamente en cualquier interior, para añadir una dosis de carácter y audacia.\n\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\nCaracteristicas\nColor (tono):  Beige\nMaterial (precisión):  Mdf\nAcabado:  Texturizado\nGriferia incluida:  No\nTipo de almacenaje:  2 cajones\nCajón deslizante soft close\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nDimensiones\nLargo:  80 cm\nAltura:  60 cm\nProfundidad:  46 cm\nDetalles\nFabricado en Europa",
     "image": "/uploads/rinarel.jpg",
     "images": [
+      "/uploads/rinarel.jpg",
       "/uploads/rinarel_1.jpg",
       "/uploads/rinarel_2.jpg",
       "/uploads/rinarel_3.jpg",
@@ -11594,6 +12046,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/rinarel_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/rinarel.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/rinarel_1.jpg",
         "type": "image"
@@ -11629,12 +12085,17 @@ export const PRODUCTS: Product[] = [
     "description": "¡Optimiza tu baño con el mueble suspendido FILOR!\nOrganiza tu cuarto de baño con el mueble suspendido FILOR, diseñado para ofrecer un almacenamiento práctico a la vez que aporta un acabado cuidado a tu interior. Su diseño suspendido libera espacio en el suelo y facilita la limpieza alrededor del mueble, dando una impresión de espacio más despejado.\n\nFabricado en Europa, está realizado en MDF que es adecuado para un uso regular en el baño. Su panel frontal combina superficies lisas y estriadas que crean un relieve discreto, mientras que los ángulos redondeados suavizan el conjunto. Para conservar de forma duradera el aspecto y la calidad del producto, limpia la superficie de MDF con un paño suave y seco, evitando cualquier humedad excesiva.\n\nEl mueble de baño FILOR está equipado con dos cajones con sistema soft close, que aseguran un cierre suave y silencioso. Este sistema mejora la comodidad de uso diario y permite limitar los golpes para preservar la calidad de los acabados con el tiempo.\n\nPuedes completar el mueble con un lavabo, un espejo o grifería según tus necesidades y tu proyecto de decoración.\n\nCaracteristicas\nSifón ahorrador de espacio:  Sí\nColor (tono):  Color natural claro\nMaterial (precisión):  Mdf\nAcabado:  Acanalado, Liso\nGriferia incluida:  No\nTipo de almacenaje:  2 cajones\nCajón deslizante soft close\nEquipamiento incluido:  Pomo\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nDimensiones\nLargo:  80 cm\nAltura:  57 cm\nProfundidad:  46 cm",
     "image": "/uploads/filor.jpg",
     "images": [
+      "/uploads/filor.jpg",
       "/uploads/filor_1.jpg",
       "/uploads/filor_2.jpg",
       "/uploads/filor_3.jpg",
       "/uploads/filor_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/filor.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/filor_1.jpg",
         "type": "image"
@@ -11666,6 +12127,7 @@ export const PRODUCTS: Product[] = [
     "description": "Rodan Mueble bajo lavabo Marrón 140 cm – con Soft-Close, ¡con frente estriado! Los tiradores clásicos facilitan la apertura. El mecanismo Soft-Close de cierre suave garantiza un día a día tranquilo, sin golpes molestos. El frente estriado aporta un aspecto elegante y texturizado. El acabado de alta calidad es fácil de limpiar y está pensado para el uso diario. Ideal para baños familiares y de invitados con mayores necesidades de almacenamiento. Material: MDF, tablero laminado, ABS, plástico. Medidas (An/Al/Pr): 140/57/46 cm. Color: Marrón. Contenido del envío: 1 x mueble bajo lavabo 140cm, 1 x encimera, 1 x estante.\n\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Paneles y derivados de la madera\nTipo de tablero:  Mdf\nAcabado:  Acanalado\nGriferia incluida:  No\nTipo de almacenaje:  Cajones\nDiseño de tipo:  Para fijar a la pared (suspendido)\nGama:  Good for Planet\nCriterios de ecorresponsabilidad:  Fabricado en Europa\nNecesita montaje\nDimensiones\nLargo:  140 cm\nAltura:  57 cm\nProfundidad:  46 cm",
     "image": "/uploads/mueble-bajo-lavabo-140cm.jpg",
     "images": [
+      "/uploads/mueble-bajo-lavabo-140cm.jpg",
       "/uploads/mueble-bajo-lavabo-140cm_1.jpg",
       "/uploads/mueble-bajo-lavabo-140cm_2.jpg",
       "/uploads/mueble-bajo-lavabo-140cm_3.jpg",
@@ -11678,6 +12140,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mueble-bajo-lavabo-140cm_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mueble-bajo-lavabo-140cm.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mueble-bajo-lavabo-140cm_1.jpg",
         "type": "image"
@@ -11733,6 +12199,7 @@ export const PRODUCTS: Product[] = [
     "description": "Futbolín blanco con estructura reforzada – Campnou\n\nFutbolín moderno con un elegante acabado en blanco y estructura reforzada de MDF. El modelo Campnou ofrece estabilidad, comodidad de juego y una excelente durabilidad gracias a sus refuerzos metálicos y resistentes barras de 10 mm de diámetro.\n\nPerfecto para uso familiar, salas de juegos y espacios de ocio contemporáneos.\n\nCaracterísticas principales\nDimensiones: 140 × 75 × H 81 cm\nSuperficie de juego: 68 × 117 cm\nColor: Blanco\nEstructura reforzada de MDF\nPeso: 50 kg\nBarras de 10 mm de diámetro\nPatas ajustables en altura\nRefuerzos metálicos integrados\n\nAccesorios incluidos\n2 pelotas de futbolín\n\nCaracteristicas\nColor (tono):  Blanco\nMaterial (precisión):  Paneles y derivados de la madera\nNecesita montaje\nDimensiones\nLargo:  140 cm\nAltura:  90 cm\nProfundidad:  73.5 cm",
     "image": "/uploads/futbolin-blanco.jpg",
     "images": [
+      "/uploads/futbolin-blanco.jpg",
       "/uploads/futbolin-blanco_1.jpg",
       "/uploads/futbolin-blanco_2.jpg",
       "/uploads/futbolin-blanco_3.jpg",
@@ -11740,6 +12207,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/futbolin-blanco_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/futbolin-blanco.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/futbolin-blanco_1.jpg",
         "type": "image"
@@ -11775,6 +12246,7 @@ export const PRODUCTS: Product[] = [
     "description": "Futbolín de madera Sao Paulo\n\n¡No necesitas arruinarte para vivir tu pasion! Descubre Sao Paulo, futbolín para momentos amistosos. Mangos largos para un mejor agarre, una superficie de juego que permite un mejor control de la pelota y un acabado de madera clara para un estilo bistro. Comience sin más demora, desarrolle sus tácticas y mejore sus bolos. ¡La idea de regalo para toda la familia!\n\nEl + producto:\n\nIdeal para hacer un regalo a tus seres queridos.\nAspecto y estilo de bistro\nBarras de acero inoxidable para mayor resistencia y durabilidad.\n\nCaracterísticas tecnicas:\n\nColor: madera clara\nViene con 4 bolas de plástico.\nEstructura: Paneles de MDF con revestimiento de PVC\nBarras telescopicas de acero inoxidable\nAcabado de los jugadores: plástico ABS\nAcabado mate: MDF con película de PVC\nDimensiones:\n\nTotal: 146,7 x 73,6 x 86,3 cm\nAltura de los jugadores: 7 cm\nDiámetro de la barra: 1,58 cm\nDimension de la superficie de juego: 115,8 x 67,6 cm\nMantenimiento:\n\nDesempolvado regular.\n\nAcondicionamiento:\n\nProducto entregado en caja. Fácil montaje, instrucciones incluidas.\n\n1 paquete de 152,4 x 76,2 x 17,8 cm / 52 kg\n\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Paneles y derivados de la madera\nDimensiones\nLargo:  146 cm\nAltura:  86 cm\nProfundidad:  73 cm",
     "image": "/uploads/futbolin-de-madera.jpg",
     "images": [
+      "/uploads/futbolin-de-madera.jpg",
       "/uploads/futbolin-de-madera_1.jpg",
       "/uploads/futbolin-de-madera_2.jpg",
       "/uploads/futbolin-de-madera_3.jpg",
@@ -11785,6 +12257,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/futbolin-de-madera_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/futbolin-de-madera.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/futbolin-de-madera_1.jpg",
         "type": "image"
@@ -11832,6 +12308,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Trae el ambiente de los bistrós directamente a tu sala de estar instalando la auténtica mesa de futbolín vintage HENRY que funciona con monedas, con la que soñabas de niño!\n¡Disfruta de unos momentos de diversión inolvidables gracias al futbolín HENRY!\n\nCaracteristicas\nColor (tono):  Color natural claro\nMaterial (precisión):  Mdf\nAcabado:  Liso\nGama:  Espacio pro\nCarga máxima soportada:  50 kg\nNecesita montaje\nEquipamiento incluido:  Bola de corcho\nEstructura de la mesa:  MDF y PVC\nTablero recubierto de una película de melamina\nMaterial de los jugadores:  aluminio\nMaterial de las barras:  acero\nMaterial de las puertas:  hierro\nMaterial des tiradores:  PVC\nMonedero integrado compatible con monedas de 0,50 ct (puede desactivarse)\n4 bolas de corcho\nAltura ajustable\nDimensiones\nLargo:  153 cm\nAltura:  96 cm\nProfundidad:  77.6 cm\nLongitud de la superficie de juego:  129.5 cm\nAnchura de la superficie de juego:  69.2 cm\nDiámetro de las barras:  15.8 mm\nDetalles\nMdf: Compuesto de fibras de madera comprimidas, el MDF es estético y resistente, perfecto para interiores.",
     "image": "/uploads/futbolin-henry.jpg",
     "images": [
+      "/uploads/futbolin-henry.jpg",
       "/uploads/futbolin-henry_1.jpg",
       "/uploads/futbolin-henry_2.jpg",
       "/uploads/futbolin-henry_3.jpg",
@@ -11841,10 +12318,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/futbolin-henry_7.jpg",
       "/uploads/futbolin-henry_8.jpg",
       "/uploads/futbolin-henry_9.jpg",
-      "/uploads/futbolin-henry_10.jpg",
-      "/uploads/futbolin-henry_11.jpg"
+      "/uploads/futbolin-henry_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/futbolin-henry.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/futbolin-henry_1.jpg",
         "type": "image"
@@ -11884,10 +12364,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/futbolin-henry_10.jpg",
         "type": "image"
-      },
-      {
-        "url": "/uploads/futbolin-henry_11.jpg",
-        "type": "image"
       }
     ],
     "tag": "Oferta limatada",
@@ -11904,6 +12380,7 @@ export const PRODUCTS: Product[] = [
     "description": "¿Quiere tener un ambiente de cafetería en casa? Nada más fácil con este magnífico futbolín firmado por Happy Garden. ¡Pasarás un momento de convivencia con la familia o los amigos alrededor de este futbolín y harás partidas alocadas con 2 o 4 jugadores para la mayor felicidad de pequeños y mayores! Su aspecto vintage aportará un toque retro a su hogar.\n\nDetalles:\nDimensiones:\n- Futbolín: L 146,6 × An 72,8 (sin asas) × Al 86,3cm\n- Superficie de juego: L 114 × An 66 × Grosor 1,2 cm\n- Altura del mango: 79,60 cm\n- Diámetro de las barras telescópicas: Ø 1,58cm\n- Espesor de las patas: 2,4 cm\n\nCaracteristicas\nColor (tono):  Marrón\nMaterial (precisión):  Paneles y derivados de la madera\nDimensiones\nLargo:  146.6 cm\nAltura:  86.3 cm\nProfundidad:  72.8 cm",
     "image": "/uploads/futbolin.jpg",
     "images": [
+      "/uploads/futbolin.jpg",
       "/uploads/futbolin_1.jpg",
       "/uploads/futbolin_2.jpg",
       "/uploads/futbolin_3.jpg",
@@ -11914,6 +12391,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/futbolin_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/futbolin.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/futbolin_1.jpg",
         "type": "image"
@@ -11961,6 +12442,7 @@ export const PRODUCTS: Product[] = [
     "description": "PIRNA, ¡el futbolín que combina estética y diversión!\nComparte momentos de diversión en familia o con amigos con el futbolín PIRNA. Este juego de interior encuentra su lugar en el salón o en la sala de juegos e integra de forma natural tu día a día gracias a sus tonos de color natural claro y sus detalles en blanco.\n\nEl futbolín PIRNA te permite disfrutar de partidas fluidas y llenas de ritmo. Las empuñaduras antideslizantes ofrecen un agarre firme y cómodo, ideal para mantener el control del juego en los pases decisivos o los tiros rápidos. Sigues fácilmente la evolución del marcador gracias al contador de puntos negro integrado sobre las porterías. Te enganchas enseguida en los partidos improvisados del fin de semana, disfrutando del contraste visual moderno de los jugadores en blanco sobre la superficie de juego.\n\nPara conservar el aspecto y la calidad del producto a largo plazo, basta con un simple pase de un paño suave para limpiar regularmente la superficie en color natural claro y las empuñaduras.\n\nQue empiecen los desafíos y las carcajadas en casa.",
     "image": "/uploads/pirna.jpg",
     "images": [
+      "/uploads/pirna.jpg",
       "/uploads/pirna_1.jpg",
       "/uploads/pirna_2.jpg",
       "/uploads/pirna_3.jpg",
@@ -11970,6 +12452,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/pirna_7.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/pirna.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/pirna_1.jpg",
         "type": "image"
@@ -12013,6 +12499,7 @@ export const PRODUCTS: Product[] = [
     "description": "Lámpara LED Air-Hockey-Tisch\nEste Airhockey-Tisch tiene luces LED integradas incorporadas, para una atmósfera de juego dinámica y divertida. Er wurde speziell für Spiele mit bis zu vier Spielern entwickelt. Die Beleuchtung hebt das Spielerlebnis besonders hervor, wenn die Umgebungsbeleuchtung wird reduziert, was die Spannung während des Spiels zusätzlich steigert.\n\nSistema de iluminación LED\nDiseñado para ofrecer una durabilidad excepcional\nFlujo de aire eficiente y potente\nSistema de puntuación digital\nDiseño cuidadosamente elaborado\n Características clave\nIluminación LED integrada: Disfrute de una experiencia de juego inmersiva con esta mesa de hockey de aire de 226,3 cm, diseñada con llamativas tiras de luces LED. Ideal para grupos de hasta 4 personas, las luces vibrantes de la mesa crean una atmósfera única, especialmente cuando la iluminación del entorno está apagada, añadiendo emoción adicional al juego.\nDiseñada para resistir: Esta mesa de hockey de aire está equipada con una superficie de PVC que minimiza los arañazos y un tablero de MDF que ofrece buena ventilación y resistencia a la deformación. Construida con materiales duraderos y resistentes a la corrosión, garantiza horas de juego sin interrupciones. Además, las patas de acero proporcionan mayor estabilidad y seguridad durante tus partidas.\nFlujo de aire eficiente: Equipado con un motor de 120 V, proporciona un flujo de aire constante que mejora la experiencia de juego. La sólida capacidad del motor asegura que disfrutes de partidas dinámicas y emocionantes.\nPantalla de puntuación electrónica: Este set de hockey deportivo incluye una pantalla LED electrónica que registra los puntos, brindando una experiencia emocionante en cada gol. Mantén el seguimiento del marcador fácilmente sin perder la concentración durante el juego.\nDiseño práctico: Incluye patas ajustables que permiten mantener la mesa nivelada, asegurando un juego equilibrado y justo. Los bordes suaves ofrecen protección adicional, reduciendo el riesgo de lesiones durante partidas emocionantes. Este juego de hockey de interior está pensado para personas de todas las edades, ideal para disfrutar en familia o con amigos.\n\n Breit aplicable\nPerfekt geeignet, um nach einem anstrengenden Arbeitstag zu entspannen, gemeinsame Zeit mit der Familie zu verbringen oder als originelles Geschenk. El juego de arcade para el interior de la casa está integrado para jugadores de todos los grupos alternos y es un gran conjunto de artículos para carreras compartidas con amigos y familias.\n\n  \n\nEntwickelt mit Fokus auf die Bedürfnisse der Anwender\nEl deporte del hockey sobre hielo es con una gran capacidad de adaptación, ya que tiene un juego de jugadores gleichmäßige para un juego de jugadores ausgewogenes ermöglichen. Abgerundete Kanten sorgen für zusätzlichen Schutz und minimieren das Verletzungsrisiko bei spannenden Matches.\n\n  \n\nElektronische Anzeige zur Spielstandverfolgung\nMit der digitalen LED-Anzeigetafel behalten Sie den Spielstand stets im Blick. Jeder Treffer wird klar angezeigt, sodass Sie den Verlauf des Spiels problemlos verfolgen können, ohne Ihre Konzentration zu verlieren..\n\n  \n\nMecanismo de aire más eficiente y robusto\nEl Airhockey-Tisch ist mit einem leistungsstarken Motor ausgestattet, der para un constante Luftstrom sorgt y una intensiva Luftzirkulación ermöglicht. Dies gewährleistet ein realista Spielerlebnis voller Dynamik und Spannung.\n\n  \n\nRobuste Bauweise\nDie Oberfläche des Tisches ist mit einer glatten PVC-Beschichtung versehen, die kratzfest ist. Los materiales resistentes al desgaste están sujetos a corrosión y una larga garantía de juego. Die Beine aus Stahl sorgen für eine stabile Konstruktion und ein sicheres Spielerlebnis.\n\n  \n\nLámpara LED Air-Hockey-Tisch\nEste Airhockey-Tisch tiene luces LED integradas incorporadas, para lograr un gran dinamismo y colores brillantes. Er wurde speziell für Spiele mit bis zu vier Personen entwickelt, und die Beleuchtung hebt das Spielerlebnis hervor, insbesondere in Räumen mit gedämpfter Beleuchtung, wodurch die Spannung des Spiels gesteigert wird.\n\n \n\nEspecificación\nNúmero de modelo: AH726US/EU\nMaterial: Tablero MDF, Metal\nPeso neto: 183 libras / 82,93 kg\n  \n\n \n\nContenido del Paquete Incluido\n1 x Mesa de hockey\n2 x Discos\n2 x Empujadores\n\n\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Metal\nDimensiones\nLargo:  226 cm\nAltura:  82 cm\nProfundidad:  125 cm",
     "image": "/uploads/lampara-led-air-hockey-tisch.jpg",
     "images": [
+      "/uploads/lampara-led-air-hockey-tisch.jpg",
       "/uploads/lampara-led-air-hockey-tisch_1.jpg",
       "/uploads/lampara-led-air-hockey-tisch_2.jpg",
       "/uploads/lampara-led-air-hockey-tisch_3.jpg",
@@ -12025,6 +12512,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/lampara-led-air-hockey-tisch_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/lampara-led-air-hockey-tisch.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/lampara-led-air-hockey-tisch_1.jpg",
         "type": "image"
@@ -12080,6 +12571,7 @@ export const PRODUCTS: Product[] = [
     "description": "Mesa de billar contemporánea de 7 pies con acabado laminado gris, inserciones metálicas negras y elegante tapete negro. El modelo Scorpion ofrece una experiencia de juego fluida en un formato ideal para espacios residenciales y modernas salas de juegos.\n\nFabricada en MDF de alta calidad con una estructura robusta y niveladores ajustables en las patas, combina diseño contemporáneo, estabilidad y un excelente confort de juego.\n\nCaracterísticas principales\nTamaño: 7 pies\nDimensiones: 213 × 121 × H 83 cm\nSuperficie de juego: 180 × 90 cm\nTapete negro\nConstrucción de MDF de alta calidad\nInserciones metálicas negras\nGrosor de la superficie de juego: 20 mm\nNiveladores ajustables en las patas\nDiámetro de las troneras: 10 cm\nPeso: 150 kg\n\nAccesorios incluidos\nJuego de bolas numeradas con bola blanca\n2 tacos de billar\nTriángulo\nTizas\nCepillo de limpieza\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Paneles y derivados de la madera\nNecesita montaje\nMesa transformable:  No\nDimensiones\nLargo:  213 cm\nAltura:  83 cm\nProfundidad:  121 cm\nLongitud de la superficie de juego:  180 cm\nAnchura de la superficie de juego:  90 cm",
     "image": "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies.jpg",
     "images": [
+      "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies.jpg",
       "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies_1.jpg",
       "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies_2.jpg",
       "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies_3.jpg",
@@ -12087,6 +12579,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mesa-de-billar-de-diseno-negra-de-7-pies_1.jpg",
         "type": "image"
@@ -12122,6 +12618,7 @@ export const PRODUCTS: Product[] = [
     "description": "Mesa de billar SucceBuy de 7 pies\nCalidad profesional para divertirse en casa\n\nDisfruta de una experiencia de billar de primer nivel con la mesa de billar de 2,13 m de SucceBuy, diseñada para llevar el juego de nivel competitivo a tu hogar. Con una construcción resistente y un diseño elegante, esta mesa garantiza un juego fluido y una durabilidad duradera. Perfecta tanto para familias como para entusiastas de los juegos, cuenta con materiales de calidad y una estructura fácil de ensamblar para una instalación rápida y horas de entretenimiento.\n\nConstrucción estable y robusta\nPerfecta para juegos competitivos\nConjunto completo de accesorios incluido\nFácil instalación y almacenamiento\nDiseño elegante y funcional\n Características clave\nCompleto juego de accesorios: esta mesa de billar incluye todos los accesorios necesarios para jugar de inmediato. Incluye bolas de billar estilo americano, 1 triángulo de plástico, 1 cepillo, 2 tacos de billar, 4 calzas niveladoras negras y 2 tizas. Todo lo que necesitas para empezar a disfrutar de una partida de billar está a tu alcance.\nMontaje rápido y sencillo: ¡olvídate de las complicadas configuraciones! La mesa de billar SucceBuy llega premontada, solo hay que colocar las patas. Se incluyen instrucciones claras y sencillas, lo que garantiza que puedes empezar a jugar de inmediato sin problemas ni herramientas adicionales.\nDiseño versátil para cualquier espacio: con su estética rústica moderna, esta mesa de billar realza tu sala de estar o de entretenimiento, combinando estilo y funcionalidad. Ya sea que la coloques en una sala de juegos en casa, un salón, una oficina o un club, ofrece atractivo visual y una experiencia de juego de primer nivel. Para preservar su calidad, evita la luz solar directa, la lluvia o los ambientes húmedos y utiliza una funda protectora cuando no la uses.\nConstrucción resistente y estabilidad excepcional: Construida con tablero de fibra de densidad media (MDF), esta mesa de billar es resistente a los arañazos, a la humedad y anticorrosiva, lo que garantiza una durabilidad duradera. Con un peso que supera las 240 libras, la mesa cuenta con un diseño de patas ultra estable para una estabilidad óptima, lo que le proporciona una experiencia de juego profesional de calidad de campeonato.\nJugabilidad prémium para una sensación profesional: Con una tela de fieltro engrosada que resiste la formación de bolitas y la fricción, esta mesa garantiza un movimiento suave de la bola durante el juego. Sus esquinas de metal evitan las colisiones, mientras que los bolsillos cuidadosamente elaborados amortiguan la entrada de las bolas, lo que proporciona una experiencia de juego perfecta y de calidad profesional.\n\n Construcción estable y resistente\nDiseñada para una estabilidad superior, la mesa de billar SucceBuy de 7 pies presenta una estructura sólida y pesada y un diseño de patas en forma de A reforzadas. Su equilibrio excepcional garantiza un juego suave, mientras que sus esquinas de metal y sus bolsillos bien diseñados mejoran tanto la estética como la durabilidad. Disfrute de un juego sin preocupaciones con una base estable, incluso durante partidos intensos.\n\n  \n\nMateriales de primera calidad\nFabricada con tableros de fibra de densidad media (MDF) engrosados, esta mesa de billar garantiza durabilidad y un uso prolongado. La elección de materias primas de calidad brinda tranquilidad, ya que garantiza que su mesa resista un uso frecuente y se mantenga en las mejores condiciones durante años.\n\n  \n\nEmbalaje seguro y confiable\nPara garantizar que su mesa llegue en perfectas condiciones, la mesa de billar SucceBuy se empaqueta con cuidado. Cada accesorio se empaqueta individualmente para evitar daños, y el empaque mejorado protege la mesa de golpes, humedad y otros peligros durante el transporte..\n\n  \n\nJuego de accesorios con todo incluido\nLa mesa de billar SucceBuy viene con un conjunto completo de accesorios para que pueda comenzar de inmediato. Se incluye todo lo que necesita para jugar, como un juego de bolas de billar, tacos, tiza y un cepillo, sin necesidad de compras adicionales.\n\n  \n\nMontaje sin complicaciones\nLa mesa llega casi lista para usar con el tablero preinstalado. Simplemente coloque las patas resistentes y estará listo para disfrutar de un juego. Es rápido y fácil de instalar, por lo que puede comenzar a jugar sin demora. Para un mejor mantenimiento, evite la exposición a la luz solar directa, la lluvia o la humedad, y considere usar una cubierta protectora cuando no esté en uso.\n\n  \n\nUso versátil para cualquier espacio\nYa sea para una sala de juegos en el hogar, un salón de oficina o un centro de recreación, esta mesa de billar realza cualquier ambiente. Está diseñada para quienes aprecian la sensación de una mesa de billar de calidad profesional sin la necesidad de una instalación enorme y permanente.\n\n \n\nEspecificación\nDimensiones del producto: 2134 x 1215 x 805 mm (largo x ancho x alto), con una tolerancia de ±10 mm\nPeso neto: 101 kg (222,7 lbs) ± 5%\nColor: Negro + Color madera\nNúmero de modelo del artículo: VP22\n  \n\n \n\nContenido del Paquete Incluido\n1 x Juego de accesorios\n1 x Mesa de billar",
     "image": "/uploads/mesa-de-billar-convertible.jpg",
     "images": [
+      "/uploads/mesa-de-billar-convertible.jpg",
       "/uploads/mesa-de-billar-convertible_1.jpg",
       "/uploads/mesa-de-billar-convertible_2.jpg",
       "/uploads/mesa-de-billar-convertible_3.jpg",
@@ -12134,6 +12631,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mesa-de-billar-convertible_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mesa-de-billar-convertible.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mesa-de-billar-convertible_1.jpg",
         "type": "image"
@@ -12189,6 +12690,7 @@ export const PRODUCTS: Product[] = [
     "description": "214 cm de ancho Airhockey-Tisch con punk tanzeige digital\nEste Airhockey-Tisch tiene materiales robustos, una larga vida útil y estabilidad. Mit seinem ansprechenden Design und der vollständigen Spielausstattung sorgt er für Unterhaltung und eine moderne Atmosphäre in Ihrem Zuhause.\n\nEstilo rústico distintivo\nDimensiones amplias de 84 pulgadas\nEquipo de marcado electrónico\nFabricado con materiales de excelente calidad\nUso versátil en diversas aplicaciones\n Características clave\nEstilo rústico atractivo: Esta mesa de hockey de aire cuenta con una superficie de madera con acabado rústico y un diseño singular, aportando un toque de encanto tradicional a su sala de juegos contemporánea. Es ideal para complementar cualquier espacio en su hogar.\nMesa de 84 pulgadas: Con unas dimensiones de 214 x 122 x 81 cm, esta mesa de hockey de aire proporciona una experiencia de juego similar a la de un salón recreativo. Su diseño amplio garantiza horas de diversión y entretenimiento en juegos de mesa.\nMarcador electrónico integrado: Esta mesa de hockey de aire incluye un marcador electrónico que permite registrar los puntos de manera sencilla. Además, incorpora efectos de sonido durante el juego y un sistema de detección de goles para añadir dinamismo a las partidas. Su motor de ventilador garantiza un flujo de aire continuo, ideal para disfrutar de juegos rápidos y emocionantes en un entorno competitivo.\nMaterial resistente y duradero: Esta mesa de hockey de aire está elaborada con un tablero MDF de 12 mm de grosor, lo que asegura un deslizamiento fluido del disco. Las patas negras en forma de X, fabricadas en hierro y diseñadas con una estructura sólida, ofrecen una experiencia de juego estable y confiable.\nUso versátil: Esta mesa de hockey de aire es perfecta para sótanos, áreas de entretenimiento, bares y oficinas. Diseñada para todas las edades, proporciona diversión prolongada para toda la familia, siendo una excelente opción para añadir entretenimiento a su rutina diaria.\n\n Geschenkidee für die Weihnachtszeit\nEstos son unterhaltsame und vielseitige Airhockey-Tisch eignet sich hervorragend como Geschenk für Geburtstage, Thanksgiving, Weihnachten und andere Feiertage und sorgt für Spaß und Spannung bei jedem Anlass.\n\n  \n\nCaballo de caza de animales\nEstos juegos de hockey de aire se incluyen con una configuración vollständigen y un Zubehör geliefert, así que puede hacerlo directamente. Im Lieferumfang enthalten sind dos Schläger y dos Pucks, perfectos para el duelo de spannende im klassischen Eins-gegen-Eins-Modus.\n\n  \n\nVielseitige Einsatzmöglichkeiten\nEstos juegos de azar son perfectos para el entretenimiento en Kellern, Hobbyräumen, bares o oficinas. Er bietet eine robuste und interhaltsame Möglichkeit, die ganze Familie zu begeistern und Bringt eine dynamische Atmosphäre in Ihr Zuhause..\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Metal\nDimensiones\nLargo:  214 cm\nAltura:  81 cm\nProfundidad:  122 cm",
     "image": "/uploads/mesa-de-hockey-de-aire.jpg",
     "images": [
+      "/uploads/mesa-de-hockey-de-aire.jpg",
       "/uploads/mesa-de-hockey-de-aire_1.jpg",
       "/uploads/mesa-de-hockey-de-aire_2.jpg",
       "/uploads/mesa-de-hockey-de-aire_3.jpg",
@@ -12199,6 +12701,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mesa-de-hockey-de-aire_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mesa-de-hockey-de-aire.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mesa-de-hockey-de-aire_1.jpg",
         "type": "image"
@@ -12246,6 +12752,7 @@ export const PRODUCTS: Product[] = [
     "description": "Reúne juego y comida con la mesa 4 en 1 GRAYSON, ¡el aliado perfecto para ahorrar espacio!\nTransforma tus momentos de ocio con la mesa de billar 4 en 1 GRAYSON, diseñada para reunir varios juegos en un solo equipo práctico. Pensada para adaptarse a los gustos del día a día, permite pasar fácilmente de un uso a otro, ya sea para jugar, compartir una comida o variar las actividades.\n\nSu estructura de MDF garantiza una base estable y adecuada para un uso regular, al tiempo que facilita su integración en diferentes espacios interiores. Este diseño permite cambiar de configuración de forma sencilla, pasando de una mesa de comedor a una de billar, y luego a una superficie de air hockey o de tenis de mesa según el momento.\n\nEl sistema 4 en 1 ofrece una gran versatilidad, ideal para optimizar el espacio sin necesidad de multiplicar los equipos. Cada tablero se instala fácilmente, permitiendo variar las actividades sin complicaciones y disfrutar de un mueble multifunción adaptado a las necesidades del hogar.\n\nLa mesa de billar 4 en 1 GRAYSON se entrega con un equipamiento completo para cada uso: dos tacos, un juego de bolas para billar americano, un triángulo, dos tizas y un cepillo para el billar; dos fichas y dos empujadores para el air hockey; así como una red, dos raquetas y tres pelotas para el tenis de mesa. Esta organización permite encontrar fácilmente cada accesorio y disfrutar de inmediato de todas las funciones, sin necesidad de añadir nada más.\n\nLa mesa de billar GRAYSON encaja tanto en un espacio dedicado al ocio como en un comedor, aportando una solución versátil para entretenerse y compartir momentos variados en el día a día.\n\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Mdf\nAcabado:  Liso\nNúmero de plazas:  6 plazas\nCon patas\nUso:  Interior\nGama:  Prácticos\nNecesita montaje\nEquipamiento incluido:  Triángulo, Red, Empujador, Disco, Set de bolas, Tiza, Bola de ping-pong, Raqueta, Taco, Cepillo\nMesa transformable:  Sì\nDimensiones\nLargo:  213 cm\nAltura:  81.2 cm\nProfundidad:  121 cm\nLongitud de la superficie de juego:  166 cm\nAnchura de la superficie de juego:  90.2 cm\nDetalles\nMdf: Compuesto de fibras de madera comprimidas, el MDF es estético y resistente, perfecto para interiores.",
     "image": "/uploads/grayson.jpg",
     "images": [
+      "/uploads/grayson.jpg",
       "/uploads/grayson_1.jpg",
       "/uploads/grayson_2.jpg",
       "/uploads/grayson_3.jpg",
@@ -12255,13 +12762,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/grayson_7.jpg",
       "/uploads/grayson_8.jpg",
       "/uploads/grayson_9.jpg",
-      "/uploads/grayson_10.jpg",
-      "/uploads/grayson_11.jpg",
-      "/uploads/grayson_12.jpg",
-      "/uploads/grayson_13.jpg",
-      "/uploads/grayson_14.jpg"
+      "/uploads/grayson_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/grayson.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/grayson_1.jpg",
         "type": "image"
@@ -12301,22 +12808,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/grayson_10.jpg",
         "type": "image"
-      },
-      {
-        "url": "/uploads/grayson_11.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/grayson_12.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/grayson_13.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/grayson_14.jpg",
-        "type": "image"
       }
     ],
     "tag": "Oferta",
@@ -12333,6 +12824,7 @@ export const PRODUCTS: Product[] = [
     "description": "Mesa de juegos o mesa de comedor, ¿por qué elegir?\nCrea momentos inolvidables en familia o con amigos con la mesa transformable SASTALA. Auténtica solución 3 en 1, se transforma en pocos segundos para pasar de una emocionante partida de Billar a un dinámico partido de Ping Pong, y después a una elegante mesa de comedor para compartir.\n\nCon su diseño contemporáneo de líneas depuradas, SASTALA se integra a la perfección en un salón, una sala de juegos o un espacio de ocio. Su tablero reversible está diseñado para ofrecer una transición sencilla y rápida entre los distintos usos, permitiéndote disfrutar al máximo de cada momento sin complicaciones.\n\nPensada para el placer del juego, esta mesa se entrega con todos los accesorios imprescindibles: dos tacos de Billar, un juego de bolas, palas de Ping Pong, pelotas y una red. Desde el primer momento, todo está listo para organizar torneos improvisados y vivir momentos de competición en un ambiente distendido.\n\nEn el día a día, la mesa SASTALA se convierte en el punto de encuentro de tu hogar. Reúne a pequeños y mayores en torno a actividades lúdicas, antes de transformarse en una gran mesa para las comidas, las celebraciones o las veladas con los tuyos. Funcional, elegante y versátil, optimiza tu espacio y multiplica las ocasiones de reunirse.\n\nPara preservar el aspecto y la calidad del producto a largo plazo, limpia la superficie regularmente con un paño suave y limpio.\n\n\n\nCaracteristicas\nColor (tono):  Blanco, Color natural claro\nMaterial (precisión):  Mdf\nMaterial (Patas):  MDF\nNúmero de plazas:  6 plazas\nCon patas\nGama:  Prácticos\nNecesita montaje\nEquipamiento incluido:  Triángulo, Red, Set de bolas, Tiza, Bola de ping-pong, Raqueta, Taco, Cepillo\nMesa transformable:  Sì\nDimensiones\nLargo:  213.4 cm\nAltura:  81.2 cm\nProfundidad:  111.6 cm\nLongitud de la superficie de juego:  207.7 cm\nAnchura de la superficie de juego:  105.9 cm\nDetalles\nMdf: Compuesto de fibras de madera comprimidas, el MDF es estético y resistente, perfecto para interiores.",
     "image": "/uploads/sastala.jpg",
     "images": [
+      "/uploads/sastala.jpg",
       "/uploads/sastala_1.jpg",
       "/uploads/sastala_2.jpg",
       "/uploads/sastala_3.jpg",
@@ -12343,6 +12835,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sastala_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sastala.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sastala_1.jpg",
         "type": "image"
@@ -12442,6 +12938,7 @@ export const PRODUCTS: Product[] = [
     "description": "¿Sueñas con tener tu propio espacio de juego en el salón pero no tienes demasiado espacio? ¡Lo que necesitas es esta mesa que se convierte en mesa de billar o de ping-pong BALTHAZAR!\nOrganiza momentos de entretenimiento directamente en tu casa con un amplio espacio dedicado al juego. La mesa convertible BALTHAZAR se instala fácilmente en tu interior para reunir a los tuyos alrededor de actividades lúdicas, de convivencia y de comidas compartidas.\n\nGracias a su ingenioso diseño, la mesa convertible BALTHAZAR 3 en 1 te permite pasar instantáneamente de una elegante mesa de comedor a una partida de billar o a un partido de ping-pong. La superficie ofrece un confort ideal tanto para jugar como para cenar, mientras que su acabado aporta una nota sobria a tu estancia. Incluye todos los accesorios indispensables para empezar a jugar de inmediato: dos tacos, un juego de bolas, un triángulo, dos tizas, así como tres pelotas y dos palas de ping-pong. De este modo, pasarás de un ambiente tranquilo a partidas dinámicas en un abrir y cerrar de ojos, según te apetezca al final del día o durante el fin de semana.\n\nPara preservar de forma duradera el aspecto y la calidad del producto, limpia regularmente las superficies de aglomerado y derivados de la madera con un paño suave y seco, evitando el uso de productos abrasivos o una humedad excesiva.\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Gris, Negro\nMaterial (precisión):  Mdf\nAcabado:  Liso\nNúmero de plazas:  8 plazas\nCon patas\nGama:  Prácticos\nCarga máxima soportada:  30 kg\nNecesita montaje\nEquipamiento incluido:  Taco de billar, Triángulo, Red, Set de bolas, Tiza, Bola de ping-pong, Raqueta\nMesa transformable:  Sì\nSe puede jugar con bolas de tamaño reglamentario\nDimensiones\nLargo:  213.4 cm\nAltura:  81.5 cm\nProfundidad:  111.8 cm\nLongitud de la superficie de juego:  184.8 cm\nAnchura de la superficie de juego:  83.2 cm\nDiámetro de las bolas de billar:  57 mm\nDiámetro de las pelotas de ping-pong:  40 mm\nDetalles\nMdf: Compuesto de fibras de madera comprimidas, el MDF es estético y resistente, perfecto para interiores.\n\n<!--COLORS_JSON_START-->[\"Gris\",\"Noir\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Gris, Noir]",
     "image": "/uploads/balthazar.jpg",
     "images": [
+      "/uploads/balthazar.jpg",
       "/uploads/balthazar_1.jpg",
       "/uploads/balthazar_2.jpg",
       "/uploads/balthazar_3.jpg",
@@ -12450,6 +12947,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/balthazar_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/balthazar.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/balthazar_1.jpg",
         "type": "image"
@@ -12489,6 +12990,7 @@ export const PRODUCTS: Product[] = [
     "description": "STAZIO: el billar de exterior para disfrutar del juego sin salir de casa.\nSi eres fan del billar, ¡el STAZIO está pensado para ti! Perfecto para disfrutar de las mejores partidas al aire libre, su diseño resistente y su cubierta protectora te permitirán dejarlo fuera sin preocupaciones. Disfruta del buen tiempo en familia o con amigos mientras juegas y te diviertes con este billar especialmente creado para exteriores.\n\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Blanco, Negro, Topo\nMaterial (precisión):  Madera\nGrosor del metal:  1.2 mm\nMaterial (Patas):  Aluminio\nNúmero de plazas:  6 plazas\nUso:  Interior, Exterior\nGama:  Espacio pro\nCarga máxima soportada:  80 kg\nNecesita montaje\nEquipamiento incluido:  Triángulo, Set de bolas, Tiza, Taco, Revestimiento aislante\nMesa transformable:  No\nCubierta de protección de nylon\nDimensiones\nLargo:  213.4 cm\nAltura:  79.7 cm\nProfundidad:  121 cm\nLongitud de la superficie de juego:  184 cm\nAnchura de la superficie de juego:  92 cm",
     "image": "/uploads/stazio.jpg",
     "images": [
+      "/uploads/stazio.jpg",
       "/uploads/stazio_1.jpg",
       "/uploads/stazio_2.jpg",
       "/uploads/stazio_3.jpg",
@@ -12499,6 +13001,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/stazio_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/stazio.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/stazio_1.jpg",
         "type": "image"
@@ -12588,6 +13094,7 @@ export const PRODUCTS: Product[] = [
     "description": "Recibidor de madera negro Material:Madera Color:Negro El producto ideal para que lo disfrute en su hogar.\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Madera\nDimensiones\nLargo:  40 cm\nAltura:  81 cm\nProfundidad:  120 cm\n\n<!--COLORS_JSON_START-->[\"Noir\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir]",
     "image": "/uploads/recibidor-de-madera-negro.jpg",
     "images": [
+      "/uploads/recibidor-de-madera-negro.jpg",
       "/uploads/recibidor-de-madera-negro_1.jpg",
       "/uploads/recibidor-de-madera-negro_2.jpg",
       "/uploads/recibidor-de-madera-negro_3.jpg",
@@ -12595,6 +13102,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/recibidor-de-madera-negro_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/recibidor-de-madera-negro.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/recibidor-de-madera-negro_1.jpg",
         "type": "image"
@@ -12630,6 +13141,7 @@ export const PRODUCTS: Product[] = [
     "description": "Recibidor de madera y metal acabado envejecido negro Material:Madera Color:Negro El producto ideal para que lo disfrute en su hogar.\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\nCaracteristicas\nColor (tono):  Negro\nMaterial (precisión):  Madera\nDimensiones\nLargo:  41 cm\nAltura:  80 cm\nProfundidad:  87 cm\n\n<!--COLORS_JSON_START-->[\"Noir\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir]",
     "image": "/uploads/recibidor-de-madera-y-metal.jpg",
     "images": [
+      "/uploads/recibidor-de-madera-y-metal.jpg",
       "/uploads/recibidor-de-madera-y-metal_1.jpg",
       "/uploads/recibidor-de-madera-y-metal_2.jpg",
       "/uploads/recibidor-de-madera-y-metal_3.jpg",
@@ -12637,6 +13149,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/recibidor-de-madera-y-metal_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/recibidor-de-madera-y-metal.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/recibidor-de-madera-y-metal_1.jpg",
         "type": "image"
@@ -12672,6 +13188,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Crea un punto de equilibrio elegante con la consola LESONA!\nDale un aspecto elegante a tu interior con la consola LESONA, diseñada para crear un espacio que refleje tu sentido del detalle y tu gusto por las líneas controladas y elegantes.\n\nLa consola LESONA se basa en un diseño de MDF cubierto con un acabado lacado de aspecto brillante. Esta superficie lisa realza las líneas del mueble y facilita su mantenimiento, a la vez que refuerza la nitidez de sus contornos. Disponible en varios colores, se adapta tanto a interiores sobrios como a composiciones más atrevidas, según el efecto deseado.\n\nSu tablero ovalado ofrece una superficie acogedora para colocar objetos cotidianos, una lámpara o algunos elementos decorativos seleccionados. Descansa sobre dos patas de forma escultural, cuyos volúmenes pronunciados crean un equilibrio entre estabilidad y estilo contemporáneo. Esta combinación confiere al conjunto una presencia destacada y permite una integración fluida en una entrada, salón o pasillo.\n\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\nCaracteristicas & Dimensiones\nCaracteristicas\nMaterial (precisión):  Mdf\nAcabado:  Lacado, Brillante\nCarga máxima soportada:  50 kg\nNecesita montaje\nDimensiones\nLargo:  120 cm\nAltura:  80 cm\nProfundidad:  35 cm\nDetalles\nMdf: Compuesto de fibras de madera comprimidas, el MDF es estético y resistente, perfecto para interiores.\n\n<!--COLORS_JSON_START-->[\"Beige\",\"Bordeaux\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Beige, Bordeaux]",
     "image": "/uploads/lesona.jpg",
     "images": [
+      "/uploads/lesona.jpg",
       "/uploads/lesona_1.jpg",
       "/uploads/lesona_2.jpg",
       "/uploads/lesona_3.jpg",
@@ -12680,6 +13197,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/lesona_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/lesona.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/lesona_1.jpg",
         "type": "image"
@@ -12718,6 +13239,7 @@ export const PRODUCTS: Product[] = [
     "description": "Aspectos destacados\nDiseño minimalista retro con forma S Este sofá de estilo moderno presenta una combinación en forma de S, ideal para espacios de salón con un toque retro y contemporáneo. Su diseño sencillo y elegante se adapta perfectamente a interiores minimalistas.\nEstructura de madera duradera Fabricado con marco de madera, este sofá ofrece estabilidad y resistencia a largo plazo. La estructura sólida garantiza una buena distribución del peso y una mayor vida útil del mueble.\nTapizado en tela mate de alta calidad El revestimiento está hecho de tejido mate, que no solo aporta un acabado suave al tacto, sino que también resiste mejor las manchas y el desgaste diario en espacios de uso frecuente.\n\nDimensiones compactas, ideal para espacios pequeños Con una anchura inferior a 2000 mm, este sofá es perfecto para salas de estar medianas o pequeñas. Su diseño compacto maximiza el espacio sin sacrificar comodidad.\nInstalación sencilla y autocontenida El método de instalación es autocontenido, lo que significa que no requiere herramientas ni montaje complicado. Se entrega listo para usar, facilitando su puesta en marcha inmediata.\nOrigen y envío eficiente Producido en Guangdong, China continental, este sofá tiene un peso de 3.000 kg y viene empaquetado en dimensiones de 10 x 50 x 10 cm, optimizando el transporte y reduciendo costos de envío.",
     "image": "/uploads/un-sofa-minimalista-retro-de-petalos.jpg",
     "images": [
+      "/uploads/un-sofa-minimalista-retro-de-petalos.jpg",
       "/uploads/un-sofa-minimalista-retro-de-petalos_1.jpg",
       "/uploads/un-sofa-minimalista-retro-de-petalos_2.jpg",
       "/uploads/un-sofa-minimalista-retro-de-petalos_3.jpg",
@@ -12725,6 +13247,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/un-sofa-minimalista-retro-de-petalos_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/un-sofa-minimalista-retro-de-petalos.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/un-sofa-minimalista-retro-de-petalos_1.jpg",
         "type": "image"
@@ -12760,9 +13286,14 @@ export const PRODUCTS: Product[] = [
     "description": "Lámpara de pared geométrica Led, candelabro montado cuadrado de diseño italiano para sala de estar, restaurante, decoración de pared de fondo, luz de camino de pasillo",
     "image": "/uploads/lampara-de-pared-geometrica-led.jpg",
     "images": [
+      "/uploads/lampara-de-pared-geometrica-led.jpg",
       "/uploads/lampara-de-pared-geometrica-led_1.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/lampara-de-pared-geometrica-led.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/lampara-de-pared-geometrica-led_1.jpg",
         "type": "image"
@@ -12782,6 +13313,7 @@ export const PRODUCTS: Product[] = [
     "description": "Relativamente a las dimensiones de las lámparas de pared:\nEl mural a la izquierda mide 50 cm de largo y 35 cm de ancho, mientras que el reloj central tiene un diámetro de 50 cm.El mural a la derecha mide 50 cm de largo y 35 cm de ancho.\nEl mural a la izquierda mide 60 cm de largo y 40 cm de ancho, con un reloj central de 60 * 60 de diámetro.El mural a la derecha mide 60 cm de largo y 40 cm de ancho.\nEl mural a la izquierda mide 70 cm de largo y 50 cm de ancho, mientras que el reloj central tiene un diámetro de 70 cm.El mural a la derecha mide 70 cm de largo y 50 cm de ancho.\nEl mural a la izquierda mide 80 cm de largo y 60 cm de ancho, mientras que el reloj central tiene un diámetro de 80 cm.El mural a la derecha mide 80 cm de largo y 60 cm de ancho.\nLos bordes exteriores de las luces son completamente negros!!!\nSi necesita un tamaño más grande, puede contactar con el servicio de atención al cliente para obtener el tamaño deseado.\nEl círculo que rodea el reloj es el área iluminada, y solo esta área puede emitir luz con una tira de luz.",
     "image": "/uploads/luz-de-pared-moderna.jpg",
     "images": [
+      "/uploads/luz-de-pared-moderna.jpg",
       "/uploads/luz-de-pared-moderna_1.jpg",
       "/uploads/luz-de-pared-moderna_2.jpg",
       "/uploads/luz-de-pared-moderna_3.jpg",
@@ -12790,6 +13322,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/luz-de-pared-moderna_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/luz-de-pared-moderna.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/luz-de-pared-moderna_1.jpg",
         "type": "image"
@@ -12829,6 +13365,7 @@ export const PRODUCTS: Product[] = [
     "description": "Sofá TEMPS combina diseño contemporáneo y confort premium. Cuenta con estructura de madera resistente, suspensión intensa con 10 años de garantía y asientos de espuma de alta densidad con pluma y fibra para una sentada cómoda y duradera. Asientos y respaldos reversibles.\nDisponible con pata alta de acero negro o pata baja de madera nogal.\n\n<!--COLORS_JSON_START-->[\"Beige clair / Écru\",\"🤎 Beige rosé / Nude\",\"Brun chocolat\",\"Bleu marine\",\"Vert olive / Kaki\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Beige clair / Écru, 🤎 Beige rosé / Nude, Brun chocolat, Bleu marine, Vert olive / Kaki]",
     "image": "/uploads/sofa-modelo-temps.jpg",
     "images": [
+      "/uploads/sofa-modelo-temps.jpg",
       "/uploads/sofa-modelo-temps_1.jpg",
       "/uploads/sofa-modelo-temps_2.jpg",
       "/uploads/sofa-modelo-temps_3.jpg",
@@ -12837,6 +13374,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofa-modelo-temps_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-modelo-temps.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-modelo-temps_1.jpg",
         "type": "image"
@@ -12876,6 +13417,7 @@ export const PRODUCTS: Product[] = [
     "description": "Guyii Sofá de dos plazas oversize moderno\nDiseño atemporal y comodidad.El sofá modular Guyii en beige une estética elegante, materiales de alta calidad y funcionalidad ergonómica - ideal para cualquier salón.\nCaracterísticas principales\n• Materiales de alta calidad & look elegante:Tejido de terciopelo combinado con un resistente marco de madera maciza garantiza un aspecto elegante, una estabilidad duradera y una comodidad sentada.\n• Extra grande & cómodo:Diseño oversize con generosa superficie de asiento - perfecto para relajarse, para reuniones con amigos o para estirarse con estilo.\nCon cojines decorativos\nEntrega incluye 2-5 cojines elegantes que ofrecen comodidad adicional y redondean visualmente el sofá.\nDiseño ergonómico\nSoporta la espalda y el cuerpo, reduce las presiones y garantiza la máxima comodidad al sentarse - ideal para largas veladas o para pasar tiempo en familia.\nMontaje sencillo\nDiseño bien pensado que permite una instalación rápida y sin complicaciones.\n\nDetalles del producto\n• Marca: Guyii\n• Tipo:Seccional\n• Color:Beige\n• Montaje:Requerido\n• Característica especial:Ergonómico, montaje sencillo\nDetalles del producto:\n• 2 plazas: 208 cm (L) x 86 cm (B) x 71,5 cm (H), con 2\ncojines\n• 3 plazas: 294 cm (L) x 86 cm (B) x 71,5 cm (H), con 3\ncojines\n• 4 plazas: 380 cm (L) x 86 cm (B) x 71,5 cm (H), con 4\ncojines\n• 5 plazas: 466 cm (L) x 86 cm (B) x 71,5 cm (H), con 5\ncojines\n¡Valore su sala de estar ya hoy! Comodidad, estilo y espacio de almacenaje inteligente - todo en un sofá.Haga clic en „Añadir al carrito\" y convierta su salón en un rincón acogedor y ordenado en un abrir y cerrar de ojos!\nEnvío y servicio de atención al cliente\nTenga en cuenta:Este producto se envía en varios paquetes.Los plazos de entrega de los paquetes individuales pueden variar unos días.Por lo tanto, le pedimos un poco de paciencia.\n\nSi tiene problemas después de recibir el producto:Si después de recibir el producto detecta problemas, p.B. pzas faltantes, daños o si cambia de opinión, por favor contacte con nuestro servicio de atención al cliente a través de la página del producto. Nuestro equipo de atención al cliente le ofrecerá una solución en un plazo de 24 horas.\n\n<!--COLORS_JSON_START-->[\"Beige / Nude\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Beige / Nude]",
     "image": "/uploads/guyii-sofa-modular.jpg",
     "images": [
+      "/uploads/guyii-sofa-modular.jpg",
       "/uploads/guyii-sofa-modular_1.jpg",
       "/uploads/guyii-sofa-modular_2.jpg",
       "/uploads/guyii-sofa-modular_3.jpg",
@@ -12885,12 +13427,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/guyii-sofa-modular_7.jpg",
       "/uploads/guyii-sofa-modular_8.jpg",
       "/uploads/guyii-sofa-modular_9.jpg",
-      "/uploads/guyii-sofa-modular_10.jpg",
-      "/uploads/guyii-sofa-modular_11.jpg",
-      "/uploads/guyii-sofa-modular_12.jpg",
-      "/uploads/guyii-sofa-modular_13.jpg"
+      "/uploads/guyii-sofa-modular_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/guyii-sofa-modular.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/guyii-sofa-modular_1.jpg",
         "type": "image"
@@ -12930,18 +13473,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/guyii-sofa-modular_10.jpg",
         "type": "image"
-      },
-      {
-        "url": "/uploads/guyii-sofa-modular_11.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/guyii-sofa-modular_12.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/guyii-sofa-modular_13.jpg",
-        "type": "image"
       }
     ],
     "tag": "Oferta -30%",
@@ -12958,6 +13489,7 @@ export const PRODUCTS: Product[] = [
     "description": "Comodidad extra ancha: zona de asientos de 64 cm, respaldo alto y reposabrazos acolchados para una mejor relajación al acampar, pescar o en el jardín.\nConstrucción robusta: puede soportar hasta 200 kg gracias a un marco de acero reforzado y cuatro patas de pie, resistente a la oxidación y duradero.\nBolsa refrigeradora integrada y almacenaje: mantén las bebidas frías y todo lo importante al alcance con bolsillo lateral y portavasos.\nLigero y portátil: solo 5 kg, se pliega rápidamente a 20x100 cm, incluido el bolso de mano, ideal para automóvil, festival o excursión.\nVersátil: perfecto para acampar, en la playa, hacer un picnic, hacer caminatas o en el balcón: su compañero confiable al aire libre.",
     "image": "/uploads/silla-de-acampada-plegable.webp",
     "images": [
+      "/uploads/silla-de-acampada-plegable.webp",
       "/uploads/silla-de-acampada-plegable_1.webp",
       "/uploads/silla-de-acampada-plegable_2.webp",
       "/uploads/silla-de-acampada-plegable_3.webp",
@@ -12965,6 +13497,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/silla-de-acampada-plegable_5.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/silla-de-acampada-plegable.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/silla-de-acampada-plegable_1.webp",
         "type": "image"
@@ -13000,6 +13536,7 @@ export const PRODUCTS: Product[] = [
     "description": "¿Quieres crear un ambiente acogedor en tu sala de estar? El modelo SPERONE es perfecto para ti. Con su diseño elegante y su tamaño amplio, encaja en cualquier estilo de decoración. Es ideal para compartir momentos agradables con amigos o en familia, añadiendo un toque cálido y cómodo a tu espacio.\n\nAlgunas fotos pueden presentar ligeras variaciones con respecto al modelo real.\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Verde\nMaterial (precisión):  100 % Poliéster, Terciopelo\nMaterial (Patas):  Madera\nEstructura:  Madera\nAcabado:  Pana\nComodidad del asiento:  Firmeza media\nTipo de ángulo:  XXL\nNúmero de plazas:  9 plazas\nDesenfundable:  Sí\nParte desmontable:  Cojines suplementarios\nRelleno del asiento:  Espuma de poliuretano\nDensidad asiento:  25 kg/m³\nSuspensión del asiento:  Cintas elásticas entrelazadas., Muelles helicoidales\nRelleno del respaldo:  Espuma de poliuretano\nDensidad respaldo:  19 kg/m³\nGama:  Espacio pro\nCarga máxima soportada:  1080 kg\nNecesita montaje\nEquipamiento incluido (asiento):  Cojines\nDimensiones\nLargo:  375 cm\nAltura:  85 cm\nProfundidad:  274 cm\nLongitud del asiento:  358 cm\nAltura de las patas:  5 cm\nAltura del asiento:  47 cm\nProfundidad del asiento:  65 cm\nAnchura del meridiano:  100 cm\nProfundidad del asiento del diván:  274 cm\nDetalles\nTerciopelo: El terciopelo, tejido pesado, rico y suntuoso, es conocido por su suavidad y propiedades aislantes. Aunque delicado, es robusto y duradero.\n\nPoliéster: El poliéster, fibra sintética más usada, es resistente, fácil de cuidar (lavable) y mantiene su forma con ligeras arrugas.\n\nFirmeza media: Compromiso ideal entre confort inmediato y buen soporte, el asiento de firmeza media satisfará las expectativas de todo tipo de usuarios, siendo perfecto, por ejemplo, para una familia.\n\nGran panorámico: Sofá en forma de U con 2 chaises longues, espacioso para más de 7 personas.",
     "image": "/uploads/sperone.webp",
     "images": [
+      "/uploads/sperone.webp",
       "/uploads/sperone_1.webp",
       "/uploads/sperone_2.webp",
       "/uploads/sperone_3.webp",
@@ -13009,6 +13546,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sperone_7.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sperone.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sperone_1.webp",
         "type": "image"
@@ -13052,6 +13593,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Reinventa tu salón con el sofá rinconera modular JUTINI!\nDescubre el sofá rinconera modular JUTINI, un diseño pensado para adaptarse a tu hogar y acompañarte en el día a día con todo el confort. Su acabado capitoné realza sus formas redondeadas y le aporta un aspecto suave y acogedor, fácil de integrar en distintos ambientes.\n\nTotalmente modular, el sofá JUTINI ofrece una amplia variedad de opciones de personalización para crear una composición a tu medida. Tanto si quieres un espacio cómodo para recibir visitas, un rincón dedicado al descanso o una sala de estar que evolucione con el tiempo, sus distintas configuraciones te permiten componer un sofá único.\n\nGracias a su sistema de módulos, los diferentes elementos se enganchan fácilmente entre sí para crear una instalación estable, a la vez que resulta sencillo reorganizarlos cuando quieras cambiar la disposición. Así dispones de una solución práctica que se adapta de forma natural a los cambios de tu hogar y tu estilo de vida.\n\nPara preservar el aspecto y la calidad del producto a largo plazo, limpia el tapizado según el material, utilizando productos adecuados y evitando productos agresivos.\n\nCon su diseño modular y su línea cuidada, el sofá rinconera modular JUTINI te acompañará durante mucho tiempo en todos tus momentos de descanso.\n\n\n\nCaracteristicas & Dimensiones\nCaracteristicas\nColor (tono):  Blanco roto\nMaterial (precisión):  100 % Poliéster\nEstructura:  Madera\nAcabado:  Tela de rizo, Acolchado\nComodidad del asiento:  Firmeza media\nTipo de ángulo:  XXL\nNúmero de plazas:  8 plazas\nRelleno del asiento:  Espuma de poliuretano alta resiliencia\nDensidad asiento:  33 kg/m³\nSuspensión del asiento:  Muelles Nosag, Cintas elásticas entrelazadas.\nRelleno del respaldo:  Espuma de poliuretano\nDensidad respaldo:  20 kg/m³\nCon reposabrazos\nGama:  Personalizable\nCarga máxima soportada:  480 kg\nNecesita montaje\nDimensiones\nLargo:  414 cm\nAltura:  72 cm\nProfundidad:  180 cm\nLongitud del asiento:  354 cm\nAncho de los reposabrazos:  30 cm\nAltura de las patas:  5 cm\nAltura del asiento:  45 cm\nProfundidad del asiento:  66 cm\nProfundidad del asiento del diván:  149 cm\nDetalles\nPoliéster: El poliéster, fibra sintética más usada, es resistente, fácil de cuidar (lavable) y mantiene su forma con ligeras arrugas.\n\nFirmeza media: Compromiso ideal entre confort inmediato y buen soporte, el asiento de firmeza media satisfará las expectativas de todo tipo de usuarios, siendo perfecto, por ejemplo, para una familia.\n\nSofá modular: Gracias a sus módulos fáciles de mover, este sofá se adapta a todos los hogares y puede evolucionar con el tiempo para un diseño personalizado.\n\nEntrega\nEl plazo de entrega te será confirmado en la cesta de tu compra. Se recomienda verificar que el número de paquetes entregados es el correcto.\n\nPaquete\nAncho\nProfundidad\nAlto\nPeso\nPaquete nº1\n181 cm\n122 cm\n70 cm\n58 kg\nPaquete nº2\n100 cm\n95 cm\n70 cm\n27 kg\nPaquete nº3\n181 cm\n122 cm\n70 cm\n58 kg\n\n<!--COLORS_JSON_START-->[\"Terracotta\",\"BEIGE\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Terracotta, BEIGE]",
     "image": "/uploads/jutini.webp",
     "images": [
+      "/uploads/jutini.webp",
       "/uploads/jutini_1.webp",
       "/uploads/jutini_2.webp",
       "/uploads/jutini_3.webp",
@@ -13062,6 +13604,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/jutini_8.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/jutini.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/jutini_1.webp",
         "type": "image"
@@ -13109,6 +13655,7 @@ export const PRODUCTS: Product[] = [
     "description": "SALINAS\nEl modelo Napoli está fabricado con estructura de madera y contrachapado y tapizado en tela MILAN antimanchas, ofreciendo una solución moderna para el uso diario. Incorpora sistema de 2 relax eléctricos que permite ajustar la posición de descanso de forma cómoda. Cuenta con cabezal manual reclinable multiposición, facilitando una mejor adaptación de la postura.\nEl sofá Napoli destaca por sus asientos con HR de 25 kg combinada con muelles ensacados, proporcionando una sentada confortable y con buena adaptación. Los respaldos rellenos de fibra siliconada favorecen una acogida agradable. Cada asiento soporta hasta 150 kg e incluye botonera con puertos USB y USB-C y pata metálica en acabado negro mate. \nMedidas: 208 x 105 x 94 cm\nDos colores a elegir; Gris o Gris Perla\n\n<!--COLORS_JSON_START-->[\"gris\",\"Gris argent perle\"]<!--COLORS_JSON_END-->\n\n[Couleurs: gris, Gris argent perle]",
     "image": "/uploads/sofa-relax-escape-electrico-modelo-napoli.webp",
     "images": [
+      "/uploads/sofa-relax-escape-electrico-modelo-napoli.webp",
       "/uploads/sofa-relax-escape-electrico-modelo-napoli_1.webp",
       "/uploads/sofa-relax-escape-electrico-modelo-napoli_2.webp",
       "/uploads/sofa-relax-escape-electrico-modelo-napoli_3.webp",
@@ -13116,6 +13663,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofa-relax-escape-electrico-modelo-napoli_5.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-relax-escape-electrico-modelo-napoli.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-relax-escape-electrico-modelo-napoli_1.webp",
         "type": "image"
@@ -13151,11 +13702,16 @@ export const PRODUCTS: Product[] = [
     "description": "Chaiselongue de 265 cm reversible, con respaldos reclinables y asientos deslizantes de carro con ruedas de apoyo para transformarse en una estupenda cama. El módulo de la chaiselongue lleva arcón que nos ofrecer una zona extra de almacenaje. Se completa con dos cojines decorativos  Disponible en stock en tapizado Coimbra marfil. Patas en color aluminio.\nEstructura de pino, respaldos reclinables y rellenos de fibra.\nAsientos deslizantes de carro de espuma de 30 kg super suave.\nIncluye dos cojines decorativos. \nMedidas: 265 cm de largo x 155 cm en el lado del chaiselongue  x 100 cm de alto.\nPatas cromadas de 4 cm de alto.\nLa tela Coimbra da un tacto de calidad y resistencia en el acabado del sofá, dándole una elegancia y remarcando la calidad de sus acabados\n\n<!--COLORS_JSON_START-->[\"Blanc\",\"Argent\",\"gris\",\"Beige / Nude\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Blanc, Argent, gris, Beige / Nude]",
     "image": "/uploads/sofa-chaiselongue.webp",
     "images": [
+      "/uploads/sofa-chaiselongue.webp",
       "/uploads/sofa-chaiselongue_1.webp",
       "/uploads/sofa-chaiselongue_2.webp",
       "/uploads/sofa-chaiselongue_3.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-chaiselongue.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-chaiselongue_1.webp",
         "type": "image"
@@ -13183,6 +13739,7 @@ export const PRODUCTS: Product[] = [
     "description": "El sofá cama esquinero HAVEN, tapizado en tela color beige y con espacio de almacenamiento, aportará un toque de confort y elegancia a tu sala de estar. Su diseño minimalista y sus amplios y mullidos asientos ofrecen una experiencia de relajación única a la vez que realzan la decoración de tu hogar.\nVersátil, se transforma fácilmente en una cama supletoria gracias a su función convertible, lo que resulta muy práctico para recibir a sus invitados con total tranquilidad.\nTambién cuenta con un compartimento de almacenamiento integrado, que te permite guardar mantas, cojines u otros accesorios y mantener tu sala de estar organizada.\nSu suave, resistente y moderno revestimiento de tela proporciona una textura cálida y sofisticada, mientras que su tono neutro combina armoniosamente con todos los estilos de decoración, ya sea para una sala de estar grande o un espacio más íntimo.\nIdeal para noches de cine, momentos de lectura o simplemente para relajarse, este sofá esquinero combina estilo, comodidad y practicidad, convirtiéndose en una opción esencial para transformar su interior en un espacio acogedor y moderno.\n\n<!--COLORS_JSON_START-->[\"Blanc\",\"gris\",\"verte\",\"Bronze\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Blanc, gris, verte, Bronze]",
     "image": "/uploads/sofas-esquineros-convertibles.webp",
     "images": [
+      "/uploads/sofas-esquineros-convertibles.webp",
       "/uploads/sofas-esquineros-convertibles_1.webp",
       "/uploads/sofas-esquineros-convertibles_2.webp",
       "/uploads/sofas-esquineros-convertibles_3.webp",
@@ -13192,16 +13749,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofas-esquineros-convertibles_7.webp",
       "/uploads/sofas-esquineros-convertibles_8.webp",
       "/uploads/sofas-esquineros-convertibles_9.webp",
-      "/uploads/sofas-esquineros-convertibles_10.webp",
-      "/uploads/sofas-esquineros-convertibles_11.webp",
-      "/uploads/sofas-esquineros-convertibles_12.webp",
-      "/uploads/sofas-esquineros-convertibles_13.webp",
-      "/uploads/sofas-esquineros-convertibles_14.webp",
-      "/uploads/sofas-esquineros-convertibles_15.webp",
-      "/uploads/sofas-esquineros-convertibles_16.webp",
-      "/uploads/sofas-esquineros-convertibles_17.webp"
+      "/uploads/sofas-esquineros-convertibles_10.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofas-esquineros-convertibles.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofas-esquineros-convertibles_1.webp",
         "type": "image"
@@ -13241,34 +13795,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/sofas-esquineros-convertibles_10.webp",
         "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_11.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_12.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_13.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_14.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_15.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_16.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-esquineros-convertibles_17.webp",
-        "type": "image"
       }
     ],
     "tag": "-30% Promos",
@@ -13285,6 +13811,7 @@ export const PRODUCTS: Product[] = [
     "description": "El sofá esquinero reclinable eléctrico ALPES, tapizado en terciopelo jaspeado color topo, combina con elegancia comodidad y diseño contemporáneo. Gracias a su amplio asiento, sus formas redondeadas y su tapizado de terciopelo jaspeado texturizado, aporta un toque cálido, moderno y refinado a su salón.\nEste sofá cuenta con asientos reclinables eléctricos para una relajación personalizada y un verdadero momento de bienestar cada día. Su alto respaldo ofrece un excelente soporte para la espalda y el cuello, mientras que sus amplios reposabrazos y su asiento acolchado brindan una sensación suave y envolvente.\nEl terciopelo jaspeado, suave, resistente y elegante, le da a este sofá un aire acogedor sin renunciar a su diseño moderno. Se adapta fácilmente a tu espacio, perfecto para veladas relajantes, momentos de tranquilidad o para recibir invitados en un ambiente agradable. ¡Este sofá esquinero reclinable eléctrico ha sido diseñado para ofrecerte la máxima comodidad sin sacrificar el estilo!\n\n<!--COLORS_JSON_START-->[\"Terracotta\",\"GRIS\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Terracotta, GRIS]",
     "image": "/uploads/sofas-relajantes.webp",
     "images": [
+      "/uploads/sofas-relajantes.webp",
       "/uploads/sofas-relajantes_1.webp",
       "/uploads/sofas-relajantes_2.webp",
       "/uploads/sofas-relajantes_3.webp",
@@ -13294,10 +13821,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofas-relajantes_7.webp",
       "/uploads/sofas-relajantes_8.webp",
       "/uploads/sofas-relajantes_9.webp",
-      "/uploads/sofas-relajantes_10.webp",
-      "/uploads/sofas-relajantes_11.webp"
+      "/uploads/sofas-relajantes_10.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofas-relajantes.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofas-relajantes_1.webp",
         "type": "image"
@@ -13337,10 +13867,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/sofas-relajantes_10.webp",
         "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-relajantes_11.webp",
-        "type": "image"
       }
     ],
     "tag": "-30% Existencias limitadas",
@@ -13357,6 +13883,7 @@ export const PRODUCTS: Product[] = [
     "description": "¿Buscas un sofá XXL para toda la familia?\nDescubre nuestro suntuoso sofá convertible y panorámico con compartimento de almacenamiento en tela beige OLIVER - ¡Esquinas a la derecha!\nNuestro sofá OLIVER, una auténtica pieza central, se convertirá en la piedra angular de su diseño de interiores, satisfaciendo todas sus necesidades en términos de estilo, funcionalidad y comodidad absoluta.\nUn sofá que combina elegancia, modernidad y practicidad, nuestra colección OLIVER se adapta a toda la familia para ofrecerle momentos de máxima relajación.\nContemporáneo y elegante, con su tapicería de tela beige, nuestro sofá presenta curvas imponentes, con un asiento suave, un amplio respaldo y reposabrazos curvos para garantizarle comodidad y bienestar durante todo el día.\nOfrece un amplio espacio para acomodar a un gran número de personas durante tus reuniones sociales. En tan solo unos segundos, transforma este suntuoso sofá en una cómoda cama para dos.\n¡Sus cualidades no terminan ahí! Además de su majestuosa apariencia, también está equipada con un compartimento de almacenamiento para sus almohadas, sábanas y otros artículos de su elección.\nPara un salón elegante y glamuroso, ¡opte ahora por nuestro sofá convertible y panorámico con compartimento de almacenamiento en tela OLIVER color beige!\nTambién disponible en la esquina izquierda.\nDimensiones: Ancho 323 cm x Profundidad 164 cm x Altura 81 cm\nAltura del asiento: 50 cm / Densidad del asiento: 28 kg/m³\nSe entrega en 4 paquetes. Dimensiones: 133 x 98 x 71/52 cm / 162 x 99 x 66 cm / 164 x 98 x 66 cm / 103 x 60 x 45 cm. Peso: 119 kg.\nEstructura de madera, asiento de espuma de poliuretano, tapicería de tela. Patas de metal.\n\n<!--COLORS_JSON_START-->[\"Noir\",\"Gris Anthracite\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir, Gris Anthracite]",
     "image": "/uploads/sofas-panoramicos.webp",
     "images": [
+      "/uploads/sofas-panoramicos.webp",
       "/uploads/sofas-panoramicos_1.webp",
       "/uploads/sofas-panoramicos_2.webp",
       "/uploads/sofas-panoramicos_3.webp",
@@ -13366,12 +13893,13 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofas-panoramicos_7.webp",
       "/uploads/sofas-panoramicos_8.webp",
       "/uploads/sofas-panoramicos_9.webp",
-      "/uploads/sofas-panoramicos_10.webp",
-      "/uploads/sofas-panoramicos_11.webp",
-      "/uploads/sofas-panoramicos_12.webp",
-      "/uploads/sofas-panoramicos_13.webp"
+      "/uploads/sofas-panoramicos_10.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofas-panoramicos.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofas-panoramicos_1.webp",
         "type": "image"
@@ -13411,18 +13939,6 @@ export const PRODUCTS: Product[] = [
       {
         "url": "/uploads/sofas-panoramicos_10.webp",
         "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-panoramicos_11.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-panoramicos_12.webp",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/sofas-panoramicos_13.webp",
-        "type": "image"
       }
     ],
     "tag": "-30%",
@@ -13439,6 +13955,7 @@ export const PRODUCTS: Product[] = [
     "description": "Sofá esquinero Chesterfield moderno en terciopelo gris\n\nCombina la elegancia atemporal con la máxima comodidad en este amplio sofá esquinero capitoné. Su tapicería de terciopelo gris ultrasuave, realzada por sus finas patas de metal negro, aporta un toque sofisticado y contemporáneo a tu hogar. Diseñado para acoger cómodamente a familiares e invitados, ofrece un asiento espacioso y mullido, ideal para relajarse.\n\nEstilo: Chesterfield reinventado, capitoné meticuloso\n\nTapicería: Terciopelo gris de primera calidad, suave y resistente\n\nEstructura y patas: Metal negro robusto, diseño ligero\n\nDimensiones: 330 cm × 270 cm | Profundidad: 101 cm | Altura: 75 cm\n\nCapacidad: 6 a 7 personas\n\n<!--COLORS_JSON_START-->[\"BEIGE\",\"GRIS\",\"AZUL\"]<!--COLORS_JSON_END-->\n\n[Couleurs: BEIGE, GRIS, AZUL]",
     "image": "/uploads/sofas-chesterfield.webp",
     "images": [
+      "/uploads/sofas-chesterfield.webp",
       "/uploads/sofas-chesterfield_1.webp",
       "/uploads/sofas-chesterfield_2.webp",
       "/uploads/sofas-chesterfield_3.webp",
@@ -13446,6 +13963,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofas-chesterfield_5.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofas-chesterfield.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofas-chesterfield_1.webp",
         "type": "image"
@@ -13481,6 +14002,7 @@ export const PRODUCTS: Product[] = [
     "description": "El sofá esquinero RAMIRO destaca por su diseño contemporáneo, con formas generosas y redondeadas, perfectas para crear un espacio cálido y elegante.\n\nTapizado en terciopelo jaspeado color topo, ofrece un acabado elegante y suave al tacto, aportando una atmósfera acogedora a su hogar. Su tono natural combina fácilmente con cualquier estilo de decoración.\n\nEl sofá RAMIRO está diseñado para ofrecer la máxima comodidad, con asientos amplios, mullidos y acogedores, ideales para relajarse con familiares o amigos. Sus cojines de respaldo aumentan la comodidad y añaden un toque decorativo.\n\nSe entrega envasado al vacío en 5 paquetes, cada uno con un ancho máximo de 133 cm (129 kg en total).\n\nCabe por escaleras estrechas, pasillos y ascensores pequeños.\n\nNo hay cajas de madera que desechar después del montaje.\n\nRecupera su volumen y suavidad originales.\n\nNuestro consejo: desempaquételo al recibirlo y déjelo ventilar en la habitación; recuperará su forma en 72 horas.",
     "image": "/uploads/sofas-de-esquina-fijos.webp",
     "images": [
+      "/uploads/sofas-de-esquina-fijos.webp",
       "/uploads/sofas-de-esquina-fijos_1.webp",
       "/uploads/sofas-de-esquina-fijos_2.webp",
       "/uploads/sofas-de-esquina-fijos_3.webp",
@@ -13490,6 +14012,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofas-de-esquina-fijos_7.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/sofas-de-esquina-fijos.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofas-de-esquina-fijos_1.webp",
         "type": "image"
@@ -13533,12 +14059,17 @@ export const PRODUCTS: Product[] = [
     "description": "Secador de Cabello de Alta Velocidad\nEl ghd Secador Speed es tu aliado para un secado rápido y cómodo. Diseñado con ergonomía en mente, este secador ofrece una experiencia de uso eficiente. Su alta velocidad te permite ahorrar tiempo sin sacrificar la comodidad. Perfecto para aquellos que buscan resultados rápidos en su rutina diaria.\n* Diseño Ergonómico: Facilita el manejo y reduce la fatiga.\n* Eficiente: Acelera el proceso de secado.\n* Cómodo: Ideal para uso diario.\nEste secador es la elección ideal para un cuidado del cabello\neficaz y rápido.\n\n<!--COLORS_JSON_START-->[\"Noir\",\"Argent\",\"noir titane\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir, Argent, noir titane]",
     "image": "/uploads/ghd-secador-speed.webp",
     "images": [
+      "/uploads/ghd-secador-speed.webp",
       "/uploads/ghd-secador-speed_1.webp",
       "/uploads/ghd-secador-speed_2.webp",
       "/uploads/ghd-secador-speed_3.webp",
       "/uploads/ghd-secador-speed_4.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/ghd-secador-speed.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/ghd-secador-speed_1.webp",
         "type": "image"
@@ -13570,11 +14101,16 @@ export const PRODUCTS: Product[] = [
     "description": "ghd Original Styler Hydra\nPlancha Profesional para Cabello Liso\nNuestra icónica plancha ghd original, recomendada por estilistas para cabello liso, suave y brillante. Cuenta con tecnología cerámica single-zone de 185°C, que asegura una distribución uniforme del calor. Perfecta para el peinado diario en todo tipo de cabello.\nTecnología Renovada\n* Tecnología Cerámica Single-Zone: Mantiene la temperatura óptima de 185°C.\n* Sensores de Nueva Generación: Monitorizan la temperatura para resultados duraderos.\n* Elegida por Profesionales: Recomendada por estilistas para resultados profesionales.\nResultados Profesionales\n* Sin Daño al Cabello: 185°C es la temperatura óptima para peinado.\n* Resultados Duraderos: Garantiza un peinado sin comprometer la salud del cabello.\n* Tecnología Actualizada: Mejorada para resultados sin calor extremo.\nHistoria y Innovación\n* Más de 500 Premios: Desde 2001, líderes en innovación y diseño.\n\n* Perfecta para Inicios: Ideal para quienes son nuevos en el uso de una plancha.\n* Looks Fáciles: Crea ondas suaves, rizos con volumen o cabello pulido.\n\nDirectiva de equipos radioeléctricos de la UE: ¿El producto es recargable?\nNo\n\n¿Contiene baterías o celdas?\nNinguno\n\nCondición del producto\nNuevo\n\nBatería integrada\nNo\n\nTipo de enchufe\nEnchufe de la UE\n\nBaterías incluidas\nNo",
     "image": "/uploads/ghd-original-styler-hydra.webp",
     "images": [
+      "/uploads/ghd-original-styler-hydra.webp",
       "/uploads/ghd-original-styler-hydra_1.webp",
       "/uploads/ghd-original-styler-hydra_2.webp",
       "/uploads/ghd-original-styler-hydra_3.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/ghd-original-styler-hydra.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/ghd-original-styler-hydra_1.webp",
         "type": "image"
@@ -13602,6 +14138,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descubre la nueva ghd Chronos Max, nuestra plancha profesional con tecnología HD motion-responsive y placas anchas, diseñada para un peinado de alta definición y resultados x3 veces más rápidos?. Esta innovadora plancha es perfecta para transformar cabellos largos, gruesos y rizados en una sola pasada, sin daños extremos por calorlo.\nTecnología HD motion-responsive\nTransforma tu cabello con la tecnología HD motion-responsive, que se adapta continuamente a tus movimientos durante el peinado. Esta tecnología ajusta la potencia para garantizar una precisión constante en la entrega del calor, manteniendo la temperatura óptima de peinado a 185°C, logrando estilos de alta definición que duran hasta 24 horas3, incluso en cabellos más gruesos. Además, ofrece x2 veces más protección contra la roturas y resultados más duraderos en cada uso.\nResultados duraderos\nNuestra nueva plancha de pelo de placas anchas, te proporciona resultados de alta definición de manera fácil, incluso en cabello largo, grueso y rizado, ghd Chronos Max aporta hasta un 90% más de brillo6 , reduce el encrespamiento\nhasta x2.5 veces' y deja el cabello hasta x3 veces más liso en una sola pasada®, logrando resultados lisos y suaves sin esfuerzos y sin causar daño extremo por calorlo.\n\n\nTecnología HD motion-responsive\nTransforma tu cabello con la tecnología HD motion-responsive, que se adapta continuamente a tus movimientos durante el peinado. Esta tecnología ajusta la potencia para garantizar una precisión constante en la entrega del calor, manteniendo la temperatura óptima de peinado a 185°C, logrando estilos de alta definición que duran hasta 24 horas, incluso en cabellos más gruesos. Además, ofrece x2 veces más protección contra la roturas y resultados más duraderos en cada uso.\nResultados duraderos\nNuestra nueva plancha de pelo de placas anchas, te proporciona resultados de alta definición de manera fácil, incluso en cabello largo, grueso y rizado, ghd Chronos Max aporta hasta un 90% más de brillo6 , reduce el encrespamiento\nhasta x2.5 veces' y deja el cabello hasta x3 veces más liso en una sola pasada®\n, logrando resultados lisos y suaves sin\nesfuerzos y sin causar daño extremo por calor'o.\nPlacas cerámicas un 85% más grandes' y un diseño curvado que permite acercarse más a la raíz, asegurando resultados perfectos de raíz a puntas desde cualquier ángulo. No es solo una plancha: su diseño ultra ergonómico y curvado facilita cambiar de estilo con un simple movimiento de la mano, pasando de un look liso a ondas sueltas o puntas definidas.\nModo suspensión\nDisfruta de la tranquilidad gracias al modo de suspensión, que apaga automáticamente la plancha después de 10 minutos de inactividad.\n\nghd Chronos Max también cuenta con voltaje universal, protector de placas y un cable profesional de 2,7 m.\n\n\n¿Contiene baterías o celdas?\nNinguno\n\nDuración de la garantía\n3 AÑOS\n\nTipo de garantía\nGarantía del fabricante\n\n<!--COLORS_JSON_START-->[\"Blanc\",\"Noir\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Blanc, Noir]",
     "image": "/uploads/ghd-chronos-max.webp",
     "images": [
+      "/uploads/ghd-chronos-max.webp",
       "/uploads/ghd-chronos-max_1.webp",
       "/uploads/ghd-chronos-max_2.webp",
       "/uploads/ghd-chronos-max_3.webp",
@@ -13611,6 +14148,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/ghd-chronos-max_7.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/ghd-chronos-max.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/ghd-chronos-max_1.webp",
         "type": "image"
@@ -13654,6 +14195,7 @@ export const PRODUCTS: Product[] = [
     "description": "El moldeador de pelo multifunción premium de Shark con secador de pelo y plancha. Con su combinación de cerámica con control de temperatura y potente flujo, permite lograr cualquier estilo, en todo tipo de cabello sin daños por calor* con un acabado brillante*. Este multistyler es para todo tipo de cabello. Consigue un cabello radiante y luminoso con la tecnología Gloss Lock que aporta brillo en cabello seco y mantiene tu peinado intacto todo el día.\nEste set incluye 5 accesorios de peinado: plancha Silki, cepillo\nGlossi, rizadores Coanda, boquilla concentradora, cabezal antifrizz y funda. Set especial para alisado y antiencrespamiento. El único modelo de Shark Glam con cabezal de acabado antiencrespamiento. Los 5 cabezales, explicados:\n* Accesorio plancha Silki: cerámica con control de temperatura y aire potente para conseguir un acabado sedoso tanto en cabello húmedo como seco, con hasta el doble de brillo**\n* Cepillo Glossi: brillo intenso en cabello húmedo o seco, sin encrespamiento**. Suaviza, estiliza y aporta volumen a todo tipo de cabello\n* rizadores Coanda de 32mm: para bucles o rizos grandes de forma automática en minutos, sin daños por el calor. Incluye\n2: para rizar en ambas direcciones\n* Accesorio de acabado antifrizz: atrae automáticamente el cabello, combate el encrespamiento y alisa los mechones más rebeldes\n* Boquilla concentradora: ofrece un control preciso del flujo durante el secado de tu cabello, para lograr acabados lisos o con volumen sin esfuerzo\nEl 71% de 156 usuarios en un estudio de consumidores lo confirma. * Más brillo y menos encrespamiento frente al secado al aire.\n\n<!--COLORS_JSON_START-->[\"or\",\"rose\"]<!--COLORS_JSON_END-->\n\n[Couleurs: or, rose]",
     "image": "/uploads/shark-glam.webp",
     "images": [
+      "/uploads/shark-glam.webp",
       "/uploads/shark-glam_1.webp",
       "/uploads/shark-glam_2.webp",
       "/uploads/shark-glam_3.webp",
@@ -13666,6 +14208,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/shark-glam_10.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/shark-glam.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/shark-glam_1.webp",
         "type": "image"
@@ -13721,6 +14267,7 @@ export const PRODUCTS: Product[] = [
     "description": "Diseñada para deslumbrar, esta edición exclusiva Diamante\nNegro del Shark FlexStyle Sparkle viene adornada con más de 20.000 cristales relucientes. Es perfecto para que cada momento se convierta en una celebración, para lucir cada día el\nglamur de la alfombra roja\n* Moldea mientras secas, sin daños por el calor*.\n* Ideal para todo tipo de cabello.\n* Más suavidad y brillo. Menos encrespamiento y cabellos rizados**.\n* Los rizadores Coanda de 32 mm son ideales para crear rizos\ngrandes y para cabello largo.\n* Incluye estuche rígido para almacenar y transportar.\n* Ultraligero (700 gr): ideal para viajar.",
     "image": "/uploads/shark-flexstyle.webp",
     "images": [
+      "/uploads/shark-flexstyle.webp",
       "/uploads/shark-flexstyle_1.webp",
       "/uploads/shark-flexstyle_2.webp",
       "/uploads/shark-flexstyle_3.webp",
@@ -13733,6 +14280,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/shark-flexstyle_10.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/shark-flexstyle.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/shark-flexstyle_1.webp",
         "type": "image"
@@ -13788,9 +14339,14 @@ export const PRODUCTS: Product[] = [
     "description": "El conjunto consta de: 3x mascarillas de vidrio\n7x mascarillas Glowysideup\n1x Sérum de ácido hialurónico Phyve\n1x Gotas moleculares\n1x Vampiro Peel\n1x crema suprema rosa\n1x Sérum Pro Face Formular\n1x Blue Collagenetics\n1x Eyebaghack\n1x Beautyroller\n\n[Contenance: Coffret essentiel, Coffret Prestige complet]\n\n<!--VOLUMES_JSON_START-->[{\"volume\":\"Coffret Essentiel\",\"price\":\"200,00 €\",\"rawPrice\":200}]<!--VOLUMES_JSON_END-->\n\n[VolumesJSON: [{\"volume\":\"Coffret Essentiel\",\"price\":\"200,00 €\",\"rawPrice\":200}]]",
     "image": "/uploads/svenja-walberg-edition-essentielle.webp",
     "images": [
+      "/uploads/svenja-walberg-edition-essentielle.webp",
       "/uploads/svenja-walberg-edition-essentielle_1.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/svenja-walberg-edition-essentielle.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/svenja-walberg-edition-essentielle_1.webp",
         "type": "image"
@@ -13810,9 +14366,14 @@ export const PRODUCTS: Product[] = [
     "description": "1x mascarilla de vidrio\n1x mascarilla Glowysideup\n1x Sérum de ácido hialurónico Phyve\n1x Gotas moleculares\n1x Vampiro Peel\n1x crema suprema rosa\n1x Sérum Pro Face Formular\n1x Blue Collagenetics\n1x Eyebaghack\n1x Beautyroller\n1x Lashcocaine PLUS\n1x Lashcocaine Mini PLUS\n1x Browcocaine\n1x Haircocaine\n1x spray potenciador de cabello haircocaine\n1x Lashcocaine PEPActive\n1x Macara negra\n1x Máscara de pestañas marrón\n\n<!--VOLUMES_JSON_START-->[{\"volume\":\"Coffret Essentiel\",\"price\":\"200,00 €\",\"rawPrice\":200},{\"volume\":\"Coffret Complet Prestige (18 pièces)\",\"price\":\"305,00 €\",\"rawPrice\":305}]<!--VOLUMES_JSON_END-->",
     "image": "/uploads/svenja-walberg.webp",
     "images": [
+      "/uploads/svenja-walberg.webp",
       "/uploads/svenja-walberg_1.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/svenja-walberg.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/svenja-walberg_1.webp",
         "type": "image"
@@ -13832,11 +14393,16 @@ export const PRODUCTS: Product[] = [
     "description": "Jarrón decorativo de cristal verde ahumado – Diseño ondulado\n\nElegante y contemporáneo, este jarrón alto de cristal tintado en verde se distingue por su silueta estilizada y sus líneas verticales onduladas. Su acabado ligeramente translúcido aporta un toque refinado y natural a cualquier decoración, creando hermosos juegos de luz.\n\nIdeal para exhibir flores frescas, ramas decorativas o arreglos florales, encaja a la perfección en la sala de estar, el recibidor, el dormitorio o sobre una consola.\n\nCaracterísticas:\n\n* Material: Cristal\n* Color: Verde ahumado\n* Dimensiones: Ø 14,5 × H 32 cm\n* Estilo: Contemporáneo, elegante, minimalista\n* Uso: Decoración de interiores / Jarrón floral",
     "image": "/uploads/jarron-de-vidrio.webp",
     "images": [
+      "/uploads/jarron-de-vidrio.webp",
       "/uploads/jarron-de-vidrio_1.webp",
       "/uploads/jarron-de-vidrio_2.webp",
       "/uploads/jarron-de-vidrio_3.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/jarron-de-vidrio.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/jarron-de-vidrio_1.webp",
         "type": "image"
@@ -13864,12 +14430,17 @@ export const PRODUCTS: Product[] = [
     "description": "Añade un toque elegante, contemporáneo y lujoso a tu hogar con este jarrón decorativo de diseño escultural. La combinación de una base de mármol natural y una capa superior de cristal negro ahumado con efecto espejo crea un contraste refinado y muy moderno.\n\nSu silueta de inspiración orgánica lo convierte en una auténtica pieza decorativa, igualmente elegante por sí solo o adornado con flores o ramas secas. Ideal para realzar una mesa, consola, estante o cualquier espacio de alta gama.",
     "image": "/uploads/jarron-de-marmol.webp",
     "images": [
+      "/uploads/jarron-de-marmol.webp",
       "/uploads/jarron-de-marmol_1.webp",
       "/uploads/jarron-de-marmol_2.webp",
       "/uploads/jarron-de-marmol_3.webp",
       "/uploads/jarron-de-marmol_4.webp"
     ],
     "media": [
+      {
+        "url": "/uploads/jarron-de-marmol.webp",
+        "type": "image"
+      },
       {
         "url": "/uploads/jarron-de-marmol_1.webp",
         "type": "image"
@@ -13901,6 +14472,7 @@ export const PRODUCTS: Product[] = [
     "description": "*Producto químico de alta preocupación\nNinguno\n*Método de instalación\nMontaje\n*Material del marco\nMadera\n*Origen\nCN(Origen)\n*Nombre de la marca\nNallonHU\n*Tela\ncuero sintético\n*Ancho del sofá\n<2000 mm\n*Apariencia\nModerno\n*CN\nGuangdong\n*material\ngenuine leather\n\nasiento de cuero moderno: diseño moderno y elegante.\nsofá en L: espacio optimizado para salas grandes.\ntres plazas eléctrico: cómodo y funcional.\nSofá reclinable de lujo: sofá de lujo con reclinación.\nreclinable eléctrico: ajuste cómodo con control remoto",
     "image": "/uploads/sofa-esquinero.jpg",
     "images": [
+      "/uploads/sofa-esquinero.jpg",
       "/uploads/sofa-esquinero_1.jpg",
       "/uploads/sofa-esquinero_2.jpg",
       "/uploads/sofa-esquinero_3.jpg",
@@ -13908,6 +14480,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofa-esquinero_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-esquinero.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-esquinero_1.jpg",
         "type": "image"
@@ -13943,6 +14519,7 @@ export const PRODUCTS: Product[] = [
     "description": "�� Diseño ergonómico: Alivio de presión multizona que se adapta a la curva del cuerpo humano y proporciona la relajación de todo el cuerpo.Reposabrazos ancho estilo pan, soporte natural para las manos al sentarse, y la curvatura es ergonómica.Cojín ancho y grueso, relleno de esponja de alto rebote, soporte suave de doble capa, como una nube, lleno de comodidad, respaldo completo, relleno de espuma, grueso y fino, completo en la parte trasera.\nInterruptor eléctrico multifuncional que ajusta el respaldo y el pedal; Ángulo ajustable del respaldo: 90°-160°Ángulo ajustable del pedal: 0°-90°Todos los dispositivos pueden bloquearse en cualquier ángulo; conexiones TIPO C y USB; 8 puntos de masaje; 30° Calefacción; 2 tipos de intensidad de masaje; 5 tipos de modos de masaje; 4 áreas de masaje; La función de masaje es programable: 15min, 30min, 60min; 270° rotación 30° Movimiento suave; El diseño del bolsillo de almacenamiento lateral.\n【Alta Calidad】 El sillón reclinable eléctrico está hecho de acero al carbono Ned grueso, y el marco metálico mejorado está hecho de aleación Ned gruesa con alta resistencia y capacidad de soporte estable.La tela transpirable es agradable para la piel, suave y delicada, resistente al desgaste, fácil de limpiar y mantener, y se puede usar durante todo el año.Los cojines de esponja de alta densidad no se deforman, para su comodidad y relajación en el tiempo libre.\n�� COMTALEBELIEVI Síguela tranquilamente sentado durante una o dos horas en la silla eléctrica después de volver a casa tras un trabajo apremiado.Comprenderá que el cansancio del día se ha desvanecido en este momento!La silla de masaje eléctrica ergonómica te permite relajarte y aliviar la fatiga.Puede ser muy útil en tu día a día, brindando más opciones de relajación y comodidad.\n� �   Instalaciones fáciles. La silla de masaje eléctrica viene con todos los herramientas e instrucciones. No se requieren herramientas adicionales y la instalación solo toma 15 minutos. Calificación: Esta pieza se divide en 2 paquetes, por lo que el tiempo de envío puede variar. Si tiene alguna pregunta, no dude en contactar con nuestro servicio de atención al cliente. Le ofrecemos ayuda rápida y útil en un plazo de 24 horas.",
     "image": "/uploads/sillon-reclinable-electrico-con-calefaccion.jpg",
     "images": [
+      "/uploads/sillon-reclinable-electrico-con-calefaccion.jpg",
       "/uploads/sillon-reclinable-electrico-con-calefaccion_1.jpg",
       "/uploads/sillon-reclinable-electrico-con-calefaccion_2.jpg",
       "/uploads/sillon-reclinable-electrico-con-calefaccion_3.jpg",
@@ -13950,6 +14527,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sillon-reclinable-electrico-con-calefaccion_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sillon-reclinable-electrico-con-calefaccion.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sillon-reclinable-electrico-con-calefaccion_1.jpg",
         "type": "image"
@@ -13985,12 +14566,17 @@ export const PRODUCTS: Product[] = [
     "description": "Diseño elegante y moderno: Este sofá esquinero presenta una forma curva única y está tapizado en terciopelo, añadiendo un toque de elegancia y sofisticación a cualquier apartamento o sala de estar.\n\nComodidad y durabilidad: Tapizado en terciopelo de alta calidad, este sofá ofrece una comodidad excepcional y una gran durabilidad, garantizando que seguirá siendo uno de los rincones favoritos de su hogar durante muchos años.\n\nAmplio espacio: Con su generoso diseño de 3 plazas, este sofá esquinero ofrece asientos suficientes para reuniones o para recibir invitados, lo que lo hace perfecto para espacios amplios.\n\nConfiguración modular: Su diseño modular permite una disposición flexible que se adapta a diferentes distribuciones de habitaciones y preferencias personales, ofreciendo versatilidad en la decoración de interiores.\n\nPerfecto para la decoración del hogar: El color beige-naranja-grado y el diseño moderno hacen de este sofá un elemento decorativo llamativo en cualquier habitación. Ya sea que esté rediseñando su hogar o amueblando un apartamento nuevo, este sofá esquinero complementa diversos estilos de decoración.",
     "image": "/uploads/sofa-seccional-curvo-moderno.jpg",
     "images": [
+      "/uploads/sofa-seccional-curvo-moderno.jpg",
       "/uploads/sofa-seccional-curvo-moderno_1.jpg",
       "/uploads/sofa-seccional-curvo-moderno_2.jpg",
       "/uploads/sofa-seccional-curvo-moderno_3.jpg",
       "/uploads/sofa-seccional-curvo-moderno_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-seccional-curvo-moderno.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-seccional-curvo-moderno_1.jpg",
         "type": "image"
@@ -14022,6 +14608,7 @@ export const PRODUCTS: Product[] = [
     "description": "1. Sofá de configuración flexible: Este sofá modular se puede organizar de manera flexible como un sofá de tres plazas, un sofá en forma de L o un acogedor sofá de esquina, dependiendo de su espacio y de cómo intente utilizarlo.El otomano independiente amplía la zona de asientos y reclinables y es ideal para leer, ver televisión, relajarse o para noches de convalecencia en la sala de estar, el salón o la zona familiar.\n2. Pana suave: La pana texturizada se siente suave, cálida y cómoda, dándole al sofá un aspecto moderno y acogedor.La sutil textura acanalada complementa los estilos de interiores modernos, minimalistas y cálidos.La superficie es adecuada para el uso diario, cómoda y garantiza una experiencia de asiento acogedora en la sala de estar.\n3. Espuma de alta densidad: El Sofá Sin Estructura está relleno de espuma de alta densidad y dimensionalmente estable, ofreciendo un soporte equilibrado para largos períodos de estar sentado y para reclinarse cómodamente.Reposabrazos anchos, cojines de respaldo suaves y una altura de asiento cómoda garantizan un alto nivel de confort.Según las especificaciones del producto, la capacidad de carga es de hasta 800 libras, aproximadamente.360 kg.\n4. Dimensiones generosas: Con un ancho total de aproximadamenteCon 264 cm de largo, el sofá de pana ofrece suficiente espacio para varias personas.La altura del asiento es de aproximadamente.43 cm, los amplios reposabrazos y el espacioso otomano crean una cómoda zona de descanso.Esto hace que el sofá sea adecuado tanto como sofá para la sala de estar como un cómodo sillón para parejas, familias o invitados.\n5. No requiere montaje: El sofá se entrega comprimido y está listo para usar sin necesidad de un montaje complicado.Después del\nTipo de producto: Sofá esquinero en forma de L\nTamaño: Como se muestra\nColor: Gris oscuro\nMaterial: Madera + Terciopelo + Metal\nSe requiere instalación: Sí\nColchón Incluido: No\nNúmero de paquetes: 2",
     "image": "/uploads/sofa-de-esquina.jpg",
     "images": [
+      "/uploads/sofa-de-esquina.jpg",
       "/uploads/sofa-de-esquina_1.jpg",
       "/uploads/sofa-de-esquina_2.jpg",
       "/uploads/sofa-de-esquina_3.jpg",
@@ -14030,6 +14617,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofa-de-esquina_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-de-esquina.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-de-esquina_1.jpg",
         "type": "image"
@@ -14069,6 +14660,7 @@ export const PRODUCTS: Product[] = [
     "description": "Detalles del producto\nAlto\n90 cm\nMaterial\nTejido, estructura de madera maciza, patas en metal y espuma de poliuretano.",
     "image": "/uploads/sofa-cala.jpg",
     "images": [
+      "/uploads/sofa-cala.jpg",
       "/uploads/sofa-cala_1.jpg",
       "/uploads/sofa-cala_2.jpg",
       "/uploads/sofa-cala_3.jpg",
@@ -14077,6 +14669,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofa-cala_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-cala.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-cala_1.jpg",
         "type": "image"
@@ -14115,11 +14711,16 @@ export const PRODUCTS: Product[] = [
     "description": "Detalles del producto\nAltura reposabrazos\n55 cm\nAlto\n81 cm\nAltura asiento\n42 cm\nProfundidad\n96 cm\nProfundidad asiento\n56 cm\nMaterial\nBastidor de madera, asientos de espuma de poliuretano, Cojines de respaldo rellenos de fibra de poliéster siliconada y patas metálicas\nEstilo\nContemporáneo\nPropiedades\nAltura del respaldo: 81 cm\nDetalles\nAltura de la pata: 12 cm\nTapicería desenfundable",
     "image": "/uploads/sofa-front.jpg",
     "images": [
+      "/uploads/sofa-front.jpg",
       "/uploads/sofa-front_1.jpg",
       "/uploads/sofa-front_2.jpg",
       "/uploads/sofa-front_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-front.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-front_1.jpg",
         "type": "image"
@@ -14147,6 +14748,7 @@ export const PRODUCTS: Product[] = [
     "description": "Detalles del producto\nMaterial\nMadera de roble lacado, marco de acero negro mate, tejido, relleno de alta elasticidad con un núcleo de muelles ensacados de 13-16 cm y somier metálico\nEstilo\nNórdico\nRequiere montaje\nSí\n \nMás información\nCARACTERÍSTICAS PRINCIPALES\n\nPatas autoplegables.\nCojín de respaldo (incluido).\nPatas de roble lacado.\nExtra Confort\n\nEl muelle No-zag proporciona un confort uniforme y suave ideal para asientos y respaldos de sofás. La gruesa capa de espuma de alta elasticidad aumenta la comodidad del muelle para garantizar también una gran experiencia de descanso.\n\nMuelle No-zag.\nTipo de confort Medio.\nMaterial del cojín 100 % relleno de fibra\nMedidas\n\n160×200 cm\n\nMEDIDAS SOFÁ CAMA CUBED ROBLE 160CM\n\n140X200 cm\n\nMEDIDAS SOFÁ CAMA CUBED ROBLE\n\n90×200 cm\n\nMEDIDAS SOFÁ CAMA CUBED ROBLE 90\n\nTelas\n\n528 Mixed Dance Blue\n\nComposición: 100 % poliéster.\nSolidez del color a la luz 4-5.\nOekoTex Sí.\n565 Twist Granite\n\nComposición: 100 % poliéster.\nSolidez del color a la luz 4-5.\nOekoTex Sí.\n612 Blida Sand Grey\n\nComposición: 80% poliéster y 20% lino.\nSolidez del color a la luz 4-5.\nOekoTex Sí.",
     "image": "/uploads/sofa-cama-cubed-roble.jpg",
     "images": [
+      "/uploads/sofa-cama-cubed-roble.jpg",
       "/uploads/sofa-cama-cubed-roble_1.jpg",
       "/uploads/sofa-cama-cubed-roble_2.jpg",
       "/uploads/sofa-cama-cubed-roble_3.jpg",
@@ -14155,6 +14757,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sofa-cama-cubed-roble_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sofa-cama-cubed-roble.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sofa-cama-cubed-roble_1.jpg",
         "type": "image"
@@ -14194,6 +14800,7 @@ export const PRODUCTS: Product[] = [
     "description": "Aparador y zapatero escandinavo para recibidor (120 cm)\n\nOptimiza tu espacio con este mueble de almacenamiento compacto y acogedor, ideal para el recibidor, el pasillo o el salón.\n\nAlmacenamiento inteligente y de gran capacidad: 4 puertas con bisagras, 1 cajón central para llaves y accesorios, además de espacio abierto en la parte inferior para zapatos de uso diario.\n\nSuperficie superior segura: Amplia superficie superior con bordes elevados para colocar lámparas, marcos de fotos u objetos pequeños de forma segura.\n\nDiseño que ahorra espacio: Elegante acabado en nogal y un perfil delgado de tan solo 32 cm de profundidad para no obstruir el paso.\n\nDimensiones: 120 cm (ancho) × 90 cm (alto) × 32 cm (profundidad)",
     "image": "/uploads/malmo.jpg",
     "images": [
+      "/uploads/malmo.jpg",
       "/uploads/malmo_1.jpg",
       "/uploads/malmo_2.jpg",
       "/uploads/malmo_3.jpg",
@@ -14201,6 +14808,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/malmo_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/malmo.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/malmo_1.jpg",
         "type": "image"
@@ -14236,6 +14847,7 @@ export const PRODUCTS: Product[] = [
     "description": "Un asiento excepcional diseñado para la máxima relajación, que combina el encanto retro de los años 50 con la comodidad moderna.\n\nEstructura y base: Fabricada en roble macizo ennegrecido con reposabrazos curvos, que ofrece una estabilidad excepcional y una línea limpia y escultural.\n\nAsiento ergonómico: Acolchado de espuma de alta resiliencia, con un suave efecto de cojín, especialmente diseñado para adaptarse a la espalda y aliviar los puntos de presión.\n\nTapicería: Piel de plena flor ecológica en tono caramelo/coñac, resistente al desgaste, suave al tacto y fácil de cuidar.\n\nDimensiones compactas: 95 cm de alto, 88 cm de profundidad y 70 cm de ancho: el tamaño ideal para un rincón de lectura, un salón elegante o una oficina moderna.",
     "image": "/uploads/mid-century.jpg",
     "images": [
+      "/uploads/mid-century.jpg",
       "/uploads/mid-century_1.jpg",
       "/uploads/mid-century_2.jpg",
       "/uploads/mid-century_3.jpg",
@@ -14243,6 +14855,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/mid-century_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/mid-century.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/mid-century_1.jpg",
         "type": "image"
@@ -14278,6 +14894,7 @@ export const PRODUCTS: Product[] = [
     "description": "La combinación perfecta de serenidad orgánica y diseño contemporáneo.\n\nRedefine tu espacio de relajación con la chaise longue Nirvana. Diseñada en la confluencia del minimalismo nórdico y la artesanía inspirada en el wabi-sabi, esta silla escultural transforma cualquier interior en un oasis de paz de alta gama.\n\nEstructura esculpida de madera maciza: Fabricada en noble fresno con ricos y cálidos tonos nogal, la base se distingue por sus reposabrazos de curvas fluidas y patas cónicas, que combinan robustez con una elegancia etérea.\n\nComodidad profunda: Con un colchón generosamente acolchado y un juego de cojines ergonómicos, invita a la relajación total, ideal para leer, tomar una siesta o descansar a diario.\n\nTapicería premium tipo gamuza: Un tejido duradero y lujosamente suave con efecto gamuza color antracita que realza los reflejos de la luz y añade un toque sofisticado y aterciopelado.\n\nDetalle funcional: Incluye una mesa auxiliar a juego que se integra en el respaldo, perfecta para colocar una lámpara, un libro o una taza de té.\n\nCaracterísticas principales:\n\nUso: Sala de estar principal, suite principal, rincón de lectura o despacho de lujo.\n\nEstilo: Japandi, escandinavo moderno, neorústico chic.",
     "image": "/uploads/sillon-minimalista-italiano.jpg",
     "images": [
+      "/uploads/sillon-minimalista-italiano.jpg",
       "/uploads/sillon-minimalista-italiano_1.jpg",
       "/uploads/sillon-minimalista-italiano_2.jpg",
       "/uploads/sillon-minimalista-italiano_3.jpg",
@@ -14288,6 +14905,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sillon-minimalista-italiano_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sillon-minimalista-italiano.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sillon-minimalista-italiano_1.jpg",
         "type": "image"
@@ -14335,6 +14956,7 @@ export const PRODUCTS: Product[] = [
     "description": "¡Embárcate en una aventura con tu tienda de techo! 🚙⛺\n\nTransforma tu vehículo en un auténtico espacio de acampada y disfruta de noches cómodas al aire libre. Esta tienda de techo ofrece una solución práctica para los amantes de los viajes, el senderismo y la acampada.\n\nGracias a su diseño elevado, te permite dormir sin tocar el suelo mientras disfrutas de una vista panorámica del entorno. Su fácil apertura simplifica el montaje del campamento, y su espacio interior es ideal para relajarse después de un día de exploración.\n\n✨ Sus ventajas:\n\n🏕️ Comodidad para escapadas al aire libre\n\n🚙 Se instala en el techo de un vehículo compatible\n\n🌦️ Protección contra la intemperie (según el modelo)\n\n🎒 Solución práctica para viajes y acampada\n\n🌲 Ideal para fines de semana, viajes por carretera y aventuras al aire libre",
     "image": "/uploads/evasion.jpg",
     "images": [
+      "/uploads/evasion.jpg",
       "/uploads/evasion_1.jpg",
       "/uploads/evasion_2.jpg",
       "/uploads/evasion_3.jpg",
@@ -14347,6 +14969,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/evasion_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/evasion.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/evasion_1.jpg",
         "type": "image"
@@ -14402,6 +15028,7 @@ export const PRODUCTS: Product[] = [
     "description": "La Tienda de campaña Gaonala 8 Personas es una tienda de campaña de la marca Gaonala. Este modelo está dimensionada para 8 persona(s).",
     "image": "/uploads/gaonala.jpg",
     "images": [
+      "/uploads/gaonala.jpg",
       "/uploads/gaonala_1.jpg",
       "/uploads/gaonala_2.jpg",
       "/uploads/gaonala_3.jpg",
@@ -14410,6 +15037,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/gaonala_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/gaonala.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/gaonala_1.jpg",
         "type": "image"
@@ -14449,6 +15080,7 @@ export const PRODUCTS: Product[] = [
     "description": "⛺ QUECHUA AIR SECONDS 6.3 FRESH & BLACK\nTienda Familiar Inflable – Capacidad para 6 personas, 3 Habitaciones\n\n🌟 ¡La comodidad de un verdadero hogar en plena naturaleza! 🌟\n\nDescubre la Quechua Air Seconds 6.3 Fresh & Black, una amplia tienda familiar diseñada para ofrecer una experiencia de camping cómoda, espaciosa y placentera. Gracias a su estructura inflable, se monta más rápido y fácilmente que una tienda tradicional con varillas.\n\n🏕️ Un espacio diseñado para toda la familia\nCon sus 3 habitaciones independientes, ofrece espacio práctico para dormir hasta 6 personas. Su amplia sala de estar te permite compartir comidas, relajarte y disfrutar al máximo de tu tiempo al aire libre.\n\n☀️ Tecnología Fresh & Black\nSu tejido especialmente diseñado ayuda a reducir el calor y la luz en el interior, proporcionando mayor comodidad durante los días soleados y las noches de camping.\n\n💨 Estructura inflable práctica\nSus postes inflables facilitan el montaje y desmontaje, para que dediques menos tiempo a armar la tienda y más tiempo a disfrutar de tus vacaciones.\n\n✨ Características destacadas:\n\nCapacidad para 6 personas: Ideal para familias y grupos.\n\n3 habitaciones: Un área de descanso independiente y cómoda.\n\nAmplia sala de estar: Perfecta para comer y relajarse.\n\nTecnología Fresh & Black: Ayuda a mantener el interior más fresco y oscuro.\n\nEstructura inflable: Fácil de armar.\n\nDiseño ideal para familias: Perfecto para vacaciones, acampadas y escapadas al aire libre.",
     "image": "/uploads/quechua.jpg",
     "images": [
+      "/uploads/quechua.jpg",
       "/uploads/quechua_1.jpg",
       "/uploads/quechua_2.jpg",
       "/uploads/quechua_3.jpg",
@@ -14457,6 +15089,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/quechua_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/quechua.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/quechua_1.jpg",
         "type": "image"
@@ -14496,6 +15132,7 @@ export const PRODUCTS: Product[] = [
     "description": "✨ SET DE BELLEZA SISLEY PARIS ✨\n\nProtector Solar Antiedad Sunleÿa SPF 30 + Hidratantes\n\nConsiente tu piel con un ritual de belleza completo de Sisley Paris. Este set combina productos para el cuidado de la piel dedicados a la protección solar, la hidratación y el confort, para complementar elegantemente tu rutina de belleza.\n\n☀️ Protector Solar Antiedad Sunleÿa SPF 30\nUn protector solar antiedad diseñado para proteger la piel de los rayos UV y ayudar a preservar su apariencia. Su agradable textura se integra fácilmente en tu rutina de protección solar.\n\n💧 Crema Corporal Reparadora\nUn tratamiento hidratante que ayuda a nutrir la piel y mantener su confort, especialmente cuando necesita mayor suavidad.\n\n🌸 Fórmula Intensiva Hydra-Flash\nUn tratamiento hidratante intensivo que proporciona una sensación de frescura y ayuda a dejar la piel suave y confortable.\n\n✨ Crema Reparadora con Manteca de Karité\nUn tratamiento nutritivo diseñado para brindar confort y cuidado a las zonas que necesitan atención extra.\n\n💎 Lo más destacado del set:\n\nUna selección de productos complementarios para el cuidado facial y corporal.\n\nUna rutina de belleza centrada en la protección solar y la hidratación.\n\nTamaños prácticos para descubrir varios productos Sisley.\n\nUna presentación elegante, ideal para regalar o para consentirte.",
     "image": "/uploads/protector-solar-antiedad-sunleya-spf-30.jpg",
     "images": [
+      "/uploads/protector-solar-antiedad-sunleya-spf-30.jpg",
       "/uploads/protector-solar-antiedad-sunleya-spf-30_1.jpg",
       "/uploads/protector-solar-antiedad-sunleya-spf-30_2.jpg",
       "/uploads/protector-solar-antiedad-sunleya-spf-30_3.jpg",
@@ -14504,6 +15141,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/protector-solar-antiedad-sunleya-spf-30_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/protector-solar-antiedad-sunleya-spf-30.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/protector-solar-antiedad-sunleya-spf-30_1.jpg",
         "type": "image"
@@ -14543,6 +15184,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descubre este set de cuidado facial de Sisley Paris, una selección de productos dedicados a la hidratación y el confort de la piel. Una maravillosa oportunidad para mimar tu rostro con productos de alta gama, día tras día.\n\n🌿 El set contiene:\n\n💧 Sérum Hydra-Global – 30 ml\nUn sérum hidratante antiedad diseñado para ayudar a la piel a recuperar una sensación de confort y frescura. Su textura ligera se integra fácilmente en la rutina diaria.\n\n🌸 Gel Express Flower – 10 ml\nUn tratamiento hidratante y tonificante que proporciona una sensación de frescura y deja la piel suave y revitalizada.\n\n✨ Hydra-Global – 10 ml\nUn tratamiento antiedad intensamente hidratante, ideal para complementar tu rutina de cuidado facial y mantener su confort.\n\n👁️ Bálsamo Contorno de Ojos y Labios – 5 g\nUn tratamiento diseñado específicamente para la delicada zona del contorno de ojos y labios, para una sensación de suavidad y confort.\n\n💎 ¿Por qué elegir este set?\n\nUna selección de productos complementarios para el cuidado facial.\n\nTexturas agradables y una experiencia de belleza refinada.\n\nUna rutina ideal para quienes buscan hidratación y cuidado antiedad.\n\nUn set elegante, perfecto para regalar o para consentirte.",
     "image": "/uploads/hydra-global-serum-offer.jpg",
     "images": [
+      "/uploads/hydra-global-serum-offer.jpg",
       "/uploads/hydra-global-serum-offer_1.jpg",
       "/uploads/hydra-global-serum-offer_2.jpg",
       "/uploads/hydra-global-serum-offer_3.jpg",
@@ -14550,6 +15192,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/hydra-global-serum-offer_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/hydra-global-serum-offer.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/hydra-global-serum-offer_1.jpg",
         "type": "image"
@@ -14585,12 +15231,17 @@ export const PRODUCTS: Product[] = [
     "description": "🌟 ¡Una tez radiante, una piel visiblemente más bella! 🌟\n\nDescubre Phyto-Teint Perfection de Sisley, una base de maquillaje antiedad de alta gama que combina maquillaje y cuidado de la piel para un resultado natural y luminoso.\n\nSu textura ligera y confortable se funde delicadamente con la piel para unificar el tono, suavizar visualmente su apariencia y revelar un brillo fresco. Ideal para quienes buscan un maquillaje elegante sin efecto máscara.\n\n💎 Beneficios del producto:\n\nTez uniforme: ayuda a difuminar visualmente las pequeñas imperfecciones.\n\nAcabado luminoso: proporciona a la tez un aspecto fresco y natural.\n\nEfecto suavizante: contribuye a una apariencia de piel más suave y uniforme.\n\nComodidad diaria: una textura agradable de llevar.\n\nCuidado antiedad: complementa tu rutina de belleza con un enfoque de cuidado de la piel y maquillaje.\n\n🌸 Tono 00C Vanilla\nUn tono claro con subtonos fríos, ideal para los tonos de piel a los que corresponde.",
     "image": "/uploads/sisleya-le-teint-n-0c-vainilla.jpg",
     "images": [
+      "/uploads/sisleya-le-teint-n-0c-vainilla.jpg",
       "/uploads/sisleya-le-teint-n-0c-vainilla_1.jpg",
       "/uploads/sisleya-le-teint-n-0c-vainilla_2.jpg",
       "/uploads/sisleya-le-teint-n-0c-vainilla_3.jpg",
       "/uploads/sisleya-le-teint-n-0c-vainilla_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sisleya-le-teint-n-0c-vainilla.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sisleya-le-teint-n-0c-vainilla_1.jpg",
         "type": "image"
@@ -14622,6 +15273,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descubre L’Intégral Anti-Âge de Sisley, un tratamiento facial premium diseñado para complementar tu rutina diaria de belleza. Su rica fórmula ofrece una experiencia de cuidado y ayuda a mantener la piel confortable, suave y flexible.\n\n🌟 Beneficios del producto:\n\nCuidado de día y de noche: se integra fácilmente en tu ritual de belleza.\n\nAcción antiedad: ayuda a preservar la apariencia de una piel joven y radiante.\n\nTextura rica: proporciona una sensación de confort y nutrición.\n\nPiel suave y flexible: deja la piel con una agradable sensación al tacto.\n\nTamaño de 50 ml: ideal para tu rutina diaria de cuidado facial.\n\n💎 ¿Por qué elegir Sisley?\n\nPara quienes buscan un tratamiento facial de prestigio que combine una experiencia placentera con una atención meticulosa a la belleza de la piel.",
     "image": "/uploads/sisleya-integral-50-ml.jpg",
     "images": [
+      "/uploads/sisleya-integral-50-ml.jpg",
       "/uploads/sisleya-integral-50-ml_1.jpg",
       "/uploads/sisleya-integral-50-ml_2.jpg",
       "/uploads/sisleya-integral-50-ml_3.jpg",
@@ -14630,6 +15282,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/sisleya-integral-50-ml_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/sisleya-integral-50-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/sisleya-integral-50-ml_1.jpg",
         "type": "image"
@@ -14669,6 +15325,7 @@ export const PRODUCTS: Product[] = [
     "description": "✨ ¡Regálale a tu piel una experiencia de cuidado excepcional! ✨\n\nDescubre The Rich Cream de Augustinus Bader, una lujosa crema facial diseñada para brindar confort, hidratación y una sensación de nutrición. Su rica textura envuelve la piel y se integra perfectamente a tu rutina de belleza diaria.\n\n🌿 Beneficios clave:\n\nHidrata y ayuda a mantener la piel confortable.\n\nNutre la piel que anhela una textura rica y envolvente.\n\nDeja la piel suave, flexible y visiblemente más radiante.\n\nIdeal para complementar una rutina de cuidado facial de alta gama.\n\n<!--VOLUMES_JSON_START-->[{\"volume\":\"50 ml\",\"rawPrice\":250,\"price\":\"250,00 €\"},{\"volume\":\"30 ml\",\"rawPrice\":180,\"price\":\"180,00 €\"},{\"volume\":\"100 ml\",\"rawPrice\":440,\"price\":\"440,00 €\"}]<!--VOLUMES_JSON_END-->\n\n[VolumesJSON: [{\"volume\":\"50 ml\",\"rawPrice\":250,\"price\":\"250,00 €\"},{\"volume\":\"30 ml\",\"rawPrice\":180,\"price\":\"180,00 €\"},{\"volume\":\"100 ml\",\"rawPrice\":440,\"price\":\"440,00 €\"}]]",
     "image": "/uploads/augustinus-bader-the-rich-cream.jpg",
     "images": [
+      "/uploads/augustinus-bader-the-rich-cream.jpg",
       "/uploads/augustinus-bader-the-rich-cream_1.jpg",
       "/uploads/augustinus-bader-the-rich-cream_2.jpg",
       "/uploads/augustinus-bader-the-rich-cream_3.jpg",
@@ -14680,6 +15337,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/augustinus-bader-the-rich-cream_9.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/augustinus-bader-the-rich-cream.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/augustinus-bader-the-rich-cream_1.jpg",
         "type": "image"
@@ -14731,6 +15392,7 @@ export const PRODUCTS: Product[] = [
     "description": "Sobre este artículo\nTamaño compacto: Medición de 43,31\" de ancho x 13,78\" de profundidad x 29,53\" de alto, la mesa compacta ocupa una área pequeña mientras el tablero es mucho y suficiente, que proporciona un espacio suelto para mostrar.Es ideal para mostrar coleccionables, jarrones o decoraciones.\nDiseño distintivo: inspirado en una ola crestante, esta mesa consola presenta una única forma que desafía la gravedad como una capital \"C\".Perfecto para quienes buscan una solución estética única para pasillos o salas, definitivamente hace una declaración audaz.\nConstrucción robusta: construido de madera de ingeniería de alta calidad, esta mesa de pasillo promesa una estabilidad duradera.La estructura robusta hace que la plataforma perfecta para exhibir artículos decorativos, cuando garantiza que pueda soportar un uso a largo plazo.\nPieza versátil: el diseño simple pero elegante hace esta mesa decorativa adecuada para cualquier espacio en su hogar.Puede ser una mesa consola en el pasillo, una mesa de entrada, una práctica mesa de sofá detrás del sofá o una mesa auxiliar en la sala de estar.\nFácil montaje y excelente servicio al cliente: con instrucciones y herramientas claras incluidas en el paquete, el proceso de instalación es rápido y fácil. Nuestro amigo equipo de servicio al cliente siempre listo para ayudar a sus preguntas",
     "image": "/uploads/tribesigns.jpg",
     "images": [
+      "/uploads/tribesigns.jpg",
       "/uploads/tribesigns_1.jpg",
       "/uploads/tribesigns_2.jpg",
       "/uploads/tribesigns_3.jpg",
@@ -14738,6 +15400,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/tribesigns_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/tribesigns.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/tribesigns_1.jpg",
         "type": "image"
@@ -14819,6 +15485,7 @@ export const PRODUCTS: Product[] = [
     "description": "Material duradero: revestimiento con acabado en bronce resistente al óxido e impermeable que años para disfrutar sin daños a la corrosión\nRespaldo ajustable: 5 posiciones ajustables pueden conocer las necesidades de varias posturas durante su tiempo libre\nCon cojín de algodón: algodón grueso mate para una experiencia cómoda en modo silla; perfecto para leer o ver películas.\nCrossWeave: Construcción de tejido cruzado sólido ahuecado con un elegante y elegante recubrimiento en polvo de bronce antiguo endurecido en detalles para todo clima\nSillón de patio con cojín de algodón\nCojínColor: Beige\nColor del marco: Marrón oscuro\nDimensiones del producto: 204 Lx 58 D X 100 /30 H cm\nCaracterística Especial: Cojín\nSe utiliza recomendados para el producto: exterior, jardín de inclusión, patio, piscina\nMaterial del marco: Aluminio\nTela: 200 g de poliéster.\nConte de unidad: 1 Conte\nRecomendación máxima del peso: 120,00 kg\nTamaño del cartón: juego: 103x62x33 cm\nPeso del artículo: 17 KGS\nPaís de Origen: China\nTamaño del paquete:\nLongitud (CM): 106,00\nAncho (CM): 62,00\nAltura (CM): 33.00\nPeso (kg): 18,50",
     "image": "/uploads/silla-de-salon-impermeable.jpg",
     "images": [
+      "/uploads/silla-de-salon-impermeable.jpg",
       "/uploads/silla-de-salon-impermeable_1.jpg",
       "/uploads/silla-de-salon-impermeable_2.jpg",
       "/uploads/silla-de-salon-impermeable_3.jpg",
@@ -14826,6 +15493,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/silla-de-salon-impermeable_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/silla-de-salon-impermeable.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/silla-de-salon-impermeable_1.jpg",
         "type": "image"
@@ -14922,6 +15593,7 @@ export const PRODUCTS: Product[] = [
     "description": "Construcción de metal galvanizado duradera, resistente a la intemperie.\nEl cobertizo de jardín está hecho de chapa de acero galvanizado gruesa, lo que lo hace resistente a la lluvia, el viento y la oxidación.El diseño del techo inclinado permite que el agua de lluvia se drene rápidamente, mientras que las ranuras de ventilación en la parte frontal del techo aseguran una circulación de aire adecuada y evitan la acumulación de humedad en el interior.\nPrácticas puertas dobles con cerradura de seguridad\nDos grandes puertas con bisagras permiten un fácil acceso a las herramientas de jardín, y incluso las palas y escobas grandes pueden guardarse o recuperarse cómodamente.La ranura de bloqueo integrada permite instalar un candado, protegiendo de forma segura sus herramientas contra el robo.\nInterior amplio y abierto\nCon dimensiones externas de 184.4 x 127.2 x 191.5 cm, el cobertizo ofrece un amplio espacio de almacenamiento.El paquete no incluye zócalos, soportes para herramientas ni ganchos; puedes personalizar la disposición interior según tus necesidades.\nFácil montaje y estructura de suelo resistente\nUn sólido marco de metal para el suelo está integrado y protege el contenido de la humedad. Todas las piezas vienen con instrucciones completas de montaje, lo que permite una fácil autoinstalación sin necesidad de herramientas especiales.",
     "image": "/uploads/robust-sichert.jpg",
     "images": [
+      "/uploads/robust-sichert.jpg",
       "/uploads/robust-sichert_1.jpg",
       "/uploads/robust-sichert_2.jpg",
       "/uploads/robust-sichert_3.jpg",
@@ -14929,6 +15601,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/robust-sichert_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/robust-sichert.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/robust-sichert_1.jpg",
         "type": "image"
@@ -14964,6 +15640,7 @@ export const PRODUCTS: Product[] = [
     "description": "Este cenador de patio crea un espacio cómodo y protegido para disfrutar del exterior con mayor tranquilidad. Su techo doble favorece la ventilación, mientras que la malla perimetral ayuda a mantener alejados los mosquitos sin cerrar el ambiente. La estructura metálica con acabado efecto madera aporta estabilidad y un estilo natural, ideal para reuniones, comidas o momentos de descanso al aire libre. \n     \n Características:● Cenador para jardín con techo doble ventilado con ocho orificios de drenaje para evacuación de agua \n      \n ● Toldo superior de poliéster 180 g con protección UV 50+ y acabado repelente al agua \n      \n ● Paredes de malla con cremallera y cintas de sujeción para mayor comodidad de uso \n      \n ● Estructura de metal con recubrimiento en polvo y postes efecto madera \n      \n ● Espacio amplio adecuado para alojar hasta ocho personas \n      \n ● Esta carpa de jardín incluye fijaciones para instalación en césped o superficies de hormigón \n      \n ● Este gazebo requiere montaje, recomendado entre dos personas \n      \n Especificaciones:● Color: teca y crema/gris \n      \n ● Material: metal y poliéster \n      \n ● Medidas totales: 360x300x275 cm (LxANxAL) \n      \n ● Altura del alero: 198 cm \n      \n ● Espacio entre columnas: 320x260 cm (LxAN) \n      \n ● Diámetro poste superior: Ø38 mm \n      \n ● Medidas poste inferior: 60x60 mm \n      \n ● Tejido del techo: poliéster 180 g \n      \n ● Gramaje de la malla: 35 g \n      \n ● Protección solar: UV 50+ \n      \n ● Referencia: 84C-710V00TK/84C-710V01GY",
     "image": "/uploads/outsunny-cenador-para-jardin.jpg",
     "images": [
+      "/uploads/outsunny-cenador-para-jardin.jpg",
       "/uploads/outsunny-cenador-para-jardin_1.jpg",
       "/uploads/outsunny-cenador-para-jardin_2.jpg",
       "/uploads/outsunny-cenador-para-jardin_3.jpg",
@@ -14971,6 +15648,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/outsunny-cenador-para-jardin_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/outsunny-cenador-para-jardin.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/outsunny-cenador-para-jardin_1.jpg",
         "type": "image"
@@ -15006,6 +15687,7 @@ export const PRODUCTS: Product[] = [
     "description": "🏕️ VEVOR – TIENDA DE TECHO RÍGIDA 🚙\n\n✨ ¡La aventura comienza en lo alto!\n\nTransforma tu vehículo en un auténtico espacio de acampada con esta tienda de techo VEVOR, ideal para viajes por carretera, escapadas de fin de semana en la naturaleza y vacaciones familiares.\n\n🏕️ Comodidad y practicidad\n• Capacidad para 2 adultos + 1 niño\n• Estructura rígida para mayor protección\n• Escalera telescópica ajustable hasta 2,3 m\n• Colchón grueso para noches más confortables\n• Ventanas de malla para una buena ventilación\n• Diseño impermeable y protección UV\n• Compatible con SUV, Jeeps, camionetas y vehículos compatibles\n\n📏 Dimensiones abierta: aprox. 263 × 146 × 129 cm\n📦 Peso: aprox. 70,2 kg\n🛏️ Tipo: Tienda de techo rígida para vehículos",
     "image": "/uploads/vevor.jpg",
     "images": [
+      "/uploads/vevor.jpg",
       "/uploads/vevor_1.jpg",
       "/uploads/vevor_2.jpg",
       "/uploads/vevor_3.jpg",
@@ -15018,6 +15700,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/vevor_10.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/vevor.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/vevor_1.jpg",
         "type": "image"
@@ -15073,6 +15759,7 @@ export const PRODUCTS: Product[] = [
     "description": "Instalación rápida: Viene con postes telescópicos en un diseño moderno.Simplesmente monte los soportes en el techo de su coche, estire la tela de la tolda desde el marco de la tolda y extienda los postes.\nAltura ajustable: Los postes ajustables en altura, que van de 125 a 225 cm, se adaptan fácilmente a varias alturas de vehículos, lo que proporciona una protección versátil para sus aventuras al aire libre.\nTela impermeable: La gruesa tela Oxford con revestimiento de PU de 2000 mm es fielmente repelente al agua, manteniéndote seco incluso bajo una ligera lluvia.\nEstructura de aluminio: La duradera estructura de aluminio es resistente a la corrosión y de larga duración.Los clavos de sujeción y las correas de fijación incluidos mejoran la estabilidad.\nDimensiones generales: 160L x 250B x 125–225H cm, apto para 3–4 personas",
     "image": "/uploads/toldo-lateral.jpg",
     "images": [
+      "/uploads/toldo-lateral.jpg",
       "/uploads/toldo-lateral_1.jpg",
       "/uploads/toldo-lateral_2.jpg",
       "/uploads/toldo-lateral_3.jpg",
@@ -15083,6 +15770,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/toldo-lateral_8.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/toldo-lateral.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/toldo-lateral_1.jpg",
         "type": "image"
@@ -15130,6 +15821,7 @@ export const PRODUCTS: Product[] = [
     "description": "Casa de Campaña Inflable Grande\nImpermeable con PU3000mm, protección UPF50+, proporciona excelente protección solar y resistencia a los rayos UV.\nEquipado con un diseño de ventana con pantalla tridimensional para mayor transpirabilidad y prevención de mosquitos.\nOfrece una cómoda alojación para un máximo de 4 personas para dormir y puede acomodar hasta 7-8 personas para actividades.\nLa tienda de campaña inflable presenta un innovador marco de vigas inflables.",
     "image": "/uploads/casa-de-campana-inflable-grande.jpg",
     "images": [
+      "/uploads/casa-de-campana-inflable-grande.jpg",
       "/uploads/casa-de-campana-inflable-grande_1.jpg",
       "/uploads/casa-de-campana-inflable-grande_2.jpg",
       "/uploads/casa-de-campana-inflable-grande_3.jpg",
@@ -15138,6 +15830,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/casa-de-campana-inflable-grande_6.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/casa-de-campana-inflable-grande.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/casa-de-campana-inflable-grande_1.jpg",
         "type": "image"
@@ -15176,6 +15872,7 @@ export const PRODUCTS: Product[] = [
     "description": "Tienda de campaña Safari Glamping – Comodidad y Escapada\n\nTransforma tus escapadas al aire libre en una experiencia de lujo con esta tienda de campaña familiar para glamping. Su diseño inspirado en los safaris combina encanto, amplitud y comodidad para estancias inolvidables.\n\nUn espacio diseñado para la comodidad\n\nSu espacioso interior te permite crear una auténtica zona de estar, con espacio para dormir, relajarte y compartir momentos con familiares y amigos. Grandes aberturas y ventanas proporcionan abundante luz natural, permitiéndote disfrutar del paisaje circundante.\n\nVentajas:\n\nEspacio familiar para estancias confortables.\n\nElegante estilo safari con acabado en beige natural.\n\nGrandes aberturas para disfrutar de la luz y las vistas.\n\nEl interior se puede amueblar con camas, mesas y sillas.\n\nIdeal para acampar, glamping y vacaciones al aire libre.\n\nUna experiencia única para los amantes de la naturaleza y quienes aprecian la comodidad.\n\nUsos: Camping, glamping, alojamiento turístico, jardín o zona de relax.",
     "image": "/uploads/tienda-de-glamping-familiar-estilo-safari.jpg",
     "images": [
+      "/uploads/tienda-de-glamping-familiar-estilo-safari.jpg",
       "/uploads/tienda-de-glamping-familiar-estilo-safari_1.jpg",
       "/uploads/tienda-de-glamping-familiar-estilo-safari_2.jpg",
       "/uploads/tienda-de-glamping-familiar-estilo-safari_3.jpg",
@@ -15183,6 +15880,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/tienda-de-glamping-familiar-estilo-safari_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/tienda-de-glamping-familiar-estilo-safari.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/tienda-de-glamping-familiar-estilo-safari_1.jpg",
         "type": "image"
@@ -15218,6 +15919,7 @@ export const PRODUCTS: Product[] = [
     "description": "Descubre la elegancia de Loewe Solo Ella, una colección de refinadas fragancias femeninas presentadas en hermosos frascos de tonos cálidos. Cada perfume expresa una personalidad diferente, desde la frescura y la sensualidad hasta la intensidad.\n\nUna colección ideal para mujeres que desean dejar una estela elegante e inolvidable.\n\n[VolumesJSON: [{\"volume\":\"100 ml\",\"rawPrice\":130,\"price\":\"130,00 €\"}]]",
     "image": "/uploads/loewe-solo-ella-elixir.jpg",
     "images": [
+      "/uploads/loewe-solo-ella-elixir.jpg",
       "/uploads/loewe-solo-ella-elixir_1.jpg",
       "/uploads/loewe-solo-ella-elixir_2.jpg",
       "/uploads/loewe-solo-ella-elixir_3.jpg",
@@ -15225,6 +15927,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/loewe-solo-ella-elixir_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/loewe-solo-ella-elixir.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/loewe-solo-ella-elixir_1.jpg",
         "type": "image"
@@ -15259,12 +15965,17 @@ export const PRODUCTS: Product[] = [
     "description": "Elegancia pura\nDescubre Oud Wood, una fragancia icónica de Tom Ford, diseñada para quienes buscan una firma olfativa intensa, sofisticada e innegablemente lujosa.\n\nSu carácter reside en la riqueza de la madera de oud, realzada por cálidos y envolventes acordes amaderados. El resultado: una fragancia profunda, elegante y misteriosa que deja una estela refinada e inolvidable.\n\n🖤 ¿Por qué te encantará?\n\nUna fragancia cálida y amaderada\nUna firma olfativa elegante y sofisticada\nUna fragancia ideal para expresar tu personalidad\nUna estela distinguida, perfecta para ocasiones especiales y para el día a día\nUn frasco negro elegante y lujoso que refleja la esencia de la fragancia\nOud Wood no es solo un perfume: es una presencia.\n\nUna elección audaz para quienes desean dejar una impresión duradera, sin exagerar.",
     "image": "/uploads/tom-ford-oud-wood-50-ml.jpg",
     "images": [
+      "/uploads/tom-ford-oud-wood-50-ml.jpg",
       "/uploads/tom-ford-oud-wood-50-ml_1.jpg",
       "/uploads/tom-ford-oud-wood-50-ml_2.jpg",
       "/uploads/tom-ford-oud-wood-50-ml_3.jpg",
       "/uploads/tom-ford-oud-wood-50-ml_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/tom-ford-oud-wood-50-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/tom-ford-oud-wood-50-ml_1.jpg",
         "type": "image"
@@ -15295,12 +16006,17 @@ export const PRODUCTS: Product[] = [
     "description": "Este es Baccarat Rouge 540 de Maison Francis Kurkdjian Paris.\n\nEl frasco es de vidrio transparente con tonalidades ámbar y rojizas.\n\nSu tapón ancho, cuadrado y dorado le confiere un aire de gran prestigio.\n\nLa etiqueta central, en color oro champán, muestra elegantemente el nombre Baccarat Rouge 540. Una nube de partículas doradas luminosas, que recuerdan a polvo o humo brillante, rodea el frasco, creando un efecto casi mágico y dinámico.\n\nLa iluminación cálida resalta especialmente los reflejos dorados del vidrio y el metal.\n\nEl contraste entre el rojo intenso, el dorado y las partículas brillantes refuerza la impresión de lujo, sensualidad y exclusividad.\n\nAmbiente general: una publicidad de perfume de alta gama sofisticada, cálida y espectacular, con una estética muy elegante y de gran calidad.",
     "image": "/uploads/baccarat-rouge-540-extrait-200-ml.jpg",
     "images": [
+      "/uploads/baccarat-rouge-540-extrait-200-ml.jpg",
       "/uploads/baccarat-rouge-540-extrait-200-ml_1.jpg",
       "/uploads/baccarat-rouge-540-extrait-200-ml_2.jpg",
       "/uploads/baccarat-rouge-540-extrait-200-ml_3.jpg",
       "/uploads/baccarat-rouge-540-extrait-200-ml_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/baccarat-rouge-540-extrait-200-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/baccarat-rouge-540-extrait-200-ml_1.jpg",
         "type": "image"
@@ -15331,10 +16047,15 @@ export const PRODUCTS: Product[] = [
     "description": "Delina Exclusif es una fragancia femenina sofisticada y envolvente, reconocible por su carácter floral, frutal y oriental. Una creación elegante y sensual que combina una refinada esencia floral con notas cálidas y profundas.",
     "image": "/uploads/parfums-de-marly-delina-exclusif-75ml.jpg",
     "images": [
+      "/uploads/parfums-de-marly-delina-exclusif-75ml.jpg",
       "/uploads/parfums-de-marly-delina-exclusif-75ml_1.jpg",
       "/uploads/parfums-de-marly-delina-exclusif-75ml_2.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/parfums-de-marly-delina-exclusif-75ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/parfums-de-marly-delina-exclusif-75ml_1.jpg",
         "type": "image"
@@ -15388,6 +16109,7 @@ export const PRODUCTS: Product[] = [
     "description": "La Mer The Concentrate — 50 ml\n\nUn concentrado de lujo para una piel visiblemente calmada y revitalizada.\n\nDescubre The Concentrate de La Mer, un tratamiento facial altamente concentrado diseñado para brindar a la piel una sensación inmediata de confort y alivio. Su lujosa fórmula ayuda a reducir el enrojecimiento, fortalece la barrera cutánea y restaura una tez más suave, flexible y radiante.\n\nSu rica y envolvente textura proporciona una experiencia de cuidado de la piel excepcional, ideal para pieles que necesitan mayor confort y revitalización.\n\n✨ Beneficios del producto\n\n* Tratamiento facial ultralujoso y altamente concentrado\n* Ayuda a calmar y reconfortar la piel\n* Contribuye a mejorar la apariencia de la piel\n* Textura rica y sensorial\n* Tamaño de 50 ml, ideal para una rutina de belleza premium\n\nModo de empleo: Aplicar una pequeña cantidad sobre la piel limpia, por la mañana y/o por la noche, y masajear suavemente.\n\nLa Mer — The Concentrate 50 ml\nUn ritual de belleza excepcional para revelar una piel más confortable, suave y radiante.",
     "image": "/uploads/la-mer-the-concentrate-50-ml.jpg",
     "images": [
+      "/uploads/la-mer-the-concentrate-50-ml.jpg",
       "/uploads/la-mer-the-concentrate-50-ml_1.jpg",
       "/uploads/la-mer-the-concentrate-50-ml_2.jpg",
       "/uploads/la-mer-the-concentrate-50-ml_3.jpg",
@@ -15395,6 +16117,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/la-mer-the-concentrate-50-ml_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/la-mer-the-concentrate-50-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/la-mer-the-concentrate-50-ml_1.jpg",
         "type": "image"
@@ -15429,6 +16155,7 @@ export const PRODUCTS: Product[] = [
     "description": "La crema Clé de Peau Beauté es una lujosa crema facial antiedad, especialmente formulada para nutrir intensamente la piel y proporcionar hidratación, confort y luminosidad. Su rica textura fundente ayuda a mejorar la apariencia de las líneas de expresión, la firmeza y la luminosidad de la piel, para una tez visiblemente más suave y revitalizada.\n\nTamaño: 50 ml\nCategoría: Cuidado facial – Crema antiedad/hidratante",
     "image": "/uploads/la-crema-cle-de-peau-beaute-en-50-ml.jpg",
     "images": [
+      "/uploads/la-crema-cle-de-peau-beaute-en-50-ml.jpg",
       "/uploads/la-crema-cle-de-peau-beaute-en-50-ml_1.jpg",
       "/uploads/la-crema-cle-de-peau-beaute-en-50-ml_2.jpg",
       "/uploads/la-crema-cle-de-peau-beaute-en-50-ml_3.jpg",
@@ -15436,6 +16163,10 @@ export const PRODUCTS: Product[] = [
       "/uploads/la-crema-cle-de-peau-beaute-en-50-ml_5.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/la-crema-cle-de-peau-beaute-en-50-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/la-crema-cle-de-peau-beaute-en-50-ml_1.jpg",
         "type": "image"
@@ -15470,12 +16201,17 @@ export const PRODUCTS: Product[] = [
     "description": "Un eau de parfum femenino, elegante y romántico con una estela floral, avainillada y sensual. Su composición destaca por la rosa Centifolia, la vainilla gourmand, el haba tonka y el sándalo cremoso.",
     "image": "/uploads/miss-dior-eau-de-parfum-en-100-ml.jpg",
     "images": [
+      "/uploads/miss-dior-eau-de-parfum-en-100-ml.jpg",
       "/uploads/miss-dior-eau-de-parfum-en-100-ml_1.jpg",
       "/uploads/miss-dior-eau-de-parfum-en-100-ml_2.jpg",
       "/uploads/miss-dior-eau-de-parfum-en-100-ml_3.jpg",
       "/uploads/miss-dior-eau-de-parfum-en-100-ml_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/miss-dior-eau-de-parfum-en-100-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/miss-dior-eau-de-parfum-en-100-ml_1.jpg",
         "type": "image"
@@ -15506,12 +16242,17 @@ export const PRODUCTS: Product[] = [
     "description": "Esta crema antiedad reafirmante y alisadora está diseñada para:\n\n* reducir la apariencia de las arrugas;\n\n* mejorar la firmeza y el tono de la piel;\n\n* redefinir el contorno facial con un efecto lifting;\n\n* mejorar la apariencia y la calidad del colágeno.\n\nCHANEL afirma que su complejo PRO-LIFT aumenta la cantidad de colágeno en un 76 % y mejora un indicador asociado a su calidad.",
     "image": "/uploads/chanel-le-lift-creme-rides-50-ml.jpg",
     "images": [
+      "/uploads/chanel-le-lift-creme-rides-50-ml.jpg",
       "/uploads/chanel-le-lift-creme-rides-50-ml_1.jpg",
       "/uploads/chanel-le-lift-creme-rides-50-ml_2.jpg",
       "/uploads/chanel-le-lift-creme-rides-50-ml_3.jpg",
       "/uploads/chanel-le-lift-creme-rides-50-ml_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/chanel-le-lift-creme-rides-50-ml.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/chanel-le-lift-creme-rides-50-ml_1.jpg",
         "type": "image"
@@ -15933,11 +16674,16 @@ export const PRODUCTS: Product[] = [
     "description": "Regálale a tu piel una experiencia de cuidado excepcional con la Crema Infusión Ligera de Caviar Blanco, una lujosa crema facial que combina hidratación, luminosidad y firmeza. Su textura ligera y sedosa se funde delicadamente con la piel para un acabado suave, terso y luminoso.\n\nEnriquecida con Exclusive Cell Complex™, tiamidol y extracto de caviar, está diseñada para ayudar a mejorar la apariencia de las manchas oscuras, unificar el tono de la piel y mantenerla visiblemente más firme.\n\nBeneficios:\n\nHidrata y suaviza la piel.\n\nRevela una tez más luminosa y uniforme.\n\nAyuda a reducir la apariencia de las manchas oscuras.\n\nContribuye a mejorar la firmeza y elasticidad.\n\nOfrece una textura fina, confortable y no pegajosa.\n\nLa Prairie\n\nModo de empleo: Aplicar por la mañana y por la noche después del sérum en el rostro y el cuello, evitando el contorno de los ojos.",
     "image": "/uploads/emulsion-or-caviar.jpg",
     "images": [
+      "/uploads/emulsion-or-caviar.jpg",
       "/uploads/emulsion-or-caviar_1.jpg",
       "/uploads/emulsion-or-caviar_2.jpg",
       "/uploads/emulsion-or-caviar_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/emulsion-or-caviar.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/emulsion-or-caviar_1.jpg",
         "type": "image"
@@ -15965,11 +16711,16 @@ export const PRODUCTS: Product[] = [
     "description": "Orchidée Impériale Gold Nobile – La Crema\n\nDescubre la máxima expresión del cuidado de la piel de lujo con Orchidée Impériale Gold Nobile – La Crema.\n\nEsta excepcional crema combina el poder de la orquídea Gold Nobile con una textura rica y sensorial para una piel visiblemente más luminosa, suave y firme.\n\nGracias a su fórmula, fruto de 20 años de investigación, ayuda a mejorar la apariencia de 10 signos de juventud y a revitalizar 6 factores de luminosidad. Un auténtico ritual de belleza para una piel que busca confort, luminosidad y una apariencia juvenil.\n\nBeneficios:\n\nRegeneración antiedad y luminosidad.\n\nPiel visiblemente más firme y suave.\n\nTextura rica, confortable y lujosa.\n\nIdeal para pieles con falta de nutrición.\n\nPresentación elegante, perfecta para una clientela de alta gama.\n\nModo de empleo: Aplicar mañana y noche sobre el rostro y el cuello, antes del sérum.\n\n[Contenance: 50 ml]",
     "image": "/uploads/serum-elixir-cellulaire.jpg",
     "images": [
+      "/uploads/serum-elixir-cellulaire.jpg",
       "/uploads/serum-elixir-cellulaire_1.jpg",
       "/uploads/serum-elixir-cellulaire_2.jpg",
       "/uploads/serum-elixir-cellulaire_3.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/serum-elixir-cellulaire.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/serum-elixir-cellulaire_1.jpg",
         "type": "image"
@@ -15997,12 +16748,17 @@ export const PRODUCTS: Product[] = [
     "description": "✨ **LA PRAIRIE – CREMA SKIN CAVIAR LUXE** ✨\n\nConsiente tu piel con el lujo de un cuidado excepcional. 💎\n\nDescubre **Skin Caviar Luxe Cream**, la icónica crema facial de **La Prairie**, diseñada para envolver la piel en una intensa sensación de confort y revelar una apariencia más suave, firme y visiblemente rejuvenecida.\n\nSu rica y cremosa textura proporciona una suavidad incomparable, mientras que su ritual de cuidado facial ayuda a mantener la piel nutrida, flexible y radiante.\n\n💙 **Beneficios:**\n• Hidrata y nutre la piel\n• Ayuda a mejorar la firmeza\n• Piel visiblemente más suave y tersa\n• Tratamiento antiedad para una rutina de belleza premium\n• Una experiencia sensorial digna de cosméticos de alta gama\n\n**Categoría:** Cuidado Facial\n**Tipo de Tratamiento:** Crema Antiedad Reafirmante y Nutritiva\n**Tamaño:** 30 ml | 50 ml | 100 ml\n\n✨ **El lujo del caviar, la artesanía suiza, la excelencia de La Prairie.**]]]\n\n[Contenance: 100 ml,30 ml, 50 ml]\n\n[VolumesJSON: [{\"volume\":\"30 ml\",\"rawPrice\":305,\"price\":\"305,00 €\"},{\"volume\":\"50 ml\",\"rawPrice\":475,\"price\":\"475,00 €\"},{\"volume\":\"100 ml\",\"rawPrice\":888,\"price\":\"888,99 €\"}]]",
     "image": "/uploads/creme-supreme-anti-age.jpg",
     "images": [
+      "/uploads/creme-supreme-anti-age.jpg",
       "/uploads/creme-supreme-anti-age_1.jpg",
       "/uploads/creme-supreme-anti-age_2.jpg",
       "/uploads/creme-supreme-anti-age_3.jpg",
       "/uploads/creme-supreme-anti-age_4.jpg"
     ],
     "media": [
+      {
+        "url": "/uploads/creme-supreme-anti-age.jpg",
+        "type": "image"
+      },
       {
         "url": "/uploads/creme-supreme-anti-age_1.jpg",
         "type": "image"

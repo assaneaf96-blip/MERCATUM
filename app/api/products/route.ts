@@ -50,9 +50,21 @@ function formatProduct(item: any) {
     } catch {}
   }
 
+  // Enrichissement automatique instantané : si l'item n'a pas toutes ses images (ex: liste catalogue sans images lourdes de Supabase),
+  // on injecte instantanément les images complètes depuis le catalogue PRODUCTS de référence !
+  const defProduct = PRODUCTS.find((p) => p.id === item.id)
+  if (defProduct) {
+    if (rawImages.length <= 1 && Array.isArray(defProduct.images) && defProduct.images.length > 1) {
+      rawImages = defProduct.images
+    }
+    if (rawMedia.length <= 1 && Array.isArray(defProduct.media) && defProduct.media.length > 1) {
+      rawMedia = defProduct.media
+    }
+  }
+
   const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
 
-  const mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || ''
+  const mainImage = (typeof item.image === 'string' ? item.image.trim() : '') || rawImages[0] || mediaUrls[0] || (defProduct?.image || '')
 
   const allImagesSet = new Set<string>()
   if (mainImage) allImagesSet.add(mainImage)

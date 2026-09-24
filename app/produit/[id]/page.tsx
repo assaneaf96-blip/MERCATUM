@@ -275,7 +275,7 @@ export default function ProductDetailPage() {
             ? dbMedia
             : (prevMedia.length > 1 ? prevMedia : (defMedia.length > 1 ? defMedia : allImgs.map((u) => ({ url: u, type: isVideoUrl(u) ? 'video' as const : 'image' as const }))))
 
-          return {
+          const mergedProduct = {
             ...(defProduct || {}),
             ...prev,
             ...dbProduct,
@@ -283,8 +283,9 @@ export default function ProductDetailPage() {
             images: allImgs,
             media: mergedMedia,
           }
+          saveProduct(mergedProduct)
+          return mergedProduct
         })
-        saveProduct(dbProduct)
       }
       setLoading(false)
     }).catch(() => {
@@ -421,6 +422,7 @@ export default function ProductDetailPage() {
 
   const galleryImages = useMemo(() => {
     if (!product) return []
+    const def = PRODUCTS.find((p) => p.id === product.id)
     const list: string[] = []
     if (product.image) list.push(product.image)
     if (product.images && product.images.length > 0) {
@@ -428,8 +430,18 @@ export default function ProductDetailPage() {
         if (img && !list.includes(img)) list.push(img)
       })
     }
+    if (def?.images && def.images.length > 0) {
+      def.images.forEach((img) => {
+        if (img && !list.includes(img)) list.push(img)
+      })
+    }
     if (product.media && product.media.length > 0) {
       product.media.forEach((m) => {
+        if (m && m.url && !list.includes(m.url)) list.push(m.url)
+      })
+    }
+    if (def?.media && def.media.length > 0) {
+      def.media.forEach((m) => {
         if (m && m.url && !list.includes(m.url)) list.push(m.url)
       })
     }
