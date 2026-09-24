@@ -2,7 +2,7 @@
 // Last sync: 2026-09-24T17:07:37.674Z
 // Total: 681 products
 
-export interface VolumeOption { label: string; price: string; rawPrice: number }
+export interface VolumeOption { volume: string; price: string; rawPrice: number }
 export interface MediaItem { url: string; type: 'image' | 'video' }
 
 export interface Product {
@@ -386,7 +386,7 @@ export function extractVolumes(p?: {
 
   if (p.volumes && Array.isArray(p.volumes) && p.volumes.length > 0) {
     return p.volumes.map((v) => ({
-      volume: v.label || '',
+      volume: v.volume || '',
       price: v.price || '',
       rawPrice: v.rawPrice || 0,
     }))
