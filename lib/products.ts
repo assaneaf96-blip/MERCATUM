@@ -3719,31 +3719,11 @@ export const PRODUCTS: Product[] =
     "description": "Estufa de pellet burdeos 9,7kW Canadian\nDisfruta de un ambiente cálido y acogedor en tu hogar con la estufa de pellet burdeos Canadian, diseñada para ofrecer eficiencia y estilo.\nCon una potencia de 9,7 kW, esta estufa garantiza una calefacción óptima para espacios medianos, proporcionando confort durante los días más fríos.\nSu elegante acabado en color burdeos aporta un toque de distinción y calidez a cualquier estancia, integrándose fácilmente en diversos estilos de decoración.\nFabricada por Stove Canadian, esta estufa combina calidad y tecnología para maximizar el rendimiento y minimizar el consumo de combustible.\nAdemás, su tamaño compacto facilita su instalación en diferentes espacios sin renunciar a una gran capacidad de calefacción.\nCaracterísticas:\nPotencia de 9,7 kW para calefacción eficiente\nColor burdeos elegante y moderno\nDimensiones: 102 cm de alto, 49,4 cm de ancho\nDiseño compacto y funcional\nMarca reconocida: Stove Canadian\nConsumo optimizado para mayor ahorro\nIdeal para espacios medianos\nAcabado de alta calidad\nFácil instalación y mantenimiento",
     "image": "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg",
     "images": [
-      "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellet-burdeos-9-7kw-stove-canadian.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3761,31 +3741,11 @@ export const PRODUCTS: Product[] =
     "description": "Para beneficiarse de la Garantía de Piezas de 2 años del fabricante,\nlas operaciones de instalación, conexión al circuito eléctrico, verificación de funcionamiento, mantenimiento y cualquier reparación deben ser realizadas por un profesional calificado. ¡Un mantenimiento anual es obligatorio! Si no se respetan estas condiciones no se podrá tener en cuenta ninguna garantía.\n\n¡ATENCIÓN!\nEs imprescindible comprobar el buen estado del paquete en el momento de la entrega, tanto exterior como interior.\nbr> Sin reclamaciones no será posible ningún cambio de producto ni devolución de dinero.\n\nEstufa de pellets de aire Anita Sannover 12 kW\n\nUna estufa de pellets de aire eficiente y económica\n\nAnita es una estufa de aire compacta Estufa de pellet con un diseño innovador. Bajo consumo para 27 horas de autonomía, calienta hasta 120 m2\n\nDoble combustión, aire ventilado, dimensiones compactas, fácil mantenimiento, programable, crisol de hierro fundido , sensor ambiental integrado, muy silencioso, cenicero extraíble, salida de humos en la parte trasera.\n\nLa estufa de pellets Anita está equipada con un crisol de hierro fundido. que proporciona una amortiguación más silenciosa cuando el pellet cae dentro del crisol, muy útil especialmente cuando la estufa de pellet está instalada en el salón.\n\nAnita es una estufa de pellet de aire, lo que significa que está equipada con un ventilador, por lo que asegura una mejor distribución del calor en el volumen a calentar. Calor suave en toda la casa, a menor coste ya que más allá de su excelente relación calidad/precio, el pellet es un combustible económico y con un impacto medioambiental muy limitado.\n\nLas ventajas de la estufa de pellet Anita con aire ventilado\n\nLa estufa de pellet Anita está equipada con un panel de control digital situado en la parte superior del dispositivo, el control es sencillo y accesible para todos.< Otra ventaja: el sensor ambiental directamente integrado en la estufa de pellets de aire no requiere conexión con ningún otro termostato ambiental. Gracias a su sistema de regulación automática, la estufa de pellet gestiona sus arranques y paradas según la temperatura configurada.\n\nAdemás, se incluye un mando a distancia< /strong>con la estufa de pellets Anita, podrás controlar tu estufa de forma remota.\n\nUn inicio rápido te permitirá también para alcanzar rápidamente la temperatura deseada, y el ventilador difundirá el calor por toda la casa.\n\nSu depósito de pellet con una capacidad de 30 kg le permite ¡benefíciese de una autonomía máxima de hasta 27 horas!\n\n¡Una eficiencia cercana al 89% y su clase energética A+ le garantizan numerosos ahorros en el tiempo!\n\nEstá equipado con un cajón de cenizas extraíble muy práctico para vaciarlo fácilmente y el acceso a los componentes internos es sencillo.\n< div>\nSus dimensiones compactas y su evacuación de humos desde la parte trasera del dispositivo le brindarán amplias posibilidades para instalar su estufa de pellets de aire.\n< li>Una estufa elegante y fácil de usar< /strong>\nTu estufa de pellet debe ser instalada por un profesional cualificado, y recibir mantenimiento anualmente\n\n< /p>\nCaracterísticas técnicas\nEvacuación de humos: Chimenea (no estanca)\nDiámetro de salida: 80mm\nClase energética calefacción: A+\nPotencia nominal : 10,6 kW\nPotencia máxima: 12 kW\nEficiencia a potencia nominal: 89%\nVolumen de calefacción: 120 m2\nDepósito de pellets capacidad: 30kg\nAutonomía: 27 horas\nGarantía: 2 años\n< li>Al/An/Pr: 1042 / 534 / 585 mm\nPeso: 136 kg\nMando a distancia incluido\n\n\nInformación útil\n>¡La Vela no está Garantizada! Es un consumible. (La primera vela se le proporciona y se instala en la estufa)",
     "image": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3803,31 +3763,11 @@ export const PRODUCTS: Product[] =
     "description": "Al recibir su pedido, debe verificar el buen estado del paquete. A tal efecto, tras desempaquetar la mercancía, puede, en su caso, hacer reservas en el albarán y no aceptar el paquete si está visiblemente deteriorado o no conforme a su pedido. No dude, en tal caso, en tomar fotografías que ilustren el problema y que pueda adjuntar a su reclamación realizada a nuestro servicio de atención al cliente. Incluso cuando la instalación de su equipo no deba obligatoriamente ser realizada, según la normativa vigente, por un profesional cualificado, se recomienda por su seguridad y la de sus allegados no hacerlo usted mismo y confiar esta tarea a un profesional cualificado (Qualigaz, QualiPac, QualiBois, estación técnica autorizada por la marca...). Lo mismo aplica para el mantenimiento regular de su equipo. Además de la garantía legal de conformidad de dos años desde la fecha de entrega de su compra, puede beneficiarse, para algunos productos, de una garantía del fabricante por un período, generalmente de dos años, sobre las piezas de repuesto de su equipo. En este caso, la garantía del fabricante solo se aplica si la instalación y el diagnóstico de la avería han sido realizados por un profesional cualificado según las normas vigentes.\nEstufa de pellets Anita 9,4 kW Sannover\nOfrezca a su hogar un calor suave, homogéneo y económico con esta estufa de pellets potente y moderna, diseñada para calentar eficazmente espacios de hasta 80 m². Con una potencia nominal de 8,2 kW (hasta 9,4 kW en punta), garantiza un confort térmico óptimo, controlando su consumo gracias a un alto rendimiento de aproximadamente 87% y una clase energética A+.\nAutonomía y simplicidad diaria\nGran autonomía hasta 10h gracias a un depósito de 8 kg\nRegulación automática con sonda ambiental integrada: la temperatura se mantiene constante sin intervención\nPanel de control digital fácil de usar + mando a distancia incluido para control remoto\nVentilación integrada para una difusión rápida y homogénea del calor\nFacilidad de mantenimiento y diseño cuidado\nBrasero de fundición para mayor durabilidad\nFuncionamiento silencioso para máximo confort\nSalida de humos trasera para una instalación sencilla y poco voluminosa\nUn look moderno que se adapta a todos los interiores\nCon su diseño compacto y contemporáneo, esta estufa se integra armoniosamente en todos los estilos de decoración.\nConforme a la norma ECODESIGN 2022, combina eficiencia energética, bajo impacto y confort duradero.\nCaracterísticas técnicas:\nDiámetro de salida: 80mm\nClase energética calefacción: A+\nPotencia máxima: 9,4 kW\nPotencia nominal: 8,2 kW\nRendimiento: 86,8%\nVolumen calefactable: 80 m²\nCapacidad del depósito de pellets: 8 kg\nAutonomía: hasta 10h\nA/L/P: 753 x 480 x 487 mm\nPeso: 54 kg",
     "image": "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-de-aire-anita-9-4-kw-sannov.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3887,31 +3827,11 @@ export const PRODUCTS: Product[] =
     "description": "La VALERIA 17 es una estufa de pellets de alta capacidad diseñada para calentar grandes espacios de hasta 460 m³. Con 17 kW de potencia y un excelente rendimiento del 91%, ofrece una combustión eficiente y estable. Incorpora un depósito estanco de 36 kg, brasero de fundición y un cajón de cenizas con autonomía de una semana.\nEs un modelo canalizable con 2 canalizaciones independientes, equipado con un ventilador silencioso y dos ventiladores adicionales, lo que permite enviar aire caliente a diferentes estancias. Además de funcionar con pellets, puede utilizar hueso de aceituna y cáscara de almendra mediante un adaptador opcional. Dispone de display táctil, programación automática y mando a distancia.\nIncluye 2 años de garantía y cuenta con Servicio Técnico disponible en España",
     "image": "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-canalizable-valeria-17-kw-c.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3929,31 +3849,11 @@ export const PRODUCTS: Product[] =
     "description": "El insertable canalizable TJ ATLAS 8 permite enviar aire caliente a estancias adicionales gracias a su salida canalizable de 80 mm. Ofrece una potencia térmica nominal de 8,5 kW y un rendimiento del 90 al 94 por ciento, apto para calentar hasta 195 m³, cerca de 78 m². Su estructura está fabricada en acero, incorpora control electrónico y cuenta con un depósito de 15 kg. Tiene un consumo de 0,7 a 1,9 kg por hora, autonomía de 19 a 7 horas y un peso de 105 kg. Clasificación energética A+ y Ecodesign 2022. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA.- INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL",
     "image": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
     "images": [
-      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg"
     ],
     "media": [
       {
         "url": "/uploads/insert-de-pellets-canalizable-modelo-atlas-8-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -3971,31 +3871,11 @@ export const PRODUCTS: Product[] =
     "description": "La caldera de pellets TJ CORINA 24 ISIDE es un equipo preparado para calefacción por agua y viene equipada con un grupo térmico completo que incluye vaso de expansión de 8 litros, bomba de alta eficiencia, válvula de seguridad de 3 bar, purgador automático y transductor de presión. Fabricada en acero con quemador de fundición, alcanza una potencia térmica nominal de 25,8 kW y un rendimiento del 93 al 95 por ciento. Puede calentar hasta 690 m³, equivalentes a unos 276 m². Tiene un depósito de 45 kg, autonomía de 8 a 32 horas, salida de humos de 80 mm y un peso de 218 kg. Cuenta con clasificación energética A++ y cumple la normativa Ecodesign 2022. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA.- INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL",
     "image": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
     "images": [
-      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg"
     ],
     "media": [
       {
         "url": "/uploads/caldera-de-pellets-corina-24-iside-para-calef.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4013,31 +3893,11 @@ export const PRODUCTS: Product[] =
     "description": "Potencia ajustable: Estufa de pellets con potencia térmica regulable de 3,6 a 19,8 kW para calentar espacios de 32 a 375 m³. Eficiencia energética: Calificación energética A++ y diseño Eco 2022 para un funcionamiento eficiente y respetuoso con el medio ambiente. Amplia gama de colores: Disponible en rojo, beige y marrón para adaptarse a la decoración de tu hogar. Fácil de usar: Controles sencillos para ajustar la temperatura y el modo de funcionamiento deseados. Construcción robusta: Estructura de acero resistente con un peso de 170 kg. Sistema conforlux. Incluye sistema anti deflagración y cristal limpio. La termoestufa está dotada de un conjunto de elementos hidráulicos como son: vaso de expansión de 8 litros, bomba de circulación de alta eficiencia, válvula de seguridad de presión a 3 bares, transductor de presión, y purgador automático. Todo ello para garantizar al usuario la mayor eficiencia, seguridad y sencillez de instalación. Innovador diseño para el sistema de anticondensación. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA. - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL\n\n<!--COLORS_JSON_START-->[\"Noir\"]<!--COLORS_JSON_END-->\n\n[Couleurs: Noir]",
     "image": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
     "images": [
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg"
     ],
     "media": [
       {
         "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-1.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4055,31 +3915,11 @@ export const PRODUCTS: Product[] =
     "description": "Potencia ajustable: Estufa de pellets con potencia térmica regulable de 5,1 a 25,8 kW para calentar espacios de 32 a 690 m³. Eficiencia energética: Calificación energética A++ y diseño Eco 2022 para un funcionamiento eficiente y respetuoso con el medio ambiente. Amplia gama de colores: Disponible en rojo, beige y marrón para adaptarse a la decoración de tu hogar. Fácil de usar: Controles sencillos para ajustar la temperatura y el modo de funcionamiento deseados. Construcción robusta: Estructura de acero resistente con un peso de 218 kg. Sistema conforlux. Incluye sistema anti deflagración y cristal limpio. La termoestufa está dotada de un conjunto de elementos hidráulicos como son: vaso de expansión de 8 litros, bomba de circulación de alta eficiencia, válvula de seguridad de presión a 3 bares, transductor de presión, y purgador automático. Todo ello para garantizar al usuario la mayor eficiencia, seguridad y sencillez de instalación. Innovador diseño para el sistema de anticondensación. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA. - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL",
     "image": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
     "images": [
-      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg"
     ],
     "media": [
       {
         "url": "/uploads/tj-hidro-estufa-de-pellets-modelo-velika-de-2.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4097,31 +3937,11 @@ export const PRODUCTS: Product[] =
     "description": "características técnicas:\nestufa biomasa: funciona con pellet o con orujo\nno necesita conectarse a la red eléctrica\npotencia calórica pellet: 10,5kw\npotencia calórica orujo: 13,9 kw\ncapacidad de depósito: 18kg aprox.\ntipo de regulación: manual\nsalida de humos: ø 120mm vertical\npeso bruto: 100 kg\ndimensiones: 950 x 510 x 595 mm\nproducto homologado cumpliendo los requisitos exigidos según normas.\neco nova es la estufa que necesitas, su diseño refinado dará ese toque de estilo que buscas para tu hogar, está hecho con materiales ecológicos para cuidar el medio ambiente, además de tener como característica principal su uso sin necesidad de energía eléctrica. Olvídate de los enchufes y lleva la calidez y el confort a cualquier parte de tu hogar.\nestufa de pellet sin electricidad. Estufas sin conexion electrica. Estufas biomasa sin electricidad. Estufa de orujillo. \naviso legal\nla entrega se realiza a pie de calle, no suben escalones ni bordillos. Recomendamos abrir el paquete en el momento de su recepción para que, en caso de incidencia quede reflejado en el albarán de entrega.",
     "image": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
     "images": [
-      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg"
     ],
     "media": [
       {
         "url": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-eco-n.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4138,31 +3958,11 @@ export const PRODUCTS: Product[] =
     "description": "En el momento de la recepción de su pedido, debe comprobar el buen estado del paquete. A tal efecto, tras desembalar la mercancía, puede, en su caso, formular reservas en el albarán de entrega y no aceptar el paquete si se encuentra manifiestamente deteriorado o no conforme con su pedido. En este caso, no dude en tomar fotografías que ilustren el problema y que podrá adjuntar a su reclamación presentada ante nuestro servicio de atención al cliente.\nIncluso cuando la instalación de su equipo no deba realizarse obligatoriamente, según la normativa vigente, por un profesional cualificado, se le recomienda por su seguridad y la de sus allegados no realizarla usted mismo y confiar esta tarea a un profesional cualificado (Qualigaz, QualiPac, QualiBois, estación técnica autorizada por la marca...). Lo mismo se aplica al mantenimiento regular de su equipo.\nAdemás de la garantía legal de conformidad de la que disfruta durante tres años a partir de la fecha de entrega de su compra, puede beneficiarse para determinados productos de una garantía del fabricante durante un periodo, generalmente de dos años, sobre las piezas de recambio de su equipo. En este caso, la garantía del fabricante solo se aplica si la instalación y el diagnóstico de la avería han sido realizados por un profesional cualificado conforme a las normas vigentes.\nEstufa de pellets Astral Slim – Potencia y confort en un formato compacto\nLa Astral combina rendimiento, practicidad y un diseño compacto. Con una potencia máxima de 12,2 kW, calienta eficazmente hasta 120 m², ofreciendo al mismo tiempo un rendimiento del 89 % para un consumo controlado. Su depósito de 19 kg garantiza hasta 16 horas de autonomía, reforzada por un modo de ahorro de energía y un sistema de reducción de emisiones.\nDiseñada para un confort óptimo en el día a día, dispone de carga automática de pellets, 5 niveles de potencia, ventilación regulable, una sonda de temperatura ambiente y una programación semanal. El mando a distancia incluido permite un control sencillo y remoto. Segura y práctica, integra un presostato de seguridad y un gran cajón de cenizas para un mantenimiento simplificado.\nCaracterísticas técnicas :\nDiámetro de salida : 80mm\nClase energética de calefacción : A+\nPotencia máxima : 12,2 kW\nPotencia nominal : 10,6 kW\nRendimiento : 89 %\nSuperficie calefactable : 120m2\nCapacidad del depósito de pellets : 19 kg\nAutonomía : hasta 16 h\nA/A/F : 114 x 90 x 33 cm\nPeso : 122 kg\nMando a distancia incluido\nCajón de cenizas",
     "image": "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-air-slim-astral-12-2-kw-neg.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4180,31 +3980,11 @@ export const PRODUCTS: Product[] =
     "description": "Estufa de pellet exterior Freya 14 kW\nEstufa de pellet para exterior modelo Freya con 14.000 W de potencia, capaz de calentar superficies de hasta 20 m² de manera rápida y eficiente.\nSu elegante diseño en color negro emite calor inmediato y una luz acogedora que aporta calidez al espacio exterior.\nFabricada con materiales resistentes, combina acero galvanizado con pintura de alta calidad y cristal que soporta altas temperaturas.\nFunciona con pellet, una energía renovable y sostenible de alto poder calorífico, con un depósito de 10 kg que proporciona hasta 5 horas de autonomía.\nEl uso de biomasa como combustible contribuye al cuidado del planeta, siendo un producto económico y altamente eficiente.\nDe fácil manejo y montaje, incorpora ruedas para poder desplazarla cómodamente según tus necesidades.\nCaracterísticas:\nBatería incorporada, no requiere conexión eléctrica continua\nDoble protección contra alta temperatura\nPresostato negativo de vacío\nControl de tiro con mayor precisión\nPotencia de 14.000 W\nCalienta hasta 20 m²\nDepósito de pellet de 10 kg\nAutonomía de hasta 5 horas\nDiseño moderno en color negro con luz acogedora",
     "image": "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
     "images": [
-      "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellet-exterior-freya-14kw-negro-ht.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4222,31 +4002,11 @@ export const PRODUCTS: Product[] =
     "description": "Hydra 25 es nuestra hidroestufa más vendida sin lugar a dudas, el balance perfecto entre potencia y dimensiones. Considerada la hidroestufa que mejor reune las principales características que requerimos a una hidroestufa y que cumple las necesidades de la mayoría de clientes, llegando hasta los 200 metros cuadrados.",
     "image": "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
     "images": [
-      "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg"
     ],
     "media": [
       {
         "url": "/uploads/hidroestufa-de-pellet-hydra-25-blanco-25kw-ha.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4264,31 +4024,11 @@ export const PRODUCTS: Product[] =
     "description": "Para beneficiarse de la Garantía de Piezas de 2 años del fabricante,\nlas operaciones de instalación, conexión al circuito eléctrico, verificación de funcionamiento, mantenimiento y cualquier reparación deben ser realizadas por un profesional calificado. ¡Un mantenimiento anual es obligatorio! Si no se respetan estas condiciones no se podrá tener en cuenta ninguna garantía.\n\n¡ATENCIÓN!\nEs imprescindible comprobar el buen estado del paquete en el momento de la entrega, tanto exterior como interior.\nbr> Sin reclamaciones no será posible ningún cambio de producto ni devolución de dinero.\n\nEstufa de pellets de aire Anita Sannover 12 kW\n\nUna estufa de pellets de aire eficiente y económica\n\nAnita es una estufa de aire compacta Estufa de pellet con un diseño innovador. Bajo consumo para 27 horas de autonomía, calienta hasta 120 m2\n\nDoble combustión, aire ventilado, dimensiones compactas, fácil mantenimiento, programable, crisol de hierro fundido , sensor ambiental integrado, muy silencioso, cenicero extraíble, salida de humos en la parte trasera.\n\nLa estufa de pellets Anita está equipada con un crisol de hierro fundido. que proporciona una amortiguación más silenciosa cuando el pellet cae dentro del crisol, muy útil especialmente cuando la estufa de pellet está instalada en el salón.\n\nAnita es una estufa de pellet de aire, lo que significa que está equipada con un ventilador, por lo que asegura una mejor distribución del calor en el volumen a calentar. Calor suave en toda la casa, a menor coste ya que más allá de su excelente relación calidad/precio, el pellet es un combustible económico y con un impacto medioambiental muy limitado.\n\nLas ventajas de la estufa de pellet Anita con aire ventilado\n\nLa estufa de pellet Anita está equipada con un panel de control digital situado en la parte superior del dispositivo, el control es sencillo y accesible para todos.< Otra ventaja: el sensor ambiental directamente integrado en la estufa de pellets de aire no requiere conexión con ningún otro termostato ambiental. Gracias a su sistema de regulación automática, la estufa de pellet gestiona sus arranques y paradas según la temperatura configurada.\n\nAdemás, se incluye un mando a distancia< /strong>con la estufa de pellets Anita, podrás controlar tu estufa de forma remota.\n\nUn inicio rápido te permitirá también para alcanzar rápidamente la temperatura deseada, y el ventilador difundirá el calor por toda la casa.\n\nSu depósito de pellet con una capacidad de 30 kg le permite ¡benefíciese de una autonomía máxima de hasta 27 horas!\n\n¡Una eficiencia cercana al 89% y su clase energética A+ le garantizan numerosos ahorros en el tiempo!\n\nEstá equipado con un cajón de cenizas extraíble muy práctico para vaciarlo fácilmente y el acceso a los componentes internos es sencillo.\n< div>\nSus dimensiones compactas y su evacuación de humos desde la parte trasera del dispositivo le brindarán amplias posibilidades para instalar su estufa de pellets de aire.\n< li>Una estufa elegante y fácil de usar< /strong>\nTu estufa de pellet debe ser instalada por un profesional cualificado, y recibir mantenimiento anualmente\n\n< /p>\nCaracterísticas técnicas\nEvacuación de humos: Chimenea (no estanca)\nDiámetro de salida: 80mm\nClase energética calefacción: A+\nPotencia nominal : 10,6 kW\nPotencia máxima: 12 kW\nEficiencia a potencia nominal: 89%\nVolumen de calefacción: 120 m2\nDepósito de pellets capacidad: 30kg\nAutonomía: 27 horas\nGarantía: 2 años\n< li>Al/An/Pr: 1042 / 534 / 585 mm\nPeso: 136 kg\nMando a distancia incluido\n\n\nInformación útil\n>¡La Vela no está Garantizada! Es un consumible. (La primera vela se le proporciona y se instala en la estufa)",
     "image": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-de-aire-anita-12-kw-sannove.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4306,31 +4046,11 @@ export const PRODUCTS: Product[] =
     "description": "Al recibir su pedido, debe comprobar el buen estado del paquete. Para ello, después de desembalar la mercancía, puede, si lo considera necesario, anotar sus reservas en el albarán de entrega y no aceptar el paquete si está claramente deteriorado o no se ajusta a su pedido. En tal caso, no dude en tomar fotografías que ilustren el problema y adjuntarlas a su reclamación ante nuestro servicio de atención al cliente.\nIncluso cuando la instalación de su equipo no deba ser realizada obligatoriamente, según la normativa vigente, por un profesional cualificado, se recomienda, por su seguridad y la de sus allegados, que no la realice usted mismo y que confíe esta tarea a un profesional cualificado (Qualigaz, QualiPac, QualiBois, estación técnica autorizada por la marca, etc.). Lo mismo se aplica al mantenimiento regular de su equipo.\nAdemás de la garantía legal de conformidad de la que disfruta durante dos años a partir de la fecha de entrega de su compra, para algunos productos puede beneficiarse de una garantía del fabricante durante un periodo, normalmente de dos años, sobre las piezas de repuesto de su equipo. En este caso, la garantía del fabricante solo se aplica si la instalación y el diagnóstico de averías han sido realizados por un profesional cualificado según las normas vigentes.\nEstufa de pellets Flavia 15 kW Sannover + Kit de instalación completo\n\nKit de conexión Ø 80/125 que incluye:\n1 manguera flexible para la conexión de la entrada de aire\n+ 1 TE 90° conexión F\n+ 6 abrazaderas de unión\n+ 1 TE conexión M\n+ 1 abrazadera mural plana ajustable\n+ 1 conducto de 0,5 metros\n+ 1 conducto de 1 metro\n+ 2 rosetas de acabado\n+ 1 salida horizontal ajustable\nUna estufa de pellets eficaz y económica\nFlavia es una estufa de pellets compacta y de diseño, con una excelente relación calidad-precio. Bajo consumo con 26 horas de autonomía, calienta hasta 300 m3. Combinación perfecta entre estética y rendimiento, Flavia es una estufa de pellets con gran autonomía y un sistema silencioso para un gran confort acústico. Equipada con un crisol de hierro fundido que amortigua el ruido de la caída de los pellets en su interior, muy útil especialmente cuando la estufa de pellets está instalada en el salón. Dotada de un gran panel de control y un mando a distancia, podrá manejarla fácilmente: elija entre 5 niveles de potencia y la programación semanal de su calefacción. Su sistema de regulación automática y su sonda de temperatura le permiten gestionar sus arranques y paradas en función de la temperatura que haya elegido. Un arranque rápido permite alcanzar la temperatura adecuada lo antes posible. Su ventilador integrado garantiza un volumen de calefacción de hasta 300 m3.\nYa sea para el mantenimiento regular o el mantenimiento anual, la estufa de pellets ha sido diseñada para facilitar estas intervenciones: ¡un ahorro de tiempo considerable sin limitaciones de accesibilidad! Está equipada con un cajón de cenizas extraíble muy práctico para vaciarlo fácilmente, un cristal autolimpiante para un mantenimiento más fácil y menos frecuente, y el acceso a los componentes internos es más fácil.\nSu estufa de pellets debe ser instalada por un profesional cualificado y sometida a un mantenimiento anual\nCaracterísticas técnicas:\nDiámetro de salida: 80 mm\nClase energética de calefacción: A+\nPotencia nominal: 13 kW\nPotencia máxima: 15 kW\nRendimiento a potencia nominal: 90 %\nVolumen de calefacción: 300 m3\nCapacidad del depósito de pellets: 18 kg\nAutonomía: 26 h\nGarantía: 2 años\nAl/An/Pr: 1073 / 580 / 550 mm\nPeso: 105 kg\nMando a distancia incluido\nECODESIGN 2022",
     "image": "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-flavia-15-kw-sannover-negro.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4348,31 +4068,11 @@ export const PRODUCTS: Product[] =
     "description": "Potencia ajustable: Esta estufa de pellets canalizable ofrece un rango de potencia de 2,8 a 9,5 kW, permitiendo calentar eficientemente espacios de 245 m³. Consumo eficiente: Su consumo oscila entre 0,6 y 2,2 kg/h, con un rendimiento del 94-88% para un calentamiento óptimo. Depósito de gran capacidad: Cuenta con un depósito de 130 kg, lo que permite una autonomía de hasta 37 horas a potencia mínima. Diseño compacto: Sus dimensiones de 478x499x1097 mm la convierten en una opción ideal para espacios reducidos. Incluye sistema conforlux. Potencia automática de combustión. Incluye sistema antideflagración y cristal limpio. Opción de regular el nivel de ruido a través del sistema Air silence. Sistema canalización segunda habitación. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA. - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL",
     "image": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
     "images": [
-      "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg"
     ],
     "media": [
       {
         "url": "/uploads/tj-estufa-de-pellet-canalizable-nahia-de-9-5-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4390,31 +4090,11 @@ export const PRODUCTS: Product[] =
     "description": "Potencia ajustable: Esta estufa de pellet ofrece una potencia de 4,6 a 14,7 kW, permitiendo regular el calor según tus necesidades. Consumo eficiente: El consumo de pellets varía entre 3,4 kg/h, brindando un uso eficiente del combustible. Rendimiento óptimo: Con un rendimiento del 92-87 %, esta estufa aprovecha al máximo el calor generado. Autonomía prolongada: Puede funcionar entre 30 y 9 horas sin necesidad de recargar pellets. Diseño compacto: Con dimensiones de 514 x 541 x 1104 mm y un peso de 132 kg, esta estufa de pellet es fácil de instalar y se adapta a diferentes espacios. Funcionalidad de programación y mando a distancia: El programador horario permite configurar hasta tres encendidos y apagados automáticos diarios, con opciones de programación diaria, semanal o de fin de semana. Además, el modelo Asia cuenta con mando a distancia, lo que facilita el control de encendido, apagado y ajuste de potencia sin necesidad de acercarse a la estufa. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA. - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL",
     "image": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
     "images": [
-      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg"
     ],
     "media": [
       {
         "url": "/uploads/tj-estufa-de-pellets-modelo-vera-de-15-kw-col.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4432,31 +4112,11 @@ export const PRODUCTS: Product[] =
     "description": "Para beneficiarse de la Garantía de Piezas de 2 años del fabricante,\nlas operaciones de instalación, conexión al circuito eléctrico, verificación de funcionamiento, mantenimiento y posibles reparaciones deben ser realizadas por un profesional cualificado. ¡Un mantenimiento anual es obligatorio! Si no se respetan estas condiciones no se podrá tener en cuenta ninguna garantía.\n\n¡ATENCIÓN!\nEs imprescindible comprobar el buen estado del paquete en el momento de la entrega, tanto exterior como interior.\nbr> Sin reclamaciones no será posible ningún cambio de producto ni devolución de dinero.\n\nEstufa de pellets de aire Anita Sannover 15 kW\n\nUna estufa de pellets de aire eficiente y económica\n\nAnita es una estufa de pellets de aire compacta Estufa con un diseño innovador. Bajo consumo para 27 horas de autonomía, calienta hasta 130 m2\n\nDoble combustión, aire ventilado, dimensiones compactas, fácil mantenimiento, programable, crisol de hierro fundido , sensor ambiental integrado, muy silencioso, cenicero extraíble, salida de humos en la parte trasera.\n\nLa estufa de pellets Anita está equipada con un crisol de hierro fundido. que proporciona una amortiguación más silenciosa cuando el pellet cae dentro del crisol, muy útil especialmente cuando la estufa de pellet está instalada en el salón.\n\nAnita es una estufa de pellet de aire, lo que significa que está equipada con un ventilador, por lo que asegura una mejor distribución del calor en el volumen a calentar. Calor suave en toda la casa, a menor coste ya que más allá de su excelente relación calidad/precio, el pellet es un combustible económico y con un impacto medioambiental muy limitado.\n\nLas ventajas de la estufa de pellet Anita con aire ventilado\n\nLa estufa de pellet Anita está equipada con un panel de control digital situado en la parte superior del dispositivo, el control es sencillo y accesible para todos.< Otra ventaja es que el sensor ambiental directamente integrado en la estufa de pellets de aire no requiere conexión con ningún otro termostato ambiental. Gracias a su sistema de regulación automática, la estufa de pellet gestiona sus arranques y paradas según la temperatura configurada.\n\nAdemás, se incluye un mando a distancia< /strong>con la estufa de pellets Anita, podrás controlar tu estufa de forma remota.\n\nUn inicio rápido te permitirá también para alcanzar rápidamente la temperatura deseada, y el ventilador difundirá el calor por toda la casa.\n\nSu depósito de pellet con una capacidad de 25 kg le permite ¡benefíciate de una autonomía máxima de hasta 27 horas!\n\n¡Una eficiencia cercana al 90,8% y su clase energética A+ te garantizan numerosos ahorros de tiempo!\n\nEstá equipado con un cajón de cenizas extraíble muy práctico para vaciarlo fácilmente y el acceso a los componentes internos es sencillo.\n\nSus dimensiones compactas y su evacuación de humos desde la parte trasera del dispositivo le brindarán amplias posibilidades para instalar su estufa de pellets de aire.\nUna estufa elegante y fácil de usar< /strong>\nTu estufa de pellet debe ser instalada por un profesional cualificado, y recibir mantenimiento anualmente\n\nCaracterísticas técnicas\nEvacuación de humos: Chimenea\nDiámetro de salida: 80mm\nClase energética calefacción: A+\nPotencia nominal: 12,8 kW< /li>\nPotencia máxima: 14,3 kW\nEficiencia a potencia nominal: 90,8%\nVolumen de calefacción: 130 m2\nCapacidad del depósito de pellet: 25 kg< /li>\nAutonomía: 27 horas\nGarantía: 2 años\nAl/An/Pr: 1118 / 542 / 654 mm\nPeso: 153 kg\nMando a distancia incluido\nECODISEÑO 2022\n< /ul>\n\nInformación útil\n¡La vela no está garantizada! Es un consumible. (La primera vela se le proporciona y se instala en la estufa)\nTenga en cuenta que las salidas de humos (tubos para salidas de humos) no están incluidas con el producto\nCada producto ha sido probado en fábrica.\n\n\nPiezas de repuesto disponibles durante 10 años.",
     "image": "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-de-aire-anita-15-kw-sannove.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4474,31 +4134,11 @@ export const PRODUCTS: Product[] =
     "description": "Hydra 18 es nuestra hidroestufa de entrada en cuanto a potencia y dimensiones se refiere. Considerada la mejor hidroestufa en relación calidad-prestaciones-precio del mercado, permite disfrutar de una hidroestufa llegando a calentar hasta 100 metros cuadrados.",
     "image": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
     "images": [
-      "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg"
     ],
     "media": [
       {
         "url": "/uploads/hidroestufa-de-pellets-hydra-18-blanco-18kw-h.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4516,31 +4156,11 @@ export const PRODUCTS: Product[] =
     "description": "Estufa de Pellet Elipse 10 Gris\nLa estufa de pellet Elipse destaca por su diseño moderno y compacto, ideal para integrarse en cualquier espacio del hogar. Con un acabado en color gris, combina estética y tecnología para ofrecer un ambiente cálido y acogedor.\nCon una potencia global de 9,7 kW y un volumen de calefacción de hasta 190 m³, esta estufa garantiza un alto rendimiento y un bajo consumo energético. Su eficiencia del 91,3 % la convierte en una opción sostenible y económica.\nGracias a su autonomía regulable entre 6,5 y 18 horas, proporciona un funcionamiento prolongado sin necesidad de recarga constante, lo que aporta comodidad y tranquilidad al usuario.\nIncluye mando a distancia para un control sencillo y práctico, y ofrece la posibilidad de integrar un módulo WiFi opcional para una gestión inteligente desde dispositivos móviles.\nCumple con la normativa EN 16510, asegurando calidad, seguridad y eficiencia en cada uso.\nCaracterísticas:\nPotencia global: 9,7 kW\nRendimiento: 91,3%\nAutonomía: 18 - 6,5 horas\nConsumo de pellet: 2,0 - 0,7 kg/h\nVolumen calefactable: 190 m³\nMedidas: 95,6 x 48,9 x 52,5 cm\nPeso: 82 kg\nSalida de humos Ø 80 mm\nIncluye mando a distancia\nWiFi opcional de fácil instalación\nColor: gris\nCumple normativa EN 16510-1:2022 y EN 16510-2-6:2022",
     "image": "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
     "images": [
-      "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellet-elipse-10kw-gris-stove-canad.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4558,31 +4178,11 @@ export const PRODUCTS: Product[] =
     "description": "la estufa mini eco sol es un modelo más pequeño de nuestro modelo eco sol, cumple con la función de dar calor a tu hogar y aportar estilo y elegancia a tus espacios. Su uso es ecológico, no necesita energía eléctrica para funcionar, por lo que puedes llevarlo donde desees y ahorrar espacio por su adaptabilidad.\ncaracterísticas técnicas:\nestufa biomasa: funciona con pellet o con orujo\nno necesita conectarse a la red eléctrica\npotencia calórica pellet: 10,5kw\npotencia calórica orujo: 13,9 kw\ncapacidad de depósito: 18kg aprox.\ntipo de regulación: manual\nsalida de humos: ø 120 mm vertical\npeso bruto: 90 kg\ndimensiones: 910 x 410 x 550 mm\nestufa de pellet sin electricidad. Estufas sin conexion electrica. Estufas biomasa sin electricidad.\nproducto homologado cumpliendo los requisitos exigidos según normas. \naviso legal\nla entrega se realiza a pie de calle, no suben escalones ni bordillos. Recomendamos abrir el paquete en el momento de su recepción para que, en caso de incidencia quede reflejado en el albarán de entrega.",
     "image": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
     "images": [
-      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg"
     ],
     "media": [
       {
         "url": "/uploads/joima-estufa-biomasa-pellet-orujo-joima-mini-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4600,31 +4200,11 @@ export const PRODUCTS: Product[] =
     "description": "La estufa de pellets PASILLO 8 CANALIZADA PLUS é uma escolha ideal para quem procura aquecimento eficiente com design moderno e funcionalidade avançada. Com uma potência nominal de 8 kW e uma potência reduzida de 7,2 kW, é capaz de climatizar espaços até 150 m³ com um rendimento de 90%, proporcionando conforto com baixo consumo de pellets, entre 0,61 e 2,7 kg/h. Possui um depósito com capacidade para 13 kg, oferecendo uma excelente autonomia, e um peso total de 65 kg que facilita a sua instalação. Suas dimensões compactas (91 x 24 x 93 cm) tornam este modelo ideal para corredores ou ambientes com espaço reduzido. Conta com saída de fumos de 80 mm e alimentação elétrica de 220 V. Compatível com controle remoto (Ref. RE141046) e conectividade Wi-Fi (Ref. RE141051), permite total comodidade no controle da temperatura e programação. Além disso, incorpora sistemas de segurança, ignição automática e ventilação canalizável dupla para distribuição eficiente do calor em diferentes áreas. Com classificação energética A+, a PASILLO 8 CANALIZADA PLUS é a solução perfeita para quem valoriza desempenho, economia e sustentabilidade. Referência do produto: ESC141001.",
     "image": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-slim-8-canalizada-plus-8-kw.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4642,31 +4222,11 @@ export const PRODUCTS: Product[] =
     "description": "Estufa policombustible con horno de estilo moderno y funcionamiento por convección natural sin necesidad de conexión de la red eléctrica.\nSistema de triple combustión\nDiseñada conforme a la normativa europea ecodesign 2022\nPotencia calorífica de 12,20 kw; 10,4 kw pelet; 13,9 kw orujo\nClasificación Energética A.\nDiseñada para cualquier tipo de estancia con unas medidas de 1040 mm (alto) x 920 mm (ancho) x 485 mm (fondo).\nFabricada en acero de alta calidad.\nGarantía de 3 años\nHorno incorporado para una cocción natural\nMedidas totales (mm): 1040 (alto) x 920(ancho) x 485 (fondo).\nMedidas horno (mm): 230(alto) x 465(ancho) x 395(fondo)\nMedidas cámara combustión (mm): 340 (alto) x 550(ancho) x 390 (fondo)\nPotencia calórica maxima: 10,4 kw pelet / 13,9 kw orujo / 12,2 kw leña\nConsumo de pellet/orujo: 1,9 kg/h / 3,2\nCapacidad depósito: 18 kg aprox\nCombustible: pellets / orujo / leña\nTipo de regulación: manual\nSalida de humos ø: 150 mm vertical\nPeso bruto: 205 kg\nLa entrega se realiza a pie de calle. Importante: revisar la estufa en el momento de su recepción, antes de firmar el albarán; para que, en caso de incidencia quede reflejado en el albarán de entrega, de no hacer esto, si sufre cualquier daño, no se hará cargo el seguro. Muy importante anotar las roturas!!",
     "image": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
     "images": [
-      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg"
     ],
     "media": [
       {
         "url": "/uploads/joima-estufa-policombustible-con-horno-modelo.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4684,31 +4244,11 @@ export const PRODUCTS: Product[] =
     "description": "Al recibir su pedido, debe comprobar el buen estado del paquete. Para ello, después de desembalar la mercancía, puede, si lo considera oportuno, anotar sus reservas en el albarán de entrega y no aceptar el paquete si está claramente deteriorado o no se ajusta a su pedido. En tal caso, no dude en tomar fotografías que ilustren el problema y adjuntarlas a su reclamación ante nuestro servicio de atención al cliente.\nIncluso cuando la instalación de su equipo no deba ser realizada obligatoriamente, según la normativa vigente, por un profesional cualificado, se recomienda, por su seguridad y la de sus allegados, que no la realice usted mismo y que confíe esta tarea a un profesional cualificado (Qualigaz, QualiPac, QualiBois, estación técnica autorizada por la marca, etc.). Lo mismo se aplica al mantenimiento regular de su equipo.\nAdemás de la garantía legal de conformidad de la que disfruta durante dos años a partir de la fecha de entrega de su compra, para algunos productos puede beneficiarse de una garantía del fabricante durante un periodo, normalmente de dos años, sobre las piezas de repuesto de su equipo. En este caso, la garantía del fabricante solo se aplica si la instalación y el diagnóstico de averías han sido realizados por un profesional cualificado según las normas vigentes.\nEstufa de pellets de esquina Iseos Blanca: potente, económica y con un diseño elegante\nCombine potencia, confort y diseño contemporáneo con esta estufa de pellets de esquina, ideal para calentar grandes volúmenes de forma eficaz y ahorrar energía.\nCon una potencia máxima de 12,2 kW y una potencia nominal de 10,6 kW, ofrece un rendimiento excepcional del 87 %, lo que garantiza un calor difuso, homogéneo y confortable.\nLa Iseos está equipada con un crisol de hierro fundido que amortigua el ruido de los pellets al caer dentro del crisol, lo que resulta muy útil, especialmente cuando la estufa de pellets está instalada en el salón. Su gran depósito de pellets de 30 kg ofrece una autonomía de hasta 30 horas.\nPráctico y fácil de usar, dispone de 5 niveles de potencia, programación semanal, modo de ahorro de energía y dispositivos de seguridad integrados.\nCaracterísticas principales:\nPotencia absorbida: 12,2 kW\nPotencia nominal: 10,6 kW\nRendimiento: 87 %\nDimensiones (Al x An x Pr): 103 x 78 x 97 cm\nØ Salida de humos: 80 mm\nClase energética: A+\nNormas: CE, RoHS, Ecodesign2022",
     "image": "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-de-esquina-iseos-12-2-kw-bl.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4726,31 +4266,11 @@ export const PRODUCTS: Product[] =
     "description": "Potencia ajustable: Esta estufa de pellets canalizable ofrece una potencia entre 2,4 y 11,1 kW. Eficiencia energética: Alcanza un alto rendimiento de combustión, con una eficiencia de entre el 96% y el 89%. Amplia autonomía: Dependiendo del modelo, puede funcionar entre 40 y 8 horas con una sola carga de pellets. Capacidad de calefacción: Diseñada para calentar espacios de 325 m³ Dimensiones compactas: Mide 1070 x 295 x 1.086 mm, con un diámetro de salida de humos de 80 mm y un peso de 130 kg. Incluye sistema conforlux. Potencia automática de combustión. Incluye sistema antideflagración y cristal limpio. Opción de regular el nivel de ruido a través del sistema Air silence. Sistema canalización segunda habitación. DATOS DE ENTREGA: La Entrega se Realiza a pie de Calle. No suben ni escaleras ni bordillos. IMPORTANTE REVISAR LA ESTUFA ANTES DE FIRMAR EL ALBARAN. NO DAR NINGUN DATO AL REPARTIDOR SIN HABER REVISADO LA ESTUFA. - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL - INCLUIDA PUESTA EN MARCHA OBLIGATORIA POR EL SERVICIO TECNICO OFICIAL",
     "image": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
     "images": [
-      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg"
     ],
     "media": [
       {
         "url": "/uploads/tj-estufa-de-pellets-canalizable-de-pasillo-m.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4768,31 +4288,11 @@ export const PRODUCTS: Product[] =
     "description": "Para beneficiarse de la garantía de 2 años del fabricante,\nlas operaciones de instalación, conexión al circuito eléctrico, comprobación del funcionamiento, mantenimiento y posibles reparaciones deben ser realizadas por un profesional cualificado. ¡Es obligatorio realizar un mantenimiento anual! Si no se cumplen estas condiciones, no se aceptará ninguna reclamación.\n\n¡ATENCIÓN!\nEs imprescindible comprobar el buen estado del paquete en el momento de la entrega, tanto por fuera como por dentro. Sin reclamación, no se aceptará ningún cambio de producto ni reembolso.\n\nKit de conexión Ø 80/125 que incluye:\n1 tubo flexible para la conexión de la entrada de aire\n+ 1 TE 90° con conexión F\n+ 6 abrazaderas de unión\n+ 1 TE con conexión M\n+ 1 abrazadera mural plana ajustable\n+ 1 conducto de 0,5 metros\n+ 1 conducto de 1 metro\n+ 2 rosetas de acabado\n+ 1 salida horizontal regulable\n+ Anita 15 kW\nUna estufa de pellets eficiente y económica\nAnita es una estufa de pellets compacta y de diseño, con una excelente relación calidad-precio. Bajo consumo con 16 horas de autonomía, calienta hasta 300 m3.\nDoble combustión, aire ventilado, dimensiones compactas, fácil mantenimiento, programable, sonda ambiente integrada, crisol amplio, muy silenciosa, cenicero extraíble, salida de humos trasera.\nUna estufa de diseño y fácil de usar\nEsta estufa de pellets tiene una potencia nominal de 12,6 kW, que es la potencia obtenida en las mejores condiciones de uso de la estufa. En cuanto a la potencia máxima, aquí de 15 kW, se mide durante el pico de calor de la estufa. Como la mayoría de las estufas de pellets, el rendimiento se expresa en potencia máxima.\nSu estufa de pellets debe ser instalada por un profesional cualificado y sometida a un mantenimiento anual.\nCaracterísticas técnicas\nEvacuación de humos: Ventosa (estanca)\nDiámetro de salida: 80 mm\nClase energética de calefacción: A+\nPotencia máxima: 15 kW\nPotencia nominal: 12,6 kW\nRendimiento: 87 %\nVolumen de calefacción: 300 m3\nCapacidad del depósito de pellets: 30 kg\nAutonomía: 16 h\nAl/An/Pr: 1116 x 542 x 625 mm\nPeso: 142 kg",
     "image": "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-anita-15-kw-burdeos-sannove.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4810,31 +4310,11 @@ export const PRODUCTS: Product[] =
     "description": "Para beneficiarse de la garantía de 2 años del fabricante, las operaciones de instalación, conexión al circuito eléctrico, comprobación del funcionamiento, mantenimiento y posibles reparaciones deben ser realizadas por un profesional cualificado. ¡El mantenimiento anual es obligatorio! Si no se cumplen estas condiciones, no se aceptará ninguna reclamación en garantía.\n\n¡ATENCIÓN!\nEs imprescindible comprobar el buen estado del paquete en el momento de la entrega, tanto por fuera como por dentro.\nEstufa de pellets Anita 12 kW Negro Sannover + Kit de instalación completo\nKit de conexión Ø 80/125 que incluye:\n1 tubo flexible para la conexión de la entrada de aire\n+ 1 TE 90° con conexión F\n+ 6 abrazaderas de unión\n+ 1 TE derivación M\n+ 1 abrazadera mural plana regulable\n+ 1 conducto de 0,5 metros\n+ 1 conducto de 1 metro\n+ 2 rosetas de acabado\n+ 1 salida horizontal regulable\n+ Anita 12 kW\nUna estufa de pellets eficiente y económica\nAnita es una estufa de pellets compacta y elegante, con una excelente relación calidad-precio. Bajo consumo con 27 horas de autonomía, calienta hasta 280 m3.\nDoble combustión, aire ventilado, fácil mantenimiento, programable, sonda ambiente integrada, crisol amplio, muy silenciosa, salida de humos por la parte trasera. Esta estufa de pellets tiene una potencia nominal de 10,6 kW, que es la potencia obtenida en las mejores condiciones de uso de la estufa. La potencia máxima de 12 kW se mide durante el pico de calor de la estufa. Como la mayoría de las estufas de pellets, el rendimiento se expresa en potencia máxima.\nSu estufa de pellets debe ser instalada por un profesional cualificado y sometida a un mantenimiento anual.\nCaracterísticas:\n\nDiámetro de salida: 80 mm\nClase energética de calefacción: A+\nPotencia máxima: 12 kW\nPotencia nominal: 10,6 kW\nRendimiento: 87 %\nVolumen de calefacción: 280 m3\nCapacidad del depósito de pellets: 30 kg\nAutonomía: 27 h\nAl/An/Pr: 1042 x 534 x 585 mm\nPeso: 136 kg\n\n\nPiezas de repuesto disponibles durante 10 años.",
     "image": "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-anita-12-kw-negro-sannover-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4852,31 +4332,11 @@ export const PRODUCTS: Product[] =
     "description": "En el momento de la recepción de su pedido, debe verificar el buen estado del paquete. Con este fin, puede, después de haber desembalado la mercancía, emitir, en su caso, reservas en el albarán de entrega y no aceptar el paquete si está manifiestamente deteriorado o no conforme con su pedido. No dude, en ese caso, en tomar fotografías que ilustren el problema y que podrá adjuntar a su reclamación realizada ante nuestro servicio de atención al cliente. Incluso cuando la instalación de su equipo no deba obligatoriamente ser realizada, según la normativa vigente, por un profesional cualificado, se le recomienda para su seguridad y la de sus familiares no realizarla usted mismo y confiar esta tarea a un profesional cualificado (Qualigaz, QualiPac, QualiBois, estación técnica autorizada por la marca...). Lo mismo se aplica al mantenimiento regular de su equipo. Además de la garantía legal de conformidad de la que se beneficia durante dos años a partir de la fecha de entrega de su compra, puede beneficiarse para ciertos productos de una garantía del fabricante durante un período, la mayoría de las veces de dos años, sobre las piezas de repuesto de su equipo. En este caso, la garantía del fabricante solo se aplica si la instalación y el diagnóstico de la avería han sido realizados por un profesional cualificado conforme a las normas vigentes.\nEstufa de pellets Anita 11,6 kW Sannover\nOfrezca a su interior un calor suave, homogéneo y económico con esta estufa de pellets potente y moderna, diseñada para calentar eficazmente espacios de hasta 100 m². Con una potencia nominal de 10,3 kW (hasta 11,6 kW en punta), garantiza un confort térmico óptimo, al mismo tiempo que controla su consumo gracias a un alto rendimiento de aproximadamente 89 % y una clase energética A+.\nAutonomía y simplicidad en el día a día\nGran autonomía hasta 22,5 h gracias a un depósito de 18 kg\nRegulación automática con sonda de ambiente integrada : la temperatura se mantiene constante sin intervención\nPanel de control digital fácil de usar + mando a distancia incluido para control a distancia\nVentilación integrada para una difusión rápida y homogénea del calor\nFacilidad de mantenimiento y diseño cuidado\nCrisol de hierro fundido para una durabilidad reforzada\nCajón de cenizas extraíble para una limpieza sencilla\nFuncionamiento silencioso para un confort máximo\nSalida de humos trasera para una instalación sencilla y poco voluminosa\nUn aspecto moderno que se adapta a todos los interiores\nCon su diseño compacto y contemporáneo, esta estufa se integra armoniosamente en todos los estilos de decoración.\nConforme a la norma ECODESIGN 2022, combina rendimiento energético, bajo impacto y confort duradero.\nCaracterísticas técnicas :\nDiámetro de salida : 80mm\nClase energética calefacción : A+\nPotencia máxima: 11,6 kW\nPotencia nominal : 10,3 kW\nRendimiento : 89 %\nVolumen de calefacción : 100m2\nCapacidad del depósito de pellets : 18 kg\nAutonomía : hasta 22h30\nAl/An/Pr : 1040 x 436 x 550 mm\nPeso : 78 kg\n\n\nPiezas de repuesto disponibles durante 10 años.\nMade in PRC",
     "image": "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
     "images": [
-      "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellets-anita-11-6-kw-blanco-sannov.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4894,31 +4354,11 @@ export const PRODUCTS: Product[] =
     "description": "Estufa de pellet canalizable de pasillo 10kW blanco Stove Canadian\nDisfruta de una calefacción eficiente y confortable con la estufa de pellet canalizable de pasillo de 10kW en color blanco de Stove Canadian.\nDiseñada especialmente para espacios estrechos, esta estufa combina funcionalidad y estilo para integrarse perfectamente en tu hogar.\nSu potencia de 10kW garantiza un calentamiento rápido y uniforme, ideal para mantener una temperatura agradable durante los días más fríos.\nFabricada por Stove Canadian, una marca reconocida por su calidad y durabilidad en sistemas de calefacción.\nCon un diseño compacto en color blanco, esta estufa no solo calienta, sino que también aporta un toque moderno y elegante a cualquier pasillo o espacio reducido.\nCaracterísticas:\nPotencia de 10kW para calefacción eficiente\nColor blanco que combina con cualquier decoración\nDiseño canalizable para distribuir el calor en diferentes ambientes\nIdeal para pasillos y espacios estrechos\nAltura de 94 cm para una presencia discreta\nAncho de 25 cm que facilita su instalación en espacios reducidos\nProfundidad con embalaje de 100 cm para un transporte seguro\nFabricada por la reconocida marca Stove Canadian\nFuncionamiento con pellets, una opción ecológica y económica",
     "image": "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg",
     "images": [
-      "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-de-pellet-canalizable-de-pasillo-10kw-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
@@ -4936,31 +4376,11 @@ export const PRODUCTS: Product[] =
     "description": "Modelo\tTOSCANA\nCódigo EAN\t8436572637238\nNormas\thttps://i.postimg.cc/NFS0mFBR/Do-C-TOSCANA-CANALIZADA.png\nColor del producto\tmarrón\nCanalizable\tSí\nClasificación de eficiencia energética\tA+\nCompatible con Wi-Fi\tSí\nHidroestufa\tNo\nIncluye mando a distancia\tNo\nPotencia global\t11.67\nRendimiento\t10.28\nMódulo Wi-Fi incorporado\tNo\nFicha de seguridad (SdS)\thttps://drive.google.com/uc?export=download&id=1stoLTt1kuVQL5RUprCRAGJZxH4UR0SbH\nCombustible\tPellets\nDiámetro salida de humos\t80\nRendimiento Calefacción (%)\t88.1\nTipo de pantalla\tPantalla digital LED\nUbicación salida de gases\tvertical\nVoltaje\t220 V\nManual Instrucciones\thttps://drive.google.com/uc?export=download&id=1stoLTt1kuVQL5RUprCRAGJZxH4UR0SbH\nVendido por\tOtros vendedores\nMarca\tPolar Home Energy",
     "image": "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
     "images": [
-      "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
-      "/uploads/pellet-stove-detail-llama.jpg",
-      "/uploads/pellet-stove-detail-display.jpg",
-      "/uploads/pellet-stove-detail-tolva.jpg",
-      "/uploads/pellet-stove-detail-instalacion.jpg"
+      "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg"
     ],
     "media": [
       {
         "url": "/uploads/estufa-pellet-toscana-canalizada-esc67014-de-.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-llama.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-display.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-tolva.jpg",
-        "type": "image"
-      },
-      {
-        "url": "/uploads/pellet-stove-detail-instalacion.jpg",
         "type": "image"
       }
     ],
