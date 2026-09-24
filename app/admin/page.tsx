@@ -36,10 +36,12 @@ import {
   subscribeToProductsChanges,
   invalidateClientProductsCache,
 } from '@/lib/supabaseService'
+import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
 import {
   type Product,
   type MediaItem,
   type VolumeOption,
+  PRODUCTS,
   CATEGORIES,
   extractContenance,
   extractVolumes,
@@ -96,7 +98,13 @@ export default function AdminPage() {
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
 
   // Products state
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<Product[]>(() => {
+    if (typeof window !== 'undefined') {
+      const cached = getSyncCachedProducts()
+      if (cached && cached.length > 0) return cached
+    }
+    return PRODUCTS
+  })
   const [searchProduct, setSearchProduct] = useState('')
   const [filterCategory, setFilterCategory] = useState('Tous les produits')
   const [showForm, setShowForm] = useState(false)
@@ -170,18 +178,41 @@ export default function AdminPage() {
 
   const reloadData = useCallback(async () => {
     const localProducts = getProducts()
-    setProducts(localProducts)
+    if (localProducts && localProducts.length > PRODUCTS.length) {
+      setProducts((prev) => (localProducts.length > prev.length ? localProducts : prev))
+    }
     setNouveautes(getNouveautes())
     setSettings(getSiteSettings())
     const localOrders = getOrders()
     setOrders(localOrders)
 
-    // Charger les produits les plus récents depuis Supabase
+    // 1. Restaurer immédiatement depuis IndexedDB ultra-rapide (< 10ms)
+    getClientCachedProducts().then((cached) => {
+      if (cached && cached.length > 0) {
+        setProducts((prev) => (cached.length >= prev.length ? cached : prev))
+      }
+    }).catch(() => {})
+
+    // 2. Charger les produits les plus récents depuis Supabase Cloud
     try {
       const dbProducts = await fetchProductsFromDb(true)
       if (dbProducts && dbProducts.length > 0) {
-        setProducts(dbProducts)
-        saveProductsBulk(dbProducts)
+        const merged = new Map<string, Product>()
+        PRODUCTS.forEach((p) => merged.set(p.id, p))
+        dbProducts.forEach((p) => {
+          const def = merged.get(p.id)
+          merged.set(p.id, { ...(def || {}), ...p })
+        })
+        const localItems = getProducts()
+        localItems.forEach((lp) => {
+          if (lp && lp.id) {
+            const def = merged.get(lp.id)
+            merged.set(lp.id, { ...(def || {}), ...lp })
+          }
+        })
+        const all = Array.from(merged.values())
+        setProducts(all)
+        saveProductsBulk(all)
       }
     } catch {
       // Garder les produits locaux
@@ -2353,7 +2384,13 @@ export default function AdminPage() {
               <div>
                 <h1 className="font-serif text-2xl font-bold text-[#1c221d]">Gestion du Catalogue Boutique</h1>
                 <p className="text-sm text-[#666] mt-0.5">
-                  Ajoutez, modifiez ou supprimez des soins du catalogue avec photos et vidéos multiples.
+                  Total : <strong className="text-stone-900 font-bold">{products.length}</strong> produits enregistrés
+                  {filterCategory !== 'Tous les produits' && (
+                    <span> · Dans « {filterCategory} » : <strong className="text-[#3b4d2a] font-bold">{filteredProducts.length}</strong></span>
+                  )}
+                  {searchProduct && (
+                    <span> · Recherche « {searchProduct} » : <strong className="text-[#3b4d2a] font-bold">{filteredProducts.length}</strong></span>
+                  )}
                 </p>
               </div>
 
@@ -2440,13 +2477,19 @@ export default function AdminPage() {
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="px-4 py-2.5 bg-white border border-[#d8d3c5] rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none"
+                className="px-4 py-2.5 bg-white border border-[#d8d3c5] rounded-lg text-sm focus:ring-2 focus:ring-[#b8c8a6] outline-none font-medium"
               >
-                {allCategories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
+                {allCategories.map((cat) => {
+                  const count =
+                    cat === 'Tous les produits'
+                      ? products.length
+                      : products.filter((p) => p.category === cat).length
+                  return (
+                    <option key={cat} value={cat}>
+                      {cat} ({count})
+                    </option>
+                  )
+                })}
               </select>
             </div>
 
