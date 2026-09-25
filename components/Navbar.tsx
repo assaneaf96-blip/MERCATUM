@@ -205,8 +205,8 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
           <span className="menu-text">{menuOpen ? 'Cerrar' : 'Menú'}</span>
         </button>
 
-        <Link href="/" className="brand">
-          {settings.siteName || 'MERCATUM'}
+        <Link href="/" className="brand" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.jpg" alt="MERCATUM Logo" style={{ height: '40px', objectFit: 'contain' }} />
         </Link>
 
         <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navegación principal">

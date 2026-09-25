@@ -14,7 +14,9 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-brand-block">
-        <Link href="/" className="brand-footer">{settings.siteName || 'MERCATUM'}</Link>
+        <Link href="/" className="brand-footer" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src="/logo.jpg" alt="MERCATUM Logo" style={{ height: '40px', objectFit: 'contain' }} />
+        </Link>
         <p>Arte de Vivir, mobiliario de excepción y rituales de bienestar para el cuerpo y el hogar. Diseñado para enriquecer su día a día.</p>
       </div>
 
