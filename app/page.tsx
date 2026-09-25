@@ -453,6 +453,7 @@ function CategorySliderSection({
 }
 
 export default function HomePage() {
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
   const [productsList, setProductsList] = useState<Product[]>(() => {
     if (typeof window !== 'undefined') {
       const cached = getSyncCachedProducts()
@@ -927,39 +928,43 @@ export default function HomePage() {
           </p>
 
           {/* Navigation rapide par ancres */}
-          <div className="homepage-category-bar" style={{ justifyContent: 'center', marginBottom: '16px' }}>
-            {productsByCategory.map(({ category, products }) => {
-              const anchor = 'cat-' + category.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+          <div className="homepage-category-bar" style={{ justifyContent: 'center', marginBottom: '16px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            {productsByCategory.map(({ category, products }, index) => {
               return (
-                <a
+                <button
                   key={category}
-                  href={`#${anchor}`}
+                  onClick={() => setActiveCategoryIndex(index)}
                   className="homepage-cat-btn"
+                  style={{
+                    background: activeCategoryIndex === index ? 'var(--foreground)' : 'transparent',
+                    color: activeCategoryIndex === index ? 'var(--background)' : 'inherit',
+                    borderColor: 'var(--foreground)'
+                  }}
                 >
                   {category} ({products.length})
-                </a>
+                </button>
               )
             })}
             <Link
               href="/boutique"
               className="homepage-cat-btn"
-              style={{ background: 'var(--foreground)', color: 'var(--background)', borderColor: 'var(--foreground)' }}
             >
-              Toda la tienda ({productsList.length}) ↗
+              Toda la tienda ({productsList.length}) →
             </Link>
           </div>
         </div>
 
-        {/* Défilé complet de chaque catégorie avec ses arguments */}
-        {productsByCategory.map(({ category, products }) => (
+        {/* Défilé de la catégorie active */}
+        {productsByCategory[activeCategoryIndex] && (
           <CategorySliderSection
-            key={category}
-            category={category}
-            details={CATEGORY_ARGUMENTS[category]}
-            products={products}
+            key={productsByCategory[activeCategoryIndex].category}
+            category={productsByCategory[activeCategoryIndex].category}
+            details={CATEGORY_ARGUMENTS[productsByCategory[activeCategoryIndex].category]}
+            products={productsByCategory[activeCategoryIndex].products}
             onAddToCart={handleAddToCart}
           />
-        ))}
+        )}
+
 
         <div className="view-all-wrapper" style={{ padding: '60px 20px 20px', textAlign: 'center' }}>
           <Link href="/boutique" className="button dark" style={{ padding: '16px 36px' }}>
