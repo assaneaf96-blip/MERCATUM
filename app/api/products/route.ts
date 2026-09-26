@@ -68,9 +68,10 @@ function formatProduct(item: any) {
   // on utilise immédiatement media comme galerie principale de référence
   const authoritativeList = mediaUrls.length > rawImages.length ? mediaUrls : rawImages
 
-  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || authoritativeList[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
+  const v = Date.now().toString(36)
+  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || authoritativeList[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0&v=${v}`
   if (rawMain && rawMain.startsWith('data:')) {
-    rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
+    rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0&v=${v}`
   }
 
   const allImagesSet = new Set<string>()
@@ -78,7 +79,7 @@ function formatProduct(item: any) {
   authoritativeList.forEach((img, idx) => {
     if (img && typeof img === 'string') {
       const u = img.trim()
-      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}` : u)
+      allImagesSet.add(u.startsWith('data:') ? `/api/product-image?id=${encodeURIComponent(item.id)}&index=${idx}&v=${v}` : u)
     }
   })
 
