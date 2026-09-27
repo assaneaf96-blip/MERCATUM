@@ -65,7 +65,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   announcement: 'Arte de Vivir & Santuario Interior · Envío gratuito a partir de 150 €',
   heroTitle: "El Lujo de Habitar su Espacio.",
   heroSubtitle: "Un espacio refinado donde vivir en armonía. Piezas de mobiliario, electrodomésticos de excepción y rituales de bienestar diseñados para transformar su hogar.",
-  contactPhone: '+34 910 00 00 00',
+  contactPhone: '+34 691 34 98 40',
   contactAddress: 'Paseo de la Castellana, 28046 Madrid, España',
   contactEmail: 'contact@mercatum.fr',
   contactHours: 'Lunes a Viernes: 10:00 – 19:00 · Sábados: 10:00 – 17:00',

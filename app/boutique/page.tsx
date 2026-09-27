@@ -266,7 +266,7 @@ export default function BoutiquePage() {
     }
   }
 
-  const whatsappPhone = (settings.contactPhone || '+34910000000').replace(/[^0-9]/g, '')
+  const whatsappPhone = (settings.contactPhone || '+34691349840').replace(/[^0-9]/g, '')
 
   return (
     <main className="min-h-screen flex flex-col bg-[#faf8f5] text-stone-900">
