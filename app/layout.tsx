@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "MERCATUM — El Arte de Vivir & Santuario Interior",
   description: "Mobiliario de autor, electrodomésticos de excepción y rituales de bienestar para el hogar y el cuerpo.",
   generator: 'v0.app',
+  icons: {
+    icon: '/logo.jpg',
+    shortcut: '/logo.jpg',
+    apple: '/logo.jpg',
+  },
 }
 
 export const viewport: Viewport = {
