@@ -134,6 +134,14 @@ export default function ProductDetailPage() {
 
   const [product, setProduct] = useState<Product | null>(() => {
     if (!productId) return null
+    if (typeof window !== 'undefined') {
+      const syncCached = getSyncCachedProducts()
+      const foundSync = syncCached?.find((p) => p.id === productId)
+      if (foundSync) return foundSync
+      const local = getProducts()
+      const foundLocal = local?.find((p) => p.id === productId)
+      if (foundLocal) return foundLocal
+    }
     return PRODUCTS.find((p) => p.id === productId) || null
   })
   const [allProducts, setAllProducts] = useState<Product[]>(PRODUCTS)
@@ -205,6 +213,12 @@ export default function ProductDetailPage() {
   const [toast, setToast] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(() => {
     if (!productId) return true
+    if (typeof window !== 'undefined') {
+      const syncCached = getSyncCachedProducts()
+      if (syncCached?.some((p) => p.id === productId)) return false
+      const local = getProducts()
+      if (local?.some((p) => p.id === productId)) return false
+    }
     return !PRODUCTS.some((p) => p.id === productId)
   })
 

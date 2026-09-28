@@ -152,14 +152,16 @@ export async function GET(request: NextRequest) {
     if (!isForcedDb && serverCache && serverCache.products.length > 0 && (Date.now() - serverCache.timestamp < CACHE_TTL_MS)) {
       return NextResponse.json(
         { success: true, products: serverCache.products, cached: true },
-        { headers: NO_CACHE_HEADERS }
+        { headers: {
+          'Cache-Control': 'public, max-age=15, stale-while-revalidate=60',
+        }}
       )
     }
 
-    // 3. Récupération directe Supabase par lots parallèles rapides de 100 pour charger la totalité des 681+ produits sans timeout
+    // 3. Récupération directe Supabase par lots parallèles rapides de 100 pour charger la totalité des produits sans timeout
     const batchSize = 100
     const ranges: { from: number; to: number }[] = []
-    for (let i = 0; i < 800; i += batchSize) {
+    for (let i = 0; i < 3000; i += batchSize) {
       ranges.push({ from: i, to: i + batchSize - 1 })
     }
 

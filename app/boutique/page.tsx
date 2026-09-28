@@ -18,6 +18,8 @@ export default function BoutiquePage() {
     if (typeof window !== 'undefined') {
       const cached = getSyncCachedProducts()
       if (cached && cached.length > 0) return cached
+      const local = getProducts()
+      if (local && local.length > 0) return local
     }
     return PRODUCTS
   })
@@ -28,7 +30,7 @@ export default function BoutiquePage() {
   const [cartCount, setCartCount] = useState(0)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
-  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
+  const [settings, setSettings] = useState<SiteSettings>(() => getSiteSettings())
 
   const tabsRef = useRef<HTMLDivElement>(null)
 

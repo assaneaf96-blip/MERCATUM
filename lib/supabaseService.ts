@@ -91,7 +91,7 @@ export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[
   try {
     const batchSize = 100
     const ranges: { from: number; to: number }[] = []
-    for (let i = 0; i < 800; i += batchSize) {
+    for (let i = 0; i < 3000; i += batchSize) {
       ranges.push({ from: i, to: i + batchSize - 1 })
     }
 

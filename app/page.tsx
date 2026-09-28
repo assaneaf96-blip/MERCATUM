@@ -459,14 +459,22 @@ export default function HomePage() {
     if (typeof window !== 'undefined') {
       const cached = getSyncCachedProducts()
       if (cached && cached.length > 0) return cached
+      const local = getProducts()
+      if (local && local.length > 0) return local
     }
     return PRODUCTS
   })
-  const [nouveautesList, setNouveautesList] = useState<NewItem[]>([
-    { productId: 'idole-now-lancome', customLabel: 'Parfumerie · Nouveau' },
-    { productId: 'creme-supreme-anti-age', customLabel: 'Soins Anti-Âge · N°1 des Ventes' },
-  ])
-  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
+  const [nouveautesList, setNouveautesList] = useState<NewItem[]>(() => {
+    if (typeof window !== 'undefined') {
+      const local = getNouveautes()
+      if (local && local.length > 0) return local
+    }
+    return [
+      { productId: 'idole-now-lancome', customLabel: 'Parfumerie · Nouveau' },
+      { productId: 'creme-supreme-anti-age', customLabel: 'Soins Anti-Âge · N°1 des Ventes' },
+    ]
+  })
+  const [settings, setSettings] = useState<SiteSettings>(() => getSiteSettings())
 
   const [cartCount, setCartCount] = useState(0)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)

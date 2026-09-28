@@ -3,6 +3,14 @@ import { supabase } from '@/lib/supabase'
 
 export const dynamic = 'force-dynamic'
 
+// Cache mémoire serveur (RAM) pour répondre instantanément (< 1ms) aux requêtes répétées
+const imageMemoryCache = new Map<string, { buffer: Buffer; mimeType: string; timestamp: number }>()
+const IMAGE_CACHE_TTL = 1000 * 60 * 60 * 24 // 24 heures
+
+const CACHE_HEADERS = {
+  'Cache-Control': 'public, max-age=2592000, s-maxage=31536000, stale-while-revalidate=86400, immutable',
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
@@ -11,6 +19,19 @@ export async function GET(request: NextRequest) {
 
     if (!id) {
       return NextResponse.redirect(new URL('/placeholder.svg', request.url))
+    }
+
+    const cacheKey = `${id}:${index}`
+    const cached = imageMemoryCache.get(cacheKey)
+    if (cached && (Date.now() - cached.timestamp < IMAGE_CACHE_TTL)) {
+      return new NextResponse(cached.buffer, {
+        status: 200,
+        headers: {
+          'Content-Type': cached.mimeType,
+          'Content-Length': cached.buffer.length.toString(),
+          ...CACHE_HEADERS,
+        },
+      })
     }
 
     const { data, error } = await supabase
@@ -73,12 +94,19 @@ export async function GET(request: NextRequest) {
         const mimeType = parts[0].replace('data:', '') || 'image/jpeg'
         const buffer = Buffer.from(parts[1], 'base64')
 
+        // Mettre en cache mémoire (limité à 500 entrées pour éviter de surcharger la RAM)
+        if (imageMemoryCache.size > 500) {
+          const oldestKey = imageMemoryCache.keys().next().value
+          if (oldestKey) imageMemoryCache.delete(oldestKey)
+        }
+        imageMemoryCache.set(cacheKey, { buffer, mimeType, timestamp: Date.now() })
+
         return new NextResponse(buffer, {
           status: 200,
           headers: {
             'Content-Type': mimeType,
             'Content-Length': buffer.length.toString(),
-            'Cache-Control': 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+            ...CACHE_HEADERS,
           },
         })
       }
