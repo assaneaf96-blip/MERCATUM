@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react'
-import { getSiteSettings, getProducts, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { getSiteSettings, getProducts, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { PRODUCTS, Product } from '@/lib/products'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 import { getCartCount, clearCart } from '@/lib/cart'
@@ -37,7 +37,10 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     }
     setSettings(getSiteSettings())
     fetchSettingsFromDb().then((s) => {
-      if (s) setSettings(s)
+      if (s) {
+        setSettings(s)
+        saveSiteSettings(s)
+      }
     }).catch(() => {})
 
     const loadProducts = () => {

@@ -7,7 +7,7 @@ import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription, isVideoUrl } from '@/lib/products'
-import { getProducts, saveProductsBulk, getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { getProducts, saveProductsBulk, getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
 import { searchAndFilterProducts } from '@/lib/searchUtils'
@@ -64,7 +64,10 @@ export default function BoutiquePage() {
     }).catch(() => {})
 
     fetchSettingsFromDb().then((s) => {
-      if (s) setSettings(s)
+      if (s) {
+        setSettings(s)
+        saveSiteSettings(s)
+      }
     }).catch(() => {})
 
     // 2. Chargement direct depuis le cache / Supabase sans blocage

@@ -294,11 +294,22 @@ export function saveNouveautes(items: NewItem[]): void {
 
 export function getSiteSettings(): SiteSettings {
   const saved = safeRead<Partial<SiteSettings>>(STORAGE_KEYS.SETTINGS, {})
-  return { ...DEFAULT_SETTINGS, ...saved }
+  const settings: SiteSettings = { ...DEFAULT_SETTINGS, ...saved }
+  // Nettoyer automatiquement les anciennes valeurs obsolètes du cache client
+  if (!settings.contactPhone || settings.contactPhone.includes('910') || settings.contactPhone.includes('00 00 00')) {
+    settings.contactPhone = DEFAULT_SETTINGS.contactPhone
+  }
+  if (!settings.contactEmail || settings.contactEmail.includes('mercatum.fr') || !settings.contactEmail.includes('@mercatum-shop.app')) {
+    settings.contactEmail = DEFAULT_SETTINGS.contactEmail
+  }
+  return settings
 }
 
 export function saveSiteSettings(settings: SiteSettings): void {
   safeWrite(STORAGE_KEYS.SETTINGS, settings)
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('mercatum:settings_updated'))
+  }
 }
 
 // ─────────────────────────────────────────────

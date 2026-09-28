@@ -12,6 +12,7 @@ import {
   getNouveautes,
   saveNouveautes,
   getSiteSettings,
+  saveSiteSettings,
   saveProductsBulk,
   DEFAULT_SETTINGS,
   type SiteSettings,
@@ -562,7 +563,10 @@ export default function HomePage() {
     }).catch(() => {})
 
     fetchSettingsFromDb().then((dbSettings) => {
-      if (dbSettings) setSettings(dbSettings)
+      if (dbSettings) {
+        setSettings(dbSettings)
+        saveSiteSettings(dbSettings)
+      }
     }).catch(() => {})
 
     return () => {

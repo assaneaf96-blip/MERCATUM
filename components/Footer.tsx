@@ -2,13 +2,30 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { getSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { fetchSettingsFromDb } from '@/lib/supabaseService'
 
 export default function Footer() {
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
 
   useEffect(() => {
     setSettings(getSiteSettings())
+    fetchSettingsFromDb().then((s) => {
+      if (s) {
+        setSettings(s)
+        saveSiteSettings(s)
+      }
+    }).catch(() => {})
+
+    const handleUpdate = () => {
+      setSettings(getSiteSettings())
+    }
+    window.addEventListener('storage', handleUpdate)
+    window.addEventListener('mercatum:settings_updated', handleUpdate)
+    return () => {
+      window.removeEventListener('storage', handleUpdate)
+      window.removeEventListener('mercatum:settings_updated', handleUpdate)
+    }
   }, [])
 
   return (

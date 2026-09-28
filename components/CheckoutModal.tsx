@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Product, isVideoUrl } from '@/lib/products'
-import { getSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
+import { getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
 import { createOrderInDb, markOrderPaymentConfirmedInDb } from '@/lib/supabaseService'
 import { trackPixel } from '@/components/PixelTracker'
 
@@ -53,6 +53,7 @@ export default function CheckoutModal({
       .then((data) => {
         if (data && data.success && data.settings) {
           setSettings(data.settings)
+          saveSiteSettings(data.settings)
         }
       })
       .catch(() => {})
@@ -393,7 +394,7 @@ export default function CheckoutModal({
               </p>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <a
-                  href={`mailto:${settings.contactEmail || 'contact@mercatum.fr'}?subject=${encodeURIComponent(`Justificante de transferencia - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el justificante de transferencia bancaria para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${address}\n\nGracias.`)}`}
+                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de transferencia - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el justificante de transferencia bancaria para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${address}\n\nGracias.`)}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
