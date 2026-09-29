@@ -28,9 +28,6 @@ export default function CheckoutModal({
   const [address, setAddress] = useState('')
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
   const [copiedIban, setCopiedIban] = useState(false)
-  const [copiedRef, setCopiedRef] = useState(false)
-  const [copiedHolder, setCopiedHolder] = useState(false)
-  const [copiedSwift, setCopiedSwift] = useState(false)
   const [orderRef, setOrderRef] = useState('')
 
   const handleConfirmPaymentMade = () => {
@@ -130,29 +127,7 @@ export default function CheckoutModal({
     }
   }
 
-  const handleCopyRef = () => {
-    if (orderRef && navigator.clipboard) {
-      navigator.clipboard.writeText(orderRef.trim())
-      setCopiedRef(true)
-      setTimeout(() => setCopiedRef(false), 2500)
-    }
-  }
 
-  const handleCopyHolder = () => {
-    if (settings.bankAccountHolder && navigator.clipboard) {
-      navigator.clipboard.writeText(settings.bankAccountHolder.trim())
-      setCopiedHolder(true)
-      setTimeout(() => setCopiedHolder(false), 2500)
-    }
-  }
-
-  const handleCopySwift = () => {
-    if (settings.bankSwift && navigator.clipboard) {
-      navigator.clipboard.writeText(settings.bankSwift.trim())
-      setCopiedSwift(true)
-      setTimeout(() => setCopiedSwift(false), 2500)
-    }
-  }
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -249,56 +224,18 @@ export default function CheckoutModal({
                 </div>
 
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888' }}>
-                      Referencia obligatoria a indicar
-                    </span>
-                    <button
-                      type="button"
-                      onClick={handleCopyRef}
-                      style={{
-                        background: copiedRef ? '#166534' : '#20251f',
-                        color: '#f4f0e9',
-                        border: 'none',
-                        borderRadius: '4px',
-                        padding: '2px 8px',
-                        fontSize: '10px',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        transition: '0.2s',
-                      }}
-                    >
-                      {copiedRef ? '✓ ¡Copiado!' : 'Copiar'}
-                    </button>
-                  </div>
+                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                    Referencia obligatoria a indicar
+                  </span>
                   <strong style={{ fontSize: '15px', color: '#991b1b', letterSpacing: '0.05em' }}>
                     {orderRef}
                   </strong>
                 </div>
 
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888' }}>
-                      Beneficiario / Titular de la cuenta
-                    </span>
-                    <button
-                      type="button"
-                      onClick={handleCopyHolder}
-                      style={{
-                        background: copiedHolder ? '#166534' : '#20251f',
-                        color: '#f4f0e9',
-                        border: 'none',
-                        borderRadius: '4px',
-                        padding: '2px 8px',
-                        fontSize: '10px',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        transition: '0.2s',
-                      }}
-                    >
-                      {copiedHolder ? '✓ ¡Copiado!' : 'Copiar'}
-                    </button>
-                  </div>
+                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                    Beneficiario / Titular de la cuenta
+                  </span>
                   <strong style={{ color: '#20251f' }}>{settings.bankAccountHolder}</strong>
                 </div>
 
@@ -338,28 +275,9 @@ export default function CheckoutModal({
                 </div>
 
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888' }}>
-                      Código BIC / SWIFT
-                    </span>
-                    <button
-                      type="button"
-                      onClick={handleCopySwift}
-                      style={{
-                        background: copiedSwift ? '#166534' : '#20251f',
-                        color: '#f4f0e9',
-                        border: 'none',
-                        borderRadius: '4px',
-                        padding: '2px 8px',
-                        fontSize: '10px',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        transition: '0.2s',
-                      }}
-                    >
-                      {copiedSwift ? '✓ ¡Copiado!' : 'Copiar'}
-                    </button>
-                  </div>
+                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                    Código BIC / SWIFT
+                  </span>
                   <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f' }}>
                     {settings.bankSwift}
                   </strong>
