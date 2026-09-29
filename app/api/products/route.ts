@@ -23,7 +23,12 @@ interface CacheEntry {
 }
 
 let serverCache: CacheEntry | null = null
-const CACHE_TTL_MS = 600000 // 10 minutes de cache mémoire serveur ultra-rapide (< 1ms), mis à jour en direct lors des ajouts
+const CACHE_TTL_MS = 1800000 // 30 minutes de cache mémoire serveur ultra-rapide (< 1ms), mis à jour en direct lors des ajouts
+
+// Cache individuel par produit (id → produit formaté)
+const productCache = new Map<string, { product: any; timestamp: number }>()
+const PRODUCT_CACHE_TTL_MS = 3600000 // 1 heure
+
 
 function formatProduct(item: any) {
   const vols = extractVolumes(item)
@@ -124,7 +129,16 @@ export async function GET(request: NextRequest) {
     const id = searchParams.get('id')
 
     if (id) {
-      // Pour une fiche produit individuelle, on interroge toujours Supabase en direct avec select('*')
+      // Vérifier le cache produit individuel (1 heure)
+      const cachedProduct = productCache.get(id)
+      if (cachedProduct && (Date.now() - cachedProduct.timestamp < PRODUCT_CACHE_TTL_MS)) {
+        return NextResponse.json(
+          { success: true, product: cachedProduct.product, cached: true },
+          { headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600' } }
+        )
+      }
+
+      // Pour une fiche produit individuelle, interroger Supabase avec select('*')
       // afin de charger l'intégralité de la galerie photos / vidéos haute résolution.
       const { data, error } = await supabase
         .from('products')
@@ -139,11 +153,16 @@ export async function GET(request: NextRequest) {
         )
       }
 
+      const formatted = formatProduct(data)
+      // Mettre en cache le produit individuel
+      productCache.set(id, { product: formatted, timestamp: Date.now() })
+
       return NextResponse.json(
-        { success: true, product: formatProduct(data) },
-        { headers: NO_CACHE_HEADERS }
+        { success: true, product: formatted },
+        { headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=3600' } }
       )
     }
+
 
     const isForcedDb = searchParams.has('force_db')
 
@@ -153,36 +172,35 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(
         { success: true, products: serverCache.products, cached: true },
         { headers: {
-          'Cache-Control': 'public, max-age=15, stale-while-revalidate=60',
+          'Cache-Control': 'public, max-age=30, stale-while-revalidate=300',
         }}
       )
     }
 
-    // 3. Récupération directe Supabase par lots parallèles rapides de 100 pour charger la totalité des produits sans timeout
-    const batchSize = 100
-    const ranges: { from: number; to: number }[] = []
-    for (let i = 0; i < 3000; i += batchSize) {
-      ranges.push({ from: i, to: i + batchSize - 1 })
-    }
-
-    const responses = await Promise.all(
-      ranges.map((r) =>
-        supabase
-          .from('products')
-          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
-          .order('id', { ascending: true })
-          .range(r.from, r.to)
-      )
-    )
-
+    // 3. Récupération directe Supabase en une seule requête paginée intelligente
+    // On utilise une seule requête avec une limite haute pour éviter les 30 requêtes inutiles
     let allData: any[] = []
-    for (const res of responses) {
-      if (res.data && res.data.length > 0) {
-        allData.push(...res.data)
+    const PAGE_SIZE = 1000
+    let from = 0
+    let hasMore = true
+
+    while (hasMore) {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
+        .order('id', { ascending: true })
+        .range(from, from + PAGE_SIZE - 1)
+
+      if (error || !data || data.length === 0) {
+        hasMore = false
+      } else {
+        allData.push(...data)
+        hasMore = data.length === PAGE_SIZE
+        from += PAGE_SIZE
       }
     }
 
-    let products = (allData || []).map((item) => formatProduct(item))
+    let products = allData.map((item) => formatProduct(item))
 
     if (products.length === 0) {
       if (serverCache && serverCache.products.length > 0) {
@@ -203,7 +221,9 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       { success: true, products },
-      { headers: NO_CACHE_HEADERS }
+      { headers: {
+        'Cache-Control': 'public, max-age=30, stale-while-revalidate=300',
+      }}
     )
   } catch (err: any) {
     console.error('Erreur API /api/products GET:', err)
@@ -327,6 +347,10 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Mettre à jour le cache produit individuel aussi
+    productCache.set(savedFormatted.id, { product: savedFormatted, timestamp: Date.now() })
+
+
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {
       revalidatePath('/api/products')
@@ -390,6 +414,9 @@ export async function DELETE(request: NextRequest) {
       serverCache.products = serverCache.products.filter((p) => p.id !== id)
       serverCache.timestamp = Date.now()
     }
+    // Retirer aussi du cache produit individuel
+    productCache.delete(id)
+
 
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {

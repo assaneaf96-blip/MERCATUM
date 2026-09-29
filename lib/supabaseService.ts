@@ -52,18 +52,35 @@ export function subscribeToProductsChanges(onUpdate: (payload?: any) => void): (
   }
 }
 
-export async function fetchProductsFromDb(forceRefresh = true): Promise<Product[] | null> {
-  // 1. Si exécuté côté navigateur client, interroger l'API avec contournement immédiat de cache
+export async function fetchProductsFromDb(forceRefresh = false): Promise<Product[] | null> {
+  // 1. Si exécuté côté navigateur client, interroger l'API
   if (typeof window !== 'undefined') {
+    // Repli immédiat sur le cache mémoire / IndexedDB pour un affichage instantané
+    if (!forceRefresh) {
+      if (clientCachedProducts && clientCachedProducts.length > 0) return clientCachedProducts
+      const synced = await getClientCachedProducts().catch(() => null)
+      if (synced && synced.length > 0) {
+        clientCachedProducts = synced
+        // Rafraîchissement en arrière-plan sans bloquer l'affichage
+        fetch('/api/products', { cache: 'default' })
+          .then((r) => r.ok ? r.json() : null)
+          .then((json) => {
+            if (json?.success && Array.isArray(json.products)) {
+              clientCachedProducts = json.products
+              setClientCachedProducts(json.products).catch(() => {})
+            }
+          }).catch(() => {})
+        return synced
+      }
+    }
+
     try {
-      const url = `/api/products?t=${Date.now()}`
-      const res = await fetch(url, {
-        cache: 'no-store',
-        headers: {
-          'Pragma': 'no-cache',
-          'Cache-Control': 'no-cache',
-        },
-      })
+      // Utiliser le cache HTTP navigateur pour les lectures normales
+      const url = forceRefresh ? `/api/products?t=${Date.now()}` : '/api/products'
+      const fetchOpts: RequestInit = forceRefresh
+        ? { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } }
+        : { cache: 'default' }
+      const res = await fetch(url, fetchOpts)
       if (res.ok) {
         const json = await res.json()
         if (json.success && Array.isArray(json.products)) {

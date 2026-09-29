@@ -74,7 +74,7 @@ export default function BoutiquePage() {
 
     // 2. Chargement direct depuis le cache / Supabase sans blocage
     const loadProducts = () => {
-      fetchProductsFromDb(true).then((dbProducts) => {
+      fetchProductsFromDb(false).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()
