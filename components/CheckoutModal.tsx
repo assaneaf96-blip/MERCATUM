@@ -266,7 +266,7 @@ export default function CheckoutModal({
                         transition: '0.2s',
                       }}
                     >
-                      {copiedIban ? '✓ ¡Copiado!' : 'Copiar'}
+                      {copiedIban ? '✓ ¡Copiado!' : 'Copiar IBAN'}
                     </button>
                   </div>
                   <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f', letterSpacing: '0.05em', wordBreak: 'break-all' }}>
