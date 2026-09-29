@@ -114,9 +114,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </button>
           </form>
 
-          <p style={{fontSize:'0.65rem',color:'#555',textAlign:'center',marginTop:'1.5rem'}}>
-            Mot de passe par défaut : <code style={{color:'#b8c8a6'}}>admin1234</code>
-          </p>
+
         </div>
       </div>
     )

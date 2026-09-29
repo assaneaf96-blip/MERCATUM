@@ -3554,7 +3554,7 @@ export default function AdminPage() {
                 🔐 Sécurité & Accès Admin
               </h2>
               <p className="text-xs text-stone-500">
-                Modifiez le mot de passe nécessaire pour accéder à cet espace d'administration. (Par défaut : <code>admin1234</code>)
+                Modifiez le mot de passe nécessaire pour accéder à cet espace d'administration.
               </p>
 
               {passwordFeedback && (
