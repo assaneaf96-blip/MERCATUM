@@ -319,7 +319,7 @@ export default function BoutiquePage() {
               }`}
             >
               <span>📦</span>
-              <span>Todos los Productos ({productsList.length})</span>
+              <span>Todos los Productos</span>
             </button>
           </div>
 
