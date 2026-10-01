@@ -31,6 +31,16 @@ export default function BoutiquePage() {
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const [settings, setSettings] = useState<SiteSettings>(() => getSiteSettings())
+  const [favorites, setFavorites] = useState<Set<string>>(() => new Set())
+
+  const toggleFavorite = (id: string) => {
+    setFavorites((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
 
   const tabsRef = useRef<HTMLDivElement>(null)
 
@@ -546,58 +556,90 @@ export default function BoutiquePage() {
               </div>
             </div>
           ) : (
-            <div className="product-grid">
-              {displayedProducts.map((product) => (
-                <article className="product boutique-product-card" key={product.id}>
-                  <Link href={`/produit/${product.id}`} className="block relative" style={{ cursor: 'pointer' }}>
-                    <div className="product-image">
-                      <ProductMediaCarousel
-                        media={product.media}
-                        images={product.images}
-                        fallbackImage={product.image}
-                        alt={product.name}
-                        aspectRatio="unset"
-                        className="h-full"
-                        showBadge={product.tag}
-                      />
-                    </div>
-                  </Link>
+            <div className="eci-product-grid">
+              {displayedProducts.map((product) => {
+                const isFavorite = favorites.has(product.id)
+                const brand = product.type || product.category || 'MERCATUM'
+                return (
+                  <article className="eci-product-card" key={product.id}>
+                    {/* Conteneur Image avec favori et tag */}
+                    <div className="eci-image-container">
+                      <Link href={`/produit/${product.id}`} className="block relative w-full h-full" style={{ cursor: 'pointer' }}>
+                        <ProductMediaCarousel
+                          media={product.media}
+                          images={product.images}
+                          fallbackImage={product.image}
+                          alt={product.name}
+                          aspectRatio="1 / 1"
+                          className="w-full h-full"
+                        />
+                      </Link>
 
-                  <div className="product-meta">
-                    <div>
-                      <span className="product-category-sub">{product.category}</span>
-                      <h3>
-                        <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      {/* Bouton coeur favori en haut à droite */}
+                      <button
+                        type="button"
+                        className={`eci-wishlist-btn ${isFavorite ? 'active' : ''}`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          toggleFavorite(product.id)
+                        }}
+                        aria-label="Añadir a favoritos"
+                        title={isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+                      >
+                        {isFavorite ? '❤️' : '♡'}
+                      </button>
+
+                      {/* Badge tag vert clair El Corte Inglés */}
+                      {product.tag && (
+                        <div className="eci-tag-badge">
+                          {product.tag}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Informations produit */}
+                    <div className="eci-card-info">
+                      <div className="eci-brand" title={brand}>
+                        {brand}
+                      </div>
+
+                      <h3 className="eci-title">
+                        <Link href={`/produit/${product.id}`} title={product.name}>
                           {product.name}
                         </Link>
                       </h3>
-                      <p className="product-desc">{stripImagesFromDescription(product.description)}</p>
-                      <div className="product-rating">
-                        <span className="stars">★★★★★</span>
-                        <span className="rating-num">{product.rating} ({product.reviewsCount})</span>
+
+                      <div className="eci-price-row">
+                        <strong className="eci-price">{product.price}</strong>
+                      </div>
+
+                      <div className="eci-promo-line">
+                        Días de Oferta · 20% de regalo*
+                      </div>
+
+                      <div className="eci-shipping-line">
+                        → Envío rápido
+                      </div>
+
+                      <div className="eci-rating-line">
+                        <span className="eci-stars">★★★★★</span>
+                        <span className="eci-reviews-count">({product.reviewsCount || 1})</span>
                       </div>
                     </div>
-                    <strong className="product-price-tag">{product.price}</strong>
-                  </div>
 
-                  <div className="boutique-card-actions">
-                    <Link
-                      href={`/produit/${product.id}`}
-                      className="buy-now-card-btn"
-                      style={{ textAlign: 'center', background: 'var(--foreground)', color: 'var(--background)' }}
-                    >
-                      Comprar Ahora ⚡
-                    </Link>
+                    {/* Bouton noir pleine largeur Añadir */}
                     <button
-                      className="add-cart-outline-btn"
+                      type="button"
+                      className="eci-add-to-cart-btn"
                       onClick={() => handleAddToCart(product)}
-                      aria-label="Añadir a la cesta"
+                      aria-label={`Añadir ${product.name} a la cesta`}
                     >
-                      🛒 Añadir a la cesta +
+                      Añadir
                     </button>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                )
+              })}
             </div>
           )}
 
