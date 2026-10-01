@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react'
-import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react'
+import { Search, Heart, ShoppingBag, Menu, X } from 'lucide-react'
 import { getSiteSettings, getProducts, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { PRODUCTS, Product } from '@/lib/products'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
@@ -228,9 +228,6 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
               </Link>
 
               <div className="flex items-center gap-3 sm:gap-4 text-white">
-                <Link href="/admin" className="text-white hover:opacity-80 transition p-1" title="Mi Cuenta / Admin">
-                  <User className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
-                </Link>
                 <Link href="/boutique" className="text-white hover:opacity-80 transition p-1" title="Favoritos">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
                 </Link>
