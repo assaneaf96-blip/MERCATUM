@@ -135,8 +135,11 @@ function safeWrite(key: string, value: unknown): void {
 // PRODUITS
 // ─────────────────────────────────────────────
 
+export const PERMANENT_DELETED_IDS: string[] = ['masque-nuit-regenerant']
+
 export function getDeletedProductIds(): string[] {
-  return safeRead<string[]>(STORAGE_KEYS.DELETED_PRODUCTS, [])
+  const local = safeRead<string[]>(STORAGE_KEYS.DELETED_PRODUCTS, [])
+  return Array.from(new Set([...PERMANENT_DELETED_IDS, ...local]))
 }
 
 /** Retourne tous les produits : défauts non supprimés + ceux ajoutés/modifiés via l'admin */

@@ -211,13 +211,17 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    let products = allData.map((item) => formatProduct(item))
+    let products = allData
+      .map((item) => formatProduct(item))
+      .filter((p) => p && p.id !== 'masque-nuit-regenerant' && !/Masque Baume de Nuit/i.test(p.name || ''))
 
     if (products.length === 0) {
       if (serverCache && serverCache.products.length > 0) {
-        products = serverCache.products
+        products = serverCache.products.filter((p) => p && p.id !== 'masque-nuit-regenerant')
       } else {
-        products = PRODUCTS.map((p) => formatProduct({ ...p, raw_price: p.rawPrice, reviews_count: p.reviewsCount, images: p.images || [], media: p.media || [] }))
+        products = PRODUCTS
+          .filter((p) => p.id !== 'masque-nuit-regenerant')
+          .map((p) => formatProduct({ ...p, raw_price: p.rawPrice, reviews_count: p.reviewsCount, images: p.images || [], media: p.media || [] }))
         seedDefaultProductsToSupabase().catch(() => {})
       }
     }
