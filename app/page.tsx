@@ -482,11 +482,30 @@ export default function HomePage() {
   const [submitted, setSubmitted] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
   const novedadesTrackRef = useRef<HTMLDivElement>(null)
+  const categoryBarRef = useRef<HTMLDivElement>(null)
 
   const scrollNovedades = (direction: 'left' | 'right') => {
     if (novedadesTrackRef.current) {
       const scrollAmount = direction === 'left' ? -320 : 320
       novedadesTrackRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
+
+  const scrollCategoryBar = (direction: 'left' | 'right') => {
+    if (categoryBarRef.current) {
+      const scrollAmount = direction === 'left' ? -280 : 280
+      categoryBarRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
+
+  const handleSelectCategory = (index: number, e?: React.MouseEvent) => {
+    setActiveCategoryIndex(index)
+    if (e?.currentTarget) {
+      (e.currentTarget as HTMLElement).scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      })
     }
   }
 
@@ -947,30 +966,52 @@ export default function HomePage() {
             Hornos de alta gama, chimeneas, estufas, descanso ortopédico y mobiliario de autor. Deslice cada colección para descubrir nuestras piezas maestras y sus especificaciones técnicas de excelencia.
           </p>
 
-          {/* Navigation rapide par ancres */}
-          <div className="homepage-category-bar" style={{ justifyContent: 'center', marginBottom: '16px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            {productsByCategory.map(({ category, products }, index) => {
-              return (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategoryIndex(index)}
-                  className="homepage-cat-btn"
-                  style={{
-                    background: activeCategoryIndex === index ? 'var(--foreground)' : 'transparent',
-                    color: activeCategoryIndex === index ? 'var(--background)' : 'inherit',
-                    borderColor: 'var(--foreground)'
-                  }}
-                >
-                  {category} ({products.length})
-                </button>
-              )
-            })}
-            <Link
-              href="/boutique"
-              className="homepage-cat-btn"
+          {/* Navigation compacte et défilable horizontalement par catégories */}
+          <div className="homepage-category-nav-wrapper">
+            <button
+              type="button"
+              className="cat-bar-arrow-btn cat-bar-arrow-left"
+              onClick={() => scrollCategoryBar('left')}
+              title="Categorías anteriores"
+              aria-label="Categorías anteriores"
             >
-              Toda la tienda ({productsList.length}) →
-            </Link>
+              ‹
+            </button>
+
+            <div
+              ref={categoryBarRef}
+              className="homepage-category-bar-scrollable"
+            >
+              {productsByCategory.map(({ category, products }, index) => {
+                const isActive = activeCategoryIndex === index
+                return (
+                  <button
+                    key={category}
+                    onClick={(e) => handleSelectCategory(index, e)}
+                    className={`homepage-cat-btn ${isActive ? 'active' : ''}`}
+                    type="button"
+                  >
+                    {category} <span className="cat-count">({products.length})</span>
+                  </button>
+                )
+              })}
+              <Link
+                href="/boutique"
+                className="homepage-cat-btn homepage-cat-all-btn"
+              >
+                Toda la tienda ({productsList.length}) →
+              </Link>
+            </div>
+
+            <button
+              type="button"
+              className="cat-bar-arrow-btn cat-bar-arrow-right"
+              onClick={() => scrollCategoryBar('right')}
+              title="Categorías siguientes"
+              aria-label="Categorías siguientes"
+            >
+              ›
+            </button>
           </div>
         </div>
 
