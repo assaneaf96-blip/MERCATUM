@@ -54,13 +54,21 @@ export default function BoutiquePage() {
   }
 
   useEffect(() => {
-    // 1. Lire le filtre catégorie passé par l'URL (ex: ?cat=Mobiliario & Decoración)
+    // 1. Lire le filtre catégorie ou recherche passé par l'URL (ex: ?cat=... ou ?q=...)
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       const catParam = params.get('cat')
+      const qParam = params.get('q')
       if (catParam) {
         setSelectedCategory(catParam)
         setViewMode('products')
+      }
+      if (qParam) {
+        setSearchQuery(qParam)
+        setViewMode('products')
+        if (!catParam) {
+          setSelectedCategory('Todos los productos')
+        }
       }
     }
 

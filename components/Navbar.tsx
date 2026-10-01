@@ -30,10 +30,19 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (searchQuery.trim()) {
-      router.push(`/boutique?q=${encodeURIComponent(searchQuery.trim())}`)
+    const trimmed = searchQuery.trim()
+    if (trimmed) {
+      if (typeof window !== 'undefined') {
+        window.location.href = `/boutique?q=${encodeURIComponent(trimmed)}`
+      } else {
+        router.push(`/boutique?q=${encodeURIComponent(trimmed)}`)
+      }
     } else {
-      router.push('/boutique')
+      if (typeof window !== 'undefined') {
+        window.location.href = '/boutique'
+      } else {
+        router.push('/boutique')
+      }
     }
   }
 
@@ -250,11 +259,14 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
 
             {/* Ligne 2: Barre de recherche pilule avec bouton rond loupe */}
             <form
+              action="/boutique"
+              method="GET"
               onSubmit={handleSearchSubmit}
               className="mt-2.5 max-w-xl mx-auto w-full relative flex items-center rounded-full border border-white/60 bg-black/30 backdrop-blur-md px-4 py-1.5 sm:py-2 shadow-sm transition hover:border-white focus-within:border-white focus-within:bg-black/50"
             >
               <input
                 type="text"
+                name="q"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="¿Qué estás buscando?"
@@ -270,31 +282,6 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
               </button>
             </form>
           </div>
-
-          {/* Menu Drawer */}
-          <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navegación principal">
-            <div className="nav-links mobile-nav-links">
-              <Link href="/" className="nav-link nav-active" onClick={() => setMenuOpen(false)}>Inicio</Link>
-              <Link href="/boutique" className="nav-link" onClick={() => setMenuOpen(false)}>La Tienda</Link>
-              <Link href="/boutique?cat=Placa%20inducci%C3%B3n" className="nav-link" onClick={() => setMenuOpen(false)}>Electrodomésticos &amp; Placas</Link>
-              <Link href="/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial" className="nav-link" onClick={() => setMenuOpen(false)}>Belleza &amp; Cosmética</Link>
-              <Link href="/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n" className="nav-link" onClick={() => setMenuOpen(false)}>Mobiliario &amp; Decoración</Link>
-              <Link href="/#histoire" className="nav-link" onClick={() => setMenuOpen(false)}>Nuestra Filosofía</Link>
-            </div>
-            <div className="mobile-nav-cta">
-              <button
-                type="button"
-                className="button dark mobile-menu-buy-btn w-full"
-                onClick={() => {
-                  setMenuOpen(false)
-                  handleBuyNowClick()
-                }}
-                style={{ cursor: 'pointer', textAlign: 'center' }}
-              >
-                Comprar Ahora / Tienda <span>→</span>
-              </button>
-            </div>
-          </nav>
         </header>
       ) : (
         <header className="site-header">
@@ -382,6 +369,146 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
             </button>
           </div>
         </header>
+      )}
+
+      {/* Slide-out Navigation Drawer (Mobile & Desktop) */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[9999] flex" aria-modal="true" role="dialog">
+          {/* Dark Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Drawer Panel */}
+          <div className="relative w-full max-w-xs sm:max-w-sm bg-[#141814] text-[#f4f0e9] h-full shadow-2xl z-10 flex flex-col justify-between overflow-y-auto border-r border-white/10 animate-in slide-in-from-left duration-300">
+            <div className="p-6">
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between pb-5 border-b border-white/10">
+                <Link
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className="font-serif italic font-bold tracking-widest text-xl text-white select-none"
+                >
+                  MERCATUM
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition cursor-pointer border-0"
+                  aria-label="Cerrar menú"
+                >
+                  <X className="w-5 h-5 text-white stroke-[2.5]" />
+                </button>
+              </div>
+
+              {/* Navigation Categories */}
+              <div className="mt-6 flex flex-col gap-1">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-amber-400 mb-2 px-3">
+                  Navegación &amp; Colecciones
+                </p>
+                <Link
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className={`flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium transition ${
+                    pathname === '/' ? 'bg-white/15 text-white font-bold' : 'text-stone-200 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  <span>🏠 Inicio</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🛍️ Toda la Tienda</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique?cat=Placa%20inducci%C3%B3n"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🔥 Electrodomésticos &amp; Placas</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique?cat=HORNOS"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🍳 Hornos Pirolíticos</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>✨ Belleza &amp; Cosmética</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🛋️ Mobiliario &amp; Decoración</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique?cat=Chimenea"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🪵 Chimeneas &amp; Fuego</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/boutique?cat=Colchones"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🌙 Colchones &amp; Descanso</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
+                  href="/#histoire"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>🌿 Nuestra Filosofía</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Drawer Footer Actions */}
+            <div className="p-6 border-t border-white/10 bg-black/20 flex flex-col gap-3">
+              <Link
+                href="/boutique"
+                onClick={() => setMenuOpen(false)}
+                className="w-full py-3 bg-white text-stone-900 rounded-xl text-center font-bold text-sm hover:bg-stone-100 transition shadow-lg flex items-center justify-center gap-2"
+              >
+                <span>Acceder a la Tienda</span>
+                <span>→</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false)
+                  setIsCartOpen(true)
+                }}
+                className="w-full py-2.5 bg-white/10 text-white rounded-xl text-center font-medium text-xs hover:bg-white/20 transition flex items-center justify-center gap-2 border-0 cursor-pointer"
+              >
+                <ShoppingBag className="w-4 h-4 text-white" />
+                <span>Ver mi Cesta ({displayCartCount})</span>
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Slide-in Cart Drawer */}
