@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -14,6 +15,7 @@ import { searchAndFilterProducts } from '@/lib/searchUtils'
 import { addToCart } from '@/lib/cart'
 
 export default function BoutiquePage() {
+  const router = useRouter()
   const [productsList, setProductsList] = useState<Product[]>(() => {
     if (typeof window !== 'undefined') {
       const cached = getSyncCachedProducts()
@@ -252,19 +254,63 @@ export default function BoutiquePage() {
     }
   }
 
+  useEffect(() => {
+    const handlePopState = () => {
+      if (typeof window === 'undefined') return
+      const params = new URLSearchParams(window.location.search)
+      const catParam = params.get('cat')
+      const qParam = params.get('q')
+
+      if (catParam) {
+        setSelectedCategory(catParam)
+        setViewMode('products')
+      } else if (qParam) {
+        setSearchQuery(qParam)
+        setViewMode('products')
+      } else {
+        setSelectedCategory('Todos los productos')
+        setSearchQuery('')
+        setViewMode('tiendas')
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
   const handleCategorySelect = (catName: string) => {
     setSelectedCategory(catName)
     setViewMode('products')
     if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      if (catName && catName !== 'Todos los productos') {
+        url.searchParams.set('cat', catName)
+      } else {
+        url.searchParams.delete('cat')
+      }
+      url.searchParams.delete('q')
+      window.history.pushState({ category: catName, viewMode: 'products' }, '', url.toString())
       window.scrollTo({ top: 380, behavior: 'smooth' })
     }
   }
 
   const handleBackToTiendas = () => {
+    // Si l'utilisateur est arrivé directement depuis la page d'accueil ('/') ou une autre page interne
+    if (typeof window !== 'undefined' && document.referrer) {
+      try {
+        const refUrl = new URL(document.referrer)
+        if (refUrl.host === window.location.host && refUrl.pathname !== '/boutique') {
+          router.back()
+          return
+        }
+      } catch {}
+    }
+
     setSelectedCategory('Todos los productos')
     setSearchQuery('')
     setViewMode('tiendas')
     if (typeof window !== 'undefined') {
+      window.history.pushState({ viewMode: 'tiendas' }, '', '/boutique')
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
@@ -308,6 +354,9 @@ export default function BoutiquePage() {
                 setViewMode('tiendas')
                 setSelectedCategory('Todos los productos')
                 setSearchQuery('')
+                if (typeof window !== 'undefined') {
+                  window.history.pushState({ viewMode: 'tiendas' }, '', '/boutique')
+                }
               }}
               className={`flex-1 md:flex-none px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
                 viewMode === 'tiendas' && !searchQuery
@@ -321,7 +370,16 @@ export default function BoutiquePage() {
 
             <button
               type="button"
-              onClick={() => setViewMode('products')}
+              onClick={() => {
+                setViewMode('products')
+                if (typeof window !== 'undefined') {
+                  const url = new URL(window.location.href)
+                  if (selectedCategory && selectedCategory !== 'Todos los productos') {
+                    url.searchParams.set('cat', selectedCategory)
+                  }
+                  window.history.pushState({ viewMode: 'products' }, '', url.toString())
+                }
+              }}
               className={`flex-1 md:flex-none px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
                 viewMode === 'products' || searchQuery
                   ? 'bg-[#1c221d] text-[#f4f0e9] shadow'
@@ -391,14 +449,6 @@ export default function BoutiquePage() {
                       src={cat.image}
                       alt={cat.name}
                       loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        const target = e.currentTarget
-                        if (target && !target.dataset.fallback) {
-                          target.dataset.fallback = 'true'
-                          target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' fill='none'%3E%3Crect width='400' height='400' fill='%23f5f5f4'/%3E%3Ccircle cx='200' cy='180' r='28' fill='%23e7e5e4'/%3E%3Cpath d='M140 255l38-46 28 32 32-38 42 52H140z' fill='%23d6d3d1'/%3E%3Ctext x='200' y='292' text-anchor='middle' font-family='sans-serif' font-size='11' font-weight='600' fill='%23a8a29e' letter-spacing='3'%3EMERCATUM%3C/text%3E%3C/svg%3E"
-                        }
-                      }}
                       className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (

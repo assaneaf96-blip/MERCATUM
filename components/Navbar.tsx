@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect, useMemo } from 'react'
+import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react'
 import { getSiteSettings, getProducts, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { PRODUCTS, Product } from '@/lib/products'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
@@ -22,8 +23,19 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
   const [internalCartCount, setInternalCartCount] = useState<number>(0)
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [checkoutProduct, setCheckoutProduct] = useState<Product | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const pathname = usePathname()
   const router = useRouter()
+  const isHomePage = pathname === '/'
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/boutique?q=${encodeURIComponent(searchQuery.trim())}`)
+    } else {
+      router.push('/boutique')
+    }
+  }
 
   const refreshCartCount = () => {
     setInternalCartCount(getCartCount())
@@ -195,91 +207,185 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
           ))}
         </div>
       </div>
-      <header className="site-header">
-        <button
-          className="menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Cerrar el menú' : 'Abrir el menú'}
-        >
-          <span className="menu-icon-bars" aria-hidden="true">
-            <span className={`bar ${menuOpen ? 'bar-open-1' : ''}`} />
-            <span className={`bar ${menuOpen ? 'bar-open-2' : ''}`} />
-          </span>
-          <span className="menu-text">{menuOpen ? 'Cerrar' : 'Menú'}</span>
-        </button>
+      {isHomePage ? (
+        <header className="sticky top-0 z-50 bg-[#121612]/95 backdrop-blur-md border-b border-white/10 px-4 py-2.5 sm:py-3 shadow-md transition-all duration-300">
+          <div className="max-w-7xl mx-auto">
+            {/* Ligne 1: Menu - Logo MERCATUM - Compte - Favoris - Cesta */}
+            <div className="flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-white hover:opacity-80 transition p-1 flex items-center justify-center cursor-pointer bg-transparent border-0"
+                aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              >
+                {menuOpen ? <X className="w-6 h-6 text-white stroke-[2]" /> : <Menu className="w-6 h-6 text-white stroke-[2]" />}
+              </button>
 
-        <Link href="/" className="brand" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.jpg" alt="MERCATUM Logo" style={{ height: '40px', objectFit: 'contain' }} />
-        </Link>
+              <Link href="/" className="brand-home flex items-center">
+                <span className="font-serif italic font-bold tracking-widest text-xl sm:text-2xl text-white select-none drop-shadow">
+                  MERCATUM
+                </span>
+              </Link>
 
-        <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navegación principal">
-          <div className="nav-links mobile-nav-links">
-            <Link
-              href="/"
-              className={`nav-link ${pathname === '/' ? 'nav-active' : ''}`}
-              onClick={() => setMenuOpen(false)}
+              <div className="flex items-center gap-3 sm:gap-4 text-white">
+                <Link href="/admin" className="text-white hover:opacity-80 transition p-1" title="Mi Cuenta / Admin">
+                  <User className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
+                </Link>
+                <Link href="/boutique" className="text-white hover:opacity-80 transition p-1" title="Favoritos">
+                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleCartClick}
+                  className="relative text-white hover:opacity-80 transition p-1 cursor-pointer bg-transparent border-0"
+                  title="Cesta"
+                  aria-label="Cesta"
+                >
+                  <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
+                  {displayCartCount > 0 && (
+                    <span className="absolute -top-1 -right-1.5 bg-amber-500 text-stone-950 text-[10px] font-black rounded-full w-4 h-4 flex items-center justify-center shadow">
+                      {displayCartCount}
+                    </span>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Ligne 2: Barre de recherche pilule avec bouton rond loupe */}
+            <form
+              onSubmit={handleSearchSubmit}
+              className="mt-2.5 max-w-xl mx-auto w-full relative flex items-center rounded-full border border-white/60 bg-black/30 backdrop-blur-md px-4 py-1.5 sm:py-2 shadow-sm transition hover:border-white focus-within:border-white focus-within:bg-black/50"
             >
-              Inicio
-            </Link>
-            <Link
-              href="/boutique"
-              className={`nav-link ${pathname === '/boutique' ? 'nav-active' : ''}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              La Tienda
-            </Link>
-            <Link
-              href="/#histoire"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              Nuestra Filosofía
-            </Link>
-            <Link
-              href="/#nouveautes"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              Novedades
-            </Link>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="¿Qué estás buscando?"
+                className="w-full bg-transparent text-white placeholder-white/80 text-xs sm:text-sm font-normal outline-none pr-9 tracking-wide"
+              />
+              <button
+                type="submit"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-stone-900 flex items-center justify-center shrink-0 shadow hover:bg-stone-100 transition cursor-pointer"
+                title="Buscar"
+                aria-label="Buscar"
+              >
+                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-900 stroke-[2.5]" />
+              </button>
+            </form>
           </div>
-          <div className="mobile-nav-cta">
+
+          {/* Menu Drawer */}
+          <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navegación principal">
+            <div className="nav-links mobile-nav-links">
+              <Link href="/" className="nav-link nav-active" onClick={() => setMenuOpen(false)}>Inicio</Link>
+              <Link href="/boutique" className="nav-link" onClick={() => setMenuOpen(false)}>La Tienda</Link>
+              <Link href="/boutique?cat=Placa%20inducci%C3%B3n" className="nav-link" onClick={() => setMenuOpen(false)}>Electrodomésticos &amp; Placas</Link>
+              <Link href="/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial" className="nav-link" onClick={() => setMenuOpen(false)}>Belleza &amp; Cosmética</Link>
+              <Link href="/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n" className="nav-link" onClick={() => setMenuOpen(false)}>Mobiliario &amp; Decoración</Link>
+              <Link href="/#histoire" className="nav-link" onClick={() => setMenuOpen(false)}>Nuestra Filosofía</Link>
+            </div>
+            <div className="mobile-nav-cta">
+              <button
+                type="button"
+                className="button dark mobile-menu-buy-btn w-full"
+                onClick={() => {
+                  setMenuOpen(false)
+                  handleBuyNowClick()
+                }}
+                style={{ cursor: 'pointer', textAlign: 'center' }}
+              >
+                Comprar Ahora / Tienda <span>→</span>
+              </button>
+            </div>
+          </nav>
+        </header>
+      ) : (
+        <header className="site-header">
+          <button
+            className="menu-button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Cerrar el menú' : 'Abrir el menú'}
+          >
+            <span className="menu-icon-bars" aria-hidden="true">
+              <span className={`bar ${menuOpen ? 'bar-open-1' : ''}`} />
+              <span className={`bar ${menuOpen ? 'bar-open-2' : ''}`} />
+            </span>
+            <span className="menu-text">{menuOpen ? 'Cerrar' : 'Menú'}</span>
+          </button>
+
+          <Link href="/" className="brand" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/logo.jpg" alt="MERCATUM Logo" style={{ height: '40px', objectFit: 'contain' }} />
+          </Link>
+
+          <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Navegación principal">
+            <div className="nav-links mobile-nav-links">
+              <Link
+                href="/"
+                className={`nav-link ${pathname === '/' ? 'nav-active' : ''}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                Inicio
+              </Link>
+              <Link
+                href="/boutique"
+                className={`nav-link ${pathname === '/boutique' ? 'nav-active' : ''}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                La Tienda
+              </Link>
+              <Link
+                href="/#histoire"
+                className="nav-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                Nuestra Filosofía
+              </Link>
+              <Link
+                href="/#nouveautes"
+                className="nav-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                Novedades
+              </Link>
+            </div>
+            <div className="mobile-nav-cta">
+              <button
+                type="button"
+                className="button dark mobile-menu-buy-btn w-full"
+                onClick={() => {
+                  setMenuOpen(false)
+                  handleBuyNowClick()
+                }}
+                style={{ cursor: 'pointer', textAlign: 'center' }}
+              >
+                Comprar Ahora / Tienda <span>→</span>
+              </button>
+            </div>
+          </nav>
+
+          <div className="header-actions">
             <button
               type="button"
-              className="button dark mobile-menu-buy-btn w-full"
-              onClick={() => {
-                setMenuOpen(false)
-                handleBuyNowClick()
-              }}
-              style={{ cursor: 'pointer', textAlign: 'center' }}
+              onClick={handleBuyNowClick}
+              className="header-buy-btn"
+              style={{ cursor: 'pointer', border: 'none' }}
             >
-              Comprar Ahora / Tienda <span>→</span>
+              Comprar Ahora
+            </button>
+            <button
+              type="button"
+              onClick={handleCartClick}
+              className="header-cart-btn"
+              aria-label="Cesta"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
+            >
+              <span style={{ fontSize: '13px', lineHeight: 1 }}>🛒</span>
+              <span>Cesta</span>
+              <span className="cart-badge-pill">({displayCartCount})</span>
             </button>
           </div>
-        </nav>
-
-        <div className="header-actions">
-          <button
-            type="button"
-            onClick={handleBuyNowClick}
-            className="header-buy-btn"
-            style={{ cursor: 'pointer', border: 'none' }}
-          >
-            Comprar Ahora
-          </button>
-          <button
-            type="button"
-            onClick={handleCartClick}
-            className="header-cart-btn"
-            aria-label="Cesta"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
-          >
-            <span style={{ fontSize: '13px', lineHeight: 1 }}>🛒</span>
-            <span>Cesta</span>
-            <span className="cart-badge-pill">({displayCartCount})</span>
-          </button>
-        </div>
-      </header>
+        </header>
+      )}
 
       {/* Slide-in Cart Drawer */}
       <CartModal

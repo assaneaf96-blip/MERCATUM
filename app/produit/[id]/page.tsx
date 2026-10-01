@@ -132,6 +132,26 @@ export default function ProductDetailPage() {
   const router = useRouter()
   const productId = Array.isArray(params?.id) ? params.id[0] : (params?.id as string)
 
+  const handleGoBack = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault()
+    if (typeof window === 'undefined') return
+
+    const referrer = document.referrer || ''
+    const currentHost = window.location.host
+    const isSameOrigin = referrer.includes(currentHost) || (currentHost.includes(':') && referrer.includes(window.location.hostname))
+
+    if (isSameOrigin || (window.history.length > 1 && !referrer)) {
+      router.back()
+      return
+    }
+
+    if (product?.category) {
+      router.push(`/boutique?cat=${encodeURIComponent(product.category)}`)
+    } else {
+      router.push('/boutique')
+    }
+  }
+
   const [product, setProduct] = useState<Product | null>(() => {
     if (!productId) return null
     if (typeof window !== 'undefined') {
@@ -684,10 +704,15 @@ export default function ProductDetailPage() {
         <Navbar />
         <nav aria-label="Ruta de navegación" className="pdp-breadcrumb-nav">
           <div className="pdp-breadcrumb-container flex items-center justify-between">
-            <Link href="/boutique" className="text-xs text-stone-600 font-semibold hover:text-stone-900 transition flex items-center gap-1">
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="text-xs text-stone-600 font-semibold hover:text-stone-900 transition flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
+              title="Volver a la página anterior"
+            >
               <span>‹</span>
-              <span>Volver a La Tienda</span>
-            </Link>
+              <span>Volver</span>
+            </button>
             <span className="text-[10.5px] uppercase font-bold tracking-widest text-stone-400 animate-pulse">
               Cargando artículo...
             </span>
@@ -724,9 +749,14 @@ export default function ProductDetailPage() {
           <p style={{ color: '#666', marginBottom: '24px' }}>
             Este artículo ya no está disponible o ha sido trasladado.
           </p>
-          <Link href="/boutique" className="button dark">
-            Volver a la tienda <span>→</span>
-          </Link>
+          <button
+            type="button"
+            onClick={handleGoBack}
+            className="button dark"
+            style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+          >
+            <span>←</span> Volver a la página anterior
+          </button>
         </div>
         <Footer />
       </main>
@@ -750,10 +780,15 @@ export default function ProductDetailPage() {
         <div className="pdp-breadcrumb-container">
           {/* Version mobile compacte et raffinée */}
           <div className="pdp-breadcrumb-mobile">
-            <Link href="/boutique" className="pdp-back-link">
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="pdp-back-link cursor-pointer bg-transparent border-0 p-0"
+              title="Volver a la página anterior"
+            >
               <span className="pdp-back-arrow">‹</span>
-              <span>Volver a La Tienda</span>
-            </Link>
+              <span>Volver</span>
+            </button>
             <Link
               href={`/boutique?cat=${encodeURIComponent(product.category)}`}
               className="pdp-category-tag"
@@ -762,8 +797,18 @@ export default function ProductDetailPage() {
             </Link>
           </div>
 
-          {/* Version Desktop : chemin complet */}
+          {/* Version Desktop : chemin complet avec bouton Retour */}
           <div className="pdp-breadcrumb-desktop">
+            <button
+              type="button"
+              onClick={handleGoBack}
+              className="pdp-back-link cursor-pointer bg-transparent border-0 p-0 mr-2"
+              title="Volver a la página anterior"
+            >
+              <span className="pdp-back-arrow">‹</span>
+              <span>Volver</span>
+            </button>
+            <span className="pdp-sep mr-2">|</span>
             <Link href="/">Inicio</Link>
             <span className="pdp-sep">/</span>
             <Link href="/boutique">La Tienda</Link>

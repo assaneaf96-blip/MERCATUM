@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from 'react'
 import Link from 'next/link'
+import { Volume2, VolumeX, ArrowUp } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
@@ -453,8 +454,128 @@ function CategorySliderSection({
   )
 }
 
+const FULL_HERO_SLIDES = [
+  {
+    id: 1,
+    title: 'Nueva Colección Hogar & Cocina',
+    subtitle: 'Placas de inducción con extracción y hornos pirolíticos de última generación',
+    badge: 'NOVEDADES EXCLUSIVAS',
+    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
+    link: '/boutique?cat=Placa%20inducci%C3%B3n',
+    category: 'Electrodomésticos',
+  },
+  {
+    id: 2,
+    title: 'Alta Cosmética & Belleza de Élite',
+    subtitle: 'Tratamientos botánicos regeneradores y perfumes de autor más selectos',
+    badge: 'BELLEZA EXCLUSIVA',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=85',
+    link: '/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial',
+    category: 'Belleza',
+  },
+  {
+    id: 3,
+    title: 'Mobiliario de Autor & Salón',
+    subtitle: 'El equilibrio perfecto entre pureza geométrica y confort supremo',
+    badge: 'DISEÑO & CONFORT',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85',
+    link: '/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n',
+    category: 'Mobiliario & Decoración',
+  },
+  {
+    id: 4,
+    title: 'Chimeneas & Fuego Acogedor',
+    subtitle: 'Calor radiante, estufas de leña y pellets para un confort duradero',
+    badge: 'CALOR DE HOGAR',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=85',
+    link: '/boutique?cat=Chimenea',
+    category: 'Chimenea',
+  },
+]
+
+const ECI_CATEGORIES = [
+  {
+    name: 'Electrodomésticos',
+    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Placa%20inducci%C3%B3n',
+  },
+  {
+    name: 'Belleza',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial',
+  },
+  {
+    name: 'Joyería',
+    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Reloj%20de%20mujer',
+  },
+  {
+    name: 'Mobiliario & Decoración',
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n',
+  },
+  {
+    name: 'Placa inducción',
+    image: '/uploads/placa-de-induccion-cata-con-campana-extractora-as-600-negro.jpg',
+    link: '/boutique?cat=Placa%20inducci%C3%B3n',
+  },
+  {
+    name: 'Hornos',
+    image: 'https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=HORNOS',
+  },
+  {
+    name: 'Chimenea',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Chimenea',
+  },
+  {
+    name: 'Colchones',
+    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Colchones',
+  },
+  {
+    name: 'Bolsos',
+    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=BOLSOS%20MUJER',
+  },
+  {
+    name: 'Aire Libre & Glamping',
+    image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Aire%20Libre%20%26%20Glamping',
+  },
+  {
+    name: 'Cámaras Digitales',
+    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=C%C3%A1maras%20Digitales',
+  },
+  {
+    name: 'Mueble de baño',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
+    link: '/boutique?cat=Mueble%20de%20ba%C3%B1o',
+  },
+]
+
 export default function HomePage() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
+  const [heroSlideIdx, setHeroSlideIdx] = useState(0)
+  const [isMuted, setIsMuted] = useState(true)
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const catCarouselRef = useRef<HTMLDivElement>(null)
+
+  const scrollCatCarousel = (direction: 'left' | 'right') => {
+    if (catCarouselRef.current) {
+      const scrollAmount = direction === 'left' ? -340 : 340
+      catCarouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
+
+  const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   const [productsList, setProductsList] = useState<Product[]>(() => {
     if (typeof window !== 'undefined') {
       const cached = getSyncCachedProducts()
@@ -609,6 +730,21 @@ export default function HomePage() {
       window.removeEventListener('mercatum:products_updated', handleUpdate)
       window.removeEventListener('storage', handleUpdate)
     }
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlideIdx((prev) => (prev + 1) % FULL_HERO_SLIDES.length)
+    }, 4500)
+    return () => clearInterval(timer)
   }, [])
 
   const showToast = (msg: string) => {
@@ -806,119 +942,150 @@ export default function HomePage() {
       {/* Shared Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
-      <section id="top" className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Arte de Vivir · Santuario del Hogar &amp; Cuidado Personal</p>
-          <h1>El Lujo de Habitar<br /><em>su espacio.</em></h1>
-          <p className="hero-text">
-            {settings.heroSubtitle || "Un espacio refinado donde vivir en armonía. Piezas de mobiliario y artículos seleccionados para sublimar su interior y cuidar de su confort cada día."}
-          </p>
-          <div className="hero-cta-group">
-            <Link href="/boutique" className="button dark">
-              Explorar las colecciones <span>→</span>
-            </Link>
-            {heroFirstProduct && (
-              <button
-                className="button outline"
-                onClick={() => handleBuyNow(heroFirstProduct)}
-              >
-                Comprar {heroFirstProduct.name.split(' ')[0]} ({heroFirstProduct.price}) ⚡
-              </button>
-            )}
-          </div>
-        </div>
-        <div
-          className="hero-image hero-category-carousel"
-          onMouseEnter={() => setIsHeroHovered(true)}
-          onMouseLeave={() => setIsHeroHovered(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          {heroCategorySlides.map((slide, idx) => {
-            const isActive = idx === (heroSlideIndex % (heroCategorySlides.length || 1))
+      {/* Immersive Full-Width Hero Section (El Corte Inglés Style) */}
+      <section id="top" className="relative w-full overflow-hidden bg-black">
+        <div className="relative w-full h-[52vh] sm:h-[62vh] md:h-[72vh] min-h-[380px] max-h-[700px] overflow-hidden">
+          {FULL_HERO_SLIDES.map((slide, idx) => {
+            const isActive = idx === (heroSlideIdx % FULL_HERO_SLIDES.length)
             return (
               <div
-                key={slide.category}
-                className={`hero-category-slide ${isActive ? 'is-active' : ''}`}
-                aria-hidden={!isActive}
+                key={slide.id}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                  isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+                }`}
               >
                 <img
                   src={slide.image}
-                  alt={`${slide.category} - ${slide.featuredProduct?.name || 'MERCATUM'}`}
+                  alt={slide.title}
+                  className="w-full h-full object-cover object-center select-none"
                   loading={idx === 0 ? 'eager' : 'lazy'}
                 />
-                <div className="hero-slide-overlay" />
+                {/* Subtle gradient vignette at top and bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 pointer-events-none" />
+
+                {/* Hero Slide Content */}
+                <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 max-w-xl text-white z-20 pointer-events-auto pr-16 sm:pr-24">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-bold tracking-wider uppercase mb-2 sm:mb-3 border border-white/25">
+                    <span>✦</span> {slide.badge}
+                  </div>
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-2 leading-tight drop-shadow-md">
+                    {slide.title}
+                  </h1>
+                  <p className="text-xs sm:text-sm md:text-base text-white/90 mb-4 line-clamp-2 drop-shadow">
+                    {slide.subtitle}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <Link
+                      href={slide.link}
+                      className="inline-flex items-center gap-2 bg-white text-stone-900 font-semibold px-5 py-2.5 rounded-full text-xs sm:text-sm hover:bg-stone-100 transition shadow-lg"
+                    >
+                      Descubrir colección <span>→</span>
+                    </Link>
+                    {heroFirstProduct && (
+                      <button
+                        type="button"
+                        onClick={() => handleBuyNow(heroFirstProduct)}
+                        className="hidden sm:inline-flex items-center gap-2 bg-black/40 backdrop-blur-md text-white font-medium px-4 py-2.5 rounded-full text-xs sm:text-sm border border-white/30 hover:bg-black/60 transition"
+                      >
+                        Comprar destacado ⚡
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             )
           })}
 
-          {/* Flèches de navigation gauche / droite & Contrôle manuel */}
-          {heroCategorySlides.length > 1 && (
-            <>
-              <button
-                type="button"
-                className="hero-slide-arrow prev"
-                onClick={handlePrevHeroCategory}
-                aria-label="Categoría anterior"
-                title="Categoría anterior"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                className="hero-slide-arrow next"
-                onClick={handleNextHeroCategory}
-                aria-label="Categoría siguiente"
-                title="Categoría siguiente"
-              >
-                ›
-              </button>
+          {/* Audio Mute/Unmute toggle (Exact match to screenshot bottom-right) */}
+          <button
+            type="button"
+            onClick={() => setIsMuted((prev) => !prev)}
+            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center border border-white/30 hover:bg-black/75 transition shadow-lg cursor-pointer"
+            aria-label={isMuted ? 'Activar sonido' : 'Silenciar sonido'}
+            title={isMuted ? 'Activar sonido' : 'Silenciar'}
+          >
+            {isMuted ? (
+              <VolumeX className="w-5 h-5 text-white stroke-[2]" />
+            ) : (
+              <Volume2 className="w-5 h-5 text-white stroke-[2]" />
+            )}
+          </button>
+        </div>
 
-              {/* Bouton de contrôle : défilement manuel avec bouton Play/Pause */}
-              <div className="hero-slide-controls-pill">
-                <span className="hero-slide-count">
-                  {(heroSlideIndex % heroCategorySlides.length) + 1} / {heroCategorySlides.length}
-                </span>
+        {/* Progress Bar under hero (Exact match to screenshot) */}
+        <div className="w-full flex justify-center py-2.5 sm:py-3.5 bg-white border-b border-stone-100">
+          <div className="w-36 sm:w-48 h-[2.5px] sm:h-[3px] bg-stone-200 rounded-full overflow-hidden relative">
+            <div
+              className="h-full bg-stone-950 rounded-full transition-all duration-500 ease-out"
+              style={{
+                width: `${((heroSlideIdx + 1) / FULL_HERO_SLIDES.length) * 100}%`,
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Categorías Section (Exact match to screenshot: Title + horizontal scroll cards + labels) */}
+      <section className="bg-white py-6 sm:py-8 border-b border-stone-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-stone-950 font-sans">
+              Categorías
+            </h2>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/boutique"
+                className="text-xs sm:text-sm font-semibold text-stone-500 hover:text-stone-900 transition flex items-center gap-1 mr-2"
+              >
+                Ver todo <span>→</span>
+              </Link>
+              <div className="hidden sm:flex items-center gap-1.5">
                 <button
                   type="button"
-                  className={`hero-toggle-play-btn ${isHeroAutoPlaying ? 'playing' : ''}`}
-                  onClick={() => setIsHeroAutoPlaying((prev) => !prev)}
-                  aria-label={isHeroAutoPlaying ? 'Detener el desplazamiento automático' : 'Activar el desplazamiento automático'}
-                  title={isHeroAutoPlaying ? 'Detener el desplazamiento' : 'Iniciar el desplazamiento automático'}
+                  onClick={() => scrollCatCarousel('left')}
+                  className="w-8 h-8 rounded-full border border-stone-200 bg-white text-stone-700 hover:bg-stone-50 flex items-center justify-center transition"
+                  aria-label="Categorías anteriores"
                 >
-                  {isHeroAutoPlaying ? '⏸' : '▶'}
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollCatCarousel('right')}
+                  className="w-8 h-8 rounded-full border border-stone-200 bg-white text-stone-700 hover:bg-stone-50 flex items-center justify-center transition"
+                  aria-label="Categorías siguientes"
+                >
+                  ›
                 </button>
               </div>
-            </>
-          )}
-
-          {/* Légende épurée au bas de la photo pour laisser l'image 100% visible */}
-          {currentHeroSlide && (
-            <Link
-              href={`/boutique?cat=${encodeURIComponent(currentHeroSlide.category)}`}
-              className="hero-caption"
-              title={`Explorar la categoría ${currentHeroSlide.category}`}
-              style={{ textDecoration: 'none', cursor: 'pointer' }}
-            >
-              ✦ {currentHeroSlide.category} {currentHeroSlide.featuredProduct ? `· ${currentHeroSlide.featuredProduct.name} (${currentHeroSlide.featuredProduct.price})` : ''} <span>→</span>
-            </Link>
-          )}
-
-          {/* Points indicateurs de défilement discrets */}
-          {heroCategorySlides.length > 1 && (
-            <div className="hero-slider-dots">
-              {heroCategorySlides.map((slide, idx) => (
-                <button
-                  key={slide.category}
-                  type="button"
-                  onClick={() => setHeroSlideIndex(idx)}
-                  className={`hero-slider-dot ${idx === (heroSlideIndex % heroCategorySlides.length) ? 'active' : ''}`}
-                  aria-label={`Ir a la categoría ${slide.category}`}
-                />
-              ))}
             </div>
-          )}
+          </div>
+
+          <div
+            ref={catCarouselRef}
+            className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 pt-1 scroll-smooth no-scrollbar"
+            style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+          >
+            {ECI_CATEGORIES.map((cat) => (
+              <Link
+                key={cat.name}
+                href={cat.link}
+                className="group flex flex-col items-center shrink-0 w-32 sm:w-40 md:w-44 select-none"
+                style={{ scrollSnapAlign: 'start' }}
+              >
+                <div className="w-full aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/80 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md relative">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="mt-2.5 text-center text-xs sm:text-sm font-semibold text-stone-900 tracking-tight leading-snug group-hover:text-stone-600 transition-colors line-clamp-2 px-1">
+                  {cat.name}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1219,6 +1386,19 @@ export default function HomePage() {
         onClose={() => setBuyingProduct(null)}
         onSuccess={handleCheckoutSuccess}
       />
+
+      {/* Floating Back to Top Button (Exact match to screenshot) */}
+      {showScrollTop && (
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="fixed right-4 sm:right-6 bottom-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white text-stone-900 shadow-xl border border-stone-200/90 flex items-center justify-center transition-all duration-300 hover:bg-stone-50 hover:scale-110 active:scale-95 cursor-pointer"
+          aria-label="Volver arriba"
+          title="Volver arriba"
+        >
+          <ArrowUp className="w-5 h-5 text-stone-900 stroke-[2.5]" />
+        </button>
+      )}
     </main>
   )
 }

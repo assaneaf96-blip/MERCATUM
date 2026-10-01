@@ -1297,6 +1297,31 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   display: none;
 }
 
+.pdp-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.pdp-back-link:hover {
+  opacity: 0.7;
+}
+
+.pdp-back-arrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
 .pdp-main-section {
   padding: 50px 4vw 80px;
   background: var(--background);
@@ -2859,4 +2884,13 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
     bottom: 6px;
     left: 6px;
   }
+}
+
+/* Cross-browser hidden scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
