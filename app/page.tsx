@@ -944,7 +944,7 @@ export default function HomePage() {
 
       {/* Immersive Full-Width Hero Section (El Corte Inglés Style) */}
       <section id="top" className="relative w-full overflow-hidden bg-black">
-        <div className="relative w-full h-[52vh] sm:h-[62vh] md:h-[72vh] min-h-[380px] max-h-[700px] overflow-hidden">
+        <div className="relative w-full h-[54vh] sm:h-[62vh] md:h-[72vh] min-h-[440px] sm:min-h-[460px] max-h-[700px] overflow-hidden">
           {FULL_HERO_SLIDES.map((slide, idx) => {
             const isActive = idx === (heroSlideIdx % FULL_HERO_SLIDES.length)
             return (
@@ -964,7 +964,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 pointer-events-none" />
 
                 {/* Hero Slide Content */}
-                <div className="absolute bottom-6 sm:bottom-10 left-4 sm:left-10 max-w-xl text-white z-20 pointer-events-auto pr-16 sm:pr-24">
+                <div className="absolute bottom-5 sm:bottom-10 left-4 sm:left-10 max-w-xl text-white z-20 pointer-events-auto pr-14 sm:pr-24">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-bold tracking-wider uppercase mb-2 sm:mb-3 border border-white/25">
                     <span>✦</span> {slide.badge}
                   </div>
@@ -974,20 +974,34 @@ export default function HomePage() {
                   <p className="text-xs sm:text-sm md:text-base text-white/90 mb-4 line-clamp-2 drop-shadow">
                     {slide.subtitle}
                   </p>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3.5 mt-2">
                     <Link
                       href={slide.link}
-                      className="inline-flex items-center gap-2 bg-white text-stone-900 font-semibold px-5 py-2.5 rounded-full text-xs sm:text-sm hover:bg-stone-100 transition shadow-lg"
+                      style={{
+                        backgroundColor: '#ffffff',
+                        color: '#111827',
+                        fontWeight: 700,
+                        textDecoration: 'none',
+                      }}
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm shadow-xl transition-all duration-200 hover:scale-105 hover:bg-stone-100 active:scale-95 select-none"
                     >
-                      Descubrir colección <span>→</span>
+                      <span style={{ color: '#111827', fontWeight: 700 }}>Descubrir colección</span>
+                      <span style={{ color: '#111827', fontWeight: 700 }}>→</span>
                     </Link>
                     {heroFirstProduct && (
                       <button
                         type="button"
                         onClick={() => handleBuyNow(heroFirstProduct)}
-                        className="hidden sm:inline-flex items-center gap-2 bg-black/40 backdrop-blur-md text-white font-medium px-4 py-2.5 rounded-full text-xs sm:text-sm border border-white/30 hover:bg-black/60 transition"
+                        style={{
+                          backgroundColor: 'rgba(18, 22, 18, 0.88)',
+                          color: '#ffffff',
+                          border: '1px solid rgba(255, 255, 255, 0.45)',
+                          backdropFilter: 'blur(8px)',
+                          fontWeight: 600,
+                        }}
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-xl transition-all duration-200 hover:scale-105 hover:bg-black active:scale-95 cursor-pointer select-none"
                       >
-                        Comprar destacado ⚡
+                        <span style={{ color: '#ffffff', fontWeight: 600 }}>Comprar destacado ⚡</span>
                       </button>
                     )}
                   </div>
