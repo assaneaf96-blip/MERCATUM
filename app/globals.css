@@ -2350,3 +2350,107 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 .animate-fadeIn {
   animation: cartFadeIn 0.2s ease-out forwards;
 }
+
+
+/* =========================================================
+   NOVEDADES HORIZONTAL SCROLL CAROUSEL
+   ========================================================= */
+.novedades-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.novedades-products-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 4px 22px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.novedades-products-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.novedades-products-track::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}
+
+.novedades-products-track::-webkit-scrollbar-thumb {
+  background: #b6ad9d;
+  border-radius: 4px;
+}
+
+.novedades-products-track::-webkit-scrollbar-thumb:hover {
+  background: #8e8574;
+}
+
+.novedades-product-card {
+  flex: 0 0 310px;
+  min-width: 280px;
+  max-width: 320px;
+  scroll-snap-align: start;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.novedades-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+}
+
+.novedades-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.novedades-card-title {
+  font: 400 20px Georgia, serif;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.novedades-card-desc {
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .novedades-products-track {
+    gap: 14px;
+    padding: 6px 2px 18px;
+  }
+  .novedades-product-card {
+    flex: 0 0 280px;
+    min-width: 260px;
+    max-width: 290px;
+    padding: 12px;
+  }
+  .novedades-card-title {
+    font-size: 18px;
+  }
+}

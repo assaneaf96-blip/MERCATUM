@@ -481,6 +481,14 @@ export default function HomePage() {
   const [newsletter, setNewsletter] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
+  const novedadesTrackRef = useRef<HTMLDivElement>(null)
+
+  const scrollNovedades = (direction: 'left' | 'right') => {
+    if (novedadesTrackRef.current) {
+      const scrollAmount = direction === 'left' ? -320 : 320
+      novedadesTrackRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
 
   useEffect(() => {
     // 1. Chargement local immédiat (0 délai d'affichage)
@@ -1029,59 +1037,92 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Nouveautés Section (Gérée dynamiquement par l'Admin) */}
-      <section id="nouveautes" className="journal">
-        <div className="section-heading">
+      {/* Nouveautés Section (Gérée dynamiquement par l'Admin - Défilement Horizontal) */}
+      <section id="nouveautes" className="journal novedades-horizontal-section">
+        <div className="section-heading" style={{ alignItems: 'flex-end', marginBottom: '20px' }}>
           <div>
             <p className="eyebrow">Últimas llegadas</p>
-            <h2>Novedades</h2>
+            <h2 style={{ marginBottom: 0 }}>Novedades</h2>
           </div>
-          <Link className="text-link" href="/boutique">Todas las novedades <span>↗</span></Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <Link className="text-link" href="/boutique" style={{ margin: 0 }}>
+              Todas las novedades <span>↗</span>
+            </Link>
+            <div className="category-slider-nav-arrows" style={{ display: 'flex', gap: '8px' }}>
+              <button
+                type="button"
+                className="category-nav-arrow"
+                onClick={() => scrollNovedades('left')}
+                title="Novedades anteriores"
+                aria-label="Novedades anteriores"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                className="category-nav-arrow"
+                onClick={() => scrollNovedades('right')}
+                title="Novedades siguientes"
+                aria-label="Novedades suivantes"
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="journal-grid">
-          {noveltyItems.map(({ product, customLabel }) => (
-            <article key={product.id}>
-              <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
-                <ProductMediaCarousel
-                  media={product.media}
-                  images={product.images}
-                  fallbackImage={product.image}
-                  alt={product.name}
-                  aspectRatio="16 / 11"
-                  className="rounded-lg mb-3"
-                />
-              </Link>
-              <p className="eyebrow">{customLabel}</p>
-              <h3>
-                <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                  {product.name}
+
+        {/* Rail de défilement horizontal fluide */}
+        <div className="novedades-slider-wrapper">
+          <div ref={novedadesTrackRef} className="novedades-products-track">
+            {noveltyItems.map(({ product, customLabel }) => (
+              <article key={product.id} className="novedades-product-card">
+                <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
+                  <ProductMediaCarousel
+                    media={product.media}
+                    images={product.images}
+                    fallbackImage={product.image}
+                    alt={product.name}
+                    aspectRatio="16 / 11"
+                    className="rounded-lg mb-3"
+                  />
                 </Link>
-              </h3>
-              <p style={{ fontSize: '0.85rem', color: '#666', marginBottom: '0.35rem' }}>
-                {stripImagesFromDescription(product.type || product.description)}
-              </p>
-              <div style={{ marginBottom: '0.6rem' }}>
-                <strong className="product-price-tag">{product.price}</strong>
-              </div>
-              <div style={{ display: 'flex', gap: '8px', marginTop: '0.5rem' }}>
-                <Link
-                  href={`/produit/${product.id}`}
-                  className="buy-now-card-btn"
-                  style={{ textAlign: 'center', flex: 1, background: 'var(--foreground)', color: 'var(--background)' }}
-                >
-                  Comprar ahora ⚡
-                </Link>
-                <button
-                  type="button"
-                  className="add-cart-outline-btn"
-                  onClick={() => handleAddToCart(product)}
-                  style={{ padding: '8px 14px' }}
-                >
-                  🛒 Cesta +
-                </button>
-              </div>
-            </article>
-          ))}
+                <div className="novedades-card-body">
+                  <p className="eyebrow" style={{ marginBottom: '6px' }}>{customLabel}</p>
+                  <h3 className="novedades-card-title">
+                    <Link href={`/produit/${product.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      {product.name}
+                    </Link>
+                  </h3>
+                  <p className="novedades-card-desc">
+                    {stripImagesFromDescription(product.type || product.description)}
+                  </p>
+                  <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
+                    <div style={{ marginBottom: '0.6rem' }}>
+                      <strong className="product-price-tag">{product.price}</strong>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <Link
+                        href={`/produit/${product.id}`}
+                        className="buy-now-card-btn"
+                        style={{ textAlign: 'center', flex: 1, background: 'var(--foreground)', color: 'var(--background)', whiteSpace: 'nowrap' }}
+                      >
+                        Comprar ahora ⚡
+                      </Link>
+                      <button
+                        type="button"
+                        className="add-cart-outline-btn"
+                        onClick={() => handleAddToCart(product)}
+                        style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}
+                        title="Añadir a la cesta"
+                      >
+                        🛒 Cesta +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
