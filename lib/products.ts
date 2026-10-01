@@ -339,6 +339,7 @@ export const CATEGORIES = [
   "Todos los productos",
   "HORNOS",
   "HORNO DE PIZZA",
+  "Placa inducción",
   "Chimenea",
   "ESTUFA DE LEÑA",
   "ESTUFA DE PELLETS",
