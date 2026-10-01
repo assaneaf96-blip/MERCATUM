@@ -285,37 +285,6 @@ export default function BoutiquePage() {
       {/* Shared Navbar */}
       <Navbar />
 
-      {/* Boutique Header Banner - Couleur initiale raffinée (#ede7dc) */}
-      <section className="bg-[#ede7dc] text-[#1c221d] pt-8 pb-7 px-4 text-center border-b border-[#d8d0c2] shadow-sm relative overflow-hidden">
-        <div className="max-w-3xl mx-auto space-y-2.5 relative z-10">
-          {/* Breadcrumb style Inicio / NUESTRAS TIENDAS */}
-          <nav className="text-xs uppercase tracking-[0.2em] text-[#636c5f] flex items-center justify-center gap-2 mb-1.5 font-medium">
-            <Link href="/" className="hover:text-[#1c221d] transition underline-offset-4 hover:underline">
-              Inicio
-            </Link>
-            <span className="opacity-40">/</span>
-            <span className="text-[#1c221d] font-bold">NUESTRAS TIENDAS</span>
-          </nav>
-
-          {/* Eyebrow demandé */}
-          <div className="inline-block px-3.5 py-1 rounded-full bg-black/5 border border-black/10 text-[11px] tracking-[0.22em] uppercase text-[#444a42] font-semibold">
-            {settings.siteName || 'MERCATUM'} · El Arte de Vivir
-          </div>
-
-          {/* Grand Titre */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-wider text-[#1c221d] font-sans">
-            NUESTRAS TIENDAS
-          </h1>
-          <p className="text-base sm:text-lg font-serif italic text-[#4f574d] -mt-1">
-            La Tienda
-          </p>
-
-          {/* Sous-titre officiel maintenu */}
-          <p className="text-xs sm:text-sm text-[#5a6258] max-w-xl mx-auto leading-relaxed pt-0.5">
-            Mobiliario de autor, electrodomésticos de excepción, estufas y rituales de bienestar para su hogar.
-          </p>
-        </div>
-      </section>
 
       {/* Barre de navigation & filtres */}
       <section className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm py-3 px-4">
