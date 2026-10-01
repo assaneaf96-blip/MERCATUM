@@ -391,6 +391,14 @@ export default function BoutiquePage() {
                       src={cat.image}
                       alt={cat.name}
                       loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
+                        const target = e.currentTarget
+                        if (target && !target.dataset.fallback) {
+                          target.dataset.fallback = 'true'
+                          target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' fill='none'%3E%3Crect width='400' height='400' fill='%23f5f5f4'/%3E%3Ccircle cx='200' cy='180' r='28' fill='%23e7e5e4'/%3E%3Cpath d='M140 255l38-46 28 32 32-38 42 52H140z' fill='%23d6d3d1'/%3E%3Ctext x='200' y='292' text-anchor='middle' font-family='sans-serif' font-size='11' font-weight='600' fill='%23a8a29e' letter-spacing='3'%3EMERCATUM%3C/text%3E%3C/svg%3E"
+                        }
+                      }}
                       className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (

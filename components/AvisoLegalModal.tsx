@@ -185,7 +185,7 @@ export default function AvisoLegalModal({ isOpen, onClose, initialTab = 0 }: Avi
                 <h2 style={{ margin: '12px 0 4px', fontSize: '22px', fontWeight: '800', color: '#0f172a', fontFamily: 'Georgia, serif' }}>
                   TÉRMINOS Y CONDICIONES GENERALES DE VENTA
                 </h2>
-                <p style={{ margin: 0, fontSize: '12px', color: '#64748b', italic: 'italic' }}>
+                <p style={{ margin: 0, fontSize: '12px', color: '#64748b', fontStyle: 'italic' }}>
                   Última actualización: 15 de enero de 2025
                 </p>
               </div>
