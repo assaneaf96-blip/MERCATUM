@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { setGalleryInCache } from '@/lib/imageCache'
 
 import { PRODUCTS, extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from '@/lib/products'
 
@@ -155,6 +156,17 @@ export async function GET(request: NextRequest) {
       const formatted = formatProduct(data)
       // Mettre en cache le produit individuel
       productCache.set(id, { product: formatted, timestamp: Date.now() })
+
+      // Pré-remplir le cache de la galerie et des buffers d'images en RAM pour que les 10 vignettes répondent en 0ms
+      let rawImgs: string[] = []
+      if (Array.isArray(data.images) && data.images.length > 0) rawImgs = data.images.filter(Boolean)
+      let rawMed: string[] = []
+      if (Array.isArray(data.media) && data.media.length > 0) rawMed = data.media.map((m: any) => typeof m === 'string' ? m : m?.url).filter(Boolean)
+      const galList = rawMed.length >= rawImgs.length ? rawMed : rawImgs
+      if (galList.length === 0 && data.image) galList.push(String(data.image).trim())
+      if (galList.length > 0) {
+        setGalleryInCache(id, galList)
+      }
 
       return NextResponse.json(
         { success: true, product: formatted },
@@ -348,6 +360,7 @@ export async function POST(request: NextRequest) {
 
     // Mettre à jour le cache produit individuel aussi
     productCache.set(savedFormatted.id, { product: savedFormatted, timestamp: Date.now() })
+    setGalleryInCache(savedFormatted.id, imagesList)
 
 
     // Invalider immédiatement les pages statiques/SSR Next.js
