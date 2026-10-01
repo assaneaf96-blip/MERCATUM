@@ -106,26 +106,24 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
   // 2. Côté serveur ou repli direct Supabase
   if (!isSupabaseConfigured) return null
   try {
-    const batchSize = 100
-    const ranges: { from: number; to: number }[] = []
-    for (let i = 0; i < 3000; i += batchSize) {
-      ranges.push({ from: i, to: i + batchSize - 1 })
-    }
-
-    const responses = await Promise.all(
-      ranges.map((r) =>
-        supabase
-          .from('products')
-          .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
-          .order('id', { ascending: true })
-          .range(r.from, r.to)
-      )
-    )
-
     let allData: any[] = []
-    for (const res of responses) {
-      if (res.data && res.data.length > 0) {
-        allData.push(...res.data)
+    const PAGE_SIZE = 1000
+    let from = 0
+    let hasMore = true
+
+    while (hasMore) {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
+        .order('id', { ascending: true })
+        .range(from, from + PAGE_SIZE - 1)
+
+      if (error || !data || data.length === 0) {
+        hasMore = false
+      } else {
+        allData.push(...data)
+        hasMore = data.length === PAGE_SIZE
+        from += PAGE_SIZE
       }
     }
 
