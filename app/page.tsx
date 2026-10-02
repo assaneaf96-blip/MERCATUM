@@ -584,10 +584,34 @@ const SANTUARIO_SLIDES = [
   },
 ]
 
+const CUIDADO_SLIDES = [
+  {
+    image: '/uploads/cuidado-slide-1.jpg',
+    title: 'Alta Cosmética & Cuidado Facial de Lujo',
+    subtitle: 'Fórmulas regeneradoras y activos excepcionales para una piel luminosa.',
+  },
+  {
+    image: '/uploads/cuidado-slide-2.jpg',
+    title: 'Belleza Radiante & Pureza Intemporal',
+    subtitle: 'Rituales de cuidado dermatológico y rejuvenecimiento celular.',
+  },
+  {
+    image: '/uploads/cuidado-slide-3.jpg',
+    title: 'Rituales de Baño & Serenidad Termal',
+    subtitle: 'Texturas envolventes, bienestar corporal y momentos de calma absoluta.',
+  },
+  {
+    image: '/uploads/cuidado-slide-4.jpg',
+    title: 'Estilismo Capilar Inteligente & Brillo Térmico',
+    subtitle: 'Tecnología de moldeado avanzada sin daño térmico para un acabado de salón.',
+  },
+]
+
 export default function HomePage() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
   const [heroSlideIdx, setHeroSlideIdx] = useState(0)
   const [santuarioSlideIdx, setSantuarioSlideIdx] = useState(0)
+  const [cuidadoSlideIdx, setCuidadoSlideIdx] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const catCarouselRef = useRef<HTMLDivElement>(null)
@@ -779,6 +803,13 @@ export default function HomePage() {
   useEffect(() => {
     const timer = setInterval(() => {
       setSantuarioSlideIdx((prev) => (prev + 1) % SANTUARIO_SLIDES.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCuidadoSlideIdx((prev) => (prev + 1) % CUIDADO_SLIDES.length)
     }, 4000)
     return () => clearInterval(timer)
   }, [])
@@ -1230,17 +1261,84 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 2. Cuidado y Bienestar Diario */}
+          {/* 2. Cuidado y Bienestar Diario - Carrousel Défilant Dynamique */}
           <div
-            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 select-none"
             style={{ aspectRatio: '16/9' }}
           >
-            <img
-              src="/uploads/cuidado-bienestar-diario.jpg"
-              alt="Cuidado y Bienestar Diario — Artículos seleccionados y piezas funcionales para aportar serenidad, calidez y un confort inigualable en el hogar."
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
+            {/* Diapositives qui défilent */}
+            {CUIDADO_SLIDES.map((slide, idx) => {
+              const isActive = idx === cuidadoSlideIdx
+              return (
+                <div
+                  key={slide.image}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  {/* Dégradé doux et texte superposé dans le style Cuidado y Bienestar Diario */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10 flex flex-col justify-end p-4 sm:p-5 text-white">
+                    <p className="text-[10px] sm:text-xs uppercase tracking-widest text-emerald-300 font-semibold mb-1">
+                      Cuidado y Bienestar Diario
+                    </p>
+                    <h4 className="font-serif text-sm sm:text-base md:text-lg font-normal text-white leading-snug drop-shadow-sm">
+                      {slide.title}
+                    </h4>
+                    <p className="hidden sm:block text-xs text-stone-200/90 mt-1 line-clamp-1 drop-shadow-sm">
+                      {slide.subtitle}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+
+            {/* Boutons flèches précédent / suivant */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setCuidadoSlideIdx((prev) => (prev - 1 + CUIDADO_SLIDES.length) % CUIDADO_SLIDES.length)
+              }}
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20 backdrop-blur-sm cursor-pointer"
+              aria-label="Foto anterior"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setCuidadoSlideIdx((prev) => (prev + 1) % CUIDADO_SLIDES.length)
+              }}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20 backdrop-blur-sm cursor-pointer"
+              aria-label="Siguiente foto"
+            >
+              ›
+            </button>
+
+            {/* Puces de pagination en bas */}
+            <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+              {CUIDADO_SLIDES.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setCuidadoSlideIdx(dotIdx)
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    dotIdx === cuidadoSlideIdx ? 'w-5 bg-white' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                  }`}
+                  aria-label={`Ir a la diapositiva ${dotIdx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* 3. Excelencia y Materiales Nobles */}
