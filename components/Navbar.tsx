@@ -217,33 +217,33 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
         </div>
       </div>
       {isHomePage ? (
-        <header className="sticky top-0 z-50 bg-[#121612]/95 backdrop-blur-md border-b border-white/10 px-4 py-2.5 sm:py-3 shadow-md transition-all duration-300">
+        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 px-4 py-2.5 sm:py-3 shadow-sm transition-all duration-300">
           <div className="max-w-7xl mx-auto">
-            {/* Ligne 1: Menu - Logo MERCATUM - Compte - Favoris - Cesta */}
+            {/* Ligne 1: Menu - Logo MERCATUM - Favoris - Cesta */}
             <div className="flex items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="text-white hover:opacity-80 transition p-1 flex items-center justify-center cursor-pointer bg-transparent border-0"
+                className="text-stone-900 hover:text-stone-600 transition p-1 flex items-center justify-center cursor-pointer bg-transparent border-0"
                 aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
               >
-                {menuOpen ? <X className="w-6 h-6 text-white stroke-[2]" /> : <Menu className="w-6 h-6 text-white stroke-[2]" />}
+                {menuOpen ? <X className="w-6 h-6 text-stone-900 stroke-[2]" /> : <Menu className="w-6 h-6 text-stone-900 stroke-[2]" />}
               </button>
 
               <Link href="/" className="brand-home flex items-center">
-                <span className="font-serif italic font-bold tracking-widest text-xl sm:text-2xl text-white select-none drop-shadow">
+                <span className="font-serif italic font-bold tracking-widest text-xl sm:text-2xl text-stone-950 select-none drop-shadow-none">
                   MERCATUM
                 </span>
               </Link>
 
-              <div className="flex items-center gap-3 sm:gap-4 text-white">
-                <Link href="/boutique" className="text-white hover:opacity-80 transition p-1" title="Favoritos">
+              <div className="flex items-center gap-3 sm:gap-4 text-stone-900">
+                <Link href="/boutique" className="text-stone-900 hover:text-stone-600 transition p-1" title="Favoritos">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
                 </Link>
                 <button
                   type="button"
                   onClick={handleCartClick}
-                  className="relative text-white hover:opacity-80 transition p-1 cursor-pointer bg-transparent border-0"
+                  className="relative text-stone-900 hover:text-stone-600 transition p-1 cursor-pointer bg-transparent border-0"
                   title="Cesta"
                   aria-label="Cesta"
                 >
@@ -262,7 +262,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
               action="/boutique"
               method="GET"
               onSubmit={handleSearchSubmit}
-              className="mt-2.5 max-w-xl mx-auto w-full relative flex items-center rounded-full border border-white/60 bg-black/30 backdrop-blur-md px-4 py-1.5 sm:py-2 shadow-sm transition hover:border-white focus-within:border-white focus-within:bg-black/50"
+              className="mt-2.5 max-w-xl mx-auto w-full relative flex items-center rounded-full border border-stone-300 bg-stone-50/90 backdrop-blur-md px-4 py-1.5 sm:py-2 shadow-inner transition hover:border-stone-400 focus-within:border-stone-900 focus-within:bg-white"
             >
               <input
                 type="text"
@@ -270,15 +270,15 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="¿Qué estás buscando?"
-                className="w-full bg-transparent text-white placeholder-white/80 text-xs sm:text-sm font-normal outline-none pr-9 tracking-wide"
+                className="w-full bg-transparent text-stone-900 placeholder-stone-500 text-xs sm:text-sm font-normal outline-none pr-9 tracking-wide"
               />
               <button
                 type="submit"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-stone-900 flex items-center justify-center shrink-0 shadow hover:bg-stone-100 transition cursor-pointer"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-stone-900 text-white flex items-center justify-center shrink-0 shadow hover:bg-stone-800 transition cursor-pointer"
                 title="Buscar"
                 aria-label="Buscar"
               >
-                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-900 stroke-[2.5]" />
+                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white stroke-[2.5]" />
               </button>
             </form>
           </div>
