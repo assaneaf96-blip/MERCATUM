@@ -236,7 +236,7 @@ export async function GET(request: NextRequest) {
     while (hasMore) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image, images')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
         .order('id', { ascending: true })
         .range(from, from + PAGE_SIZE - 1)
 
@@ -257,10 +257,16 @@ export async function GET(request: NextRequest) {
       if (serverCache && serverCache.products.length > 0) {
         products = serverCache.products.filter((p) => p && p.id !== 'masque-nuit-regenerant')
       } else {
-        products = PRODUCTS
-          .filter((p) => p.id !== 'masque-nuit-regenerant')
-          .map((p) => formatProduct({ ...p, raw_price: p.rawPrice, reviews_count: p.reviewsCount, images: p.images || [], media: p.media || [] }))
-        seedDefaultProductsToSupabase().catch(() => {})
+        const jsonMap = getProductsJsonMap()
+        if (jsonMap && jsonMap.size > 0) {
+          products = Array.from(jsonMap.values())
+            .map((p) => formatProduct(p))
+            .filter((p) => p && p.id !== 'masque-nuit-regenerant')
+        } else {
+          products = PRODUCTS
+            .filter((p) => p.id !== 'masque-nuit-regenerant')
+            .map((p) => formatProduct({ ...p, raw_price: p.rawPrice, reviews_count: p.reviewsCount, images: p.images || [], media: p.media || [] }))
+        }
       }
     }
 
