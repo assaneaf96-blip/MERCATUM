@@ -11,6 +11,7 @@ interface ProductMediaCarouselProps {
   className?: string
   aspectRatio?: string
   showBadge?: string
+  showCounter?: boolean
 }
 
 export default function ProductMediaCarousel({
@@ -21,6 +22,7 @@ export default function ProductMediaCarousel({
   className = '',
   aspectRatio = '1 / 1',
   showBadge,
+  showCounter = false,
 }: ProductMediaCarouselProps) {
   // Construire la liste unifiée des éléments médias sans doublons
   const items: MediaItem[] = []
@@ -145,7 +147,7 @@ export default function ProductMediaCarousel({
 
   return (
     <div
-      className={`w-full relative overflow-hidden group bg-[#eadecc] ${className}`}
+      className={`w-full relative overflow-hidden group bg-white ${className}`}
       style={containerStyle}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
@@ -283,10 +285,12 @@ export default function ProductMediaCarousel({
             ))}
           </div>
 
-          {/* Compteur de photos visible et précis */}
-          <div className="absolute top-2 right-2 z-10 text-[11px] font-bold px-2 py-0.5 rounded bg-black/65 text-white pointer-events-none backdrop-blur-sm shadow-sm">
-            {currentIndex + 1}/{items.length} {currentItem.type === 'video' ? '🎬' : '📷'}
-          </div>
+          {/* Compteur de photos (uniquement si demandé, désactivé par défaut sur les cartes de produit) */}
+          {showCounter && (
+            <div className="absolute top-2 right-2 z-10 text-[11px] font-bold px-2 py-0.5 rounded bg-black/65 text-white pointer-events-none backdrop-blur-sm shadow-sm">
+              {currentIndex + 1}/{items.length} {currentItem.type === 'video' ? '🎬' : '📷'}
+            </div>
+          )}
         </>
       )}
     </div>
