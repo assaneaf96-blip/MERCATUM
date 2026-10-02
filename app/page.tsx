@@ -1103,23 +1103,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3 Pillars / Values Section */}
-      <section className="values-section">
-        <div className="values-grid">
-          <div className="value-card">
-            <span className="value-icon">🏡</span>
-            <h3>El Santuario del Hogar</h3>
-            <p>Desde muebles de autor hasta equipamiento exterior y descanso de alta gama, diseñamos un espacio vital de confort y belleza extraordinarios.</p>
+      {/* 3 Pillars / Values Section - Editorial Banners */}
+      <section className="values-section" style={{ padding: '40px 4vw 50px', background: '#f8f6f2' }}>
+        <div
+          style={{
+            maxWidth: '1380px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '24px',
+          }}
+        >
+          {/* 1. El Santuario del Hogar */}
+          <div
+            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            style={{ aspectRatio: '16/9' }}
+          >
+            <img
+              src="/uploads/el-santuario-del-hogar.jpg"
+              alt="El Santuario del Hogar — Desde muebles de autor hasta equipamiento exterior y descanso de alta gama, diseñamos un espacio vital de confort y belleza extraordinarios."
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
-          <div className="value-card">
-            <span className="value-icon">🌿</span>
-            <h3>Cuidado y Bienestar Diario</h3>
-            <p>Artículos seleccionados y piezas funcionales para aportar serenidad, calidez y un confort inigualable en el hogar.</p>
+
+          {/* 2. Cuidado y Bienestar Diario */}
+          <div
+            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            style={{ aspectRatio: '16/9' }}
+          >
+            <img
+              src="/uploads/cuidado-bienestar-diario.jpg"
+              alt="Cuidado y Bienestar Diario — Artículos seleccionados y piezas funcionales para aportar serenidad, calidez y un confort inigualable en el hogar."
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
-          <div className="value-card">
-            <span className="value-icon">✦</span>
-            <h3>Excelencia y Materiales Nobles</h3>
-            <p>Diseño atemporal, acabados minuciosos y confección cuidada para creaciones duraderas pensadas para acompañarle.</p>
+
+          {/* 3. Excelencia y Materiales Nobles */}
+          <div
+            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            style={{ aspectRatio: '16/9' }}
+          >
+            <img
+              src="/uploads/excelencia-materiales-nobles.jpg"
+              alt="Excelencia y Materiales Nobles — Diseño atemporal, acabados minuciosos y confección cuidada para creaciones duraderas pensadas para acompañarle."
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
