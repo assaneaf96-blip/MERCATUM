@@ -26,7 +26,7 @@ import {
   subscribeToProductsChanges,
 } from '@/lib/supabaseService'
 import { addToCart } from '@/lib/cart'
-import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
+import { getClientCachedProducts, getSyncCachedProducts, setClientCachedProducts } from '@/lib/clientCache'
 
 interface CategoryDetails {
   eyebrow: string
@@ -734,8 +734,8 @@ export default function HomePage() {
     }).catch(() => {})
 
     // 2. Fonction de chargement direct et immédiat depuis le cache / Supabase
-    const loadProducts = () => {
-      fetchProductsFromDb(false).then((dbProducts) => {
+    const loadProducts = (force = false) => {
+      fetchProductsFromDb(force).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()

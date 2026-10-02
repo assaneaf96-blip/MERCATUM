@@ -10,7 +10,7 @@ import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription, isVideoUrl } from '@/lib/products'
 import { getProducts, saveProductsBulk, getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
 import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
-import { getClientCachedProducts, getSyncCachedProducts } from '@/lib/clientCache'
+import { getClientCachedProducts, getSyncCachedProducts, setClientCachedProducts } from '@/lib/clientCache'
 import { searchAndFilterProducts } from '@/lib/searchUtils'
 import { addToCart } from '@/lib/cart'
 
