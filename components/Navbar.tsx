@@ -427,6 +427,14 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
+                  href="/boutique?cat=Aire%20acondicionado"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
+                >
+                  <span>❄️ Aire Acondicionado (-50%)</span>
+                  <span className="text-xs text-white/50">→</span>
+                </Link>
+                <Link
                   href="/boutique?cat=Placa%20inducci%C3%B3n"
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"

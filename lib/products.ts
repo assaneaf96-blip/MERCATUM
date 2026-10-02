@@ -337,6 +337,7 @@ export function extractColorImages(p?: {
 
 export const CATEGORIES = [
   "Todos los productos",
+  "Aire acondicionado",
   "HORNOS",
   "HORNO DE PIZZA",
   "Placa inducción",
