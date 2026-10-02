@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 import { setGalleryInCache } from '@/lib/imageCache'
+import fs from 'fs'
+import path from 'path'
 
 import { PRODUCTS, extractContenance, extractVolumes, extractColors, extractColorImages, isVideoUrl } from '@/lib/products'
 
@@ -24,7 +26,29 @@ interface CacheEntry {
 }
 
 let serverCache: CacheEntry | null = null
-const CACHE_TTL_MS = 1800000 // 30 minutes de cache mémoire serveur ultra-rapide (< 1ms), mis à jour en direct lors des ajouts
+const CACHE_TTL_MS = 60000 // 1 minute de cache mémoire serveur ultra-rapide (< 1ms)
+
+let cachedProductsJsonMap: Map<string, any> | null = null
+
+function getProductsJsonMap(): Map<string, any> {
+  if (cachedProductsJsonMap) return cachedProductsJsonMap
+  cachedProductsJsonMap = new Map()
+  try {
+    const jsonPath = path.join(process.cwd(), 'public', 'products.json')
+    if (fs.existsSync(jsonPath)) {
+      const content = fs.readFileSync(jsonPath, 'utf8')
+      const arr = JSON.parse(content)
+      if (Array.isArray(arr)) {
+        arr.forEach((p) => {
+          if (p && p.id) cachedProductsJsonMap!.set(p.id, p)
+        })
+      }
+    }
+  } catch (err) {
+    console.warn('Erreur chargement public/products.json:', err)
+  }
+  return cachedProductsJsonMap
+}
 
 // Cache individuel par produit (id → produit formaté)
 const productCache = new Map<string, { product: any; timestamp: number }>()
@@ -36,6 +60,10 @@ function formatProduct(item: any) {
   const cols = extractColors(item)
   const colImgs = extractColorImages(item)
 
+  const jsonMap = getProductsJsonMap()
+  const jsonProduct = jsonMap.get(item.id)
+  const defProduct = PRODUCTS.find((p) => p.id === item.id) || jsonProduct
+
   let rawImages: string[] = []
   if (Array.isArray(item.images)) {
     rawImages = item.images.filter(Boolean)
@@ -44,6 +72,9 @@ function formatProduct(item: any) {
       const parsed = JSON.parse(item.images)
       if (Array.isArray(parsed)) rawImages = parsed.filter(Boolean)
     } catch {}
+  }
+  if (rawImages.length === 0 && jsonProduct?.images && Array.isArray(jsonProduct.images)) {
+    rawImages = jsonProduct.images.filter(Boolean)
   }
 
   let rawMedia: any[] = []
@@ -55,10 +86,12 @@ function formatProduct(item: any) {
       if (Array.isArray(parsed)) rawMedia = parsed.filter(Boolean)
     } catch {}
   }
+  if (rawMedia.length === 0 && jsonProduct?.media && Array.isArray(jsonProduct.media)) {
+    rawMedia = jsonProduct.media.filter(Boolean)
+  }
 
-  // Enrichissement automatique instantané : si l'item n'a pas toutes ses images (ex: liste catalogue sans images lourdes de Supabase),
-  // on injecte instantanément les images complètes depuis le catalogue PRODUCTS de référence !
-  const defProduct = PRODUCTS.find((p) => p.id === item.id)
+  // Enrichissement automatique instantané : si l'item n'a pas toutes ses images,
+  // on injecte instantanément les images complètes depuis le catalogue de référence !
   if (defProduct) {
     if (rawImages.length <= 1 && Array.isArray(defProduct.images) && defProduct.images.length > 1) {
       rawImages = defProduct.images
@@ -70,12 +103,17 @@ function formatProduct(item: any) {
 
   const mediaUrls = rawMedia.map((m: any) => (typeof m === 'string' ? m : m?.url)).filter(Boolean)
 
-  // Si media contient plus de photos que images (ex: 6 photos téléversées dans media vs 1 dans images),
-  // on utilise immédiatement media comme galerie principale de référence
+  // Si media contient plus de photos que images, on utilise media
   const authoritativeList = mediaUrls.length > rawImages.length ? mediaUrls : rawImages
 
-  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || authoritativeList[0] || (defProduct?.image || '') || `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
+  let rawMain = (typeof item.image === 'string' ? item.image.trim() : '') || (jsonProduct?.image || '') || authoritativeList[0] || (defProduct?.image || '')
   if (rawMain && rawMain.startsWith('data:')) {
+    if (jsonProduct?.image && !jsonProduct.image.startsWith('data:')) {
+      rawMain = jsonProduct.image
+    } else {
+      rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
+    }
+  } else if (!rawMain) {
     rawMain = `/api/product-image?id=${encodeURIComponent(item.id)}&index=0`
   }
 
@@ -198,7 +236,7 @@ export async function GET(request: NextRequest) {
     while (hasMore) {
       const { data, error } = await supabase
         .from('products')
-        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
+        .select('id, name, category, type, price, raw_price, tag, rating, reviews_count, image, images')
         .order('id', { ascending: true })
         .range(from, from + PAGE_SIZE - 1)
 

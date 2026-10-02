@@ -68,6 +68,9 @@ export async function fetchProductsFromDb(forceRefresh = false): Promise<Product
             if (json?.success && Array.isArray(json.products)) {
               clientCachedProducts = json.products
               setClientCachedProducts(json.products).catch(() => {})
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('mercatum:products_updated', { detail: json.products }))
+              }
             }
           }).catch(() => {})
         return synced

@@ -774,21 +774,35 @@ export default function HomePage() {
             })
           })
 
-          // 3. Intégrer également les créations locales récentes
+          // 3. Intégrer également les créations locales récentes sans écraser les images officielles
           const localItems = getProducts()
           localItems.forEach((lp) => {
             if (lp && lp.id) {
               const def = merged.get(lp.id)
-              merged.set(lp.id, { ...(def || {}), ...lp })
+              if (!def) {
+                merged.set(lp.id, lp)
+              } else {
+                const defHasOfficial = (def.images && def.images.length > 0) || (def.image && !def.image.includes('placeholder'))
+                merged.set(lp.id, {
+                  ...lp,
+                  ...def,
+                  image: defHasOfficial ? def.image : (lp.image || def.image),
+                  images: defHasOfficial ? def.images : (lp.images || def.images),
+                  media: defHasOfficial ? def.media : (lp.media || def.media),
+                })
+              }
             }
           })
 
-          setProductsList(Array.from(merged.values()))
+          const finalProducts = Array.from(merged.values())
+          setProductsList(finalProducts)
+          saveProductsBulk(finalProducts)
+          setClientCachedProducts(finalProducts).catch(() => {})
         }
       }).catch(() => {})
     }
 
-    loadProducts()
+    loadProducts(true)
 
     // 3. Abonnement Supabase Realtime + Événements locaux : intègre instantanément tout produit ajouté/modifié
     const handleUpdate = () => {

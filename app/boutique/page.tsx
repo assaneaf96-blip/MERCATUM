@@ -93,8 +93,8 @@ export default function BoutiquePage() {
     }).catch(() => {})
 
     // 2. Chargement direct depuis le cache / Supabase sans blocage
-    const loadProducts = () => {
-      fetchProductsFromDb(false).then((dbProducts) => {
+    const loadProducts = (force = false) => {
+      fetchProductsFromDb(force).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
           saveProductsBulk(dbProducts)
           const merged = new Map<string, Product>()
@@ -133,21 +133,35 @@ export default function BoutiquePage() {
             })
           })
 
-          // 3. Intégrer également les créations locales récentes
+          // 3. Intégrer également les créations locales récentes sans écraser les images officielles
           const localItems = getProducts()
           localItems.forEach((lp) => {
             if (lp && lp.id) {
               const def = merged.get(lp.id)
-              merged.set(lp.id, { ...(def || {}), ...lp })
+              if (!def) {
+                merged.set(lp.id, lp)
+              } else {
+                const defHasOfficial = (def.images && def.images.length > 0) || (def.image && !def.image.includes('placeholder'))
+                merged.set(lp.id, {
+                  ...lp,
+                  ...def,
+                  image: defHasOfficial ? def.image : (lp.image || def.image),
+                  images: defHasOfficial ? def.images : (lp.images || def.images),
+                  media: defHasOfficial ? def.media : (lp.media || def.media),
+                })
+              }
             }
           })
 
-          setProductsList(Array.from(merged.values()))
+          const finalProducts = Array.from(merged.values())
+          setProductsList(finalProducts)
+          saveProductsBulk(finalProducts)
+          setClientCachedProducts(finalProducts).catch(() => {})
         }
       }).catch(() => {})
     }
 
-    loadProducts()
+    loadProducts(true)
 
     // 3. Écoute Supabase Realtime + Événements locaux
     const handleUpdate = () => {

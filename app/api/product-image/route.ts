@@ -86,6 +86,21 @@ export async function GET(request: NextRequest) {
     }
 
     if (!raw) {
+      try {
+        const jsonPath = path.join(process.cwd(), 'public', 'products.json')
+        if (fs.existsSync(jsonPath)) {
+          const content = fs.readFileSync(jsonPath, 'utf8')
+          const arr = JSON.parse(content)
+          const found = arr.find((p: any) => p && p.id === id)
+          if (found) {
+            const fImgs = Array.isArray(found.images) ? found.images.filter(Boolean) : []
+            raw = String(fImgs[index] || (index === 0 ? found.image : '')).trim()
+          }
+        }
+      } catch {}
+    }
+
+    if (!raw) {
       return getPlaceholderResponse(200)
     }
 
