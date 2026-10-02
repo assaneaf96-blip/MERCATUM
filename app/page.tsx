@@ -556,9 +556,38 @@ const ECI_CATEGORIES = [
   },
 ]
 
+const SANTUARIO_SLIDES = [
+  {
+    image: '/uploads/santuario-slide-1.jpg',
+    title: 'Salón Multimedia & Entretenimiento de Élite',
+    subtitle: 'El equilibrio entre tecnología audiovisual de gran formato y confort soberano.',
+  },
+  {
+    image: '/uploads/santuario-slide-2.jpg',
+    title: 'El Refugio del Descanso & Texturas Nobles',
+    subtitle: 'Sofás modulares de línea limpia, tejidos confort y serenidad absoluta.',
+  },
+  {
+    image: '/uploads/santuario-slide-3.jpg',
+    title: 'Mobiliario de Autor & Vitrinas Clásicas',
+    subtitle: 'Armonía y carpintería arquitectónica para organizar su espacio vital.',
+  },
+  {
+    image: '/uploads/santuario-slide-4.jpg',
+    title: 'Santuario de Agua & Espacio Baño',
+    subtitle: 'Maderas cálidas, lavabos escultóricos y detalles contemporáneos en negro mate.',
+  },
+  {
+    image: '/uploads/santuario-slide-5.jpg',
+    title: 'Espacios Híbridos & Despachos de Diseño',
+    subtitle: 'Integración fluida de zona de trabajo, biblioteca y sala de estar.',
+  },
+]
+
 export default function HomePage() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
   const [heroSlideIdx, setHeroSlideIdx] = useState(0)
+  const [santuarioSlideIdx, setSantuarioSlideIdx] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const catCarouselRef = useRef<HTMLDivElement>(null)
@@ -744,6 +773,13 @@ export default function HomePage() {
     const timer = setInterval(() => {
       setHeroSlideIdx((prev) => (prev + 1) % FULL_HERO_SLIDES.length)
     }, 4500)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSantuarioSlideIdx((prev) => (prev + 1) % SANTUARIO_SLIDES.length)
+    }, 4000)
     return () => clearInterval(timer)
   }, [])
 
@@ -1114,17 +1150,84 @@ export default function HomePage() {
             gap: '24px',
           }}
         >
-          {/* 1. El Santuario del Hogar */}
+          {/* 1. El Santuario del Hogar - Carrousel Défilant Dynamique */}
           <div
-            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-2xl shadow-sm border border-stone-200/80 bg-stone-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 select-none"
             style={{ aspectRatio: '16/9' }}
           >
-            <img
-              src="/uploads/el-santuario-del-hogar.jpg"
-              alt="El Santuario del Hogar — Desde muebles de autor hasta equipamiento exterior y descanso de alta gama, diseñamos un espacio vital de confort y belleza extraordinarios."
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
+            {/* Diapositives qui défilent */}
+            {SANTUARIO_SLIDES.map((slide, idx) => {
+              const isActive = idx === santuarioSlideIdx
+              return (
+                <div
+                  key={slide.image}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  {/* Dégradé doux et texte superposé dans le style El Santuario del Hogar */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10 flex flex-col justify-end p-4 sm:p-5 text-white">
+                    <p className="text-[10px] sm:text-xs uppercase tracking-widest text-amber-300 font-semibold mb-1">
+                      El Santuario del Hogar
+                    </p>
+                    <h4 className="font-serif text-sm sm:text-base md:text-lg font-normal text-white leading-snug drop-shadow-sm">
+                      {slide.title}
+                    </h4>
+                    <p className="hidden sm:block text-xs text-stone-200/90 mt-1 line-clamp-1 drop-shadow-sm">
+                      {slide.subtitle}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+
+            {/* Boutons flèches précédent / suivant */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setSantuarioSlideIdx((prev) => (prev - 1 + SANTUARIO_SLIDES.length) % SANTUARIO_SLIDES.length)
+              }}
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20 backdrop-blur-sm cursor-pointer"
+              aria-label="Foto anterior"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setSantuarioSlideIdx((prev) => (prev + 1) % SANTUARIO_SLIDES.length)
+              }}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20 backdrop-blur-sm cursor-pointer"
+              aria-label="Siguiente foto"
+            >
+              ›
+            </button>
+
+            {/* Puces de pagination en bas */}
+            <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+              {SANTUARIO_SLIDES.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setSantuarioSlideIdx(dotIdx)
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    dotIdx === santuarioSlideIdx ? 'w-5 bg-white' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                  }`}
+                  aria-label={`Ir a la diapositiva ${dotIdx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* 2. Cuidado y Bienestar Diario */}
