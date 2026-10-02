@@ -365,21 +365,28 @@ function CategorySliderSection({
         {/* Rail de défilement horizontal avec tous les produits */}
         <div className="category-slider-wrapper">
           <div ref={trackRef} className="category-products-track">
-            {products.map((product) => (
-              <article className="category-product-card" key={product.id}>
-                <div>
-                  <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
-                    <div className="category-card-media">
-                      <ProductMediaCarousel
-                        media={product.media}
-                        images={product.images}
-                        fallbackImage={product.image}
-                        alt={product.name}
-                        aspectRatio="4 / 3"
-                        showBadge={product.tag}
-                      />
-                    </div>
-                  </Link>
+            {products.map((product) => {
+              const isAireAcondicionado =
+                product.category === 'Aire acondicionado' ||
+                (typeof product.category === 'string' && product.category.toLowerCase().includes('aire acondicionado'))
+
+              return (
+                <article className="category-product-card" key={product.id}>
+                  <div>
+                    <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
+                      <div className="category-card-media">
+                        <ProductMediaCarousel
+                          media={product.media}
+                          images={product.images}
+                          fallbackImage={product.image}
+                          alt={product.name}
+                          aspectRatio="4 / 3"
+                          showBadge={product.tag}
+                          showArrows={!isAireAcondicionado}
+                          showDots={!isAireAcondicionado}
+                        />
+                      </div>
+                    </Link>
                   <div className="category-card-info">
                     <span className="category-card-type-tag">{product.category}</span>
                     <h3 className="category-card-title">
@@ -413,7 +420,7 @@ function CategorySliderSection({
                   </div>
                 </div>
               </article>
-            ))}
+            )})}
 
             {products.length > 8 && (
               <div

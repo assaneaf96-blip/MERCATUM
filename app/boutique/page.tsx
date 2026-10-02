@@ -640,6 +640,10 @@ export default function BoutiquePage() {
               {displayedProducts.map((product) => {
                 const isFavorite = favorites.has(product.id)
                 const brand = product.type || product.category || 'MERCATUM'
+                const isAireAcondicionado =
+                  product.category === 'Aire acondicionado' ||
+                  (typeof product.category === 'string' && product.category.toLowerCase().includes('aire acondicionado'))
+
                 return (
                   <article className="eci-product-card" key={product.id}>
                     {/* Conteneur Image avec favori et tag */}
@@ -652,6 +656,8 @@ export default function BoutiquePage() {
                           alt={product.name}
                           aspectRatio="1 / 1"
                           className="w-full h-full"
+                          showArrows={!isAireAcondicionado}
+                          showDots={!isAireAcondicionado}
                         />
                       </Link>
 

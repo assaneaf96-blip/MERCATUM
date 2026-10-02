@@ -12,6 +12,8 @@ interface ProductMediaCarouselProps {
   aspectRatio?: string
   showBadge?: string
   showCounter?: boolean
+  showArrows?: boolean
+  showDots?: boolean
 }
 
 export default function ProductMediaCarousel({
@@ -23,6 +25,8 @@ export default function ProductMediaCarousel({
   aspectRatio = '1 / 1',
   showBadge,
   showCounter = false,
+  showArrows = true,
+  showDots = true,
 }: ProductMediaCarouselProps) {
   // Construire la liste unifiée des éléments médias sans doublons
   const items: MediaItem[] = []
@@ -249,7 +253,7 @@ export default function ProductMediaCarousel({
       </div>
 
       {/* Flèches de navigation carrousel */}
-      {hasMultiple && (
+      {hasMultiple && showArrows && (
         <>
           <button
             type="button"
@@ -267,31 +271,33 @@ export default function ProductMediaCarousel({
           >
             ›
           </button>
-
-          {/* Indicateurs / Puces */}
-          <div className="absolute bottom-2 left-0 right-0 z-10 flex justify-center items-center gap-1.5 px-2 flex-wrap max-w-[90%] mx-auto pointer-events-none">
-            {items.map((item, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={(e) => handleSelect(idx, e)}
-                aria-label={`Ir al archivo ${idx + 1}`}
-                className={`pointer-events-auto rounded-full transition-all ${
-                  currentIndex === idx
-                    ? 'w-4 h-1.5 bg-white shadow'
-                    : 'w-1.5 h-1.5 bg-white/60 hover:bg-white'
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Compteur de photos (uniquement si demandé, désactivé par défaut sur les cartes de produit) */}
-          {showCounter && (
-            <div className="absolute top-2 right-2 z-10 text-[11px] font-bold px-2 py-0.5 rounded bg-black/65 text-white pointer-events-none backdrop-blur-sm shadow-sm">
-              {currentIndex + 1}/{items.length} {currentItem.type === 'video' ? '🎬' : '📷'}
-            </div>
-          )}
         </>
+      )}
+
+      {/* Indicateurs / Puces */}
+      {hasMultiple && showDots && (
+        <div className="absolute bottom-2 left-0 right-0 z-10 flex justify-center items-center gap-1.5 px-2 flex-wrap max-w-[90%] mx-auto pointer-events-none">
+          {items.map((item, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={(e) => handleSelect(idx, e)}
+              aria-label={`Ir al archivo ${idx + 1}`}
+              className={`pointer-events-auto rounded-full transition-all ${
+                currentIndex === idx
+                  ? 'w-4 h-1.5 bg-white shadow'
+                  : 'w-1.5 h-1.5 bg-white/60 hover:bg-white'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Compteur de photos (uniquement si demandé, désactivé par défaut sur les cartes de produit) */}
+      {hasMultiple && showCounter && (
+        <div className="absolute top-2 right-2 z-10 text-[11px] font-bold px-2 py-0.5 rounded bg-black/65 text-white pointer-events-none backdrop-blur-sm shadow-sm">
+          {currentIndex + 1}/{items.length} {currentItem.type === 'video' ? '🎬' : '📷'}
+        </div>
       )}
     </div>
   )
