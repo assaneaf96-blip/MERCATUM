@@ -364,7 +364,10 @@ export const CATEGORIES = [
   "Velas & Aromas",
   "Alta Cosmética",
   "Afeitadoras",
-  "sillones relax"
+  "sillones relax",
+  "PELLETS DE MADERA",
+  "CALENTADORES DE GAS",
+  "SOFAS"
 ]
 
 export function isVideoUrl(url: string): boolean {
