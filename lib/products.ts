@@ -362,7 +362,9 @@ export const CATEGORIES = [
   "Cuidado Corporal & Spa",
   "Hogar & Confort",
   "Velas & Aromas",
-  "Alta Cosmética"
+  "Alta Cosmética",
+  "Afeitadoras",
+  "sillones relax"
 ]
 
 export function isVideoUrl(url: string): boolean {
