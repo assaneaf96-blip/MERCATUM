@@ -21,6 +21,23 @@ export function trackPixel(
   window.dispatchEvent(new CustomEvent('mercatum:track_pixel', { detail: { event, data } }))
 }
 
+function getFbOptions(): { test_event_code?: string } | undefined {
+  if (typeof window === 'undefined') return undefined
+  try {
+    const params = new URLSearchParams(window.location.search)
+    const urlCode = params.get('test_event_code') || params.get('testEventCode')
+    if (urlCode) {
+      sessionStorage.setItem('fb_test_event_code', urlCode)
+      return { test_event_code: urlCode }
+    }
+    const stored = sessionStorage.getItem('fb_test_event_code')
+    if (stored) return { test_event_code: stored }
+    return { test_event_code: 'TEST93893' }
+  } catch {
+    return { test_event_code: 'TEST93893' }
+  }
+}
+
 export default function PixelTracker() {
   const initializedRef = useRef(false)
 
@@ -51,7 +68,7 @@ export default function PixelTracker() {
 
         if (window.fbq) {
           window.fbq('init', fbId)
-          window.fbq('track', 'PageView')
+          window.fbq('track', 'PageView', {}, getFbOptions())
         }
       }
     }
@@ -212,7 +229,7 @@ export default function PixelTracker() {
             content_type: 'product',
             value: val,
             currency: 'EUR',
-          })
+          }, getFbOptions())
           window.ttq?.track('ViewContent', {
             content_id: itemId,
             content_name: itemName,
@@ -235,7 +252,7 @@ export default function PixelTracker() {
             content_type: 'product',
             value: val,
             currency: 'EUR',
-          })
+          }, getFbOptions())
           window.ttq?.track('AddToCart', {
             content_id: itemId,
             content_name: itemName,
@@ -260,7 +277,7 @@ export default function PixelTracker() {
             value: val,
             currency: 'EUR',
             num_items: qty,
-          })
+          }, getFbOptions())
           window.ttq?.track('InitiateCheckout', {
             content_id: itemId,
             content_name: itemName,
@@ -280,7 +297,7 @@ export default function PixelTracker() {
             content_name: itemName,
             content_ids: itemId ? [itemId] : undefined,
             num_items: qty,
-          })
+          }, getFbOptions())
           window.ttq?.track('CompletePayment', {
             content_id: itemId,
             content_name: itemName,
