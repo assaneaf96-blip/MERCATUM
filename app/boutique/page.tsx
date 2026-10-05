@@ -8,8 +8,8 @@ import Footer from '@/components/Footer'
 import CheckoutModal from '@/components/CheckoutModal'
 import ProductMediaCarousel from '@/components/ProductMediaCarousel'
 import { PRODUCTS, CATEGORIES, Product, stripImagesFromDescription, isVideoUrl } from '@/lib/products'
-import { getProducts, getNouveautes, saveProductsBulk, getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings, type NewItem } from '@/lib/store'
-import { fetchProductsFromDb, fetchNouveautesFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
+import { getProducts, saveProductsBulk, getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, type SiteSettings } from '@/lib/store'
+import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } from '@/lib/supabaseService'
 import { getClientCachedProducts, getSyncCachedProducts, setClientCachedProducts } from '@/lib/clientCache'
 import { searchAndFilterProducts } from '@/lib/searchUtils'
 import { addToCart } from '@/lib/cart'
@@ -25,17 +25,10 @@ export default function BoutiquePage() {
     }
     return PRODUCTS
   })
-  const [nouveautesList, setNouveautesList] = useState<NewItem[]>(() => {
-    if (typeof window !== 'undefined') {
-      const local = getNouveautes()
-      if (local && local.length > 0) return local
-    }
-    return []
-  })
   const [selectedCategory, setSelectedCategory] = useState('Todos los productos')
   const [viewMode, setViewMode] = useState<'tiendas' | 'products'>('tiendas')
   const [searchQuery, setSearchQuery] = useState('')
-  const [sortBy, setSortBy] = useState<'novedades' | 'featured' | 'price-asc' | 'price-desc' | 'rating'>('novedades')
+  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'rating'>('featured')
   const [cartCount, setCartCount] = useState(0)
   const [buyingProduct, setBuyingProduct] = useState<Product | null>(null)
   const [toast, setToast] = useState<string | null>(null)
@@ -96,12 +89,6 @@ export default function BoutiquePage() {
       if (s) {
         setSettings(s)
         saveSiteSettings(s)
-      }
-    }).catch(() => {})
-
-    fetchNouveautesFromDb().then((dbNouv) => {
-      if (dbNouv && dbNouv.length > 0) {
-        setNouveautesList(dbNouv)
       }
     }).catch(() => {})
 
@@ -261,14 +248,6 @@ export default function BoutiquePage() {
     showToast(`¡Pedido confirmado para ${product.name}! 🎉`)
   }
 
-  const noveltyOrderMap = useMemo(() => {
-    const map = new Map<string, number>()
-    nouveautesList.forEach((item, index) => {
-      map.set(item.productId, index)
-    })
-    return map
-  }, [nouveautesList])
-
   // Filtrage et recherche
   const { filteredProducts, isSearchedGlobally } = useMemo(() => {
     const { products, searchedGlobally } = searchAndFilterProducts(
@@ -281,16 +260,11 @@ export default function BoutiquePage() {
       if (sortBy === 'price-asc') return a.rawPrice - b.rawPrice
       if (sortBy === 'price-desc') return b.rawPrice - a.rawPrice
       if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0)
-      if (sortBy === 'novedades') {
-        const indexA = noveltyOrderMap.has(a.id) ? (noveltyOrderMap.get(a.id) as number) : 9999
-        const indexB = noveltyOrderMap.has(b.id) ? (noveltyOrderMap.get(b.id) as number) : 9999
-        if (indexA !== indexB) return indexA - indexB
-      }
       return 0
     })
 
     return { filteredProducts: sorted, isSearchedGlobally: searchedGlobally }
-  }, [productsList, selectedCategory, searchQuery, sortBy, noveltyOrderMap])
+  }, [productsList, selectedCategory, searchQuery, sortBy])
 
   const displayedProducts = filteredProducts
 
@@ -553,7 +527,6 @@ export default function BoutiquePage() {
                 onChange={(e) => setSortBy(e.target.value as any)}
                 className="bg-stone-50 border border-stone-300 rounded-lg px-2.5 py-1.5 text-xs text-stone-800 font-medium focus:ring-2 focus:ring-[#1c221d] focus:outline-none"
               >
-                <option value="novedades">Novedades</option>
                 <option value="featured">Recomendados</option>
                 <option value="rating">Mejor valorados (★)</option>
                 <option value="price-asc">Precio : menor a mayor</option>
@@ -740,25 +713,15 @@ export default function BoutiquePage() {
                       </div>
                     </div>
 
-                    {/* Boutons d'action Comprar & Cesta */}
-                    <div className="eci-card-actions">
-                      <button
-                        type="button"
-                        className="eci-buy-now-btn"
-                        onClick={() => handleBuyNow(product)}
-                        aria-label={`Comprar ${product.name}`}
-                      >
-                        Comprar ⚡
-                      </button>
-                      <button
-                        type="button"
-                        className="eci-add-cart-outline-btn"
-                        onClick={() => handleAddToCart(product)}
-                        aria-label={`Añadir ${product.name} a la cesta`}
-                      >
-                        🛒 Cesta +
-                      </button>
-                    </div>
+                    {/* Bouton noir pleine largeur Añadir */}
+                    <button
+                      type="button"
+                      className="eci-add-to-cart-btn"
+                      onClick={() => handleAddToCart(product)}
+                      aria-label={`Añadir ${product.name} a la cesta`}
+                    >
+                      Añadir
+                    </button>
                   </article>
                 )
               })}

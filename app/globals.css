@@ -2817,68 +2817,6 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   transform: scale(0.99);
 }
 
-.eci-card-actions {
-  display: flex;
-  gap: 6px;
-  width: 100%;
-  margin-top: auto;
-  padding-top: 6px;
-}
-
-.eci-buy-now-btn {
-  flex: 1;
-  background: #111111;
-  color: #ffffff;
-  border: none;
-  padding: 10px 4px;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.2s ease, transform 0.1s ease;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.eci-buy-now-btn:hover {
-  background: #333333;
-}
-
-.eci-buy-now-btn:active {
-  transform: scale(0.98);
-}
-
-.eci-add-cart-outline-btn {
-  flex: 1;
-  background: #ffffff;
-  color: #111111;
-  border: 1.5px solid #111111;
-  padding: 9px 4px;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.eci-add-cart-outline-btn:hover {
-  background: #f4f0e9;
-}
-
-.eci-add-cart-outline-btn:active {
-  transform: scale(0.98);
-}
-
 /* 2 COLONNES MOBILES FIDÈLES À LA CAPTURE EL CORTE INGLÉS */
 @media (max-width: 1024px) {
   .eci-product-grid {
@@ -2932,18 +2870,6 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   .eci-add-to-cart-btn {
     padding: 9px 0;
     font-size: 12px;
-  }
-  .eci-card-actions {
-    gap: 4px;
-    padding-top: 4px;
-  }
-  .eci-buy-now-btn {
-    padding: 7px 2px;
-    font-size: 10px;
-  }
-  .eci-add-cart-outline-btn {
-    padding: 6px 2px;
-    font-size: 10px;
   }
   .eci-wishlist-btn {
     width: 28px;
