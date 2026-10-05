@@ -498,10 +498,18 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
               <Link
                 href="/boutique"
                 onClick={() => setMenuOpen(false)}
-                className="w-full py-3 bg-white text-stone-900 rounded-xl text-center font-bold text-sm hover:bg-stone-100 transition shadow-lg flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl text-center font-bold text-sm transition-all shadow-xl flex items-center justify-center gap-2 active:scale-95 hover:brightness-110"
+                style={{
+                  backgroundColor: '#d4af37',
+                  color: '#111111',
+                  fontWeight: 800,
+                  fontSize: '14px',
+                  letterSpacing: '0.02em',
+                  textDecoration: 'none',
+                }}
               >
-                <span>Acceder a la Tienda</span>
-                <span>→</span>
+                <span style={{ color: '#111111', fontWeight: 800 }}>Acceder a la Tienda</span>
+                <span style={{ color: '#111111', fontWeight: 800 }}>→</span>
               </Link>
               <button
                 type="button"
