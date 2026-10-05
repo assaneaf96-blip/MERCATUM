@@ -113,7 +113,7 @@ export async function GET(request: NextRequest) {
     }
 
     // B. Chemin local (/uploads/... ou /idole-now.webp)
-    if (raw.startsWith('/')) {
+    if (raw.startsWith('/') && !raw.startsWith('/api/product-image')) {
       try {
         const cleanPath = raw.split('?')[0].replace(/^\//, '')
         const localPath = path.join(process.cwd(), 'public', cleanPath)
