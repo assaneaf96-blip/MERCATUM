@@ -15880,9 +15880,7 @@
     "image": "https://dam.elcorteingles.es/producto/www-001013511327481-00.jpg",
     "images": [
       "https://dam.elcorteingles.es/producto/www-001013511327481-00.jpg",
-      "https://dam.elcorteingles.es/producto/www-001013511327481-01.jpg",
-      "https://dam.elcorteingles.es/producto/www-001013511327473-00.jpg",
-      "https://dam.elcorteingles.es/producto/www-001013511327473-01.jpg"
+      "https://dam.elcorteingles.es/producto/www-001013511327481-01.jpg"
     ],
     "media": [
       {
@@ -15891,14 +15889,6 @@
       },
       {
         "url": "https://dam.elcorteingles.es/producto/www-001013511327481-01.jpg",
-        "type": "image"
-      },
-      {
-        "url": "https://dam.elcorteingles.es/producto/www-001013511327473-00.jpg",
-        "type": "image"
-      },
-      {
-        "url": "https://dam.elcorteingles.es/producto/www-001013511327473-01.jpg",
         "type": "image"
       }
     ]
