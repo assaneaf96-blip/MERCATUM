@@ -500,11 +500,44 @@
     "type": "Eau de Parfum Blanc Kogane Armani Privé Giorgio Armani - 100 ml",
     "price": "270,00 €",
     "raw_price": 270,
-    "image": "/api/product-image?id=armani-prive&index=0",
+    "image": "https://dam.elcorteingles.es/producto/www-001013511321245-00.jpg",
     "tag": "",
     "rating": 5,
     "reviews_count": 1,
-    "images": []
+    "images": [
+      "https://dam.elcorteingles.es/producto/www-001013511321245-00.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511321245-01.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511321245-02.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511321245-03.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511321245-04.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511321245-05.jpg"
+    ],
+    "media": [
+      {
+        "url": "https://dam.elcorteingles.es/producto/www-001013511321245-00.jpg",
+        "type": "image"
+      },
+      {
+        "url": "https://dam.elcorteingles.es/producto/www-001013511321245-01.jpg",
+        "type": "image"
+      },
+      {
+        "url": "https://dam.elcorteingles.es/producto/www-001013511321245-02.jpg",
+        "type": "image"
+      },
+      {
+        "url": "https://dam.elcorteingles.es/producto/www-001013511321245-03.jpg",
+        "type": "image"
+      },
+      {
+        "url": "https://dam.elcorteingles.es/producto/www-001013511321245-04.jpg",
+        "type": "image"
+      },
+      {
+        "url": "https://dam.elcorteingles.es/producto/www-001013511321245-05.jpg",
+        "type": "image"
+      }
+    ]
   },
   {
     "id": "armario-alto-de-bano-31-5-35-5-139-cm",
@@ -16569,33 +16602,33 @@
     "reviews_count": 129,
     "reviewsCount": 129,
     "description": "de Parfum Isola Snow de Roja Parfums es una fragancia unisex con apertura fresca que incluye notas de bergamota, menta y un acorde Snowflake. En el corazón presenta aromas de pera, lirio de los valles y rosa. La base está compuesta por cardamomo, ámbar, sándalo y almizcle.\nMODELO: RJ3138\nREFERENCIA: 001013511328265\nEAN: 5056663805297\nGénero\nUnisex\nTipo de producto\nEau de Parfum",
-    "image": "/api/product-image?id=roja-2&index=0",
+    "image": "https://dam.elcorteingles.es/producto/www-001013511328265-00.jpg",
     "images": [
-      "/api/product-image?id=roja-2&index=0",
-      "/api/product-image?id=roja-2&index=1",
-      "/api/product-image?id=roja-2&index=2",
-      "/api/product-image?id=roja-2&index=3",
-      "/api/product-image?id=roja-2&index=4"
+      "https://dam.elcorteingles.es/producto/www-001013511328265-00.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511328265-01.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511328265-02.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511328265-03.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013511328265-04.jpg"
     ],
     "media": [
       {
-        "url": "/api/product-image?id=roja-2&index=0",
+        "url": "https://dam.elcorteingles.es/producto/www-001013511328265-00.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=roja-2&index=1",
+        "url": "https://dam.elcorteingles.es/producto/www-001013511328265-01.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=roja-2&index=2",
+        "url": "https://dam.elcorteingles.es/producto/www-001013511328265-02.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=roja-2&index=3",
+        "url": "https://dam.elcorteingles.es/producto/www-001013511328265-03.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=roja-2&index=4",
+        "url": "https://dam.elcorteingles.es/producto/www-001013511328265-04.jpg",
         "type": "image"
       }
     ]
@@ -17105,28 +17138,23 @@
     "reviews_count": 156,
     "reviewsCount": 156,
     "description": "El termo eléctrico vertical Teka EWH 50 D Slim es un dispositivo diseñado para proporcionar un suministro eficiente de agua caliente. Permite instalación en posiciones vertical y horizontal. Incorpora una tarjeta Smart Control que optimiza su funcionamiento. Cuenta con dos tanques esmaltados en zafiro, lo que asegura una óptima estratificación del agua. La resistencia cerámica y el doble acumulador garantizan un rendimiento duradero. Dispone de un termómetro y dos niveles de potencia, 1.200 W y 800 W, que permiten ajustar el consumo. Ofrece protección contra el calentamiento y tiene un grado de protección IPX4. Su consumo energético anual es de 1.243 kWh.\nInformación Adicional\nVer ficha de producto\nMODELO: EWH 50 D SLIM\nREFERENCIA: 001004730110949\nEAN: 8421152156834\nClasificación energética\nC.\nCapacidad\n47 litros\nSeguridad\nProtección contra calentamiento\nGrado de protección IPX4\nTermostato de temperatura\n30 75 °C\nConectividad\nNo\nPeso\n25,71 kg\nConsumo de energía\n1243 kWh/año\nGARANTÍA\nGarantía\n3 años",
-    "image": "/api/product-image?id=teka-2&index=0",
+    "image": "https://dam.elcorteingles.es/producto/www-001004730110949-00.jpg",
     "images": [
-      "/api/product-image?id=teka-2&index=0",
-      "/api/product-image?id=teka-2&index=1",
-      "/api/product-image?id=teka-2&index=2",
-      "/api/product-image?id=teka-2&index=3"
+      "https://dam.elcorteingles.es/producto/www-001004730110949-00.jpg",
+      "https://dam.elcorteingles.es/producto/www-001004730110949-03.jpg",
+      "https://dam.elcorteingles.es/producto/www-001004730110949-04.jpg"
     ],
     "media": [
       {
-        "url": "/api/product-image?id=teka-2&index=0",
+        "url": "https://dam.elcorteingles.es/producto/www-001004730110949-00.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=teka-2&index=1",
+        "url": "https://dam.elcorteingles.es/producto/www-001004730110949-03.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=teka-2&index=2",
-        "type": "image"
-      },
-      {
-        "url": "/api/product-image?id=teka-2&index=3",
+        "url": "https://dam.elcorteingles.es/producto/www-001004730110949-04.jpg",
         "type": "image"
       }
     ]
@@ -17135,7 +17163,7 @@
     "id": "the-merchant-of-venice",
     "name": " The Merchant of Venice",
     "category": "Perfumes de Autor",
-    "type": " de Parfum Isola Snow de Roja Parfums es una fragancia unisex con apertura fresca que incluye notas de bergamota, menta y un acorde Snowflake. En el corazón presenta aromas de pera, lirio de los valles y rosa. La base está compuesta por cardamomo, ámbar, sándalo y almizcle. MODELO: RJ3138 REFERENCIA: 001013511328265 EAN: 5056663805297 Género Unisex Tipo de producto Eau de Parfum",
+    "type": "Eau de Parfum Liberty The Merchant of Venice - 100 ml",
     "price": "203,00 €",
     "raw_price": 203,
     "rawPrice": 203,
@@ -17144,18 +17172,18 @@
     "reviews_count": 11,
     "reviewsCount": 11,
     "description": "Eau de Parfum Liberty de The Merchant of Venice es una fragancia femenina en formato vaporizador. Combina notas florales con matices cálidos y acordes picantes. Pertenece a la colección 'Murano Exclusive', que moderniza las formas clásicas del diseño de cristal de Murano y refleja la historia y el legado de Venecia en la tradición perfumera mundial.\nMODELO: 64481112\nREFERENCIA: 001013512335103\nEAN: 0679602480123\nNota Principal\nFloral\nPresentación\nVaporizador\nGénero\nFemenino\nTipo de producto\nEau de Parfum\nTipo de artículo\nFragancia",
-    "image": "/api/product-image?id=the-merchant-of-venice&index=0",
+    "image": "https://dam.elcorteingles.es/producto/www-001013512335103-00.jpg",
     "images": [
-      "/api/product-image?id=the-merchant-of-venice&index=0",
-      "/api/product-image?id=the-merchant-of-venice&index=1"
+      "https://dam.elcorteingles.es/producto/www-001013512335103-00.jpg",
+      "https://dam.elcorteingles.es/producto/www-001013512335103-01.jpg"
     ],
     "media": [
       {
-        "url": "/api/product-image?id=the-merchant-of-venice&index=0",
+        "url": "https://dam.elcorteingles.es/producto/www-001013512335103-00.jpg",
         "type": "image"
       },
       {
-        "url": "/api/product-image?id=the-merchant-of-venice&index=1",
+        "url": "https://dam.elcorteingles.es/producto/www-001013512335103-01.jpg",
         "type": "image"
       }
     ]
