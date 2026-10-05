@@ -570,14 +570,13 @@ export default function BoutiquePage() {
 
           {/* Compteur & Filtres actifs */}
           <div id="boutique-products-grid" className="boutique-results-count mb-4">
-            <div className="results-count-text text-xs text-stone-600">
-              <span><strong>{filteredProducts.length}</strong> producto(s) encontrado(s)</span>
-              {searchQuery.trim() && (
-                <span className="search-query-tag ml-2">
-                  para « <strong>{searchQuery.trim()}</strong> »
+            {searchQuery.trim() ? (
+              <div className="results-count-text text-xs text-stone-600">
+                <span className="search-query-tag">
+                  Resultados para « <strong>{searchQuery.trim()}</strong> »
                 </span>
-              )}
-            </div>
+              </div>
+            ) : null}
 
             <div className="active-filters-group">
               {isSearchedGlobally && (
