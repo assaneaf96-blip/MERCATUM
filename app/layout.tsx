@@ -25,6 +25,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es" className="bg-background">
       <head>
+        {/* Preload du catalogue JSON pour affichage ultra-rapide */}
+        <link rel="preload" href="/products.json" as="fetch" crossOrigin="anonymous" />
         {/* Meta Pixel Code Officiel */}
         <script
           id="meta-pixel-base"

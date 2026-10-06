@@ -34,6 +34,7 @@ export default function BoutiquePage() {
   const [toast, setToast] = useState<string | null>(null)
   const [settings, setSettings] = useState<SiteSettings>(() => getSiteSettings())
   const [favorites, setFavorites] = useState<Set<string>>(() => new Set())
+  const [visibleCount, setVisibleCount] = useState(24)
 
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => {
@@ -266,11 +267,19 @@ export default function BoutiquePage() {
     return { filteredProducts: sorted, isSearchedGlobally: searchedGlobally }
   }, [productsList, selectedCategory, searchQuery, sortBy])
 
-  const displayedProducts = filteredProducts
+  // Reset pagination when category, search or sort changes
+  useEffect(() => {
+    setVisibleCount(24)
+  }, [selectedCategory, searchQuery, sortBy])
+
+  const displayedProducts = useMemo(() => {
+    return filteredProducts.slice(0, visibleCount)
+  }, [filteredProducts, visibleCount])
 
   // Quand l'utilisateur fait une recherche textuelle, basculer vers les produits
   const handleSearchChange = (val: string) => {
     setSearchQuery(val)
+    setVisibleCount(24)
     if (val.trim()) {
       setViewMode('products')
     }
@@ -636,7 +645,7 @@ export default function BoutiquePage() {
             </div>
           ) : (
             <div className="eci-product-grid">
-              {displayedProducts.map((product) => {
+              {displayedProducts.map((product, idx) => {
                 const isFavorite = favorites.has(product.id)
                 const brand = product.type || product.category || 'MERCATUM'
                 const isAireAcondicionado =
@@ -655,6 +664,7 @@ export default function BoutiquePage() {
                           alt={product.name}
                           aspectRatio="1 / 1"
                           className="w-full h-full"
+                          priority={idx < 4}
                           showArrows={!isAireAcondicionado}
                           showDots={!isAireAcondicionado}
                         />
@@ -725,6 +735,22 @@ export default function BoutiquePage() {
                   </article>
                 )
               })}
+            </div>
+          )}
+
+          {/* Bouton Charger Plus / Cargar más productos pour fluidité maximale */}
+          {visibleCount < filteredProducts.length && (
+            <div className="flex flex-col items-center justify-center mt-10 mb-6 gap-3">
+              <p className="text-xs text-stone-500 font-medium">
+                Mostrando <strong>{displayedProducts.length}</strong> de <strong>{filteredProducts.length}</strong> artículos
+              </p>
+              <button
+                type="button"
+                onClick={() => setVisibleCount((prev) => prev + 24)}
+                className="px-8 py-3 bg-[#1c221d] text-[#f4f0e9] rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-stone-800 active:scale-95 transition-all shadow-md hover:shadow-lg cursor-pointer"
+              >
+                Cargar más productos ({Math.min(24, filteredProducts.length - visibleCount)} más) ↓
+              </button>
             </div>
           )}
 

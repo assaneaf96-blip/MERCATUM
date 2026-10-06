@@ -14,6 +14,7 @@ interface ProductMediaCarouselProps {
   showCounter?: boolean
   showArrows?: boolean
   showDots?: boolean
+  priority?: boolean
 }
 
 export default function ProductMediaCarousel({
@@ -27,6 +28,7 @@ export default function ProductMediaCarousel({
   showCounter = false,
   showArrows = true,
   showDots = true,
+  priority = false,
 }: ProductMediaCarouselProps) {
   // Construire la liste unifiée des éléments médias sans doublons
   const items: MediaItem[] = []
@@ -176,7 +178,8 @@ export default function ProductMediaCarousel({
         <img
           src={currentItem.url}
           alt={`${alt} - vue ${currentIndex + 1} sur ${items.length}`}
-          loading="lazy"
+          loading={priority && currentIndex === 0 ? 'eager' : 'lazy'}
+          fetchPriority={priority && currentIndex === 0 ? 'high' : 'auto'}
           decoding="async"
           className={`w-full h-full object-cover transition-transform duration-500 ${
             zoomLevel > 1 ? '' : 'group-hover:scale-105'

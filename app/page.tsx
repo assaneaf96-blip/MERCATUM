@@ -362,10 +362,10 @@ function CategorySliderSection({
           ))}
         </div>
 
-        {/* Rail de défilement horizontal avec tous les produits */}
+        {/* Rail de défilement horizontal avec les produits phares de la catégorie */}
         <div className="category-slider-wrapper">
           <div ref={trackRef} className="category-products-track">
-            {products.map((product) => {
+            {products.slice(0, 12).map((product, pIdx) => {
               const isAireAcondicionado =
                 product.category === 'Aire acondicionado' ||
                 (typeof product.category === 'string' && product.category.toLowerCase().includes('aire acondicionado'))
@@ -382,6 +382,7 @@ function CategorySliderSection({
                           alt={product.name}
                           aspectRatio="4 / 3"
                           showBadge={product.tag}
+                          priority={pIdx < 2}
                           showArrows={!isAireAcondicionado}
                           showDots={!isAireAcondicionado}
                         />
@@ -422,7 +423,7 @@ function CategorySliderSection({
               </article>
             )})}
 
-            {products.length > 8 && (
+            {products.length > 12 && (
               <div
                 className="category-product-card flex flex-col items-center justify-center text-center p-6 border-dashed"
                 style={{
@@ -440,7 +441,7 @@ function CategorySliderSection({
               >
                 <div style={{ fontSize: '32px', marginBottom: '12px' }}>✦</div>
                 <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#1a1a1a', marginBottom: '8px' }}>
-                  +{products.length - 8} artículos más
+                  +{products.length - 12} artículos más
                 </h4>
                 <p style={{ fontSize: '13px', color: '#666', marginBottom: '20px', lineHeight: '1.4' }}>
                   Descubra la colección completa de {category}
@@ -1559,7 +1560,7 @@ export default function HomePage() {
         {/* Grille verticale 4 produits par rangée */}
         <div className="novedades-grid-wrapper">
           <div className="novedades-products-track">
-            {noveltyItems.map(({ product, customLabel }) => (
+            {noveltyItems.map(({ product, customLabel }, nIdx) => (
               <article key={product.id} className="novedades-product-card">
                 <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
                   <ProductMediaCarousel
@@ -1568,6 +1569,7 @@ export default function HomePage() {
                     fallbackImage={product.image}
                     alt={product.name}
                     aspectRatio="16 / 11"
+                    priority={nIdx < 4}
                     className="rounded-lg mb-3"
                   />
                 </Link>
