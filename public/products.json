@@ -7730,11 +7730,39 @@
     "type": "Mobiliario & Decoración",
     "price": "455,00 €",
     "raw_price": 455,
-    "image": "/uploads/mesa-de-comedor-convertible-electrica-con-bat.jpg",
+    "image": "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-1.webp",
     "tag": "PRECIO EXCEPCIONAL",
     "rating": 5,
     "reviews_count": 1,
-    "images": []
+    "images": [
+      "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-1.webp",
+      "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-2.webp",
+      "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-3.webp",
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-4.jpg",
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-5.jpg"
+    ],
+    "media": [
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-1.webp"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-2.webp"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-roble-amazonas-3.webp"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-4.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-5.jpg"
+      }
+    ]
   },
   {
     "id": "mesa-de-hockey-de-aire",
