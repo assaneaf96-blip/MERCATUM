@@ -7689,11 +7689,39 @@
     "type": "Mesa de comedor convertible eléctrica con batería. Extensible hasta 80 x 170cm. Color BLANCO PORO, patas metal grafito MUEBLES CELSO",
     "price": "507,00 €",
     "raw_price": 507,
-    "image": "/uploads/mesa-de-comedor-convertible-electrica-con-bat.jpg",
+    "image": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-1.jpg",
     "tag": "OFERTA",
     "rating": 5,
     "reviews_count": 1,
-    "images": []
+    "images": [
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-1.jpg",
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-2.jpg",
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-3.jpg",
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-4.jpg",
+      "/uploads/mesa-comedor-convertible-electrica-blanco-poro-5.jpg"
+    ],
+    "media": [
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-1.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-2.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-3.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-4.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/mesa-comedor-convertible-electrica-blanco-poro-5.jpg"
+      }
+    ]
   },
   {
     "id": "mesa-de-comedor-convertible-electrica-con-bateria-extensible-hasta-80-x-170cm-color-roble-amazonas-patas-grafito",
