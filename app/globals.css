@@ -2520,50 +2520,27 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 
 
 /* =========================================================
-   NOVEDADES HORIZONTAL SCROLL CAROUSEL
+   NOVEDADES VERTICAL GRID (4 PRODUITS PAR RANGÉE)
    ========================================================= */
-.novedades-slider-wrapper {
+.novedades-slider-wrapper,
+.novedades-grid-wrapper {
   position: relative;
   width: 100%;
 }
 
 .novedades-products-track {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 8px 4px 22px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
-}
-
-.novedades-products-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.novedades-products-track::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 4px;
-}
-
-.novedades-products-track::-webkit-scrollbar-thumb {
-  background: #b6ad9d;
-  border-radius: 4px;
-}
-
-.novedades-products-track::-webkit-scrollbar-thumb:hover {
-  background: #8e8574;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+  padding: 8px 0 28px;
 }
 
 .novedades-product-card {
-  flex: 0 0 310px;
-  min-width: 280px;
-  max-width: 320px;
-  scroll-snap-align: start;
+  width: 100%;
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   padding: 14px;
   display: flex;
@@ -2585,7 +2562,7 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 }
 
 .novedades-card-title {
-  font: 400 20px Georgia, serif;
+  font: 400 18px Georgia, serif;
   letter-spacing: -0.02em;
   line-height: 1.25;
   margin-bottom: 8px;
@@ -2606,19 +2583,34 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
   line-height: 1.4;
 }
 
+@media (max-width: 1100px) {
+  .novedades-products-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .novedades-products-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-    padding: 6px 2px 18px;
+    padding: 6px 0 20px;
   }
   .novedades-product-card {
-    flex: 0 0 280px;
-    min-width: 260px;
-    max-width: 290px;
     padding: 12px;
   }
   .novedades-card-title {
-    font-size: 18px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .novedades-products-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .novedades-product-card {
+    padding: 10px;
   }
 }
 

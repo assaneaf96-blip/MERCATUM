@@ -116,10 +116,16 @@ export const SEARCH_SYNONYMS: Record<string, string[]> = {
   trampoline: ['cama elastica', 'trampoline', 'jumper'],
   tente: ['tienda', 'glamping', 'safari', 'tente'],
   tentes: ['tienda', 'glamping', 'safari'],
-  glamping: ['tienda', 'glamping', 'safari'],
   pergola: ['toldo', 'pergola', 'auvent'],
   store: ['toldo', 'store', 'auvent'],
   auvent: ['toldo', 'auvent', 'pergola'],
+
+  // Nettoyage, Entretien & Son
+  karcher: ['hidrolimpiadora', 'karcher', 'nettoyeur', 'pression'],
+  nettoyeur: ['hidrolimpiadora', 'karcher', 'nettoyeur'],
+  hidrolimpiadora: ['hidrolimpiadora', 'karcher', 'nettoyeur', 'pression'],
+  barre: ['barra', 'sonido', 'barre', 'soundbar'],
+  son: ['sonido', 'soundbar', 'barras', 'auriculares'],
 }
 
 /**

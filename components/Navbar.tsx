@@ -46,6 +46,13 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     }
   }
 
+  const navigateToCategory = (targetUrl: string) => {
+    setMenuOpen(false)
+    if (typeof window !== 'undefined' && pathname === '/boutique') {
+      window.location.href = targetUrl
+    }
+  }
+
   const refreshCartCount = () => {
     setInternalCartCount(getCartCount())
   }
@@ -420,7 +427,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🛍️ Toda la Tienda</span>
@@ -428,7 +435,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=Aire%20acondicionado"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=Aire%20acondicionado')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>❄️ Aire Acondicionado (-50%)</span>
@@ -436,7 +443,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=Placa%20inducci%C3%B3n"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=Placa%20inducci%C3%B3n')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🔥 Electrodomésticos &amp; Placas</span>
@@ -444,7 +451,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=HORNOS"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=HORNOS')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🍳 Hornos Pirolíticos</span>
@@ -452,7 +459,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>✨ Belleza &amp; Cosmética</span>
@@ -460,7 +467,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🛋️ Mobiliario &amp; Decoración</span>
@@ -468,7 +475,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=Chimenea"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=Chimenea')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🪵 Chimeneas &amp; Fuego</span>
@@ -476,7 +483,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 </Link>
                 <Link
                   href="/boutique?cat=Colchones"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => navigateToCategory('/boutique?cat=Colchones')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🌙 Colchones &amp; Descanso</span>
@@ -497,7 +504,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
             <div className="p-6 border-t border-white/10 bg-black/20 flex flex-col gap-3">
               <Link
                 href="/boutique"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => navigateToCategory('/boutique')}
                 className="w-full py-3.5 rounded-xl text-center font-bold text-sm transition-all shadow-xl flex items-center justify-center gap-2 active:scale-95 hover:brightness-110"
                 style={{
                   backgroundColor: '#d4af37',

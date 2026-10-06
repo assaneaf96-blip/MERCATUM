@@ -900,8 +900,11 @@ export default function HomePage() {
   }, [productsList])
 
   const noveltyItems = useMemo(() => {
+    const seen = new Set<string>()
     const items = nouveautesList
       .map((item) => {
+        if (!item?.productId || seen.has(item.productId)) return null
+        seen.add(item.productId)
         const prod = productsList.find((p) => p.id === item.productId)
         if (!prod) return null
         return {
@@ -913,7 +916,7 @@ export default function HomePage() {
 
     // Fallback si la liste est vide
     if (items.length === 0 && productsList.length > 0) {
-      return productsList.slice(0, 2).map((p) => ({
+      return productsList.slice(0, 8).map((p) => ({
         product: p,
         customLabel: p.tag || 'Novedad',
       }))
@@ -1541,43 +1544,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Nouveautés Section (Gérée dynamiquement par l'Admin - Défilement Horizontal) */}
-      <section id="nouveautes" className="journal novedades-horizontal-section">
-        <div className="section-heading" style={{ alignItems: 'flex-end', marginBottom: '20px' }}>
+      {/* Nouveautés Section (Grille Verticale - 4 produits par rangée) */}
+      <section id="nouveautes" className="journal novedades-vertical-section">
+        <div className="section-heading" style={{ alignItems: 'flex-end', marginBottom: '24px' }}>
           <div>
             <p className="eyebrow">Últimas llegadas</p>
             <h2 style={{ marginBottom: 0 }}>Novedades</h2>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <Link className="text-link" href="/boutique" style={{ margin: 0 }}>
-              Todas las novedades <span>↗</span>
-            </Link>
-            <div className="category-slider-nav-arrows" style={{ display: 'flex', gap: '8px' }}>
-              <button
-                type="button"
-                className="category-nav-arrow"
-                onClick={() => scrollNovedades('left')}
-                title="Novedades anteriores"
-                aria-label="Novedades anteriores"
-              >
-                ←
-              </button>
-              <button
-                type="button"
-                className="category-nav-arrow"
-                onClick={() => scrollNovedades('right')}
-                title="Novedades siguientes"
-                aria-label="Novedades suivantes"
-              >
-                →
-              </button>
-            </div>
-          </div>
+          <Link className="text-link" href="/boutique" style={{ margin: 0 }}>
+            Todas las novedades <span>↗</span>
+          </Link>
         </div>
 
-        {/* Rail de défilement horizontal fluide */}
-        <div className="novedades-slider-wrapper">
-          <div ref={novedadesTrackRef} className="novedades-products-track">
+        {/* Grille verticale 4 produits par rangée */}
+        <div className="novedades-grid-wrapper">
+          <div className="novedades-products-track">
             {noveltyItems.map(({ product, customLabel }) => (
               <article key={product.id} className="novedades-product-card">
                 <Link href={`/produit/${product.id}`} className="block" style={{ cursor: 'pointer' }}>
