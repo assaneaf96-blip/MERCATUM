@@ -27,7 +27,9 @@ export default function CheckoutModal({
   const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
+  const [selectedPayment, setSelectedPayment] = useState<'bizum' | 'transfer'>('bizum')
   const [copiedIban, setCopiedIban] = useState(false)
+  const [copiedBizum, setCopiedBizum] = useState(false)
   const [orderRef, setOrderRef] = useState('')
 
   const handleConfirmPaymentMade = () => {
@@ -80,6 +82,7 @@ export default function CheckoutModal({
     setConfirmed(true)
 
     // Enregistrer la commande dans le store local & Supabase
+    const paymentMethodLabel = selectedPayment === 'bizum' ? 'Bizum' : 'Virement Bancaire'
     const newOrder = {
       id: ref,
       customerName: fullName,
@@ -90,8 +93,8 @@ export default function CheckoutModal({
       productName: `${quantity}x ${product.name}`,
       totalPrice: product.rawPrice * quantity,
       currency: 'EUR',
-      paymentMethod: 'Virement Bancaire',
-      status: 'En attente de virement' as const,
+      paymentMethod: paymentMethodLabel,
+      status: (selectedPayment === 'bizum' ? 'En attente de paiement Bizum' : 'En attente de virement') as any,
       createdAt: new Date().toISOString(),
     }
     saveOrder(newOrder)
@@ -124,6 +127,14 @@ export default function CheckoutModal({
       navigator.clipboard.writeText(settings.bankIban.replace(/\s+/g, ''))
       setCopiedIban(true)
       setTimeout(() => setCopiedIban(false), 2500)
+    }
+  }
+
+  const handleCopyBizum = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('631974038')
+      setCopiedBizum(true)
+      setTimeout(() => setCopiedBizum(false), 2500)
     }
   }
 
@@ -167,131 +178,213 @@ export default function CheckoutModal({
               </h3>
               <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
                 Gracias <strong>{fullName || 'Estimado/a Cliente/a'}</strong>. Su pedido de{' '}
-                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está pendiente de transferencia bancaria inmediata.
+                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está registrado pendiente de pago por {selectedPayment === 'bizum' ? 'Bizum' : 'transferencia bancaria inmediata'}.
               </p>
             </div>
 
-            {/* Alerta Transferencia Inmediata Requerida */}
-            <div
-              style={{
-                background: '#fef2f2',
-                border: '1.5px solid #ef4444',
-                borderRadius: '8px',
-                padding: '12px 14px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '10px',
-              }}
-            >
-              <span style={{ fontSize: '22px', lineHeight: 1 }}>⚡</span>
-              <div>
-                <strong style={{ fontSize: '12.5px', color: '#991b1b', display: 'block', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Aviso Importante: Transferencia Inmediata Requerida
-                </strong>
-                <p style={{ margin: '3px 0 0', fontSize: '11.5px', color: '#7f1d1d', lineHeight: '1.45' }}>
-                  Al emitir el pago desde su app bancaria o banca online, seleccione la opción <strong>&quot;Transferencia Inmediata&quot;</strong>. Así recibiremos los fondos en segundos y su pedido será preparado y enviado hoy mismo en 24/48h.
-                </p>
-              </div>
-            </div>
-
-            {/* Encadré Coordonnées Bancaires */}
-            <div
-              style={{
-                background: '#ffffff',
-                border: '2px solid #b8c8a6',
-                borderRadius: '8px',
-                padding: '16px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>
-                <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 'bold', color: '#20251f' }}>
-                  ⚡ Transferencia Inmediata
-                </span>
-                <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#166534', background: '#dcfce7', padding: '2px 8px', borderRadius: '4px' }}>
-                  Importe : {totalPrice}
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
-                <div style={{ background: '#f0fdf4', padding: '8px 10px', borderRadius: '4px', borderLeft: '3px solid #166534' }}>
-                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#166534', display: 'block', fontWeight: 700 }}>
-                    Modalidad obligatoria
-                  </span>
-                  <strong style={{ fontSize: '12.5px', color: '#14532d' }}>
-                    ⚡ Transferencia Inmediata (Acreditación al instante)
-                  </strong>
-                </div>
-
-                <div>
-                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Referencia obligatoria a indicar
-                  </span>
-                  <strong style={{ fontSize: '15px', color: '#991b1b', letterSpacing: '0.05em' }}>
-                    {orderRef}
-                  </strong>
-                </div>
-
-                <div>
-                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Beneficiario / Titular de la cuenta
-                  </span>
-                  <strong style={{ color: '#20251f' }}>{settings.bankAccountHolder}</strong>
-                </div>
-
-                <div>
-                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Banco
-                  </span>
-                  <span style={{ color: '#20251f' }}>{settings.bankName}</span>
-                </div>
-
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888' }}>
-                      IBAN
-                    </span>
-                    <button
-                      type="button"
-                      onClick={handleCopyIban}
-                      style={{
-                        background: copiedIban ? '#166534' : '#20251f',
-                        color: '#f4f0e9',
-                        border: 'none',
-                        borderRadius: '4px',
-                        padding: '2px 8px',
-                        fontSize: '10px',
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        transition: '0.2s',
-                      }}
-                    >
-                      {copiedIban ? '✓ ¡Copiado!' : 'Copiar IBAN'}
-                    </button>
+            {selectedPayment === 'bizum' ? (
+              /* Encadré Bizum */
+              <div
+                style={{
+                  background: '#ffffff',
+                  border: '2px solid #00a5a2',
+                  borderRadius: '10px',
+                  padding: '18px',
+                  boxShadow: '0 4px 14px rgba(0, 165, 162, 0.12)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', borderBottom: '1px solid #e0f2f1', paddingBottom: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '20px' }}>📱</span>
+                    <strong style={{ fontSize: '14px', color: '#00838f', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      Pago por Bizum
+                    </strong>
                   </div>
-                  <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f', letterSpacing: '0.05em', wordBreak: 'break-all' }}>
-                    {settings.bankIban}
-                  </strong>
-                </div>
-
-                <div>
-                  <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
-                    Código BIC / SWIFT
+                  <span style={{ fontSize: '13px', fontWeight: 'bold', color: '#00695c', background: '#e0f2f1', padding: '3px 10px', borderRadius: '6px' }}>
+                    Importe : {totalPrice}
                   </span>
-                  <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f' }}>
-                    {settings.bankSwift}
-                  </strong>
                 </div>
 
-                {settings.bankInstructions && (
-                  <p style={{ fontSize: '11px', color: '#555', fontStyle: 'italic', margin: '4px 0 0', borderTop: '1px dashed #e5e5e5', paddingTop: '6px' }}>
-                    💡 {settings.bankInstructions}
-                  </p>
-                )}
-              </div>
-            </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
+                  <div style={{ background: '#e0f7fa', padding: '10px 12px', borderRadius: '6px', borderLeft: '4px solid #00acc1' }}>
+                    <span style={{ fontSize: '10.5px', textTransform: 'uppercase', color: '#00838f', display: 'block', fontWeight: 700 }}>
+                      Teléfono Bizum oficial
+                    </span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
+                      <strong style={{ fontSize: '20px', letterSpacing: '0.06em', color: '#006064' }}>
+                        631 974 038
+                      </strong>
+                      <button
+                        type="button"
+                        onClick={handleCopyBizum}
+                        style={{
+                          background: copiedBizum ? '#00796b' : '#00838f',
+                          color: '#ffffff',
+                          border: 'none',
+                          borderRadius: '6px',
+                          padding: '5px 12px',
+                          fontSize: '11px',
+                          fontWeight: 'bold',
+                          cursor: 'pointer',
+                          transition: '0.2s',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                        }}
+                      >
+                        {copiedBizum ? '✓ ¡Copiado!' : 'Copiar Número'}
+                      </button>
+                    </div>
+                  </div>
 
-            {/* Transmission du Justificatif de Virement */}
+                  <div>
+                    <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#777', display: 'block' }}>
+                      Titular / Destinatario Bizum
+                    </span>
+                    <strong style={{ color: '#20251f', fontSize: '13.5px' }}>
+                      MARIA LLANOS GALLEGO MEDINA
+                    </strong>
+                  </div>
+
+                  <div>
+                    <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#777', display: 'block' }}>
+                      Concepto obligatorio a poner en Bizum
+                    </span>
+                    <strong style={{ fontSize: '15px', color: '#991b1b', letterSpacing: '0.05em' }}>
+                      {orderRef}
+                    </strong>
+                  </div>
+
+                  <p style={{ fontSize: '11px', color: '#555', fontStyle: 'italic', margin: '4px 0 0', borderTop: '1px dashed #e5e5e5', paddingTop: '8px' }}>
+                    💡 Abra su app bancaria (CaixaBank, Santander, BBVA, etc.), pulse en <strong>Bizum</strong>, envíe <strong>{totalPrice}</strong> al <strong>631974038</strong> indicando el concepto <strong>{orderRef}</strong>.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                {/* Alerta Transferencia Inmediata Requerida */}
+                <div
+                  style={{
+                    background: '#fef2f2',
+                    border: '1.5px solid #ef4444',
+                    borderRadius: '8px',
+                    padding: '12px 14px',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '10px',
+                  }}
+                >
+                  <span style={{ fontSize: '22px', lineHeight: 1 }}>⚡</span>
+                  <div>
+                    <strong style={{ fontSize: '12.5px', color: '#991b1b', display: 'block', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Aviso Importante: Transferencia Inmediata Requerida
+                    </strong>
+                    <p style={{ margin: '3px 0 0', fontSize: '11.5px', color: '#7f1d1d', lineHeight: '1.45' }}>
+                      Al emitir el pago desde su app bancaria o banca online, seleccione la opción <strong>&quot;Transferencia Inmediata&quot;</strong>. Así recibiremos los fondos en segundos y su pedido será preparado y enviado hoy mismo en 24/48h.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Encadré Coordonnées Bancaires */}
+                <div
+                  style={{
+                    background: '#ffffff',
+                    border: '2px solid #b8c8a6',
+                    borderRadius: '8px',
+                    padding: '16px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', borderBottom: '1px solid #eee', paddingBottom: '8px' }}>
+                    <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 'bold', color: '#20251f' }}>
+                      ⚡ Transferencia Inmediata
+                    </span>
+                    <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#166534', background: '#dcfce7', padding: '2px 8px', borderRadius: '4px' }}>
+                      Importe : {totalPrice}
+                    </span>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
+                    <div style={{ background: '#f0fdf4', padding: '8px 10px', borderRadius: '4px', borderLeft: '3px solid #166534' }}>
+                      <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#166534', display: 'block', fontWeight: 700 }}>
+                        Modalidad obligatoria
+                      </span>
+                      <strong style={{ fontSize: '12.5px', color: '#14532d' }}>
+                        ⚡ Transferencia Inmediata (Acreditación al instante)
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                        Referencia obligatoria a indicar
+                      </span>
+                      <strong style={{ fontSize: '15px', color: '#991b1b', letterSpacing: '0.05em' }}>
+                        {orderRef}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                        Beneficiario / Titular de la cuenta
+                      </span>
+                      <strong style={{ color: '#20251f' }}>{settings.bankAccountHolder}</strong>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                        Banco
+                      </span>
+                      <span style={{ color: '#20251f' }}>{settings.bankName}</span>
+                    </div>
+
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888' }}>
+                          IBAN
+                        </span>
+                        <button
+                          type="button"
+                          onClick={handleCopyIban}
+                          style={{
+                            background: copiedIban ? '#166534' : '#20251f',
+                            color: '#f4f0e9',
+                            border: 'none',
+                            borderRadius: '4px',
+                            padding: '2px 8px',
+                            fontSize: '10px',
+                            fontWeight: 'bold',
+                            cursor: 'pointer',
+                            transition: '0.2s',
+                          }}
+                        >
+                          {copiedIban ? '✓ ¡Copiado!' : 'Copiar IBAN'}
+                        </button>
+                      </div>
+                      <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f', letterSpacing: '0.05em', wordBreak: 'break-all' }}>
+                        {settings.bankIban}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#888', display: 'block' }}>
+                        Código BIC / SWIFT
+                      </span>
+                      <strong style={{ fontFamily: 'monospace', fontSize: '12px', color: '#20251f' }}>
+                        {settings.bankSwift}
+                      </strong>
+                    </div>
+
+                    {settings.bankInstructions && (
+                      <p style={{ fontSize: '11px', color: '#555', fontStyle: 'italic', margin: '4px 0 0', borderTop: '1px dashed #e5e5e5', paddingTop: '6px' }}>
+                        💡 {settings.bankInstructions}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Transmission du Justificatif de Virement / Bizum */}
             <div
               style={{
                 background: '#f8fafc',
@@ -308,11 +401,11 @@ export default function CheckoutModal({
                 </strong>
               </div>
               <p style={{ fontSize: '11px', color: '#475569', margin: '0 0 10px', lineHeight: '1.4' }}>
-                Una vez realizada la transferencia, envíenos su comprobante o captura con su referencia <strong>{orderRef}</strong>:
+                Una vez realizado el pago ({selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}), envíenos su comprobante o captura con su referencia <strong>{orderRef}</strong>:
               </p>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <a
-                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de transferencia - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el justificante de transferencia bancaria para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${address}\n\nGracias.`)}`}
+                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de pago - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el comprobante de pago (${selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}) para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${address}\n\nGracias.`)}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -333,7 +426,7 @@ export default function CheckoutModal({
                 </a>
                 {settings.contactPhone && (
                   <a
-                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola, aquí tiene mi comprobante de pago para el pedido ${orderRef} (${fullName} - ${totalPrice}).`)}`}
+                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola, aquí tiene mi comprobante de pago (${selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}) para el pedido ${orderRef} (${fullName} - ${totalPrice}).`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -359,7 +452,7 @@ export default function CheckoutModal({
             </div>
 
             <p style={{ fontSize: '11px', color: '#777', textAlign: 'center', margin: '8px 0 0' }}>
-              📦 Su paquete será preparado y enviado inmediatamente tras la validación de su transferencia.
+              📦 Su paquete será preparado y enviado inmediatamente tras la validación de su pago.
             </p>
 
             {paymentDeclared ? (
@@ -479,7 +572,7 @@ export default function CheckoutModal({
           </div>
         ) : (
           <div>
-            <span className="modal-eyebrow">Pago por transferencia bancaria inmediata</span>
+            <span className="modal-eyebrow">Pago Seguro Oficial · Bizum o Transferencia Inmediata</span>
             <h3 className="modal-title">Comprar este artículo</h3>
 
             <div className="modal-product-summary">
@@ -570,40 +663,106 @@ export default function CheckoutModal({
               </div>
 
               <div className="form-group">
-                <label>Método de pago</label>
-                <div
-                  style={{
-                    background: '#e8e2d6',
-                    padding: '10px 14px',
-                    borderRadius: '4px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                  }}
-                >
-                  <span>🔒 Transferencia Inmediata 100% Segura</span>
-                  <strong>{totalPrice}</strong>
+                <label>Seleccione su método de pago</label>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '4px' }}>
+                  {/* Option 1: BIZUM (Recommandé) */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPayment('bizum')}
+                    style={{
+                      border: selectedPayment === 'bizum' ? '2px solid #00a5a2' : '1px solid #d1d5db',
+                      background: selectedPayment === 'bizum' ? '#e0f7fa' : '#ffffff',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'all 0.2s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 'bold', color: selectedPayment === 'bizum' ? '#006064' : '#1f2937' }}>
+                        📱 Bizum
+                      </span>
+                      <span style={{ fontSize: '9px', fontWeight: 'bold', background: '#00838f', color: '#ffffff', padding: '1px 6px', borderRadius: '4px' }}>
+                        Recomendado
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '10px', color: '#00695c' }}>
+                      Instantáneo · 631 974 038
+                    </span>
+                  </button>
+
+                  {/* Option 2: Transferencia Inmediata */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPayment('transfer')}
+                    style={{
+                      border: selectedPayment === 'transfer' ? '2px solid #166534' : '1px solid #d1d5db',
+                      background: selectedPayment === 'transfer' ? '#f0fdf4' : '#ffffff',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'all 0.2s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '4px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 'bold', color: selectedPayment === 'transfer' ? '#14532d' : '#1f2937' }}>
+                        ⚡ Transferencia
+                      </span>
+                      <span style={{ fontSize: '9px', fontWeight: 'bold', background: '#166534', color: '#ffffff', padding: '1px 6px', borderRadius: '4px' }}>
+                        Bancaria
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '10px', color: '#166534' }}>
+                      Banco a banco · IBAN
+                    </span>
+                  </button>
                 </div>
 
-                <div
-                  style={{
-                    background: '#fffbeb',
-                    border: '1px solid #fde68a',
-                    borderRadius: '6px',
-                    padding: '9px 12px',
-                    marginTop: '6px',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#b45309', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
-                    <span>🛡️</span>
-                    <span>Pago Seguro Oficial : Transferencia Inmediata</span>
+                {selectedPayment === 'bizum' ? (
+                  <div
+                    style={{
+                      background: '#e0f7fa',
+                      border: '1px solid #80deea',
+                      borderRadius: '6px',
+                      padding: '9px 12px',
+                      marginTop: '8px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#006064', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
+                      <span>📱</span>
+                      <span>Pago Express por Bizum al 631 974 038</span>
+                    </div>
+                    <span style={{ fontSize: '11px', color: '#00838f', lineHeight: '1.45', display: 'block' }}>
+                      Beneficiaria : <strong>MARIA LLANOS GALLEGO MEDINA</strong>. Al confirmar, verá el resumen y el concepto exacto a indicar para preparar su envío en 24/48h.
+                    </span>
                   </div>
-                  <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
-                    Operación directa banco a banco con máxima protección y cifrado oficial. Para procesar y enviar su pedido en 24/48h sin esperas, seleccione la opción de <strong>Transferencia Inmediata</strong> al pagar desde su banca online. El IBAN y los datos se facilitan a continuación.
-                  </span>
-                </div>
+                ) : (
+                  <div
+                    style={{
+                      background: '#fffbeb',
+                      border: '1px solid #fde68a',
+                      borderRadius: '6px',
+                      padding: '9px 12px',
+                      marginTop: '8px',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#b45309', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
+                      <span>🛡️</span>
+                      <span>Transferencia Bancaria Inmediata</span>
+                    </div>
+                    <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
+                      Operación directa banco a banco con máxima protección. Al confirmar el pedido, obtendrá el IBAN oficial y la referencia para emitir la transferencia.
+                    </span>
+                  </div>
+                )}
               </div>
 
               <button type="submit" className="button-confirm-buy" style={{ marginTop: '8px' }}>
