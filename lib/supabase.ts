@@ -1,8 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 
-if (typeof process !== 'undefined' && process.env) {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-}
+
 
 function cleanSupabaseUrl(url: string | undefined): string {
   if (!url) return 'https://suwesvmsbfxxtfyepsdv.supabase.co'
