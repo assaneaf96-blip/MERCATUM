@@ -46,11 +46,19 @@ export default function BoutiquePage() {
   }
 
   const tabsRef = useRef<HTMLDivElement>(null)
+  const categorySliderRef = useRef<HTMLDivElement>(null)
 
   const scrollTabs = (direction: 'left' | 'right') => {
     if (tabsRef.current) {
       const scrollAmount = direction === 'left' ? -260 : 260
       tabsRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+    }
+  }
+
+  const scrollCategorySlider = (direction: 'left' | 'right') => {
+    if (categorySliderRef.current) {
+      const scrollAmount = direction === 'left' ? -340 : 340
+      categorySliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
     }
   }
 
@@ -450,7 +458,7 @@ export default function BoutiquePage() {
       {/* VUE 1 : GRILLE DES CATÉGORIES "NUESTRAS TIENDAS" (IDENTIQUE À LA CAPTURE FOURNIE) */}
       {viewMode === 'tiendas' && !searchQuery && (
         <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-1 w-full">
-          <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-3">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 pb-3">
             <div>
               <h2 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-stone-900">
                 Departamentos & Colecciones
@@ -459,8 +467,81 @@ export default function BoutiquePage() {
                 Seleccione una tienda para descubrir todas las piezas disponibles
               </p>
             </div>
-            <span className="text-xs font-bold bg-stone-200/80 text-stone-700 px-3 py-1 rounded-full">
-              {categoryCards.length} Categorías
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold bg-stone-200/80 text-stone-700 px-3 py-1 rounded-full">
+                {categoryCards.length} Categorías
+              </span>
+              <div className="flex items-center gap-1.5 ml-2">
+                <button
+                  type="button"
+                  onClick={() => scrollCategorySlider('left')}
+                  className="w-8 h-8 rounded-full border border-stone-300 bg-white text-stone-800 hover:bg-stone-100 flex items-center justify-center transition shadow-sm cursor-pointer"
+                  aria-label="Deslizar a la izquierda"
+                  title="Deslizar a la izquierda"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollCategorySlider('right')}
+                  className="w-8 h-8 rounded-full border border-stone-300 bg-white text-stone-800 hover:bg-stone-100 flex items-center justify-center transition shadow-sm cursor-pointer"
+                  aria-label="Deslizar a la derecha"
+                  title="Deslizar a la derecha"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Carrusel horizontal deslizante (Swipe / Scroll horizontal) de las 49 categorías */}
+          <div
+            ref={categorySliderRef}
+            className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 pt-1 mb-8 scroll-smooth no-scrollbar"
+            style={{
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {categoryCards.map((cat) => (
+              <button
+                key={`slider-${cat.name}`}
+                type="button"
+                onClick={() => handleCategorySelect(cat.name)}
+                style={{ scrollSnapAlign: 'start' }}
+                className="shrink-0 w-36 sm:w-44 md:w-48 bg-white border border-stone-200 hover:border-stone-900 hover:shadow-lg transition-all duration-200 rounded-xl p-3 flex flex-col justify-between text-left group cursor-pointer select-none"
+              >
+                <div className="relative w-full aspect-square bg-[#ffffff] rounded-lg flex items-center justify-center p-2.5 mb-2.5 overflow-hidden border border-stone-100">
+                  {cat.image ? (
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      loading="lazy"
+                      className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="text-3xl text-stone-300">📦</div>
+                  )}
+                </div>
+                <div className="pt-0.5">
+                  <h3 className="font-bold text-stone-900 text-xs tracking-tight uppercase leading-snug line-clamp-2 min-h-[2.2rem] flex items-center group-hover:text-amber-900 transition-colors">
+                    {cat.name}
+                  </h3>
+                  <p className="text-stone-500 font-medium text-[11px] mt-1">
+                    ({cat.count} artículos)
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Título de la cuadrícula completa */}
+          <div className="mb-4 flex items-center justify-between pt-2">
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-600">
+              Todas las tiendas en cuadrícula
+            </h3>
+            <span className="text-[11px] text-stone-400">
+              Deslice horizontalmente arriba o elija abajo
             </span>
           </div>
 
