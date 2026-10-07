@@ -450,18 +450,39 @@ export default function BoutiquePage() {
       {/* VUE 1 : GRILLE DES CATÉGORIES "NUESTRAS TIENDAS" (IDENTIQUE À LA CAPTURE FOURNIE) */}
       {viewMode === 'tiendas' && !searchQuery && (
         <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-1 w-full">
-          <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-3">
-            <div>
-              <h2 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-stone-900">
-                Departamentos & Colecciones
-              </h2>
-              <p className="text-xs text-stone-500">
-                Seleccione una tienda para descubrir todas las piezas disponibles
-              </p>
+          {/* Défilement automatique continu en image de toutes les catégories */}
+          <div className="categories-marquee-wrapper mb-6 border-b border-stone-200">
+            <div className="categories-marquee-track">
+              {[...categoryCards, ...categoryCards].map((cat, idx) => (
+                <button
+                  key={`${cat.name}-${idx}`}
+                  type="button"
+                  onClick={() => handleCategorySelect(cat.name)}
+                  className="shrink-0 w-32 sm:w-40 bg-white border border-stone-200 hover:border-stone-900 hover:shadow-lg transition-all duration-200 rounded-xl p-2.5 flex flex-col justify-between text-left group cursor-pointer select-none"
+                >
+                  <div className="relative w-full aspect-square bg-[#ffffff] rounded-lg flex items-center justify-center p-2 mb-2 overflow-hidden border border-stone-100">
+                    {cat.image ? (
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        loading="lazy"
+                        className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="text-3xl text-stone-300">📦</div>
+                    )}
+                  </div>
+                  <div className="pt-0.5">
+                    <h3 className="font-bold text-stone-900 text-[11px] sm:text-xs tracking-tight uppercase leading-snug line-clamp-2 min-h-[2rem] flex items-center group-hover:text-amber-900 transition-colors">
+                      {cat.name}
+                    </h3>
+                    <p className="text-stone-500 font-medium text-[10px] mt-0.5">
+                      ({cat.count})
+                    </p>
+                  </div>
+                </button>
+              ))}
             </div>
-            <span className="text-xs font-bold bg-stone-200/80 text-stone-700 px-3 py-1 rounded-full">
-              {categoryCards.length} Categorías
-            </span>
           </div>
 
           {/* Grille 2 colonnes sur mobile, 3 sur tablette, 4 sur grand écran */}

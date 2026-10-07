@@ -173,6 +173,39 @@ a { color: inherit; text-decoration: none; }
 .announcement-separator {
   color: #d4af37;
   margin: 0 10px;
+}
+
+/* Category Autoplay Marquee Slider */
+.categories-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  user-select: none;
+  padding: 8px 0 16px;
+}
+
+.categories-marquee-wrapper:hover .categories-marquee-track {
+  animation-play-state: paused;
+}
+
+.categories-marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: categories-marquee-scroll 65s linear infinite;
+  will-change: transform;
+}
+
+@keyframes categories-marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.announcement-separator {
   font-size: 10px;
   opacity: 0.85;
   flex-shrink: 0;
