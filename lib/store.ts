@@ -62,9 +62,9 @@ const STORAGE_KEYS = {
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   siteName: 'MERCATUM',
-  announcement: 'Arte de Vivir & Santuario Interior · Envío gratuito a partir de 150 €',
-  heroTitle: "El Lujo de Habitar su Espacio.",
-  heroSubtitle: "Un espacio refinado donde vivir en armonía. Piezas de mobiliario, electrodomésticos de excepción y rituales de bienestar diseñados para transformar su hogar.",
+  announcement: 'MERCATUM — El Arte de Vivir · Compra electrodomésticos, cosméticos, muebles, aparatos electrónicos',
+  heroTitle: "MERCATUM — El Arte de Vivir",
+  heroSubtitle: "Compra electrodomésticos, cosméticos, muebles, aparatos electrónicos",
   contactPhone: '+34 691 34 98 40',
   contactAddress: 'Paseo de la Castellana, 28046 Madrid, España',
   contactEmail: 'contacto@mercatum-shop.app',

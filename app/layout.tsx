@@ -5,8 +5,19 @@ import PixelTracker from '@/components/PixelTracker'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "MERCATUM — El Arte de Vivir & Santuario Interior",
-  description: "Mobiliario de autor, electrodomésticos de excepción y rituales de bienestar para el hogar y el cuerpo.",
+  title: "MERCATUM — El Arte de Vivir, compra electrodomésticos, cosméticos, muebles, aparatos electrónicos",
+  description: "MERCATUM — El Arte de Vivir. Compra electrodomésticos, cosméticos, muebles, aparatos electrónicos con envío a domicilio y garantía.",
+  openGraph: {
+    title: "MERCATUM — El Arte de Vivir, compra electrodomésticos, cosméticos, muebles, aparatos electrónicos",
+    description: "MERCATUM — El Arte de Vivir. Compra electrodomésticos, cosméticos, muebles, aparatos electrónicos con envío a domicilio y garantía.",
+    siteName: "MERCATUM",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MERCATUM — El Arte de Vivir, compra electrodomésticos, cosméticos, muebles, aparatos electrónicos",
+    description: "MERCATUM — El Arte de Vivir. Compra electrodomésticos, cosméticos, muebles, aparatos electrónicos.",
+  },
   generator: 'v0.app',
   icons: {
     icon: '/logo.jpg',
