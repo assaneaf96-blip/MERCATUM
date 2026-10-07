@@ -41,7 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '3103103696688897');
-              fbq('track', 'PageView', {}, { test_event_code: 'TEST93893' });
+              fbq('track', 'PageView');
             `,
           }}
         />

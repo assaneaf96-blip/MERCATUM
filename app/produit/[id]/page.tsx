@@ -289,8 +289,23 @@ export default function ProductDetailPage() {
             setProduct(foundCached)
             setActiveImageIndex(0)
             setLoading(false)
+            return
           }
         }
+        // Fallback immédiat depuis /products.json si non trouvé dans le cache
+        fetch('/products.json')
+          .then((r) => r.json())
+          .then((arr: Product[]) => {
+            if (Array.isArray(arr)) {
+              const fromJson = arr.find((p) => p.id === productId)
+              if (fromJson) {
+                setProduct(fromJson)
+                setActiveImageIndex(0)
+                setLoading(false)
+              }
+            }
+          })
+          .catch(() => {})
       }).catch(() => {})
       setProduct(null)
       setLoading(true)
@@ -884,6 +899,8 @@ export default function ProductDetailPage() {
                       src={currentImg}
                       alt={`${product.name} - vue ${activeImageIndex + 1}`}
                       className="pdp-main-img pointer-events-none"
+                      loading="eager"
+                      fetchPriority="high"
                       decoding="async"
                       onError={(e) => {
                         const target = e.currentTarget

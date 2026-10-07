@@ -32,9 +32,9 @@ function getFbOptions(): { test_event_code?: string } | undefined {
     }
     const stored = sessionStorage.getItem('fb_test_event_code')
     if (stored) return { test_event_code: stored }
-    return { test_event_code: 'TEST93893' }
+    return undefined
   } catch {
-    return { test_event_code: 'TEST93893' }
+    return undefined
   }
 }
 
