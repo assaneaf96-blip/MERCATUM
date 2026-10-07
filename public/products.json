@@ -12336,11 +12336,29 @@
     "type": "La Steam Deck OLED 1TB NVMe Edición Limitada en Blanco combina potencia portátil y pantalla OLED HDR de 7.4″ con 90 Hz, 1000 nits y tiempo de respuesta <0.1 ms. Equipada con procesador AMD Zen 2 + GPU RDNA 2, 16GB RAM LPDDR5 y SSD NVMe de 1TB, ofrece un rendimiento fluido y juegos sin interrupciones. Con conectividad WiFi 6E, Bluetooth 5.3 y controles hápticos avanzados, es ideal para jugadores exigentes. Su diseño exclusivo blanco incluye contenido temático de Steam y accesorios premium para una experiencia total.",
     "price": "550,00 €",
     "raw_price": 550,
-    "image": "/api/product-image?id=steam-deck-oled-1tb-nvme-edicion-limitada-en-blanco&index=0",
+    "image": "/uploads/steam-deck-oled-white-1.png",
     "tag": "Oferta ",
     "rating": 5,
     "reviews_count": 156,
-    "images": []
+    "images": [
+      "/uploads/steam-deck-oled-white-1.png",
+      "/uploads/steam-deck-oled-white-2.jpg",
+      "/uploads/steam-deck-oled-white-3.jpg"
+    ],
+    "media": [
+      {
+        "type": "image",
+        "url": "/uploads/steam-deck-oled-white-1.png"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/steam-deck-oled-white-2.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/steam-deck-oled-white-3.jpg"
+      }
+    ]
   },
   {
     "id": "svenja-walberg",
