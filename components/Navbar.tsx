@@ -156,7 +156,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     },
     {
       icon: '🛡️',
-      badge: 'GARANTÍA OFICIAL 2 AÑOS',
+      badge: 'GARANTÍA OFICIAL 3 AÑOS',
       text: 'Productos 100% nuevos de marca con soporte oficial directo',
       highlight: 'Calidad Certificada',
       link: '/boutique',
@@ -552,7 +552,6 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
           onClose={() => setCheckoutProduct(null)}
           onSuccess={() => {
             clearCart()
-            setCheckoutProduct(null)
           }}
         />
       )}

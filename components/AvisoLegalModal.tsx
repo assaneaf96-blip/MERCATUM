@@ -670,14 +670,14 @@ export default function AvisoLegalModal({ isOpen, onClose, initialTab = 0 }: Avi
                   GARANTÍA LEGAL (EU NOTICE)
                 </h2>
                 <p style={{ margin: 0, fontSize: '13px', color: '#475569' }}>
-                  Garantía legal mínima de 2 años para los bienes vendidos en la Unión Europea
+                  Garantía legal mínima de 3 años para los bienes vendidos en la Unión Europea
                 </p>
               </div>
 
               {/* Informative text box */}
               <div style={{ background: '#eff6ff', borderLeft: '4px solid #2563eb', padding: '16px 20px', borderRadius: '8px', marginBottom: '24px' }}>
                 <h4 style={{ margin: '0 0 6px', color: '#1e40af', fontSize: '15px', fontWeight: '700' }}>
-                  Garantía legal mínima de dos años
+                  Garantía legal mínima de tres años
                 </h4>
                 <p style={{ margin: '0 0 10px', fontSize: '13px', color: '#1e3a8a' }}>
                   Los consumidores pueden hacer valer los derechos que les otorga la garantía legal de conformidad si los bienes:

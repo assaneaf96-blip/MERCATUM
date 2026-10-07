@@ -11177,11 +11177,19 @@
     "type": "Barra de sonido Sharp HT-SBW460 Dolby Atmos - Negro",
     "price": "199,90 €",
     "raw_price": 199.9,
-    "image": "/api/product-image?id=sharp&index=0",
+    "image": "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/07fe2c78-dbd3-11ea-935b-1ef7a8fb4356.jpg",
     "tag": "Oferta",
     "rating": 5,
     "reviews_count": 18,
-    "images": []
+    "images": [
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/07fe2c78-dbd3-11ea-935b-1ef7a8fb4356.jpg",
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/5b5fcd54-0356-11f0-bb3c-de4e07a9ff4f.jpg",
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/4908a2de-0356-11f0-b944-7a696d09349e.jpg",
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/40e7dd4a-0356-11f0-95a3-de4e07a9ff4f.jpg",
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/38667942-0356-11f0-9f43-f67374412c09.jpg",
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/292f5292-dbd3-11ea-9ac3-1ef7a8fb4356.jpg",
+      "https://res.cloudinary.com/dnpkvlbae/image/fetch/c_auto,f_auto,q_auto:good,w_1200/https://s3.infra.brandquad.io/accounts-media/SHRP/DAM/origin/70f5a910-68f5-11ea-a97c-863bdf0d32d9.jpg"
+    ]
   },
   {
     "id": "shokz",

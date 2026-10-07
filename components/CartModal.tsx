@@ -98,7 +98,7 @@ export default function CartModal({ isOpen, onClose, onCheckout }: CartModalProp
         {/* Promo bar */}
         <div className="bg-[#1c221d] text-[#f4f0e9] text-[11.5px] px-4 py-2 text-center font-medium flex items-center justify-center gap-2">
           <span>🚚</span>
-          <span><strong>Envío gratis 24/48h</strong> en toda España · Garantía 2 años</span>
+          <span><strong>Envío gratis 24/48h</strong> en toda España · Garantía 3 años</span>
         </div>
 
         {/* Body */}
@@ -115,10 +115,18 @@ export default function CartModal({ isOpen, onClose, onCheckout }: CartModalProp
               <Link
                 href="/boutique"
                 onClick={onClose}
-                className="inline-flex items-center gap-2 bg-[#1c221d] text-[#f4f0e9] px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-stone-800 transition shadow-md"
+                style={{
+                  backgroundColor: '#0f172a',
+                  color: '#ffffff',
+                }}
+                className="w-full max-w-xs flex items-center justify-center gap-2 bg-slate-900 !text-white text-white px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider hover:bg-black transition-all shadow-xl hover:shadow-2xl active:scale-95 cursor-pointer border-2 border-slate-900"
               >
-                <span>Descubrir la tienda</span>
-                <span>→</span>
+                <span className="!text-white text-white font-bold" style={{ color: '#ffffff' }}>
+                  Descubrir la tienda
+                </span>
+                <span className="!text-white text-white font-bold text-base" style={{ color: '#ffffff' }}>
+                  →
+                </span>
               </Link>
             </div>
           ) : (
@@ -270,7 +278,7 @@ export default function CartModal({ isOpen, onClose, onCheckout }: CartModalProp
             {/* Trust badge */}
             <div className="flex items-center justify-center gap-2 text-[10.5px] text-stone-500 bg-stone-50 py-1.5 px-2 rounded-lg border border-stone-200">
               <span>🔒</span>
-              <span>Pago 100% seguro por Transferencia Santander Oficial</span>
+              <span>Pago 100% seguro por Transferencia Bancaria Oficial</span>
             </div>
 
             {/* Actions */}
