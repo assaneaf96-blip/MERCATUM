@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'eventName is required' }, { status: 400 })
     }
 
-    const pixelId = process.env.META_PIXEL_ID || process.env.NEXT_PUBLIC_META_PIXEL_ID || '4698802283778446'
+    const pixelId = process.env.META_PIXEL_ID || process.env.NEXT_PUBLIC_META_PIXEL_ID || '1629592038644959'
     const accessToken =
       process.env.META_ACCESS_TOKEN ||
       process.env.FB_ACCESS_TOKEN ||
