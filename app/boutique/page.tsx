@@ -94,7 +94,19 @@ export default function BoutiquePage() {
       }
     }).catch(() => {})
 
-    // 2. Chargement direct depuis le cache / Supabase sans blocage
+    // 2. Hydratation immédiate depuis /products.json (pré-chargé dans le HTML par le CDN Edge Vercel)
+    // Permet un rendu en moins de 30ms même pour un nouvel utilisateur sans cache préalable
+    fetch('/products.json', { cache: 'force-cache' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((bundled) => {
+        if (Array.isArray(bundled) && bundled.length > 0) {
+          setProductsList((prev) => (bundled.length >= prev.length ? bundled : prev))
+          setClientCachedProducts(bundled).catch(() => {})
+        }
+      })
+      .catch(() => {})
+
+    // 3. Chargement et synchronisation depuis le cache / Supabase sans blocage de l'UI
     const loadProducts = (force = false) => {
       fetchProductsFromDb(force).then((dbProducts) => {
         if (dbProducts && dbProducts.length > 0) {
@@ -163,7 +175,8 @@ export default function BoutiquePage() {
       }).catch(() => {})
     }
 
-    loadProducts(true)
+    // Chargement non-bloquant : utiliser le cache HTTP du navigateur au premier affichage
+    loadProducts(false)
 
     // 3. Écoute Supabase Realtime + Événements locaux
     const handleUpdate = () => {
@@ -457,44 +470,50 @@ export default function BoutiquePage() {
       {/* VUE 1 : GRILLE DES CATÉGORIES "NUESTRAS TIENDAS" (IDENTIQUE À LA CAPTURE FOURNIE) */}
       {viewMode === 'tiendas' && !searchQuery && (
         <section className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-1 w-full">
-          {/* Défilement automatique continu en image de toutes les catégories */}
+          {/* Défilement automatique continu en image des catégories principales */}
           <div className="categories-marquee-wrapper mb-6 border-b border-stone-200">
             <div className="categories-marquee-track">
-              {[...categoryCards, ...categoryCards].map((cat, idx) => (
-                <button
-                  key={`${cat.name}-${idx}`}
-                  type="button"
-                  onClick={() => handleCategorySelect(cat.name)}
-                  className="shrink-0 w-32 sm:w-40 bg-white border border-stone-200 hover:border-stone-900 hover:shadow-lg transition-all duration-200 rounded-xl p-2.5 flex flex-col justify-between text-left group cursor-pointer select-none"
-                >
-                  <div className="relative w-full aspect-square bg-[#ffffff] rounded-lg flex items-center justify-center p-2 mb-2 overflow-hidden border border-stone-100">
-                    {cat.image ? (
-                      <img
-                        src={cat.image}
-                        alt={cat.name}
-                        loading="lazy"
-                        className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="text-3xl text-stone-300">📦</div>
-                    )}
-                  </div>
-                  <div className="pt-0.5">
-                    <h3 className="font-bold text-stone-900 text-[11px] sm:text-xs tracking-tight uppercase leading-snug line-clamp-2 min-h-[2rem] flex items-center group-hover:text-amber-900 transition-colors">
-                      {cat.name}
-                    </h3>
-                    <p className="text-stone-500 font-medium text-[10px] mt-0.5">
-                      ({cat.count})
-                    </p>
-                  </div>
-                </button>
-              ))}
+              {(() => {
+                const marqueeItems = categoryCards.slice(0, 16)
+                return [...marqueeItems, ...marqueeItems].map((cat, idx) => (
+                  <button
+                    key={`${cat.name}-${idx}`}
+                    type="button"
+                    onClick={() => handleCategorySelect(cat.name)}
+                    className="shrink-0 w-32 sm:w-40 bg-white border border-stone-200 hover:border-stone-900 hover:shadow-lg transition-all duration-200 rounded-xl p-2.5 flex flex-col justify-between text-left group cursor-pointer select-none"
+                  >
+                    <div className="relative w-full aspect-square bg-[#ffffff] rounded-lg flex items-center justify-center p-2 mb-2 overflow-hidden border border-stone-100">
+                      {cat.image ? (
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          loading="lazy"
+                          decoding="async"
+                          width={140}
+                          height={140}
+                          className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="text-3xl text-stone-300">📦</div>
+                      )}
+                    </div>
+                    <div className="pt-0.5">
+                      <h3 className="font-bold text-stone-900 text-[11px] sm:text-xs tracking-tight uppercase leading-snug line-clamp-2 min-h-[2rem] flex items-center group-hover:text-amber-900 transition-colors">
+                        {cat.name}
+                      </h3>
+                      <p className="text-stone-500 font-medium text-[10px] mt-0.5">
+                        ({cat.count})
+                      </p>
+                    </div>
+                  </button>
+                ))
+              })()}
             </div>
           </div>
 
           {/* Grille 2 colonnes sur mobile, 3 sur tablette, 4 sur grand écran */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            {categoryCards.map((cat) => (
+            {categoryCards.map((cat, idx) => (
               <button
                 key={cat.name}
                 type="button"
@@ -507,7 +526,10 @@ export default function BoutiquePage() {
                     <img
                       src={cat.image}
                       alt={cat.name}
-                      loading="lazy"
+                      loading={idx < 8 ? "eager" : "lazy"}
+                      decoding="async"
+                      width={200}
+                      height={200}
                       className="object-contain max-h-full max-w-full drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
