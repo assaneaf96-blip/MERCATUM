@@ -73,6 +73,8 @@ export default function PixelTracker() {
 
         if (window.fbq) {
           window.fbq('init', fbId)
+          if (fbId !== '4698802283778446') window.fbq('init', '4698802283778446')
+          if (fbId !== '3103103696688897') window.fbq('init', '3103103696688897')
           window.fbq('track', 'PageView', {}, getFbOptions())
         }
       }

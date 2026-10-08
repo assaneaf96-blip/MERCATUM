@@ -74,7 +74,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   bankIban: 'ES91 2100 0418 4502 0005 1332',
   bankSwift: 'BSCHESMMXXX',
   bankInstructions: 'Por favor, seleccione obligatoriamente "Transferencia Inmediata" en su banca online e indique la referencia de su pedido como concepto.',
-  facebookPixelId: '3103103696688897',
+  facebookPixelId: '4698802283778446',
   tiktokPixelId: '',
   googleTagId: '',
   pinterestTagId: '',
