@@ -111,7 +111,7 @@ export default function CheckoutModal({
 
     onSuccess(product)
 
-    // Événements de conversion pour les pixels publicitaires
+    // Événements de conversion pour les pixels publicitaires & Meta CAPI
     const rawTotal = product.rawPrice * quantity
     trackPixel('Purchase', {
       id: product.id,
@@ -119,6 +119,12 @@ export default function CheckoutModal({
       price: rawTotal,
       quantity,
       orderId: ref,
+      userData: {
+        email,
+        phone,
+        fullName,
+        address,
+      },
     })
   }
 

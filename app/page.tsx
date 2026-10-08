@@ -26,6 +26,7 @@ import {
   subscribeToProductsChanges,
 } from '@/lib/supabaseService'
 import { addToCart } from '@/lib/cart'
+import { trackPixel } from '@/components/PixelTracker'
 import { getClientCachedProducts, getSyncCachedProducts, setClientCachedProducts } from '@/lib/clientCache'
 
 interface CategoryDetails {
@@ -884,6 +885,12 @@ export default function HomePage() {
 
   const handleAddToCart = (product: Product) => {
     addToCart(product, 1)
+    trackPixel('AddToCart', {
+      id: product.id,
+      name: product.name,
+      price: product.rawPrice,
+      quantity: 1,
+    })
     showToast(`« ${product.name} » añadido a la cesta !`)
   }
 

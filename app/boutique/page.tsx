@@ -13,6 +13,7 @@ import { fetchProductsFromDb, fetchSettingsFromDb, subscribeToProductsChanges } 
 import { getClientCachedProducts, getSyncCachedProducts, setClientCachedProducts } from '@/lib/clientCache'
 import { searchAndFilterProducts } from '@/lib/searchUtils'
 import { addToCart } from '@/lib/cart'
+import { trackPixel } from '@/components/PixelTracker'
 
 export default function BoutiquePage() {
   const router = useRouter()
@@ -237,6 +238,12 @@ export default function BoutiquePage() {
 
   const handleAddToCart = (product: Product) => {
     addToCart(product, 1)
+    trackPixel('AddToCart', {
+      id: product.id,
+      name: product.name,
+      price: product.rawPrice,
+      quantity: 1,
+    })
     showToast(`« ${product.name} » añadido a la cesta !`)
   }
 

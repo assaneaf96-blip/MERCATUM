@@ -21,20 +21,25 @@ export function trackPixel(
   window.dispatchEvent(new CustomEvent('mercatum:track_pixel', { detail: { event, data } }))
 }
 
-function getFbOptions(): { test_event_code?: string } | undefined {
-  if (typeof window === 'undefined') return undefined
+function getFbOptions(eventId?: string): { test_event_code?: string; eventID?: string } | undefined {
+  if (typeof window === 'undefined') return eventId ? { eventID: eventId } : undefined
   try {
     const params = new URLSearchParams(window.location.search)
     const urlCode = params.get('test_event_code') || params.get('testEventCode')
+    let testCode: string | undefined = undefined
     if (urlCode) {
       sessionStorage.setItem('fb_test_event_code', urlCode)
-      return { test_event_code: urlCode }
+      testCode = urlCode
+    } else {
+      const stored = sessionStorage.getItem('fb_test_event_code')
+      if (stored) testCode = stored
     }
-    const stored = sessionStorage.getItem('fb_test_event_code')
-    if (stored) return { test_event_code: stored }
-    return undefined
+    const opts: { test_event_code?: string; eventID?: string } = {}
+    if (testCode) opts.test_event_code = testCode
+    if (eventId) opts.eventID = eventId
+    return Object.keys(opts).length > 0 ? opts : undefined
   } catch {
-    return undefined
+    return eventId ? { eventID: eventId } : undefined
   }
 }
 
@@ -221,6 +226,32 @@ export default function PixelTracker() {
         const qty = Number(data?.quantity || 1)
         const itemId = String(data?.id || '')
         const itemName = String(data?.name || '')
+        const eventId = data?.eventId || data?.orderId || `${event.toLowerCase()}_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
+        const fbOpts = getFbOptions(eventId)
+
+        // Envoi au serveur Meta Conversions API (CAPI) en tâche de fond (Fire and Forget)
+        if (typeof window !== 'undefined') {
+          fetch('/api/conversions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              eventName: event,
+              eventId,
+              eventSourceUrl: window.location.href,
+              userData: data?.userData || {},
+              customData: {
+                value: val,
+                currency: 'EUR',
+                content_name: itemName,
+                content_ids: itemId ? [itemId] : undefined,
+                content_type: 'product',
+                num_items: qty,
+                order_id: data?.orderId,
+              },
+              testEventCode: fbOpts?.test_event_code,
+            }),
+          }).catch((err) => console.warn('CAPI dispatch notice:', err?.message))
+        }
 
         if (event === 'ViewContent') {
           window.fbq?.('track', 'ViewContent', {
@@ -229,7 +260,7 @@ export default function PixelTracker() {
             content_type: 'product',
             value: val,
             currency: 'EUR',
-          }, getFbOptions())
+          }, fbOpts)
           window.ttq?.track('ViewContent', {
             content_id: itemId,
             content_name: itemName,
@@ -252,7 +283,7 @@ export default function PixelTracker() {
             content_type: 'product',
             value: val,
             currency: 'EUR',
-          }, getFbOptions())
+          }, fbOpts)
           window.ttq?.track('AddToCart', {
             content_id: itemId,
             content_name: itemName,
@@ -277,7 +308,7 @@ export default function PixelTracker() {
             value: val,
             currency: 'EUR',
             num_items: qty,
-          }, getFbOptions())
+          }, fbOpts)
           window.ttq?.track('InitiateCheckout', {
             content_id: itemId,
             content_name: itemName,
@@ -297,7 +328,7 @@ export default function PixelTracker() {
             content_name: itemName,
             content_ids: itemId ? [itemId] : undefined,
             num_items: qty,
-          }, getFbOptions())
+          }, fbOpts)
           window.ttq?.track('CompletePayment', {
             content_id: itemId,
             content_name: itemName,
