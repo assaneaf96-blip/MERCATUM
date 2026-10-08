@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
     const accessToken =
       process.env.META_ACCESS_TOKEN ||
       process.env.FB_ACCESS_TOKEN ||
-      process.env.FACEBOOK_CONVERSIONS_API_TOKEN
+      process.env.FACEBOOK_CONVERSIONS_API_TOKEN ||
+      'EAAWrTZAfYc9ABSllksdlXKCtcz98WZAU9ytoTpUy4VYBjJvWDaSOzP2OFp2WtXj2FwNELnVKEwSDSAyGERVSZAZC6oZAzYQo3657GF1ZAM4a2zsi3vvnDUFsM6K2Gt3UObDkMR6kBAt1NabknH1ckQYV1R2XD0WrYI5zqns5KL6RXl0mAqy3HgBQA6Nk0vCAZDZD'
 
     // Récupération de l'IP et de l'User-Agent client pour un Event Match Quality élevé
     const forwarded = req.headers.get('x-forwarded-for')
