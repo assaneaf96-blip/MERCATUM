@@ -1232,8 +1232,8 @@ export default function ProductDetailPage() {
               <div className="pdp-badge-item">
                 <span className="pdp-badge-icon">🔒</span>
                 <div>
-                  <strong>Transferencia Inmediata 100% Segura</strong>
-                  <p>Operación directa banco a banco con cifrado oficial y máxima protección. Confirmación en tiempo real para envío express en 24/48h.</p>
+                  <strong>Bizum o Transferencia Inmediata 100% Segura</strong>
+                  <p>Operación directa por Bizum o banco a banco con cifrado oficial y máxima protección. Confirmación en tiempo real para envío express en 24/48h.</p>
                 </div>
               </div>
               {(() => {
