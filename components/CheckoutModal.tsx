@@ -137,8 +137,9 @@ export default function CheckoutModal({
   }
 
   const handleCopyBizum = () => {
+    const phoneToCopy = (settings.bizumPhone || '631 974 038').replace(/\s+/g, '')
     if (navigator.clipboard) {
-      navigator.clipboard.writeText('631974038')
+      navigator.clipboard.writeText(phoneToCopy)
       setCopiedBizum(true)
       setTimeout(() => setCopiedBizum(false), 2500)
     }
@@ -218,7 +219,7 @@ export default function CheckoutModal({
                     </span>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2px' }}>
                       <strong style={{ fontSize: '20px', letterSpacing: '0.06em', color: '#006064' }}>
-                        631 974 038
+                        {settings.bizumPhone || '631 974 038'}
                       </strong>
                       <button
                         type="button"
@@ -248,7 +249,7 @@ export default function CheckoutModal({
                       Titular / Destinatario Bizum
                     </span>
                     <strong style={{ color: '#20251f', fontSize: '13.5px' }}>
-                      MARIA LLANOS GALLEGO MEDINA
+                      {settings.bizumHolder || 'MARIA LLANOS GALLEGO MEDINA'}
                     </strong>
                   </div>
 
@@ -262,7 +263,7 @@ export default function CheckoutModal({
                   </div>
 
                   <p style={{ fontSize: '11px', color: '#555', fontStyle: 'italic', margin: '4px 0 0', borderTop: '1px dashed #e5e5e5', paddingTop: '8px' }}>
-                    💡 Abra su app bancaria (CaixaBank, Santander, BBVA, etc.), pulse en <strong>Bizum</strong>, envíe <strong>{totalPrice}</strong> al <strong>631974038</strong> indicando el concepto <strong>{orderRef}</strong>.
+                    💡 Abra su app bancaria (CaixaBank, Santander, BBVA, etc.), pulse en <strong>Bizum</strong>, envíe <strong>{totalPrice}</strong> al <strong>{(settings.bizumPhone || '631 974 038').replace(/\s+/g, '')}</strong> indicando el concepto <strong>{orderRef}</strong>.
                   </p>
                 </div>
               </div>
@@ -744,10 +745,10 @@ export default function CheckoutModal({
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#006064', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
                       <span>📱</span>
-                      <span>Pago Express por Bizum al 631 974 038</span>
+                      <span>Pago Express por Bizum al {settings.bizumPhone || '631 974 038'}</span>
                     </div>
                     <span style={{ fontSize: '11px', color: '#00838f', lineHeight: '1.45', display: 'block' }}>
-                      Beneficiaria : <strong>MARIA LLANOS GALLEGO MEDINA</strong>. Al confirmar, verá el resumen y el concepto exacto a indicar para preparar su envío en 24/48h.
+                      Beneficiaria : <strong>{settings.bizumHolder || 'MARIA LLANOS GALLEGO MEDINA'}</strong>. Al confirmar, verá el resumen y el concepto exacto a indicar para preparar su envío en 24/48h.
                     </span>
                   </div>
                 ) : (

@@ -609,6 +609,22 @@ export async function fetchSettingsFromDb(): Promise<SiteSettings | null> {
       return null
     }
 
+    let bizumPhone = '631 974 038'
+    let bizumHolder = 'MARIA LLANOS GALLEGO MEDINA'
+    let contactHours = data.contact_hours || ''
+
+    if (contactHours.includes('<!--BIZUM:')) {
+      try {
+        const m = contactHours.match(/<!--BIZUM:(.*?)-->/)
+        if (m) {
+          const parsed = JSON.parse(m[1])
+          if (parsed.phone) bizumPhone = parsed.phone
+          if (parsed.holder) bizumHolder = parsed.holder
+        }
+      } catch {}
+      contactHours = contactHours.replace(/<!--BIZUM:.*?-->/, '').trim()
+    }
+
     return {
       siteName: data.site_name || 'MERCATUM',
       announcement: data.announcement || '',
@@ -617,11 +633,13 @@ export async function fetchSettingsFromDb(): Promise<SiteSettings | null> {
       contactPhone: data.contact_phone || '',
       contactAddress: data.contact_address || '',
       contactEmail: data.contact_email || '',
-      contactHours: data.contact_hours || '',
+      contactHours: contactHours || '',
       bankName: data.bank_name || '',
       bankAccountHolder: data.account_holder || '',
       bankIban: data.iban || '',
       bankSwift: data.bic || '',
+      bizumPhone,
+      bizumHolder,
       facebookPixelId: data.meta_pixel_id || '',
       tiktokPixelId: data.tiktok_pixel_id || '',
       googleTagId: data.google_tag_id || '',
@@ -636,6 +654,13 @@ export async function fetchSettingsFromDb(): Promise<SiteSettings | null> {
 
 export async function saveSettingsToDb(settings: SiteSettings): Promise<boolean> {
   try {
+    const rawHours = (settings.contactHours || '').replace(/<!--BIZUM:.*?-->/, '').trim()
+    const bizumPayload = JSON.stringify({
+      phone: settings.bizumPhone || '631 974 038',
+      holder: settings.bizumHolder || 'MARIA LLANOS GALLEGO MEDINA',
+    })
+    const encodedHours = `${rawHours} <!--BIZUM:${bizumPayload}-->`.trim()
+
     const { error } = await supabase.from('site_settings').upsert({
       id: 1,
       site_name: settings.siteName,
@@ -645,7 +670,7 @@ export async function saveSettingsToDb(settings: SiteSettings): Promise<boolean>
       contact_phone: settings.contactPhone,
       contact_address: settings.contactAddress,
       contact_email: settings.contactEmail,
-      contact_hours: settings.contactHours,
+      contact_hours: encodedHours,
       bank_name: settings.bankName,
       account_holder: settings.bankAccountHolder,
       iban: settings.bankIban,

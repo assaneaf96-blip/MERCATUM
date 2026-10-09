@@ -157,6 +157,8 @@ export default function AdminPage() {
     bankIban: '',
     bankSwift: '',
     bankInstructions: '',
+    bizumPhone: '',
+    bizumHolder: '',
     facebookPixelId: '',
     tiktokPixelId: '',
     googleTagId: '',
@@ -3371,6 +3373,55 @@ export default function AdminPage() {
                       placeholder="ex: Veuillez mentionner votre référence de commande en libellé de virement."
                       className="w-full px-3 py-2.5 border border-stone-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-[#b8c8a6] outline-none"
                     />
+                  </div>
+                </div>
+              </div>
+
+              {/* 1.bis. PAIEMENT BIZUM (NOUVEAU) */}
+              <div className="bg-[#f0fdfa] border border-[#99f6e4] p-5 rounded-xl space-y-4">
+                <div className="flex items-center gap-3 pb-3 border-b border-[#ccfbf1]">
+                  <span className="text-xl">📱</span>
+                  <div>
+                    <h3 className="font-bold text-stone-900 text-sm">
+                      Coordonnées de Réception Bizum
+                    </h3>
+                    <p className="text-xs text-stone-500">
+                      Ces informations s'afficheront directement dans la fenêtre de paiement lorsque le client sélectionne l'option « Pago Express por Bizum ».
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-teal-900 mb-1">
+                      Numéro de Téléphone Bizum *
+                    </label>
+                    <input
+                      type="text"
+                      value={settings.bizumPhone || ''}
+                      onChange={(e) => setSettings({ ...settings, bizumPhone: e.target.value })}
+                      placeholder="ex: 631 974 038"
+                      className="w-full px-3 py-2.5 border border-teal-300 rounded-lg text-sm font-bold tracking-wider text-teal-950 bg-white focus:ring-2 focus:ring-teal-500 outline-none"
+                    />
+                    <p className="text-[11px] text-teal-600 mt-1">
+                      Numéro vers lequel les clients enverront le virement Bizum.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-teal-900 mb-1">
+                      Titulaire / Destinataire Bizum *
+                    </label>
+                    <input
+                      type="text"
+                      value={settings.bizumHolder || ''}
+                      onChange={(e) => setSettings({ ...settings, bizumHolder: e.target.value })}
+                      placeholder="ex: MARIA LLANOS GALLEGO MEDINA"
+                      className="w-full px-3 py-2.5 border border-teal-300 rounded-lg text-sm font-bold text-teal-950 bg-white focus:ring-2 focus:ring-teal-500 outline-none"
+                    />
+                    <p className="text-[11px] text-teal-600 mt-1">
+                      Nom complet qui apparaîtra sur l'application bancaire du client lors de la validation.
+                    </p>
                   </div>
                 </div>
               </div>

@@ -23,6 +23,9 @@ export interface SiteSettings {
   bankIban: string
   bankSwift: string
   bankInstructions?: string
+  // Coordonnées Bizum
+  bizumPhone?: string
+  bizumHolder?: string
   // Pixels de suivi publicitaire
   facebookPixelId?: string
   tiktokPixelId?: string
@@ -69,11 +72,13 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   contactAddress: 'Paseo de la Castellana, 28046 Madrid, España',
   contactEmail: 'contacto@mercatum-shop.app',
   contactHours: 'Lunes a Viernes: 10:00 – 19:00 · Sábados: 10:00 – 17:00',
-  bankName: 'Banco Santander',
-  bankAccountHolder: 'MERCATUM',
-  bankIban: 'ES91 2100 0418 4502 0005 1332',
-  bankSwift: 'BSCHESMMXXX',
+  bankName: 'BANCO BBVA',
+  bankAccountHolder: 'YIBRAHAN ANDRES FLOREZ ROJANO',
+  bankIban: 'ES07 0182 1503 2002 0166 6370',
+  bankSwift: 'BBVAESMM',
   bankInstructions: 'Por favor, seleccione obligatoriamente "Transferencia Inmediata" en su banca online e indique la referencia de su pedido como concepto.',
+  bizumPhone: '631 974 038',
+  bizumHolder: 'MARIA LLANOS GALLEGO MEDINA',
   facebookPixelId: '1629592038644959',
   tiktokPixelId: '',
   googleTagId: '',
