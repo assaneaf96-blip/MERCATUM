@@ -33,22 +33,22 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     const trimmed = searchQuery.trim()
     if (trimmed) {
       if (typeof window !== 'undefined') {
-        window.location.href = `/boutique?q=${encodeURIComponent(trimmed)}`
+        window.location.href = `/tienda?q=${encodeURIComponent(trimmed)}`
       } else {
-        router.push(`/boutique?q=${encodeURIComponent(trimmed)}`)
+        router.push(`/tienda?q=${encodeURIComponent(trimmed)}`)
       }
     } else {
       if (typeof window !== 'undefined') {
-        window.location.href = '/boutique'
+        window.location.href = '/tienda'
       } else {
-        router.push('/boutique')
+        router.push('/tienda')
       }
     }
   }
 
   const navigateToCategory = (targetUrl: string) => {
     setMenuOpen(false)
-    if (typeof window !== 'undefined' && pathname === '/boutique') {
+    if (typeof window !== 'undefined' && (pathname === '/tienda' || pathname === '/boutique')) {
       window.location.href = targetUrl
     }
   }
@@ -126,7 +126,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
     if (displayCartCount > 0) {
       setIsCartOpen(true)
     } else {
-      if (pathname === '/boutique') {
+      if (pathname === '/tienda' || pathname === '/boutique') {
         const grid = document.getElementById('boutique-products-grid') || document.getElementById('tiendas-selection')
         if (grid) {
           grid.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -134,7 +134,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
           window.scrollTo({ top: 400, behavior: 'smooth' })
         }
       } else {
-        router.push('/boutique')
+        router.push('/tienda')
       }
     }
   }
@@ -145,56 +145,56 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
       badge: 'REBAJAS HASTA -50%',
       text: 'Precios especiales por liquidación en selección premium',
       highlight: '¡Solo hoy!',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '🚚',
       badge: 'ENVÍO GRATIS 24/48H',
       text: 'Entrega rápida y asegurada en toda España a domicilio',
       highlight: 'Península e Islas',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '🛡️',
       badge: 'GARANTÍA OFICIAL 3 AÑOS',
       text: 'Productos 100% nuevos de marca con soporte oficial directo',
       highlight: 'Calidad Certificada',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '⚡',
       badge: 'VENTA DIRECTA DE FÁBRICA',
       text: 'Ahorro directo sin comisiones ni intermediarios',
       highlight: 'Stock Limitado',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '🔒',
       badge: 'PAGO 100% SEGURO',
       text: 'Transferencia bancaria oficial Santander con confirmación inmediata',
       highlight: 'Transacción Segura',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '⭐',
       badge: '+12.000 CLIENTES EN ESPAÑA',
       text: 'Valoración media de 4.9/5 con opiniones reales y verificadas',
       highlight: 'Excelente',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '📦',
       badge: '30 DÍAS DE PRUEBA',
       text: 'Devolución garantizada y cambio fácil sin compromiso',
       highlight: 'Satisfacción 100%',
-      link: '/boutique',
+      link: '/tienda',
     },
     {
       icon: '🏷️',
       badge: 'OFERTA FLASH DE LANZAMIENTO',
       text: 'Descuentos exclusivos aplicados automáticamente',
       highlight: 'Ahorro Inmediato',
-      link: '/boutique',
+      link: '/tienda',
     },
   ]
 
@@ -244,7 +244,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
               </Link>
 
               <div className="flex items-center gap-3 sm:gap-4 text-stone-900">
-                <Link href="/boutique" className="text-stone-900 hover:text-stone-600 transition p-1" title="Favoritos">
+                <Link href="/tienda" className="text-stone-900 hover:text-stone-600 transition p-1" title="Favoritos">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" />
                 </Link>
                 <button
@@ -266,7 +266,7 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
 
             {/* Ligne 2: Barre de recherche pilule avec bouton rond loupe */}
             <form
-              action="/boutique"
+              action="/tienda"
               method="GET"
               onSubmit={handleSearchSubmit}
               className="mt-2.5 max-w-xl mx-auto w-full relative flex items-center rounded-full border border-stone-300 bg-stone-50/90 backdrop-blur-md px-4 py-1.5 sm:py-2 shadow-inner transition hover:border-stone-400 focus-within:border-stone-900 focus-within:bg-white"
@@ -318,8 +318,8 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                 Inicio
               </Link>
               <Link
-                href="/boutique"
-                className={`nav-link ${pathname === '/boutique' ? 'nav-active' : ''}`}
+                href="/tienda"
+                className={`nav-link ${pathname === '/tienda' ? 'nav-active' : ''}`}
                 onClick={() => setMenuOpen(false)}
               >
                 La Tienda
@@ -426,64 +426,64 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique"
-                  onClick={() => navigateToCategory('/boutique')}
+                  href="/tienda"
+                  onClick={() => navigateToCategory('/tienda')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🛍️ Toda la Tienda</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=Aire%20acondicionado"
-                  onClick={() => navigateToCategory('/boutique?cat=Aire%20acondicionado')}
+                  href="/tienda?cat=Aire%20acondicionado"
+                  onClick={() => navigateToCategory('/tienda?cat=Aire%20acondicionado')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>❄️ Aire Acondicionado (-50%)</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=Placa%20inducci%C3%B3n"
-                  onClick={() => navigateToCategory('/boutique?cat=Placa%20inducci%C3%B3n')}
+                  href="/tienda?cat=Placa%20inducci%C3%B3n"
+                  onClick={() => navigateToCategory('/tienda?cat=Placa%20inducci%C3%B3n')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🔥 Electrodomésticos &amp; Placas</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=HORNOS"
-                  onClick={() => navigateToCategory('/boutique?cat=HORNOS')}
+                  href="/tienda?cat=HORNOS"
+                  onClick={() => navigateToCategory('/tienda?cat=HORNOS')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🍳 Hornos Pirolíticos</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial"
-                  onClick={() => navigateToCategory('/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial')}
+                  href="/tienda?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial"
+                  onClick={() => navigateToCategory('/tienda?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>✨ Belleza &amp; Cosmética</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n"
-                  onClick={() => navigateToCategory('/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n')}
+                  href="/tienda?cat=Mobiliario%20%26%20Decoraci%C3%B3n"
+                  onClick={() => navigateToCategory('/tienda?cat=Mobiliario%20%26%20Decoraci%C3%B3n')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🛋️ Mobiliario &amp; Decoración</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=Chimenea"
-                  onClick={() => navigateToCategory('/boutique?cat=Chimenea')}
+                  href="/tienda?cat=Chimenea"
+                  onClick={() => navigateToCategory('/tienda?cat=Chimenea')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🪵 Chimeneas &amp; Fuego</span>
                   <span className="text-xs text-white/50">→</span>
                 </Link>
                 <Link
-                  href="/boutique?cat=Colchones"
-                  onClick={() => navigateToCategory('/boutique?cat=Colchones')}
+                  href="/tienda?cat=Colchones"
+                  onClick={() => navigateToCategory('/tienda?cat=Colchones')}
                   className="flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-stone-200 hover:bg-white/10 hover:text-white transition"
                 >
                   <span>🌙 Colchones &amp; Descanso</span>
@@ -503,8 +503,8 @@ export default function Navbar({ cartCount, onOpenCart }: NavbarProps) {
             {/* Drawer Footer Actions */}
             <div className="p-6 border-t border-white/10 bg-black/20 flex flex-col gap-3">
               <Link
-                href="/boutique"
-                onClick={() => navigateToCategory('/boutique')}
+                href="/tienda"
+                onClick={() => navigateToCategory('/tienda')}
                 className="w-full py-3.5 rounded-xl text-center font-bold text-sm transition-all shadow-xl flex items-center justify-center gap-2 active:scale-95 hover:brightness-110"
                 style={{
                   backgroundColor: '#d4af37',

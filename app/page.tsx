@@ -322,7 +322,7 @@ function CategorySliderSection({
 
           <div className="category-header-actions">
             <Link
-              href={`/boutique?cat=${encodeURIComponent(category)}`}
+              href={`/tienda?cat=${encodeURIComponent(category)}`}
               className="category-explore-btn"
             >
               Ver todo el universo ({products.length} artículos) <span>→</span>
@@ -448,7 +448,7 @@ function CategorySliderSection({
                   Descubra la colección completa de {category}
                 </p>
                 <Link
-                  href={`/boutique?cat=${encodeURIComponent(category)}`}
+                  href={`/tienda?cat=${encodeURIComponent(category)}`}
                   className="button dark"
                   style={{ fontSize: '13px', padding: '10px 20px', borderRadius: '9999px' }}
                 >
@@ -470,7 +470,7 @@ const FULL_HERO_SLIDES = [
     subtitle: 'Placas de inducción con extracción y hornos pirolíticos de última generación',
     badge: 'NOVEDADES EXCLUSIVAS',
     image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
-    link: '/boutique?cat=Placa%20inducci%C3%B3n',
+    link: '/tienda?cat=Placa%20inducci%C3%B3n',
     category: 'Electrodomésticos',
   },
   {
@@ -479,7 +479,7 @@ const FULL_HERO_SLIDES = [
     subtitle: 'Tratamientos botánicos regeneradores y perfumes de autor más selectos',
     badge: 'BELLEZA EXCLUSIVA',
     image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=85',
-    link: '/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial',
+    link: '/tienda?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial',
     category: 'Belleza',
   },
   {
@@ -488,7 +488,7 @@ const FULL_HERO_SLIDES = [
     subtitle: 'El equilibrio perfecto entre pureza geométrica y confort supremo',
     badge: 'DISEÑO & CONFORT',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85',
-    link: '/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n',
+    link: '/tienda?cat=Mobiliario%20%26%20Decoraci%C3%B3n',
     category: 'Mobiliario & Decoración',
   },
   {
@@ -497,7 +497,7 @@ const FULL_HERO_SLIDES = [
     subtitle: 'Calor radiante, estufas de leña y pellets para un confort duradero',
     badge: 'CALOR DE HOGAR',
     image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=85',
-    link: '/boutique?cat=Chimenea',
+    link: '/tienda?cat=Chimenea',
     category: 'Chimenea',
   },
 ]
@@ -506,62 +506,62 @@ const ECI_CATEGORIES = [
   {
     name: 'Electrodomésticos',
     image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Placa%20inducci%C3%B3n',
+    link: '/tienda?cat=Placa%20inducci%C3%B3n',
   },
   {
     name: 'Belleza',
     image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial',
+    link: '/tienda?cat=Alta%20Cosm%C3%A9tica%20%26%20Cuidado%20Facial',
   },
   {
     name: 'Joyería',
     image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Reloj%20de%20mujer',
+    link: '/tienda?cat=Reloj%20de%20mujer',
   },
   {
     name: 'Mobiliario & Decoración',
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Mobiliario%20%26%20Decoraci%C3%B3n',
+    link: '/tienda?cat=Mobiliario%20%26%20Decoraci%C3%B3n',
   },
   {
     name: 'Placa inducción',
     image: '/uploads/placa-de-induccion-cata-con-campana-extractora-as-600-negro.jpg',
-    link: '/boutique?cat=Placa%20inducci%C3%B3n',
+    link: '/tienda?cat=Placa%20inducci%C3%B3n',
   },
   {
     name: 'Hornos',
     image: 'https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=HORNOS',
+    link: '/tienda?cat=HORNOS',
   },
   {
     name: 'Chimenea',
     image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Chimenea',
+    link: '/tienda?cat=Chimenea',
   },
   {
     name: 'Colchones',
     image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Colchones',
+    link: '/tienda?cat=Colchones',
   },
   {
     name: 'Bolsos',
     image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=BOLSOS%20MUJER',
+    link: '/tienda?cat=BOLSOS%20MUJER',
   },
   {
     name: 'Aire Libre & Glamping',
     image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Aire%20Libre%20%26%20Glamping',
+    link: '/tienda?cat=Aire%20Libre%20%26%20Glamping',
   },
   {
     name: 'Cámaras Digitales',
     image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=C%C3%A1maras%20Digitales',
+    link: '/tienda?cat=C%C3%A1maras%20Digitales',
   },
   {
     name: 'Mueble de baño',
     image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80',
-    link: '/boutique?cat=Mueble%20de%20ba%C3%B1o',
+    link: '/tienda?cat=Mueble%20de%20ba%C3%B1o',
   },
 ]
 
@@ -1188,7 +1188,7 @@ export default function HomePage() {
             </h2>
             <div className="flex items-center gap-2">
               <Link
-                href="/boutique"
+                href="/tienda"
                 className="text-xs sm:text-sm font-semibold text-stone-500 hover:text-stone-900 transition flex items-center gap-1 mr-2"
               >
                 Ver todo <span>→</span>
@@ -1503,7 +1503,7 @@ export default function HomePage() {
         <p>
           Su hogar es su refugio y el corazón de su descanso. En MERCATUM aunamos el diseño más refinado con la máxima exigencia de calidad para celebrar el arte de vivir en toda su plenitud.
         </p>
-        <Link className="text-link" href="/boutique">Explorar todas nuestras colecciones <span>↗</span></Link>
+        <Link className="text-link" href="/tienda">Explorar todas nuestras colecciones <span>↗</span></Link>
       </section>
 
 
@@ -1519,7 +1519,7 @@ export default function HomePage() {
           <p>
             Cuidar de su entorno y de su descanso diario forman parte de una misma dedicación. Desde mobiliario de carácter concebido para perdurar hasta equipamiento técnico pensado para hacer la vida más confortable, cada pieza es seleccionada con pasión para enriquecer su día a día.
           </p>
-          <Link className="button outline" href="/boutique">
+          <Link className="button outline" href="/tienda">
             Descubrir todas nuestras colecciones <span>↗</span>
           </Link>
         </div>
@@ -1559,7 +1559,7 @@ export default function HomePage() {
             <p className="eyebrow">Últimas llegadas</p>
             <h2 style={{ marginBottom: 0 }}>Novedades</h2>
           </div>
-          <Link className="text-link" href="/boutique" style={{ margin: 0 }}>
+          <Link className="text-link" href="/tienda" style={{ margin: 0 }}>
             Todas las novedades <span>↗</span>
           </Link>
         </div>

@@ -39,6 +39,20 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/boutique',
+        destination: '/tienda',
+        permanent: true,
+      },
+      {
+        source: '/boutique/:path*',
+        destination: '/tienda/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

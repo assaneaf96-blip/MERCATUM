@@ -146,9 +146,9 @@ export default function ProductDetailPage() {
     }
 
     if (product?.category) {
-      router.push(`/boutique?cat=${encodeURIComponent(product.category)}`)
+      router.push(`/tienda?cat=${encodeURIComponent(product.category)}`)
     } else {
-      router.push('/boutique')
+      router.push('/tienda')
     }
   }
 
@@ -805,7 +805,7 @@ export default function ProductDetailPage() {
               <span>Volver</span>
             </button>
             <Link
-              href={`/boutique?cat=${encodeURIComponent(product.category)}`}
+              href={`/tienda?cat=${encodeURIComponent(product.category)}`}
               className="pdp-category-tag"
             >
               {product.category}
@@ -826,9 +826,9 @@ export default function ProductDetailPage() {
             <span className="pdp-sep mr-2">|</span>
             <Link href="/">Inicio</Link>
             <span className="pdp-sep">/</span>
-            <Link href="/boutique">La Tienda</Link>
+            <Link href="/tienda">La Tienda</Link>
             <span className="pdp-sep">/</span>
-            <Link href={`/boutique?cat=${encodeURIComponent(product.category)}`} className="pdp-cat-link">
+            <Link href={`/tienda?cat=${encodeURIComponent(product.category)}`} className="pdp-cat-link">
               {product.category}
             </Link>
             <span className="pdp-sep">/</span>
@@ -1340,7 +1340,7 @@ export default function ProductDetailPage() {
                 <p className="eyebrow">Selección Exclusiva</p>
                 <h2>Artículos recomendados</h2>
               </div>
-              <Link href="/boutique" className="text-link">
+              <Link href="/tienda" className="text-link">
                 Explorar todo el catálogo <span>↗</span>
               </Link>
             </div>

@@ -1276,11 +1276,11 @@ export default function AdminPage() {
             Voir l'Accueil ↗
           </Link>
           <Link
-            href="/boutique"
+            href="/tienda"
             target="_blank"
             className="text-xs text-[#b8c8a6] hover:text-[#f4f0e9] border border-[#b8c8a6]/40 px-3 py-1.5 rounded transition flex items-center gap-1"
           >
-            Voir la Boutique ↗
+            Ver la Tienda ↗
           </Link>
           <button
             onClick={handleLogout}

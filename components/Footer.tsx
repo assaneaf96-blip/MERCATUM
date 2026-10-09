@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Navegación</h4>
           <Link href="/">Inicio</Link>
-          <Link href="/boutique">La Tienda</Link>
+          <Link href="/tienda">La Tienda</Link>
           <Link href="/#histoire">Nuestra Filosofía</Link>
           <Link href="/#nouveautes">Novedades</Link>
         </div>

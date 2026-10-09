@@ -113,7 +113,7 @@ export default function CartModal({ isOpen, onClose, onCheckout }: CartModalProp
                 Descubra nuestra exclusiva selección de electrodomésticos, estufas, mobiliario y cuidado personal.
               </p>
               <Link
-                href="/boutique"
+                href="/tienda"
                 onClick={onClose}
                 style={{
                   backgroundColor: '#0f172a',

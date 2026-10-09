@@ -414,6 +414,7 @@ export async function POST(request: NextRequest) {
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {
       revalidatePath('/api/products')
+      revalidatePath('/tienda')
       revalidatePath('/boutique')
       revalidatePath('/')
       revalidatePath('/admin')
@@ -481,6 +482,7 @@ export async function DELETE(request: NextRequest) {
     // Invalider immédiatement les pages statiques/SSR Next.js
     try {
       revalidatePath('/api/products')
+      revalidatePath('/tienda')
       revalidatePath('/boutique')
       revalidatePath('/')
       revalidatePath('/admin')

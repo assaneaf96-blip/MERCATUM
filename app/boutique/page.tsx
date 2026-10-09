@@ -350,7 +350,7 @@ export default function BoutiquePage() {
     if (typeof window !== 'undefined' && document.referrer) {
       try {
         const refUrl = new URL(document.referrer)
-        if (refUrl.host === window.location.host && refUrl.pathname !== '/boutique') {
+        if (refUrl.host === window.location.host && refUrl.pathname !== '/tienda') {
           router.back()
           return
         }
@@ -361,7 +361,7 @@ export default function BoutiquePage() {
     setSearchQuery('')
     setViewMode('tiendas')
     if (typeof window !== 'undefined') {
-      window.history.pushState({ viewMode: 'tiendas' }, '', '/boutique')
+      window.history.pushState({ viewMode: 'tiendas' }, '', '/tienda')
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
@@ -406,7 +406,7 @@ export default function BoutiquePage() {
                 setSelectedCategory('Todos los productos')
                 setSearchQuery('')
                 if (typeof window !== 'undefined') {
-                  window.history.pushState({ viewMode: 'tiendas' }, '', '/boutique')
+                  window.history.pushState({ viewMode: 'tiendas' }, '', '/tienda')
                 }
               }}
               className={`flex-1 md:flex-none px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
