@@ -69,9 +69,25 @@ export default function CheckoutModal({
     }
   }, [product?.id])
 
-  if (!product) return null
+  const getEffectiveUnitPrice = (p: any): number => {
+    if (!p) return 0
+    if (typeof p.rawPrice === 'number' && !isNaN(p.rawPrice) && p.rawPrice > 0) return p.rawPrice
+    if (typeof p.raw_price === 'number' && !isNaN(p.raw_price) && p.raw_price > 0) return p.raw_price
+    if (typeof p.raw_price === 'string') {
+      const n = parseFloat(p.raw_price.replace(',', '.'))
+      if (!isNaN(n) && n > 0) return n
+    }
+    if (typeof p.price === 'string') {
+      const cleaned = p.price.replace(/[^\d.,]/g, '').replace(',', '.')
+      const n = parseFloat(cleaned)
+      if (!isNaN(n) && n > 0) return n
+    }
+    return 0
+  }
 
-  const totalPrice = (product.rawPrice * quantity).toFixed(2).replace('.', ',') + ' €'
+  const unitPrice = getEffectiveUnitPrice(product)
+  const numericTotal = Number((unitPrice * quantity).toFixed(2))
+  const totalPrice = numericTotal > 0 ? numericTotal.toFixed(2).replace('.', ',') + ' €' : (product.price || '0,00 €')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -83,6 +99,7 @@ export default function CheckoutModal({
 
     // Enregistrer la commande dans le store local & Supabase
     const paymentMethodLabel = selectedPayment === 'bizum' ? 'Bizum' : 'Virement Bancaire'
+    const finalOrderTotal = numericTotal > 0 ? numericTotal : (getEffectiveUnitPrice(product) * quantity)
     const newOrder = {
       id: ref,
       customerName: fullName,
@@ -91,7 +108,7 @@ export default function CheckoutModal({
       customerAddress: address,
       productId: product.id,
       productName: `${quantity}x ${product.name}`,
-      totalPrice: product.rawPrice * quantity,
+      totalPrice: finalOrderTotal,
       currency: 'EUR',
       paymentMethod: paymentMethodLabel,
       status: (selectedPayment === 'bizum' ? 'En attente de paiement Bizum' : 'En attente de virement') as any,
@@ -106,17 +123,17 @@ export default function CheckoutModal({
       customerAddress: address,
       productId: product.id,
       productName: `${quantity}x ${product.name}`,
-      totalPrice: product.rawPrice * quantity,
+      totalPrice: finalOrderTotal,
     }).catch((err) => console.warn('Erreur Supabase sync order:', err))
 
     onSuccess(product)
 
     // Événements de conversion pour les pixels publicitaires & Meta CAPI
-    const rawTotal = product.rawPrice * quantity
     trackPixel('Purchase', {
       id: product.id,
       name: product.name,
-      price: rawTotal,
+      price: finalOrderTotal,
+      value: finalOrderTotal,
       quantity,
       orderId: ref,
       userData: {

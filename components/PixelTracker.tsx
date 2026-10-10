@@ -224,7 +224,11 @@ export default function PixelTracker() {
       if (!event) return
 
       try {
-        const val = Number(data?.price || data?.value || 0)
+        let rawVal = data?.price ?? data?.value ?? 0
+        if (typeof rawVal === 'string') {
+          rawVal = parseFloat(rawVal.replace(/[^\d.,]/g, '').replace(',', '.')) || 0
+        }
+        const val = Number(Number(rawVal).toFixed(2))
         const qty = Number(data?.quantity || 1)
         const itemId = String(data?.id || '')
         const itemName = String(data?.name || '')
