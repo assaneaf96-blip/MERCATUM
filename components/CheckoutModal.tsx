@@ -69,6 +69,8 @@ export default function CheckoutModal({
     }
   }, [product?.id])
 
+  if (!product) return null
+
   const getEffectiveUnitPrice = (p: any): number => {
     if (!p) return 0
     if (typeof p.rawPrice === 'number' && !isNaN(p.rawPrice) && p.rawPrice > 0) return p.rawPrice
@@ -87,7 +89,7 @@ export default function CheckoutModal({
 
   const unitPrice = getEffectiveUnitPrice(product)
   const numericTotal = Number((unitPrice * quantity).toFixed(2))
-  const totalPrice = numericTotal > 0 ? numericTotal.toFixed(2).replace('.', ',') + ' €' : (product.price || '0,00 €')
+  const totalPrice = numericTotal > 0 ? numericTotal.toFixed(2).replace('.', ',') + ' €' : (product?.price || '0,00 €')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
