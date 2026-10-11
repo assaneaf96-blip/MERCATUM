@@ -41,8 +41,13 @@ export async function POST(req: NextRequest) {
     const clientIpAddress = forwarded ? forwarded.split(',')[0].trim() : req.headers.get('x-real-ip') || undefined
     const clientUserAgent = req.headers.get('user-agent') || undefined
 
-    const fbp = req.cookies.get('_fbp')?.value
-    const fbc = req.cookies.get('_fbc')?.value
+    const fbp = (userData?.fbp || req.cookies.get('_fbp')?.value || '').trim()
+    let fbc = (userData?.fbc || req.cookies.get('_fbc')?.value || '').trim()
+
+    // Si fbc est fourni sous forme d'un fbclid brut, le formater selon la norme officielle Meta: fb.1.<timestamp_ms>.<fbclid>
+    if (fbc && !fbc.startsWith('fb.')) {
+      fbc = `fb.1.${Date.now()}.${fbc}`
+    }
 
     const hashedUserData: Record<string, any> = {
       client_ip_address: clientIpAddress,
@@ -115,7 +120,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({
+    const res = NextResponse.json({
       success: true,
       eventName,
       eventId: eventPayload.event_id,
@@ -123,6 +128,24 @@ export async function POST(req: NextRequest) {
       capiSent,
       metaResponse: metaResult,
     })
+
+    // Définir des cookies HTTP 1st-party pour pérenniser fbc et fbp contre les blocages Safari ITP
+    if (fbc) {
+      res.cookies.set('_fbc', fbc, {
+        maxAge: 90 * 24 * 60 * 60,
+        path: '/',
+        sameSite: 'lax',
+      })
+    }
+    if (fbp) {
+      res.cookies.set('_fbp', fbp, {
+        maxAge: 90 * 24 * 60 * 60,
+        path: '/',
+        sameSite: 'lax',
+      })
+    }
+
+    return res
   } catch (error: any) {
     console.error('Conversions API route error:', error)
     return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 })

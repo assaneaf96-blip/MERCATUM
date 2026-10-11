@@ -21,6 +21,83 @@ export function trackPixel(
   window.dispatchEvent(new CustomEvent('mercatum:track_pixel', { detail: { event, data } }))
 }
 
+function getClientCookie(name: string): string | null {
+  if (typeof document === 'undefined') return null
+  const matches = document.cookie.match(
+    new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+  )
+  return matches ? decodeURIComponent(matches[1]) : null
+}
+
+function setClientCookie(name: string, value: string, days = 90) {
+  if (typeof document === 'undefined') return
+  const expires = new Date(Date.now() + days * 864e5).toUTCString()
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`
+}
+
+export function syncMetaClickIds(): { fbc?: string; fbp?: string } {
+  if (typeof window === 'undefined') return {}
+  try {
+    let fbc = getClientCookie('_fbc')
+    let fbp = getClientCookie('_fbp')
+
+    // 1. Extraire fbclid depuis l'URL si l'utilisateur arrive depuis une publicité
+    const urlParams = new URLSearchParams(window.location.search)
+    const fbclid = urlParams.get('fbclid')
+
+    if (fbclid) {
+      // Norme officielle Meta: fb.1.<timestamp_ms>.<fbclid>
+      const newFbc = `fb.1.${Date.now()}.${fbclid}`
+      setClientCookie('_fbc', newFbc, 90)
+      try {
+        localStorage.setItem('mercatum_fbc', newFbc)
+        localStorage.setItem('mercatum_fbclid', fbclid)
+      } catch {}
+      fbc = newFbc
+    } else if (!fbc) {
+      // 2. Restauration de fbc depuis localStorage si le cookie a été tronqué par Safari ITP
+      try {
+        const storedFbc = localStorage.getItem('mercatum_fbc')
+        if (storedFbc) {
+          setClientCookie('_fbc', storedFbc, 90)
+          fbc = storedFbc
+        } else {
+          const storedFbclid = localStorage.getItem('mercatum_fbclid')
+          if (storedFbclid) {
+            const generatedFbc = `fb.1.${Date.now()}.${storedFbclid}`
+            setClientCookie('_fbc', generatedFbc, 90)
+            localStorage.setItem('mercatum_fbc', generatedFbc)
+            fbc = generatedFbc
+          }
+        }
+      } catch {}
+    } else {
+      try {
+        localStorage.setItem('mercatum_fbc', fbc)
+      } catch {}
+    }
+
+    // 3. Sauvegarder fbp dans localStorage pour garantir la continuité
+    if (fbp) {
+      try {
+        localStorage.setItem('mercatum_fbp', fbp)
+      } catch {}
+    } else {
+      try {
+        const storedFbp = localStorage.getItem('mercatum_fbp')
+        if (storedFbp) {
+          setClientCookie('_fbp', storedFbp, 90)
+          fbp = storedFbp
+        }
+      } catch {}
+    }
+
+    return { fbc: fbc || undefined, fbp: fbp || undefined }
+  } catch {
+    return {}
+  }
+}
+
 function getFbOptions(eventId?: string): { test_event_code?: string; eventID?: string } | undefined {
   if (typeof window === 'undefined') return eventId ? { eventID: eventId } : undefined
   try {
@@ -202,6 +279,9 @@ export default function PixelTracker() {
   }
 
   useEffect(() => {
+    // 0. Synchroniser et préserver immédiatement les identifiants de clic Meta (fbc & fbp)
+    syncMetaClickIds()
+
     // Initialiser immédiatement avec les paramètres locaux si disponibles
     const local = getSiteSettings()
     if (local.facebookPixelId || local.tiktokPixelId || local.googleTagId || local.pinterestTagId) {
@@ -235,6 +315,14 @@ export default function PixelTracker() {
         const eventId = data?.eventId || data?.orderId || `${event.toLowerCase()}_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
         const fbOpts = getFbOptions(eventId)
 
+        // Capture et couverture maximale des identifiants Meta (fbc et fbp)
+        const metaIds = syncMetaClickIds()
+        const resolvedUserData = {
+          ...(data?.userData || {}),
+          ...(metaIds.fbc ? { fbc: metaIds.fbc } : {}),
+          ...(metaIds.fbp ? { fbp: metaIds.fbp } : {}),
+        }
+
         // Envoi au serveur Meta Conversions API (CAPI) en tâche de fond (Fire and Forget)
         if (typeof window !== 'undefined') {
           fetch('/api/conversions', {
@@ -244,7 +332,7 @@ export default function PixelTracker() {
               eventName: event,
               eventId,
               eventSourceUrl: window.location.href,
-              userData: data?.userData || {},
+              userData: resolvedUserData,
               customData: {
                 value: val,
                 currency: 'EUR',
