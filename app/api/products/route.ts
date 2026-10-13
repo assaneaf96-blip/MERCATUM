@@ -221,13 +221,33 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(
         { success: true, products: serverCache.products, cached: true },
         { headers: {
-          'Cache-Control': 'public, max-age=30, stale-while-revalidate=300',
+          'Cache-Control': 'public, max-age=60, stale-while-revalidate=600',
         }}
       )
     }
 
-    // 3. Récupération directe Supabase en une seule requête paginée intelligente
-    // On utilise une seule requête avec une limite haute pour éviter les 30 requêtes inutiles
+    // Récupérer depuis public/products.json en priorité (instantané < 5ms)
+    if (!isForcedDb) {
+      const jsonMap = getProductsJsonMap()
+      if (jsonMap && jsonMap.size > 0) {
+        const prods = Array.from(jsonMap.values())
+          .filter((p) => p && p.id !== 'masque-nuit-regenerant' && !/Masque Baume de Nuit/i.test(p.name || ''))
+
+        serverCache = {
+          products: prods,
+          timestamp: Date.now(),
+        }
+
+        return NextResponse.json(
+          { success: true, products: prods, cached: true },
+          { headers: {
+            'Cache-Control': 'public, max-age=60, stale-while-revalidate=600',
+          }}
+        )
+      }
+    }
+
+    // 3. Récupération directe Supabase en cas de force_db
     let allData: any[] = []
     const PAGE_SIZE = 1000
     let from = 0
@@ -237,7 +257,6 @@ export async function GET(request: NextRequest) {
       const { data, error } = await supabase
         .from('products')
         .select('id, name, category, type, price, raw_price, tag, rating, reviews_count')
-        .order('id', { ascending: true })
         .range(from, from + PAGE_SIZE - 1)
 
       if (error || !data || data.length === 0) {
