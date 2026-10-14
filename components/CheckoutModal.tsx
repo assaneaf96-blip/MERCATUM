@@ -1,10 +1,120 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Product, isVideoUrl } from '@/lib/products'
 import { getSiteSettings, saveSiteSettings, DEFAULT_SETTINGS, saveOrder, type SiteSettings } from '@/lib/store'
 import { createOrderInDb, markOrderPaymentConfirmedInDb } from '@/lib/supabaseService'
 import { trackPixel } from '@/components/PixelTracker'
+
+export const SPANISH_PROVINCES: { name: string; cities: string[] }[] = [
+  { name: 'Álava', cities: ['Vitoria-Gasteiz', 'Llodio', 'Amurrio', 'Salvatierra', 'Oyón'] },
+  { name: 'Albacete', cities: ['Albacete', 'Hellín', 'Villarrobledo', 'Almansa', 'La Roda', 'Caudete'] },
+  { name: 'Alicante', cities: ['Alicante', 'Elche', 'Torrevieja', 'Orihuela', 'Benidorm', 'Alcoy', 'Elda', 'San Vicente del Raspeig', 'Dénia', 'Villena', 'Petrer', 'Santa Pola', 'Jávea', 'Calpe'] },
+  { name: 'Almería', cities: ['Almería', 'Roquetas de Mar', 'El Ejido', 'Níjar', 'Vícar', 'Adra', 'Huércal-Overa', 'Berja'] },
+  { name: 'Asturias', cities: ['Gijón', 'Oviedo', 'Avilés', 'Siero', 'Langreo', 'Mieres', 'Castrillón', 'San Martín del Rey Aurelio', 'Cangas del Narcea'] },
+  { name: 'Ávila', cities: ['Ávila', 'Arévalo', 'Arenas de San Pedro', 'Las Navas del Marqués', 'Candeleda'] },
+  { name: 'Badajoz', cities: ['Badajoz', 'Mérida', 'Don Benito', 'Almendralejo', 'Villanueva de la Serena', 'Zafra', 'Montijo', 'Villafranca de los Barros'] },
+  { name: 'Barcelona', cities: ['Barcelona', 'L\'Hospitalet de Llobregat', 'Badalona', 'Terrassa', 'Sabadell', 'Mataró', 'Santa Coloma de Gramenet', 'Sant Cugat del Vallès', 'Cornellà de Llobregat', 'Sant Boi de Llobregat', 'Manresa', 'Rubí', 'Vilanova i la Geltrú', 'Viladecans', 'El Prat de Llobregat', 'Castelldefels', 'Granollers'] },
+  { name: 'Burgos', cities: ['Burgos', 'Miranda de Ebro', 'Aranda de Duero', 'Briviesca', 'Medina de Pomar'] },
+  { name: 'Cáceres', cities: ['Cáceres', 'Plasencia', 'Navalmoral de la Mata', 'Coria', 'Miajadas', 'Trujillo'] },
+  { name: 'Cádiz', cities: ['Cádiz', 'Jerez de la Frontera', 'Algeciras', 'San Fernando', 'El Puerto de Santa María', 'Chiclana de la Frontera', 'Sanlúcar de Barrameda', 'La Línea de la Concepción', 'Puerto Real', 'Arcos de la Frontera', 'San Roque', 'Rota'] },
+  { name: 'Cantabria', cities: ['Santander', 'Torrelavega', 'Castro-Urdiales', 'Camargo', 'Piélagos', 'El Astillero', 'Santa Cruz de Bezana', 'Laredo'] },
+  { name: 'Castellón', cities: ['Castellón de la Plana', 'Vila-real', 'Burriana', 'La Vall d\'Uixó', 'Vinaròs', 'Benicarló', 'Almassora', 'Onda', 'Benicàssim'] },
+  { name: 'Ciudad Real', cities: ['Ciudad Real', 'Puertollano', 'Tomelloso', 'Alcázar de San Juan', 'Valdepeñas', 'Manzanares', 'Daimiel', 'La Solana'] },
+  { name: 'Córdoba', cities: ['Córdoba', 'Lucena', 'Puente Genil', 'Montilla', 'Priego de Córdoba', 'Palma del Río', 'Cabra', 'Baena'] },
+  { name: 'Cuenca', cities: ['Cuenca', 'Tarancón', 'Quintanar del Rey', 'San Clemente', 'Las Pedroñeras'] },
+  { name: 'Girona', cities: ['Girona', 'Figueres', 'Blanes', 'Lloret de Mar', 'Olot', 'Salt', 'Palafrugell', 'Sant Feliu de Guíxols', 'Roses', 'Palamós'] },
+  { name: 'Granada', cities: ['Granada', 'Motril', 'Almuñécar', 'Armilla', 'Macarena', 'Baza', 'Loja', 'Maracena', 'Guadix', 'La Zubia'] },
+  { name: 'Guadalajara', cities: ['Guadalajara', 'Azuqueca de Henares', 'Alovera', 'El Casar', 'Cabanillas del Campo'] },
+  { name: 'Guipúzcoa', cities: ['San Sebastián', 'Irún', 'Errenteria', 'Eibar', 'Zarautz', 'Arrasate-Mondragón', 'Hernani', 'Tolosa', 'Lasarte-Oria'] },
+  { name: 'Huelva', cities: ['Huelva', 'Lepe', 'Almonte', 'Moguer', 'Isla Cristina', 'Ayamonte', 'Cartaya', 'Punta Umbría'] },
+  { name: 'Huesca', cities: ['Huesca', 'Monzón', 'Barbastro', 'Fraga', 'Jaca', 'Sabiñánigo'] },
+  { name: 'Illes Balears', cities: ['Palma de Mallorca', 'Calvià', 'Ibiza', 'Manacor', 'Santa Eulària des Riu', 'Marratxí', 'Ciutadella de Menorca', 'Mahón', 'Llucmajor', 'Inca'] },
+  { name: 'Jaén', cities: ['Jaén', 'Linares', 'Andújar', 'Úbeda', 'Martos', 'Alcalá la Real', 'Baeza', 'La Carolina'] },
+  { name: 'La Coruña', cities: ['A Coruña', 'Santiago de Compostela', 'Ferrol', 'Narón', 'Oleiros', 'Carballo', 'Arteixo', 'Ribeira', 'Culleredo', 'Ames'] },
+  { name: 'La Rioja', cities: ['Logroño', 'Calahorra', 'Arnedo', 'Haro', 'Alfaro', 'Nájera'] },
+  { name: 'Las Palmas', cities: ['Las Palmas de Gran Canaria', 'Telde', 'Santa Lucía de Tirajana', 'Arrecife', 'San Bartolomé de Tirajana', 'Puerto del Rosario', 'Arucas', 'Agüimes', 'Gáldar', 'Teguise'] },
+  { name: 'León', cities: ['León', 'Ponferrada', 'San Andrés del Rabanedo', 'Villaquilambre', 'Astorga', 'La Bañeza'] },
+  { name: 'Lleida', cities: ['Lleida', 'Tàrrega', 'Balaguer', 'Mollerussa', 'La Seu d\'Urgell', 'Cervera'] },
+  { name: 'Lugo', cities: ['Lugo', 'Monforte de Lemos', 'Viveiro', 'Vilalba', 'Sarria', 'Ribadeo', 'Burela'] },
+  { name: 'Madrid', cities: ['Madrid', 'Móstoles', 'Alcalá de Henares', 'Fuenlabrada', 'Leganés', 'Getafe', 'Alcorcón', 'Torrejón de Ardoz', 'Parla', 'Alcobendas', 'Las Rozas de Madrid', 'San Sebastián de los Reyes', 'Rivas-Vaciamadrid', 'Pozuelo de Alarcón', 'Coslada', 'Valdemoro', 'Majadahonda', 'Collado Villalba', 'Aranjuez', 'Arganda del Rey', 'Boadilla del Monte', 'Pinto', 'Colmenar Viejo'] },
+  { name: 'Málaga', cities: ['Málaga', 'Marbella', 'Mijas', 'Fuengirola', 'Vélez-Málaga', 'Torremolinos', 'Benalmádena', 'Estepona', 'Rincón de la Victoria', 'Antequera', 'Alhaurín de la Torre', 'Ronda'] },
+  { name: 'Murcia', cities: ['Murcia', 'Cartagena', 'Lorca', 'Molina de Segura', 'Alcantarilla', 'Torre-Pacheco', 'Águilas', 'Cieza', 'Yecla', 'San Javier', 'Mazarrón', 'Totana'] },
+  { name: 'Navarra', cities: ['Pamplona', 'Tudela', 'Barañáin', 'Valle de Egüés', 'Burlada', 'Zizur Mayor', 'Estella-Lizarra', 'Tafalla', 'Ansoáin'] },
+  { name: 'Ourense', cities: ['Ourense', 'O Barco de Valdeorras', 'Verín', 'O Carballiño', 'Xinzo de Limia', 'Barbadás'] },
+  { name: 'Palencia', cities: ['Palencia', 'Aguilar de Campoo', 'Guardo', 'Venta de Baños', 'Villamuriel de Cerrato'] },
+  { name: 'Pontevedra', cities: ['Vigo', 'Pontevedra', 'Vilagarcía de Arousa', 'Redondela', 'Cangas', 'Marín', 'Ponteareas', 'A Estrada', 'Lalín', 'Moaña'] },
+  { name: 'Salamanca', cities: ['Salamanca', 'Santa Marta de Tormes', 'Béjar', 'Ciudad Rodrigo', 'Villamayor', 'Carbajosa de la Sagrada'] },
+  { name: 'Santa Cruz de Tenerife', cities: ['Santa Cruz de Tenerife', 'San Cristóbal de La Laguna', 'Arona', 'Adeje', 'La Orotava', 'Granadilla de Abona', 'Los Realejos', 'Puerto de la Cruz', 'Candelaria', 'Icod de los Vinos'] },
+  { name: 'Segovia', cities: ['Segovia', 'Cuéllar', 'El Espinar', 'Real Sitio de San Ildefonso', 'Palazuelos de Eresma'] },
+  { name: 'Sevilla', cities: ['Sevilla', 'Dos Hermanas', 'Alcalá de Guadaíra', 'Utrera', 'Mairena del Aljarafe', 'Écija', 'La Rinconada', 'Los Palacios y Villafranca', 'Coria del Río', 'Carmona', 'Morón de la Frontera', 'Lebrija', 'Camas', 'Tomares'] },
+  { name: 'Soria', cities: ['Soria', 'Almazán', 'Burgo de Osma', 'Ólvega'] },
+  { name: 'Tarragona', cities: ['Tarragona', 'Reus', 'El Vendrell', 'Tortosa', 'Cambrils', 'Salou', 'Calafell', 'Valls', 'Vilaseca', 'Amposta'] },
+  { name: 'Teruel', cities: ['Teruel', 'Alcañiz', 'Andorra', 'Calamocha'] },
+  { name: 'Toledo', cities: ['Toledo', 'Talavera de la Reina', 'Illescas', 'Seseña', 'Torrijos', 'Quintanar de la Orden', 'Sonseca', 'Fuensalida'] },
+  { name: 'Valencia', cities: ['Valencia', 'Torrent', 'Gandia', 'Paterna', 'Sagunto', 'Alzira', 'Mislata', 'Burjassot', 'Ontinyent', 'Aldaia', 'Manises', 'Xirivella', 'Alaquàs', 'Cullera', 'Xàtiva', 'Catarroja', 'Sueca'] },
+  { name: 'Valladolid', cities: ['Valladolid', 'Laguna de Duero', 'Medina del Campo', 'Arroyo de la Encomienda', 'Tordesillas', 'Tudela de Duero'] },
+  { name: 'Vizcaya', cities: ['Bilbao', 'Barakaldo', 'Getxo', 'Portugalete', 'Santurtzi', 'Basauri', 'Leioa', 'Galdakao', 'Durango', 'Sestao', 'Erandio', 'Amorebieta-Etxano'] },
+  { name: 'Zamora', cities: ['Zamora', 'Benavente', 'Toro', 'Morales del Vino'] },
+  { name: 'Zaragoza', cities: ['Zaragoza', 'Calatayud', 'Utebo', 'Ejea de los Caballeros', 'Tarazona', 'Caspe', 'Cuarte de Huerva'] },
+  { name: 'Ceuta', cities: ['Ceuta'] },
+  { name: 'Melilla', cities: ['Melilla'] },
+]
+
+export const POSTAL_CODE_TO_PROVINCE: Record<string, string> = {
+  '01': 'Álava',
+  '02': 'Albacete',
+  '03': 'Alicante',
+  '04': 'Almería',
+  '05': 'Ávila',
+  '06': 'Badajoz',
+  '07': 'Illes Balears',
+  '08': 'Barcelona',
+  '09': 'Burgos',
+  '10': 'Cáceres',
+  '11': 'Cádiz',
+  '12': 'Castellón',
+  '13': 'Ciudad Real',
+  '14': 'Córdoba',
+  '15': 'La Coruña',
+  '16': 'Cuenca',
+  '17': 'Girona',
+  '18': 'Granada',
+  '19': 'Guadalajara',
+  '20': 'Guipúzcoa',
+  '21': 'Huelva',
+  '22': 'Huesca',
+  '23': 'Jaén',
+  '24': 'León',
+  '25': 'Lleida',
+  '26': 'La Rioja',
+  '27': 'Lugo',
+  '28': 'Madrid',
+  '29': 'Málaga',
+  '30': 'Murcia',
+  '31': 'Navarra',
+  '32': 'Ourense',
+  '33': 'Asturias',
+  '34': 'Palencia',
+  '35': 'Las Palmas',
+  '36': 'Pontevedra',
+  '37': 'Salamanca',
+  '38': 'Santa Cruz de Tenerife',
+  '39': 'Cantabria',
+  '40': 'Segovia',
+  '41': 'Sevilla',
+  '42': 'Soria',
+  '43': 'Tarragona',
+  '44': 'Teruel',
+  '45': 'Toledo',
+  '46': 'Valencia',
+  '47': 'Valladolid',
+  '48': 'Vizcaya',
+  '49': 'Zamora',
+  '50': 'Zaragoza',
+  '51': 'Ceuta',
+  '52': 'Melilla',
+}
 
 interface CheckoutModalProps {
   product: Product | null
@@ -25,12 +135,42 @@ export default function CheckoutModal({
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
+  const [street, setStreet] = useState('')
+  const [postalCode, setPostalCode] = useState('')
+  const [province, setProvince] = useState('')
+  const [city, setCity] = useState('')
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
   const [selectedPayment, setSelectedPayment] = useState<'bizum' | 'transfer'>('bizum')
   const [copiedIban, setCopiedIban] = useState(false)
   const [copiedBizum, setCopiedBizum] = useState(false)
   const [orderRef, setOrderRef] = useState('')
+
+  const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/\D/g, '').slice(0, 5)
+    setPostalCode(val)
+    if (val.length >= 2) {
+      const prefix = val.slice(0, 2)
+      const matched = POSTAL_CODE_TO_PROVINCE[prefix]
+      if (matched && !province) {
+        setProvince(matched)
+      }
+    }
+  }
+
+  const suggestedCities = useMemo(() => {
+    if (!province) return []
+    const found = SPANISH_PROVINCES.find((p) => p.name.toLowerCase() === province.toLowerCase())
+    return found ? found.cities : []
+  }, [province])
+
+  const fullAddress = [
+    street.trim(),
+    postalCode.trim() ? `CP ${postalCode.trim()}` : '',
+    city.trim(),
+    province.trim(),
+  ]
+    .filter(Boolean)
+    .join(', ')
 
   const handleConfirmPaymentMade = () => {
     setPaymentDeclared(true)
@@ -107,7 +247,7 @@ export default function CheckoutModal({
       customerName: fullName,
       customerEmail: email,
       customerPhone: phone,
-      customerAddress: address,
+      customerAddress: fullAddress,
       productId: product.id,
       productName: `${quantity}x ${product.name}`,
       totalPrice: finalOrderTotal,
@@ -122,7 +262,7 @@ export default function CheckoutModal({
       customerName: fullName,
       customerEmail: email,
       customerPhone: phone,
-      customerAddress: address,
+      customerAddress: fullAddress,
       productId: product.id,
       productName: `${quantity}x ${product.name}`,
       totalPrice: finalOrderTotal,
@@ -142,7 +282,9 @@ export default function CheckoutModal({
         email,
         phone,
         fullName,
-        address,
+        address: fullAddress,
+        city,
+        postalCode,
       },
     })
   }
@@ -431,7 +573,7 @@ export default function CheckoutModal({
               </p>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <a
-                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de pago - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el comprobante de pago (${selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}) para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${address}\n\nGracias.`)}`}
+                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de pago - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el comprobante de pago (${selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}) para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${fullAddress}\n\nGracias.`)}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -677,15 +819,75 @@ export default function CheckoutModal({
                 />
               </div>
 
+              {/* Dirección (Calle y número) */}
               <div className="form-group">
-                <label>Dirección completa de envío *</label>
+                <label>Calle, número y piso / puerta *</label>
                 <input
                   type="text"
                   required
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Calle, número, código postal, ciudad, provincia"
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
+                  placeholder="Ej: Calle Gran Vía 28, 3º B"
                 />
+              </div>
+
+              {/* Código Postal & Provincia en 2 columnas */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '10px' }}>
+                <div className="form-group">
+                  <label>Código Postal *</label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={5}
+                    value={postalCode}
+                    onChange={handlePostalCodeChange}
+                    placeholder="Ej: 28013"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Provincia *</label>
+                  <select
+                    required
+                    value={province}
+                    onChange={(e) => setProvince(e.target.value)}
+                    style={{
+                      border: '1px solid #d8d1c6',
+                      background: '#fff',
+                      padding: '10px 12px',
+                      fontSize: '13px',
+                      borderRadius: '2px',
+                      color: province ? '#20251f' : '#777',
+                      width: '100%',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <option value="">Seleccione provincia...</option>
+                    {SPANISH_PROVINCES.map((p) => (
+                      <option key={p.name} value={p.name} style={{ color: '#20251f' }}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Ciudad / Municipio */}
+              <div className="form-group">
+                <label>Ciudad / Municipio *</label>
+                <input
+                  type="text"
+                  required
+                  list="city-suggestions"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  placeholder={province ? `Ej: ${suggestedCities[0] || 'Madrid'}` : 'Ej: Madrid, Barcelona, Valencia...'}
+                />
+                <datalist id="city-suggestions">
+                  {suggestedCities.map((c) => (
+                    <option key={c} value={c} />
+                  ))}
+                </datalist>
               </div>
 
               <div className="form-group">

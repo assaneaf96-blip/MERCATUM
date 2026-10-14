@@ -310,7 +310,7 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; padding: 
 .modal-form { display: flex; flex-direction: column; gap: 14px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
 .form-group label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #5f625c; font-weight: 600; }
-.form-group input { border: 1px solid #d8d1c6; background: #fff; padding: 10px 12px; font-size: 13px; border-radius: 2px; color: #20251f; }
+.form-group input, .form-group select { border: 1px solid #d8d1c6; background: #fff; padding: 10px 12px; font-size: 13px; border-radius: 2px; color: #20251f; }
 .payment-badge { display: flex; justify-content: space-between; align-items: center; background: #fff; border: 1px solid #d8d1c6; padding: 10px 14px; font-size: 12px; border-radius: 2px; }
 .button-confirm-buy { background: #20251f; color: #f4f0e9; border: 0; padding: 14px; text-transform: uppercase; font-size: 11px; letter-spacing: .12em; font-weight: 600; cursor: pointer; transition: opacity .2s; margin-top: 8px; border-radius: 2px; }
 .button-confirm-buy:hover { opacity: .9; }
