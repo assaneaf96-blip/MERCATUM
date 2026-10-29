@@ -278,7 +278,7 @@ export default function CartModal({ isOpen, onClose, onCheckout }: CartModalProp
             {/* Trust badge */}
             <div className="flex items-center justify-center gap-2 text-[10.5px] text-stone-600 bg-stone-50 py-1.5 px-2 rounded-lg border border-stone-200">
               <span>🔒</span>
-              <span>Pago 100% seguro con <strong>Bizum</strong> o <strong>Transferencia Inmediata</strong></span>
+              <span>Pago 100% seguro con <strong>Transferencia Bancaria Inmediata</strong></span>
             </div>
 
             {/* Actions */}

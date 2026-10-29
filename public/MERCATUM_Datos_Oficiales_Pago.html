@@ -6,7 +6,7 @@
 <style>
   @page {
     size: A4;
-    margin: 15mm 15mm 15mm 15mm;
+    margin: 18mm 18mm 18mm 18mm;
   }
   * {
     box-sizing: border-box;
@@ -19,16 +19,16 @@
     background: #ffffff;
     margin: 0;
     padding: 0;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 13.5px;
+    line-height: 1.55;
   }
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #1c221d;
-    padding-bottom: 16px;
-    margin-bottom: 18px;
+    padding-bottom: 18px;
+    margin-bottom: 22px;
   }
   .logo-area {
     display: flex;
@@ -36,14 +36,14 @@
     gap: 14px;
   }
   .logo-img {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 10px;
     object-fit: cover;
     border: 1px solid #e5e7eb;
   }
   .brand-title {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 800;
     letter-spacing: 2px;
     color: #1c221d;
@@ -51,10 +51,10 @@
     text-transform: uppercase;
   }
   .brand-subtitle {
-    font-size: 11px;
+    font-size: 11.5px;
     letter-spacing: 1px;
     color: #6b7280;
-    margin: 2px 0 0;
+    margin: 3px 0 0;
     text-transform: uppercase;
   }
   .doc-badge {
@@ -64,9 +64,9 @@
     display: inline-block;
     background: #1c221d;
     color: #f4f0e9;
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 6px;
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -74,26 +74,26 @@
   .doc-ref {
     font-size: 11px;
     color: #6b7280;
-    margin-top: 5px;
+    margin-top: 6px;
   }
 
   .intro-box {
     background: #fbfaf8;
     border-left: 4px solid #1c221d;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-radius: 0 8px 8px 0;
-    margin-bottom: 20px;
-    font-size: 12.5px;
+    margin-bottom: 24px;
+    font-size: 13px;
     color: #374151;
   }
 
   .section-title {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: #1c221d;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 16px 0 10px;
+    margin: 22px 0 12px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -105,111 +105,101 @@
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.02);
   }
 
   .card-highlight {
-    border: 1.5px solid #2563eb;
+    border: 2px solid #1e3a8a;
     background: #f8faff;
   }
 
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 16px;
   }
 
   .data-item {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .data-label {
-    font-size: 10.5px;
+    font-size: 11px;
     text-transform: uppercase;
     font-weight: 700;
     color: #6b7280;
     letter-spacing: 0.5px;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
   }
   .data-value {
-    font-size: 13.5px;
+    font-size: 14.5px;
     font-weight: 600;
     color: #111827;
     font-family: 'Consolas', 'Courier New', monospace, sans-serif;
   }
   .data-value-large {
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 800;
     color: #1e3a8a;
     letter-spacing: 1px;
   }
 
-  .bizum-box {
-    border: 1.5px solid #00a499;
-    background: #f0fdfa;
-  }
-  .bizum-value {
-    font-size: 17px;
-    font-weight: 800;
-    color: #0f766e;
-    letter-spacing: 1px;
-  }
-
   .steps-list {
-    margin: 6px 0 0 0;
-    padding-left: 18px;
+    margin: 8px 0 0 0;
+    padding-left: 20px;
     color: #374151;
-    font-size: 12px;
+    font-size: 13px;
   }
   .steps-list li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .guarantee-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 8px;
+    gap: 14px;
+    margin-top: 14px;
   }
   .guarantee-item {
     background: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    padding: 10px;
+    padding: 12px;
     text-align: center;
   }
   .guarantee-icon {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 4px;
   }
   .guarantee-title {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     color: #111827;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
   }
   .guarantee-desc {
-    font-size: 10px;
+    font-size: 10.5px;
     color: #6b7280;
   }
 
   .footer {
-    margin-top: 22px;
+    margin-top: 28px;
     border-top: 1px solid #e5e7eb;
-    padding-top: 12px;
+    padding-top: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 10.5px;
+    font-size: 11px;
     color: #6b7280;
   }
   .cert-seal {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-weight: 600;
+    font-weight: 700;
     color: #047857;
+    font-size: 11.5px;
   }
 </style>
 </head>
@@ -233,12 +223,12 @@
   <!-- INTRO -->
   <div class="intro-box">
     Estimado/a cliente,<br>
-    Le facilitamos los datos oficiales y certificados para formalizar el abono de su pedido con total garantía, trazabilidad y seguridad bancaria a través de nuestros canales oficiales autorizados.
+    Le facilitamos los datos oficiales y certificados para formalizar el abono de su pedido mediante <strong>Transferencia Bancaria Inmediata</strong> con total trazabilidad, seguro de compra y máxima protección bancaria a través de nuestra entidad oficial.
   </div>
 
-  <!-- MÉTODO 1 : TRANSFERENCIA BANCARIA -->
+  <!-- TRANSFERENCIA BANCARIA -->
   <div class="section-title">
-    <span>🏦</span> OPCIÓN 1 : TRANSFERENCIA BANCARIA INMEDIATA (RECOMENDADO)
+    <span>🏦</span> DATOS OFICIALES PARA TRANSFERENCIA BANCARIA INMEDIATA
   </div>
 
   <div class="card card-highlight">
@@ -253,12 +243,12 @@
       </div>
     </div>
 
-    <div class="data-item" style="margin-top: 6px;">
+    <div class="data-item" style="margin-top: 8px;">
       <div class="data-label">Número de Cuenta (IBAN)</div>
       <div class="data-value data-value-large">ES07 0182 1503 2002 0166 6370</div>
     </div>
 
-    <div class="grid-2" style="margin-top: 6px;">
+    <div class="grid-2" style="margin-top: 8px;">
       <div class="data-item">
         <div class="data-label">Código BIC / SWIFT</div>
         <div class="data-value">BBVAESMM</div>
@@ -269,46 +259,21 @@
       </div>
     </div>
 
-    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #bfdbfe; font-size: 11.5px; color: #1e40af;">
-      ⚡ <strong>Aviso Importante :</strong> Seleccione preferentemente <em>"Transferencia Inmediata"</em> en su banca online para que su pedido quede reservado y preparado para entrega de inmediato.
-    </div>
-  </div>
-
-  <!-- MÉTODO 2 : BIZUM -->
-  <div class="section-title">
-    <span>📱</span> OPCIÓN 2 : PAGO INSTANTÁNEO POR BIZUM
-  </div>
-
-  <div class="card bizum-box">
-    <div class="grid-2">
-      <div class="data-item">
-        <div class="data-label">Teléfono Móvil Bizum</div>
-        <div class="data-value bizum-value">+34 676 94 80 39</div>
-      </div>
-      <div class="data-item">
-        <div class="data-label">Beneficiario Registrado</div>
-        <div class="data-value" style="color: #0f766e;">JORGE ALEXIS LONGCHAMP MESA</div>
-      </div>
-    </div>
-    <div class="data-item" style="margin-top: 4px;">
-      <div class="data-label">Concepto del Bizum</div>
-      <div class="data-value" style="color: #0f766e;">[Su Nombre completo] o [Nombre del producto]</div>
-    </div>
-    <div style="margin-top: 6px; font-size: 11.5px; color: #115e59;">
-      ✓ Confirmación inmediata en 1 minuto. Envíenos la captura de pantalla por WhatsApp al <strong>+34 691 34 98 40</strong> para proceder al embalaje y expedición.
+    <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed #bfdbfe; font-size: 12px; color: #1e40af; line-height: 1.45;">
+      ⚡ <strong>Aviso Importante :</strong> Seleccione preferentemente la opción <em>"Transferencia Inmediata"</em> desde su banca online (CaixaBank, Santander, BBVA, Sabadell, ING, etc.) para que su pago quede validado al instante y su pedido sea preparado para expedición inmediata sin demoras.
     </div>
   </div>
 
   <!-- PASOS TRAS EL PAGO -->
   <div class="section-title">
-    <span>📋</span> ¿QUÉ HACER DESPUÉS DE REALIZAR EL PAGO?
+    <span>📋</span> ¿QUÉ HACER DESPUÉS DE EMITIR LA TRANSFERENCIA?
   </div>
 
   <div class="card">
     <ol class="steps-list">
-      <li><strong>Envíe el justificante :</strong> Remita una foto o PDF del comprobante bancario por WhatsApp al <strong>+34 691 34 98 40</strong> o por email a <strong>contacto@mercatum-shop.app</strong>.</li>
-      <li><strong>Indique sus datos de entrega :</strong> Nombre completo, dirección exacta de entrega, código postal, localidad y teléfono para el transportista.</li>
-      <li><strong>Recepción y Seguimiento :</strong> Recibirá su número de seguimiento oficial y la factura de compra formal con entrega en 24/48 horas laborables.</li>
+      <li><strong>Envíe el justificante bancario :</strong> Remita una foto o PDF del comprobante por WhatsApp al <strong>+34 691 34 98 40</strong> o por email a <strong>contacto@mercatum-shop.app</strong>.</li>
+      <li><strong>Indique sus datos de entrega :</strong> Nombre completo, dirección exacta de entrega, código postal, localidad y teléfono de contacto para el transportista.</li>
+      <li><strong>Recepción y Seguimiento :</strong> Recibirá su número de seguimiento de envío en tiempo real y su factura formal de compra. Entrega express en 24/48 horas laborables.</li>
     </ol>
   </div>
 
@@ -317,17 +282,17 @@
     <div class="guarantee-item">
       <div class="guarantee-icon">🛡️</div>
       <div class="guarantee-title">Garantía Oficial 3 Años</div>
-      <div class="guarantee-desc">Cobertura oficial directa y productos 100% nuevos.</div>
+      <div class="guarantee-desc">Cobertura total directa del fabricante y productos 100% nuevos.</div>
     </div>
     <div class="guarantee-item">
       <div class="guarantee-icon">🚚</div>
       <div class="guarantee-title">Envío Express Asegurado</div>
-      <div class="guarantee-desc">Embalaje de seguridad y seguro a todo riesgo.</div>
+      <div class="guarantee-desc">Transporte especializado con seguro a todo riesgo incluido.</div>
     </div>
     <div class="guarantee-item">
       <div class="guarantee-icon">🔒</div>
       <div class="guarantee-title">Transacción Certificada</div>
-      <div class="guarantee-desc">Factura con NIF y seguimiento de transporte.</div>
+      <div class="guarantee-desc">Factura legal con NIF y trazabilidad bancaria protegida.</div>
     </div>
   </div>
 
@@ -339,7 +304,7 @@
       Atención al cliente: contacto@mercatum-shop.app · Tel/WhatsApp: +34 691 34 98 40
     </div>
     <div class="cert-seal">
-      <span style="font-size: 16px;">🛡️</span> PAGO SEGURO Y VERIFICADO
+      <span style="font-size: 18px;">🛡️</span> PAGO SEGURO Y VERIFICADO
     </div>
   </div>
 

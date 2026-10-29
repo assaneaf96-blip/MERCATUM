@@ -140,7 +140,7 @@ export default function CheckoutModal({
   const [province, setProvince] = useState('')
   const [city, setCity] = useState('')
   const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SETTINGS)
-  const [selectedPayment, setSelectedPayment] = useState<'bizum' | 'transfer'>('bizum')
+  const [selectedPayment, setSelectedPayment] = useState<'bizum' | 'transfer'>('transfer')
   const [copiedIban, setCopiedIban] = useState(false)
   const [copiedBizum, setCopiedBizum] = useState(false)
   const [orderRef, setOrderRef] = useState('')
@@ -346,11 +346,11 @@ export default function CheckoutModal({
               </h3>
               <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
                 Gracias <strong>{fullName || 'Estimado/a Cliente/a'}</strong>. Su pedido de{' '}
-                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está registrado pendiente de pago por {selectedPayment === 'bizum' ? 'Bizum' : 'transferencia bancaria inmediata'}.
+                <strong>{quantity}x {product.name}</strong> ({totalPrice}) está registrado pendiente de pago por transferencia bancaria inmediata.
               </p>
             </div>
 
-            {selectedPayment === 'bizum' ? (
+            {false ? (
               /* Encadré Bizum */
               <div
                 style={{
@@ -569,11 +569,11 @@ export default function CheckoutModal({
                 </strong>
               </div>
               <p style={{ fontSize: '11px', color: '#475569', margin: '0 0 10px', lineHeight: '1.4' }}>
-                Una vez realizado el pago ({selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}), envíenos su comprobante o captura con su referencia <strong>{orderRef}</strong>:
+                Una vez realizada la transferencia bancaria, envíenos su comprobante o captura con su referencia <strong>{orderRef}</strong>:
               </p>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 <a
-                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de pago - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el comprobante de pago (${selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}) para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${fullAddress}\n\nGracias.`)}`}
+                  href={`mailto:${settings.contactEmail || 'contacto@mercatum-shop.app'}?subject=${encodeURIComponent(`Justificante de pago - Pedido ${orderRef} - ${fullName}`)}&body=${encodeURIComponent(`Hola,\n\nAdjunto el comprobante de transferencia bancaria para el pedido ${orderRef} por un importe de ${totalPrice}.\n\nNombre: ${fullName}\nTeléfono: ${phone}\nDirección de entrega: ${fullAddress}\n\nGracias.`)}`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -594,7 +594,7 @@ export default function CheckoutModal({
                 </a>
                 {settings.contactPhone && (
                   <a
-                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola, aquí tiene mi comprobante de pago (${selectedPayment === 'bizum' ? 'Bizum' : 'transferencia'}) para el pedido ${orderRef} (${fullName} - ${totalPrice}).`)}`}
+                    href={`https://wa.me/${settings.contactPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola, aquí tiene mi comprobante de transferencia bancaria para el pedido ${orderRef} (${fullName} - ${totalPrice}).`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -740,7 +740,7 @@ export default function CheckoutModal({
           </div>
         ) : (
           <div>
-            <span className="modal-eyebrow">Pago Seguro Oficial · Bizum o Transferencia Inmediata</span>
+            <span className="modal-eyebrow">Pago Seguro Oficial · Transferencia Inmediata</span>
             <h3 className="modal-title">Comprar este artículo</h3>
 
             <div className="modal-product-summary">
@@ -891,106 +891,52 @@ export default function CheckoutModal({
               </div>
 
               <div className="form-group">
-                <label>Seleccione su método de pago</label>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '4px' }}>
-                  {/* Option 1: BIZUM (Recommandé) */}
-                  <button
-                    type="button"
-                    onClick={() => setSelectedPayment('bizum')}
-                    style={{
-                      border: selectedPayment === 'bizum' ? '2px solid #00a5a2' : '1px solid #d1d5db',
-                      background: selectedPayment === 'bizum' ? '#e0f7fa' : '#ffffff',
-                      borderRadius: '8px',
-                      padding: '10px 12px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      transition: 'all 0.2s',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '4px',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 'bold', color: selectedPayment === 'bizum' ? '#006064' : '#1f2937' }}>
-                        📱 Bizum
+                <label>Método de pago oficial disponible</label>
+                <div
+                  style={{
+                    border: '2px solid #166534',
+                    background: '#f0fdf4',
+                    borderRadius: '8px',
+                    padding: '12px 14px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginTop: '4px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '20px' }}>🏦</span>
+                    <div>
+                      <span style={{ fontSize: '13px', fontWeight: 'bold', color: '#14532d', display: 'block' }}>
+                        Transferencia Bancaria Inmediata
                       </span>
-                      <span style={{ fontSize: '9px', fontWeight: 'bold', background: '#00838f', color: '#ffffff', padding: '1px 6px', borderRadius: '4px' }}>
-                        Recomendado
+                      <span style={{ fontSize: '10.5px', color: '#166534' }}>
+                        BANCO BBVA · Confirmación directa y 100% segura
                       </span>
                     </div>
-                    <span style={{ fontSize: '10px', color: '#00695c' }}>
-                      Instantáneo · 631 974 038
-                    </span>
-                  </button>
-
-                  {/* Option 2: Transferencia Inmediata */}
-                  <button
-                    type="button"
-                    onClick={() => setSelectedPayment('transfer')}
-                    style={{
-                      border: selectedPayment === 'transfer' ? '2px solid #166534' : '1px solid #d1d5db',
-                      background: selectedPayment === 'transfer' ? '#f0fdf4' : '#ffffff',
-                      borderRadius: '8px',
-                      padding: '10px 12px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      transition: 'all 0.2s',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '4px',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 'bold', color: selectedPayment === 'transfer' ? '#14532d' : '#1f2937' }}>
-                        ⚡ Transferencia
-                      </span>
-                      <span style={{ fontSize: '9px', fontWeight: 'bold', background: '#166534', color: '#ffffff', padding: '1px 6px', borderRadius: '4px' }}>
-                        Bancaria
-                      </span>
-                    </div>
-                    <span style={{ fontSize: '10px', color: '#166534' }}>
-                      Banco a banco · IBAN
-                    </span>
-                  </button>
+                  </div>
+                  <span style={{ fontSize: '10px', fontWeight: 'bold', background: '#166534', color: '#ffffff', padding: '3px 8px', borderRadius: '4px' }}>
+                    DISPONIBLE
+                  </span>
                 </div>
 
-                {selectedPayment === 'bizum' ? (
-                  <div
-                    style={{
-                      background: '#e0f7fa',
-                      border: '1px solid #80deea',
-                      borderRadius: '6px',
-                      padding: '9px 12px',
-                      marginTop: '8px',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#006064', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
-                      <span>📱</span>
-                      <span>Pago Express por Bizum al {settings.bizumPhone || '631 974 038'}</span>
-                    </div>
-                    <span style={{ fontSize: '11px', color: '#00838f', lineHeight: '1.45', display: 'block' }}>
-                      Beneficiaria : <strong>{settings.bizumHolder || 'MARIA LLANOS GALLEGO MEDINA'}</strong>. Al confirmar, verá el resumen y el concepto exacto a indicar para preparar su envío en 24/48h.
-                    </span>
+                <div
+                  style={{
+                    background: '#fffbeb',
+                    border: '1px solid #fde68a',
+                    borderRadius: '6px',
+                    padding: '9px 12px',
+                    marginTop: '8px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#b45309', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
+                    <span>🛡️</span>
+                    <span>Operación Banco a Banco con Protección Oficial</span>
                   </div>
-                ) : (
-                  <div
-                    style={{
-                      background: '#fffbeb',
-                      border: '1px solid #fde68a',
-                      borderRadius: '6px',
-                      padding: '9px 12px',
-                      marginTop: '8px',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#b45309', fontWeight: 'bold', fontSize: '11.5px', marginBottom: '2px' }}>
-                      <span>🛡️</span>
-                      <span>Transferencia Bancaria Inmediata</span>
-                    </div>
-                    <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
-                      Operación directa banco a banco con máxima protección. Al confirmar el pedido, obtendrá el IBAN oficial y la referencia para emitir la transferencia.
-                    </span>
-                  </div>
-                )}
+                  <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
+                    Al confirmar su pedido, obtendrá el IBAN oficial del BANCO BBVA y su número de referencia para emitir la transferencia.
+                  </span>
+                </div>
               </div>
 
               <button type="submit" className="button-confirm-buy" style={{ marginTop: '8px' }}>
