@@ -10,8 +10,25 @@
     "tag": "Oferta",
     "rating": 5,
     "reviews_count": 1374,
-    "images": [],
-    "media": [],
+    "images": [
+      "/uploads/pellets/1-palet-de-pellet-de-arapellet-77-sacos_1.jpg",
+      "/uploads/pellets/1-palet-de-pellet-de-arapellet-77-sacos_2.jpg",
+      "/uploads/pellets/1-palet-de-pellet-de-arapellet-77-sacos_3.jpg"
+    ],
+    "media": [
+      {
+        "type": "image",
+        "url": "/uploads/pellets/1-palet-de-pellet-de-arapellet-77-sacos_1.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/pellets/1-palet-de-pellet-de-arapellet-77-sacos_2.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/uploads/pellets/1-palet-de-pellet-de-arapellet-77-sacos_3.jpg"
+      }
+    ],
     "rawPrice": 330
   },
   {
