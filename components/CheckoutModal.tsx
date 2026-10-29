@@ -911,7 +911,7 @@ export default function CheckoutModal({
                         Transferencia Bancaria Inmediata
                       </span>
                       <span style={{ fontSize: '10.5px', color: '#166534' }}>
-                        BANCO BBVA · Confirmación directa y 100% segura
+                        Confirmación directa y 100% segura
                       </span>
                     </div>
                   </div>
@@ -934,7 +934,7 @@ export default function CheckoutModal({
                     <span>Operación Banco a Banco con Protección Oficial</span>
                   </div>
                   <span style={{ fontSize: '11px', color: '#92400e', lineHeight: '1.45', display: 'block' }}>
-                    Al confirmar su pedido, obtendrá el IBAN oficial del BANCO BBVA y su número de referencia para emitir la transferencia.
+                    Al confirmar su pedido, obtendrá el IBAN oficial y su número de referencia para emitir la transferencia.
                   </span>
                 </div>
               </div>
