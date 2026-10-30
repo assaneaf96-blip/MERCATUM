@@ -147,23 +147,23 @@ xmlns='http://www.w3.org/TR/REC-html40'>
   <tr>
     <td style='width: 50%;'>
       <div class='label-cell'>Entidad Bancaria</div>
-      <div class='val-cell'>BANCO BBVA (España)</div>
+      <div class='val-cell'>SANTANDER (España)</div>
     </td>
     <td style='width: 50%;'>
       <div class='label-cell'>Titular de la Cuenta</div>
-      <div class='val-cell'>YIBRAHAN ANDRES FLOREZ ROJANO</div>
+      <div class='val-cell'>JUAN JOSE VALLAVERDE</div>
     </td>
   </tr>
   <tr>
     <td colspan='2' style='border-top: 1pt solid #cbd5e1; padding-top: 10pt; padding-bottom: 10pt;'>
       <div class='label-cell'>Número de Cuenta (IBAN)</div>
-      <div class='iban-val'>ES07 0182 1503 2002 0166 6370</div>
+      <div class='iban-val'>ES15 0049 5368 0020 1639 8471</div>
     </td>
   </tr>
   <tr>
     <td style='border-top: 1pt solid #cbd5e1;'>
       <div class='label-cell'>Código BIC / SWIFT</div>
-      <div class='val-cell'>BBVAESMM</div>
+      <div class='val-cell'>BSCHESMMXXX</div>
     </td>
     <td style='border-top: 1pt solid #cbd5e1;'>
       <div class='label-cell'>Concepto Obligatorio</div>
